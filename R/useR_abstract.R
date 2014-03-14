@@ -7,7 +7,6 @@ useR_abstract <- function() {
 
   rmarkdown::pdf_document(
     template = template,
-    keep_tex = TRUE,
     pandoc_args = c("--csl", rmarkdown::pandoc_path_arg(csl)))
 }
 
