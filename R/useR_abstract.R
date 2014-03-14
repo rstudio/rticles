@@ -1,5 +1,3 @@
-
-
 #' @export
 useR_abstract <- function() {
   template <- find_file("useR_abstract", "template.tex")
