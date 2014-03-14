@@ -1,0 +1,45 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage{amsfonts, amsmath, hanging, hyperref, parskip, times}
+\usepackage[numbers]{natbib}
+\usepackage[pdftex]{graphicx}
+\hypersetup{
+  colorlinks,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+\let\section=\subsubsection
+\newcommand{\pkg}[1]{{\normalfont\fontseries{b}\selectfont #1}} 
+\let\proglang=\textit
+\let\code=\texttt 
+\renewcommand{\title}[1]{\begin{center}{\bf \LARGE #1}\end{center}}
+\newcommand{\affiliations}{\footnotesize\centering}
+\newcommand{\keywords}{\paragraph{Keywords:}}
+
+\setlength{\topmargin}{-15mm}
+\setlength{\oddsidemargin}{-2mm}
+\setlength{\textwidth}{165mm}
+\setlength{\textheight}{250mm}
+
+\begin{document}
+\pagestyle{empty}
+
+\title{$title$}
+
+\begin{center}
+  {\bf $author.name$$$^{1,^\star}$$}
+\end{center}
+
+\begin{affiliations}
+1. $author.affiliation$ \\[-2pt]
+$$^\star$$Contact author: $author.email$\\
+\end{affiliations}
+
+\keywords $keywords$
+
+\vskip 0.8cm
+
+$body$
+
+\end{document}
