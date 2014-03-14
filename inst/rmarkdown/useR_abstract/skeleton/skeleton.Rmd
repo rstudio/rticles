@@ -1,10 +1,9 @@
 ---
 title: "Title of Your Submission"
-author: 
+author:
   name: FirstName LastName
   affiliation: Affiliation of Author
-  email: foo@bar.com 
-date: "March 14, 2014"
+  email: foo@bar.com
 keywords: First, Second, ... up to 5 keywords
 bibliography: bibliography.bib
 output: rticles::useR_abstract
@@ -14,7 +13,7 @@ Some suggestions and rules: If you mention a programming language like \proglang
 
 Textual, *e.g.* "[@ref1] jumped over the fence" and parenthetical, *e.g.* "The fence was jumped [-@ref2]" citations may appear within the abstract.
 
-Itemized lists are allowed in abstracts, but may be wasteful of space, which is *strictly limited*. Avoid itemized lists if possible, but gracefully. **Abstracts should not exceed one US letter (8.5 x 11 inches) page**. The page should not be numbered. 
+Itemized lists are allowed in abstracts, but may be wasteful of space, which is *strictly limited*. Avoid itemized lists if possible, but gracefully. **Abstracts should not exceed one US letter (8.5 x 11 inches) page**. The page should not be numbered.
 
 **References**
 
