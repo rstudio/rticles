@@ -2,10 +2,8 @@
 
 #' @export
 useR_abstract <- function() {
-  template <- system.file("rmarkdown/useR_abstract/template.tex",
-                          package = "rticles")
-  csl <- system.file("rmarkdown/useR_abstract/chicago-author-date.csl",
-                     package = "rticles")
+  template <- find_file("useR_abstract", "template.tex")
+  csl <- find_file("useR_abstract" ,"chicago-author-date.csl")
 
   rmarkdown::pdf_document(
     template = template,
