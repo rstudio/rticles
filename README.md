@@ -3,7 +3,7 @@
 To create a new article:
 
 ```r
-rticles::new_article("MyAbstract.Rmd", "useR_abstract")
+rticles::new_article("MyAbstract.Rmd", "use_r_abstract")
 ```
 
 ## Installation

@@ -1,2 +1,2 @@
 export(new_article)
-export(useR_abstract)
+export(use_r_abstract)

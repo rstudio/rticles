@@ -6,7 +6,7 @@ author:
   email: foo@bar.com
 keywords: First, Second, ... up to 5 keywords
 bibliography: bibliography.bib
-output: rticles::useR_abstract
+output: rticles::use_r_abstract
 ---
 
 Some suggestions and rules: If you mention a programming language like \proglang{R}, typeset the language name with the `\proglang` macro. If you mention an \proglang{R} function `foo`, typeset the function name with standard markdown backticks. If you mention an \proglang{R} package \pkg{fooPkg}, typeset the package name with the `\pkg` macro.
