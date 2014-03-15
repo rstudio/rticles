@@ -1,7 +1,7 @@
 #' @export
 useR_abstract <- function() {
-  template <- find_file("useR_abstract", "template.tex")
-  csl <- find_file("useR_abstract" ,"chicago-author-date.csl")
+  template <- find_resource("useR_abstract", "template.tex")
+  csl <- find_resource("useR_abstract" ,"chicago-author-date.csl")
 
   rmarkdown::pdf_document(
     template = template,
