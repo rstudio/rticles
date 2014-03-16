@@ -1,6 +1,6 @@
 
 #' @export
-author <- function(file, template, edit = TRUE) {
+draft <- function(file, template, edit = TRUE) {
 
   # add Rmd extension if necessary
   if (!identical(tools::file_ext(file), "Rmd"))

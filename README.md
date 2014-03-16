@@ -2,18 +2,21 @@
 
 ### Installation
 
+The **rticles** package is based on [R Markdown v2](http://rmarkdown.rstudio.com), which is included in the latest [preview release of RStudio](http://www.rstudio.com/ide/download/preview). You should update RStudio to the preview release before using **rticles**. Note that if you are not using RStudio then you can alteratively install the standalone [rmarkdown](https://github.com/rstudio/rmarkdown) package.
+
+To install the package:
+
 ```r
+install_packages("devtools")
 devtools::install_github("rstudio/rticles")
 ```
 
-You should also be running the [preview release](http://www.rstudio.com/ide/preview) of RStudio. Alternatively if you are not using RStudio you should install the [rmarkdown](https://github.com/rstudio/rmarkdown) package.
-
 ### Usage
 
-To create a new article call the `author` function with the name of the file to author and the article template you want to use:
+To create a new article call the `draft` function with the name of the file and the template you want to use:
 
 ```r
-rticles::author("MyAbstract.Rmd", "use_r_abstract")
+rticles::draft("MyAbstract.Rmd", template = "use_r_abstract")
 ```
 
 
