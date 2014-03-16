@@ -1,9 +1,17 @@
 ---
 title: "Title of Your Submission"
 author:
-  name: FirstName LastName
-  affiliation: Affiliation of Author
-  email: foo@bar.com
+ - name: FirstNameA LastNameA
+   affiliation: [1,2]
+   email: foo@bar.com
+ - name: FirstNameB LastNameB
+   email: jj@rstudio.com
+   affiliation: [1,3]
+   contact: yes
+affiliation:
+ - Affiliation of author A and author B
+ - Second affiliation of author A
+ - Second affiliation of author B
 keywords: First, Second, ... up to 5 keywords
 bibliography: bibliography.bib
 output: rticles::use_r_abstract
