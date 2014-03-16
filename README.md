@@ -6,7 +6,7 @@ The **rticles** package is based on [R Markdown v2](http://rmarkdown.rstudio.com
 
 To install the package:
 
-```
+```S
 install_packages("devtools")
 devtools::install_github("rstudio/rticles")
 ```
@@ -15,7 +15,7 @@ devtools::install_github("rstudio/rticles")
 
 To create a new article call the `draft` function with the name of the file and the template you want to use:
 
-```
+```S
 rticles::draft("MyAbstract.Rmd", template = "use_r_abstract")
 ```
 
