@@ -4,10 +4,9 @@ author:
  - name: FirstNameA LastNameA
    affiliation: [1,2]
    email: foo@bar.com
- - name: FirstNameB LastNameB
-   email: jj@rstudio.com
-   affiliation: [1,3]
    contact: yes
+ - name: FirstNameB LastNameB
+   affiliation: [1,3]
 affiliation:
  - Affiliation of author A and author B
  - Second affiliation of author A
