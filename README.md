@@ -18,7 +18,7 @@ devtools::install_github("rstudio/rticles")
 To create a new article call the `rmarkdown::draft` function with the name of the file and the template you want to use:
 
 ```S
-rmarkdown::draft("MyAbstract.Rmd", template = "rticles::use_r_abstract")
+rmarkdown::draft("MyAbstract.Rmd", template = "use_r_abstract", package = "rticles")
 ```
 
 
