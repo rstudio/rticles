@@ -26,6 +26,7 @@ keywords:
 preamble:
   # Any additiona latex commands to be inserted in the premable
   - \usepackage{amsmath}
+output: rticles::jss_article
 ---
 
 Code formatting:
