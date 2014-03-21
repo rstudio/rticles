@@ -3,7 +3,13 @@ jss_article <- function() {
   template <- find_resource("jss_article", "template.tex")
 
   base <- rmarkdown::pdf_document(template = template, keep_tex = TRUE)
-  base$knitr$opts_chunk$prompt <- "R> "
+
+  # Mostly copied from knitr::render_sweave
+  base$knitr$opts_knit$out.format <- "sweave"
+
+  base$knitr$opts_chunk$prompt <- TRUE
+  base$knitr$opts_chunk$comment <- NA
+  base$knitr$opts_chunk$highlight <- FALSE
 
   hook_chunk <- function(x, options) {
     if (knitr:::output_asis(x, options)) return(x)
