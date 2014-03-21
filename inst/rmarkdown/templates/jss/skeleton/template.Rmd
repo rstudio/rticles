@@ -1,0 +1,35 @@
+---
+author:
+  - name: Achim Zeileis
+    affiliation: Universit\"at Innsbruck
+    address:
+      Department of Statistics and Mathematics\\
+      Faculty of Economics and Statistics\\
+      Universit\"at Innsbruck\\
+      6020 Innsbruck, Austria\\
+      E-mail: \email{Achim.Zeileis@uibk.ac.at}\\
+      URL: \url{http://eeecon.uibk.ac.at/~zeileis/}
+  - name: Second Author
+    affiliation: Plus Affiliation
+title:
+  formatted: A Capitalized Title: Something about a Package \pkg{foo}
+  # If you use tex in the formatted title, also supply version without
+  plain:     A Capitalized Title: Something about a Package foo
+  # For running headers, if needed
+  short:     \pkg{foo}: A Capitalized Title
+abstract:
+  The abstract of the article.
+keywords:
+  # at least one keyword must be supplied
+  formatted: [keywords, comma-separated, not capitalized, \proglang{Java}]
+  plain:     [keywords, comma-separated, not capitalized, Java]
+preamble:
+  # Any additiona latex commands to be inserted in the premable
+  - \usepackage{amsmath}
+---
+
+Code formatting:
+
+* \proglang{Java}
+* \pkg{plyr}
+* \code{print("abc")}

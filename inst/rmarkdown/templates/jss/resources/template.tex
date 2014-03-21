@@ -1,0 +1,52 @@
+\documentclass[article]{jss}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% declarations for jss.cls %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\author{
+  $for(author)$$author.name$\\$author.affiliation$$sep$ \And $$endfor$
+}
+\title{$title.formatted$}
+$if(keywords.formatted)$
+\Keywords{$for(author)$$keywords.formatted$$sep$, $$endfor$}
+$endif$
+
+\Abstract{
+$abstract$
+}
+
+\Plainauthor{$for(author)$$author.name$$sep$, $$endfor$}
+$if(title.plain)$
+\Plaintitle{$title.plain$}}
+$endif$
+$if(title.short)$
+\Shorttitle{\pkg{foo}: A Capitalized Title}
+$endif$
+$if(keywords.plain)$
+\Plainkeywords{$for(author)$$keywords.plain$$sep$, $$endfor$}
+$endif$
+
+%% publication information
+%% \Volume{50}
+%% \Issue{9}
+%% \Month{June}
+%% \Year{2012}
+%% \Submitdate{2012-06-04}
+%% \Acceptdate{2012-06-04}
+
+$for(author)$
+\Address{
+  $if(author.address)$
+  $author.name$\\
+  $author.affiliation\\
+  $author.address$
+  $endif$
+}
+$endfor$
+
+\begin{document}
+
+$body$
+
+\end{document}
+
