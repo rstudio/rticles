@@ -2,13 +2,13 @@
 author:
   - name: Achim Zeileis
     affiliation: Universit\"at Innsbruck
-    address: >
-      Department of Statistics and Mathematics\\
-      Faculty of Economics and Statistics\\
-      Universit\"at Innsbruck\\
-      6020 Innsbruck, Austria\\
-      E-mail: \email{Achim.Zeileis@uibk.ac.at}\\
-      URL: \url{http://eeecon.uibk.ac.at/~zeileis/}
+    address:
+      - Department of Statistics and Mathematics
+      - Faculty of Economics and Statistics
+      - Universit\"at Innsbruck
+      - 6020 Innsbruck, Austria
+      - E-mail: \email{Achim.Zeileis@uibk.ac.at}
+      - URL: \url{http://eeecon.uibk.ac.at/~zeileis/}
   - name: Second Author
     affiliation: Plus Affiliation
 title:
