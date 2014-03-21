@@ -6,7 +6,7 @@ jss_article <- function() {
   base$knitr$opts_chunk$prompt <- "R> "
 
   hook_chunk <- function(x, options) {
-    if (output_asis(x, options)) return(x)
+    if (knitr:::output_asis(x, options)) return(x)
     paste0('\\begin{CodeChunk}\n', x, '\\end{CodeChunk}')
   }
   hook_input <- function(x, options) {
