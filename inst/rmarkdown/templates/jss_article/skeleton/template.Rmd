@@ -17,15 +17,14 @@ title:
   plain:     "A Capitalized Title: Something about a Package foo"
   # For running headers, if needed
   short:     "\\pkg{foo}: A Capitalized Title"
-abstract:
+abstract: >
   The abstract of the article.
 keywords:
   # at least one keyword must be supplied
   formatted: [keywords, comma-separated, not capitalized, "\\proglang{Java}"]
   plain:     [keywords, comma-separated, not capitalized, Java]
-preamble:
-  # Any additiona latex commands to be inserted in the premable
-  - \usepackage{amsmath}
+preamble: >
+  \usepackage{amsmath}
 output: rticles::jss_article
 ---
 

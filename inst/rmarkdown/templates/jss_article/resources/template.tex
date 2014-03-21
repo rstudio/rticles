@@ -23,10 +23,6 @@ $if(keywords.plain)$
 \Plainkeywords{$for(author)$$keywords.plain$$sep$, $$endfor$}
 $endif$
 
-$for(preamble)$
-$preamble$
-$endfor$
-
 %% publication information
 %% \Volume{50}
 %% \Issue{9}
@@ -44,6 +40,8 @@ $for(author)$
   $endif$
 }
 $endfor$
+
+$preamble$
 
 \begin{document}
 
