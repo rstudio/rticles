@@ -1,16 +1,14 @@
 ---
 author:
-  - name: Achim Zeileis
-    affiliation: "Universit\\\"at Innsbruck"
-    address:
-      - Department of Statistics and Mathematics
-      - Faculty of Economics and Statistics
-      - "Universit\\\"at Innsbruck"
-      - 6020 Innsbruck, Austria
-      - E-mail: \email{Achim.Zeileis@uibk.ac.at}
-      - URL: \url{http://eeecon.uibk.ac.at/~zeileis/}
+  - name: FirstName LastName
+    affiliation: University/Company
+    address: >
+      First line
+      Second line
+    email: name@company.com
+    url: http://rstudio.com
   - name: Second Author
-    affiliation: Plus Affiliation
+    affiliation: Affiliation
 title:
   formatted: "A Capitalized Title: Something about a Package \\pkg{foo}"
   # If you use tex in the formatted title, also supply version without
@@ -21,8 +19,8 @@ abstract: >
   The abstract of the article.
 keywords:
   # at least one keyword must be supplied
-  formatted: [keywords, comma-separated, not capitalized, "\\proglang{Java}"]
-  plain:     [keywords, comma-separated, not capitalized, Java]
+  formatted: [keywords, not capitalized, "\\proglang{Java}"]
+  plain:     [keywords, not capitalized, Java]
 preamble: >
   \usepackage{amsmath}
 output: rticles::jss_article
