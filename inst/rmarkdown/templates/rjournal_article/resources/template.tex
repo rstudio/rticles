@@ -1,28 +1,3 @@
-% --- RJwrapper header ---
-
-\documentclass[a4paper]{report}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{RJournal}
-\usepackage{amsmath,amssymb,array}
-\usepackage{booktabs}
-
-%% load any required packages here
-$preamble$
-
-\begin{document}
-
-%% do not edit, for illustration only
-\sectionhead{Contributed research article}
-\volume{XX}
-\volnumber{YY}
-\year{20ZZ}
-\month{AAAA}
-
-\begin{article}
-
-% --- body ---
-
 % !TeX root = RJwrapper.tex
 \title{$title$}
 \author{by $for(author)$$author.name$$sep$, $endfor$}
@@ -44,9 +19,3 @@ $for(author.address)$$author.address$$sep$\\ $endfor$\\
 $if(author.email)$$author.email$$endif$
 
 $endfor$
-
-% --- RJwrapper footer ---
-\end{article}
-
-\end{document}
-
