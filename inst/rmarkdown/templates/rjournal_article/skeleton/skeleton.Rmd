@@ -17,8 +17,7 @@ abstract: >
   An abstract of less than 150 words.
 preamble: >
   % Any extra latex you need in the preamble
-output:
-  - rticles::rjournal_article
+output: rticles::rjournal_article
 ---
 
 ## Introduction
