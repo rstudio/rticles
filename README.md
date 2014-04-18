@@ -26,7 +26,7 @@ To use **rticles** from RStudio:
 
 3) Use the **New R Markdown** dialog to create an article from one of the templates:
 
-    ![New R Markdown](http://rmarkdown.rstudio.com/images/new_r_markdown.png)
+![New R Markdown](http://rmarkdown.rstudio.com/images/new_r_markdown.png)
     
     
 ### Using rticles outside of RStudio
