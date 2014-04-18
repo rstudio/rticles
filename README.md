@@ -2,11 +2,11 @@
 
 The **rticles** package includes a set of [R Markdown](http://rmarkdown.rstudio.com) templates that enable authoring of R related journal and conference submissions. Available templates include:
 
-1) [JSS](http://www.jstatsoft.org/) articles
+- [JSS](http://www.jstatsoft.org/) articles
 
-2) [R Journal](http://journal.r-project.org/) articles
+- [R Journal](http://journal.r-project.org/) articles
 
-3) [useR](http://user2014.stat.ucla.edu/) conference abstracts
+- [useR](http://user2014.stat.ucla.edu/) conference abstracts
 
 Under the hood, LaTeX templates are used to ensure that documents conform precisely to submission standards. At the same time, composition and formatting can be done using lightweight [markdown](http://rmarkdown.rstudio.com/authoring_basics.html) syntax, and R code and it's output can be seamlessly included using [knitr](http://yihui.name/knitr/).
 
