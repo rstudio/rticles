@@ -1,31 +1,49 @@
-## Article Formats for R Markdown
+### Overview
 
-### Installation
+The **rticles** package includes a set of [R Markdown](http://rmarkdown.rstudio.com) templates that enable authoring of R related journal and conference submissions. Available templates include:
 
-The **rticles** package is based on [R Markdown v2](http://rmarkdown.rstudio.com), which is included in the latest [preview release of RStudio](http://www.rstudio.com/ide/download/preview). You should update RStudio to the most recent preview release (v0.98.760 or higher) before using rticles.
+1) [JSS](http://www.jstatsoft.org/) articles
 
-Note that if you are not using RStudio then you can alteratively install the standalone [rmarkdown](https://github.com/rstudio/rmarkdown) package.
+2) [R Journal](http://journal.r-project.org/) articles
 
-To install the **rticles** package:
+3) [useR](http://user2014.stat.ucla.edu/) conference abstracts
 
-```S
-devtools::install_github("rticles", "rstudio")
-```
+Under the hood, LaTeX templates are used to ensure that documents conform precisely to submission standards. At the same time, composition and formatting can be done using lightweight [markdown](http://rmarkdown.rstudio.com/authoring_basics.html) syntax, and R code and it's output can be seamlessly included using [knitr](http://yihui.name/knitr/).
 
-### Usage
+Using **rticles** has some prerequisites which are described below. You can get most of these pre-requisites automatically by installing the latest preview release of RStudio (instructions for using **rticles** without RStudio are also provided).
 
-Within RStudio you can create a new document based on an rticles template using the **New R Markdown** dialog:
+### Using rticles from RStudio
 
-![New R Markdown](http://rmarkdown.rstudio.com/images/new_r_markdown.png)
+To use **rticles** from RStudio:
 
+1) Install the latest [RStudio Preview Release](http://www.rstudio.com/ide/download/preview).
 
-If you are not using RStudio then you can also create a new article using the `rmarkdown::draft` function as follows:
+2) Install the **rticles** package: 
 
-```S
-rmarkdown::draft("MyAbstract.Rmd", template = "use_r_abstract", package = "rticles")
-rmarkdown::draft("MyJSSArticle.Rmd", template = "jss_template", package = "rticles")
-```
+    ```S
+    devtools::install_github("rstudio/rticles")
+    ```
 
+3) Use the **New R Markdown** dialog to create an article from one of the templates:
 
+    ![New R Markdown](http://rmarkdown.rstudio.com/images/new_r_markdown.png)
+    
+    
+### Using rticles outside of RStudio
 
+1) Install [pandoc](http://johnmacfarlane.net/pandoc/) using the [instructions for your platform](https://github.com/rstudio/rmarkdown/blob/master/PANDOC.md).
+
+2) Install the **rmarkdown** and **rticles** packages:
+
+    ```S
+    devtools::install_github(c("rstudio/rmarkdown", rstudio/rticles"))
+    ```
+    
+3) Use the `rmarkdown::draft` function to create articles:
+
+    ```S
+    rmarkdown::draft("MyAbstract.Rmd", template = "use_r_abstract", package = "rticles")
+    rmarkdown::draft("MyJSSArticle.Rmd", template = "jss_article", package = "rticles")
+    rmarkdown::draft("MyRJournalArticle", template = "rjournal_article", package = "rticles")
+    ```
 
