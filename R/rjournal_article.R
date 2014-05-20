@@ -22,18 +22,21 @@ rjournal_article <- function() {
   # Mostly copied from knitr::render_sweave
   base$knitr$opts_chunk$comment <- "#>"
 
-  hook_chunk <- function(x, options) {
+  hook_chunk = function(x, options) {
     if (knitr:::output_asis(x, options)) return(x)
-    paste0('\\begin{example}\n', x, '\\end{example}')
+    paste('\\begin{Schunk}\n', x, '\\end{Schunk}', sep = '')
   }
-  hook_input <- function(x, options) paste0(x, "\n")
-  hook_output <- function(x, options) paste0(x, "\n")
+  hook_input <- function(x, options)
+    paste(c('\\begin{Sinput}', knitr:::hilight_source(x, 'sweave', options), '\\end{Sinput}', ''),
+      collapse = '\n')
+  hook_output <- function(x, options) paste('\\begin{Soutput}\n', x, '\\end{Soutput}\n', sep = '')
 
   base$knitr$knit_hooks$chunk   <- hook_chunk
   base$knitr$knit_hooks$source  <- hook_input
   base$knitr$knit_hooks$output  <- hook_output
   base$knitr$knit_hooks$message <- hook_output
   base$knitr$knit_hooks$warning <- hook_output
+  base$knitr$knit_hooks$plot <- knitr:::hook_plot_tex
 
   base
 }
