@@ -36,7 +36,7 @@ devtools::install_github("rstudio/rticles")
 2) Install the **rmarkdown** and **rticles** packages:
 
 ```S
-devtools::install_github(c("rstudio/rmarkdown", rstudio/rticles"))
+devtools::install_github(c("rstudio/rmarkdown", "rstudio/rticles"))
 ```
     
 3) Use the `rmarkdown::draft` function to create articles:
