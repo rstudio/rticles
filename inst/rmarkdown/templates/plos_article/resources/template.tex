@@ -1,0 +1,97 @@
+% Template for PLoS
+
+\documentclass[10pt]{article}
+
+% amsmath package, useful for mathematical formulas
+\usepackage{amsmath}
+% amssymb package, useful for mathematical symbols
+\usepackage{amssymb}
+
+% hyperref package, useful for hyperlinks
+\usepackage{hyperref}
+
+% graphicx package, useful for including eps and pdf graphics
+% include graphics with the command \includegraphics
+\usepackage{graphicx}
+
+% Sweave(-like)
+\usepackage{fancyvrb}
+\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl}
+\DefineVerbatimEnvironment{Soutput}{Verbatim}{}
+\DefineVerbatimEnvironment{Scode}{Verbatim}{fontshape=sl}
+\newenvironment{Schunk}{}{}
+\DefineVerbatimEnvironment{Code}{Verbatim}{}
+\DefineVerbatimEnvironment{CodeInput}{Verbatim}{fontshape=sl}
+\DefineVerbatimEnvironment{CodeOutput}{Verbatim}{}
+\newenvironment{CodeChunk}{}{}
+
+% cite package, to clean up citations in the main text. Do not remove.
+\usepackage{cite}
+
+\usepackage{color} 
+
+% Use doublespacing - comment out for single spacing
+%\usepackage{setspace} 
+%\doublespacing
+
+
+% Text layout
+\topmargin 0.0cm
+\oddsidemargin 0.5cm
+\evensidemargin 0.5cm
+\textwidth 16cm 
+\textheight 21cm
+
+% Bold the 'Figure #' in the caption and separate it with a period
+% Captions will be left justified
+\usepackage[labelfont=bf,labelsep=period,justification=raggedright]{caption}
+
+% Use the PLoS provided bibtex style
+\bibliographystyle{plos}
+
+% Remove brackets from numbering in List of References
+\makeatletter
+\renewcommand{\@biblabel}[1]{\quad#1.}
+\makeatother
+
+
+% Leave date blank
+\date{}
+
+\pagestyle{myheadings}
+%% ** EDIT HERE **
+
+
+%% ** EDIT HERE **
+%% PLEASE INCLUDE ALL MACROS BELOW
+
+%% END MACROS SECTION
+
+\begin{document}
+
+% Title must be 150 characters or less
+\begin{flushleft}
+{\Large
+\textbf{$title$}
+}
+% Insert Author names, affiliations and corresponding author email.
+\\
+$for(author)$
+  $author.name$\textsuperscript{$author.affiliation$$if(author.email)$*$endif$}$sep$, 
+$endfor$
+\\
+$for(affiliation)$
+\bf{$affiliation.id$} $if(affiliation.department)$$affiliation.department$, $endif$$if(affiliation.institution)$$affiliation.institution$, $endif$ $if(affiliation.city)$$affiliation.city$, $endif$ $if(affiliation.state)$$affiliation.state$, $endif$ $if(affiliation.country)$$affiliation.country$$endif$
+\\
+$endfor$
+
+\textasteriskcentered{} E-mail: $for(author)$
+  $if(author.email)$$author.email$$endif$
+$endfor$
+
+\end{flushleft}
+
+$body$
+
+\end{document}
+
