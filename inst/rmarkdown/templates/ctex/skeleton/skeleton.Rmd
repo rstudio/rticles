@@ -1,0 +1,112 @@
+---
+title: "在R Markdown文档中使用中文"
+author:
+  - 谢益辉
+  - 邱怡轩
+  - 于淼
+documentclass: ctexart
+output:
+  pdf_document:
+    fig_caption: yes
+    latex_engine: xelatex
+    number_sections: yes
+    template: !expr rticles::ctex_template()
+    toc: yes
+classoption: "hyperref`r if (.Platform$OS.type != 'windows') ',nofonts'`"
+---
+
+# 引言
+
+中文LaTeX文档并非难题。当然这句话得站在巨人[CTeX](http://ctex.org)的肩膀上才能说，它让我们只需要一句
+
+```latex
+\documentclass{ctexart} % 或者ctexrep/ctexbook
+```
+
+或者
+
+```latex
+\usepackage{ctex}
+```
+
+就轻松搞定中文LaTeX排版问题。跨平台通用的LaTeX编译却是个小难题，主要是没有一种跨平台通用且免费的中文字体。好吧，你们Windows用户永远有宋体黑体，你们Mac用户有华文字体，而我们苦逼Linux用户在编译LaTeX文档就没那么简单了^[切，傲娇的Linux用户怎么会干出找你们复制字体的事情]，是啊，我们有文泉驿，但我们要是用了文泉驿之后把文档发给你们八成不能编译，因为你们没有安装文泉驿。
+
+# 字体和选项
+
+LaTeX包[**ctex**](http://ctan.org/pkg/ctex)支持若干种字体选项，例如winfonts、adobefonts等，这些选项要么不跨平台通用，要么不免费。那么中文字体问题咋整？下面我们介绍两个解决办法：
+
+1. 装鸵鸟，把头埋沙子里，自己默念一百遍“别人都不用Windows，我只管我的系统上的字体能用就好了”；
+2. 找一个大家都能用的中文字体，当然它得是免费的^[从隔壁王大爷那里“免费”复制过来的不算免费]，不然无法推广；
+
+## 管它什么跨平台
+
+如果不管跨平台通用，那问题会非常简单。下面是Windows用户所需要的YAML元数据，主要设置三项参数：文档类为`ctexart`（当然也可以是别的类），`latex_engine`为XeLaTeX（真的，别纠结你的旧爱PDFLaTeX了），`template`为这个**rticles**包所带的LaTeX模板（当然你也可以用你自定义的模板）。
+
+```yaml
+---
+documentclass: ctexart
+output:
+  pdf_document:
+    latex_engine: xelatex
+    template: !expr rticles::ctex_template()
+---
+```
+
+这里`template`参数用了一点YAML黑魔法，主要是R包yaml发明的，`!expr`表示这个取值是通过运行R代码得到的，若不知道`rticles::ctex_template()`是什么意思，在R里面运行一下就知道了。其它参数都是普通的`pdf_document`参数，参见文档**rmarkdown**包的文档，这里就不赘述了。
+
+关于Mac和Linux用户，目前有两种选择：要么复制别人的中文字体，例如Adobe中文字体，然后用`classoption`指定选项`adobefonts`，例如：
+
+```yaml
+---
+classoption: adobefonts
+# 其它选项都跟上面一样
+---
+```
+
+要么下载[Fandol字体](http://ctan.org/pkg/fandol)^[http://ctan.org/tex-archive/fonts/fandol]，它号称是免费的，不过我们也没太搞清楚它的来头。把那些.otf字体文件下载下来之后一个个安装上，苹果用户猛击鼠标安装即可，Linux用户可以把字体保存到`~/.fonts`文件夹下，然后命令行切换到那里，运行`fc-cache -fv`。YAML元数据中唯一需要修改的地方就是`classoption: nofonts`，这样ctex包会自动使用Fandol字体。
+
+```yaml
+---
+classoption: nofonts
+# 其它选项都跟上面一样
+---
+```
+
+未来Mac用户也许还有第三种选择，就是用macfonts选项，不过截止到记者写稿之日，这个选项还没有发布到CTAN上，想吃螃蟹的用户只能去ctex的SVN库中去找。
+
+## 不，我要普渡众生
+
+客官若是想要找一种普渡众生的方案，我们给您最好的建议就是早点发财或成名，然后号召某中文字体生产厂商开源一种好看的中文字体，或斥资买断再开彼源兮，这样我们灰头土脸的小码农们也好大胆放心宣传。
+
+# R代码段
+
+R代码用R Markdown的语法嵌入，即三个反引号开始一段代码```` ```{r} ````和三个反引号```` ``` ```` 结束一段代码：
+
+```{r}
+options(digits = 4)
+fit = lm(dist ~ speed, data = cars)
+b = coef(fit)
+coef(summary(fit))
+```
+
+上面回归方程中的斜率是`r b[2]`，完整的回归方程为：$$ Y = `r b[1]` + `r b[2]`x$$
+
+画图当然也是木有问题的啦，想画就说嘛，不说我怎么知道你想画呢？
+
+```{r scatter, fig.cap='cars数据散点图以及回归直线。'}
+par(mar = c(4, 4, .1, .1), las = 1)
+plot(cars, pch = 19)
+abline(fit, col = 'red')
+```
+
+请不要问我为什么图浮动到下一页去了，这么初级的LaTeX问题问出来信不信我扁你。
+
+# 源代码控
+
+这里提供的rticles模板可能由于种种原因不能满足客官的要求，LaTeX用户就是这样永无止境地调格式（唉，跟Word用户到底有啥区别呢）。若真是需要调整，你可以复制一份默认模板去改，如前面所说，本文档的模板是`rticles::ctex_template()`，它是一个文本文件。若熟悉LaTeX的话一看就明白，只不过里面有些Pandoc变量而已；若不熟悉LaTeX我们在这里说了也白说，花几天时间好好啃一啃LaTeX入门手册吧。
+
+本文档所用的模板是从Pandoc默认LaTeX模板基础上做了少许改动而来的：https://github.com/yihui/pandoc-templates/blob/ctex/default.latex 具体改动从GIT提交消息日志中可以看到，主要就是去掉了mathspec包和hyperref包。
+
+# 小结
+
+事实证明我们可以理直气壮地通过XeLaTeX将中文R Markdown转化为PDF文档，麻麻再也不用担心我的论文满屏幕都是反斜杠，朕养完小白鼠之后终于不必先折腾三个小时LaTeX再开始写实验报告了：打开RStudio，菜单File > New File > R Markdown，然后从模板中选择CTeX Documents，搞定。
