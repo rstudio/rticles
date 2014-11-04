@@ -2,14 +2,27 @@
 \usepackage[version=3]{mhchem}
 \usepackage{amsmath}
 \newcommand*\mycommand[1]{\texttt{\emph{#1}}}
-
-\author{$author$}
-\affiliation{$aff$}
-\alsoaffiliation{$alsoaff$}
-\altaffiliation{$altaff$}
-\email{$mail$}
-\phone{$phone$}
-\fax{$fax$}
+$for(author)$
+\author{$author.name$}
+$if(author.aff)$
+\affiliation{$author.aff$}
+$endif$
+$if(author.alsoaff)$
+\alsoaffiliation{$author.alsoaff$}
+$endif$
+$if(author.altaff)$
+\altaffiliation{$author.altaff$}
+$endif$
+$if(author.mail)$
+\email{$author.mail$}
+$endif$
+$if(author.phone)$
+\phone{$author.phone$}
+$endif$
+$if(author.fax)$
+\fax{$author.fax$}
+$endif$
+$endfor$
 
 $if(abbr)$
 \abbreviations{$abbr$}
@@ -20,7 +33,7 @@ $if(keywords)$
 $endif$
 
 \title[$title.short$]{$title.formatted$}
-
+\makeatletter
 \begin{document}
 
 $body$

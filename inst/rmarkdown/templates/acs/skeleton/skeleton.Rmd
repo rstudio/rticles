@@ -1,13 +1,24 @@
 ---
 journal: jacsat
 type: article
-author: Andrew N. Other
-aff: Department of Chemistry, Unknown University, Unknown Town
-alsoaff: Department of Chemistry, Second University, Nearby Town
-altaff: A shared footnote
-mail: i.k.groupleader@unknown.uu
-phone: +123 (0)123 4445556
-fax: +123 (0)123 4445557
+author:
+  - name: Andrew N. Other
+    altaff: A shared footnote
+  - name: Fred T. Secondauthor
+    altaff: "Current address: Some other place, Germany"
+  - name: I. Ken Groupleader
+    altaff: A shared footnote
+    mail: i.k.groupleader@unknown.uu
+    phone: +123 (0)123 4445556
+    fax: +123 (0)123 4445557
+    aff: Department of Chemistry, Unknown University, Unknown Town
+    alsoaff: Department of Chemistry, Second University, Nearby Town
+  - name: Susanne K. Laborator
+    mail: s.k.laborator@bigpharma.co
+    aff: Lead Discovery, BigPharma, Big Town, USA
+  - name: Kay T. Finally
+    aff: Department of Chemistry, Unknown University, Unknown Town
+    alsoaff: Department of Chemistry, Second University, Nearby Town
 title:
   formatted: A demonstration of the \textsf{achemso} \LaTeX\
    class\footnote{A footnote for the title}
@@ -50,24 +61,23 @@ separate page at the end of the document.
   not, the class will issue an appropriate error.
 \end{abstract}
 
-
-\section{Introduction}
+# Introduction
 This is a paragraph of text to fill the introduction of the
 demonstration file.  The demonstration file attempts to show the
 modifications of the standard \LaTeX\ macros that are implemented by
 the \textsf{achemso} class.  These are mainly concerned with content,
 as opposed to appearance.
 
-\section{Results and discussion}
+# Results and discussion
 
-\subsection{Outline}
+## Outline
 
 The document layout should follow the style of the journal concerned.
 Where appropriate, sections and subsections should be added in the
 normal way. If the class options are set correctly, warnings will be
 given if these should not be present.
 
-\subsection{References}
+## References
 
 The class makes various changes to the way that references are
 handled.  The class loads \textsf{natbib}, and also the
@@ -98,7 +108,7 @@ also generated if a citation has an optional note.  This assumes that
 the whole work has already been cited: odd numbering will result if
 this is not the case .
 
-\subsection{Floats}
+## Floats
 
 New float types are automatically set up by the class file.  The
 means graphics are included as follows (Scheme \ref{sch:example}).  As
@@ -113,6 +123,10 @@ illustrated, the float is ``here'' if possible.
   \caption{An example scheme}
   \label{sch:example}
 \end{scheme}
+
+```{r,echo=FALSE,fig.cap='test'}
+plot(1:10)
+```
 
 \begin{figure}
   As well as the standard float types \texttt{table}\\
@@ -133,7 +147,7 @@ it is intended to make document preparation easier for authors. In
 general, you should place your graphics where they make logical
 sense; the production process will move them if needed.
 
-\subsection{Math(s)}
+## Math(s)
 
 The \textsf{achemso} class does not load any particular additional
 support for mathematics.  If packages such as \textsf{amsmath} are
@@ -160,7 +174,7 @@ rather than the bottom, a minipage may be used.
   \label{eqn:graphic}
 \end{equation}
 
-\section{Experimental}
+# Experimental
 
 The usual experimental details should appear here.  This could
 include a table, which can be referenced as Table \ref{tbl:example}.
@@ -210,7 +224,7 @@ not interfere with the production process.  For example,
 \texttt{\textbackslash mycommand} has been defined in this example,
 to give italic, mono-spaced text: \mycommand{some text}.
 
-\section{Extra information when writing JACS Communications}
+# Extra information when writing JACS Communications
 
 When producing communications for \emph{J.~Am.\ Chem.\ Soc.}, the
 class will automatically lay the text out in the style of the
