@@ -50,9 +50,9 @@ rjournal_article <- function() {
 #' @param output Path to save output.
 #' @return (Invisibly) The path of the generate file.
 #' @examples
-#' x <- template_pandoc(
+#' x <- rticles:::template_pandoc(
 #'   list(preamble = "%abc", filename = "wickham"),
-#'   find_resource("rjournal_article", "RJwrapper.tex"),
+#'   rticles:::find_resource("rjournal_article", "RJwrapper.tex"),
 #'   tempfile()
 #' )
 #' file.show(x)
