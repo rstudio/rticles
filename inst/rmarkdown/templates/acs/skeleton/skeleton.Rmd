@@ -8,13 +8,13 @@ author:
     altaff: "Current address: Some other place, Germany"
   - name: I. Ken Groupleader
     altaff: A shared footnote
-    mail: i.k.groupleader@unknown.uu
+    mail: \email{i.k.groupleader@unknown.uu}
     phone: +123 (0)123 4445556
     fax: +123 (0)123 4445557
     aff: Department of Chemistry, Unknown University, Unknown Town
     alsoaff: Department of Chemistry, Second University, Nearby Town
   - name: Susanne K. Laborator
-    mail: s.k.laborator@bigpharma.co
+    mail: \email{s.k.laborator@bigpharma.co}
     aff: Lead Discovery, BigPharma, Big Town, USA
   - name: Kay T. Finally
     aff: Department of Chemistry, Unknown University, Unknown Town
