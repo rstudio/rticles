@@ -55,7 +55,7 @@ rjournal_article <- function() {
 #'   rticles:::find_resource("rjournal_article", "RJwrapper.tex"),
 #'   tempfile()
 #' )
-#' file.show(x)
+#' if (interactive()) file.show(x)
 template_pandoc <- function(metadata, template, output, verbose = FALSE) {
   tmp <- tempfile(fileext = ".md")
   on.exit(unlink(tmp))
