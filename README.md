@@ -22,7 +22,7 @@ Using **rticles** has some prerequisites which are described below. You can get 
 
 To use **rticles** from RStudio:
 
-1) Install the latest [RStudio Preview Release](http://www.rstudio.com/ide/download/preview).
+1) Install the latest [RStudio](http://www.rstudio.com/products/rstudio/download/).
 
 2) Install the **rticles** package: 
 
