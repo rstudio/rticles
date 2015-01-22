@@ -28,7 +28,7 @@ affiliation:
     city: City
     state: State
     country: Country
-output: RmdTemplates::plos_article
+output: rticles::plos_article
 csl: plos.csl
 bibliography: library.bib
 ---
