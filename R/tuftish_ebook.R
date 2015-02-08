@@ -49,7 +49,7 @@ tuftish_ebook <- function(fig_width = 4,
 
 
   # create knitr options (ensure opts and hooks are non-null)
-  knitr_options <- knitr_options_pdf(fig_width, fig_height, fig_crop)
+  knitr_options <- rmarkdown::knitr_options_pdf(fig_width, fig_height, fig_crop)
   if (is.null(knitr_options$opts_knit))
     knitr_options$opts_knit <- list()
   if (is.null(knitr_options$knit_hooks))
