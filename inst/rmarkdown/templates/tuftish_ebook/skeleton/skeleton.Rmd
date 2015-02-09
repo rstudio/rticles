@@ -4,8 +4,8 @@ author: "John Smith"
 date: "February 8, 2015"
 bibliography: "knitcitations.bib"
 output: 
-  tuftish_ebook:
-    latex_engine: lualatex
+  rticles::tuftish_ebook:
+    latex_engine: xelatex
     toc: true
     toc_depth: 3
 ---
@@ -29,7 +29,7 @@ opts_chunk$set(   echo = FALSE,
 							 		error=TRUE,
 									message=FALSE,
 									tidy=TRUE,
-									cache=TRUE,
+									cache=FALSE,
 							 		fig.keep = 'high',
 							 		dev = "tikz",
 							 		crop = TRUE,
@@ -61,6 +61,12 @@ This "Tuftish" template is adapted from the Tufte-book class.  It has modificati
 
 This skeleton presents an overview of the key Tuftish-book capabilities, and examples of some of R packages that can be used with the template for pretty printing.  
 
+# Known Bug
+
+If you choose LuaTeX as your TeX engine, character spacing will be wrong on the title page and page headers.  This is related to a known-bug in a LaTeX package that has existed for at least four years.  Please don't report this to Rstudio or on the git as a bug.  Feel free to discuss it here, though: https://code.google.com/p/tufte-latex/issues/detail?id=45.   And do feel free to make a pull request if you have a workaround. 
+
+For most uses, pdfTeX is fine anyway, and XeTeX better.  If tikZ is running out of memory, then consider switching to LuaTeX.  
+
 \part{The party of the first part}
 
 Books can have more than one Part.
@@ -81,14 +87,13 @@ Isn't that pretty?
 
 Some people feel these are unnecessary. 
 
-#### This is a paragraph heading
+#### This is a paragraph heading. 
 
-Paragraph headings don't appear in the table of contents.
+Don't look bad, do they?
 
 \newthought{In his later books}, Tufte starts each section with a bit of vertical space, a non-indented paragraph, and sets the first few words of the sentence in small caps. To accomplish this using this style, use the `\newthought` command as demonstrated at the beginning of this paragraph.[^books_be]
 
 \chapter{A chapter about figures, equations, and tables}
-
 
 # Figures
 
@@ -256,15 +261,20 @@ Part of a document can also be in landscape.  This can also be useful for wide t
 
 You can insert lists of tables and figures in your document.
 
-All of the indicies, bibliography, and footnotes get hyperlinked together automagically.
+All of the indicies, bibliography, and footnotes get hyperlinked together automagically.  If you look in the source, you'll see how these were added to the toc.
 
+\phantomsection
+\addcontentsline{toc}{section}{List of Figures}
 \listoffigures
 
+\phantomsection
+\addcontentsline{toc}{section}{List of Tables}
 \listoftables
 
 \clearpage
 
-# Bibliography
+\phantomsection
+\addcontentsline{toc}{section}{Bibliography}
  
 Including a bibliography is a 3-step process.  *First*, using the **RefManageR** and **knitcitations** packages, liberally sprinkle your text with inline R calls to knitcitation's `citep()` or `citet()` functions.  `r citep(citation("knitcitations"))`; `r citep(citation("RefManageR"))`.  *Second*, at the end of your document, include an R block that calls the function  `write.bibtex()`.  `r write.bibtex(file="knitcitations.bib", append=FALSE,biblatex=TRUE)`  That will write a bibtex file containing your citations to disk.  *Third*, in the yaml header, include a `bibliography` line pointing to the `.bib` file produced by `write.bibtex()`.
 
