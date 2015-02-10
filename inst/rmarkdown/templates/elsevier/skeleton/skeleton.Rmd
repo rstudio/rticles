@@ -2,10 +2,10 @@
 title: Short Paper
 author:
   - name: Alice Anonymous
-    email: alice@example.com
+    email: alice(at)example.com
     affiliation: Some Institute of Technology
   - name: Bob Security
-    email: bob@example.com
+    email: bob(at)example.com
     affiliation: Another University
 abstract: |
   This is the abstract.
