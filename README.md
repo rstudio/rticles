@@ -1,6 +1,8 @@
 ### Overview
 
-The **rticles** package includes a set of [R Markdown](http://rmarkdown.rstudio.com) templates that enable authoring of R related journal and conference submissions. Available templates include:
+The **rticles** package includes a set of [R Markdown](http://rmarkdown.rstudio.com) templates that enable authoring of R related journal and conference submissions, and creating e-books. Available templates include:
+
+- [Tuftish e-book] e-books formatted based on the style of Edward R. Tufte and Richard Feynman
 
 - [JSS](http://www.jstatsoft.org/) articles
 
