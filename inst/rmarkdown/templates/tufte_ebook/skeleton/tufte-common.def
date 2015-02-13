@@ -230,14 +230,6 @@
 \DeclareOptionX[tufte]<common>{onecolumn}{\@tufte@unsupported@option{\CurrentOption}}
 \DeclareOptionX[tufte]<common>{twocolumn}{\@tufte@unsupported@option{\CurrentOption}}
 
-%%
-% Default `book' and `handout' options
-
-\ifthenelse{\equal{\@tufte@pkgname}{tuftish-ebook}}
-  {\ExecuteOptionsX[tufte]<common>{titlepage}}
-  {\ExecuteOptionsX[tufte]<common>{notitlepage}}
-
-
 \DeclareOptionX*{%
   \@tufte@info@noline{Passing \CurrentOption\space to the `\@tufte@class' class.}%
   \PassOptionsToClass{\CurrentOption}{\@tufte@class}%
@@ -338,6 +330,10 @@
 
 \RequirePackage{titlesec,titletoc}
 
+%%
+% Color - load before hypersetup
+\RequirePackage[usenames,dvipsnames,svgnames]{xcolor}% load before bidi
+
 %%%
 %% Loads the hyperref package and sets some default options.
 
@@ -348,9 +344,6 @@
   \hypersetup{%
     pdfborder = {0 0 0},
     bookmarksdepth = section,
-    citecolor = DarkGreen,
-    linkcolor = DarkBlue,
-    urlcolor = DarkGreen,
   }%
 }
 
@@ -820,10 +813,6 @@
 \RequirePackage{setspace}
 
 %%
-% Color
-\RequirePackage[usenames,dvipsnames,svgnames]{xcolor}% load before bidi
-
-%%
 % Load the bidi package if instructed to do so.  This package must be loaded
 % prior to our redefining the \footnote and \cite commands.
 
@@ -1150,7 +1139,7 @@
 }
 
 %%
-% Forces the outer edge of the caption to be set ragged.  
+% Forces the outer edge of the caption to be set ragged.
 % Therefore, on verso pages it's ragged left, and on recto pages it's ragged right.
 
 \newcommand*{\@tufte@justification@caption@outer}{%
