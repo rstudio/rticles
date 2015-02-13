@@ -1,23 +1,28 @@
 
-#' Tuftish e-Book format (PDF)
+#' Tufte e-Book format (PDF)
 #'
 #' Template for creating an e-book based on the style of
 #' Edward R. Tufte and Richard Feynman.
 #'
 #' @inheritParams pdf_document
 #'
+#' @param latex_engine LaTeX engine for producing PDF output. Options are
+#'   "pdflatex", "lualatex", and "xelatex".  Note that lualatex may have
+#'   problems with text spacing, and that pdflatex may have memory issues
+#'   when using tikzDevice.
+#'
 #' @export
-tuftish_ebook <- function(fig_width = 4,
+tufte_ebook <- function(  toc = TRUE,
+                          toc_depth = 3,
+                          number_sections = TRUE,
+                          fig_width = 4,
                           fig_height = 2.5,
                           fig_crop = TRUE,
                           highlight = "default",
                           keep_tex = FALSE,
+                          latex_engine = "xelatex",
                           includes = NULL,
                           pandoc_args = NULL,
-                          toc = TRUE,
-                          toc_depth = 3,
-                          latex_engine = "lualatex",
-                          number_sections = TRUE,
                           ...
                           ) {
 
@@ -25,9 +30,9 @@ tuftish_ebook <- function(fig_width = 4,
   if (identical(highlight, "default"))
     highlight <- "pygments"
 
-  # get the tufte handlout template
+  # get the tufte handout template
   template <-  system.file(
-    "rmarkdown/templates/tuftish_ebook/resources/tuftish-ebook.tex",
+    "rmarkdown/templates/tufte_ebook/resources/tufte-ebook.tex",
     package = "rticles"
   )
 
@@ -36,14 +41,14 @@ tuftish_ebook <- function(fig_width = 4,
                                     fig_height = fig_height,
                                     fig_crop = fig_crop,
                                     highlight = highlight,
-                                    template = template,
                                     keep_tex = keep_tex,
                                     latex_engine = latex_engine,
                                     includes = includes,
                                     pandoc_args = pandoc_args,
                                     toc = toc,
                                     toc_depth = toc_depth,
-                                    number_sections = TRUE,
+                                    template = template,
+                                    number_sections = number_sections,
                                     ...
                                     )
 
