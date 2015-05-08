@@ -66,7 +66,7 @@ also be automatically reference. Multiple references are separated by semicolons
 
 You can use R chunks directly to plot graphs.
 
-```{r, graph, echo=TRUE, message=FALSE, fig.height=4, fig.width=4, fig.align='center', fig.cap='Figure caption', out.width = "85mm", out.height = "85mm", fig.show = "hide"}
+```{r, graph, echo=TRUE, message=FALSE, fig.show = "hide"}
 require("ggplot2")
 x <- 0:100
 set.seed(999)
@@ -167,7 +167,7 @@ compiling it again using the traditional LaTeX commands.
 
 # Figures {-}
 
-```{r, Fig. 1, ref.label = "graph", results = "hide", echo = FALSE, message = FALSE, out.height = "85mm", out.width = "85mm", fig.width = 4, fig.height = 4}
+```{r, Figure-1, ref.label = "graph", results = "hide", echo = FALSE, message = FALSE, fig.height=4, fig.width=4, fig.align='center', fig.cap='Figure caption', out.width = "85mm", out.height = "85mm"}
 # You can also refer to code chunks from above to place figures at the bottom.
 ```
 
