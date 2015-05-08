@@ -35,7 +35,7 @@ affiliation:
     city: City X
     state: State XX # only USA, Australia, Canada
     country: Country X
-output: FrontiersTemplate::frontiers_article
+output: rticles::frontiers_article
 csl: frontiers.csl
 bibliography: test.BIB
 ---
