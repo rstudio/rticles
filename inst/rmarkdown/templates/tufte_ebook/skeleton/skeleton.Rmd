@@ -19,7 +19,6 @@ library(knitcitations)
 library(knitr)
 library(xtable)
 library(ggplot2)
-library(papeR)
 library(pander)
 cite_options(
               citation_format = "pandoc",
@@ -188,13 +187,7 @@ kable(xtable(table(frm)),
 
 ## papeR
 
-Another package with pretty printing features is **papeR**, which has methods for `anova`, `summary`, and a number of other R classes.^[`r citep(citation("papeR"))`]
-
-```{r papeRdemo,results='asis'}
-fit <- lm(mpg ~ hp + wt, data = mtcars)
-tab <- prettify(anova(fit))
-xtable(tab, caption = "papeR ANOVA Output")
-```
+Another package with pretty printing features is **papeR**, which has methods for `anova`, `summary`, and a number of other R classes.  Unfortunately **papeR** is no longer on CRAN, so you'll have to explore it yourself. 
 
 ## pander
 
