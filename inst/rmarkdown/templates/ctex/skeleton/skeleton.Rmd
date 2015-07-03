@@ -12,7 +12,7 @@ output:
     number_sections: yes
     template: !expr rticles::ctex_template()
     toc: yes
-classoption: "hyperref`r if (.Platform$OS.type != 'windows') ',nofonts'`"
+classoption: "hyperref`r ','`"
 ---
 
 # 引言
@@ -110,3 +110,14 @@ abline(fit, col = 'red')
 # 小结
 
 事实证明我们可以理直气壮地通过XeLaTeX将中文R Markdown转化为PDF文档，麻麻再也不用担心我的论文满屏幕都是反斜杠，朕养完小白鼠之后终于不必先折腾三个小时LaTeX再开始写实验报告了：打开RStudio，菜单File > New File > R Markdown，然后从模板中选择CTeX Documents，搞定。
+
+## 更新
+
+由于**ctex**进行了更新，现在从系统里找字体的活已经被**ctex**接管，所以我们这里去除了系统的选择。当前只是一个临时解决方案，欢迎大家在不同系统下进行测试。如果你还未更新**ctex**到2.0以上版本，请使用之前版本CTex Documents模版的yaml设置(如下)，谢谢！
+
+```yaml
+---
+classoption: "hyperrefr if (.Platform$OS.type != 'windows') ',nofonts'"
+# 其它选项都跟上面一样
+---
+```
