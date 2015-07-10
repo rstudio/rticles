@@ -28,6 +28,7 @@ jss_article <- function() {
   base$knitr$knit_hooks$output  <- hook_output
   base$knitr$knit_hooks$message <- hook_output
   base$knitr$knit_hooks$warning <- hook_output
+  base$knitr$knit_hooks$plot <- knitr:::hook_plot_tex
 
   base
 }
