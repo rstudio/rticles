@@ -1,4 +1,8 @@
 \documentclass[article]{jss}
+\usepackage[utf8]{inputenc}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 \author{
 $for(author)$$author.name$\\$author.affiliation$$sep$ \And $endfor$
@@ -28,7 +32,7 @@ $endif$
 %% \Issue{9}
 %% \Month{June}
 %% \Year{2012}
-%% \Submitdate{2012-06-04}
+\Submitdate{$submitdate$}
 %% \Acceptdate{2012-06-04}
 
 \Address{
@@ -38,7 +42,7 @@ $for(author)$
   $author.affiliation$\\
   $author.address$\\
   $if(author.email)$E-mail: $author.email$\\$endif$
-  $if(author.url)$URL: $author.url$$endif$
+  $if(author.url)$URL: $author.url$\\~\\$endif$
   $endif$
 $endfor$
 }

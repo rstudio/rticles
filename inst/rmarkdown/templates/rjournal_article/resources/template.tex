@@ -5,7 +5,7 @@
 \maketitle
 
 $if(abstract)$
-\abstract{
+\abstract{%
 $abstract$
 }
 $endif$
@@ -13,7 +13,7 @@ $endif$
 $body$
 
 $for(author)$
-\address{
+\address{%
 $author.name$\\
 $author.affiliation$\\
 $for(author.address)$$author.address$$sep$\\ $endfor$\\
