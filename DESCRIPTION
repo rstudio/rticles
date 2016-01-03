@@ -25,5 +25,5 @@ Description: A suite of custom R Markdown LaTeX formats and templates for
   authoring journal articles and conference submissions.
 License: GPL-3
 Imports: rmarkdown, knitr, yaml
-SystemRequirements: GNU make
+SystemRequirements: GNU make, pandoc (>= 1.12.3) - http://johnmacfarlane.net/pandoc
 RoxygenNote: 5.0.1
