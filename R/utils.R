@@ -14,6 +14,8 @@ find_resource <- function(template, file) {
 
 knitr_fun <- function(name) getFromNamespace(name, 'knitr')
 
+output_asis <- knitr_fun('output_asis')
+
 #' Render a pandoc template.
 #'
 #' This is a hacky way to access the pandoc templating engine.

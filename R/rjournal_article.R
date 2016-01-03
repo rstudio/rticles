@@ -28,7 +28,6 @@ rjournal_article <- function() {
   # Mostly copied from knitr::render_sweave
   base$knitr$opts_chunk$comment <- "#>"
 
-  output_asis <- knitr_fun('output_asis')
   hilight_source <- knitr_fun('hilight_source')
   hook_chunk = function(x, options) {
     if (output_asis(x, options)) return(x)
