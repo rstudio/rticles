@@ -12,6 +12,7 @@ find_resource <- function(template, file) {
   find_file(template, file.path("resources", file))
 }
 
+knitr_fun <- function(name) getFromNamespace(name, 'knitr')
 
 #' Render a pandoc template.
 #'
