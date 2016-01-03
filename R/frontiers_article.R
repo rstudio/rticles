@@ -1,3 +1,9 @@
+#' Frontiers open access journal format.
+#'
+#' Format for creating Frontiers journal articles. Adapted from \href{http://home.frontiersin.org/about/author-guidelines}{http://home.frontiersin.org/about/author-guidelines}.
+#'
+#' @inheritParams rmarkdown::pdf_document
+#'
 #' @export
 frontiers_article <- function(keep_tex = TRUE,
                               includes = NULL){
@@ -34,6 +40,6 @@ frontiers_article <- function(keep_tex = TRUE,
   base$knitr$knit_hooks$output  <- hook_output
   base$knitr$knit_hooks$message <- hook_output
   base$knitr$knit_hooks$warning <- hook_output
-  base$knitr$knit_hooks$plot <- knitr:::hook_plot_tex
+  base$knitr$knit_hooks$plot <- knitr::hook_plot_tex
   base
 }

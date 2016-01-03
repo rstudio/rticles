@@ -1,3 +1,9 @@
+#' Journal of Statistical Software (JSS) format.
+#'
+#' Format for creating a Journal of Statistical Software (JSS) articles. Adapted from \href{http://www.jstatsoft.org/about/submissions}{http://www.jstatsoft.org/about/submissions}.
+#'
+#' @inheritParams rmarkdown::pdf_document
+#'
 #' @export
 jss_article <- function() {
   template <- find_resource("jss_article", "template.tex")
@@ -33,7 +39,7 @@ jss_article <- function() {
   base$knitr$knit_hooks$output  <- hook_output
   base$knitr$knit_hooks$message <- hook_output
   base$knitr$knit_hooks$warning <- hook_output
-  base$knitr$knit_hooks$plot <- knitr:::hook_plot_tex
+  base$knitr$knit_hooks$plot <- knitr::hook_plot_tex
 
   base
 }

@@ -1,8 +1,9 @@
-#' elsevier
-
-#' use the Elsevier template
+#' Elsevier journal format.
+#'
+#' Format for creating submissions to Elsevier journals. Adapted from \href{https://www.elsevier.com/authors/author-schemas/latex-instructions}{https://www.elsevier.com/authors/author-schemas/latex-instructions}.
 #'
 #' @param ... additional arguments to \code{rmarkdown::pdf_document}
+#'
 #' @export
 elsevier <- function(...) {
   template <- find_resource("elsevier", "template.tex")

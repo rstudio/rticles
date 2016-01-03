@@ -2,8 +2,7 @@
 % Please edit documentation in R/elsevier_article.R
 \name{elsevier}
 \alias{elsevier}
-\title{elsevier
-use the Elsevier template}
+\title{Elsevier journal format.}
 \usage{
 elsevier(...)
 }
@@ -11,7 +10,6 @@ elsevier(...)
 \item{...}{additional arguments to \code{rmarkdown::pdf_document}}
 }
 \description{
-elsevier
-use the Elsevier template
+Format for creating submissions to Elsevier journals. Adapted from \href{https://www.elsevier.com/authors/author-schemas/latex-instructions}{https://www.elsevier.com/authors/author-schemas/latex-instructions}.
 }
 

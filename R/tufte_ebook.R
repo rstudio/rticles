@@ -1,15 +1,16 @@
-
 #' Tufte e-Book format (PDF)
 #'
-#' Template for creating an e-book based on the style of
-#' Edward R. Tufte and Richard Feynman.
+#' Format for creating an e-book based on the style of Edward R. Tufte and
+#' Richard Feynman.
 #'
-#' @inheritParams pdf_document
+#' @inheritParams rmarkdown::pdf_document
 #'
 #' @param latex_engine LaTeX engine for producing PDF output. Options are
 #'   "pdflatex", "lualatex", and "xelatex".  Note that lualatex may have
-#'   problems with text spacing, and that pdflatex may have memory issues
-#'   when using tikzDevice.
+#'   problems with text spacing, and that pdflatex may have memory issues when
+#'   using tikzDevice.
+#'
+#' @param ... additional arguments to \code{rmarkdown::pdf_document}
 #'
 #' @export
 tufte_ebook <- function(  toc = TRUE,

@@ -1,3 +1,9 @@
+#' Public Library of Science (PLOS) format.
+#'
+#' Format for creating Public Library of Science (PLOS) articles. Adapted from \href{http://journals.plos.org/plosone/s/latex}{http://journals.plos.org/plosone/s/latex}.
+#'
+#' @inheritParams rmarkdown::pdf_document
+#'
 #' @export
 plos_article <- function(keep_tex = TRUE,
                          includes = NULL) {
@@ -32,7 +38,7 @@ plos_article <- function(keep_tex = TRUE,
   base$knitr$knit_hooks$output  <- hook_output
   base$knitr$knit_hooks$message <- hook_output
   base$knitr$knit_hooks$warning <- hook_output
-  base$knitr$knit_hooks$plot <- knitr:::hook_plot_tex
+  base$knitr$knit_hooks$plot <- knitr::hook_plot_tex
 
   base
 }

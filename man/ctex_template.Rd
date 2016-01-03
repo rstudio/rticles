@@ -2,9 +2,12 @@
 % Please edit documentation in R/ctex.R
 \name{ctex_template}
 \alias{ctex_template}
-\title{A LaTeX template for Chinese documents}
+\title{A LaTeX template for Chinese documents.}
 \usage{
 ctex_template()
+}
+\value{
+Path to LaTeX template.
 }
 \description{
 This function returns the path to a LaTeX template for Chinese documents
