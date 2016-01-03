@@ -4,6 +4,6 @@
 #' using the ctex package.
 #'
 #' @return Path to LaTeX template.
-#'
+#' @rdname ctex
 #' @export
 ctex_template <- function() find_resource('ctex', 'default.latex')
