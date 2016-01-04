@@ -5,14 +5,23 @@
 #' \href{http://www.acm.org/publications/article-templates/proceedings-template.html}{http://www.acm.org/publications/article-templates/proceedings-template.html}.
 #'
 #' @inheritParams rmarkdown::pdf_document
+#' @param ... Arguments to \code{rmarkdown::pdf_document}
 #'
 #' @export
-acm <- function() {
-  template <- find_resource("acm", "template.tex")
-  csl <- find_resource("acm" ,"acm-sig-proceedings.csl")
+acm_article <- function() {
 
+  # ammend pandoc_args with csl
+  csl <- find_resource("acm_article" ,"acm-sig-proceedings.csl")
+  pandoc_args <- c(match.call()$pandoc_args,
+                   "--csl", rmarkdown::pandoc_path_arg(csl))
+
+  # return the format
   rmarkdown::pdf_document(
-    template = template,
-    pandoc_args = c("--csl", rmarkdown::pandoc_path_arg(csl)))
+    ...,
+    template = find_resource("acm", "template.tex"),
+    pandoc_args = pandoc_args)
 }
+
+# mark the format as inheriting from pdf_document
+attr(acm_article, "base_format") <- "pdf_document"
 
