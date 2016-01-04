@@ -4,9 +4,13 @@
 \alias{rjournal_article}
 \title{R Journal format.}
 \usage{
-rjournal_article()
+rjournal_article(...)
+}
+\arguments{
+\item{...}{Arguments to \code{rmarkdown::pdf_document}}
 }
 \description{
-Format for creating R Journal articles. Adapted from \href{https://journal.r-project.org/submissions.html}{https://journal.r-project.org/submissions.html}.
+Format for creating R Journal articles. Adapted from
+\href{https://journal.r-project.org/submissions.html}{https://journal.r-project.org/submissions.html}.
 }
 

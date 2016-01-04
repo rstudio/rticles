@@ -1,14 +1,18 @@
 #' R Journal format.
 #'
-#' Format for creating R Journal articles. Adapted from \href{https://journal.r-project.org/submissions.html}{https://journal.r-project.org/submissions.html}.
+#' Format for creating R Journal articles. Adapted from
+#' \href{https://journal.r-project.org/submissions.html}{https://journal.r-project.org/submissions.html}.
 #'
 #' @inheritParams rmarkdown::pdf_document
+#' @param ... Arguments to \code{rmarkdown::pdf_document}
 #'
 #' @export
-rjournal_article <- function() {
+rjournal_article <- function(...) {
+
   template <- find_resource("rjournal_article", "template.tex")
 
-  base <- rmarkdown::pdf_document(template = template)
+  base <- rmarkdown::pdf_document(..., template = template)
+
   # Render will generate tex file, post-process hook generates appropriate
   # RJwrapper.tex and use pandoc to build pdf from that
   base$pandoc$to <- "latex"
@@ -47,4 +51,8 @@ rjournal_article <- function() {
 
   base
 }
+
+# mark the format as inheriting from pdf_document
+attr(rjournal_article, "base_format") <- "pdf_document"
+
 

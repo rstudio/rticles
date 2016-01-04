@@ -39,7 +39,7 @@ document (typically created using the \code{\link{includes}} function).}
 
 \item{pandoc_args}{Additional command line options to pass to pandoc}
 
-\item{...}{additional arguments to \code{rmarkdown::pdf_document}}
+\item{...}{Additional arguments to \code{rmarkdown::pdf_document}}
 }
 \description{
 Format for creating an e-book based on the style of Edward R. Tufte and

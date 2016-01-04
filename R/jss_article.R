@@ -1,14 +1,18 @@
 #' Journal of Statistical Software (JSS) format.
 #'
-#' Format for creating a Journal of Statistical Software (JSS) articles. Adapted from \href{http://www.jstatsoft.org/about/submissions}{http://www.jstatsoft.org/about/submissions}.
+#' Format for creating a Journal of Statistical Software (JSS) articles. Adapted
+#' from
+#' \href{http://www.jstatsoft.org/about/submissions}{http://www.jstatsoft.org/about/submissions}.
 #'
 #' @inheritParams rmarkdown::pdf_document
+#' @param ... Arguments to \code{rmarkdown::pdf_document}
 #'
 #' @export
-jss_article <- function() {
+jss_article <- function(..., keep_tex = TRUE) {
+
   template <- find_resource("jss_article", "template.tex")
 
-  base <- rmarkdown::pdf_document(template = template, keep_tex = TRUE)
+  base <- rmarkdown::pdf_document(..., template = template, keep_tex = keep_tex)
 
   # Mostly copied from knitr::render_sweave
   base$knitr$opts_knit$out.format <- "sweave"
@@ -43,3 +47,7 @@ jss_article <- function() {
 
   base
 }
+
+# mark the format as inheriting from pdf_document
+attr(jss_article, "base_format") <- "pdf_document"
+

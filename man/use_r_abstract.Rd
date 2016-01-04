@@ -4,9 +4,16 @@
 \alias{use_r_abstract}
 \title{useR conference abstract format.}
 \usage{
-use_r_abstract()
+use_r_abstract(...)
+}
+\arguments{
+\item{...}{Arguments to \code{rmarkdown::pdf_document}}
+}
+\value{
+R Markdown output format to pass to \code{\link[rmarkdown:render]{render}}
 }
 \description{
-Format for useR conference abstracts. Adapted from \href{http://user2016.org/}{http://user2016.org/}.
+Format for useR conference abstracts. Adapted from
+\href{http://user2016.org/}{http://user2016.org/}.
 }
 

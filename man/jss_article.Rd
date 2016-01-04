@@ -4,9 +4,16 @@
 \alias{jss_article}
 \title{Journal of Statistical Software (JSS) format.}
 \usage{
-jss_article()
+jss_article(..., keep_tex = TRUE)
+}
+\arguments{
+\item{...}{Arguments to \code{rmarkdown::pdf_document}}
+
+\item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 }
 \description{
-Format for creating a Journal of Statistical Software (JSS) articles. Adapted from \href{http://www.jstatsoft.org/about/submissions}{http://www.jstatsoft.org/about/submissions}.
+Format for creating a Journal of Statistical Software (JSS) articles. Adapted
+from
+\href{http://www.jstatsoft.org/about/submissions}{http://www.jstatsoft.org/about/submissions}.
 }
 

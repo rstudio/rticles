@@ -10,22 +10,22 @@
 #'   problems with text spacing, and that pdflatex may have memory issues when
 #'   using tikzDevice.
 #'
-#' @param ... additional arguments to \code{rmarkdown::pdf_document}
+#' @param ... Additional arguments to \code{rmarkdown::pdf_document}
 #'
 #' @export
-tufte_ebook <- function(  toc = TRUE,
-                          toc_depth = 3,
-                          number_sections = TRUE,
-                          fig_width = 4,
-                          fig_height = 2.5,
-                          fig_crop = TRUE,
-                          highlight = "default",
-                          keep_tex = FALSE,
-                          latex_engine = "xelatex",
-                          includes = NULL,
-                          pandoc_args = NULL,
-                          ...
-                          ) {
+tufte_ebook <- function(toc = TRUE,
+                        toc_depth = 3,
+                        number_sections = TRUE,
+                        fig_width = 4,
+                        fig_height = 2.5,
+                        fig_crop = TRUE,
+                        highlight = "default",
+                        keep_tex = FALSE,
+                        latex_engine = "xelatex",
+                        includes = NULL,
+                        pandoc_args = NULL,
+                        ...
+                        ) {
 
   # resolve default highlight
   if (identical(highlight, "default"))
