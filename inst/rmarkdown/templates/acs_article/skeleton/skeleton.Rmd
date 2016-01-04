@@ -26,7 +26,7 @@ title:
 abbr: IR,NMR,UV
 keywords: American Chemical Society, \LaTeX
 bibliography: acstest.bib
-output: rticles::acs
+output: rticles::acs_article
 ---
 
 \begin{tocentry}

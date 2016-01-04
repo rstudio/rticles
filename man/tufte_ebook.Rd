@@ -5,8 +5,8 @@
 \title{Tufte e-Book format (PDF)}
 \usage{
 tufte_ebook(..., toc = TRUE, toc_depth = 3, number_sections = TRUE,
-  fig_width = 4, fig_height = 2.5, highlight = "pygments",
-  latex_engine = "xelatex")
+  fig_width = 4, fig_height = 2.5, fig_crop = TRUE,
+  highlight = "pygments", latex_engine = "xelatex")
 }
 \arguments{
 \item{toc}{\code{TRUE} to include a table of contents in the output}
@@ -18,6 +18,9 @@ tufte_ebook(..., toc = TRUE, toc_depth = 3, number_sections = TRUE,
 \item{fig_width}{Default width (in inches) for figures}
 
 \item{fig_height}{Default width (in inches) for figures}
+
+\item{fig_crop}{\code{TRUE} to automatically apply the \code{pdfcrop} utility
+(if available) to pdf figures}
 
 \item{highlight}{Syntax highlighting style. Supported styles include
 "default", "tango", "pygments", "kate", "monochrome", "espresso",

@@ -20,6 +20,7 @@ tufte_ebook <- function(...,
                         number_sections = TRUE,
                         fig_width = 4,
                         fig_height = 2.5,
+                        fig_crop = TRUE,
                         highlight = "pygments",
                         latex_engine = "xelatex"
                         ) {

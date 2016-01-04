@@ -13,7 +13,7 @@ abstract: |
   It consists of two paragraphs.
 
 bibliography: mybibfile.bib
-output: rticles::elsevier
+output: rticles::elsevier_article
 ---
 
 _Text based on elsarticle sample manuscript, see [http://www.elsevier.com/author-schemas/latex-instructions#elsarticle](http://www.elsevier.com/author-schemas/latex-instructions#elsarticle)_

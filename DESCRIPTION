@@ -27,3 +27,4 @@ License: GPL-3
 Imports: rmarkdown, knitr, yaml
 SystemRequirements: GNU make, pandoc (>= 1.12.3) - http://johnmacfarlane.net/pandoc
 RoxygenNote: 5.0.1
+Suggests: testthat

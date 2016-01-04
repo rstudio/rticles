@@ -12,7 +12,7 @@ abstract: |
 
   It consists of two paragraphs.
 bibliography: sigproc.bib
-output: rticles::acm
+output: rticles::acm_article
 ---
 
 
