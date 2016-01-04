@@ -1,6 +1,5 @@
 name: Elsevier
 description: >
  Template for creating an article for submission to any Elsevier journal
-inherits: pdf_document
 create_dir: true
 

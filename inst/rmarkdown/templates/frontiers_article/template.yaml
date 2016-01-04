@@ -1,5 +1,4 @@
 name: Frontiers Template
 description: >
   Template for Frontiers article
-inherits: pdf_document
 create_dir: true

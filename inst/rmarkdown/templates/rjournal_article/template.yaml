@@ -1,6 +1,5 @@
 name: R Journal Submission
 description: >
  Template for creating articles for the R journal.
-inherits: pdf_document
 create_dir: true
 

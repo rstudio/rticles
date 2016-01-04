@@ -52,4 +52,7 @@ rjournal_article <- function(...) {
   base
 }
 
+# mark the format as inheriting from pdf_document
+attr(rjournal_article, "base_format") <- "pdf_document"
+
 
