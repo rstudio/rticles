@@ -13,12 +13,8 @@
 elsevier_article <- function(...,
                              keep_tex = TRUE,
                              md_extensions = c("-autolink_bare_uris")) {
-  rmarkdown::pdf_document(...,
-                          template = find_resource("elsevier_article", "template.tex"),
-                          keep_tex = keep_tex,
-                          md_extensions = md_extensions)
+  inherit_pdf_document(...,
+                       template = find_resource("elsevier_article", "template.tex"),
+                       keep_tex = keep_tex,
+                       md_extensions = md_extensions)
 }
-
-# mark the format as inheriting from pdf_document
-attr(elsevier_article, "base_format") <- "pdf_document"
-

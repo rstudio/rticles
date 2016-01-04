@@ -17,6 +17,3 @@ acm_article <- function(...) {
                       csl = "acm-sig-proceedings.csl")
 }
 
-# mark the format as inheriting from pdf_document
-attr(acm_article, "base_format") <- "pdf_document"
-

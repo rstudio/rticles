@@ -10,16 +10,18 @@
 #'   \code{\link[rmarkdown:render]{render}}
 #'
 #' @export
-frontiers_article <- function(highlight = "tango",
+frontiers_article <- function(...,
+                              highlight = "tango",
                               keep_tex = TRUE) {
 
   template <- system.file("rmarkdown", "templates", "frontiers_article",
                           "resources", "template.tex",
                           package = "rticles")
 
-  base <- rmarkdown::pdf_document(template = template,
-                                  keep_tex = keep_tex,
-                                  highlight = highlight)
+  base <- inherit_pdf_document(...,
+                               template = template,
+                               keep_tex = keep_tex,
+                               highlight = highlight)
 
   # Mostly copied from knitr::render_sweave
   base$knitr$opts_knit$out.format <- "sweave"

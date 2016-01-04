@@ -31,16 +31,15 @@ tufte_ebook <- function(...,
   )
 
   # call the base pdf_document format with the appropriate options
-  format <- rmarkdown::pdf_document(...,
-                                    toc = toc,
-                                    toc_depth = toc_depth,
-                                    number_sections = number_sections,
-                                    fig_width = fig_width,
-                                    fig_height = fig_height,
-                                    highlight = highlight,
-                                    template = template,
-                                    latex_engine = latex_engine
-                                    )
+  format <- inherit_pdf_document(...,
+                                 toc = toc,
+                                 toc_depth = toc_depth,
+                                 number_sections = number_sections,
+                                 fig_width = fig_width,
+                                 fig_height = fig_height,
+                                 highlight = highlight,
+                                 template = template,
+                                 latex_engine = latex_engine)
 
   # create knitr options (ensure opts and hooks are non-null)
   knitr_options <- rmarkdown::knitr_options_pdf(fig_width, fig_height, fig_crop)
@@ -78,8 +77,4 @@ tufte_ebook <- function(...,
   format$knitr <- knitr_options
   format
 }
-
-# mark the format as inheriting from pdf_document
-attr(tufte_ebook, "base_format") <- "pdf_document"
-
 

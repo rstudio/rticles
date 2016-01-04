@@ -15,7 +15,3 @@ use_r_abstract <- function(...) {
                       template = "template.tex",
                       csl = "chicago-author-date.csl")
 }
-
-# mark the format as inheriting from pdf_document
-attr(use_r_abstract, "base_format") <- "pdf_document"
-

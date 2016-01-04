@@ -11,11 +11,8 @@
 #'   package.
 #' @export
 ctex <- function(..., template = ctex_template(), latex_engine = 'xelatex') {
-  rmarkdown::pdf_document(..., template = template, latex_engine = latex_engine)
+  inherit_pdf_document(..., template = template, latex_engine = latex_engine)
 }
-
-# mark the format as inheriting from pdf_document
-attr(ctex, "base_format") <- "pdf_document"
 
 
 #' @rdname ctex

@@ -15,7 +15,7 @@ jss_article <- function(..., keep_tex = TRUE) {
 
   template <- find_resource("jss_article", "template.tex")
 
-  base <- rmarkdown::pdf_document(..., template = template, keep_tex = keep_tex)
+  base <- inherit_pdf_document(..., template = template, keep_tex = keep_tex)
 
   # Mostly copied from knitr::render_sweave
   base$knitr$opts_knit$out.format <- "sweave"
@@ -50,7 +50,4 @@ jss_article <- function(..., keep_tex = TRUE) {
 
   base
 }
-
-# mark the format as inheriting from pdf_document
-attr(jss_article, "base_format") <- "pdf_document"
 
