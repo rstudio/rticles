@@ -18,18 +18,10 @@ tufte_ebook <- function(toc = TRUE,
                         number_sections = TRUE,
                         fig_width = 4,
                         fig_height = 2.5,
-                        fig_crop = TRUE,
-                        highlight = "default",
-                        keep_tex = FALSE,
+                        highlight = "pygments",
                         latex_engine = "xelatex",
-                        includes = NULL,
-                        pandoc_args = NULL,
                         ...
                         ) {
-
-  # resolve default highlight
-  if (identical(highlight, "default"))
-    highlight <- "pygments"
 
   # get the tufte handout template
   template <-  system.file(
@@ -38,21 +30,16 @@ tufte_ebook <- function(toc = TRUE,
   )
 
   # call the base pdf_document format with the appropriate options
-  format <- rmarkdown::pdf_document(fig_width = fig_width,
-                                    fig_height = fig_height,
-                                    fig_crop = fig_crop,
-                                    highlight = highlight,
-                                    keep_tex = keep_tex,
-                                    latex_engine = latex_engine,
-                                    includes = includes,
-                                    pandoc_args = pandoc_args,
-                                    toc = toc,
+  format <- rmarkdown::pdf_document(toc = toc,
                                     toc_depth = toc_depth,
-                                    template = template,
                                     number_sections = number_sections,
+                                    fig_width = fig_width,
+                                    fig_height = fig_height,
+                                    highlight = highlight,
+                                    template = template,
+                                    latex_engine = latex_engine,
                                     ...
                                     )
-
 
   # create knitr options (ensure opts and hooks are non-null)
   knitr_options <- rmarkdown::knitr_options_pdf(fig_width, fig_height, fig_crop)
@@ -90,3 +77,8 @@ tufte_ebook <- function(toc = TRUE,
   format$knitr <- knitr_options
   format
 }
+
+# mark the format as inheriting from pdf_document
+attr(tufte_ebook, "base_format") <- "pdf_document"
+
+

@@ -5,9 +5,8 @@
 \title{Tufte e-Book format (PDF)}
 \usage{
 tufte_ebook(toc = TRUE, toc_depth = 3, number_sections = TRUE,
-  fig_width = 4, fig_height = 2.5, fig_crop = TRUE,
-  highlight = "default", keep_tex = FALSE, latex_engine = "xelatex",
-  includes = NULL, pandoc_args = NULL, ...)
+  fig_width = 4, fig_height = 2.5, highlight = "pygments",
+  latex_engine = "xelatex", ...)
 }
 \arguments{
 \item{toc}{\code{TRUE} to include a table of contents in the output}
@@ -20,24 +19,14 @@ tufte_ebook(toc = TRUE, toc_depth = 3, number_sections = TRUE,
 
 \item{fig_height}{Default width (in inches) for figures}
 
-\item{fig_crop}{\code{TRUE} to automatically apply the \code{pdfcrop} utility
-(if available) to pdf figures}
-
 \item{highlight}{Syntax highlighting style. Supported styles include
 "default", "tango", "pygments", "kate", "monochrome", "espresso",
 "zenburn", and "haddock". Pass \code{NULL} to prevent syntax highlighting.}
-
-\item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 
 \item{latex_engine}{LaTeX engine for producing PDF output. Options are
 "pdflatex", "lualatex", and "xelatex".  Note that lualatex may have
 problems with text spacing, and that pdflatex may have memory issues when
 using tikzDevice.}
-
-\item{includes}{Named list of additional content to include within the
-document (typically created using the \code{\link{includes}} function).}
-
-\item{pandoc_args}{Additional command line options to pass to pandoc}
 
 \item{...}{Additional arguments to \code{rmarkdown::pdf_document}}
 }
