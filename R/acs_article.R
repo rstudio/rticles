@@ -17,3 +17,7 @@ acs_article <- function(..., fig_caption = TRUE, keep_tex = TRUE) {
                       template = "template.tex",
                       csl = "american-chemical-society.csl")
 }
+
+# mark the format as inheriting from pdf_document
+attr(acs_article, "base_format") <- "pdf_document"
+
