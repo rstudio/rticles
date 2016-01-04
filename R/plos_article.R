@@ -1,18 +1,23 @@
-#' Public Library of Science (PLOS) format.
+#' PLoS Computational Biology format.
 #'
-#' Format for creating Public Library of Science (PLOS) articles. Adapted from \href{http://journals.plos.org/plosone/s/latex}{http://journals.plos.org/plosone/s/latex}.
+#' Format for creating an article for submission to PLoS Computational Biology.
+#' Adapted from
+#' \href{http://journals.plos.org/plosone/s/latex}{http://journals.plos.org/plosone/s/latex}.
 #'
 #' @inheritParams rmarkdown::pdf_document
+#' @param ... Additional arguments to \code{rmarkdown::pdf_document}
+#'
+#' @return R Markdown output format to pass to
+#'   \code{\link[rmarkdown:render]{render}}
 #'
 #' @export
-plos_article <- function(keep_tex = TRUE,
-                         includes = NULL) {
+plos_article <- function(..., keep_tex = TRUE) {
 
   template <- find_resource("plos_article", "template.tex")
 
-  base <- rmarkdown::pdf_document(template = template,
-                                  keep_tex = keep_tex,
-                                  includes = includes)
+  base <- rmarkdown::pdf_document(...,
+                                  template = template,
+                                  keep_tex = keep_tex)
 
   # Mostly copied from knitr::render_sweave
   base$knitr$opts_knit$out.format <- "sweave"
@@ -42,3 +47,8 @@ plos_article <- function(keep_tex = TRUE,
 
   base
 }
+
+# mark the format as inheriting from pdf_document
+attr(plos_article, "base_format") <- "pdf_document"
+
+

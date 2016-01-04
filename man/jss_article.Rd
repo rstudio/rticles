@@ -11,6 +11,10 @@ jss_article(..., keep_tex = TRUE)
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 }
+\value{
+R Markdown output format to pass to
+  \code{\link[rmarkdown:render]{render}}
+}
 \description{
 Format for creating a Journal of Statistical Software (JSS) articles. Adapted
 from

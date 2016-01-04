@@ -2,17 +2,22 @@
 % Please edit documentation in R/plos_article.R
 \name{plos_article}
 \alias{plos_article}
-\title{Public Library of Science (PLOS) format.}
+\title{PLoS Computational Biology format.}
 \usage{
-plos_article(keep_tex = TRUE, includes = NULL)
+plos_article(..., keep_tex = TRUE)
 }
 \arguments{
-\item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
+\item{...}{Additional arguments to \code{rmarkdown::pdf_document}}
 
-\item{includes}{Named list of additional content to include within the
-document (typically created using the \code{\link{includes}} function).}
+\item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
+}
+\value{
+R Markdown output format to pass to
+  \code{\link[rmarkdown:render]{render}}
 }
 \description{
-Format for creating Public Library of Science (PLOS) articles. Adapted from \href{http://journals.plos.org/plosone/s/latex}{http://journals.plos.org/plosone/s/latex}.
+Format for creating an article for submission to PLoS Computational Biology.
+Adapted from
+\href{http://journals.plos.org/plosone/s/latex}{http://journals.plos.org/plosone/s/latex}.
 }
 

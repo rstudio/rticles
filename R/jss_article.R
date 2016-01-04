@@ -7,6 +7,9 @@
 #' @inheritParams rmarkdown::pdf_document
 #' @param ... Arguments to \code{rmarkdown::pdf_document}
 #'
+#' @return R Markdown output format to pass to
+#'   \code{\link[rmarkdown:render]{render}}
+#'
 #' @export
 jss_article <- function(..., keep_tex = TRUE) {
 

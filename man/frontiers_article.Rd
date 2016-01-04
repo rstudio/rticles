@@ -4,15 +4,23 @@
 \alias{frontiers_article}
 \title{Frontiers open access journal format.}
 \usage{
-frontiers_article(keep_tex = TRUE, includes = NULL)
+frontiers_article(highlight = "tango", keep_tex = TRUE)
 }
 \arguments{
+\item{highlight}{Syntax highlighting style. Supported styles include
+"default", "tango", "pygments", "kate", "monochrome", "espresso",
+"zenburn", and "haddock". Pass \code{NULL} to prevent syntax highlighting.}
+
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 
-\item{includes}{Named list of additional content to include within the
-document (typically created using the \code{\link{includes}} function).}
+\item{...}{Additional arguments to \code{rmarkdown::pdf_document}}
+}
+\value{
+R Markdown output format to pass to
+  \code{\link[rmarkdown:render]{render}}
 }
 \description{
-Format for creating Frontiers journal articles. Adapted from \href{http://home.frontiersin.org/about/author-guidelines}{http://home.frontiersin.org/about/author-guidelines}.
+Format for creating Frontiers journal articles. Adapted from
+\href{http://home.frontiersin.org/about/author-guidelines}{http://home.frontiersin.org/about/author-guidelines}.
 }
 
