@@ -15,7 +15,7 @@ elsevier_article <- function(...,
                              md_extensions = c("-autolink_bare_uris")) {
   rmarkdown::pdf_document(...,
                           template = find_resource("elsevier_article", "template.tex"),
-                          keep_tex = TRUE,
+                          keep_tex = keep_tex,
                           md_extensions = md_extensions)
 }
 
