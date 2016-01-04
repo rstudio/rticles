@@ -47,7 +47,3 @@ jss_article <- function(..., keep_tex = TRUE) {
 
   base
 }
-
-# mark the format as inheriting from pdf_document
-attr(jss_article, "base_format") <- "pdf_document"
-

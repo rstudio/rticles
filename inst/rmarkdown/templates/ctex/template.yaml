@@ -1,5 +1,6 @@
 name: CTeX Documents
 description: >
  Template for creating LaTeX documents using the ctex package to write Chinese.
+inherits: pdf_document
 create_dir: false
 

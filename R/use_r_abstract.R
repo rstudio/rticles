@@ -22,7 +22,3 @@ use_r_abstract <- function(...) {
     template = find_resource("use_r_abstract", "template.tex"),
     pandoc_args = pandoc_args)
 }
-
-# mark the format as inheriting from pdf_document
-attr(use_r_abstract, "base_format") <- "pdf_document"
-

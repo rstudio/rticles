@@ -1,5 +1,6 @@
 name: ACS
 description: >
  Template for creating an article for submission to ACS
+inherits: pdf_document
 create_dir: true
 

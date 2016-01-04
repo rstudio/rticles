@@ -78,7 +78,4 @@ tufte_ebook <- function(toc = TRUE,
   format
 }
 
-# mark the format as inheriting from pdf_document
-attr(tufte_ebook, "base_format") <- "pdf_document"
-
 

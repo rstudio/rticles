@@ -1,4 +1,5 @@
 name: PLoS Computational Biology
 description: >
   Template for creating an article for submission to PLoS Computational Biology.
+inherits: pdf_document
 create_dir: true

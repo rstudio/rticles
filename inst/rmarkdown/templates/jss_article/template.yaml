@@ -1,5 +1,6 @@
 name: Journal of Statistical Software
 description: >
- Template for creating an article for submission to JSS
+  Template for creating an article for submission to JSS
+inherits: pdf_document
 create_dir: true
 

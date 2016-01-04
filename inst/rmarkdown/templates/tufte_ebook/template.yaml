@@ -1,5 +1,6 @@
 name: Tufte e-Book (PDF)
 description: >
-  Template for creating a book according to the style of 
+  Template for creating a book according to the style of
   Edward R. Tufte and Richard Feynman.
+inherits: pdf_document
 create_dir: true
