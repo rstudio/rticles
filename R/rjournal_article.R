@@ -28,12 +28,13 @@ rjournal_article <- function() {
   # Mostly copied from knitr::render_sweave
   base$knitr$opts_chunk$comment <- "#>"
 
+  hilight_source <- knitr_fun('hilight_source')
   hook_chunk = function(x, options) {
-    if (knitr:::output_asis(x, options)) return(x)
+    if (output_asis(x, options)) return(x)
     paste('\\begin{Schunk}\n', x, '\\end{Schunk}', sep = '')
   }
   hook_input <- function(x, options)
-    paste(c('\\begin{Sinput}', knitr:::hilight_source(x, 'sweave', options), '\\end{Sinput}', ''),
+    paste(c('\\begin{Sinput}', hilight_source(x, 'sweave', options), '\\end{Sinput}', ''),
       collapse = '\n')
   hook_output <- function(x, options) paste('\\begin{Soutput}\n', x, '\\end{Soutput}\n', sep = '')
 

@@ -2,6 +2,7 @@
 
 export(acm)
 export(acs)
+export(ctex)
 export(ctex_template)
 export(elsevier)
 export(frontiers_article)
