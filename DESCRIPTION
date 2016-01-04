@@ -9,7 +9,6 @@ Authors@R: c(
   person("Yihui", "Xie", role = "aut", email = "yihui@rstudio.com"),
   person(family = "RStudio", role = "cph"),
   person("Carl", "Boettiger", role = c("aut", "cph"), email = "cboettig@gmail.com"),
-  person("Simon", "Garnier", role = c("aut", "cph"), email = "simon.j.garnier@njit.edu"),
   person("Karl", "Broman", role = c("aut", "cph"), email = "kbroman@gmail.com"),
   person("Kirill", "Mueller", role = c("aut", "cph"), email = "kirill.mueller@ivt.baug.ethz.ch"),
   person("Bastiaan", "Quast", role = c("aut", "cph"), email = "bquast@gmail.com"),
