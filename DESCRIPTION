@@ -11,7 +11,6 @@ Authors@R: c(
   person("Zhian", "Kamvar", role = c("aut", "cph"), email="kamvarz@science.oregonstate.edu"),
   person("Carl", "Boettiger", role = c("aut", "cph"), email = "cboettig@gmail.com"),
   person("Simon", "Garnier", role = c("aut", "cph"), email = "simon.j.garnier@njit.edu"),
-  person("Yu", "Miao", role = c("aut", "cph"), email = "yufree@live.cn"),
   person("Karl", "Broman", role = c("aut", "cph"), email = "kbroman@gmail.com"),
   person("Kirill", "Mueller", role = c("aut", "cph"), email = "kirill.mueller@ivt.baug.ethz.ch"),
   person("Bastiaan", "Quast", role = c("aut", "cph"), email = "bquast@gmail.com"),
