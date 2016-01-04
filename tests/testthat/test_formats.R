@@ -35,6 +35,7 @@ test_format <- function(name, file_check = TRUE) {
   })
 }
 
+test_format("acs_article")
 test_format("acm_article")
 test_format("elsevier_article")
 test_format("frontiers_article")
@@ -45,6 +46,6 @@ test_format("use_r_abstract")
 test_format("rjournal_article", file_check = FALSE)
 
 
-# test_format("acs_article") # broken
+
 
 
