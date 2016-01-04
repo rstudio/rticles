@@ -18,6 +18,7 @@ use_r_abstract <- function(...) {
 
   # return the format
   rmarkdown::pdf_document(
+    ...,
     template = find_resource("use_r_abstract", "template.tex"),
     pandoc_args = pandoc_args)
 }

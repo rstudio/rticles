@@ -30,15 +30,15 @@ tufte_ebook <- function(toc = TRUE,
   )
 
   # call the base pdf_document format with the appropriate options
-  format <- rmarkdown::pdf_document(toc = toc,
+  format <- rmarkdown::pdf_document(...,
+                                    toc = toc,
                                     toc_depth = toc_depth,
                                     number_sections = number_sections,
                                     fig_width = fig_width,
                                     fig_height = fig_height,
                                     highlight = highlight,
                                     template = template,
-                                    latex_engine = latex_engine,
-                                    ...
+                                    latex_engine = latex_engine
                                     )
 
   # create knitr options (ensure opts and hooks are non-null)
