@@ -8,17 +8,13 @@ The **rticles** package includes a set of [R Markdown](http://rmarkdown.rstudio.
 
 - [R Journal](http://journal.r-project.org/) articles
 
-- [useR](http://user2014.stat.ucla.edu/) conference abstracts
-
-- [Public Library of Science (PLoS)](http://www.plos.org/) articles
+- [useR](http://user2016.org/) conference abstracts
 
 - [CTeX](http://ctex.org) documents
 
-- [ACS](http://pubs.acs.org) articles
-
 Under the hood, LaTeX templates are used to ensure that documents conform precisely to submission standards. At the same time, composition and formatting can be done using lightweight [markdown](http://rmarkdown.rstudio.com/authoring_basics.html) syntax, and R code and its output can be seamlessly included using [knitr](http://yihui.name/knitr/).
 
-Using **rticles** has some prerequisites which are described below. You can get most of these pre-requisites automatically by installing the latest preview release of RStudio (instructions for using **rticles** without RStudio are also provided).
+Using **rticles** has some prerequisites which are described below. You can get most of these pre-requisites automatically by installing the latest release of RStudio (instructions for using **rticles** without RStudio are also provided).
 
 ### Using rticles from RStudio
 
@@ -44,7 +40,8 @@ devtools::install_github("rstudio/rticles")
 2) Install the **rmarkdown** and **rticles** packages:
 
 ```S
-devtools::install_github(c("rstudio/rmarkdown", "rstudio/rticles"))
+install.packages("rmarkdown")
+devtools::install_github("rstudio/rticles")
 ```
     
 3) Use the `rmarkdown::draft` function to create articles:
