@@ -9,6 +9,10 @@ rjournal_article(...)
 \arguments{
 \item{...}{Arguments to \code{rmarkdown::pdf_document}}
 }
+\value{
+R Markdown output format to pass to
+  \code{\link[rmarkdown:render]{render}}
+}
 \description{
 Format for creating R Journal articles. Adapted from
 \href{https://journal.r-project.org/submissions.html}{https://journal.r-project.org/submissions.html}.

@@ -10,17 +10,18 @@
 #'   problems with text spacing, and that pdflatex may have memory issues when
 #'   using tikzDevice.
 #'
-#' @param ... Additional arguments to \code{rmarkdown::pdf_document}
+#' @return R Markdown output format to pass to
+#'   \code{\link[rmarkdown:render]{render}}
 #'
 #' @export
-tufte_ebook <- function(toc = TRUE,
+tufte_ebook <- function(...,
+                        toc = TRUE,
                         toc_depth = 3,
                         number_sections = TRUE,
                         fig_width = 4,
                         fig_height = 2.5,
                         highlight = "pygments",
-                        latex_engine = "xelatex",
-                        ...
+                        latex_engine = "xelatex"
                         ) {
 
   # get the tufte handout template

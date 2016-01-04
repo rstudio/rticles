@@ -4,9 +4,9 @@
 \alias{tufte_ebook}
 \title{Tufte e-Book format (PDF)}
 \usage{
-tufte_ebook(toc = TRUE, toc_depth = 3, number_sections = TRUE,
+tufte_ebook(..., toc = TRUE, toc_depth = 3, number_sections = TRUE,
   fig_width = 4, fig_height = 2.5, highlight = "pygments",
-  latex_engine = "xelatex", ...)
+  latex_engine = "xelatex")
 }
 \arguments{
 \item{toc}{\code{TRUE} to include a table of contents in the output}
@@ -27,8 +27,10 @@ tufte_ebook(toc = TRUE, toc_depth = 3, number_sections = TRUE,
 "pdflatex", "lualatex", and "xelatex".  Note that lualatex may have
 problems with text spacing, and that pdflatex may have memory issues when
 using tikzDevice.}
-
-\item{...}{Additional arguments to \code{rmarkdown::pdf_document}}
+}
+\value{
+R Markdown output format to pass to
+  \code{\link[rmarkdown:render]{render}}
 }
 \description{
 Format for creating an e-book based on the style of Edward R. Tufte and
