@@ -7,6 +7,8 @@
 #' @inheritParams rmarkdown::pdf_document
 #' @param ... Arguments to \code{rmarkdown::pdf_document}
 #'
+#' @return R Markdown output format to pass to \code{\link[rmarkdown:render]{render}}
+#'
 #' @export
 acm_article <- function(...) {
   pdf_document_format(...,

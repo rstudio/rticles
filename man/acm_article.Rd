@@ -9,6 +9,9 @@ acm_article(...)
 \arguments{
 \item{...}{Arguments to \code{rmarkdown::pdf_document}}
 }
+\value{
+R Markdown output format to pass to \code{\link[rmarkdown:render]{render}}
+}
 \description{
 Format for creating an Association for Computing Machinery (ACM) articles.
 Adapted from
