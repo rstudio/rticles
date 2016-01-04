@@ -9,6 +9,8 @@ tufte_ebook(..., toc = TRUE, toc_depth = 3, number_sections = TRUE,
   highlight = "pygments", latex_engine = "xelatex")
 }
 \arguments{
+\item{...}{Additional arguments to \code{rmarkdown::pdf_document}}
+
 \item{toc}{\code{TRUE} to include a table of contents in the output}
 
 \item{toc_depth}{Depth of headers to include in table of contents}

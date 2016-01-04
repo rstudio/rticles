@@ -10,6 +10,8 @@
 #'   problems with text spacing, and that pdflatex may have memory issues when
 #'   using tikzDevice.
 #'
+#' @param ... Additional arguments to \code{rmarkdown::pdf_document}
+#'
 #' @return R Markdown output format to pass to
 #'   \code{\link[rmarkdown:render]{render}}
 #'
