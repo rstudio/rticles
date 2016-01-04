@@ -1,20 +1,25 @@
 #' Frontiers open access journal format.
 #'
-#' Format for creating Frontiers journal articles. Adapted from \href{http://home.frontiersin.org/about/author-guidelines}{http://home.frontiersin.org/about/author-guidelines}.
+#' Format for creating Frontiers journal articles. Adapted from
+#' \href{http://home.frontiersin.org/about/author-guidelines}{http://home.frontiersin.org/about/author-guidelines}.
 #'
 #' @inheritParams rmarkdown::pdf_document
+#' @param ... Additional arguments to \code{rmarkdown::pdf_document}
+#'
+#' @return R Markdown output format to pass to
+#'   \code{\link[rmarkdown:render]{render}}
 #'
 #' @export
-frontiers_article <- function(keep_tex = TRUE,
-                              includes = NULL){
+frontiers_article <- function(highlight = "tango",
+                              keep_tex = TRUE) {
+
   template <- system.file("rmarkdown", "templates", "frontiers_article",
                           "resources", "template.tex",
                           package = "rticles")
+
   base <- rmarkdown::pdf_document(template = template,
                                   keep_tex = keep_tex,
-                                  includes = includes,
-                                  highlight = "tango")#,
-                                  # pandoc_args = c("--latex-engine=xelatex"))
+                                  highlight = highlight)
 
   # Mostly copied from knitr::render_sweave
   base$knitr$opts_knit$out.format <- "sweave"
@@ -43,3 +48,7 @@ frontiers_article <- function(keep_tex = TRUE,
   base$knitr$knit_hooks$plot <- knitr::hook_plot_tex
   base
 }
+
+# mark the format as inheriting from pdf_document
+attr(frontiers_article, "base_format") <- "pdf_document"
+
