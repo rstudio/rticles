@@ -4,7 +4,7 @@
 \alias{acm_article}
 \title{Association for Computing Machinery (ACM) format.}
 \usage{
-acm_article()
+acm_article(...)
 }
 \arguments{
 \item{...}{Arguments to \code{rmarkdown::pdf_document}}

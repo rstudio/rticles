@@ -10,15 +10,8 @@
 #'
 #' @export
 use_r_abstract <- function(...) {
-
-  # ammend pandoc_args with csl
-  csl <- find_resource("use_r_abstract" ,"chicago-author-date.csl")
-  pandoc_args <- c(match.call()$pandoc_args,
-                   "--csl", rmarkdown::pandoc_path_arg(csl))
-
-  # return the format
-  rmarkdown::pdf_document(
-    ...,
-    template = find_resource("use_r_abstract", "template.tex"),
-    pandoc_args = pandoc_args)
+  pdf_document_format(...,
+                      format = "use_r_abstract",
+                      template = "template.tex",
+                      csl = "chicago-author-date.csl")
 }

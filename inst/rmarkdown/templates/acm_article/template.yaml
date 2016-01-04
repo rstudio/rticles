@@ -1,4 +1,4 @@
-name: ACM
+name: Association for Computing Machinary
 description: >
  Template for creating an article for submission to ACM
 inherits: pdf_document

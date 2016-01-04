@@ -8,17 +8,10 @@
 #' @param ... Arguments to \code{rmarkdown::pdf_document}
 #'
 #' @export
-acm_article <- function() {
-
-  # ammend pandoc_args with csl
-  csl <- find_resource("acm_article" ,"acm-sig-proceedings.csl")
-  pandoc_args <- c(match.call()$pandoc_args,
-                   "--csl", rmarkdown::pandoc_path_arg(csl))
-
-  # return the format
-  rmarkdown::pdf_document(
-    ...,
-    template = find_resource("acm", "template.tex"),
-    pandoc_args = pandoc_args)
+acm_article <- function(...) {
+  pdf_document_format(...,
+                      format = "acm_article",
+                      template = "template.tex",
+                      csl = "acm-sig-proceedings.csl")
 }
 
