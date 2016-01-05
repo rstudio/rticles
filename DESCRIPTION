@@ -25,7 +25,7 @@ Authors@R: c(
 Description: A suite of custom R Markdown formats and templates for
   authoring journal articles and conference submissions.
 License: GPL-3
-Imports: rmarkdown, knitr, yaml
+Imports: utils, rmarkdown, knitr, yaml
 SystemRequirements: GNU make
 RoxygenNote: 5.0.1
 Suggests: testthat
