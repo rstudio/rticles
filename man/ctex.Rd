@@ -26,7 +26,7 @@ changed the default values of two arguments \code{template} and
 }
 \examples{
 
-\dontrun {
+\dontrun{
 library(rmarkdown)
 draft("MyArticle.Rmd", template = "ctex", package = "rticles")
 }

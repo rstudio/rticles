@@ -19,7 +19,7 @@ Adapted from
 }
 \examples{
 
-\dontrun {
+\dontrun{
 library(rmarkdown)
 draft("MyArticle.Rmd", template = "acm_article", package = "rticles")
 }

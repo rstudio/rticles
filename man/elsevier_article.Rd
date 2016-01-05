@@ -26,7 +26,7 @@ Format for creating submissions to Elsevier journals. Adapted from
 }
 \examples{
 
-\dontrun {
+\dontrun{
 library(rmarkdown)
 draft("MyArticle.Rmd", template = "elsevier_article", package = "rticles")
 }

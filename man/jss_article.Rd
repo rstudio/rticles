@@ -22,7 +22,7 @@ from
 }
 \examples{
 
-\dontrun {
+\dontrun{
 library(rmarkdown)
 draft("MyArticle.Rmd", template = "jss_article", package = "rticles")
 }

@@ -12,7 +12,7 @@
 #'
 #' @examples
 #'
-#' \dontrun {
+#' \dontrun{
 #' library(rmarkdown)
 #' draft("MyArticle.Rmd", template = "rjournal_article", package = "rticles")
 #' }

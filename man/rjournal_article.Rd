@@ -19,7 +19,7 @@ Format for creating R Journal articles. Adapted from
 }
 \examples{
 
-\dontrun {
+\dontrun{
 library(rmarkdown)
 draft("MyArticle.Rmd", template = "rjournal_article", package = "rticles")
 }
