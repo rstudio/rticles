@@ -17,4 +17,12 @@ R Markdown output format to pass to
 Format for creating R Journal articles. Adapted from
 \href{https://journal.r-project.org/submissions.html}{https://journal.r-project.org/submissions.html}.
 }
+\examples{
+
+\dontrun {
+library(rmarkdown)
+draft("MyArticle.Rmd", template = "rjournal_article", package = "rticles")
+}
+
+}
 

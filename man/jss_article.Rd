@@ -20,4 +20,12 @@ Format for creating a Journal of Statistical Software (JSS) articles. Adapted
 from
 \href{http://www.jstatsoft.org/about/submissions}{http://www.jstatsoft.org/about/submissions}.
 }
+\examples{
+
+\dontrun {
+library(rmarkdown)
+draft("MyArticle.Rmd", template = "jss_article", package = "rticles")
+}
+
+}
 

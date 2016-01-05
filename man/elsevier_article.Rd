@@ -24,4 +24,12 @@ R Markdown output format to pass to
 Format for creating submissions to Elsevier journals. Adapted from
 \href{https://www.elsevier.com/authors/author-schemas/latex-instructions}{https://www.elsevier.com/authors/author-schemas/latex-instructions}.
 }
+\examples{
+
+\dontrun {
+library(rmarkdown)
+draft("MyArticle.Rmd", template = "elsevier_article", package = "rticles")
+}
+
+}
 

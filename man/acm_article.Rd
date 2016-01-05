@@ -17,4 +17,12 @@ Format for creating an Association for Computing Machinery (ACM) articles.
 Adapted from
 \href{http://www.acm.org/publications/article-templates/proceedings-template.html}{http://www.acm.org/publications/article-templates/proceedings-template.html}.
 }
+\examples{
+
+\dontrun {
+library(rmarkdown)
+draft("MyArticle.Rmd", template = "acm_article", package = "rticles")
+}
+
+}
 

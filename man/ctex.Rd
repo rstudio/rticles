@@ -24,4 +24,12 @@ ctex_template()
 changed the default values of two arguments \code{template} and
 \code{latex_engine} so it works better with the \pkg{ctex} package.
 }
+\examples{
+
+\dontrun {
+library(rmarkdown)
+draft("MyArticle.Rmd", template = "ctex", package = "rticles")
+}
+
+}
 

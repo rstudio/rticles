@@ -10,6 +10,13 @@
 #' @return R Markdown output format to pass to
 #'   \code{\link[rmarkdown:render]{render}}
 #'
+#' @examples
+#'
+#' \dontrun {
+#' library(rmarkdown)
+#' draft("MyArticle.Rmd", template = "jss_article", package = "rticles")
+#' }
+#'
 #' @export
 jss_article <- function(..., keep_tex = TRUE) {
 

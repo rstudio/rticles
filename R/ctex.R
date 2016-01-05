@@ -9,6 +9,14 @@
 #'   \code{rmarkdown::render()}; \code{ctex_template()} returns the path to a
 #'   LaTeX template in \pkg{rticles} for Chinese documents using the \pkg{ctex}
 #'   package.
+#'
+#' @examples
+#'
+#' \dontrun {
+#' library(rmarkdown)
+#' draft("MyArticle.Rmd", template = "ctex", package = "rticles")
+#' }
+#'
 #' @export
 ctex <- function(..., template = ctex_template(), latex_engine = 'xelatex') {
   inherit_pdf_document(..., template = template, latex_engine = latex_engine)
