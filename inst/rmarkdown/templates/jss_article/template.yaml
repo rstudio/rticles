@@ -1,0 +1,5 @@
+name: Journal of Statistical Software
+description: >
+ Template for creating an article for submission to JSS
+create_dir: true
+
