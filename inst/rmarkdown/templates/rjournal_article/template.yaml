@@ -1,0 +1,5 @@
+name: R Journal Submission
+description: >
+ Template for creating articles for the R journal.
+create_dir: true
+

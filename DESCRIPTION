@@ -1,0 +1,32 @@
+Package: rticles
+Type: Package
+Title: Article Formats for R Markdown
+Version: 0.1
+Date: 2016-01-02
+Authors@R: c(
+  person("JJ", "Allaire", role = c("aut", "cre"), email = "jj@rstudio.com"),
+  person(family = "R Foundation", role = c("aut", "cph")),
+  person("Hadley", "Wickham", role = "aut", email = "hadley@rstudio.com"),
+  person(family = "Journal of Statistical Software", role = c("aut", "cph")),
+  person("Yihui", "Xie", role = "aut", email = "yihui@rstudio.com"),
+  person(family = "RStudio", role = "cph"),
+  person("Ramnath ", "Vaidyanathan", role = c("aut", "cph"), email = "ramnath.vaidya@gmail.com"),
+  person(family = "Assocation for Computing Machinery", role = c("aut", "cph")),
+  person("Carl", "Boettiger", role = c("aut", "cph"), email = "cboettig@gmail.com"),
+  person(family = "Elsevier", role = c("aut", "cph")),
+  person("Karl", "Broman", role = c("aut", "cph"), email = "kbroman@gmail.com"),
+  person("Kirill", "Mueller", role = c("aut", "cph"), email = "kirill.mueller@ivt.baug.ethz.ch"),
+  person("Bastiaan", "Quast", role = c("aut", "cph"), email = "bquast@gmail.com"),
+  person("Randall ", "Pruim", role = c("aut", "cph"), email = "rpruim@gmail.com"),
+  person("Ben", "Marwick", role = c("aut", "cph"), email = "bmarwick@uw.edu"),
+  person("Charlotte", "Wickham", role = c("aut", "cph"), email = "cwickham@gmail.com"),
+  person("Oliver", "Keyes", role = c("aut", "cph"), email = "okeyes@wikimedia.org")
+  )
+Description: A suite of custom R Markdown formats and templates for
+  authoring journal articles and conference submissions.
+License: GPL-3
+Imports: utils, rmarkdown, knitr, yaml
+SystemRequirements: GNU make
+RoxygenNote: 5.0.1
+Suggests: testthat
+

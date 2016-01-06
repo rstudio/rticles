@@ -1,0 +1,5 @@
+name: Association for Computing Machinary
+description: >
+ Template for creating an article for submission to ACM
+create_dir: true
+
