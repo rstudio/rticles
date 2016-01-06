@@ -3,13 +3,13 @@
 
 You can install and use **rticles** from CRAN as follows:
 
-```S
+```r
 install.packages("rticles", type = "source")
 ```
 
 If you wish to install the development version from GitHub you can do this:
 
-```S
+```r
 devtools::install_github("rstudio/rticles")
 ```
 
@@ -17,7 +17,7 @@ devtools::install_github("rstudio/rticles")
 
 Prior to submitting **rticles** to CRAN a number of formats that were not passing tests on all platforms were removed from the package (we expect that these formats will be restored eventually once their authors arrange for the tests to pass). If you are an existing user of one of these **rticles** formats you can install the "sandbox" version of the package which retains these formats as follows:
 
-```S
+```r
 devtools::install_github("rstudio/rticles", ref = "sandbox")
 ```
 
@@ -47,7 +47,7 @@ To use **rticles** from RStudio:
 
 2) Install the **rticles** package: 
 
-    ```S
+    ```r
     devtools::install_github("rstudio/rticles")
     ```
 
@@ -62,14 +62,14 @@ To use **rticles** from RStudio:
 
 2) Install the **rmarkdown** and **rticles** packages:
 
-    ```S
+    ```r
     install.packages("rmarkdown")
     devtools::install_github("rstudio/rticles")
     ```
     
 3) Use the `rmarkdown::draft` function to create articles:
 
-    ```S
+    ```r
     rmarkdown::draft("MyJSSArticle.Rmd", template = "jss_article", package = "rticles")
     rmarkdown::draft("MyRJournalArticle", template = "rjournal_article", package = "rticles")
     ```
