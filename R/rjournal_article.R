@@ -10,6 +10,16 @@
 #' @return R Markdown output format to pass to
 #'   \code{\link[rmarkdown:render]{render}}
 #'
+<<<<<<< HEAD
+=======
+#' @examples
+#'
+#' \dontrun{
+#' library(rmarkdown)
+#' draft("MyArticle.Rmd", template = "rjournal_article", package = "rticles")
+#' }
+#'
+>>>>>>> upstream/master
 #' @export
 rjournal_article <- function(...) {
 

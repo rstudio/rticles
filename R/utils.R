@@ -12,7 +12,11 @@ find_resource <- function(template, file) {
   find_file(template, file.path("resources", file))
 }
 
+<<<<<<< HEAD
 knitr_fun <- function(name) getFromNamespace(name, 'knitr')
+=======
+knitr_fun <- function(name) utils::getFromNamespace(name, 'knitr')
+>>>>>>> upstream/master
 
 output_asis <- knitr_fun('output_asis')
 

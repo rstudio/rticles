@@ -9,6 +9,16 @@
 #' @return R Markdown output format to pass to
 #'   \code{\link[rmarkdown:render]{render}}
 #'
+<<<<<<< HEAD
+=======
+#' @examples
+#'
+#' \dontrun{
+#' library(rmarkdown)
+#' draft("MyArticle.Rmd", template = "elsevier_article", package = "rticles")
+#' }
+#'
+>>>>>>> upstream/master
 #' @export
 elsevier_article <- function(...,
                              keep_tex = TRUE,

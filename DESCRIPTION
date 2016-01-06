@@ -1,6 +1,10 @@
 Package: rticles
 Type: Package
+<<<<<<< HEAD
 Title: LaTeX Formats for R Markdown
+=======
+Title: Article Formats for R Markdown
+>>>>>>> upstream/master
 Version: 0.1
 Date: 2016-01-02
 Authors@R: c(
@@ -22,6 +26,7 @@ Authors@R: c(
   person("Charlotte", "Wickham", role = c("aut", "cph"), email = "cwickham@gmail.com"),
   person("Oliver", "Keyes", role = c("aut", "cph"), email = "okeyes@wikimedia.org")
   )
+<<<<<<< HEAD
 Description: A suite of custom R Markdown LaTeX formats and templates for
   authoring journal articles and conference submissions.
 License: GPL-3
@@ -49,3 +54,13 @@ Author: JJ Allaire [aut, cre],
   Charlotte Wickham [aut, cph],
   Oliver Keyes [aut, cph]
 Maintainer: JJ Allaire <jj@rstudio.com>
+=======
+Description: A suite of custom R Markdown formats and templates for
+  authoring journal articles and conference submissions.
+License: GPL-3
+Imports: utils, rmarkdown, knitr, yaml
+SystemRequirements: GNU make
+RoxygenNote: 5.0.1
+Suggests: testthat
+
+>>>>>>> upstream/master
