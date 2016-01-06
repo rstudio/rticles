@@ -1,0 +1,23 @@
+% !TeX root = RJwrapper.tex
+\title{$title$}
+\author{by $for(author)$$author.name$$sep$, $endfor$}
+
+\maketitle
+
+$if(abstract)$
+\abstract{%
+$abstract$
+}
+$endif$
+
+$body$
+
+$for(author)$
+\address{%
+$author.name$\\
+$author.affiliation$\\
+$for(author.address)$$author.address$$sep$\\ $endfor$\\
+}
+$if(author.email)$$author.email$$endif$
+
+$endfor$
