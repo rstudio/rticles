@@ -1,0 +1,67 @@
+\documentclass[journal=$journal$,manuscript=$type$]{achemso}
+\usepackage[version=3]{mhchem}
+\usepackage{amsmath}
+\newcommand*\mycommand[1]{\texttt{\emph{#1}}}
+$for(author)$
+\author{$author.name$}
+$if(author.aff)$
+\affiliation{$author.aff$}
+$endif$
+$if(author.alsoaff)$
+\alsoaffiliation{$author.alsoaff$}
+$endif$
+$if(author.altaff)$
+\altaffiliation{$author.altaff$}
+$endif$
+$if(author.email)$
+$author.email$
+$endif$
+$if(author.phone)$
+\phone{$author.phone$}
+$endif$
+$if(author.fax)$
+\fax{$author.fax$}
+$endif$
+$endfor$
+
+$if(abbr)$
+\abbreviations{$abbr$}
+$endif$
+
+$if(keywords)$
+\keywords{$keywords$}
+$endif$
+
+\title[$title.short$]{$title.formatted$}
+\makeatletter
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={$author-meta$},
+            pdftitle={$title-meta$},
+            colorlinks=true,
+            urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
+            linkcolor=$if(linkcolor)$$linkcolor$$else$magenta$endif$,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+$if(links-as-notes)$
+% Make links footnotes instead of hotlinks:
+\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+$endif$
+$if(strikeout)$
+\usepackage[normalem]{ulem}
+% avoid problems with \sout in headers with hyperref:
+\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+$endif$
+\begin{document}
+\begin{abstract}
+$abstract$
+\end{abstract}
+$body$
+\end{document}
