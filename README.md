@@ -46,11 +46,9 @@ To use **rticles** from RStudio:
 1) Install the latest [RStudio](http://www.rstudio.com/products/rstudio/download/).
 
 2) Install the **rticles** package: 
-
-    ```r
-    devtools::install_github("rstudio/rticles")
-    ```
-
+    
+    install.packages("rticles", type = "source")
+    
 3) Use the **New R Markdown** dialog to create an article from one of the templates:
 
  ![New R Markdown](http://rmarkdown.rstudio.com/images/new_r_markdown.png)
