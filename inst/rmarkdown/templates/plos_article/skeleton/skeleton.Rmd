@@ -1,0 +1,83 @@
+---
+title:
+  # Title must be 150 characters or less
+  "A Capitalized Title: Something about a great Discovery"
+author:
+  - name: FirstName LastName
+    affiliation: '1,2'
+    # If corresponding author (only one corresponding author per manuscript)
+    email: name@company.com
+  - name: Second Author
+    affiliation: '3'
+affiliation:
+  - id: '1'
+    department: Dept/Program/Center
+    institution: Institution Name
+    city: City
+    state: State
+    country: Country
+  - id: '2' 
+    department: Dept/Program/Center
+    institution: Institution Name
+    city: City
+    state: State
+    country: Country
+  - id: '3' 
+    department: Dept/Program/Center
+    institution: Institution Name
+    city: City
+    state: State
+    country: Country
+output: rticles::plos_article
+csl: plos.csl
+bibliography: library.bib
+---
+
+# Abstract {-}
+Please keep the abstract between 250 and 300 words
+
+# Author summary {-}
+Please keep the Author Summary between 150 and 200 words Use first person. PLoS 
+ONE authors please skip this step. Author Summary not valid for PLoS ONE 
+submissions. 
+
+# Introduction {-}
+Cite fancy references [@Garnier2007].
+
+# Results {-}
+Results and Discussion can be combined.
+
+## Subsection 1 {-}
+You can use R chunks directly to plot graphs.
+
+```{r, graph, echo=TRUE, message=FALSE, fig.height=4, fig.width=4, fig.align='center', fig.cap='Figure caption'}
+require("ggplot2")
+x <- 0:100
+y <- 2 * (x + rnorm(length(x), sd = 3) + 3)
+ggplot(data = data.frame(x, y), 
+       aes(x = x, y = y)) + 
+  geom_point() + 
+  geom_smooth(method = "lm")
+```
+
+## Subsection 2 {-}
+
+# Discussion {-}
+
+# Material and Methods {-}
+You may title this section "Methods" or "Models". "Models" is not a valid title 
+for PLoS ONE authors. However, PLoS ONE authors may use "Analysis" 
+
+# Acknowledgments {-}
+Do NOT remove this, even if you are not including acknowledgments
+
+# References {-}
+A reference list should be automatically created here. However it won't. Pandoc 
+will place the list of references at the end of the document instead. There are 
+no convenient solution for now to force Pandoc to do otherwise. The easiest way 
+to get around this problem is to edit the LaTeX file created by Pandoc before 
+compiling it again using the traditional LaTeX commands.
+
+# Figure Legends {-}
+
+# Tables {-}

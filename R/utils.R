@@ -11,6 +11,7 @@ find_file <- function(template, file) {
 find_resource <- function(template, file) {
   find_file(template, file.path("resources", file))
 }
+<<<<<<< HEAD
 
 knitr_fun <- function(name) getFromNamespace(name, 'knitr')
 
@@ -75,3 +76,5 @@ pdf_document_format <- function(..., format, template, csl) {
 
 
 
+=======
+>>>>>>> e31f572082f01511c4f4001f768972024a44b1f0

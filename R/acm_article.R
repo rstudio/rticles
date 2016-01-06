@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #' Association for Computing Machinery (ACM) format.
 #'
 #' Format for creating an Association for Computing Machinery (ACM) articles.
@@ -16,5 +17,15 @@ acm_article <- function(...) {
                       csl = "acm-sig-proceedings.csl",
                       template = "template.tex"
                       )
+=======
+#' @export
+acm <- function() {
+  template <- find_resource("acm", "template.tex")
+  csl <- find_resource("acm" ,"acm-sig-proceedings.csl")
+
+  rmarkdown::pdf_document(
+    template = template,
+    pandoc_args = c("--csl", rmarkdown::pandoc_path_arg(csl)))
+>>>>>>> e31f572082f01511c4f4001f768972024a44b1f0
 }
 

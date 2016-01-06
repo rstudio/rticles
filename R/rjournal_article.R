@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #' R Journal format.
 #'
 #' Format for creating R Journal articles. Adapted from
@@ -17,6 +18,13 @@ rjournal_article <- function(...) {
 
   base <- inherit_pdf_document(..., template = template)
 
+=======
+#' @export
+rjournal_article <- function() {
+  template <- find_resource("rjournal_article", "template.tex")
+
+  base <- rmarkdown::pdf_document(template = template)
+>>>>>>> e31f572082f01511c4f4001f768972024a44b1f0
   # Render will generate tex file, post-process hook generates appropriate
   # RJwrapper.tex and use pandoc to build pdf from that
   base$pandoc$to <- "latex"
@@ -36,6 +44,7 @@ rjournal_article <- function(...) {
   # Mostly copied from knitr::render_sweave
   base$knitr$opts_chunk$comment <- "#>"
 
+<<<<<<< HEAD
   hilight_source <- knitr_fun('hilight_source')
   hook_chunk = function(x, options) {
     if (output_asis(x, options)) return(x)
@@ -43,6 +52,14 @@ rjournal_article <- function(...) {
   }
   hook_input <- function(x, options)
     paste(c('\\begin{Sinput}', hilight_source(x, 'sweave', options), '\\end{Sinput}', ''),
+=======
+  hook_chunk = function(x, options) {
+    if (knitr:::output_asis(x, options)) return(x)
+    paste('\\begin{Schunk}\n', x, '\\end{Schunk}', sep = '')
+  }
+  hook_input <- function(x, options)
+    paste(c('\\begin{Sinput}', knitr:::hilight_source(x, 'sweave', options), '\\end{Sinput}', ''),
+>>>>>>> e31f572082f01511c4f4001f768972024a44b1f0
       collapse = '\n')
   hook_output <- function(x, options) paste('\\begin{Soutput}\n', x, '\\end{Soutput}\n', sep = '')
 
@@ -51,9 +68,45 @@ rjournal_article <- function(...) {
   base$knitr$knit_hooks$output  <- hook_output
   base$knitr$knit_hooks$message <- hook_output
   base$knitr$knit_hooks$warning <- hook_output
+<<<<<<< HEAD
   base$knitr$knit_hooks$plot <- knitr::hook_plot_tex
+=======
+  base$knitr$knit_hooks$plot <- knitr:::hook_plot_tex
+>>>>>>> e31f572082f01511c4f4001f768972024a44b1f0
 
   base
 }
 
+<<<<<<< HEAD
 
+=======
+#' Render a pandoc template.
+#'
+#' This is a hacky way to access the pandoc templating engine.
+#'
+#' @param metadata A named list containing metadata to pass to template.
+#' @param template Path to a pandoc template.
+#' @param output Path to save output.
+#' @return (Invisibly) The path of the generate file.
+#' @examples
+#' x <- rticles:::template_pandoc(
+#'   list(preamble = "%abc", filename = "wickham"),
+#'   rticles:::find_resource("rjournal_article", "RJwrapper.tex"),
+#'   tempfile()
+#' )
+#' if (interactive()) file.show(x)
+template_pandoc <- function(metadata, template, output, verbose = FALSE) {
+  tmp <- tempfile(fileext = ".md")
+  on.exit(unlink(tmp))
+
+  cat("---\n", file = tmp)
+  cat(yaml::as.yaml(metadata), file = tmp, append = TRUE)
+  cat("---\n", file = tmp, append = TRUE)
+  cat("\n", file = tmp, append = TRUE)
+
+  rmarkdown::pandoc_convert(tmp, "markdown", output = output,
+    options = paste0("--template=", template), verbose = verbose)
+
+  invisible(output)
+}
+>>>>>>> e31f572082f01511c4f4001f768972024a44b1f0

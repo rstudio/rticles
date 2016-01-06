@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #' A PDF format for documents based on the LaTeX package \pkg{ctex}
 #'
 #' \code{ctex()} is a wrapper function for \code{rmarkdown::pdf_document()} and
@@ -16,5 +17,11 @@ ctex <- function(..., template = ctex_template(), latex_engine = 'xelatex') {
 
 
 #' @rdname ctex
+=======
+#' A LaTeX template for Chinese documents
+#'
+#' This function returns the path to a LaTeX template for Chinese documents
+#' using the ctex package.
+>>>>>>> e31f572082f01511c4f4001f768972024a44b1f0
 #' @export
 ctex_template <- function() find_resource('ctex', 'default.latex')
