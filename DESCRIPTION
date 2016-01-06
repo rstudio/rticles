@@ -29,4 +29,23 @@ Imports: rmarkdown, knitr, yaml
 SystemRequirements: GNU make
 RoxygenNote: 5.0.1
 Suggests: testthat
-
+NeedsCompilation: no
+Packaged: 2016-01-06 04:47:11 UTC; yufree
+Author: JJ Allaire [aut, cre],
+  R Foundation [aut, cph],
+  Hadley Wickham [aut],
+  Journal of Statistical Software [aut, cph],
+  Yihui Xie [aut],
+  RStudio [cph],
+  Ramnath Vaidyanathan [aut, cph],
+  Assocation for Computing Machinery [aut, cph],
+  Carl Boettiger [aut, cph],
+  Elsevier [aut, cph],
+  Karl Broman [aut, cph],
+  Kirill Mueller [aut, cph],
+  Bastiaan Quast [aut, cph],
+  Randall Pruim [aut, cph],
+  Ben Marwick [aut, cph],
+  Charlotte Wickham [aut, cph],
+  Oliver Keyes [aut, cph]
+Maintainer: JJ Allaire <jj@rstudio.com>
