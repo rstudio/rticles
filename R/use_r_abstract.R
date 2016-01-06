@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #' useR conference abstract format.
 #'
 #' Format for useR conference abstracts. Adapted from
@@ -16,15 +15,3 @@ use_r_abstract <- function(...) {
                       template = "template.tex",
                       csl = "chicago-author-date.csl")
 }
-=======
-#' @export
-use_r_abstract <- function() {
-  template <- find_resource("use_r_abstract", "template.tex")
-  csl <- find_resource("use_r_abstract" ,"chicago-author-date.csl")
-
-  rmarkdown::pdf_document(
-    template = template,
-    pandoc_args = c("--csl", rmarkdown::pandoc_path_arg(csl)))
-}
-
->>>>>>> e31f572082f01511c4f4001f768972024a44b1f0
