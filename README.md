@@ -62,15 +62,15 @@ To use **rticles** from RStudio:
 
 2) Install the **rmarkdown** and **rticles** packages:
 
-    ```r
+    
     install.packages("rmarkdown")
     devtools::install_github("rstudio/rticles")
-    ```
+    
     
 3) Use the `rmarkdown::draft` function to create articles:
 
-    ```r
+    
     rmarkdown::draft("MyJSSArticle.Rmd", template = "jss_article", package = "rticles")
     rmarkdown::draft("MyRJournalArticle", template = "rjournal_article", package = "rticles")
-    ```
+    
 
