@@ -39,6 +39,7 @@ test_format("acm_article")
 test_format("elsevier_article")
 test_format("jss_article")
 test_format("rjournal_article", file_check = FALSE)
+test_format("acs_article")
 
 
 

@@ -10,6 +10,8 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [ACM](http://www.acm.org/) articles
 
+- [ACS](http://pubs.acs.org/) articles
+
 - [Elsevier](https://www.elsevier.com) journal submissions
 
 Under the hood, LaTeX templates are used to ensure that documents conform precisely to submission standards. At the same time, composition and formatting can be done using lightweight [markdown](http://rmarkdown.rstudio.com/authoring_basics.html) syntax, and R code and its output can be seamlessly included using [knitr](http://yihui.name/knitr/).
