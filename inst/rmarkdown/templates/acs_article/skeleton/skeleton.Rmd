@@ -256,6 +256,5 @@ automatically add a sentence pointing to the information on-line:
 
 \end{suppinfo}
 ## References
-\bibliography{acstest}
 
 

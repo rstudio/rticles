@@ -17,11 +17,13 @@
 #'
 #' @export
 acs_article <- function(...,
-         keep_tex = TRUE,
-         md_extensions = c("-autolink_bare_uris")) {
-  inherit_pdf_document(...,
-                       template = find_resource("acs_article", "template.tex"),
-                       keep_tex = keep_tex,
-                       fig_caption = TRUE,
-                       md_extensions = md_extensions)
+                        keep_tex = TRUE,
+                        md_extensions = c("-autolink_bare_uris")){
+  pdf_document_format(...,
+                      keep_tex = keep_tex,
+                      md_extensions = md_extensions,
+                      format = "acs_article",
+                      template = "template.tex",
+                      csl = "american-chemical-society.csl",
+                      fig_caption = TRUE)
 }
