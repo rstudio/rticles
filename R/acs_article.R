@@ -18,12 +18,13 @@
 #' @export
 acs_article <- function(...,
                         keep_tex = TRUE,
-                        md_extensions = c("-autolink_bare_uris")){
+                        md_extensions = c("-autolink_bare_uris"),
+                        fig_caption = TRUE){
   pdf_document_format(...,
                       keep_tex = keep_tex,
                       md_extensions = md_extensions,
                       format = "acs_article",
                       template = "template.tex",
                       csl = "american-chemical-society.csl",
-                      fig_caption = TRUE)
+                      fig_caption = fig_caption)
 }
