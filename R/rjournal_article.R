@@ -31,7 +31,7 @@ rjournal_article <- function(...) {
 
   base$post_processor <- function(metadata, utf8_input, output_file, clean, verbose) {
     filename <- tools::file_path_sans_ext(basename(output_file))
-    wrapper_metadata <- list(preamble = metadata$preable, filename = filename)
+    wrapper_metadata <- list(preamble = metadata$preamble, filename = filename)
     wrapper_template <- find_resource("rjournal_article", "RJwrapper.tex")
     wrapper_output <- file.path(getwd(), "RJwrapper.tex")
     template_pandoc(wrapper_metadata, wrapper_template, wrapper_output, verbose)
