@@ -2,7 +2,7 @@ Package: rticles
 Type: Package
 Title: Article Formats for R Markdown
 Version: 0.2
-Date: 2016-01-02
+Date: 2016-04-24
 Authors@R: c(
   person("JJ", "Allaire", role = c("aut", "cre"), email = "jj@rstudio.com"),
   person(family = "R Foundation", role = c("aut", "cph")),
