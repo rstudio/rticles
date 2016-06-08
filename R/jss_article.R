@@ -1,8 +1,28 @@
+#' Journal of Statistical Software (JSS) format.
+#'
+#' Format for creating a Journal of Statistical Software (JSS) articles. Adapted
+#' from
+#' \href{http://www.jstatsoft.org/about/submissions}{http://www.jstatsoft.org/about/submissions}.
+#'
+#' @inheritParams rmarkdown::pdf_document
+#' @param ... Arguments to \code{rmarkdown::pdf_document}
+#'
+#' @return R Markdown output format to pass to
+#'   \code{\link[rmarkdown:render]{render}}
+#'
+#' @examples
+#'
+#' \dontrun{
+#' library(rmarkdown)
+#' draft("MyArticle.Rmd", template = "jss_article", package = "rticles")
+#' }
+#'
 #' @export
-jss_article <- function() {
+jss_article <- function(..., keep_tex = TRUE) {
+
   template <- find_resource("jss_article", "template.tex")
 
-  base <- rmarkdown::pdf_document(template = template, keep_tex = TRUE)
+  base <- inherit_pdf_document(..., template = template, keep_tex = keep_tex)
 
   # Mostly copied from knitr::render_sweave
   base$knitr$opts_knit$out.format <- "sweave"
@@ -17,7 +37,7 @@ jss_article <- function() {
   base$knitr$opts_chunk$fig.align <- "center"
 
   hook_chunk <- function(x, options) {
-    if (knitr:::output_asis(x, options)) return(x)
+    if (output_asis(x, options)) return(x)
     paste0('\\begin{CodeChunk}\n', x, '\\end{CodeChunk}')
   }
   hook_input <- function(x, options) {
@@ -33,7 +53,8 @@ jss_article <- function() {
   base$knitr$knit_hooks$output  <- hook_output
   base$knitr$knit_hooks$message <- hook_output
   base$knitr$knit_hooks$warning <- hook_output
-  base$knitr$knit_hooks$plot <- knitr:::hook_plot_tex
+  base$knitr$knit_hooks$plot <- knitr::hook_plot_tex
 
   base
 }
+

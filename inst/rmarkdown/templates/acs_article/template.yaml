@@ -1,0 +1,4 @@
+name: American Chemical Society
+description: >
+ Template for creating an article for submission to ACS
+create_dir: true

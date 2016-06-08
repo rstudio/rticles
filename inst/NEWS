@@ -1,0 +1,21 @@
+
+rticles 0.2
+---------------------------------------------------------------------
+
+- Add American Chemical Society (ACS) template
+
+- Allow changing of documentclass and classoption for JSS articles
+
+- Support bibliography for JSS articles (#63)
+
+- Add tightlist macro to Elsevier skeleton
+
+- Add address and footnote examples to Elsevier skeleton
+
+- Fix preamble variable name in R Journal template
+
+
+rticles 0.1
+---------------------------------------------------------------------
+
+- Initial release to CRAN
