@@ -1,0 +1,86 @@
+\documentclass[9pt,twocolumn,twoside]{pnas-new}
+% Use the lineno option to display guide line numbers if required.
+% Note that the use of elements such as single-column equations
+% may affect the guide line number alignment.
+
+\templatetype{if($pnas_type$)$pnas_type$$else$pnasresearcharticle$endif$}  % Choose template
+% {pnasresearcharticle} = Template for a two-column research article
+% {pnasmathematics} = Template for a one-column mathematics article
+% {pnasinvited} = Template for a PNAS invited submission
+
+\title{$title$}
+
+$for(author)$
+\author[$author.code$]{$author.name$}
+$endfor$
+
+$for(address)$
+  \affil[$address.code$]{$address.address$}
+$endfor$
+
+
+% Please give the surname of the lead author for the running footer
+\leadauthor{$lead_author_surname$}
+
+% Please add here a significance statement to explain the relevance of your work
+\significancestatement{$significance$}
+
+
+\authorcontributions{$author_contributions$}
+
+$if($conflict_of_interest$)$
+\authordeclaration{$conflict_of_interest$}
+$endif$
+
+$if($equalauthors$)$
+\equalauthors{\textsuperscript{$equal_authors.code$} $equal_authors.text$}
+$endif$
+
+\correspondingauthor{\textsuperscript{$corresponding_author.code$} $corresponding_author.text$}
+
+% Keywords are not mandatory, but authors are strongly encouraged to provide them. If provided, please include two to five keywords, separated by the pipe symbol, e.g:
+$if(keywords)$ \keywords $for(keywords)$ $keywords$ $|$ $endfor$ $endif$
+
+\begin{abstract}
+$abstract$
+\end{abstract}
+
+\dates{This manuscript was compiled on \today}
+\doi{\url{www.pnas.org/cgi/doi/10.1073/pnas.XXXXXXXXXX}}
+
+\begin{document}
+
+% Optional adjustment to line up main text (after abstract) of first page with line numbers, when using both lineno and twocolumn options.
+% You should only change this length when you've finalised the article contents.
+\verticaladjustment{-2pt}
+
+\maketitle
+\thispagestyle{firststyle}
+\ifthenelse{\boolean{shortarticle}}{\ifthenelse{\boolean{singlecolumn}}{\abscontentformatted}{\abscontent}}{}
+
+% If your first paragraph (i.e. with the \dropcap) contains a list environment (quote, quotation, theorem, definition, enumerate, itemize...), the line after the list may have some extra indentation. If this is the case, add \parshape=0 to the end of the list environment.
+
+$body$
+
+
+\showmatmethods % Display the Materials and Methods section
+
+\acknow{$acknowledgements$}
+
+\showacknow % Display the acknowledgments section
+
+% \pnasbreak splits and balances the columns before the references.
+% If you see unexpected formatting errors, try commenting out this line
+% as it can run into problems with floats and footnotes on the final page.
+\pnasbreak
+
+% Bibliography
+% \bibliography{pnas-sample}
+
+
+$for(include-after)$
+$include-after$
+
+$endfor$
+\end{document}
+

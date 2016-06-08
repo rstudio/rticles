@@ -1,0 +1,5 @@
+name: PNAS Journal Article
+description: >
+ Template for creating an article for submission to P journal
+create_dir: true
+
