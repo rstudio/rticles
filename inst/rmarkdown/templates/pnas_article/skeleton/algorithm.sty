@@ -1,0 +1,108 @@
+%%%%%%%%%%%   ALGORITHMS STYLE  %%%%%%%%%%%
+% This style defines an environment for algorithms with the following
+% features:
+% 
+% 1) Defines an Theorem like environment (not exactly one) for
+%    algorithms called ``algorithm''.
+%    \begin{algorithm}{NAME} ... \end{algorithm}
+%    NAME is the NAME of the algorithm.
+%    Algorithms are numbered using a counter called ``algorithm''.
+% 
+% 2) Inside this environment, the following commands are defined.
+% 
+%    \=  Put the small left arrow commonly used for assignment.
+% 
+%    \invariant{INVARIANT} Use to describe invariants, put its parameter
+%                          between ``{}'' in math mode.
+% 
+%    \begin{Block} ... \end{Block} Environment use to start a indented
+%                                  block of instructions \end{Block} put
+%                                  an ``end'' to close the block.
+% 
+%    \nextBlock{SEPARATOR} Inside a Block, it allows to put a separator
+%                          of parts of the indented block. Usefull for
+%                          constructions like ``IF..THEN..ELSE..END''
+%                       i.e. If cond then
+%                            \begin{Block}
+%                               then part
+%                            \nextBlock{else}
+%                               else part
+%                            \end{Block}
+% 
+% 3) \Blockindent and \algorithmindent are length that specify the
+%    indentention of Blocks and of the algorithm resp.
+% 
+%   4) Instructions are separated by ``\\'', ``\par'' or by leaving a
+%      blank line. Before an ``\end{Block}'' a ``\\'' can't be used.
+% 
+% 
+% Created by Jose Alberto Fernandez R.
+% e-mail:    alberto@cs.umd.edu
+% 
+
+% 
+\newcounter{algorithm}
+\newtheorem{Alg@orithm}[algorithm]{Algorithm}
+% Invariants
+\newcommand{\inv@ariant}[1]{\mbox{$\{#1\}$}}
+% Steps environment
+\newenvironment{ste@ps}[1]{
+\begin{list}{}
+{\setlength\labelsep{0in}
+\addtolength\partopsep\topsep
+\addtolength\partopsep\parsep
+\setlength\parsep{0in}
+\setlength\topsep{0in}
+\setlength\itemsep{0in}
+\setlength\labelwidth{0in}
+\setlength\rightmargin{0in}
+\setlength\leftmargin{#1}}
+}{
+\end{list}
+}
+
+% Block environment
+% Indentation of the Block
+\newlength{\Blockindent}
+% NextBlock command
+\newcommand{\next@Block}[1]{
+\end{ste@ps}
+#1
+\begin{ste@ps}{\Blockindent}
+\item
+}
+
+\newenvironment{Blo@ck}{
+\let\nextBlock\next@Block
+\begin{ste@ps}{\Blockindent}
+\item
+}{
+\end{ste@ps}
+end
+}
+% Algorithm environment
+% Assign command
+\newcommand{\ass@ign}{\mbox{$\leftarrow$}}
+% Indentation of the algorithm
+\newlength{\algorithmindent}
+% Algorithm definition
+\newenvironment{algorithm}[1]{
+\let\=\ass@ign
+\let\invariant\inv@ariant
+\let\Block\Blo@ck
+\let\endBlock\endBlo@ck
+\begin{Alg@orithm} #1
+\rm\par
+\begin{ste@ps}{\algorithmindent}
+\item
+}{
+\end{ste@ps}
+\bf end
+\end{Alg@orithm}
+}
+
+% Setting default indentation
+\setlength{\algorithmindent}{1em}
+\setlength{\Blockindent}{2em}
+
+% End of algorithm.sty

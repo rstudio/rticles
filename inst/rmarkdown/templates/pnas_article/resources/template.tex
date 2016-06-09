@@ -3,10 +3,16 @@
 % Note that the use of elements such as single-column equations
 % may affect the guide line number alignment.
 
-\templatetype{if($pnas_type$)$pnas_type$$else$pnasresearcharticle$endif$}  % Choose template
-% {pnasresearcharticle} = Template for a two-column research article
-% {pnasmathematics} = Template for a one-column mathematics article
-% {pnasinvited} = Template for a PNAS invited submission
+\usepackage[utf8]{inputenc}
+$if(tables)$
+\usepackage{longtable}
+$endif$
+
+$if(pnas_type)$
+\templatetype{$pnas_type$}  % Choose template
+$else$
+\templatetype{pnasresearcharticle}
+$endif$
 
 \title{$title$}
 
@@ -28,18 +34,18 @@ $endfor$
 
 \authorcontributions{$author_contributions$}
 
-$if($conflict_of_interest$)$
+$if(conflict_of_interest)$
 \authordeclaration{$conflict_of_interest$}
 $endif$
 
-$if($equalauthors$)$
+$if(equalauthors)$
 \equalauthors{\textsuperscript{$equal_authors.code$} $equal_authors.text$}
 $endif$
 
 \correspondingauthor{\textsuperscript{$corresponding_author.code$} $corresponding_author.text$}
 
 % Keywords are not mandatory, but authors are strongly encouraged to provide them. If provided, please include two to five keywords, separated by the pipe symbol, e.g:
-$if(keywords)$ \keywords $for(keywords)$ $keywords$ $|$ $endfor$ $endif$
+$if(keywords)$ \keywords $for(keywords)$ $keywords$ \sep $endfor$ $endif$
 
 \begin{abstract}
 $abstract$

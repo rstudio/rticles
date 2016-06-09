@@ -15,38 +15,41 @@ address:
 
 corresponding_author:
   - code: 2
-    text: "To whom correspondence should be addressed. E-mail: bob@email.com""
+    text: "To whom correspondence should be addressed. E-mail: bob@email.com"
 
 ## Remove this if not required    
 equal_authors:
   - code: 1
-    text: A.O.(Author One) and A.T. (Author Two) contributed equally to this work (remove if not applicable).
+    text: "A.O.(Author One) and A.T. (Author Two) contributed equally to this work (remove if not applicable)."
 
 
 author_contributions: |
-Please provide details of author contributions here.
+  Please provide details of author contributions here.
 
 conflict_of_interest: |
-Please declare any conflict of interest here.
+  Please declare any conflict of interest here.
 
 abstract: |
-Please provide an abstract of no more than 250 words in a single paragraph. Abstracts should explain to the general reader the major contributions of the article. References in the abstract must be cited in full within the abstract itself and cited in the text.
+  Please provide an abstract of no more than 250 words in a single paragraph. Abstracts should explain to the general reader the major contributions of the article. References in the abstract must be cited in full within the abstract itself and cited in the text.
 
 
 significance: |
-Authors must submit a 120-word maximum statement about the significance of their research paper written at a level understandable to an undergraduate educated scientist outside their field of speciality. The primary goal of the Significance Statement is to explain the relevance of the work in broad context to a broad readership. The Significance Statement appears in the paper itself and is required for all research papers.
+  Authors must submit a 120-word maximum statement about the significance of their research paper written at a level understandable to an undergraduate educated scientist outside their field of speciality. The primary goal of the Significance Statement is to explain the relevance of the work in broad context to a broad readership. The Significance Statement appears in the paper itself and is required for all research papers.
 
 acknowledgements: |
-Please include your acknowledgments here, set in a single paragraph. Please do not include any acknowledgments in the Supporting Information, or anywhere else in the manuscript.
+  Please include your acknowledgments here, set in a single paragraph. Please do not include any acknowledgments in the Supporting Information, or anywhere else in the manuscript.
 
+pnas_type: pnasresearcharticle
 
-bibliography: mybibfile.bib
+bibliography: pnas-sample.bib
 output: rticles::pnas_article
+#output: pdf_document
+#template: "/home/rstudio/Documents/code/cboettig/rticles/inst/rmarkdown/templates/pnas_article/resources/template.tex"
 
 ---
 
 
-\dropcap{T}his PNAS journal template is provided to help you write your work in the
+This PNAS journal template is provided to help you write your work in the
 correct journal format. Instructions for use are provided below.
 
 Note: please start your introduction without including the word
@@ -131,7 +134,7 @@ PNAS does not take responsibility for or endorse these services, and
 their use has no bearing on acceptance of a manuscript for publication.
 
 ![Placeholder image of a frog with a long example caption to show
-justification setting.<span data-label="fig:frog"></span>](frog)
+justification setting.<span data-label="fig:frog"></span>](frog.png)
 
 Digital Figures {#sec:figures .unnumbered}
 ---------------
@@ -170,8 +173,11 @@ commands `\footnotemark` and `\footnotetext`.
 
 $$\begin{aligned}
 (x+y)^3&=(x+y)(x+y)^2\\
-       &=(x+y)(x^2+2xy+y^2) \numberthis \label{eqn:example} \\
-       &=x^3+3x^2y+3xy^3+x^3. \end{aligned}$$
+       &=(x+y)(x^2+2xy+y^2) \label{eqn:example} \\
+       &=x^3+3x^2y+3xy^3+x^3. 
+\end{aligned}$$
+
+<!-- pandoc writes all tables using longtable, which fails in 2-column mode
 
   Species                    CBS     CV     G3
   ----------------------- ------ ------ ------
@@ -181,6 +187,8 @@ $$\begin{aligned}
 
   : Comparison of the fitted potential energy surfaces and ab initio
   benchmark electronic energy calculations
+
+-->
 
 Supporting Information (SI) {#supporting-information-si .unnumbered}
 ---------------------------
