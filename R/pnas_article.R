@@ -16,7 +16,8 @@
 #' }
 #'
 #' @export
-pnas_article <- function(...) {
+pnas_article <- function(..., keep_tex = TRUE) {
   inherit_pdf_document(...,
+                       keep_tex = keep_tex,
                        template = find_resource("pnas_article", "template.tex"))
 }

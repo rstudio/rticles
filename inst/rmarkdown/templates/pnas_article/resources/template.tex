@@ -17,7 +17,7 @@ $endif$
 \title{$title$}
 
 $for(author)$
-\author[$author.code$]{$author.name$}
+\author[$author.affiliation$]{$author.name$}
 $endfor$
 
 $for(address)$
@@ -38,7 +38,7 @@ $if(conflict_of_interest)$
 \authordeclaration{$conflict_of_interest$}
 $endif$
 
-$if(equalauthors)$
+$if(equal_authors)$
 \equalauthors{\textsuperscript{$equal_authors.code$} $equal_authors.text$}
 $endif$
 
