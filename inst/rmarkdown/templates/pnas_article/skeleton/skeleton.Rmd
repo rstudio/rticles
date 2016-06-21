@@ -26,6 +26,7 @@ equal_authors:
 author_contributions: |
   Please provide details of author contributions here.
 
+## Remove this if not required
 conflict_of_interest: |
   Please declare any conflict of interest here.
 
@@ -39,12 +40,11 @@ significance: |
 acknowledgements: |
   Please include your acknowledgments here, set in a single paragraph. Please do not include any acknowledgments in the Supporting Information, or anywhere else in the manuscript.
 
+## must beo one of: pnasresearcharticle (usual two-column layout), pnasmathematics (one column layout), or pnasinvited (invited submissions only)
 pnas_type: pnasresearcharticle
 
 bibliography: pnas-sample.bib
 output: rticles::pnas_article
-#output: pdf_document
-#template: "/home/rstudio/Documents/code/cboettig/rticles/inst/rmarkdown/templates/pnas_article/resources/template.tex"
 
 ---
 

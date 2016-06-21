@@ -1,7 +1,15 @@
 \documentclass[9pt,twocolumn,twoside]{pnas-new}
+
+%% Some pieces required from the pandoc template
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
 % Use the lineno option to display guide line numbers if required.
 % Note that the use of elements such as single-column equations
 % may affect the guide line number alignment.
+$if(lineno)$
+\lineno
+$endif$
 
 \usepackage[utf8]{inputenc}
 $if(tables)$
