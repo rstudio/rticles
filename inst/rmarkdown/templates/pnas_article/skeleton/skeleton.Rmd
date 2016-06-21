@@ -44,6 +44,8 @@ acknowledgements: |
 pnas_type: pnasresearcharticle
 
 bibliography: pnas-sample.bib
+csl: pnas.csl
+
 output: rticles::pnas_article
 
 ---
