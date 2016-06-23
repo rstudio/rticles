@@ -75,27 +75,17 @@ $abstract$
 
 % If your first paragraph (i.e. with the \dropcap) contains a list environment (quote, quotation, theorem, definition, enumerate, itemize...), the line after the list may have some extra indentation. If this is the case, add \parshape=0 to the end of the list environment.
 
-$body$
-
-
-\showmatmethods % Display the Materials and Methods section
-
 \acknow{$acknowledgements$}
 
-\showacknow % Display the acknowledgments section
+$body$
 
-% \pnasbreak splits and balances the columns before the references.
-% If you see unexpected formatting errors, try commenting out this line
-% as it can run into problems with floats and footnotes on the final page.
-\pnasbreak
+$for(include-after)$
+$include-after$
+$endfor$
+
 
 % Bibliography
 % \bibliography{pnas-sample}
 
-
-$for(include-after)$
-$include-after$
-
-$endfor$
 \end{document}
 

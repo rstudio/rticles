@@ -185,6 +185,8 @@ $$\begin{aligned}
        &=x^3+3x^2y+3xy^3+x^3. 
 \end{aligned}$$
 
+
+
 <!-- pandoc writes all tables using longtable, which fails in 2-column mode
 
   Species                    CBS     CV     G3
@@ -200,8 +202,6 @@ $$\begin{aligned}
 
 Supporting Information (SI) {#supporting-information-si .unnumbered}
 ---------------------------
-
-
 
 
 The main text of the paper must stand on its own without the SI. Refer
@@ -268,5 +268,8 @@ readability. If this is not possible, supply a single PDF file that
 contains all of the SI associated with the paper. This file type will be
 published in raw format and will not be edited or composed.
 
-References {#references .unnumbered}
-==========
+
+<!-- Leave these lines as they are at the end of your .Rmd file to ensure placement of methods & acknowledgements sections before the references-->
+\showmatmethods
+\showacknow
+\pnasbreak
