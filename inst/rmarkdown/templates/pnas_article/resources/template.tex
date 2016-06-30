@@ -17,6 +17,10 @@ $if(tables)$
 \usepackage{longtable}
 $endif$
 
+$for(header-includes)$
+$header-includes$
+$endfor$
+
 $if(pnas_type)$
 \templatetype{$pnas_type$}  % Choose template
 $else$
