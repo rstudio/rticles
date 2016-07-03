@@ -1,0 +1,139 @@
+%%% PNAS Invited Submission style file
+%%% For use with pnas-new.cls
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pnasinvited}[2016/02/28 v1.2 PNAS Invited Submission style]
+
+%% Set whether the abstract is set into the first column
+\setboolean{shortarticle}{false} 
+% true = set into first column
+% false = spans page width
+
+%% Set colors
+\definecolor{color2}{RGB}{200,89,45} % color
+
+%% Set up the author information
+\newsavebox{\authfootinfo}
+\additionalelement{} % Don't use the \additionalelement field (set blank)
+% Author affiliation as footnote
+% Patch the \@author from authblk -- shouldn't display affiliation here
+\patchcmd{\@author}{\\[\affilsep]\AB@affillist}{}{}{}
+
+\appto{\maketitle}{%
+  \savebox{\authfootinfo}{%
+    \begin{minipage}{\textwidth}
+    \footnotesize
+    \vskip4pt\hrule\vskip6pt
+    \AB@affillist\par
+    \@authorcontributions\par
+    \@equalauthors\par
+    \@correspondingauthor\par
+    \@authordeclaration\par
+    \end{minipage}%
+  }
+  \newlength\authfootheight
+  \settoheight{\authfootheight}{\usebox{\authfootinfo}}
+  \addtolength{\authfootheight}{\baselineskip}
+  \begin{authfoot}
+  \usebox{\authfootinfo}
+  \end{authfoot}
+  \afterpage{%
+    \begin{authfoot}
+    \vskip\dimexpr(\authfootheight+\baselineskip)
+    \end{authfoot}
+  }
+}
+
+% Author information in a box at the bottom as two floats.
+\RequirePackage{float}
+\floatstyle{plain}
+\newfloat{authfoot}{b!}{auf}
+
+%% Set sans as default font
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\keywordsfont}{\sffamily}
+
+% Add line after abstract
+\appto{\abscontent}{\par\textcolor{color2}{\hrulefill}}
+
+% Add colour to the title
+\appto{\titlefont}{\color{color2}}
+
+% ...and section headings
+\titleformat{\section}
+  {\large\sffamily\bfseries\color{color2}}
+  {\thesection.}
+  {0.5em}
+  {#1}
+  []
+\titleformat{name=\section,numberless}
+  {\large\sffamily\bfseries\color{color2}}
+  {}
+  {0em}
+  {#1}
+  []  
+\titleformat{\subsection}[runin]
+  {\sffamily\bfseries\itshape}
+  {\thesubsection.}
+  {0.5em}
+  {#1. }
+  []
+% Other section headings left unchanged.
+
+%% No dropcaps. So re-define to do nothing in case user switches
+% from the research article template
+\renewcommand{\dropcap}[1]{\noindent #1}
+
+%% Tweaks to footer
+\fancypagestyle{firststyle}{
+   \fancyfoot[R]{\footerfont PNAS\hspace{7pt}|\hspace{7pt}\textbf{\today}\hspace{7pt}|\hspace{7pt}vol. XXX\hspace{7pt}|\hspace{7pt}no. XX\hspace{7pt}|\hspace{7pt}\textbf{\thepage\space of\space\pageref{LastPage}}}
+   \fancyfoot[L]{\footerfont\@doi}
+}
+
+\fancyfoot[LE]{\footerfont\textbf{\thepage\space of\space\pageref{LastPage}}\hspace{7pt}|\hspace{7pt}\@doi}
+
+%% Make the bibliography number labels bold
+\renewcommand\@biblabel[1]{\textbf{#1}}
+
+%% Adjust the style of the Materials & Methods section
+\titleformat{\matmethods@section}
+   {\large\sffamily\bfseries\color{color2}}
+   {}
+   {0em}
+   {#1}
+   []
+\titlespacing{\matmethods@section}
+	{0pt}
+	{3.25ex plus 1ex minus .2ex}
+	{1.5ex plus .2ex}
+\renewcommand{\showmatmethods}{% Display materials&methods section
+\@ifundefined{@matmethods}{}{\matmethods@section{Materials and Methods}{\noindent\@matmethods}}
+}
+
+%% Adjust the style of the acknowledgments section
+\titleformat{\acknow@section}
+  {\large\sffamily\bfseries\color{color2}}
+  {}
+  {0em}
+  {#1}
+  []
+\titlespacing{\acknow@section}
+	{0pt}
+	{3.25ex plus 1ex minus .2ex}
+	{1.5ex plus .2ex}
+\renewcommand{\showacknow}{% Display acknowledgments section
+\@ifundefined{@acknow}{}{\acknow@section{Acknowledgments}\noindent\@acknow}
+}
+
+%% Break at end of article (before references)
+% The blank line before the strip command ensures there is nothing placed
+% directly before the break (which can cause formatting issues).
+\newcommand{\pnasbreak}{
+
+\begin{strip}
+\vskip-5pt
+\hrule
+\vskip-6pt
+\end{strip}
+}
+
+\endinput
