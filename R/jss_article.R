@@ -35,12 +35,17 @@ jss_article <- function(..., keep_tex = TRUE) {
   base$knitr$opts_chunk$fig.width <- 4.9 # 6.125" * 0.8, as in template
   base$knitr$opts_chunk$fig.height <- 3.675 # 4.9 * 3:4
   base$knitr$opts_chunk$fig.align <- "center"
+  options(prompt = "R> ", continue = "R+ ")
 
   hook_chunk <- function(x, options) {
     if (output_asis(x, options)) return(x)
     paste0('\\begin{CodeChunk}\n', x, '\\end{CodeChunk}')
   }
   hook_input <- function(x, options) {
+    if (options$prompt && length(x)) {
+      x <- gsub("\\n", paste0("\n", getOption("continue")), x)
+      x <- paste0(getOption("prompt"), x)
+    }
     paste0(c('\\begin{CodeInput}', x, '\\end{CodeInput}', ''),
       collapse = '\n')
   }
