@@ -4,10 +4,12 @@
 \alias{pnas_article}
 \title{PNAS journal format.}
 \usage{
-pnas_article(...)
+pnas_article(..., keep_tex = TRUE)
 }
 \arguments{
 \item{...}{Additional arguments to \code{rmarkdown::pdf_document}}
+
+\item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 }
 \value{
 R Markdown output format to pass to
