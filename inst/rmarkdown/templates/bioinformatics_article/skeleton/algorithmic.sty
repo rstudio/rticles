@@ -1,0 +1,192 @@
+% ALGORITHMIC STYLE for LaTeX version 2e
+%
+% This style file is free software; you can redistribute it and/or
+% modify it under the terms of the GNU Lesser General Public
+% License as published by the Free Software Foundation; either
+% version 2 of the License, or (at your option) any later version.
+%
+% This style file is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+% Lesser General Public License for more details.
+%
+% You should have received a copy of the GNU Lesser General Public
+% License along with this style file; if not, write to the
+% Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+% Boston, MA  02111-1307, USA.
+%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{algorithmic}[2006/06/02]
+\typeout{Document Style `algorithmic' - environment}
+%
+\RequirePackage{ifthen}
+\RequirePackage{calc}
+\RequirePackage{keyval}
+\newboolean{ALC@noend}
+\setboolean{ALC@noend}{false}
+\newcounter{ALC@line}
+\newcounter{ALC@rem}
+\newcounter{ALC@depth}
+\newlength{\ALC@tlm}
+%
+\DeclareOption{noend}{\setboolean{ALC@noend}{true}}
+%
+\ProcessOptions
+%
+% For keyval-style options
+\def\algsetup{\setkeys{ALG}}
+%
+% For indentation of algorithms
+\newlength{\algorithmicindent}
+\setlength{\algorithmicindent}{0pt}
+\define@key{ALG}{indent}{\setlength{\algorithmicindent}{#1}}
+\ifthenelse{\lengthtest{\algorithmicindent=0pt}}%
+        {\setlength{\algorithmicindent}{1em}}{}
+%
+% For line numbers' delimiters
+\newcommand{\ALC@linenodelimiter}{:}
+\define@key{ALG}{linenodelimiter}{\renewcommand{\ALC@linenodelimiter}{#1}}
+
+%
+% For line numbers' size
+\newcommand{\ALC@linenosize}{\footnotesize}
+\define@key{ALG}{linenosize}{\renewcommand{\ALC@linenosize}{#1}}
+
+%
+% ALGORITHMIC
+\newcommand{\algorithmicrequire}{\textbf{Require:}}
+\newcommand{\algorithmicensure}{\textbf{Ensure:}}
+\newcommand{\algorithmiccomment}[1]{\{#1\}}
+\newcommand{\algorithmicend}{\textbf{end}}
+\newcommand{\algorithmicif}{\textbf{if}}
+\newcommand{\algorithmicthen}{\textbf{then}}
+\newcommand{\algorithmicelse}{\textbf{else}}
+\newcommand{\algorithmicelsif}{\algorithmicelse\ \algorithmicif}
+\newcommand{\algorithmicendif}{\algorithmicend\ \algorithmicif}
+\newcommand{\algorithmicfor}{\textbf{for}}
+\newcommand{\algorithmicforall}{\textbf{for all}}
+\newcommand{\algorithmicdo}{\textbf{do}}
+\newcommand{\algorithmicendfor}{\algorithmicend\ \algorithmicfor}
+\newcommand{\algorithmicwhile}{\textbf{while}}
+\newcommand{\algorithmicendwhile}{\algorithmicend\ \algorithmicwhile}
+\newcommand{\algorithmicloop}{\textbf{loop}}
+\newcommand{\algorithmicendloop}{\algorithmicend\ \algorithmicloop}
+\newcommand{\algorithmicrepeat}{\textbf{repeat}}
+\newcommand{\algorithmicuntil}{\textbf{until}}
+\newcommand{\algorithmicprint}{\textbf{print}}
+\newcommand{\algorithmicreturn}{\textbf{return}}
+\newcommand{\algorithmictrue}{\textbf{true}}
+\newcommand{\algorithmicfalse}{\textbf{false}}
+\def\ALC@setref{%
+  \def\@currentlabel{\theALC@line}%
+}
+\def\ALC@item[#1]{%
+\if@noparitem \@donoparitem
+  \else \if@inlabel \indent \par \fi
+         \ifhmode \unskip\unskip \par \fi
+         \if@newlist \if@nobreak \@nbitem \else
+                        \addpenalty\@beginparpenalty
+                        \addvspace\@topsep \addvspace{-\parskip}\fi
+           \else \addpenalty\@itempenalty \addvspace\itemsep
+          \fi
+    \global\@inlabeltrue
+\fi
+\everypar{\global\@minipagefalse\global\@newlistfalse
+          \if@inlabel\global\@inlabelfalse \hskip -\parindent \box\@labels
+             \penalty\z@ \fi
+          \everypar{}}\global\@nobreakfalse
+\if@noitemarg \@noitemargfalse \if@nmbrlist \refstepcounter{\@listctr}\fi \fi
+\sbox\@tempboxa{\makelabel{#1}}%
+\global\setbox\@labels
+ \hbox{\unhbox\@labels \hskip \itemindent
+       \hskip -\labelwidth \hskip -\ALC@tlm
+       \ifdim \wd\@tempboxa >\labelwidth
+                \box\@tempboxa
+          \else \hbox to\labelwidth {\unhbox\@tempboxa}\fi
+       \hskip \ALC@tlm}\ignorespaces}
+%
+\newenvironment{algorithmic}[1][0]{
+\setcounter{ALC@depth}{\@listdepth}%
+\let\@listdepth\c@ALC@depth%
+\let\@item\ALC@item%
+  \newcommand{\ALC@lno}{%
+\ifthenelse{\equal{\arabic{ALC@rem}}{0}}
+{{\ALC@linenosize \arabic{ALC@line}\ALC@linenodelimiter}}{}%
+}
+\let\@listii\@listi
+\let\@listiii\@listi
+\let\@listiv\@listi
+\let\@listv\@listi
+\let\@listvi\@listi
+\let\@listvii\@listi
+  \newenvironment{ALC@g}{
+    \begin{list}{\ALC@lno}{ \itemsep\z@ \itemindent\z@
+    \listparindent\z@ \rightmargin\z@ 
+    \topsep\z@ \partopsep\z@ \parskip\z@\parsep\z@
+    \leftmargin \algorithmicindent%1em
+    \addtolength{\ALC@tlm}{\leftmargin}
+    }
+  }
+  {\end{list}}
+  \newcommand{\ALC@it}{\refstepcounter{ALC@rem}\refstepcounter{ALC@line}\ifthenelse{\equal{\arabic{ALC@rem}}{#1}}{\setcounter{ALC@rem}{0}}{}\item\ALC@setref}
+  \newcommand{\ALC@com}[1]{\ifthenelse{\equal{##1}{default}}%
+{}{\ \algorithmiccomment{##1}}}
+  \newcommand{\REQUIRE}{\item[\algorithmicrequire]}
+  \newcommand{\ENSURE}{\item[\algorithmicensure]}
+  \newcommand{\PRINT}{\ALC@it\algorithmicprint{}\ \ }
+  \newcommand{\RETURN}{\ALC@it\algorithmicreturn{}\ \ }
+  \newcommand{\TRUE}{\algorithmictrue{}}
+  \newcommand{\FALSE}{\algorithmicfalse{}}
+  \newcommand{\STATE}{\ALC@it}
+  \newcommand{\STMT}{\ALC@it}
+  \newcommand{\COMMENT}[1]{\algorithmiccomment{##1}}
+  \newenvironment{ALC@if}{\begin{ALC@g}}{\end{ALC@g}}
+  \newenvironment{ALC@for}{\begin{ALC@g}}{\end{ALC@g}}
+  \newenvironment{ALC@whl}{\begin{ALC@g}}{\end{ALC@g}}
+  \newenvironment{ALC@loop}{\begin{ALC@g}}{\end{ALC@g}}
+  \newenvironment{ALC@rpt}{\begin{ALC@g}}{\end{ALC@g}}
+  \renewcommand{\\}{\@centercr}
+  \newcommand{\IF}[2][default]{\ALC@it\algorithmicif\ ##2\ \algorithmicthen%
+\ALC@com{##1}\begin{ALC@if}}
+  \newcommand{\ELSE}[1][default]{\end{ALC@if}\ALC@it\algorithmicelse%
+\ALC@com{##1}\begin{ALC@if}}
+  \newcommand{\ELSIF}[2][default]%
+{\end{ALC@if}\ALC@it\algorithmicelsif\ ##2\ \algorithmicthen%
+\ALC@com{##1}\begin{ALC@if}}
+  \newcommand{\FOR}[2][default]{\ALC@it\algorithmicfor\ ##2\ \algorithmicdo%
+\ALC@com{##1}\begin{ALC@for}}
+  \newcommand{\FORALL}[2][default]{\ALC@it\algorithmicforall\ ##2\ %
+\algorithmicdo%
+\ALC@com{##1}\begin{ALC@for}}
+  \newcommand{\WHILE}[2][default]{\ALC@it\algorithmicwhile\ ##2\ %
+\algorithmicdo%
+\ALC@com{##1}\begin{ALC@whl}}
+  \newcommand{\LOOP}[1][default]{\ALC@it\algorithmicloop%
+\ALC@com{##1}\begin{ALC@loop}}
+  \newcommand{\REPEAT}[1][default]{\ALC@it\algorithmicrepeat%
+\ALC@com{##1}\begin{ALC@rpt}}
+  \newcommand{\UNTIL}[1]{\end{ALC@rpt}\ALC@it\algorithmicuntil\ ##1}
+  \ifthenelse{\boolean{ALC@noend}}{
+    \newcommand{\ENDIF}{\end{ALC@if}}
+    \newcommand{\ENDFOR}{\end{ALC@for}}
+    \newcommand{\ENDWHILE}{\end{ALC@whl}}
+    \newcommand{\ENDLOOP}{\end{ALC@loop}}
+  }{
+    \newcommand{\ENDIF}{\end{ALC@if}\ALC@it\algorithmicendif}
+    \newcommand{\ENDFOR}{\end{ALC@for}\ALC@it\algorithmicendfor}
+    \newcommand{\ENDWHILE}{\end{ALC@whl}\ALC@it\algorithmicendwhile}
+    \newcommand{\ENDLOOP}{\end{ALC@loop}\ALC@it\algorithmicendloop}
+  } 
+  \renewcommand{\@toodeep}{}
+  \begin{list}{\ALC@lno}{\setcounter{ALC@rem}{0}\setcounter{ALC@line}{0}%
+    \itemsep\z@ \itemindent\z@ \listparindent\z@%
+    \partopsep\z@ \parskip\z@ \parsep\z@%
+    \labelsep 0.5em \topsep 0.2em%
+\ifthenelse{\equal{#1}{0}}
+  {\labelwidth 0.5em }
+  {\labelwidth  1.2em }
+\leftmargin\labelwidth \addtolength{\leftmargin}{\labelsep}
+    \ALC@tlm\labelsep
+  }
+}
+{\end{list}}

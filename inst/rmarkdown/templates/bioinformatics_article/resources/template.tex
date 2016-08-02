@@ -1,0 +1,45 @@
+\documentclass{bioinfo}
+\copyrightyear{2016} \pubyear{2016}
+
+\access{Advance Access Publication Date: $access_date.day$ $access_date.month$ $access_date.year$}
+\appnotes{Manuscript Category}
+
+\begin{document}
+\firstpage{1}
+
+\subtitle{$subject_section$}
+
+\title[$title.short$]{$title.full$}
+
+\author{
+$for(author)$
+[$author.affiliation$]{$author.name$}
+$endfor$
+}
+
+\address{
+$for(address)$
+[$address.code$]{$address.address$}
+$endfor$
+}
+
+\corresp{$corresponding_author.text$}
+
+\history{Received on XXX; revised on XXX; accepted on XXX}
+
+\editor{Associate Editor: XXX}
+
+\abstract{
+\textbf{Motivation:} $motivation$\\
+\textbf{Results:} $results$\\
+\textbf{Availability:} $availability$\\
+\textbf{Contact:}\href{$corresponding_author.email$}{$corresponding_author.email$}\\
+\textbf{Supplementary information:} $supplmentary_info$}
+
+\maketitle
+
+$body$
+
+\bibliography{bioinformatics-sample}
+
+\end{document}

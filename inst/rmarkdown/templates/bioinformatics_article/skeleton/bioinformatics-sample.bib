@@ -1,0 +1,921 @@
+% This file was created with JabRef 2.3b2.
+% Encoding: Cp1252
+
+@ARTICLE{Boffelli03,
+  author = {Markus Bauer and Gunnar W Klau and Knut Reinert},
+  title = {{Accurate multiple sequence-structure alignment of RNA sequences
+    using combinatorial optimization.}},
+  journal = {BMC Bioinformatics},
+  year = {2007},
+  volume = {8},
+  pages = {271},
+  abstract = {BACKGROUND: The discovery of functional non-coding RNA sequences has
+    led to an increasing interest in algorithms related to RNA analysis.
+    Traditional sequence alignment algorithms, however, fail at computing
+    reliable alignments of low-homology RNA sequences. The spatial conformation
+    of RNA sequences largely determines their function, and therefore
+    RNA alignment algorithms have to take structural information into
+    account. RESULTS: We present a graph-based representation for sequence-structure
+    alignments, which we model as an integer linear program (ILP). We
+    sketch how we compute an optimal or near-optimal solution to the
+    ILP using methods from combinatorial optimization, and present results
+    on a recently published benchmark set for RNA alignments. CONCLUSION:
+    The implementation of our algorithm yields better alignments in terms
+    of two published scores than the other programs that we tested: This
+    is especially the case with an increasing number of input sequences.
+    Our program LARA is freely available for academic purposes from http://www.planet-lisa.net.},
+  doi = {10.1186/1471-2105-8-271},
+  institution = {Department of Mathematics and Computer Science, Free University Berlin,
+    Berlin, Germany. mbauer@inf.fu-berlin.de},
+  keywords = {Algorithms; Computer Simulation; Linear Models; Models, Chemical;
+    Models, Genetic; RNA; Sensitivity and Specificity; Sequence Alignment;
+    Sequence Analysis, RNA; Sequence Homology, Nucleic Acid},
+  owner = {binf007},
+  pii = {1471-2105-8-271},
+  pmid = {17662141},
+  timestamp = {2008.01.21},
+  url = {http://dx.doi.org/10.1186/1471-2105-8-271}
+}
+
+@ARTICLE{Bag01,
+  author = {Joachim Friedrich and Thomas Dandekar and Matthias Wolf and Tobias
+    Müller},
+  title = {{ProfDist: a tool for the construction of large phylogenetic trees
+    based on profile distances.}},
+  journal = {Bionformatics},
+  year = {2005},
+  volume = {21},
+  pages = {2108--2109},
+  number = {9},
+  month = {May},
+  abstract = {SUMMARY: ProfDist is a user-friendly software package using the profile-neighbor-joining
+    method (PNJ) in inferring phylogenies based on profile distances
+    on DNA or RNA sequences. It is a tool for reconstructing and visualizing
+    large phylogenetic trees providing new and standard features with
+    a special focus on time efficency, robustness and accuracy. AVAILABILITY:
+    A Windows version of ProfDist comes with a graphical user interface
+    and is freely available at http://profdist.bioapps.biozentrum.uni-wuerzburg.de},
+  doi = {10.1093/bioinformatics/bti289},
+  institution = {Department of Bioinformatics, Biocenter, University of Würzburg,
+    Germany.},
+  keywords = {Algorithms; Chromosome Mapping; DNA Mutational Analysis; Gene Expression
+    Profiling; Linkage Disequilibrium; Phylogeny; Sequence Alignment;
+    Sequence Analysis, DNA; Software; User-Computer Interface},
+  owner = {binf007},
+  pii = {bti289},
+  pmid = {15677706},
+  timestamp = {2008.01.21},
+  url = {http://dx.doi.org/10.1093/bioinformatics/bti289}
+}
+
+@ARTICLE{Gascuel1997,
+  author = {O. Gascuel},
+  title = {{BIONJ: an improved version of the NJ algorithm based on a simple
+    model of sequence data.}},
+  journal = {Mol Biol Evol},
+  year = {1997},
+  volume = {14},
+  pages = {685--695},
+  number = {7},
+  month = {Jul},
+  abstract = {We propose an improved version of the neighbor-joining (NJ) algorithm
+    of Saitou and Nei. This new algorithm, BIONJ, follows the same agglomerative
+    scheme as NJ, which consists of iteratively picking a pair of taxa,
+    creating a new mode which represents the cluster of these taxa, and
+    reducing the distance matrix by replacing both taxa by this node.
+    Moreover, BIONJ uses a simple first-order model of the variances
+    and covariances of evolutionary distance estimates. This model is
+    well adapted when these estimates are obtained from aligned sequences.
+    At each step it permits the selection, from the class of admissible
+    reductions, of the reduction which minimizes the variance of the
+    new distance matrix. In this way, we obtain better estimates to choose
+    the pair of taxa to be agglomerated during the next steps. Moreover,
+    in comparison with NJ's estimates, these estimates become better
+    and better as the algorithm proceeds. BIONJ retains the good properties
+    of NJ--especially its low run time. Computer simulations have been
+    performed with 12-taxon model trees to determine BIONJ's efficiency.
+    When the substitution rates are low (maximum pairwise divergence
+    approximately 0.1 substitutions per site) or when they are constant
+    among lineages, BIONJ is only slightly better than NJ. When the substitution
+    rates are higher and vary among lineages,BIONJ clearly has better
+    topological accuracy. In the latter case, for the model trees and
+    the conditions of evolution tested, the topological error reduction
+    is on the average around 20\%. With highly-varying-rate trees and
+    with high substitution rates (maximum pairwise divergence approximately
+    1.0 substitutions per site), the error reduction may even rise above
+    50\%, while the probability of finding the correct tree may be augmented
+    by as much as 15\%.},
+  institution = {GERAD, Ecole des HEC, Montreal, Quebec, Canada. gascuel@lirmm.fr},
+  keywords = {Algorithms; Evolution; Models, Biological; Phylogeny; Sequence Analysis;
+    Software},
+  owner = {binf007},
+  pmid = {9254330},
+  timestamp = {2008.01.21}
+}
+
+@ARTICLE{Gerlach2007,
+  author = {Daniel Gerlach and Matthias Wolf and Thomas Dandekar and Tobias Müller
+    and Andreas Pokorny and Sven Rahmann},
+  title = {{Deep metazoan phylogeny.}},
+  journal = {In Silico Biol},
+  year = {2007},
+  volume = {7},
+  pages = {151--154},
+  number = {2},
+  abstract = {We reconstructed a robust phylogenetic tree of the Metazoa, consisting
+    of almost 1,500 taxa, by profile neighbor joining (PNJ), an automated
+    computational method that inherits the efficiency of the neighbor
+    joining algorithm. This tree supports the one proposed in the latest
+    review on metazoan phylogeny. Our main goal is not to discuss aspects
+    of the phylogeny itself, but rather to point out that PNJ can be
+    a valuable tool when the basal branching pattern of a large phylogenetic
+    tree must be estimated, whereas traditional methods would be computationally
+    impractical.},
+  institution = {Department of Bioinformatics, Biocenter, University of Würzburg,
+    Am Hubland, D-97074 Würzburg, Germany.},
+  keywords = {Algorithms; Animals; Computational Biology; Models, Genetic; Phylogeny;
+    RNA, Ribosomal, 18S},
+  owner = {binf007},
+  pii = {2007070015},
+  pmid = {17688440},
+  timestamp = {2008.01.21}
+}
+
+@ARTICLE{Grajales2007,
+  author = {Alejandro Grajales and Catalina Aguilar and Juan A Sánchez},
+  title = {Phylogenetic reconstruction using secondary structures of Internal
+    Transcribed Spacer 2 (ITS2, rDNA): finding the molecular and morphological
+    gap in Caribbean gorgonian corals.},
+  journal = {BMC Evol Biol},
+  year = {2007},
+  volume = {7},
+  pages = {90},
+  abstract = {BACKGROUND: Most phylogenetic studies using current methods have focused
+    on primary DNA sequence information. However, RNA secondary structures
+    are particularly useful in systematics because they include characteristics,
+    not found in the primary sequence, that give "morphological" information.
+    Despite the number of recent molecular studies on octocorals, there
+    is no consensus opinion about a region that carries enough phylogenetic
+    resolution to solve intrageneric or close species relationships.
+    Moreover, intrageneric morphological information by itself does not
+    always produce accurate phylogenies; intra-species comparisons can
+    reveal greater differences than intra-generic ones. The search for
+    new phylogenetic approaches, such as by RNA secondary structure analysis,
+    is therefore a priority in octocoral research. RESULTS: Initially,
+    twelve predicted RNA secondary structures were reconstructed to provide
+    the basic information for phylogenetic analyses; they accorded with
+    the 6 helicoidal ring model, also present in other groups of corals
+    and eukaryotes. We obtained three similar topologies for nine species
+    of the Caribbean gorgonian genus Eunicea (candelabrum corals) with
+    two sister taxa as outgroups (genera Plexaura and Pseudoplexaura)
+    on the basis of molecular morphometrics of ITS2 RNA secondary structures
+    only, traditional primary sequence analyses and maximum likelihood,
+    and a Bayesian analysis of the combined data. The latter approach
+    allowed us to include both primary sequence and RNA molecular morphometrics;
+    each data partition was allowed to have a different evolution rate.
+    In addition, each helix was partitioned as if it had evolved at a
+    distinct rate. Plexaura flexuosa was found to group within Eunicea;
+    this was best supported by both the molecular morphometrics and combined
+    analyses. We suggest Eunicea flexuosa (Lamouroux, 1821) comb. nov.,
+    and we present a new species description including Scanning Electron
+    Microscopy (SEM) images of morphological characteristics (sclerites).
+    Eunicea flexuosa, E. pallida, E. laxispica and E. mammosa formed
+    a separate clade in the molecular phylogenies, and were reciprocally
+    monophyletic with respect to other Eunicea (Euniceopsis subgenus,
+    e.g. E. tourneforti and E. laciniata) in the molecular morphometrics
+    tree, with the exception of E. fusca. Moreover, we suggest a new
+    diagnostic character for Eunicea, also present in E. flexuosa: middle
+    layer sclerites > 1 mm in length. CONCLUSION: ITS2 was a reliable
+    sequence for intrageneric studies in gorgonian octocorals because
+    of the amount of phylogenetic signal, and was corroborated against
+    morphological characters separating Eunicea from Plexaura. The ITS2
+    RNA secondary structure approach to phylogeny presented here did
+    not rely on alignment methods such as INDELS, but provided clearly
+    homologous characters for partition analysis and RNA molecular morphometrics.
+    These approaches support the divergence of Eunicea flexuosa comb.
+    nov. from the outgroup Plexaura, although it has been considered
+    part of this outgroup for nearly two centuries because of morphological
+    resemblance.},
+  doi = {10.1186/1471-2148-7-90},
+  institution = {>},
+  keywords = {Animals; Anthozoa; DNA, Ribosomal Spacer; Evolution, Molecular; Genetic
+    Speciation; Nucleic Acid Conformation; Phylogeny; RNA, Ribosomal;
+    Variation (Genetics)},
+  owner = {binf007},
+  pii = {1471-2148-7-90},
+  pmid = {17562014},
+  timestamp = {2008.07.30},
+  url = {http://dx.doi.org/10.1186/1471-2148-7-90}
+}
+
+@ARTICLE{Hochsmann2004,
+  author = {Hochsmann, M. and Hochsmann, M. and Voss, B. and Giegerich, R.},
+  title = {{Pure multiple RNA secondary structure alignments: a progressive
+    profile approach}},
+  journal = {IEEE/ACM Transactions on Computational Biology and Bioinformatics},
+  year = {2004},
+  volume = {1},
+  pages = {53--62},
+  number = {1},
+  abstract = {In functional, noncoding RNA, structure is often essential to function.
+    While the full 3D structure is very difficult to determine, the 2D
+    structure of an RNA molecule gives good clues to its 3D structure,
+    and for molecules of moderate length, it can be predicted with good
+    reliability. Structure comparison is, in analogy to sequence comparison,
+    the essential technique to infer related function. We provide a method
+    for computing multiple alignments of RNA secondary structures under
+    the tree alignment model, which is suitable to cluster RNA molecules
+    purely on the structural level, i.e., sequence similarity is not
+    required. We give a systematic generalization of the profile alignment
+    method from strings to trees and forests. We introduce a tree profile
+    representation of RNA secondary structure alignments which allows
+    reasonable scoring in structure comparison. Besides the technical
+    aspects, an RNA profile is a useful data structure to represent multiple
+    structures of RNA sequences. Moreover, we propose a visualization
+    of RNA consensus structures that is enriched by the full sequence
+    information.},
+  booktitle = {IEEE/ACM Transactions on Computational Biology and Bioinformatics},
+  doi = {10.1109/TCBB.2004.11},
+  editor = {Voss, B.},
+  issn = {1545-5963},
+  keywords = {biology computing, macromolecules, molecular biophysics, trees (mathematics),
+    forest alignment, functional noncoding RNA structure, progressive
+    profile approach, pure multiple RNA secondary structure alignments,
+    strings, structure comparison, tree alignment model, tree profile
+    representation, 65, Index Terms- Alignment of trees, RNA secondary
+    structures, noncoding RNAs.},
+  owner = {binf007},
+  timestamp = {2008.01.23}
+}
+
+@ARTICLE{Hudelot2003,
+  author = {Cendrine Hudelot and Vivek Gowri-Shankar and Howsun Jow and Magnus
+    Rattray and Paul G Higgs},
+  title = {{RNA-based phylogenetic methods: application to mammalian mitochondrial
+    RNA sequences.}},
+  journal = {Mol Phylogenet Evol},
+  year = {2003},
+  volume = {28},
+  pages = {241--252},
+  number = {2},
+  month = {Aug},
+  abstract = {The PHASE software package allows phylogenetic tree construction with
+    a number of evolutionary models designed specifically for use with
+    RNA sequences that have conserved secondary structure. Evolution
+    in the paired regions of RNAs occurs via compensatory substitutions,
+    hence changes on either side of a pair are correlated. Accounting
+    for this correlation is important for phylogenetic inference because
+    it affects the likelihood calculation. In the present study we use
+    the complete set of tRNA and rRNA sequences from 69 complete mammalian
+    mitochondrial genomes. The likelihood calculation uses two evolutionary
+    models simultaneously for different parts of the sequence: a paired-site
+    model for the paired sites and a single-site model for the unpaired
+    sites. We use Bayesian phylogenetic methods and a Markov chain Monte
+    Carlo algorithm is used to obtain the most probable trees and posterior
+    probabilities of clades. The results are well resolved for almost
+    all the important branches on the mammalian tree. They support the
+    arrangement of mammalian orders within the four supra-ordinal clades
+    that have been identified by studies of much larger data sets mainly
+    comprising nuclear genes. Groups such as the hedgehogs and the murid
+    rodents, which have been problematic in previous studies with mitochondrial
+    proteins, appear in their expected position with the other members
+    of their order. Our choice of genes and evolutionary model appears
+    to be more reliable and less subject to biases caused by variation
+    in base composition than previous studies with mitochondrial genomes.},
+  institution = {School of Biological Sciences, University of Manchester, UK.},
+  keywords = {Animals; Bayes Theorem; Mammals; Models, Genetic; Phylogeny; RNA},
+  owner = {binf007},
+  pii = {S1055790303000617},
+  pmid = {12878461},
+  timestamp = {2008.01.21}
+}
+
+@ARTICLE{Jow2002,
+  author = {H. Jow and C. Hudelot and M. Rattray and P. G. Higgs},
+  title = {Bayesian phylogenetics using an RNA substitution model applied to
+    early mammalian evolution.},
+  journal = {Mol Biol Evol},
+  year = {2002},
+  volume = {19},
+  pages = {1591--1601},
+  number = {9},
+  month = {Sep},
+  abstract = {We study the phylogeny of the placental mammals using molecular data
+    from all mitochondrial tRNAs and rRNAs of 54 species. We use probabilistic
+    substitution models specific to evolution in base paired regions
+    of RNA. A number of these models have been implemented in a new phylogenetic
+    inference software package for carrying out maximum likelihood and
+    Bayesian phylogenetic inferences. We describe our Bayesian phylogenetic
+    method which uses a Markov chain Monte Carlo algorithm to provide
+    samples from the posterior distribution of tree topologies. Our results
+    show support for four primary mammalian clades, in agreement with
+    recent studies of much larger data sets mainly comprising nuclear
+    DNA. We discuss some issues arising when using Bayesian techniques
+    on RNA sequence data.},
+  institution = {Department of Computer Science, University of Manchester, UK.},
+  keywords = {Animals; Base Sequence; Bayes Theorem; Databases, Genetic; Evolution,
+    Molecular; Humans; Mammals; Models, Genetic; Phylogeny; RNA; Species
+    Specificity},
+  owner = {binf007},
+  pmid = {12200486},
+  timestamp = {2008.06.06}
+}
+
+@INCOLLECTION{Jukes69,
+  author = {Jukes, T. and Cantor, C.R.},
+  title = {Evolution of protein molecules},
+  booktitle = {Mammalian Protein Metabolism},
+  publisher = {Academic Press},
+  year = {1969},
+  editor = {Munro, H},
+  pages = {21-132},
+  address = {New York, USA}
+}
+
+@ARTICLE{Mueller2004,
+  author = {Tobias Müller and Sven Rahmann and Thomas Dandekar and Matthias Wolf},
+  title = {{Accurate and robust phylogeny estimation based on profile distances:
+    a study of the Chlorophyceae (Chlorophyta).}},
+  journal = {BMC Evol Biol},
+  year = {2004},
+  volume = {4},
+  pages = {20},
+  month = {Jun},
+  abstract = {BACKGROUND: In phylogenetic analysis we face the problem that several
+    subclade topologies are known or easily inferred and well supported
+    by bootstrap analysis, but basal branching patterns cannot be unambiguously
+    estimated by the usual methods (maximum parsimony (MP), neighbor-joining
+    (NJ), or maximum likelihood (ML)), nor are they well supported. We
+    represent each subclade by a sequence profile and estimate evolutionary
+    distances between profiles to obtain a matrix of distances between
+    subclades. RESULTS: Our estimator of profile distances generalizes
+    the maximum likelihood estimator of sequence distances. The basal
+    branching pattern can be estimated by any distance-based method,
+    such as neighbor-joining. Our method (profile neighbor-joining, PNJ)
+    then inherits the accuracy and robustness of profiles and the time
+    efficiency of neighbor-joining. CONCLUSIONS: Phylogenetic analysis
+    of Chlorophyceae with traditional methods (MP, NJ, ML and MrBayes)
+    reveals seven well supported subclades, but the methods disagree
+    on the basal branching pattern. The tree reconstructed by our method
+    is better supported and can be confirmed by known morphological characters.
+    Moreover the accuracy is significantly improved as shown by parametric
+    bootstrap.},
+  doi = {10.1186/1471-2148-4-20},
+  institution = {Department of Bioinformatics, Biocenter, University of Würzburg,
+    Am Hubland, D-97074 Würzburg, Germany. tobias.mueller@biozentrum.uni-wuerzburg.de},
+  keywords = {Algae, Green; Animals; Computational Biology; Evolution, Molecular;
+    Models, Genetic; Phylogeny; RNA, Plant; RNA, Ribosomal; RNA, Ribosomal,
+    18S},
+  owner = {binf007},
+  pii = {1471-2148-4-20},
+  pmid = {15222898},
+  timestamp = {2008.01.21},
+  url = {http://dx.doi.org/10.1186/1471-2148-4-20}
+}
+
+@ARTICLE{Mueller2002,
+  author = {Tobias Müller and Rainer Spang and Martin Vingron},
+  title = {{Estimating amino acid substitution models: a comparison of Dayhoff's
+    estimator, the resolvent approach and a maximum likelihood method.}},
+  journal = {Mol Biol Evol},
+  year = {2002},
+  volume = {19},
+  pages = {8--13},
+  number = {1},
+  month = {Jan},
+  abstract = {Evolution of proteins is generally modeled as a Markov process acting
+    on each site of the sequence. Replacement frequencies need to be
+    estimated based on sequence alignments. Here we compare three approaches:
+    First, the original method by Dayhoff, Schwartz, and Orcutt (1978)
+    Atlas Protein Seq. Struc. 5:345-352, secondly, the resolvent method
+    (RV) by Müller and Vingron (2000) J. Comput. Biol. 7(6):761-776,
+    and finally a maximum likelihood approach (ML) developed in this
+    paper. We evaluate the methods using a highly divergent and inhomogeneous
+    set of sequence alignments as an input to the estimation procedure.
+    ML is the method of choice for small sets of input data. Although
+    the RV method is computationally much less demanding it performs
+    only slightly worse than ML. Therefore, it is perfectly appropriate
+    for large-scale applications.},
+  institution = {Deutsches Krebsforschungszentrum, Theoretische Bioinformatik, Im
+    Neuenheimer Feld 280, 69120 Heidelberg, Germany. t.mueller@dkfz.de},
+  keywords = {Algorithms; Amino Acid Sequence; Amino Acid Substitution; Computer
+    Simulation; Evolution, Molecular; Likelihood Functions; Markov Chains;
+    Models, Genetic; Proteins; Sequence Alignment},
+  owner = {binf007},
+  pmid = {11752185},
+  timestamp = {2008.01.25}
+}
+
+@ARTICLE{Mueller2000,
+  author = {T. Müller and M. Vingron},
+  title = {{Modeling amino acid replacement.}},
+  journal = {J Comput Biol},
+  year = {2000},
+  volume = {7},
+  pages = {761--776},
+  number = {6},
+  abstract = {The estimation of amino acid replacement frequencies during molecular
+    evolution is crucial for many applications in sequence analysis.
+    Score matrices for database search programs or phylogenetic analysis
+    rely on such models of protein evolution. Pioneering work was done
+    by Dayhoff et al. (1978) who formulated a Markov model of evolution
+    and derived the famous PAM score matrices. Her estimation procedure
+    for amino acid exchange frequencies is restricted to pairs of proteins
+    that have a constant and small degree of divergence. Here we present
+    an improved estimator, called the resolvent method, that is not subject
+    to these limitations. This extension of Dayhoff's approach enables
+    us to estimate an amino acid substitution model from alignments of
+    varying degree of divergence. Extensive simulations show the capability
+    of the new estimator to recover accurately the exchange frequencies
+    among amino acids. Based on the SYSTERS database of aligned protein
+    families (Krause and Vingron, 1998) we recompute a series of score
+    matrices.},
+  doi = {10.1089/10665270050514918},
+  institution = {Deutsches Krebsforschungszentrum, Theoretische Bioinformatik, 69120
+    Heidelberg, Germany. t.mueller/m.vingron},
+  keywords = {Amino Acid Substitution; Computer Simulation; Evolution, Molecular;
+    Likelihood Functions; Markov Chains; Models, Biological; Proteins;
+    Stochastic Processes; Time Factors},
+  owner = {binf007},
+  pmid = {11382360},
+  timestamp = {2008.01.25},
+  url = {http://dx.doi.org/10.1089/10665270050514918}
+}
+
+@INCOLLECTION{Buch2006,
+  author = {Sven Rahmann and Tobias Muller and Thomas Dandekar and Matthias Wolf},
+  title = {{Efficient and robust analysis of large phylogenetic datasets}},
+  booktitle = {Advanced Data Mining Technologies in Bioinformatics},
+  publisher = {Idea Group, Inc.},
+  year = {2006},
+  editor = {Hui-Huang Hsu},
+  pages = {104-117},
+  address = {Hershey, PA, USA},
+  abstract = {The goal of phylogenetics is to reconstruct ancestral relationships
+    between different taxa, e.g., different species in the tree of life,
+    by means of certain characters, such as genomic sequences. We consider
+    the prominent problem of reconstructing the basal phylogenetic tree
+    topology when several subclades have already been identified or are
+    well known by other means, such as morphological characteristics.
+    Whereas most available tools attempt to estimate a fully resolved
+    tree from scratch, the profile neighbor-joining (PNJ) method focuses
+    directly on the mentioned problem and has proven a robust and efficient
+    method for large-scale data sets, especially when used in an iterative
+    way. We describe an implementation of this idea, the ProfDist software
+    package, which is freely available, and apply the method to estimate
+    the phylogeny of the eukaryotes. Overall, the PNJ approach provides
+    a novel effective way to mine large sequence datasets for relevant
+    phylogenetic information.}
+}
+
+@ARTICLE{Saitou1987,
+  author = {N. Saitou and M. Nei},
+  title = {{The neighbor-joining method: a new method for reconstructing phylogenetic
+    trees.}},
+  journal = {Mol Biol Evol},
+  year = {1987},
+  volume = {4},
+  pages = {406--425},
+  number = {4},
+  month = {Jul},
+  abstract = {A new method called the neighbor-joining method is proposed for reconstructing
+    phylogenetic trees from evolutionary distance data. The principle
+    of this method is to find pairs of operational taxonomic units (OTUs
+    [= neighbors]) that minimize the total branch length at each stage
+    of clustering of OTUs starting with a starlike tree. The branch lengths
+    as well as the topology of a parsimonious tree can quickly be obtained
+    by using this method. Using computer simulation, we studied the efficiency
+    of this method in obtaining the correct unrooted tree in comparison
+    with that of five other tree-making methods: the unweighted pair
+    group method of analysis, Farris's method, Sattath and Tversky's
+    method, Li's method, and Tateno et al.'s modified Farris method.
+    The new, neighbor-joining method and Sattath and Tversky's method
+    are shown to be generally better than the other methods.},
+  institution = {Center for Demographic and Population Genetics, University of Texas
+    Health Science Center, Houston 77225.},
+  keywords = {Animals; Biometry; Evolution; Models, Genetic; Phylogeny; Ranidae},
+  owner = {binf007},
+  pmid = {3447015},
+  timestamp = {2008.01.21}
+}
+
+@ARTICLE{Schultz2005,
+  author = {Jörg Schultz and Stefanie Maisel and Daniel Gerlach and Tobias Müller
+    and Matthias Wolf},
+  title = {{A common core of secondary structure of the internal transcribed
+    spacer 2 (ITS2) throughout the Eukaryota.}},
+  journal = {RNA},
+  year = {2005},
+  volume = {11},
+  pages = {361--364},
+  number = {4},
+  month = {Apr},
+  abstract = {The ongoing characterization of novel species creates the need for
+    a molecular marker which can be used for species- and, simultaneously,
+    for mega-systematics. Recently, the use of the internal transcribed
+    spacer 2 (ITS2) sequence was suggested, as it shows a high divergence
+    in sequence with an assumed conservation in structure. This hypothesis
+    was mainly based on small-scale analyses, comparing a limited number
+    of sequences. Here, we report a large-scale analysis of more than
+    54,000 currently known ITS2 sequences with the goal to evaluate the
+    hypothesis of a conserved structural core and to assess its use for
+    automated large-scale phylogenetics. Structure prediction revealed
+    that the previously described core structure can be found for more
+    than 5000 sequences in a wide variety of taxa within the eukaryotes,
+    indicating that the core secondary structure is indeed conserved.
+    This conserved structure allowed an automated alignment of extremely
+    divergent sequences as exemplified for the ITS2 sequences of a ctenophorean
+    eumetazoon and a volvocalean green alga. All classified sequences,
+    together with their structures can be accessed at http://www.biozentrum.uni-wuerzburg.de/bioinformatik/projects/ITS2.html.
+    Furthermore, we found that, although sample sequences are known for
+    most major taxa, there exists a profound divergence in coverage,
+    which might become a hindrance for general usage. In summary, our
+    analysis strengthens the potential of ITS2 as a general phylogenetic
+    marker and provides a data source for further ITS2-based analyses.},
+  doi = {10.1261/rna.7204505},
+  institution = {entrum.uni-wuerzburg.de},
+  keywords = {Algae; Animals; Base Sequence; Conserved Sequence; DNA, Ribosomal
+    Spacer; Fungi; Genetic Markers; Invertebrates; Molecular Sequence
+    Data; Nucleic Acid Conformation; Phylogeny; Plants; Sequence Alignment;
+    Transcription, Genetic},
+  owner = {binf007},
+  pii = {11/4/361},
+  pmid = {15769870},
+  timestamp = {2008.01.21},
+  url = {http://dx.doi.org/10.1261/rna.7204505}
+}
+
+@ARTICLE{Schultz2006,
+  author = {Jörg Schultz and Tobias Müller and Marco Achtziger and Philipp N
+    Seibel and Thomas Dandekar and Matthias Wolf},
+  title = {{The internal transcribed spacer 2 database--a web server for (not
+    only) low level phylogenetic analyses.}},
+  journal = {Nucleic Acids Res},
+  year = {2006},
+  volume = {34},
+  pages = {W704--W707},
+  number = {Web Server issue},
+  month = {Jul},
+  abstract = {The internal transcribed spacer 2 (ITS2) is a phylogenetic marker
+    which has been of broad use in generic and infrageneric level classifications,
+    as its sequence evolves comparably fast. Only recently, it became
+    clear, that the ITS2 might be useful even for higher level systematic
+    analyses. As the secondary structure is highly conserved within all
+    eukaryotes it serves as a valuable template for the construction
+    of highly reliable sequence-structure alignments, which build a fundament
+    for subsequent analyses. Thus, any phylogenetic study using ITS2
+    has to consider both sequence and structure. We have integrated a
+    homology based RNA structure prediction algorithm into a web server,
+    which allows the detection and secondary structure prediction for
+    ITS2 in any given sequence. Furthermore, the resource contains more
+    than 25,000 pre-calculated secondary structures for the currently
+    known ITS2 sequences. These can be taxonomically searched and browsed.
+    Thus, our resource could become a starting point for ITS2-based phylogenetic
+    analyses and is therefore complementary to databases of other phylogenetic
+    markers, which focus on higher level analyses. The current version
+    of the ITS2 database can be accessed via http://its2.bioapps.biozentrum.uni-wuerzburg.de.},
+  doi = {10.1093/nar/gkl129},
+  institution = {Department of Bioinformatics, Biocenter, University of Würzburg Am
+    Hubland, 97074 Würzburg, Germany. Joerg.Schultz@biozentrum.uni-wuerzburg.de},
+  keywords = {DNA, Ribosomal Spacer; Databases, Nucleic Acid; Internet; Nucleic
+    Acid Conformation; Phylogeny; Sequence Analysis, RNA; Software; User-Computer
+    Interface},
+  owner = {binf007},
+  pii = {34/suppl_2/W704},
+  pmid = {16845103},
+  timestamp = {2008.01.21},
+  url = {http://dx.doi.org/10.1093/nar/gkl129}
+}
+
+@ARTICLE{Schoeniger1994,
+  author = {M. Schöniger and A. von Haeseler},
+  title = {{A stochastic model for the evolution of autocorrelated DNA sequences.}},
+  journal = {Mol Phylogenet Evol},
+  year = {1994},
+  volume = {3},
+  pages = {240--247},
+  number = {3},
+  month = {Sep},
+  abstract = {Currently used stochastic models of DNA sequence evolution assume
+    independent and identically distributed nucleotide sites. They are
+    too simple to account for dependence structures obviously present
+    in molecular data. Up to now more realistic stochastic models for
+    nucleotide substitutions have been considered intractable. In this
+    paper a procedure that accounts for non-overlapping correlations
+    among pairs of sites of a DNA sequence is developed. We show that
+    currently used models that ignore correlated sites underestimate
+    distances inferred from observed sequence dissimilarities. For the
+    analyzed mitochondrial sequence data this underestimation is not
+    drastic in contrast to paired regions (stems) of bacterial 23S rRNA
+    sequences.},
+  doi = {10.1006/mpev.1994.1026},
+  institution = {Technical University Munich, Germany.},
+  keywords = {Animals; DNA; DNA, Mitochondrial; Evolution; Mammals; Markov Chains;
+    Mutation; RNA, Bacterial; RNA, Ribosomal, 23S; Species Specificity;
+    Stochastic Processes},
+  owner = {binf007},
+  pii = {S1055-7903(84)71026-8},
+  pmid = {7529616},
+  timestamp = {2008.01.25},
+  url = {http://dx.doi.org/10.1006/mpev.1994.1026}
+}
+
+@ARTICLE{Seibel2006,
+  author = {Philipp N Seibel and Tobias Müller and Thomas Dandekar and Jörg Schultz
+    and Matthias Wolf},
+  title = {{4SALE--a tool for synchronous RNA sequence and secondary structure
+    alignment and editing.}},
+  journal = {BMC Bioinformatics},
+  year = {2006},
+  volume = {7},
+  pages = {498},
+  abstract = {BACKGROUND: In sequence analysis the multiple alignment builds the
+    fundament of all proceeding analyses. Errors in an alignment could
+    strongly influence all succeeding analyses and therefore could lead
+    to wrong predictions. Hand-crafted and hand-improved alignments are
+    necessary and meanwhile good common practice. For RNA sequences often
+    the primary sequence as well as a secondary structure consensus is
+    well known, e.g., the cloverleaf structure of the t-RNA. Recently,
+    some alignment editors are proposed that are able to include and
+    model both kinds of information. However, with the advent of a large
+    amount of reliable RNA sequences together with their solved secondary
+    structures (available from e.g. the ITS2 Database), we are faced
+    with the problem to handle sequences and their associated secondary
+    structures synchronously. RESULTS: 4SALE fills this gap. The application
+    allows a fast sequence and synchronous secondary structure alignment
+    for large data sets and for the first time synchronous manual editing
+    of aligned sequences and their secondary structures. This study describes
+    an algorithm for the synchronous alignment of sequences and their
+    associated secondary structures as well as the main features of 4SALE
+    used for further analyses and editing. 4SALE builds an optimal and
+    unique starting point for every RNA sequence and structure analysis.
+    CONCLUSION: 4SALE, which provides an user-friendly and intuitive
+    interface, is a comprehensive toolbox for RNA analysis based on sequence
+    and secondary structure information. The program connects sequence
+    and structure databases like the ITS2 Database to phylogeny programs
+    as for example the CBCAnalyzer. 4SALE is written in JAVA and therefore
+    platform independent. The software is freely available and distributed
+    from the website at http://4sale.bioapps.biozentrum.uni-wuerzburg.de.},
+  doi = {10.1186/1471-2105-7-498},
+  institution = {>},
+  keywords = {Algorithms; Base Pairing; Computational Biology; Databases, Genetic;
+    Nucleic Acid Conformation; RNA; Sequence Alignment; Sequence Analysis,
+    RNA; Software Validation; Time Factors; User-Computer Interface},
+  owner = {binf007},
+  pii = {1471-2105-7-498},
+  pmid = {17101042},
+  timestamp = {2008.01.21},
+  url = {http://dx.doi.org/10.1186/1471-2105-7-498}
+}
+
+@ARTICLE{Selig2008,
+  author = {Christian Selig and Matthias Wolf and Tobias Müller and Thomas Dandekar
+    and Jörg Schultz},
+  title = {{The ITS2 Database II: homology modelling RNA structure for molecular
+    systematics.}},
+  journal = {Nucleic Acids Res},
+  year = {2008},
+  volume = {36},
+  pages = {D377--D380},
+  number = {Database issue},
+  month = {Jan},
+  abstract = {An increasing number of phylogenetic analyses are based on the internal
+    transcribed spacer 2 (ITS2). They mainly use the fast evolving sequence
+    for low-level analyses. When considering the highly conserved structure,
+    the same marker could also be used for higher level phylogenies.
+    Furthermore, structural features of the ITS2 allow distinguishing
+    different species from each other. Despite its importance, the correct
+    structure is only rarely found by standard RNA folding algorithms.
+    To overcome this hindrance for a wider application of the ITS2, we
+    have developed a homology modelling approach to predict the structure
+    of RNA and present the results of modelling the ITS2 in the ITS2
+    Database. Here, we describe the database and the underlying algorithms
+    which allowed us to predict the structure for 86 784 sequences, which
+    is more than 55\% of all GenBank entries concerning the ITS2. These
+    are not equally distributed over all genera. There is a substantial
+    amount of genera where the structure of nearly all sequences is predicted
+    whereas for others no structure at all was found despite high sequence
+    coverage. These genera might have evolved an ITS2 structure diverging
+    from the standard one. The current version of the ITS2 Database can
+    be accessed via http://its2.bioapps.biozentrum.uni-wuerzburg.de.},
+  doi = {10.1093/nar/gkm827},
+  institution = {Department of Bioinformatics, Biocenter, University of Würzburg,
+    Am Hubland 97074 Würzburg, Germany.},
+  owner = {binf007},
+  pii = {gkm827},
+  pmid = {17933769},
+  timestamp = {2008.01.21},
+  url = {http://dx.doi.org/10.1093/nar/gkm827}
+}
+
+@ARTICLE{Siebert2005,
+  author = {Sven Siebert and Rolf Backofen},
+  title = {{MARNA: multiple alignment and consensus structure prediction of
+    RNAs based on sequence structure comparisons.}},
+  journal = {Bioinformatics},
+  year = {2005},
+  volume = {21},
+  pages = {3352--3359},
+  number = {16},
+  month = {Aug},
+  abstract = {MOTIVATION: Due to the importance of considering secondary structures
+    in aligning functional RNAs, several pairwise sequence-structure
+    alignment methods have been developed. They use extended alignment
+    scores that evaluate secondary structure information in addition
+    to sequence information. However, two problems for the multiple alignment
+    step remain. First, how to combine pairwise sequence-structure alignments
+    into a multiple alignment and second, how to generate secondary structure
+    information for sequences whose explicit structural information is
+    missing. RESULTS: We describe a novel approach for multiple alignment
+    of RNAs (MARNA) taking into consideration both the primary and the
+    secondary structures. It is based on pairwise sequence-structure
+    comparisons of RNAs. From these sequence-structure alignments, libraries
+    of weighted alignment edges are generated. The weights reflect the
+    sequential and structural conservation. For sequences whose secondary
+    structures are missing, the libraries are generated by sampling low
+    energy conformations. The libraries are then processed by the T-Coffee
+    system, which is a consistency based multiple alignment method. Furthermore,
+    we are able to extract a consensus-sequence and -structure from a
+    multiple alignment. We have successfully tested MARNA on several
+    datasets taken from the Rfam database.},
+  doi = {10.1093/bioinformatics/bti550},
+  institution = {Department of Bioinformatics, Institute of Computer Science, Friedrich-Schiller-University
+    Jena, Ernst-Abbe Platz 2, 07743 Jena, Germany.},
+  keywords = {Algorithms; Computer Simulation; Consensus Sequence; RNA; Sensitivity
+    and Specificity; Sequence Alignment; Sequence Analysis, RNA; Sequence
+    Homology, Nucleic Acid; Software; Structure-Activity Relationship},
+  owner = {binf007},
+  pii = {bti550},
+  pmid = {15972285},
+  timestamp = {2008.01.21},
+  url = {http://dx.doi.org/10.1093/bioinformatics/bti550}
+}
+
+@ARTICLE{Smith2004,
+  author = {Andrew D Smith and Thomas W H Lui and Elisabeth R M Tillier},
+  title = {{Empirical models for substitution in ribosomal RNA.}},
+  journal = {Mol Biol Evol},
+  year = {2004},
+  volume = {21},
+  pages = {419--427},
+  number = {3},
+  month = {Mar},
+  abstract = {Empirical models of substitution are often used in protein sequence
+    analysis because the large alphabet of amino acids requires that
+    many parameters be estimated in all but the simplest parametric models.
+    When information about structure is used in the analysis of substitutions
+    in structured RNA, a similar situation occurs. The number of parameters
+    necessary to adequately describe the substitution process increases
+    in order to model the substitution of paired bases. We have developed
+    a method to obtain substitution rate matrices empirically from RNA
+    alignments that include structural information in the form of base
+    pairs. Our data consisted of alignments from the European Ribosomal
+    RNA Database of Bacterial and Eukaryotic Small Subunit and Large
+    Subunit Ribosomal RNA ( Wuyts et al. 2001. Nucleic Acids Res. 29:175-177;
+    Wuyts et al. 2002. Nucleic Acids Res. 30:183-185). Using secondary
+    structural information, we converted each sequence in the alignments
+    into a sequence over a 20-symbol code: one symbol for each of the
+    four individual bases, and one symbol for each of the 16 ordered
+    pairs. Substitutions in the coded sequences are defined in the natural
+    way, as observed changes between two sequences at any particular
+    site. For given ranges (windows) of sequence divergence, we obtained
+    substitution frequency matrices for the coded sequences. Using a
+    technique originally developed for modeling amino acid substitutions
+    ( Veerassamy, Smith, and Tillier. 2003. J. Comput. Biol. 10:997-1010),
+    we were able to estimate the actual evolutionary distance for each
+    window. The actual evolutionary distances were used to derive instantaneous
+    rate matrices, and from these we selected a universal rate matrix.
+    The universal rate matrices were incorporated into the Phylip Software
+    package ( Felsenstein 2002. http://evolution.genetics.washington.edu/phylip.html),
+    and we analyzed the ribosomal RNA alignments using both distance
+    and maximum likelihood methods. The empirical substitution models
+    performed well on simulated data, and produced reasonable evolutionary
+    trees for 16S ribosomal RNA sequences from sequenced Bacterial genomes.
+    Empirical models have the advantage of being easily implemented,
+    and the fact that the code consists of 20 symbols makes the models
+    easily incorporated into existing programs for protein sequence analysis.
+    In addition, the models are useful for simulating the evolution of
+    RNA sequence and structure simultaneously.},
+  doi = {10.1093/molbev/msh029},
+  institution = {Department of Medical Biophysics, University of Toronto, and Ontario
+    Cancer Institute, University Health Network, Toronto, Ontario, Canada.},
+  keywords = {Amino Acid Substitution; Animals; Computer Simulation; Databases,
+    Nucleic Acid; Evolution, Molecular; Likelihood Functions; Models,
+    Genetic; Phylogeny; RNA, Ribosomal; Sequence Alignment},
+  owner = {binf007},
+  pii = {msh029},
+  pmid = {14660689},
+  timestamp = {2008.01.21},
+  url = {http://dx.doi.org/10.1093/molbev/msh029}
+}
+
+@MISC{QT,
+  author = {Trolltech},
+  title = {http://trolltech.com/products/qt/},
+  year = {2008},
+  owner = {binf007},
+  timestamp = {2008.07.19},
+  url = {http://trolltech.com/products/qt/}
+}
+
+@ARTICLE{Vanormelingen2007,
+  author = {P Vanormelingen and E Hegewald and A Braband and M Kitschke and T
+    Friedl and K Sabbe and W Vyverman},
+  title = {{The systematics of a small spineless Desmodesmus species, D-costato-granulatus
+    (Sphaeropleales, Chlorophyceae), based on ITS2 rDNA sequence analyses
+    and cell wall morphology}},
+  journal = {Journal of Phyclology},
+  year = {2007},
+  volume = {43},
+  pages = {378-396},
+  number = {2},
+  month = {APR}
+}
+
+@ARTICLE{Wheeler2000,
+  author = {D. L. Wheeler and C. Chappey and A. E. Lash and D. D. Leipe and T.
+    L. Madden and G. D. Schuler and T. A. Tatusova and B. A. Rapp},
+  title = {{Database resources of the National Center for Biotechnology Information.}},
+  journal = {Nucleic Acids Res},
+  year = {2000},
+  volume = {28},
+  pages = {10--14},
+  number = {1},
+  month = {Jan},
+  abstract = {In addition to maintaining the GenBank(R) nucleic acid sequence database,
+    the National Center for Biotechnology Information (NCBI) provides
+    data analysis and retrieval and resources that operate on the data
+    in GenBank and a variety of other biological data made available
+    through NCBI's Web site. NCBI data retrieval resources include Entrez,
+    PubMed, LocusLink and the Taxonomy Browser. Data analysis resources
+    include BLAST, Electronic PCR, OrfFinder, RefSeq, UniGene, Database
+    of Single Nucleotide Polymorphisms (dbSNP), Human Genome Sequencing
+    pages, GeneMap'99, Davis Human-Mouse Homology Map, Cancer Chromosome
+    Aberration Project (CCAP) pages, Entrez Genomes, Clusters of Orthologous
+    Groups (COGs) database, Retroviral Genotyping Tools, Cancer Genome
+    Anatomy Project (CGAP) pages, SAGEmap, Online Mendelian Inheritance
+    in Man (OMIM) and the Molecular Modeling Database (MMDB). Augmenting
+    many of the Web applications are custom implementations of the BLAST
+    program optimized to search specialized data sets. All of the resources
+    can be accessed through the NCBI home page at: http://www.ncbi.nlm.nih.
+    gov},
+  institution = {National Center for Biotechnology Information, National Library of
+    Medicine, National Institutes of Health, Building 38A, 8600 Rockville
+    Pike, Bethesda, MD 20894, USA.},
+  keywords = {Animals; Biology; Databases, Factual; Gene Expression; Genome, Human;
+    Humans; Information Storage and Retrieval; Mice; Models, Molecular;
+    National Library of Medicine (U.S.); Neoplasms; Phenotype; United
+    States},
+  owner = {binf007},
+  pii = {gkd055},
+  pmid = {10592169},
+  timestamp = {2008.01.21}
+}
+
+@ARTICLE{Wolf2005,
+  author = {Matthias Wolf and Marco Achtziger and Jörg Schultz and Thomas Dandekar
+    and Tobias Müller},
+  title = {{Homology modeling revealed more than 20,000 rRNA internal transcribed
+    spacer 2 (ITS2) secondary structures.}},
+  journal = {RNA},
+  year = {2005},
+  volume = {11},
+  pages = {1616--1623},
+  number = {11},
+  month = {Nov},
+  abstract = {Structural genomics meets phylogenetics and vice versa: Knowing rRNA
+    secondary structures is a prerequisite for constructing rRNA alignments
+    for inferring phylogenies, and inferring phylogenies is a precondition
+    to understand the evolution of such rRNA secondary structures. Here,
+    both scientific worlds go together. The rRNA internal transcribed
+    spacer 2 (ITS2) region is a widely used phylogenetic marker. Because
+    of its high variability at the sequence level, correct alignments
+    have to take into account structural information. In this study,
+    we examine the extent of the conservation in structure. We present
+    (1) the homology modeled secondary structure of more than 20,000
+    ITS2 covering about 14,000 species; (2) a computational approach
+    for homology modeling of rRNA structures, which additionally can
+    be applied to other RNA families; and (3) a database providing about
+    25,000 ITS2 sequences with their associated secondary structures,
+    a refined ITS2 specific general time reversible (GTR) substitution
+    model, and a scoring matrix, available at http://its2.bioapps.biozentrum.uni-wuerzburg.de.},
+  doi = {10.1261/rna.2144205},
+  institution = {Department of Bioinformatics, University of Würzburg, Biocenter,
+    Am Hubland, Germany. matthias.wolf@biozentrum.uni-wuerzburg.de},
+  keywords = {Algae; Animals; Base Sequence; DNA, Ribosomal Spacer; Evolution, Molecular;
+    Fungi; Models, Molecular; Molecular Sequence Data; Nucleic Acid Conformation;
+    RNA, Ribosomal; Sequence Alignment},
+  owner = {binf007},
+  pii = {11/11/1616},
+  pmid = {16244129},
+  timestamp = {2008.01.21},
+  url = {http://dx.doi.org/10.1261/rna.2144205}
+}
+
+@comment{jabref-meta: selector_publisher:}
+
+@comment{jabref-meta: selector_author:}
+
+@comment{jabref-meta: selector_journal:}
+
+@comment{jabref-meta: selector_keywords:}

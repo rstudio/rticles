@@ -1,0 +1,786 @@
+% ALGORITHMIC STYLE -- Released 27 APR 2005
+%    for LaTeX version 2e
+%
+% Copyright Szasz Janos
+% E-mail szaszjanos@users.sourceforge.net
+%
+%
+%      ***      INITIALISING      ***
+%
+%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{algorithmicx}[2005/04/27 v1.2 Algorithmicx]
+\RequirePackage{ifthen}
+\typeout{Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style}
+%
+\newcounter{ALG@line}
+\newcounter{ALG@rem}
+\newcounter{ALG@nested}
+\newlength{\ALG@tlm}
+\newlength{\ALG@thistlm}
+\newcounter{ALG@Lnr}% the number of defined languages
+\setcounter{ALG@Lnr}{0}
+\newcounter{ALG@blocknr}% the number of defined blocks
+\setcounter{ALG@blocknr}{0}
+\newcounter{ALG@storecount}% number of stored but not restored algorithmic environments
+\setcounter{ALG@storecount}{0}
+\newcounter{ALG@tmpcounter}% only to decrement things
+\newlength\ALG@tmplength%
+%\def\algorithmicnoindent{-\ALG@tlm}
+%       \def\algbackskipbegin{\hskip\ALG@ctlm}
+%\def\algbackskip{\hskip-\ALG@thistlm}
+%\def\algbackskipend{\hskip-\ALG@tlm}
+\def\ALG@defaultindent{\algorithmicindent}
+%
+% conditional states
+%
+\def\ALG@newcondstate#1%
+   {%
+   \expandafter\edef\csname ALG@x@#1\endcsname%
+      {\expandafter\noexpand\csname @@ALG@x@#1\endcsname}%
+   }%
+\ALG@newcondstate{notext}%
+\ALG@newcondstate{default}%
+%
+%
+%      ***      ALGORITHMIC      ***
+%
+%
+\newcommand\ALG@beginblock[1]% #1 - indentation
+   {%
+      \ALG@thistlm\ALG@tlm%
+      \addtolength\ALG@tlm{#1}%
+      \addtocounter{ALG@nested}{1}%
+      \setlength\ALG@tmplength{#1}%
+      \expandafter\edef\csname ALG@ind@\theALG@nested\endcsname{\the\ALG@tmplength}%
+   }%
+\newcommand\ALG@endblock%
+   {%
+      \addtolength\ALG@tlm{-\csname ALG@ind@\theALG@nested\endcsname}%
+      \addtocounter{ALG@nested}{-1}%
+      \ALG@thistlm\ALG@tlm%
+   }%
+%
+%   algorithmic environment
+%
+\def\ALG@step%
+   {%
+   \addtocounter{ALG@line}{1}%
+   \addtocounter{ALG@rem}{1}%
+   \ifthenelse{\equal{\arabic{ALG@rem}}{\ALG@numberfreq}}%
+      {\setcounter{ALG@rem}{0}\alglinenumber{\arabic{ALG@line}}}%
+      {}%
+   }%
+\newenvironment{algorithmic}[1][0]%
+   {%
+   \edef\ALG@numberfreq{#1}%
+   \def\@currentlabel{\theALG@line}%
+   %
+   \setcounter{ALG@line}{0}%
+   \setcounter{ALG@rem}{0}%
+   %
+   \let\\\algbreak%
+   %
+   \expandafter\edef\csname ALG@currentblock@\theALG@nested\endcsname{0}%
+   \expandafter\let\csname ALG@currentlifetime@\theALG@nested\endcsname\relax%
+   %
+   \begin{list}%
+      {\ALG@step}%
+      {%
+      \rightmargin\z@%
+      \itemsep\z@ \itemindent\z@ \listparindent2em%
+      \partopsep\z@ \parskip\z@ \parsep\z@%
+      \labelsep 0.5em \topsep 0.2em%\skip 1.2em 
+      \ifthenelse{\equal{#1}{0}}%
+         {\labelwidth 0.5em}%
+         {\labelwidth 1.2em}%
+      \leftmargin\labelwidth \addtolength{\leftmargin}{\labelsep}% Ok. the perfect leftmargin :-))
+      \ALG@tlm\z@%
+      }%
+   \setcounter{ALG@nested}{0}%
+   \ALG@beginalgorithmic%
+   }%
+   {% end{algorithmic}
+   % check if all blocks are closed
+   \ALG@closeloops%
+   \expandafter\ifnum\csname ALG@currentblock@\theALG@nested\endcsname=0\relax%
+   \else%
+      \PackageError{algorithmicx}{Some blocks are not closed!!!}{}%
+   \fi%
+   \ALG@endalgorithmic%
+   \end{list}%
+   }%
+%
+%
+%   ***   Functional core   ***
+%
+%
+\def\ALG@makeentity#1% execute the entity (#1)
+   {%
+   \def\ALG@thisentity{#1}%
+   \expandafter\ifx\csname ALG@b@\ALG@L @#1@0\endcsname\relax%
+      \let\ALG@makenobeginrepeat\ALG@makenobegin\ALG@makenobeginrepeat% this entitie ends or continues blocks
+   \else%
+      \let\ALG@makebeginrepeat\ALG@makebegin\ALG@makebeginrepeat% this entitie can open blocks
+   \fi%
+   \ALG@entitiecommand%
+   }%
+%
+\def\ALG@makebegin% executes an entitie that can open blocks
+   {%
+   \expandafter\let\expandafter\ALG@thislifetime\csname ALG@currentlifetime@\theALG@nested\endcsname%
+   \ifx\ALG@thislifetime\relax%
+      \let\ALG@makebeginrepeat\ALG@doentity% in infinite block I can open my block
+   \else%
+      \ifnum\ALG@thislifetime>0\relax%
+         \ifnum\ALG@thislifetime>65534\else%
+            \setcounter{ALG@tmpcounter}{\ALG@thislifetime}% the block has 'space' for another included block
+            \addtocounter{ALG@tmpcounter}{-1}%
+            \expandafter\edef\csname ALG@currentlifetime@\theALG@nested\endcsname{\arabic{ALG@tmpcounter}}%
+         \fi%
+         \let\ALG@makebeginrepeat\ALG@doentity%
+      \else% the block needs to be closed
+         \expandafter\ifx\csname ALG@b@\ALG@L @\ALG@thisentity @\csname ALG@currentblock@\theALG@nested\endcsname\endcsname\relax%
+            \ALG@closebyforce% I can not close this block, continue after it is closed by force
+%            \ALG@makebegin%
+         \else%
+            % the block would be closed automatically, but this entitie can close it, so let's do it with the entity
+            \let\ALG@makebeginrepeat\ALG@doentity%
+         \fi%
+      \fi%
+   \fi%
+   \ALG@makebeginrepeat%
+   }%
+%
+\def\ALG@makenobegin% executes an entitie that can not open blocks
+   {%
+   \expandafter\ifx\csname ALG@currentlifetime@\theALG@nested\endcsname\relax%
+      \let\ALG@makenobeginrepeat\ALG@doentity% an infinite block must be broken
+   \else%
+      \expandafter\ifx\csname ALG@b@\ALG@L @\ALG@thisentity @\csname ALG@currentblock@\theALG@nested\endcsname\endcsname\relax%
+         \ALG@closebyforce% the block must be ended by force,
+      \else%
+         \let\ALG@makenobeginrepeat\ALG@doentity% I can continue / end this block, let's do it
+      \fi%
+   \fi%
+   \ALG@makenobeginrepeat%
+   }%
+%
+\def\ALG@dobegin%
+   {%
+   \ALG@beginblock{\csname ALG@i@\ALG@L @\ALG@thisentity @\ALG@thisblock\endcsname}%
+   \expandafter\edef\csname ALG@currentblock@\theALG@nested\endcsname{\csname ALG@b@\ALG@L @\ALG@thisentity @\ALG@thisblock\endcsname}%
+   \expandafter\ifx\csname ALG@c@\ALG@L @\ALG@thisentity @\ALG@thisblock\endcsname\relax%
+      \expandafter\let\csname ALG@currentlifetime@\theALG@nested\endcsname\relax%
+   \else%
+      \expandafter\edef\csname ALG@currentlifetime@\theALG@nested\endcsname{\csname ALG@c@\ALG@L @\ALG@thisentity @\ALG@thisblock\endcsname}%
+   \fi%
+   }%
+%
+\def\ALG@doend%
+   {%
+   \ALG@endblock%
+   }%
+%
+\def\ALG@doentity% the number of the closed block, the entitie
+   {%
+   \edef\ALG@thisblock{\csname ALG@currentblock@\theALG@nested\endcsname}%
+   \expandafter\ifx\csname ALG@b@\ALG@L @\ALG@thisentity @\ALG@thisblock\endcsname\relax%
+      \def\ALG@thisblock{0}%
+   \fi%
+   \ALG@getentitytext%
+   \ifnum\ALG@thisblock=0\else\ALG@doend\fi%
+   \ifx\ALG@text\ALG@x@notext%
+      \item[]\nointerlineskip%\vskip-\prevdepth\nointerlineskip% bug: if there are no text and no lines, then this is wrong
+   \else%
+      \item%
+   \fi%
+   \noindent\hskip\ALG@tlm%
+   \expandafter\ifnum0=\csname ALG@b@\ALG@L @\ALG@thisentity @\ALG@thisblock\endcsname\else%
+      \ALG@dobegin%
+   \fi%
+   \def\ALG@entitiecommand{\ALG@displayentity}%
+   }%
+%
+\def\ALG@getentitytext%
+   {%
+   \expandafter\let\expandafter\ALG@text\csname ALG@t@\ALG@L @\ALG@thisentity @\ALG@thisblock\endcsname%
+   \ifx\ALG@text\ALG@x@default%
+      % block specific - default
+      \expandafter\let\expandafter\ALG@text\csname ALG@t@\ALG@L @\ALG@thisentity\endcsname%
+      \ifx\ALG@text\ALG@x@default%
+         % block specific - default, language specific - default
+         \def\ALG@text{\ALG@deftext{\ALG@thisentity}}%
+      \fi%
+   \fi%
+   }%
+%
+\def\ALG@deftext{\csname ALG@deftext@\ALG@L\endcsname}%
+%
+\def\ALG@displayentity%
+   {%
+   \ifx\ALG@text\ALG@x@notext%
+      \let\ALG@text\relax%
+   \fi
+   \ALG@text%
+   }%
+%
+\def\ALG@closebyforce%
+   {%
+   \ALG@endblock%
+   }%
+%
+\def\ALG@closeloops% closes all finite blocks
+   {%
+   \expandafter\ifx\csname ALG@currentlifetime@\theALG@nested\endcsname\relax%
+   \else% only if it is finite
+      \ALG@closebyforce% the block must be ended by force,
+      \ALG@closeloops% the command still runs
+   \fi%
+   }%
+%
+%
+%   ***   Low level block/entitie defining commands   ***
+%
+%
+\def\ALG@bl@{0}% the BIG block
+\let\ALG@bl@@\ALG@bl@% the BIG block
+%
+%  Create a block
+%
+\def\ALG@createblock#1% create the block #1, if it does not exists
+   {%
+   \@ifundefined{ALG@bl@\ALG@Ld @#1}% needs to be created?
+      {%
+      \addtocounter{ALG@blocknr}{1}% increment the block counter
+      \expandafter\edef\csname ALG@bl@\ALG@Ld @#1\endcsname{\arabic{ALG@blocknr}}% set the block number
+      }%
+      {}%
+   }%
+%
+%  Get the block number
+%
+\def\ALG@getblocknumber#1{\csname ALG@bl@\ALG@Ld @#1\endcsname}%
+%
+%  Create an entitie
+%
+\def\ALG@createentitie#1% create the entitie #1, if it does not exists
+   {%
+   \expandafter\ALG@edefcmd\csname #1\endcsname{\noexpand\ALG@makeentity{#1}}%
+   \@ifundefined{ALG@t@\ALG@Ld @#1}% the entity text is defined in this language?
+      {%
+      \expandafter\let\csname ALG@t@\ALG@Ld @#1\endcsname\ALG@x@default%
+      }%
+      {}%
+   }%
+%
+\def\ALG@createtext#1#2% #1 = closed block; #2 = entitie; creates \ALG@t@#2@#1
+   {%
+   \expandafter\let\csname ALG@t@\ALG@Ld @#2@#1\endcsname\ALG@x@default%
+   }%
+%
+%  End and Continue block
+%
+\def\ALG@endandcontinueblock#1#2#3#4#5% #1 = new block; #2 = old block; #3 = entitie; #4 = credits; #5 = indent
+   {%
+   \ifthenelse{\equal{#3}{}}{}% execute only if the entity is not empty
+      {%
+      \ALG@createentitie{#3}% create the entitie
+      \ALG@createblock{#2}% create the old block, if needed
+      \ifthenelse{\equal{#1}{}}% whe need to open a new block?
+         {\expandafter\edef\csname ALG@b@\ALG@Ld @#3@\ALG@getblocknumber{#2}\endcsname{0}}% no, just close the old one
+         {% yes,
+         \ALG@createblock{#1}% create the block
+         \expandafter\edef\csname ALG@b@\ALG@Ld @#3@\ALG@getblocknumber{#2}\endcsname{\ALG@getblocknumber{#1}}% ending the old block opens a new one
+         \ifthenelse{\equal{#4}{}}% infinite or finite credits?
+            {\expandafter\let\csname ALG@c@\ALG@Ld @#3@\ALG@getblocknumber{#2}\endcsname\relax}% infinite credits
+            {\expandafter\edef\csname ALG@c@\ALG@Ld @#3@\ALG@getblocknumber{#2}\endcsname{#4}}% finite credits
+         \ifthenelse{\equal{#5}{}}% default or specified indentation
+            {\expandafter\let\csname ALG@i@\ALG@Ld @#3@\ALG@getblocknumber{#2}\endcsname\ALG@defaultindent}% default indentation
+            {\expandafter\edef\csname ALG@i@\ALG@Ld @#3@\ALG@getblocknumber{#2}\endcsname{#5}}% indentation is specified
+         }%
+      \ALG@createtext{\ALG@getblocknumber{#2}}{#3}%
+      }%
+   }%
+%
+%   macros used in declarations
+%
+\def\ALG@p@endtext@E{\algrenewtext{\ALG@v@end}}%
+\def\ALG@p@endtext@xE{\algrenewtext[\ALG@v@newblock]{\ALG@v@end}}%
+\def\ALG@p@endtext@nE{\algnotext{\ALG@v@end}}%
+\def\ALG@p@endtext@xnE{\algnotext[\ALG@v@newblock]{\ALG@v@end}}%
+\def\ALG@p@endtext@{}%
+% starttext defines are more compex -- care must be taken for the optional parameters
+\def\ALG@p@starttext@S{\ALG@p@s@process{\algrenewtext}}%
+\def\ALG@p@starttext@C{\ALG@p@s@process{\algrenewtext}}%
+\def\ALG@p@starttext@xC{\ALG@p@s@process{\algrenewtext[\ALG@v@oldblock]}}%
+\def\ALG@p@s@process#1%
+   {%
+   \ifthenelse{\equal{\ALG@v@start}{}}%
+      {\ALG@p@endtext}%
+      {\@ifnextchar{[}{\ALG@p@s@getparamcount{#1}}{\ALG@p@s@simple{#1}}}%
+   }%
+\def\ALG@p@s@getparamcount#1[#2]%
+   {%
+   \@ifnextchar{[}{\ALG@p@s@getdefparam{#1}{#2}}{\ALG@p@s@param{#1}{#2}}%
+   }%
+\def\ALG@p@s@getdefparam#1#2[#3]%
+   {%
+   \ALG@p@s@defparam{#1}{#2}{#3}%
+   }%
+\def\ALG@p@s@simple#1#2{#1{\ALG@v@start}{#2}\ALG@p@endtext}%
+\def\ALG@p@s@param#1#2#3{#1{\ALG@v@start}[#2]{#3}\ALG@p@endtext}%
+\def\ALG@p@s@defparam#1#2#3#4{#1{\ALG@v@start}[#2][#3]{#4}\ALG@p@endtext}%
+% the rest of the crew
+\def\ALG@p@starttext@nS{\algnotext{\ALG@v@start}\ALG@p@endtext}%
+\def\ALG@p@starttext@nC{\algnotext{\ALG@v@start}\ALG@p@endtext}%
+\def\ALG@p@starttext@xnC{\algnotext[\ALG@v@oldblock]{\ALG@v@start}\ALG@p@endtext}%
+\def\ALG@p@starttext@{\ALG@p@endtext}%
+\def\ALG@p@indent@def#1{\def\ALG@v@indent{#1}\ALG@p@setup}%
+\def\ALG@p@indent@{\def\ALG@v@indent{}\ALG@p@setup}%
+\def\ALG@p@credits@def#1{\def\ALG@v@credits{#1}\ALG@p@indent}%
+\def\ALG@p@credits@{\ALG@p@indent}%
+\def\ALG@p@end@def#1{\def\ALG@v@end{#1}\ALG@p@credits}%
+\def\ALG@p@end@{\def\ALG@v@end{}\ALG@p@credits}%
+\def\ALG@p@start@def#1{\def\ALG@v@start{#1}\ALG@p@end}%
+\def\ALG@p@start@{\def\ALG@v@start{}\ALG@p@end}%
+\def\ALG@p@oldblock@def#1{\def\ALG@v@oldblock{#1}\ALG@p@start}%
+\def\ALG@p@oldblock@{\def\ALG@v@oldblock{}\ALG@p@start}%
+\newcommand\ALG@p@newblock[1][]{\def\ALG@v@newblock{#1}\ALG@p@oldblock}%
+\def\ALG@p@setup%
+   {%
+   \ifthenelse{\equal{\ALG@v@newblock}{}}%
+      {%
+      \ifthenelse{\equal{\ALG@v@start}{}}%
+         {%
+            \PackageError{algorithmicx}{Block or starting entitie must be specified!!!}{}%
+         }%
+         {%
+            \let\ALG@v@newblock\ALG@v@start%
+         }%
+      }%
+      {%
+      }%
+   \ALG@endandcontinueblock%
+      {\ALG@v@newblock}{\ALG@v@oldblock}{\ALG@v@start}%
+      {\ALG@v@credits}{\ALG@v@indent}%
+   \ALG@endandcontinueblock%
+      {}{\ALG@v@newblock}{\ALG@v@end}%
+      {}{}%
+   \ALG@p@starttext%
+   }%
+%
+%   param handling
+%
+\newcommand\ALG@p@def[2][def]%
+   {%
+   \expandafter\let\csname ALG@p@#2\expandafter\endcsname\csname ALG@p@#2@#1\endcsname%
+   }%
+\def\ALG@p@undef{\ALG@p@def[]}%
+%
+\def\ALG@p@ons{\ALG@p@def{start}}%
+\def\ALG@p@onS{\ALG@p@def{start}\ALG@p@def[S]{starttext}}%
+\def\ALG@p@onc{\ALG@p@def{oldblock}\ALG@p@def{start}}%
+\def\ALG@p@onC{\ALG@p@def{oldblock}\ALG@p@def{start}\ALG@p@def[C]{starttext}}%
+\def\ALG@p@one{\ALG@p@def{end}}%
+\def\ALG@p@onE{\ALG@p@def{end}\ALG@p@def[E]{endtext}}%
+\def\ALG@p@onxC{\ALG@p@def{oldblock}\ALG@p@def{start}\ALG@p@def[xC]{starttext}}%
+\def\ALG@p@onxE{\ALG@p@def{end}\ALG@p@def[xE]{endtext}}%
+\def\ALG@p@onnS{\ALG@p@def{start}\ALG@p@def[nS]{starttext}}%
+\def\ALG@p@onnC{\ALG@p@def{oldblock}\ALG@p@def{start}\ALG@p@def[nC]{starttext}}%
+\def\ALG@p@onnE{\ALG@p@def{end}\ALG@p@def[nE]{endtext}}%
+\def\ALG@p@onxnC{\ALG@p@def{oldblock}\ALG@p@def{start}\ALG@p@def[xnC]{starttext}}%
+\def\ALG@p@onxnE{\ALG@p@def{end}\ALG@p@def[xnE]{endtext}}%
+\def\ALG@p@onb{\def\ALG@v@credits{}}%
+\def\ALG@p@onl{\def\ALG@v@credits{1}}%
+\def\ALG@p@onL{\ALG@p@def{credits}}%
+\def\ALG@p@oni{\ALG@p@def{indent}}%
+%
+\def\ALG@p@main#1%
+   {%
+   \@ifundefined{ALG@ps@\ALG@p@state @#1}%
+      {%
+      \csname ALG@ps@\ALG@p@state @other\endcsname{#1}%
+      }%
+      {%
+      \csname ALG@ps@\ALG@p@state @#1\endcsname%
+      }%
+   \ALG@p@rec%
+   }%
+% STATE : <<starting state>>
+\expandafter\def\csname ALG@ps@@]\endcsname{\let\ALG@p@rec\relax}%
+\def\ALG@ps@@s{\ALG@p@ons}%
+\def\ALG@ps@@S{\ALG@p@onS}%
+\def\ALG@ps@@c{\ALG@p@onc}%
+\def\ALG@ps@@C{\ALG@p@onC}%
+\def\ALG@ps@@e{\ALG@p@one}%
+\def\ALG@ps@@E{\ALG@p@onE}%
+\def\ALG@ps@@N{\typeout{algdef: 'N' obsoloted, use 'nE'.}\ALG@p@onnE}%
+\def\ALG@ps@@b{\ALG@p@onb}%
+\def\ALG@ps@@l{\ALG@p@onl}%
+\def\ALG@ps@@L{\ALG@p@onL}%
+\def\ALG@ps@@i{\ALG@p@oni}%
+\def\ALG@ps@@x{\def\ALG@p@state{x}}%
+\def\ALG@ps@@n{\def\ALG@p@state{n}}%
+\def\ALG@ps@@other#1{\typeout{algdef: Ignoring unknown token #1}}%
+% STATE : x
+\def\ALG@ps@x@C{\def\ALG@p@state{}\ALG@p@onxC}%
+\def\ALG@ps@x@E{\def\ALG@p@state{}\ALG@p@onxE}%
+\def\ALG@ps@x@N{\def\ALG@p@state{}\typeout{algdef: 'xN' obsoloted, use 'xnE'.}\ALG@p@onxnE}%
+\def\ALG@ps@x@n{\def\ALG@p@state{xn}}%
+\def\ALG@ps@x@other#1%
+   {%
+   \typeout{algdef: Ignoring 'x' before '#1'.}%
+   \def\ALG@p@state{}%
+   \def\ALG@p@rec{\let\ALG@p@rec\ALG@p@main\ALG@p@rec#1}%
+   }%
+% STATE : n
+\def\ALG@ps@n@S{\def\ALG@p@state{}\ALG@p@onnS}%
+\def\ALG@ps@n@C{\def\ALG@p@state{}\ALG@p@onnC}%
+\def\ALG@ps@n@E{\def\ALG@p@state{}\ALG@p@onnE}%
+\def\ALG@ps@n@x{\def\ALG@p@state{nx}}%
+\def\ALG@ps@n@other#1%
+   {%
+   \typeout{algdef: Ignoring 'n' before '#1'.}%
+   \def\ALG@p@state{}%
+   \def\ALG@p@rec{\let\ALG@p@rec\ALG@p@main\ALG@p@rec#1}%
+   }%
+% STATE : xn
+\def\ALG@ps@xn@C{\def\ALG@p@state{}\ALG@p@onxnC}%
+\def\ALG@ps@xn@E{\def\ALG@p@state{}\ALG@p@onxnE}%
+\def\ALG@ps@xn@x{\typeout{algdef: Ignoring 'x' after 'xn'.}}%
+\def\ALG@ps@xn@n{\typeout{algdef: Ignoring 'n' after 'xn'.}}%
+\def\ALG@ps@xn@other#1%
+   {%
+   \typeout{algdef: Ignoring 'xn' before '#1'.}%
+   \def\ALG@p@state{}%
+   \def\ALG@p@rec{\let\ALG@p@rec\ALG@p@main\ALG@p@rec#1}%
+   }%
+% STATE : nx
+\def\ALG@ps@nx@C{\def\ALG@p@state{}\ALG@p@onxnC}%
+\def\ALG@ps@nx@E{\def\ALG@p@state{}\ALG@p@onxnE}%
+\def\ALG@ps@nx@x{\typeout{algdef: Ignoring 'x' after 'nx'.}}%
+\def\ALG@ps@nx@n{\typeout{algdef: Ignoring 'n' after 'nx'.}}%
+\def\ALG@ps@nx@other#1%
+   {%
+   \typeout{algdef: Ignoring 'nx' before '#1'.}%
+   \def\ALG@p@state{}%
+   \def\ALG@p@rec{\let\ALG@p@rec\ALG@p@main\ALG@p@rec#1}%
+   }%
+%
+%
+%   ***   User level block/entitie commands   ***
+%
+%
+%
+%   algdef{switches}... -- the king of all definitions in the algorithmicx package
+%
+\newcommand\algdef[1]%
+   {%
+   \ALG@p@undef{oldblock}%
+   \ALG@p@undef{start}%
+   \ALG@p@undef{end}%
+   \def\ALG@v@credits{}%
+   \ALG@p@undef{credits}%
+   \ALG@p@undef{indent}%
+   \ALG@p@undef{starttext}%
+   \ALG@p@undef{endtext}%
+   \def\ALG@p@state{}%
+   \let\ALG@p@rec\ALG@p@main%
+   \ALG@p@rec#1]%
+   \ALG@p@newblock%
+   }%
+%
+%   a lot of other macros are provided for convenience
+%
+\def\algblock{\algdef{se}}%
+\def\algcblock{\algdef{ce}}%
+\def\algloop{\algdef{sl}}%
+\def\algcloop{\algdef{cl}}%
+\def\algsetblock{\algdef{seLi}}%
+\def\algsetcblock{\algdef{ceLi}}%
+\def\algblockx{\algdef{SxE}}%
+\def\algblockdefx{\algdef{SE}}%
+\def\algcblockx{\algdef{CxE}}%
+\def\algcblockdefx{\algdef{CE}}%
+\def\algsetblockx{\algdef{SxELi}}%
+\def\algsetblockdefx{\algdef{SELi}}%
+\def\algsetcblockx{\algdef{CxELi}}%
+\def\algsetcblockdefx{\algdef{CELi}}%
+\def\algloopdefx{\algdef{Sl}}%
+\def\algcloopx{\algdef{xCl}}%
+\def\algcloopdefx{\algdef{Cl}}%
+% algloopx is not correct, use algloopdefx
+%
+%   Text output commands
+%
+\newcommand\algrenewtext[2][]% [block]{entity}
+   {%
+   \ifthenelse{\equal{#2}{}}{}%
+      {%
+      \ifthenelse{\equal{#1}{}}%
+         {%
+         \expandafter\let\csname ALG@t@\ALG@Ld @#2\endcsname\relax%
+         \expandafter\newcommand\csname ALG@t@\ALG@Ld @#2\endcsname%
+         }%
+         {%
+         \expandafter\let\csname ALG@t@\ALG@Ld @#2@\ALG@getblocknumber{#1}\endcsname\relax%
+         \expandafter\newcommand\csname ALG@t@\ALG@Ld @#2@\ALG@getblocknumber{#1}\endcsname%
+         }%
+      }%
+   }%
+%
+\def\ALG@letentitytext#1#2% [block]{entity}
+   {%
+   \ifthenelse{\equal{#2}{}}{}%
+      {%
+      \ifthenelse{\equal{#1}{}}%
+         {%
+         \expandafter\let\csname ALG@t@\ALG@Ld @#2\endcsname%
+         }%
+         {%
+         \expandafter\let\csname ALG@t@\ALG@Ld @#2@\ALG@getblocknumber{#1}\endcsname%
+         }%
+      }%
+   }%
+%
+\newcommand\algnotext[2][]% [block]{entity}
+   {%
+   \ALG@letentitytext{#1}{#2}\ALG@x@notext%
+   }%
+%
+\newcommand\algdefaulttext[2][]% [block]{entity}
+   {%
+   \ALG@letentitytext{#1}{#2}\ALG@x@default%
+   }%
+%
+\def\ALG@notext*{\algnotext}%
+\def\algtext{\@ifnextchar{*}{\ALG@notext}{\algrenewtext}}%
+%
+%
+%   ***   LANGUAGE SWITCHING   ***
+%
+%
+%
+\newcommand\algnewlanguage[1]%
+   {%
+   \@ifundefined{ALG@L@#1}% needs to be created?
+      {}%
+      {%
+      \PackageError{algorithmicx}{Language '#1' already defined!}{}%
+      }%
+   \addtocounter{ALG@Lnr}{1}% increment the language counter
+   \expandafter\edef\csname ALG@L@#1\endcsname{\arabic{ALG@Lnr}}% set the language number
+   \edef\ALG@Ld{\csname ALG@L@#1\endcsname}%
+   \expandafter\let\csname ALG@bl@\ALG@Ld @\endcsname\ALG@bl@% the BIG block
+   \expandafter\let\csname ALG@bl@\ALG@Ld @@\endcsname\ALG@bl@% the BIG block
+   \algdef{SL}[STATE]{State}{0}{}%
+   \expandafter\def\csname ALG@deftext@\ALG@Ld\endcsname{\textbf}%
+   \algnewcommand\algorithmiccomment[1]{\hfill\(\triangleright\) ##1}%
+   \algnewcommand\algorithmicindent{1.5em}%
+   \algnewcommand\alglinenumber[1]{\footnotesize ##1:}%
+   \algnewcommand\ALG@beginalgorithmic\relax% for user overrides
+   \algnewcommand\ALG@endalgorithmic\relax% for user overrides
+   }%
+%
+\newcommand\algsetlanguage[1]%
+   {%
+   \@ifundefined{ALG@L@#1}% needs to be created?
+      {%
+      \PackageError{algorithmicx}{Language '#1' is not yet defined!}{}%
+      }{}%
+   \edef\ALG@L{\csname ALG@L@#1\endcsname}%
+   }%
+%
+\newcommand\algdeflanguage[1]%
+   {%
+   \@ifundefined{ALG@L@#1}% needs to be created?
+      {%
+      \PackageError{algorithmicx}{Language '#1' is not yet defined!}{}%
+      }{}%
+   \edef\ALG@Ld{\csname ALG@L@#1\endcsname}%
+   }%
+%
+\newcommand\alglanguage[1]%
+   {%
+   \algdeflanguage{#1}%
+   \algsetlanguage{#1}%
+   }%
+%
+%
+%   ***   Defining language dependent stuff   ***
+%
+%
+\def\ALG@eatoneparam#1{}%
+\def\ALG@defbasecmd#1#2%
+   {%
+   \edef\ALG@tmp{\expandafter\ALG@eatoneparam\string #2}%
+   \@ifundefined\ALG@tmp{\edef #2{\noexpand\csname ALG@cmd@\noexpand\ALG@L @\ALG@tmp\endcsname}}{}%
+   \expandafter#1\csname ALG@cmd@\ALG@Ld @\ALG@tmp\endcsname%
+   }%
+\newcommand\algnewcommand{\ALG@defbasecmd\newcommand}%
+\newcommand\algrenewcommand{\ALG@defbasecmd\renewcommand}%
+\def\ALG@letcmd{\ALG@defbasecmd\let}%
+\def\ALG@defcmd{\ALG@defbasecmd\def}%
+\def\ALG@edefcmd{\ALG@defbasecmd\edef}%
+%
+%
+%   ***   OTHERS   ***
+%
+%
+\def\BState{\State \algbackskip}%
+\def\Statex{\item[]}% an empty line
+\newcommand\algrenewcomment{\algrenewcommand\algorithmiccomment}%
+\def\Comment{\algorithmiccomment}%
+\def\algref#1#2{\ref{#1}.\ref{#2}}%
+\algnewlanguage{default}%
+\algsetlanguage{default}%
+%
+%
+%   ***   Line breaks   ***
+%
+%
+\newcommand\algbreak% for multiline parameters !!! needs fix
+   {%
+      \item%
+%      \hskip\ALG@parindent%!!! not yet implemented
+%      \hskip-\algorithmicindent%
+   }%
+%
+\def\ALG@noputindents%
+   {%
+   \hskip\ALG@tlm%
+   }%
+%
+%
+%   ***   algorithm store / restore   ***
+%
+%
+%   store
+%
+\ALG@newcondstate{mustrestore}%
+\def\algstore%
+   {%
+   \renewcommand\ALG@beginblock%
+      {%
+      \PackageError{algorithmicx}{The environment must be closed after store!}{}%
+      }%
+   \@ifstar{\ALG@starstore}{\ALG@nostarstore}%
+   }%
+\def\ALG@nostarstore#1% save all infos into #1 and terminate the algorithmic block
+   {%
+   \addtocounter{ALG@storecount}{1}%
+   \expandafter\global\expandafter\let\csname ALG@save@mustrestore@#1\endcsname\ALG@x@mustrestore%
+   \ALG@starstore{#1}%
+   }%
+\def\ALG@starstore#1%
+   {%
+   \@ifundefined{ALG@save@line@#1}{}%
+       {\PackageError{algorithmicx}{This save name '#1' is already used!}{}}%
+   \def\ALG@savename{#1}%
+   \expandafter\xdef\csname ALG@save@totalnr@\ALG@savename\endcsname{\theALG@nested}%
+   \expandafter\xdef\csname ALG@save@line@\ALG@savename\endcsname{\theALG@line}%
+   \expandafter\xdef\csname ALG@save@numberfreq@\ALG@savename\endcsname{\ALG@numberfreq}%
+   \expandafter\xdef\csname ALG@save@rem@\ALG@savename\endcsname{\theALG@rem}%
+   \let\ALG@storerepeat\ALG@store%
+   \ALG@storerepeat%
+   }%
+\def\ALG@store% simply terminate all open blocks
+   {%
+   \ifnum\theALG@nested=0\let\ALG@storerepeat\relax%
+   \else%
+      \expandafter\xdef\csname ALG@save@currentblock@\ALG@savename @\theALG@nested\endcsname%
+         {\csname ALG@currentblock@\theALG@nested\endcsname}%
+      \expandafter\ifx\csname ALG@currentlifetime@\theALG@nested\endcsname\relax%
+      \else%
+         \expandafter\xdef\csname ALG@save@currentlifetime@\ALG@savename @\theALG@nested\endcsname%
+            {\csname ALG@currentlifetime@\theALG@nested\endcsname}%
+      \fi%
+      \expandafter\xdef\csname ALG@save@ind@\ALG@savename @\theALG@nested\endcsname%
+         {\csname ALG@ind@\theALG@nested\endcsname}%
+      \ALG@closebyforce%
+   \fi%
+   \ALG@storerepeat%
+   }%
+%
+%   restore
+%
+\def\algrestore%
+   {%
+   \@ifstar{\ALG@starrestore}{\ALG@nostarrestore}%
+   }%
+\def\ALG@starrestore%
+   {%
+   \let\ALG@restorerem\relax%
+   \let\ALG@restorereprem\relax%
+   \ALG@restoremain%
+   }%
+\def\ALG@nostarrestore%
+   {%
+   \let\ALG@restorerem\ALG@restoreremovesave%
+   \let\ALG@restorereprem\ALG@restorerepremovesave%
+   \ALG@restoremain%
+   }%
+\def\ALG@restoreremovesave%
+   {%
+   \expandafter\global\expandafter\let\csname ALG@save@totalnr@\ALG@savename\endcsname\relax%
+   \expandafter\global\expandafter\let\csname ALG@save@line@\ALG@savename\endcsname\relax%
+   \expandafter\global\expandafter\let\csname ALG@save@rem@\ALG@savename\endcsname\relax%
+   \expandafter\global\expandafter\let\csname ALG@save@totalnr@\ALG@savename\endcsname\relax%
+   \expandafter\global\expandafter\let\csname ALG@save@numberfreq@\ALG@savename\endcsname\relax%
+   }%
+\def\ALG@restorerepremovesave%
+   {%
+   \expandafter\global\expandafter\let\csname ALG@save@currentblock@\ALG@savename @\theALG@tmpcounter\endcsname\relax%
+   \expandafter\global\expandafter\let\csname ALG@save@currentlifetime@\ALG@savename @\theALG@tmpcounter\endcsname\relax%
+   \expandafter\global\expandafter\let\csname ALG@save@currentlifetime@\ALG@savename @\theALG@tmpcounter\endcsname\relax%
+   \expandafter\global\expandafter\let\csname ALG@save@ind@\ALG@savename @\theALG@tmpcounter\endcsname\relax%
+   }%
+\def\ALG@restoremain#1% restore all infos from #1 in an open algorithmic block
+   {%
+   \ifnum\theALG@line=0%
+      \else\PackageError{algorithmicx}{Restore might be used only at the beginning of the environment!}{}%
+   \fi%
+   \def\ALG@savename{#1}%
+   \expandafter\ifx\csname ALG@save@totalnr@\ALG@savename\endcsname\relax%
+      \PackageError{algorithmicx}{Save '\ALG@savename'\space not defined!!!}{}%
+   \fi%
+   \@ifundefined{ALG@save@mustrestore@\ALG@savename}{}%
+      {%
+      \addtocounter{ALG@storecount}{-1}%
+      \expandafter\global\expandafter\let\csname ALG@save@mustrestore@\ALG@savename\endcsname\relax%
+      }%
+   \setcounter{ALG@line}{\csname ALG@save@line@\ALG@savename\endcsname}%
+   \edef\ALG@numberfreq{\csname ALG@save@numberfreq@\ALG@savename\endcsname}%
+   \setcounter{ALG@rem}{\csname ALG@save@rem@\ALG@savename\endcsname}%
+   \setcounter{ALG@tmpcounter}{\csname ALG@save@totalnr@\ALG@savename\endcsname}%
+   \setcounter{ALG@nested}{0}%
+   \ALG@restorerem%
+   \let\ALG@restorerepeat\ALG@restore%
+   \ALG@restorerepeat%
+   }%
+\def\ALG@restore%
+   {%
+   \ifnum\theALG@tmpcounter>0%
+      \expandafter\edef\csname ALG@currentblock@\theALG@tmpcounter\endcsname%
+         {\csname ALG@save@currentblock@\ALG@savename @\theALG@tmpcounter\endcsname}%
+      \expandafter\ifx\csname ALG@save@currentlifetime@\ALG@savename @\theALG@tmpcounter\endcsname\relax%
+         \expandafter\let\csname ALG@currentlifetime@\theALG@tmpcounter\endcsname\relax%
+         \else%
+            \expandafter\edef\csname ALG@currentlifetime@\theALG@tmpcounter\endcsname%
+            {\csname ALG@save@currentlifetime@\ALG@savename @\theALG@tmpcounter\endcsname}%
+         \fi%
+      %
+      \ALG@beginblock{\csname ALG@save@ind@\ALG@savename @\theALG@tmpcounter\endcsname}%
+      \ALG@restorereprem%
+      \addtocounter{ALG@tmpcounter}{-1}%
+   \else\let\ALG@restorerepeat\relax%
+   \fi%
+   \ALG@restorerepeat%
+   }%
+\AtEndDocument%
+   {%
+   \ifnum\theALG@storecount>0\relax%
+      \PackageError{algorithmicx}{Some stored algorithms are not restored!}{}%
+   \fi%
+   }%
