@@ -45,11 +45,11 @@ jss_article <- function(..., keep_tex = TRUE) {
       x <- gsub("\\n", paste0("\n", getOption("continue")), x)
       x <- paste0(getOption("prompt"), x)
     }
-    paste0(c('\\begin{CodeInput}', x, '\\end{CodeInput}', ''),
+    paste0(c('\n\\begin{CodeInput}', x, '\\end{CodeInput}', ''),
       collapse = '\n')
   }
   hook_output <- function(x, options) {
-    paste0('\\begin{CodeOutput}\n', x, '\\end{CodeOutput}\n')
+    paste0('\n\\begin{CodeOutput}\n', x, '\\end{CodeOutput}\n')
   }
   old_hook <- base$knitr$knit_hooks$document
   hook_document <- function(x) {
