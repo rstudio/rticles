@@ -1,6 +1,10 @@
 \documentclass{bioinfo}
 \copyrightyear{2016} \pubyear{2016}
 
+%% Some pieces required from the pandoc template
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
 \access{Advance Access Publication Date: $access_date.day$ $access_date.month$ $access_date.year$}
 \appnotes{Manuscript Category}
 
@@ -9,21 +13,22 @@
 
 \subtitle{$subject_section$}
 
-\title[$title.short$]{$title.full$}
+\title[$title_short$]{$title_full$}
 
-\author{
+\author[Sample \textit{et~al}.]{
 $for(author)$
-[$author.affiliation$]{$author.name$}
+% $author.name$\textsupersript{$author.affiliation$},
+$author.name$,
 $endfor$
 }
 
 \address{
 $for(address)$
-[$address.code$]{$address.address$}
+\textsuperscript{$address.code$}$address.address$
 $endfor$
 }
 
-\corresp{$corresponding_author.text$}
+\corresp{$corresponding_author_text$}
 
 \history{Received on XXX; revised on XXX; accepted on XXX}
 
@@ -33,13 +38,15 @@ $endfor$
 \textbf{Motivation:} $motivation$\\
 \textbf{Results:} $results$\\
 \textbf{Availability:} $availability$\\
-\textbf{Contact:}\href{$corresponding_author.email$}{$corresponding_author.email$}\\
-\textbf{Supplementary information:} $supplmentary_info$}
+% \textbf{Contact:}\href{$corresponding_author_email$}{$corresponding_author_email$}\\
+\textbf{Contact:}$corresponding_author_email$\\
+\textbf{Supplementary information:} $supplementary_info$}
 
 \maketitle
 
 $body$
 
+% Bibliography
 \bibliography{bioinformatics-sample}
 
 \end{document}
