@@ -1,6 +1,6 @@
 ---
 title_full: Template for preparing a submission to Bioinformatics using RMarkdown
-title_short: For fun and profit
+title_short: Bioinformatics Rmd Template
 
 # one of `Original Paper`, `Discovery Note`, `Application Note`, `Review`, `Letter to the Editor`, `Conference Paper`    
 subject_section: Application Note
@@ -12,9 +12,9 @@ access_date:
       
 author:
   - name: Alice Anonymous
-    affiliation: 1,2
+    affiliation: "1,2"
   - name: Bob Security
-    affiliation: 1
+    affiliation: "1"
       
 address:
   - code: 1
@@ -28,7 +28,7 @@ corresponding_author_email: "bob_email.com"
   
 motivation: |
   This section should specifically state the scientific question within the context of the field of study.
-
+  
 results: |
   This section should summarize the scientific advance or novel results of the study, and its impact on computational biology.
 
@@ -38,22 +38,38 @@ availability: |
 supplementary_info: |
   Supplementary data are available at Bioinformatics Online.
 
+output:
+  rticles::bioinformatics_article:
+    citation_package: natbib
+    
 bibliography: bioinformatics-sample.bib 
-csl: bioinformatics.csl 
-
-output: rticles::bioinformatics_article
+# biblio-style: natbib
+# csl: bioinformatics.csl 
 ---
 
-# Introduction
+Introduction
+============
 
-<!-- Bibliography needs fixing XXX -->
-<!-- Introduce your topic @Bag01. -->
+Testing a citation [@Bag01]. 
+
+Instructions for authors are available [online](http://www.oxfordjournals.org/our_journals/bioinformatics/for_authors/general.html).
 
 Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum.
 
 Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum.
 
-# Approach
+Approach
+============
+
+Here is how to include math equations in the document (bounded by `$$`):
+
+$$
+\begin{aligned}
+(x+y)^3&=(x+y)(x+y)^2\\
+       &=(x+y)(x^2+2xy+y^2) \label{eqn:example} \\
+       &=x^3+3x^2y+3xy^3+x^3. 
+\end{aligned}
+$$
 
 Describe the approach. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum.
 
@@ -63,7 +79,8 @@ Describe the approach. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum
 
 Describe the approach. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum.
 
-# Methods
+Methods
+============
 
 Detailed methods. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum.
 
@@ -71,7 +88,8 @@ Detailed methods. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad n
 
 Detailed methods. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum.
 
-## Method 1
+Sub-Method
+-------------
 
 Details for Method 1. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum.
 
@@ -81,7 +99,8 @@ Details for Method 1. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum 
 
 Details for Method 1. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum.
 
-## Method 2
+Method 2
+-------------
 
 Details for Method 2. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum.
 
@@ -91,7 +110,8 @@ Details for Method 2. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum 
 
 Details for Method 2. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum.
 
-# Discussion
+Discussion
+=============
 
 Discussion of results. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum.
 
@@ -101,7 +121,8 @@ Discussion of results. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum
 
 Discussion of results. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum.
 
-# Conclusion
+Conclusion
+=============
 
 Anything else? Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum.
 
@@ -111,14 +132,15 @@ Anything else? Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad naus
 
 Anything else? Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum.
 
-# Acknowledgements {.unnumbered}
+Acknowledgements {.unnumbered}
+==============
 
 These should be included at the end of the text and not in footnotes. Please ensure you acknowledge all sources of funding, see funding section below.
 
 Details of all funding sources for the work in question should be given in a separate section entitled 'Funding'. This should appear before the 'Acknowledgements' section.
 
-# Funding {.unnumbered}
-
+Funding {.unnumbered}
+==============
 The following rules should be followed:
 
 - The sentence should begin: ‘This work was supported by …’ -
@@ -131,3 +153,4 @@ The following rules should be followed:
 An example is given here: ‘This work was supported by the National Institutes of Health [AA123456 to C.S., BB765432 to M.H.]; and the Alcohol & Education Research Council [hfygr667789].’
 
 Oxford Journals will deposit all NIH-funded articles in PubMed Central. See Depositing articles in repositories – information for authors for details. Authors must ensure that manuscripts are clearly indicated as NIH-funded using the guidelines above.
+

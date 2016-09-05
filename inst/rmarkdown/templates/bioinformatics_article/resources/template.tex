@@ -5,6 +5,10 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
+$for(header-includes)$
+$header-includes$
+$endfor$
+
 \access{Advance Access Publication Date: $access_date.day$ $access_date.month$ $access_date.year$}
 \appnotes{Manuscript Category}
 
@@ -15,9 +19,9 @@
 
 \title[$title_short$]{$title_full$}
 
-\author[Sample \textit{et~al}.]{
+\author[FirstAuthorLastName \textit{et~al}.]{
 $for(author)$
-[$author.affiliation$]{$author.name$}
+$author.name$\,\textsuperscript{$author.affiliation$},
 $endfor$
 }
 
@@ -45,7 +49,12 @@ $endfor$
 
 $body$
 
+$for(include-after)$
+$include-after$
+$endfor$
+
 % Bibliography
+\bibliographystyle{natbib}
 \bibliography{bioinformatics-sample}
 
 \end{document}
