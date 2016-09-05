@@ -45,7 +45,7 @@ test_format("jss_article")
 test_format("rjournal_article", file_check = FALSE)
 test_format("acs_article", os_skip = "windows")
 test_format("pnas_article")
-
+test_format("bioinformatics_article")
 
 
 

@@ -23,8 +23,8 @@ address:
     address: Another University Department, Street, City, State, Zip
  
 # Full email address to be given, preferably an institution email address.  
-corresponding_author_text: "To whom correspondence should be addressed. E-mail: bob_email.com"
-corresponding_author_email: "bob_email.com"
+corresponding_author_text: "To whom correspondence should be addressed. E-mail: bob\\@email.com"
+corresponding_author_email: "bob\\@email.com"
   
 motivation: |
   This section should specifically state the scientific question within the context of the field of study.
@@ -50,7 +50,10 @@ bibliography: bioinformatics-sample.bib
 Introduction
 ============
 
-Testing a citation [@Bag01]. 
+Cite others using bracket notation [@Bag01]. Can also cite with @Boffelli03.
+
+<!-- naked refs don't work because of the \nolinkurl problems -->
+<!-- Or refer to specific people e.g. -@Yoo03 like so. -->
 
 Instructions for authors are available [online](http://www.oxfordjournals.org/our_journals/bioinformatics/for_authors/general.html).
 
@@ -73,11 +76,28 @@ $$
 
 Describe the approach. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum.
 
-Describe the approach. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum.
+<!--
+problems with longtable and 2-column format. see pnas_template and https://github.com/jgm/pandoc/issues/1023
+
+  Species                    CBS     CV     G3
+  ----------------------- ------ ------ ------
+  1\. Acetaldehyde           0.0    0.0    0.0
+  2\. Vinyl alcohol          9.1    9.6   13.5
+  3\. Hydroxyethylidene     50.8   51.2   54.0
+
+  : Comparison of the fitted potential energy surfaces and ab initio
+  benchmark electronic energy calculations
+-->
 
 Describe the approach. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum.
 
 Describe the approach. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum.
+
+Describe the approach. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum. Introduce your topic. Lorem ipsum ad nauseum.
+
+```{r figure, echo = FALSE, fig.width = 3.5, fig.cap = 'Figure from an Rmd chunk.'}
+plot(rnorm(10000))
+```
 
 Methods
 ============

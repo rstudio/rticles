@@ -5,9 +5,18 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
+$if(tables)$
+\usepackage{longtable}
+$endif$
+
 $for(header-includes)$
 $header-includes$
 $endfor$
+
+% hyperref makes the margins screwy.
+% https://groups.google.com/forum/#!topic/latexusersgroup/4W_SwGk6zx4
+% http://ansuz.sooke.bc.ca/software/latex-tricks.php
+% \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 
 \access{Advance Access Publication Date: $access_date.day$ $access_date.month$ $access_date.year$}
 \appnotes{Manuscript Category}
@@ -27,7 +36,7 @@ $endfor$
 
 \address{
 $for(address)$
-\textsuperscript{$address.code$}$address.address$
+\textsuperscript{$address.code$}$address.address$\\
 $endfor$
 }
 
@@ -41,7 +50,6 @@ $endfor$
 \textbf{Motivation:} $motivation$\\
 \textbf{Results:} $results$\\
 \textbf{Availability:} $availability$\\
-% \textbf{Contact:}\href{$corresponding_author_email$}{$corresponding_author_email$}\\
 \textbf{Contact:}$corresponding_author_email$\\
 \textbf{Supplementary information:} $supplementary_info$}
 
