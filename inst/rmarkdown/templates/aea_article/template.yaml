@@ -1,0 +1,4 @@
+name: American Economics Association journals
+description: >
+  Template for creating an article for submission to journals published by the American Economics Association: AEJ, AER, JEL, PP.
+create_dir: true
