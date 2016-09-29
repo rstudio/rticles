@@ -1,0 +1,31 @@
+---
+title: "Untitled"
+short: "A shorter title"
+journal: "AER" # AER, AEJ, PP, JEL
+month: "`r lubridate::month(Sys.time())`"
+year: "`r lubridate::year(Sys.time())`"
+vol: 1
+issue: 1
+jel:
+  - A10
+  - A11
+keywords:
+  - first keyword
+  - second keyword
+author:
+  - name: Alice Anonymous
+    firstname: Alice
+    surname: Anonymous
+    email: alice@example.com
+    affiliation: Some Institute of Technology
+  - name: Bob Security
+    firstname: Bob
+    surname: Security
+    email: bob@example.com
+    affiliation: Another University
+acknowledgements: |
+  Acknowledgements
+abstract: |
+  Abstract goes here
+output: rticles::aea_article
+---
