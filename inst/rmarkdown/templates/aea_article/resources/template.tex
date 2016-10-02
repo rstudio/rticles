@@ -14,7 +14,7 @@
 % variety of citation commands than latex supports natively. See below.
 
 % Uncomment the next line to use the natbib package with bibtex
-%\usepackage{natbib}
+\usepackage{natbib}
 
 % Uncomment the next line to use the harvard package with bibtex
 %\usepackage[abbr]{harvard}
@@ -62,82 +62,7 @@ $abstract$
 
 \maketitle
 
-American Economic Review Pointers:
-
-\begin{itemize}
-\item Do not use an "Introduction" heading. Begin your introductory material
-before the first section heading.
-
-\item Avoid style markup (except sparingly for emphasis).
-
-\item Avoid using explicit vertical or horizontal space.
-
-\item Captions are short and go below figures but above tables.
-
-\item The tablenotes or figurenotes environments may be used below tables
-or figures, respectively, as demonstrated below.
-
-\item If you have difficulties with the mathtime package, adjust the package
-options appropriately for your platform. If you can't get it to work, just
-remove the package or see our technical support document online (please
-refer to the author instructions).
-
-\item If you are using an appendix, it goes last, after the bibliography.
-Use regular section headings to make the appendix headings.
-
-\item If you are not using an appendix, you may delete the appendix command
-and sample appendix section heading.
-
-\item Either the natbib package or the harvard package may be used with bibtex.
-To include one of these packages, uncomment the appropriate usepackage command
-above. Note: you can't use both packages at once or compile-time errors will result.
-
-\end{itemize}
-
-\section{First Section in Body}
-
-Sample figure:
-
-\begin{figure}
-Figure here.
-
-\caption{Caption for figure below.}
-\begin{figurenotes}
-Figure notes without optional leadin.
-\end{figurenotes}
-\begin{figurenotes}[Source]
-Figure notes with optional leadin (Source, in this case).
-\end{figurenotes}
-\end{figure}
-
-Sample table:
-
-\begin{table}
-\caption{Caption for table above.}
-
-\begin{tabular}{lll}
-& Heading 1 & Heading 2 \\
-Row 1 & 1 & 2 \\
-Row 2 & 3 & 4%
-\end{tabular}
-\begin{tablenotes}
-Table notes environment without optional leadin.
-\end{tablenotes}
-\begin{tablenotes}[Source]
-Table notes environment with optional leadin (Source, in this case).
-\end{tablenotes}
-\end{table}
-
-References here (manual or bibTeX). If you are using bibTeX, add your bib file
-name in place of BibFile in the bibliography command.
-% Remove or comment out the next two lines if you are not using bibtex.
-\bibliographystyle{aea}
-\bibliography{references}
-
-% The appendix command is issued once, prior to all appendices, if any.
-\appendix
-
-\section{Mathematical Appendix}
+$body$
 
 \end{document}
 
