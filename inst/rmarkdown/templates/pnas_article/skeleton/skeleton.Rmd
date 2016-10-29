@@ -17,6 +17,9 @@ corresponding_author:
   - code: 2
     text: "To whom correspondence should be addressed. E-mail: bob@email.com"
 
+# For footer text
+lead_author_surname: Anonymous
+
 ## Remove this if not required    
 equal_authors:
   - code: 1
@@ -52,6 +55,9 @@ pnas_type: pnasresearcharticle
 
 bibliography: pnas-sample.bib
 csl: pnas.csl
+
+## change to true to add optional line numbering
+lineno: false
 
 output: rticles::pnas_article
 ---
