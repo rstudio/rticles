@@ -1,4 +1,4 @@
-\documentclass[9pt,twocolumn,twoside]{pnas-new}
+\documentclass[9pt,twocolumn,twoside,$if(lineno)$lineno$endif$]{pnas-new}
 
 %% Some pieces required from the pandoc template
 \providecommand{\tightlist}{%
@@ -7,9 +7,7 @@
 % Use the lineno option to display guide line numbers if required.
 % Note that the use of elements such as single-column equations
 % may affect the guide line number alignment.
-$if(lineno)$
-\lineno
-$endif$
+
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
