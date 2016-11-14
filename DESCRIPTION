@@ -11,7 +11,7 @@ Authors@R: c(
   person("Yihui", "Xie", role = "aut", email = "yihui@rstudio.com"),
   person(family = "RStudio", role = "cph"),
   person("Ramnath ", "Vaidyanathan", role = c("aut", "cph"), email = "ramnath.vaidya@gmail.com"),
-  person(family = "Assocation for Computing Machinery", role = c("aut", "cph")),
+  person(family = "Association for Computing Machinery", role = c("aut", "cph")),
   person("Carl", "Boettiger", role = c("aut", "cph"), email = "cboettig@gmail.com"),
   person(family = "Elsevier", role = c("aut", "cph")),
   person("Karl", "Broman", role = c("aut", "cph"), email = "kbroman@gmail.com"),
