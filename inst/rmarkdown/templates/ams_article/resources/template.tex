@@ -1,0 +1,64 @@
+\documentclass{ametsoc}
+\usepackage{color}
+\usepackage{hyperref}
+\journal{$journal$}
+%  Please choose a journal abbreviation to use above from the following list:
+%
+%   jamc     (Journal of Applied Meteorology and Climatology)
+%   jtech     (Journal of Atmospheric and Oceanic Technology)
+%   jhm      (Journal of Hydrometeorology)
+%   jpo     (Journal of Physical Oceanography)
+%   jas      (Journal of Atmospheric Sciences)
+%   jcli      (Journal of Climate)
+%   mwr      (Monthly Weather Review)
+%   wcas      (Weather, Climate, and Society)
+%   waf       (Weather and Forecasting)
+%   bams (Bulletin of the American Meteorological Society)
+%   ei    (Earth Interactions)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Citations should be of the form ``author year''  not ``author, year''
+\bibpunct{(}{)}{;}{a}{}{,}
+\title{$title$}
+
+$if(authors.name)$
+\authors{$authors.name$}
+$endif$
+
+$if(authors.correspondingauthor)$
+\correspondingauthor{$authors.correspondingauthor$}
+$endif$
+
+$if(authors.affiliation)$
+\affiliation{$authors.affiliation$}
+$endif$
+$if(authors.exaffiliation)$
+\extraaffil{$authors.exaffiliation$}
+$endif$
+
+$if(authors.email)$
+$email$
+$endif$
+
+$for(exauthors)$
+\extraauthor{$exauthors.name$}
+$if(exauthors.correspondingauthor)$
+\correspondingauthor{$exauthors.correspondingauthor$}
+$endif$
+
+$if(exauthors.affiliation)$
+\affiliation{$exauthors.affiliation$}
+$endif$
+$if(exauthors.exaffiliation)$
+\extraaffil{$exauthors.exaffiliation$}
+$endif$
+$if(exauthors.email)$
+$exauthors.email$
+$endif$
+$endfor$
+
+\abstract{$abstract$}
+\begin{document}
+\maketitle
+$body$
+\end{document}
