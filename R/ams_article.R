@@ -18,13 +18,11 @@
 #' @export
 ams_article <- function(...,
                         keep_tex = TRUE,
-                        md_extensions = c("-autolink_bare_uris"),
-                        fig_caption = TRUE){
+                        md_extensions = c("-autolink_bare_uris")){
   pdf_document_format(...,
                       keep_tex = keep_tex,
                       md_extensions = md_extensions,
                       format = "ams_article",
                       template = "template.tex",
-                      csl = "american-meteorological-society.csl",
-                      fig_caption = fig_caption)
+                      csl = "american-meteorological-society.csl")
 }

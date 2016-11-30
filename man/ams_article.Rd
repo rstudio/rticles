@@ -4,8 +4,7 @@
 \alias{ams_article}
 \title{American Meteorological Society (AMS) Journal format.}
 \usage{
-ams_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"),
-  fig_caption = TRUE)
+ams_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 }
 \arguments{
 \item{...}{Arguments to \code{rmarkdown::pdf_document}}
@@ -15,8 +14,6 @@ ams_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"),
 \item{md_extensions}{Markdown extensions to be added or removed from the
 default definition or R Markdown. See the \code{\link{rmarkdown_format}} for
 additional details.}
-
-\item{fig_caption}{\code{TRUE} to render figures with captions}
 }
 \value{
 R Markdown output format to pass to \code{\link[rmarkdown:render]{render}}
