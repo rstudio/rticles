@@ -1,0 +1,5 @@
+name: IEEE Transactions Journal Article
+description: >
+ Template for creating an article for submission to any IEEE Transactions journal
+create_dir: true
+
