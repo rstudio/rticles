@@ -310,59 +310,23 @@
 
 %% BEGIN MY ADDITIONS %%
 
-$if(natbib)$
-\usepackage{natbib}
-\bibliographystyle{plainnat}
-$endif$
-$if(biblatex)$
-\usepackage{biblatex}
-\bibliographystyle{IEEEtran}
-\bibliography{IEEEabrv,mybibfile}
-$if(biblio-files)$
-\bibliography{$biblio-files$}
-$endif$
-$endif$
 
-$if(tables)$
-\usepackage{longtable}
-$endif$
-$if(graphics)$
-\usepackage{graphicx}
-% We will generate all images so they have a width \maxwidth. This means
-% that they will get their normal width if they fit onto the page, but
-% are scaled down if they would overflow the margins.
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
-\else\Gin@nat@width\fi}
-\makeatother
-\let\Oldincludegraphics\includegraphics
-\renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
-$endif$
 
 \usepackage[unicode=true]{hyperref}
 
 \hypersetup{breaklinks=true,
             bookmarks=true,
-            pdfauthor={$author-meta$},
-            pdftitle={$title-meta$},
+            pdfauthor={},
+            pdftitle={Bare Demo of IEEEtran.cls for IEEE Conferences},
             colorlinks=true,
-            urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
-            linkcolor=$if(linkcolor)$$linkcolor$$else$magenta$endif$,
+            urlcolor=blue,
+            linkcolor=magenta,
             pdfborder={0 0 0}}
 \urlstyle{same}  % don't use monospace font for urls
 
-$for(header-includes)$
-$header-includes$
-$endfor$
 % Pandoc toggle for numbering sections (defaults to be off)
-$if(numbersections)$
-$else$
 \setcounter{secnumdepth}{0}
-$endif$
 % Pandoc header
-$for(header-includes)$
-$header-includes$
-$endfor$
 \usepackage[nomarkers]{endfloat}
 
 %% END MY ADDITIONS %%
@@ -380,21 +344,29 @@ $endfor$
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{$title$}
+\title{Bare Demo of IEEEtran.cls for IEEE Conferences}
 
 % author names and affiliations
 % use a multiple column layout for up to three different
 % affiliations
 
 \author{
-$for(author)$
-\IEEEauthorblockN{$author.name$}
-\IEEEauthorblockA{$author.affiliation$}
-{$author.department$}\\
-{$author.location$}\\
-{$author.email$}
-\and $endfor$
-}
+\IEEEauthorblockN{Michael Shell}
+\IEEEauthorblockA{Georgia Institute of Technology}
+{Computer Engineering}\\
+{Atlanta, Georgia 30332--0250}\\
+{ieetran@michaelshell.org}
+\and \IEEEauthorblockN{Daniel Emaasit}
+\IEEEauthorblockA{University of Nevada}
+{Civil Engineering}\\
+{Las Vegas, Nevada 89119}\\
+{daniel.emaasit@gmail.com}
+\and \IEEEauthorblockN{Alice Wonderland}
+\IEEEauthorblockA{Another University}
+{Your Department}\\
+{City, State Zip}\\
+{alice@host.com}
+\and }
 
 % conference papers do not typically use \thanks and this command
 % is locked out in conference mode. If really needed, such as for
@@ -433,7 +405,7 @@ $for(author)$
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-$abstract$
+The abstract goes here.
 \end{abstract}
 
 % no keywords
@@ -449,29 +421,51 @@ $abstract$
 \IEEEpeerreviewmaketitle
 
 
-$body$
+\section{Introduction}\label{introduction}
 
-$if(natbib)$
-$if(biblio-files)$
-$if(biblio-title)$
-$if(book-class)$
-\renewcommand\bibname{$biblio-title$}
-$else$
-\renewcommand\refname{$biblio-title$}
-$endif$
-$endif$
-\bibliography{$biblio-files$}
+This demo file is intended to serve as a ``starter file'' for IEEE
+conference papers produced under \LaTeX~using IEEEtran.cls version 1.8b
+and later. I wish you the best of success.
 
-$endif$
-$endif$
-$if(biblatex)$
-\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+\subsection{Subsection Heading Here}\label{subsection-heading-here}
 
-$endif$
-$for(include-after)$
-$include-after$
+Subsection text here.
 
-$endfor$
+\subsubsection{Subsubsection Heading
+Here}\label{subsubsection-heading-here}
+
+Subsubsection text here.
+
+\section{Conclusion}\label{conclusion}
+
+The conclusion goes here.
+
+\section{Acknowledgment}\label{acknowledgment}
+
+The authors would like to thank\ldots{}
+
+\section{Bibliography styles}\label{bibliography-styles}
+
+Here are two sample references: Feynman and Vernon Jr. (1963; Dirac
+1953).
+
+\newpage
+
+\section*{References}\label{references}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{refs}{}
+\hypertarget{ref-Dirac1953888}{}
+Dirac, P.A.M. 1953. ``The Lorentz Transformation and Absolute Time.''
+\emph{Physica} 19 (1---12): 888--96.
+doi:\href{https://doi.org/10.1016/S0031-8914(53)80099-6}{10.1016/S0031-8914(53)80099-6}.
+
+\hypertarget{ref-Feynman1963118}{}
+Feynman, R.P, and F.L Vernon Jr. 1963. ``The Theory of a General Quantum
+System Interacting with a Linear Dissipative System.'' \emph{Annals of
+Physics} 24: 118--73.
+doi:\href{https://doi.org/10.1016/0003-4916(63)90068-X}{10.1016/0003-4916(63)90068-X}.
+
 \end{document}
 
 
