@@ -1,4 +1,4 @@
-\documentclass[$col$]{ametsoc}
+\documentclass[$layout$]{ametsoc}
 \usepackage{color}
 \usepackage{hyperref}
 \journal{$journal$}
@@ -62,7 +62,10 @@ $if(exauthors.email)$
 $exauthors.email$
 $endif$
 $endfor$
-
+% pandoc header
+$for(header-includes)$
+$header-includes$
+$endfor$
 \abstract{$abstract$}
 \begin{document}
 \maketitle

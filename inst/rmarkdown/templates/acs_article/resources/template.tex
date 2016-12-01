@@ -59,6 +59,10 @@ $if(strikeout)$
 % avoid problems with \sout in headers with hyperref:
 \pdfstringdefDisableCommands{\renewcommand{\sout}{}}
 $endif$
+% pandoc header
+$for(header-includes)$
+$header-includes$
+$endfor$
 \begin{document}
 \begin{abstract}
 $abstract$

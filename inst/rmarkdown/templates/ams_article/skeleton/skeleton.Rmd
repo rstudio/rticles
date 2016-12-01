@@ -1,6 +1,6 @@
 ---
 journal: jhm
-col: draft
+layout: draft
 title: Title here
 author1: Andrew N. Other
 author2: Fred T. Secondauthor
