@@ -66,16 +66,16 @@ $endfor$
 $for(header-includes)$
 $header-includes$
 $endfor$
+\abstract{$abstract$}
+\begin{document}
+\maketitle
 $for(include-before)$
 $include-before$
 
 $endfor$
+$body$
 $for(include-after)$
 $include-after$
 
 $endfor$
-\abstract{$abstract$}
-\begin{document}
-\maketitle
-$body$
 \end{document}
