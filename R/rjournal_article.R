@@ -35,9 +35,11 @@ rjournal_article <- function(...) {
     wrapper_template <- find_resource("rjournal_article", "RJwrapper.tex")
     wrapper_output <- file.path(getwd(), "RJwrapper.tex")
     template_pandoc(wrapper_metadata, wrapper_template, wrapper_output, verbose)
-
     tools::texi2pdf("RJwrapper.tex", clean = clean)
-    "RJwrapper.pdf"
+    #browser()
+    file.rename("RJwrapper.tex",output_file)
+    file.rename("RJwrapper.pdf",gsub(".tex",".pdf",output_file))
+    gsub(".tex",".pdf",output_file)
   }
 
   # Mostly copied from knitr::render_sweave
