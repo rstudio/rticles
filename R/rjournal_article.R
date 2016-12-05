@@ -36,7 +36,6 @@ rjournal_article <- function(...) {
     wrapper_output <- file.path(getwd(), "RJwrapper.tex")
     template_pandoc(wrapper_metadata, wrapper_template, wrapper_output, verbose)
     tools::texi2pdf("RJwrapper.tex", clean = clean)
-    #browser()
     file.rename("RJwrapper.tex",output_file)
     file.rename("RJwrapper.pdf",gsub(".tex",".pdf",output_file))
     gsub(".tex",".pdf",output_file)
