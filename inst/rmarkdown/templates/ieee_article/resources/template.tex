@@ -50,7 +50,7 @@
 % The testflow support page is at:
 % http://www.michaelshell.org/tex/testflow/
 
-\documentclass[conference]{IEEEtran}
+\documentclass[conference,$if(fontsize)$$fontsize$,$endif$$if(draftmode)$$draftmode$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{IEEEtran}
 % Some Computer Society conferences also require the compsoc mode option,
 % but others use the standard conference format.
 %
@@ -68,6 +68,9 @@
 
 % *** MISC UTILITY PACKAGES ***
 %
+$if(with_ifpdf)$
+\usepackage{ifpdf}
+$endif$
 %\usepackage{ifpdf}
 % Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
 % compilation based on whether the output is pdf or dvi.
@@ -91,6 +94,9 @@
 
 % *** CITATION PACKAGES ***
 %
+$if(with_cite)$
+\usepackage{cite}
+$endif$
 %\usepackage{cite}
 % cite.sty was written by Donald Arseneau
 % V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
@@ -158,6 +164,10 @@
 
 % *** MATH PACKAGES ***
 %
+$if(with_amsmath)$
+\usepackage{amsmath}
+\interdisplaylinepenalty=2500
+$endif$
 %\usepackage{amsmath}
 % A popular package from the American Mathematical Society that provides
 % many useful and powerful commands for dealing with mathematics.
@@ -176,6 +186,9 @@
 
 % *** SPECIALIZED LIST PACKAGES ***
 %
+$if(with_algorithmic)$
+\usepackage{algorithmic}
+$endif$
 %\usepackage{algorithmic}
 % algorithmic.sty was written by Peter Williams and Rogerio Brito.
 % This package provides an algorithmic environment fo describing algorithms.
@@ -196,6 +209,9 @@
 
 % *** ALIGNMENT PACKAGES ***
 %
+$if(with_array)$
+\usepackage{array}
+$endif$
 %\usepackage{array}
 % Frank Mittelbach's and David Carlisle's array.sty patches and improves
 % the standard LaTeX2e array and tabular environments to provide better
@@ -243,6 +259,10 @@
 
 % *** FLOAT PACKAGES ***
 %
+$if(with_dblfloatfix)$
+\usepackage{dblfloatfix}
+$endif$
+
 %\usepackage{fixltx2e}
 % fixltx2e, the successor to the earlier fix2col.sty, was written by
 % Frank Mittelbach and David Carlisle. This package corrects a few problems
@@ -312,7 +332,7 @@
 
 $if(natbib)$
 \usepackage{natbib}
-\bibliographystyle{plainnat}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $endif$
 $if(biblatex)$
 \usepackage{biblatex}
@@ -324,7 +344,7 @@ $endif$
 $endif$
 
 $if(tables)$
-\usepackage{longtable}
+\usepackage{longtable,booktabs}
 $endif$
 $if(graphics)$
 \usepackage{graphicx}
@@ -341,21 +361,30 @@ $endif$
 
 \usepackage[unicode=true]{hyperref}
 
-\hypersetup{breaklinks=true,
-            bookmarks=true,
-            pdfauthor={$author-meta$},
+\hypersetup{
+$if(title-meta)$
             pdftitle={$title-meta$},
+$endif$
+$if(author-meta)$
+            pdfauthor={$author-meta$},
+$endif$
+$if(keywords)$
+            pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
+$endif$
+$if(colorlinks)$
             colorlinks=true,
-            urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
-            linkcolor=$if(linkcolor)$$linkcolor$$else$magenta$endif$,
-            pdfborder={0 0 0}}
+            linkcolor=$if(linkcolor)$$linkcolor$$else$Magenta$endif$,
+            citecolor=$if(citecolor)$$citecolor$$else$Blue$endif$,
+            urlcolor=$if(urlcolor)$$urlcolor$$else$Blue$endif$,
+$else$
+            pdfborder={0 0 0},
+$endif$
+            breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
 
-$for(header-includes)$
-$header-includes$
-$endfor$
 % Pandoc toggle for numbering sections (defaults to be off)
 $if(numbersections)$
+\setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
 $else$
 \setcounter{secnumdepth}{0}
 $endif$
@@ -368,11 +397,9 @@ $endfor$
 %% END MY ADDITIONS %%
 
 
-% correct bad hyphenation here
-\hyphenation{op-tical net-works semi-conduc-tor}
+\hyphenation{$hyphenfixes$}
 
 \begin{document}
-
 %
 % paper title
 % Titles are generally capitalized except for words such as a, an, and, as,
@@ -389,11 +416,13 @@ $endfor$
 \author{
 $for(author)$
 \IEEEauthorblockN{$author.name$}
-\IEEEauthorblockA{$author.affiliation$}
-{$author.department$}\\
-{$author.location$}\\
-{$author.email$}
-\and $endfor$
+\IEEEauthorblockA{$author.affiliation$\\
+$author.department$\\
+$author.location$\\
+$author.email$
+}
+$sep$\and
+$endfor$
 }
 
 % conference papers do not typically use \thanks and this command
@@ -438,6 +467,18 @@ $abstract$
 
 % no keywords
 
+% use for special paper notices
+
+$if(IEEEspecialpaper)$
+\IEEEspecialpapernotice{$IEEEspecialpaper$}
+$endif$
+
+
+% make the title area
+\maketitle
+
+% no keywords
+
 % For peer review papers, you can put extra information on the cover
 % page as needed:
 % \ifCLASSOPTIONpeerreview
@@ -448,6 +489,10 @@ $abstract$
 % creates the second title. It will be ignored for other modes.
 \IEEEpeerreviewmaketitle
 
+$for(include-before)$
+$include-before$
+
+$endfor$
 
 $body$
 

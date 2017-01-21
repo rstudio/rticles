@@ -10,7 +10,7 @@ author:
     affiliation: University of Nevada   
     department: Civil Engineering
     location: Las Vegas, Nevada 89119
-    email: daniel.emaasit@gmail.com    
+    email: daniel.emaasit@gmail.com
   - name: Alice Wonderland
     affiliation: Another University
     department: Your Department
