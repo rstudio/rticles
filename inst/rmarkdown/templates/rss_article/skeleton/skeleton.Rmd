@@ -1,0 +1,40 @@
+---
+title: "Untitled"
+short_title: "Untitled"
+author: "Hongjian Yu"
+short_author: "Yu et. al."
+affiliation: "UCLA Center for Health Policy Research"
+address: "10960 Wilshire Blvd Suite 1550"
+city: "Los Angeles"
+country: "USA"
+email: "hyu (at) ucla.edu"
+author2: "Carl Ganz"
+affiliation2: "UCLA Center for Health Policy Research"
+address2: "10960 Wilshire Blvd Suite 1550"
+city2: "Los Angeles"
+country2: "USA"
+email2: "carlganz (at) ucla.edu"
+abstract: |
+  Abstract goes here
+keywords: SAE boosting
+bibliography: "bibliography"
+output: rticles::rss_article
+---
+
+# Hello
+
+Blah [@Eckardt2016] blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah
+
+## LaTeX
+
+$$ \sum_{i=1}^n i $$
+
+## R Graphs
+
+```{R, echo=FALSE}
+library(ggplot2)
+p <- ggplot(mtcars, aes(wt, mpg))
+
+p + geom_point(aes(colour = factor(cyl)))
+
+```
