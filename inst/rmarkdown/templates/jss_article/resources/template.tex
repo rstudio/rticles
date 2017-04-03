@@ -8,13 +8,6 @@
 $for(author)$$author.name$\\$author.affiliation$$sep$ \And $endfor$
 }
 \title{$title.formatted$}
-$if(keywords.formatted)$
-\Keywords{$for(keywords.formatted)$$keywords.formatted$$sep$, $endfor$}
-$endif$
-
-\Abstract{
-$abstract$
-}
 
 \Plainauthor{$for(author)$$author.name$$sep$, $endfor$}
 $if(title.plain)$
@@ -22,6 +15,14 @@ $if(title.plain)$
 $endif$
 $if(title.short)$
 \Shorttitle{$title.short$}
+$endif$
+
+\Abstract{
+$abstract$
+}
+
+$if(keywords.formatted)$
+\Keywords{$for(keywords.formatted)$$keywords.formatted$$sep$, $endfor$}
 $endif$
 $if(keywords.plain)$
 \Plainkeywords{$for(keywords.plain)$$keywords.plain$$sep$, $endfor$}
@@ -32,7 +33,7 @@ $endif$
 %% \Issue{9}
 %% \Month{June}
 %% \Year{2012}
-\Submitdate{$submitdate$}
+%% \Submitdate{$submitdate$}
 %% \Acceptdate{2012-06-04}
 
 \Address{
