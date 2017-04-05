@@ -29,6 +29,11 @@ _Text based on plos sample manuscript, see [http://journals.plos.org/ploscompbio
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget porta erat. Morbi consectetur est vel gravida pretium. Suspendisse ut dui eu ante cursus gravida non sed sem. Phasellus mauris velit, dapibus finibus elementum vel, pulvinar non tellus. Nunc pellentesque pretium diam, quis maximus dolor faucibus id. Nunc convallis sodales ante, ut ullamcorper est egestas vitae. Nam sit amet enim ultrices, ultrices elit pulvinar, volutpat risus.
 
-Here are two sample references: @Feynman1963118 <!--[@Dirac1953888].-->
+A list
+
+- Item 1
+- Item 2
+
+Here are two sample references: @Feynman1963118 [@Dirac1953888].
 
 # References {#references .unnumbered}
