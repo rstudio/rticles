@@ -21,6 +21,7 @@ author_summary: |
 
 bibliography: mybibfile.bib
 output: rticles::plos_article
+csl: plos.csl
 ---
 
 _Text based on plos sample manuscript, see [http://journals.plos.org/ploscompbiol/s/latex](http://journals.plos.org/ploscompbiol/s/latex)_

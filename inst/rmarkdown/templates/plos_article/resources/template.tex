@@ -16,7 +16,7 @@
 \usepackage{textcomp,marvosym}
 
 % cite package, to clean up citations in the main text. Do not remove.
-\usepackage{cite}
+% \usepackage{cite}
 
 % Use nameref to cite supporting information files (see Supporting Information section for more info)
 \usepackage{nameref,hyperref}
@@ -68,7 +68,7 @@
 \renewcommand{\figurename}{Fig}
 
 % Use the PLoS provided BiBTeX style
-\bibliographystyle{plos2015}
+% \bibliographystyle{plos2015}
 
 % Remove brackets from numbering in List of References
 \makeatletter
@@ -96,14 +96,24 @@
 \newcommand{\lorem}{{\bf LOREM}}
 \newcommand{\ipsum}{{\bf IPSUM}}
 
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+$preamble$
+
 \usepackage{forarray}
 \usepackage{xstring}
 \newcommand{\getIndex}[2]{
   \ForEach{,}{\IfEq{#1}{\thislevelitem}{\number\thislevelcount\ExitForEach}{}}{#2}
-  %\ForEach{,}{\IfEq{#1}{\thislevelitem}{Arghh\ExitForEach}{}}{#2}
 }
 
-\def\tightlist{}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 \begin{document}
 \vspace*{0.2in}
