@@ -112,6 +112,8 @@ $preamble$
   \ForEach{,}{\IfEq{#1}{\thislevelitem}{\number\thislevelcount\ExitForEach}{}}{#2}
 }
 
+\setcounter{secnumdepth}{0}
+
 \newcommand{\getAff}[1]{
   \getIndex{#1}{$for(address)$$address.code$$sep$,$endfor$}
 }
@@ -162,8 +164,6 @@ $endif$
 
 % Use "Eq" instead of "Equation" for equation citations.
 $body$
-
-\flushleft
 
 \nolinenumbers
 
