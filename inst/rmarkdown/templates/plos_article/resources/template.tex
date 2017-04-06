@@ -112,6 +112,10 @@ $preamble$
   \ForEach{,}{\IfEq{#1}{\thislevelitem}{\number\thislevelcount\ExitForEach}{}}{#2}
 }
 
+\newcommand{\getAff}[1]{
+  \getIndex{#1}{$for(address)$$address.code$$sep$,$endfor$}
+}
+
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
@@ -126,12 +130,12 @@ $preamble$
 \newline
 \\
 $for(author)$
-$author.name$\textsuperscript{\getIndex{$author.affiliation$}{$for(address)$$address.code$$sep$,$endfor$}}$if(author.corresponding)$\textsuperscript{*}$endif$$sep$,
+$author.name$\textsuperscript{\getAff{$author.affiliation$}}$if(author.corresponding)$\textsuperscript{*}$endif$$sep$,
 $endfor$
 \\
 \bigskip
 $for(address)$
-\textbf{\getIndex{$address.code$}{$for(address)$$address.code$$sep$,$endfor$}}$address.address$\\
+\textbf{\getAff{$address.code$}}$address.address$\\
 $endfor$
 \bigskip
 $for(author)$
@@ -158,6 +162,8 @@ $endif$
 
 % Use "Eq" instead of "Equation" for equation citations.
 $body$
+
+\flushleft
 
 \nolinenumbers
 
