@@ -41,11 +41,11 @@ test_format <- function(name, file_check = TRUE, os_skip = NULL) {
 
 test_format("acm_article")
 test_format("elsevier_article")
-test_format("jss_article")
+test_format("jss_article", file_check = FALSE)
 test_format("rjournal_article", file_check = FALSE)
 test_format("acs_article", file_check = FALSE)
 test_format("pnas_article")
-test_format("aea_article")
+test_format("aea_article", file_check = FALSE)
 test_format("ams_article", file_check = FALSE)
 
 

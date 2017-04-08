@@ -32,4 +32,3 @@ draft("MyArticle.Rmd", template = "elsevier_article", package = "rticles")
 }
 
 }
-

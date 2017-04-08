@@ -28,6 +28,5 @@ Description: A suite of custom R Markdown formats and templates for
 License: GPL-3
 Imports: utils, rmarkdown, knitr, yaml
 SystemRequirements: GNU make
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 Suggests: testthat
-

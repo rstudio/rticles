@@ -34,4 +34,3 @@ draft("MyArticle.Rmd", template = "acs_article", package = "rticles")
 }
 
 }
-
