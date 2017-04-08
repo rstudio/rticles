@@ -22,7 +22,9 @@ jss_article <- function(..., keep_tex = TRUE) {
 
   template <- find_resource("jss_article", "template.tex")
 
-  base <- inherit_pdf_document(..., template = template, keep_tex = keep_tex)
+  base <- inherit_pdf_document(
+    ..., template = template, keep_tex = keep_tex, citation_package = 'natbib'
+  )
 
   # Mostly copied from knitr::render_sweave
   base$knitr$opts_knit$out.format <- "sweave"
