@@ -1,40 +1,35 @@
 ---
 title: "Untitled"
 short_title: "Untitled"
-author: "Hongjian Yu"
-short_author: "Yu et. al."
-affiliation: "UCLA Center for Health Policy Research"
-address: "10960 Wilshire Blvd Suite 1550"
-city: "Los Angeles"
-country: "USA"
-email: "hyu (at) ucla.edu"
-author2: "Carl Ganz"
-affiliation2: "UCLA Center for Health Policy Research"
-address2: "10960 Wilshire Blvd Suite 1550"
+author: "Author 1"
+short_author: "Author 1 et. al."
+affiliation: "Affiliation"
+address: "Address"
+city: "City"
+country: "Country"
+email: "email (at) address"
+author2: "Author 2"
+affiliation2: "Affiliation"
+address2: "Address"
 city2: "Los Angeles"
-country2: "USA"
-email2: "carlganz (at) ucla.edu"
+country2: "Country"
+email2: "email (at) address"
 abstract: |
   Abstract goes here
-keywords: SAE boosting
+keywords: keywords
 bibliography: "bibliography"
 output: rticles::rss_article
 ---
 
-# Hello
+# Introduction
 
-Blah [@Eckardt2016] blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah
+This template demonstrates some of the basic latex you'll need to know to create a RSS article.
 
-## LaTeX
+# R code
 
-$$ \sum_{i=1}^n i $$
+Can be inserted in regular R markdown blocks.
 
-## R Graphs
-
-```{R, echo=FALSE}
-library(ggplot2)
-p <- ggplot(mtcars, aes(wt, mpg))
-
-p + geom_point(aes(colour = factor(cyl)))
-
+```{r}
+x <- 1:10
+x
 ```
