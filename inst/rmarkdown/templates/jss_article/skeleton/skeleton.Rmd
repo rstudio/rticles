@@ -5,7 +5,7 @@ author:
     address: >
       First line
       Second line
-    email: name@company.com
+    email: \email{name@company.com}
     url: http://rstudio.com
   - name: Second Author
     affiliation: Affiliation

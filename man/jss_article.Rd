@@ -28,4 +28,3 @@ draft("MyArticle.Rmd", template = "jss_article", package = "rticles")
 }
 
 }
-

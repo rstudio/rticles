@@ -25,4 +25,3 @@ draft("MyArticle.Rmd", template = "rjournal_article", package = "rticles")
 }
 
 }
-

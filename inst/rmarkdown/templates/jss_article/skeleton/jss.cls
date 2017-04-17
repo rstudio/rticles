@@ -1,11 +1,31 @@
 %%
 %% This is file `jss.cls',
-\def\fileversion{2.2}
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% jss.dtx  (with options: `class')
+%% 
+%% IMPORTANT NOTICE:
+%% 
+%% For the copyright see the source file.
+%% 
+%% Any modified versions of this file must be renamed
+%% with new filenames distinct from jss.cls.
+%% 
+%% For distribution of the original source see the terms
+%% for copying and modification in the file jss.dtx.
+%% 
+%% This generated file may be distributed as long as the
+%% original source files, as listed above, are part of the
+%% same distribution. (The sources need not necessarily be
+%% in the same archive or directory.)
+\def\fileversion{3.0}
 \def\filename{jss}
-\def\filedate{2013/04/06}
+\def\filedate{2015/09/01}
 %%
 %% Package `jss' to use with LaTeX2e for JSS publications (http://www.jstatsoft.org/)
-%% License: GPL-2
+%% License: GPL-2 | GPL-3
 %% Copyright: (C) Achim Zeileis
 %% Please report errors to Achim.Zeileis@R-project.org
 %%
@@ -104,6 +124,7 @@
 \newcommand{\Plainreviewer}[1]{\def\@Plainreviewer{#1}}
 \newcommand{\Softwaretitle}[1]{\def\@Softwaretitle{#1}}
 \newcommand{\URL}[1]{\def\@URL{#1}}
+\newcommand{\DOI}[1]{\def\@DOI{#1}}
 %% for internal use
 \newcommand{\Seriesname}[1]{\def\@Seriesname{#1}}
 \newcommand{\Hypersubject}[1]{\def\@Hypersubject{#1}}
@@ -142,6 +163,7 @@
 \Pages{xv + 123}
 \Price{USD 69.95 (P)}
 \URL{http://link/to/webpage/}
+\DOI{10.18637/jss.v000.i00}
 \if@article
   \Seriesname{Issue}
   \Hypersubject{Journal of Statistical Software}
@@ -228,13 +250,13 @@
     {\fontfamily{pzc} \fontsize{13}{15} \selectfont Journal of Statistical Software}
     \hfill
     \url{http://www.jstatsoft.org/}\\ \nopagebreak
-    published by the American Statistical Association
+    published by the Foundation for Open Access Statistics
     \hfill
-    \url{http://www.amstat.org/}\\[.3\baselineskip] \nopagebreak
-    {Volume~\@Volume, \@Seriesname~\@Issue}
+    \url{http://www.foastat.org/}\\[.3\baselineskip] \nopagebreak
+    {\@Month{} \@Year, Volume~\@Volume, \@Seriesname~\@Issue}
     \hfill
     \@Firstdate\\ \nopagebreak
-    {\@Month{} \@Year}
+    {\href{http://dx.doi.org/\@DOI}{\tt doi:\@DOI}}
     \hfill
     \@Seconddate  \nopagebreak
     \vspace{.3\baselineskip}
@@ -258,7 +280,7 @@
    {\fontfamily{pzc} \fontsize{28}{32} \selectfont Journal of Statistical Software}
    \vfill
    {\it \small \@Month{} \@Year, Volume~\@Volume, \@Seriesname~\@Issue.%
-            \hfill \href{http://www.jstatsoft.org/}{http://www.jstatsoft.org/}}}\\[0.1cm]
+            \hfill \href{http://dx.doi.org/\@DOI}{doi:\,\@DOI}}}\\[0.1cm]
      \hrule height 3pt}}
 \if@review
   \renewcommand{\maketitle}{
