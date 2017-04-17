@@ -47,6 +47,6 @@ test_format("acs_article", file_check = FALSE)
 test_format("pnas_article")
 test_format("aea_article")
 test_format("ams_article", file_check = FALSE)
-
+test_format("rss_article")
 
 
