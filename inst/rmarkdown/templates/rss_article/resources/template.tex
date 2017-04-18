@@ -1,0 +1,51 @@
+
+\documentclass{statsoc}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{amssymb, amsmath, geometry}
+\usepackage{natbib}
+
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+\title[$short_title$]{$title$}
+
+\author[$short_author$]{$author$}
+\address{$affiliation$,
+$city$,
+$country$}
+\email{$email$}
+
+$if(author2)$
+\author[$short_author$]{$author2$}
+\address{$affiliation2$,
+$city2$,
+$country2$}
+\email{$email2$}
+$endif$
+
+% BIBLIOGRAPHY
+\usepackage[authoryear]{natbib}
+\bibpunct{(}{)}{;}{a}{}{,}
+
+\begin{document}
+
+\begin{abstract}
+$abstract$
+\end{abstract}
+$if(keywords)$
+\keywords{$keywords$}
+$endif$
+
+$body$
+
+\bibliographystyle{rss}
+\bibliography{$bibliography$}
+\end{document}
