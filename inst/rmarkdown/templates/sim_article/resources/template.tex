@@ -1,31 +1,17 @@
-% simdoc.tex V3.0, 30 March 2010
-
 \documentclass[times]{simauth}
-
 \usepackage{moreverb}
-
+\usepackage[T1,mtbold]{mathtime}
 \usepackage[colorlinks,bookmarksopen,bookmarksnumbered,citecolor=red,urlcolor=red]{hyperref}
-
-\usepackage{tikz}
-\usepackage[numbers]{natbib}
-
+\usepackage[numbers, sort&compress]{natbib}
 \def\volumeyear{$year$}
 
 \begin{document}
 
 \runninghead{$authabbr$}
 
-$if(title)$
 \title{$title$}
-$endif$
-
-\author{$for(author)$
-$author.name$ \affil{$author.affilnum$}
-$endfor$}
-$for(address)$
-\address{\affilnum{$address.num$} $address.address$}
-$endfor$
-
+\author{$author$}
+\address{$for(address)$\affilnum{$address.num$} $address.address$\\$endfor$}
 \corraddr{$corraddr$}
 
 $if(abstract)$
@@ -43,10 +29,8 @@ $endif$
 $body$
 
 $if(natbib)$
-
-\bibliographystyle{statmed}
+\bibliographystyle{wileyj}
 \bibliography{$bibliography$}
-
 $endif$
 
 $for(include-after)$
