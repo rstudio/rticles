@@ -1,22 +1,21 @@
 ---
-title: A demonstration of the LaTeX class file for Statistics in Medicine with Rmarkdown
-author:
-- name: A.N. Other
-  affilnum: 1
-- num: 1
-  address: "John Wiley and Sons, Ltd, The Atrium, Southern Gate, Chichester,
-West Sussex, PO19 8SQ, UK"
+title: A demonstration of the \\LaTeX class file for Statistics in Medicine with Rmarkdown
+author: "A.U. Thor\\affilnum{a,b}, O. Tro\\affilnum{b} and O. Vriga\\affilnum{c}"
+address:
+- num: a
+  address: "University A"
+- num: b
+  address: "University B"
+- num: c
+  address: "University C"
 corraddr: some@academic.email.org
-authabbr: A.N. Other
+authabbr: "Thor \\emph{et al}."
 date: 2010
 year: 2010
-abstract: "This paper describes the use of the LaTeX `simauth.cls`
-class file for setting papers for Statistics in Medicine using Rmarkdown."
+abstract: "This paper describes the use of the LaTeX `simauth.cls` class file for setting papers for Statistics in Medicine using Rmarkdown."
 keywords: Class file; LaTeX; Statist. Med.; Rmarkdown;
 bibliography: bibfile.bib
-output: 
-  rticles::sim_article:
-    highlight: NULL
+output: rticles::sim_article
 ---
 
 # Introduction
@@ -53,9 +52,9 @@ Configure the YAML header including the following elements:
 
 * `title`: Title
 
-* `author`: List containing `name` and `affilnum`
+* `author`: Author(s) information, as a string, see below
 
-* `address`: List containing `address` and `num` for reference by `author`
+* `address`: List containing `address` and `num` for defining `author` affiliations
 
 * `corraddr`: Corresponding author address
 
@@ -70,6 +69,14 @@ Configure the YAML header including the following elements:
 * `keywords`: Up to 6 keywords
 
 * `bibliography`: Bibtex `.bib` file
+
+## Author information
+
+In order to obtain better results, author(s) information should be provided as a string with \\LaTeX elements:
+
+```
+author: "A.U. Thor\\affilnum{a,b}, O. Tro\\affilnum{b} and O. Vriga\\affilnum{c}"
+```
 
 ## Remarks
 
@@ -132,7 +139,7 @@ Not sure how/if this works in Rmarkdown.
 
 ## Bibliography
 
-Link a `.bib` document via the YAML header, and bibliography will be printed at the very end (as usual). Remember to include a `# Bibliography` section.
+Link a `.bib` document via the YAML header, and bibliography will be printed at the very end (as usual). Remember to include a `#Bibliography` section.
 
 ## Double Spacing
 

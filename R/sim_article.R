@@ -19,5 +19,7 @@
 #' @export
 sim_article <- function(...) {
   inherit_pdf_document(...,
-                       template = find_resource("sim_article", "template.tex"))
+                       template = find_resource("sim_article", "template.tex"),
+                       highlight = NULL,
+                       citation_package = "natbib")
 }
