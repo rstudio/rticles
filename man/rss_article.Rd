@@ -17,5 +17,5 @@ R Markdown output format to pass to
 }
 \description{
 Format for creating articles for Royal Statistical Society
-Adapted from \url{http://www.rss.org.uk/RSS/Publications/Journals/Journals_get_involved/RSS/Publications/Journals_sub/Get_Involved.aspx}
+Adapted from \url{https://www.rss.org.uk/RSS/Publications/Journals/Journals_get_involved/RSS/Publications/Journals_sub/Get_Involved.aspx}
 }
