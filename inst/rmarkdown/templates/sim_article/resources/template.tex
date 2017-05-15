@@ -1,6 +1,5 @@
 \documentclass[times]{simauth}
 \usepackage{moreverb}
-\usepackage[T1,mtbold]{mathtime}
 \usepackage[colorlinks,bookmarksopen,bookmarksnumbered,citecolor=red,urlcolor=red]{hyperref}
 \usepackage[numbers, sort&compress]{natbib}
 \def\volumeyear{$year$}
@@ -28,8 +27,16 @@ $endif$
 
 $body$
 
+$if(acknowledgements)$
+\acks $acknowledgements$
+$endif$
+
 $if(natbib)$
+$if(bibliographystyle)$
+\bibliographystyle{$bibliographystyle$}
+$else$
 \bibliographystyle{wileyj}
+$endif$
 \bibliography{$bibliography$}
 $endif$
 
