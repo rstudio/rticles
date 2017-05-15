@@ -1,31 +1,32 @@
 ---
-title: A demonstration of the \\LaTeX class file for Statistics in Medicine with Rmarkdown
-author: "A.U. Thor\\affilnum{a,b}, O. Tro\\affilnum{b} and O. Vriga\\affilnum{c}"
+title: A demonstration of the \LaTeX class file for Statistics in Medicine with Rmarkdown
+author: "A. Uthor\\affilnum{a,b}, O. Tro\\affilnum{b} and O. Vriga\\affilnum{c}"
 address:
 - num: a
-  address: "University A"
+  address: "Department of Incredible Research, University A"
 - num: b
-  address: "University B"
+  address: "Department of Applied Things, University B"
 - num: c
-  address: "University C"
+  address: "Very Important Stuff Committee, Institute C"
 corraddr: some@academic.email.org
-authabbr: "Thor \\emph{et al}."
-date: 2010
-year: 2010
-abstract: "This paper describes the use of the LaTeX `simauth.cls` class file for setting papers for Statistics in Medicine using Rmarkdown."
-keywords: Class file; LaTeX; Statist. Med.; Rmarkdown;
+authabbr: "Uthor \\emph{et al}."
+date: 2017
+year: 2017
+abstract: "This paper describes the use of the \LaTeX `simauth.cls` class file for setting papers for Statistics in Medicine using Rmarkdown."
+acknowledgements: "We thank [Stack Overflow](https://stackoverflow.com/) for the invaluable support to our research."
+keywords: Class file; \LaTeX; Statist. Med.; Rmarkdown;
 bibliography: bibfile.bib
 output: rticles::sim_article
 ---
 
 # Introduction
 
-Many authors submitting to research journals use LaTeX to prepare their papers. This paper describes the `simauth.cls` class file which can be used to convert articles produced with other LaTeX class files into the correct form for publication in _Statistics in Medicine_.
+Many authors submitting to research journals use \LaTeX to prepare their papers. This paper describes the `simauth.cls` class file which can be used to convert articles produced with other \LaTeX class files into the correct form for publication in _Statistics in Medicine_.
 
-The `simauth.cls` class file preserves much of the standard LaTeX interface so that any document which was produced using the standard LaTeX `article` style can easily be converted to work with the `simauth` style. However, the width of text and typesize will vary from that of `article.cls`; therefore, _line breaks will change_
+The `simauth.cls` class file preserves much of the standard \LaTeX interface so that any document which was produced using the standard \LaTeX `article` style can easily be converted to work with the `simauth` style. However, the width of text and typesize will vary from that of `article.cls`; therefore, _line breaks will change_
 and it is likely that displayed mathematics and tabular material will need re-setting.
 
-In the following sections we describe how to lay out your code to use `simauth.cls` to reproduce the typographical look of _Statistics in Medicine_. However, this paper is not a guide to using LaTeX and we would refer you to any of the many books available (see, for example, [@R1; @R2; @R3]).
+In the following sections we describe how to lay out your code to use `simauth.cls` to reproduce the typographical look of _Statistics in Medicine_. However, this paper is not a guide to using \LaTeX and we would refer you to any of the many books available (see, for example, [@R1; @R2; @R3]).
 
 # The Three Golden Rules
 Before we proceed, we would like to stress _three golden rules_ that need to be followed to enable the most efficient use of your code at the typesetting stage:
@@ -39,12 +40,20 @@ mathematical) situations, such as `\,` before a differential~d, or `\quad` to se
 
 # Getting Started
 
-The `simauth` class file should run on any standard LaTeX installation. If any of the fonts, class files or packages it requires are missing from your installation,
+The `simauth` class file should run on any standard \LaTeX installation. If any of the fonts, class files or packages it requires are missing from your installation,
 they can be found on the _TeX Collection_ DVDs or from CTAN.
 
 Details on Rmarkdown can be found online [http://rmarkdown.rstudio.com/](here).
 
-_Statistics in Medicine_ is published using Times fonts and this is achieved by using the `times` option as `\documentclass[times]{ctaauth}`. Times fonts are also used for mathematics. This is achieved by adding the LaTeX package `mathtime`. If for any reason you have a problem using Times you can easily resort to Computer Modern fonts by removing the `times` option.
+_Statistics in Medicine_ is published using Times fonts and this is achieved by using the `times` option as `\documentclass[times]{simauth}`. Times fonts are also used for mathematics. This is achieved by adding the \LaTeX package `mathtime`. Being `mathtime` not available on \TeX Live installations, the default template does not include it. If you need/want to re-enable it, add the option `keep_tex: TRUE` to the YAML header as follows and edit the resulting `.tex`  file manually.
+
+```
+output:
+  rticles::sim_article:
+    keep_tex: TRUE
+```
+
+If for any reason you have a problem using Times you can easily resort to Computer Modern fonts by removing the `times` option.
 
 # The Article Header Information
 
@@ -72,7 +81,7 @@ Configure the YAML header including the following elements:
 
 ## Author information
 
-In order to obtain better results, author(s) information should be provided as a string with \\LaTeX elements:
+In order to obtain better results, author(s) information should be provided as a string with \LaTeX elements:
 
 ```
 author: "A.U. Thor\\affilnum{a,b}, O. Tro\\affilnum{b} and O. Vriga\\affilnum{c}"
@@ -87,7 +96,7 @@ _Correspondence to:_.
 
 3. For submitting a double-spaced manuscript, add `doublespace` as an option to the documentclass line.
 
-4. Use `\cgs` for giving details of financial sponsors. These details will be printed as a footnote, with _Contract/grant sponsor:_ inserted in the appropriate places. This has to be implemented using LaTeX, and not Rmarkdown.
+4. Use `\cgs` for giving details of financial sponsors. These details will be printed as a footnote, with _Contract/grant sponsor:_ inserted in the appropriate places. This has to be implemented using \LaTeX, and not Rmarkdown.
 
 5. The abstract should be capable of standing by itself, in the absence of the body of the article and of the bibliography. Therefore, it must not contain any reference citations.
 
@@ -126,20 +135,20 @@ Referenced via \ref{tab:table}.
 
 ## Cross-referencing
 
-The use of the Rmarkdown equivalent of the `LaTeX` cross-reference system
-for figures, tables, equations, etc., is encouraged (using `[@<name>]`, equivalent of `\ref{<name>}` and `\label{<name>}`). That works well for citations in Rmarkdown, not so well for figures and tables. In that case, it is possible to revert to standard LaTeX syntax.
+The use of the Rmarkdown equivalent of the \LaTeX cross-reference system
+for figures, tables, equations, etc., is encouraged (using `[@<name>]`, equivalent of `\ref{<name>}` and `\label{<name>}`). That works well for citations in Rmarkdown, not so well for figures and tables. In that case, it is possible to revert to standard \LaTeX syntax.
 
 Example: [@pepe2003statistical; @zou2005regularization].
 
 ## Acknowledgements
 
-An Acknowledgements section is started with `\ack` or `\acks` for _Acknowledgement_ or _Acknowledgements_, respectively. It must be placed just before the References.
-
-Not sure how/if this works in Rmarkdown.
+An Acknowledgements section is started with `\ack` or `\acks` for _Acknowledgement_ or _Acknowledgements_, respectively. It must be placed just before the References. Define the content of the acknowledgment section in the YAML header.
 
 ## Bibliography
 
 Link a `.bib` document via the YAML header, and bibliography will be printed at the very end (as usual). Remember to include a `#Bibliography` section.
+
+The default bibliography style is provided by Wiley as in `wileyj.bst`. It is possible to provide a custom style by providing a `.csl`/`.bst` in the `bibliographystyle` field of the YAML header.  
 
 ## Double Spacing
 
@@ -147,7 +156,7 @@ If you need to double space your document for submission please use the `doubles
 
 # Copyright Statement
 
-Please be aware that the use of this LaTeX class file is governed by the following conditions.
+Please be aware that the use of this \LaTeX class file is governed by the following conditions.
 
 ## Copyright
 
