@@ -94,7 +94,7 @@ author: "A.U. Thor\\affilnum{a,b}, O. Tro\\affilnum{b} and O. Vriga\\affilnum{c}
 2. Note the use of `affilnum` and `num` to link names and addresses. The author for correspondence can be marked via a custom `address` entry and `corraddr` is used to give that author's address, which will be printed as a footnote, prefaced by
 _Correspondence to:_.
 
-3. For submitting a double-spaced manuscript, add `doublespace` as an option to the documentclass line.
+3. For submitting a double-spaced manuscript, add `doublespace` as an option to a `classoption` line in the YAML header: `classoption: doublespace`.
 
 4. Use `\cgs` for giving details of financial sponsors. These details will be printed as a footnote, with _Contract/grant sponsor:_ inserted in the appropriate places. This has to be implemented using \LaTeX, and not Rmarkdown.
 
