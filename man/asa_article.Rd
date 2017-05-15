@@ -19,10 +19,8 @@ This format was adapted from The American Statistican format, but it
 should be fairly consistent across ASA journals
 }
 \examples{
-
 \dontrun{
-library(rmarkdown)
-draft("MyArticle.Rmd", template = "asa_article", package = "rticles")
+rmarkdown::draft("MyArticle.Rmd", template = "asa_article", package = "rticles")
 }
 
 }
