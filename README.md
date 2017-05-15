@@ -20,7 +20,7 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [JSS](http://www.jstatsoft.org/) articles
 
-- [R Journal](http://journal.r-project.org/) articles
+- [R Journal](https://journal.r-project.org/) articles
 
 - [CTeX](http://ctex.org) documents
 
