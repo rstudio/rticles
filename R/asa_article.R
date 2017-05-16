@@ -12,10 +12,10 @@
 #' }
 #'
 #' @export
-asa_article <- function(..., keep_tex = TRUE){
+asa_article <- function(..., keep_tex = TRUE, citation_package = 'natbib'){
   template <- find_resource("asa_article", "template.tex")
   fmt <- inherit_pdf_document(template = template,
                               keep_tex = keep_tex,
-                              citation_package = 'natbib',
+                              citation_package = citation_package,
                               ...)
 }

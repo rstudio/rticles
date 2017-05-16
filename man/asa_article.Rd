@@ -4,12 +4,15 @@
 \alias{asa_article}
 \title{American Statistical Association (ASA) Journal format.}
 \usage{
-asa_article(..., keep_tex = TRUE)
+asa_article(..., keep_tex = TRUE, citation_package = "natbib")
 }
 \arguments{
 \item{...}{Arguments to \code{rmarkdown::pdf_document}}
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
+
+\item{citation_package}{The LaTeX package to process citations, \code{natbib}
+or \code{biblatex}. Use \code{none} if neither package is to be used.}
 }
 \value{
 R Markdown output format to pass to \code{\link[rmarkdown:render]{render}}

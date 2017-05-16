@@ -11,11 +11,12 @@
 #'
 
 rss_article <- function(...,
-                        keep_tex = TRUE) {
+                        keep_tex = TRUE,
+                        citation_package = "natbib") {
   fmt <- rmarkdown::pdf_document(
     ...,
     highlight = NULL,
-    citation_package = "natbib",
+    citation_package = citation_package,
     template =
       system.file("rmarkdown",
                   "templates",

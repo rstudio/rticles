@@ -18,12 +18,12 @@
 #' }
 #'
 #' @export
-jss_article <- function(..., keep_tex = TRUE) {
+jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
 
   template <- find_resource("jss_article", "template.tex")
 
   base <- inherit_pdf_document(
-    ..., template = template, keep_tex = keep_tex, citation_package = 'natbib'
+    ..., template = template, keep_tex = keep_tex, citation_package = citation_package
   )
 
   # Mostly copied from knitr::render_sweave
