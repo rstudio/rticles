@@ -15,9 +15,12 @@ year: 2017
 abstract: "This paper describes the use of the \LaTeX `simauth.cls` class file for setting papers for Statistics in Medicine using Rmarkdown."
 acknowledgements: "We thank [Stack Overflow](https://stackoverflow.com/) for the invaluable support to our research."
 keywords: Class file; \LaTeX; Statist. Med.; Rmarkdown;
-tablesenv: ctable
+header-includes: 
+- \usepackage{ctable}
 bibliography: bibfile.bib
-output: rticles::sim_article
+output: 
+  rticles::sim_article:
+    keep_tex: TRUE
 ---
 
 # Introduction
@@ -134,7 +137,7 @@ xtable(head(cars), caption = "A table", label = "tab:table")
 
 Referenced via \ref{tab:table}.
 
-You can also use the YAML option `tablesenv` to define which \LaTeX package for tables to use (`pandoc` uses `longtables` by default, and it is hardcoded). Consequently, just write straight-up \LaTeX code for tables, e.g. using `ctable`:
+You can also use the YAML option `header-includes` to includes custom \LaTeX packages for tables (keep in mind that `pandoc` uses `longtables` by default, and it is hardcoded). Consequently, just write straight-up \LaTeX code for tables, e.g. using `ctable`, and reference is as usual (\ref{tab:ctable}).
 
 ```
 \ctable[cap = {Short caption},
@@ -156,8 +159,6 @@ You can also use the YAML option `tablesenv` to define which \LaTeX package for 
 }
 ```
 
-Reference it as usual: \ref{tab:ctable}.
-
 \ctable[cap = {Short caption},
         caption = {A long, long, long, long, long caption for a table},
         label={tab:ctable},]
@@ -175,8 +176,6 @@ Reference it as usual: \ref{tab:ctable}.
         97 & 2000
         \LL
 }
-
-Analogously, you can use `longtable`; but why would you do that?
 
 ## Cross-referencing
 
