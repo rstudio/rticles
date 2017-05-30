@@ -133,6 +133,32 @@ xtable(head(cars), caption = "A table", label = "tab:table")
 
 Referenced via \ref{tab:table}.
 
+You can also use the YAML option `header-includes` to includes custom \LaTeX packages for tables (keep in mind that `pandoc` uses `longtables` by default, and it is hardcoded; some things may require including the package `longtable`). E.g., using `ctable`:
+```
+header-includes: 
+- \usepackage{ctable}
+```
+Then, just write straight-up \LaTeX code and reference is as usual (`\ref{tab:ctable}`):
+```
+\ctable[cap = {Short caption},
+        caption = {A long, long, long, long, long caption for this table.},
+        label={tab:ctable},]
+        {cc}
+        {
+        \tnote[$\ast$]{Footnote 1}
+        \tnote[$\dagger$]{Other footnote}
+        \tnote[b]{Mistakes are possible.}
+        }{
+        \FL 
+        COL 1\tmark[a] & COL 2\tmark[$\ast$] 
+        \ML
+        6.92\tmark[$\dagger$] & 0.09781 \\
+        6.93\tmark[$\dagger$] & 0.09901 \\
+        97 & 2000
+        \LL
+}
+```
+
 ## Cross-referencing
 
 The use of the Rmarkdown equivalent of the \LaTeX cross-reference system
