@@ -1,7 +1,7 @@
 
 context("Formats")
 
-test_format <- function(name, file_check = TRUE, os_skip = NULL) {
+test_format <- function(name, os_skip = NULL) {
 
   test_that(paste(name, "format"), {
 
@@ -27,26 +27,22 @@ test_format <- function(name, file_check = TRUE, os_skip = NULL) {
                      edit = FALSE)
 
     # render it
-    capture.output({
-      if (file_check) {
-        output_file <- tempfile(fileext = ".pdf")
-        rmarkdown::render(testdoc, output_file = output_file)
-        expect_true(file.exists(output_file))
-      } else {
-        rmarkdown::render(testdoc)
-      }
-    })
+    output_file <- rmarkdown::render(testdoc)
+    expect_true(file.exists(output_file))
   })
 }
 
 test_format("acm_article")
+test_format("acs_article")
+test_format("aea_article")
+test_format("ams_article")
+test_format("asa_article")
 test_format("elsevier_article")
 test_format("jss_article")
-test_format("rjournal_article", file_check = FALSE)
-test_format("acs_article", os_skip = "windows")
+test_format("rss_article")
 test_format("pnas_article")
 test_format("aea_article")
 test_format("ieee_article")
-
-
+test_format("rjournal_article")
+test_format("sim_article")
 

@@ -20,13 +20,15 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [JSS](http://www.jstatsoft.org/) articles
 
-- [R Journal](http://journal.r-project.org/) articles
+- [R Journal](https://journal.r-project.org/) articles
 
 - [CTeX](http://ctex.org) documents
 
 - [ACM](http://www.acm.org/) articles
 
 - [ACS](http://pubs.acs.org/) articles
+
+- [AMS](https://www.ametsoc.org/) articles
 
 - [Elsevier](https://www.elsevier.com) journal submissions
 

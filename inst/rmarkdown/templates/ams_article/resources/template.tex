@@ -1,0 +1,81 @@
+\documentclass[$layout$]{ametsoc}
+\usepackage{color}
+\usepackage{hyperref}
+\journal{$journal$}
+%  Please choose a journal abbreviation to use above from the following list:
+%
+%   jamc     (Journal of Applied Meteorology and Climatology)
+%   jtech     (Journal of Atmospheric and Oceanic Technology)
+%   jhm      (Journal of Hydrometeorology)
+%   jpo     (Journal of Physical Oceanography)
+%   jas      (Journal of Atmospheric Sciences)
+%   jcli      (Journal of Climate)
+%   mwr      (Monthly Weather Review)
+%   wcas      (Weather, Climate, and Society)
+%   waf       (Weather and Forecasting)
+%   bams (Bulletin of the American Meteorological Society)
+%   ei    (Earth Interactions)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Citations should be of the form ``author year''  not ``author, year''
+\bibpunct{(}{)}{;}{a}{}{,}
+\title{$title$}
+
+$if(author1)$
+\authors{$author1$
+$if(correspondingauthor)$
+\correspondingauthor{$author1$,$correspondingauthor$}
+$endif$
+$endif$
+$if(author2)$
+and $author2$
+$if(currentaddress)$
+\thanks{$currentaddress$}}
+$endif$
+$endif$
+$if(affiliation)$
+\affiliation{$affiliation$}
+$endif$
+$if(extraauthor)$
+    \extraauthor{Extra Author}
+$endif$
+$if(exaffiliation)$
+    \extraaffil{$exaffiliation$}
+$endif$
+
+$if(email)$
+$email$
+$endif$
+
+$for(exauthors)$
+\extraauthor{$exauthors.name$
+$if(exauthors.correspondingauthor)$
+\correspondingauthor{$exauthors.name$,$exauthors.correspondingauthor$}
+$endif$
+$if(exauthors.currentaddress)$
+\thanks{$exauthors.currentaddress$}
+$endif$}
+$if(exauthors.exaffiliation)$
+\extraaffil{$exauthors.exaffiliation$}
+$endif$
+$if(exauthors.email)$
+$exauthors.email$
+$endif$
+$endfor$
+% pandoc header
+$for(header-includes)$
+$header-includes$
+$endfor$
+\abstract{$abstract$}
+\begin{document}
+\maketitle
+$for(include-before)$
+$include-before$
+
+$endfor$
+$body$
+$for(include-after)$
+$include-after$
+
+$endfor$
+\end{document}

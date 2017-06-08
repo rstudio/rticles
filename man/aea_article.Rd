@@ -20,8 +20,7 @@ R Markdown output format to pass to
   \code{\link[rmarkdown:render]{render}}
 }
 \description{
-Format for creating submissions to the American Economic Association (AER, AEJ, JEL, PP). Adapted from
-\href{https://www.aeaweb.org/journals/policies/templates}{https://www.aeaweb.org/journals/policies/templates}.
+Format for creating submissions to the American Economic Association (AER, AEJ, JEL, PP).
 }
 \examples{
 
@@ -31,4 +30,3 @@ draft("MyArticle.Rmd", template = "aea_article", package = "rticles")
 }
 
 }
-

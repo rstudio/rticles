@@ -1,7 +1,6 @@
 #' American Economic Association journal submissions.
 #'
-#' Format for creating submissions to the American Economic Association (AER, AEJ, JEL, PP). Adapted from
-#' \href{https://www.aeaweb.org/journals/policies/templates}{https://www.aeaweb.org/journals/policies/templates}.
+#' Format for creating submissions to the American Economic Association (AER, AEJ, JEL, PP).
 #'
 #' @inheritParams rmarkdown::pdf_document
 #' @param ... Additional arguments to \code{rmarkdown::pdf_document}

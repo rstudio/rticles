@@ -26,4 +26,3 @@ draft("MyArticle.Rmd", template = "pnas_article", package = "rticles")
 }
 
 }
-

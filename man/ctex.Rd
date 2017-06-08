@@ -32,4 +32,3 @@ draft("MyArticle.Rmd", template = "ctex", package = "rticles")
 }
 
 }
-

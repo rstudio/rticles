@@ -1,0 +1,35 @@
+---
+title: "Untitled"
+short_title: "Untitled"
+author: "Author 1"
+short_author: "Author 1 et. al."
+affiliation: "Affiliation"
+address: "Address"
+city: "City"
+country: "Country"
+email: "email (at) address"
+author2: "Author 2"
+affiliation2: "Affiliation"
+address2: "Address"
+city2: "Los Angeles"
+country2: "Country"
+email2: "email (at) address"
+abstract: |
+  Abstract goes here
+keywords: keywords
+bibliography: "bibliography"
+output: rticles::rss_article
+---
+
+# Introduction
+
+This template demonstrates some of the basic latex you'll need to know to create a RSS article.
+
+# R code
+
+Can be inserted in regular R markdown blocks.
+
+```{r}
+x <- 1:10
+x
+```

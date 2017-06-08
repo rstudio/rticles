@@ -1,8 +1,7 @@
 Package: rticles
 Type: Package
 Title: Article Formats for R Markdown
-Version: 0.2
-Date: 2016-04-24
+Version: 0.4.1
 Authors@R: c(
   person("JJ", "Allaire", role = c("aut", "cre"), email = "jj@rstudio.com"),
   person(family = "R Foundation", role = c("aut", "cph")),
@@ -29,6 +28,5 @@ Description: A suite of custom R Markdown formats and templates for
 License: GPL-3
 Imports: utils, rmarkdown, knitr, yaml
 SystemRequirements: GNU make
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 Suggests: testthat
-

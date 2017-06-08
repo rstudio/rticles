@@ -1,0 +1,4 @@
+name: American Meteorological Society
+description: >
+ Template for creating an article for submission to AMS
+create_dir: true
