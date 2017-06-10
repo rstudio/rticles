@@ -20,7 +20,8 @@ Authors@R: c(
   person("Ben", "Marwick", role = c("aut", "cph"), email = "bmarwick@uw.edu"),
   person("Charlotte", "Wickham", role = c("aut", "cph"), email = "cwickham@gmail.com"),
   person("Oliver", "Keyes", role = c("aut", "cph"), email = "okeyes@wikimedia.org"),
-  person("Miao", "Yu", role = c("aut", "cph"), email = "yufreecas@gmail.com")
+  person("Miao", "Yu", role = c("aut", "cph"), email = "yufreecas@gmail.com"),
+  person("Daniel", "Emaasit", role = c("aut", "cph"), email = "daniel.emaasit@gmail.com")
   )
 Description: A suite of custom R Markdown formats and templates for
   authoring journal articles and conference submissions.

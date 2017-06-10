@@ -41,5 +41,8 @@ test_format("elsevier_article")
 test_format("jss_article")
 test_format("rss_article")
 test_format("pnas_article")
+test_format("aea_article")
+test_format("ieee_article")
 test_format("rjournal_article")
 test_format("sim_article")
+
