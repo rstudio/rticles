@@ -22,11 +22,11 @@
 #' @export
 peerj_article <- function(..., keep_tex = TRUE, base_format = rmarkdown::pdf_document) {
   if (inherits(base_format, "character")){
-  	FMT <- eval(parse(text = base_format))
+	FMT <- eval(parse(text = base_format))
   } else {
-    FMT <- match.fun(base_format)
+	FMT <- match.fun(base_format)
   }
   out <- FMT(...,
-             keep_tex = keep_tex,
-             template = find_resource("peerj_article", "template.tex"))
+			 keep_tex = keep_tex,
+			 template = find_resource("peerj_article", "template.tex"))
 }

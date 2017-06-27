@@ -36,21 +36,22 @@
                 bottom=2.25cm,%
                 headheight=12pt,%
                 letterpaper]{geometry}%
-                
+
 \RequirePackage[labelfont={bf,sf},%
                 labelsep=period,%
                 justification=raggedright]{caption}
-                
-\RequirePackage{natbib}
-\bibliographystyle{apalike}
 
+% ZNK -- Remove this for compatibility with pandoc
+%
+\RequirePackage{natbib}
+% \bibliographystyle{apalike}
 %
 % writeLaTeX logo
 %
 \newcommand\wllogo{%
 \renewcommand*\rmdefault{ugq}\normalfont\upshape{}write%
 \renewcommand*\rmdefault{cmr}\normalfont\upshape{\bf\LaTeX}}
-                
+
 %
 % headers and footers
 %
@@ -83,7 +84,7 @@
   {}
   {0em}
   {\MakeUppercase{#1}}
-  []  
+  []
 \titleformat{\subsection}
   {\sffamily\bfseries}
   {\thesubsection}
@@ -95,12 +96,12 @@
   {\thesubsubsection}
   {0.5em}
   {#1}
-  []    
+  []
 \titleformat{\paragraph}[runin]
   {\sffamily\small\bfseries}
   {}
   {0em}
-  {#1} 
+  {#1}
 \titlespacing*{\section}{0pc}{3ex \@plus4pt \@minus3pt}{5pt}
 \titlespacing*{\subsection}{0pc}{2.5ex \@plus3pt \@minus2pt}{0pt}
 \titlespacing*{\subsubsection}{0pc}{2ex \@plus2.5pt \@minus1.5pt}{0pt}
@@ -128,8 +129,8 @@
   {}
   {}
   {}
-  [\ \textbullet\ ]  
-  
+  [\ \textbullet\ ]
+
 \RequirePackage{enumitem}
 %\setlist{nolistsep} % Uncomment to remove spacing between items in lists (enumerate, itemize)
 
@@ -149,7 +150,7 @@
 }
 
 \def\xabstract{abstract}
-\long\def\abstract#1\end#2{\def\two{#2}\ifx\two\xabstract 
+\long\def\abstract#1\end#2{\def\two{#2}\ifx\two\xabstract
 \long\gdef\theabstract{\ignorespaces#1}
 \def\go{\end{abstract}}\else
 \typeout{^^J^^J PLEASE DO NOT USE ANY \string\begin\space \string\end^^J
@@ -160,7 +161,7 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 \go}
 
 %
-% custom title page 
+% custom title page
 %
 \renewcommand{\@maketitle}{%
 {%
@@ -209,7 +210,7 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 \renewcommand\Authfont{\fontsize{12}{14}\usefont{OT1}{phv}{b}{n}}
 \renewcommand\Affilfont{\fontsize{10}{12}\usefont{OT1}{phv}{b}{n}}
 
-\newlength{\tocsep} 
+\newlength{\tocsep}
 \setlength\tocsep{1.5pc} % Sets the indentation of the sections in the table of contents
 \setcounter{tocdepth}{3} % Show only three levels in the table of contents section: sections, subsections and subsubsections
 

@@ -13,14 +13,17 @@ affiliation:
     address: Cold Spring Harbor Laboratory, One Bungtown Road Cold Spring Harbor, NY 11724
   - code: 2
     address: Down House, Luxted Rd, Downe, Orpington BR6 7JT, UK
-bibliography: sample.bib
 abstract: >
   The abstract of the article.
   It can also be on *multiple* lines.
 header-includes: >
   \usepackage{lipsum}
+bibliography: sample.bib
+biblio-style: apalike
 output: 
   rticles::peerj_article:
+    # uncomment for normal citation style (see https://github.com/rstudio/rmarkdown/issues/586)
+    # citation_package: natbib 
     base_format: rmarkdown::pdf_document # bookdown::pdf_document2 # for using \@ref()
 ---
 

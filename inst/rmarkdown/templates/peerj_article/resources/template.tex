@@ -23,6 +23,8 @@ $endif$
 \usepackage[unicode=true]{hyperref}
 \usepackage{longtable}
 
+
+
 $for(header-includes)$
 $header-includes$
 $endfor$
@@ -66,13 +68,11 @@ $abstract$
 
 $body$
 
-% $for(include-after)$
-% $include-after$
-% $endfor$
+$for(include-after)$
+$include-after$
+$endfor$
 
-\begingroup
-\renewcommand{\section}[2]{}
 \bibliography{$bibliography$}
-\endgroup
+
 
 \end{document}
