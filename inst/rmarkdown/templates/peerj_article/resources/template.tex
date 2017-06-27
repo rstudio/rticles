@@ -66,10 +66,13 @@ $abstract$
 
 $body$
 
-\bibliography{$bibliography$}
+% $for(include-after)$
+% $include-after$
+% $endfor$
 
-$for(include-after)$
-$include-after$
-$endfor$
+\begingroup
+\renewcommand{\section}[2]{}
+\bibliography{$bibliography$}
+\endgroup
 
 \end{document}

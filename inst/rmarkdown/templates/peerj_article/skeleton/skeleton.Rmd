@@ -157,3 +157,5 @@ Reference to Figure \@ref(fig:results).
 # Acknowledgments {-}
 
 So long and thanks for all the fish.
+
+# References
