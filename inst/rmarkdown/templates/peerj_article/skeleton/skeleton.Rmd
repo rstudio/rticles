@@ -19,10 +19,11 @@ abstract: >
   It can also be on *multiple* lines.
 header-includes: >
   \usepackage{lipsum}
-  \usepackage{hyperref}
-  \usepackage{longtable}
-output: rticles::peerj_article
+output: 
+  rticles::peerj_article:
+    base_format: rmarkdown::pdf_document # bookdown::pdf_document2 # for using \@ref()
 ---
+
 
 # Introduction {-}
 
@@ -42,20 +43,25 @@ Use section and subsection commands to organize your document. \LaTeX{} handles 
 
 ## Figures and Tables {-}
 
-Use the table and tabular commands for basic tables --- see Table~\ref{tab:widgets}, for example. You can upload a figure (JPEG, PNG or PDF) using the project menu. To include it in your document, use the includegraphics command as in the code for Figure~\ref{fig:view} below.
+Use the table and tabular commands for basic tables --- see Table \@ref(tab:simtab1), for example. You can upload a figure (JPEG, PNG or PDF) using the project menu. To include it in your document, use the includegraphics command as in the code for Figure \@ref(fig:view) below.
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\linewidth]{view}
-\caption{An example image.}
-\label{fig:view}
-\end{figure}
+<!-- \begin{figure}[ht] -->
+<!-- \centering -->
+<!-- \includegraphics[width=\linewidth]{view} -->
+<!-- \caption{An example image.} -->
+<!-- \label{fig:view} -->
+<!-- \end{figure} -->
 
+```{r view, out.width = "100%", fig.cap = "An example image.", echo = FALSE}
+knitr::include_graphics("view.pdf")
+```
 
-Item | Quantity 
------|---------
-Widgets | 42 
-Gadgets | 13
+Item     Quantity
+------- ---------
+Widgets        42
+Gadgets        13
+
+Table: (\#tab:widgets) An Example Table.
 
 ## Citations {-}
 
@@ -92,53 +98,61 @@ We hope you find write\LaTeX\ useful for your PeerJ submission, and please let u
 
 # Methods {-}
 
-\lipsum[4] % Dummy text
+\lipsum[4] 
 
 \begin{equation}
 \cos^3 \theta =\frac{1}{4}\cos\theta+\frac{3}{4}\cos 3\theta
 \label{eq:refname2}
 \end{equation}
 
-\lipsum[5] % Dummy text
+\lipsum[5] 
 
 ## Subsection {-}
 
-\lipsum[6] % Dummy text
+\lipsum[6] 
 
-\paragraph{Paragraph} \lipsum[7] % Dummy text
-\paragraph{Paragraph} \lipsum[8] % Dummy text
+\paragraph{Paragraph} \lipsum[7] 
+\paragraph{Paragraph} \lipsum[8] 
 
 ## Subsection {-}
 
-\lipsum[9] % Dummy text
+\lipsum[9] 
 
-\begin{figure}[ht]\centering
-\includegraphics[width=\linewidth]{results}
-\caption{In-text Picture}
-\label{fig:results}
-\end{figure}
+<!-- \begin{figure}[ht]\centering -->
+<!-- \includegraphics[width=\linewidth]{results} -->
+<!-- \caption{In-text Picture} -->
+<!-- \label{fig:results} -->
+<!-- \end{figure} -->
 
-Reference to Figure \ref{fig:results}.
+```{r results, fig.width = 5, fig.height = 4, out.width = "100%", fig.cap = "In-text Picture", echo = FALSE}
+# knitr::include_graphics("figure/simulations/rd_sexrate.pdf")
+time = seq(1.5, 8, 0.1)
+plot(time, sin(time), type = "l", xlab = "time [s]", ylab = "amplitude [m]", 
+     cex.main = 2, col = "blue", lwd = 3, font = 2, font.main = 2)
+```
+
+
+Reference to Figure \@ref(fig:results).
 
 # Results and Discussion {-}
 
-\lipsum[10] % Dummy text
+\lipsum[10] 
 
 ## Subsection {-}
 
-\lipsum[11] % Dummy text
+\lipsum[11] 
 
 ### Subsubsection {-}
 
-\lipsum[12] % Dummy text
+\lipsum[12] 
 
 ### Subsubsection {-}
 
-\lipsum[14] % Dummy text
+\lipsum[14] 
 
 ## Subsection {-}
 
-\lipsum[15-20] % Dummy text
+\lipsum[15-20] 
 
 # Acknowledgments {-}
 
