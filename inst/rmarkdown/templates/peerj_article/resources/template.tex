@@ -1,0 +1,68 @@
+%% Submissions for peer-review must enable line-numbering
+%% using the lineno option in the \documentclass command.
+%%
+%% Preprints and camera-ready submissions do not need
+%% line numbers, and should have this option removed.
+%%
+%% Please note that the line numbering option requires
+%% version 1.1 or newer of the wlpeerj.cls file, and
+%% the corresponding author info requires v1.2
+
+$if(preprint)$
+\documentclass[fleqn,10pt]{wlpeerj} % for preprint submissions
+$else$
+\documentclass[fleqn,10pt,lineno]{wlpeerj} % for journal submissions
+$endif$
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+\title{$title$}
+
+$for(author)$
+\author[$author.affiliation$]{$author.name$}
+
+$if(author.corresponding)$
+\corrauthor[$author.affiliation$]{$author.name$}{$author.email$}
+$endif$
+$endfor$
+
+$for(affiliation)$
+\affil[$affiliation.code$]{$affiliation.address$}
+$endfor$
+
+
+%
+% \author[1]{First Author}
+% \author[2]{Second Author}
+% \affil[1]{Address of first author}
+% \affil[2]{Address of second author}
+% \corrauthor[1]{First Author}{f.author@email.com}
+
+% $if(keywords)$
+% \keywords{$for(keywords)$$keywords$$sep$$endfor$}
+% $endif$
+
+\begin{abstract}
+$abstract$
+% Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text.
+\end{abstract}
+
+\begin{document}
+
+\flushbottom
+\maketitle
+\thispagestyle{empty}
+
+$body$
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+$if(bibliography)$
+\bibliography{$bibliography$}
+$endif$
+
+\end{document}

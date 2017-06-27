@@ -45,4 +45,5 @@ test_format("aea_article")
 test_format("ieee_article")
 test_format("rjournal_article")
 test_format("sim_article")
+test_format("peerj_article")
 
