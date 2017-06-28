@@ -19,11 +19,8 @@ abstract: >
 header-includes: >
   \usepackage{lipsum}
 bibliography: sample.bib
-biblio-style: apalike
 output: 
   rticles::peerj_article:
-    # uncomment for normal citation style (see https://github.com/rstudio/rmarkdown/issues/586)
-    # citation_package: natbib 
     base_format: rmarkdown::pdf_document # bookdown::pdf_document2 # for using \@ref()
 ---
 
@@ -48,16 +45,32 @@ Use section and subsection commands to organize your document. \LaTeX{} handles 
 
 Use the table and tabular commands for basic tables --- see Table \@ref(tab:simtab1), for example. You can upload a figure (JPEG, PNG or PDF) using the project menu. To include it in your document, use the includegraphics command as in the code for Figure \@ref(fig:view) below.
 
-<!-- \begin{figure}[ht] -->
-<!-- \centering -->
-<!-- \includegraphics[width=\linewidth]{view} -->
-<!-- \caption{An example image.} -->
-<!-- \label{fig:view} -->
-<!-- \end{figure} -->
+Standard \LaTeX references will work as well (e.g. Fig. \ref{fig:view}).
+
+<!-- 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{view}
+\caption{An example image.}
+\label{fig:view}
+\end{figure} 
+-->
 
 ```{r view, out.width = "100%", fig.cap = "An example image.", echo = FALSE}
 knitr::include_graphics("view.pdf")
 ```
+
+<!-- 
+\begin{table}[ht]
+\centering
+\begin{tabular}{l|r}
+Item & Quantity \\\hline
+Widgets & 42 \\
+Gadgets & 13
+\end{tabular}
+\caption{\label{tab:widgets}An example table.}
+\end{table}
+-->
 
 Item     Quantity
 ------- ---------

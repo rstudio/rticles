@@ -41,11 +41,10 @@
                 labelsep=period,%
                 justification=raggedright]{caption}
 
-% ZNK -- Remove this for compatibility with pandoc
-%
+
 \RequirePackage{natbib}
-% \bibliographystyle{apalike}
-%
+\bibliographystyle{apalike}
+
 % writeLaTeX logo
 %
 \newcommand\wllogo{%

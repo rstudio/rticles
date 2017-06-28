@@ -4,15 +4,19 @@
 \alias{peerj_article}
 \title{PeerJ journal format.}
 \usage{
-peerj_article(..., keep_tex = TRUE, base_format = rmarkdown::pdf_document)
+peerj_article(..., keep_tex = TRUE, citation_package = "natbib",
+  base_format = rmarkdown::pdf_document)
 }
 \arguments{
 \item{...}{Additional arguments to \code{rmarkdown::pdf_document}}
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 
-\item{base_format}{The function to use for the base format of the article. 
-By default, this is \code{rmarkdown::pdf_document}, but to use pandoc's 
+\item{citation_package}{The LaTeX package to process citations, \code{natbib}
+or \code{biblatex}. Use \code{none} if neither package is to be used.}
+
+\item{base_format}{The function to use for the base format of the article.
+By default, this is \code{rmarkdown::pdf_document}, but to use pandoc's
 cross-referencing feature, this can be set to \code{bookdown::pdf_document2}}
 }
 \value{
