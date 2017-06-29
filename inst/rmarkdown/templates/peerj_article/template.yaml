@@ -1,0 +1,5 @@
+name: PeerJ Journal Article
+description: >
+ Template for creating an article for submission to the PeerJ
+create_dir: true
+
