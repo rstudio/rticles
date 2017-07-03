@@ -11,13 +11,13 @@
 #' @return R Markdown output format to pass to
 #'   \code{\link[rmarkdown:render]{render}}
 #'
-#' @details This was adapted from the 
+#' @details This was adapted from the
 #' \href{https://www.overleaf.com/latex/templates/latex-template-for-peerj-journal-and-pre-print-submissions/ptdwfrqxqzbn}{PeerJ Overleaf Template}.
-#' 
-#' @note If you use \code{rmarkdown::pdf_document()}, all internal references 
-#' (i.e. tables and figures) must use \code{\ref\{\}} whereas with 
-#' \code{bookdown::pdf_document2()}, you can additionally use \code{\@@ref()}.
-#' 
+#'
+#' @note If you use \code{rmarkdown::pdf_document()}, all internal references
+#' (i.e. tables and figures) must use \code{\\ref\{\}} whereas with
+#' \code{bookdown::pdf_document2()}, you can additionally use \code{\\@@ref()}.
+#'
 #' @examples
 #'
 #' \dontrun{
