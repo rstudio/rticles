@@ -1,0 +1,27 @@
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+
+language: r
+r:
+  - release
+  - devel
+
+sudo: false
+cran: http://cran.at.r-project.org
+
+cache: packages
+
+before_install:
+  - Rscript -e 'update.packages(ask = FALSE)'
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
+
+env:
+  global:
+    - NOT_CRAN: true
+    - R_CHECK_ARGS="--as-cran --timings"
+    - R_CHECK_TIME="TRUE"
+    - R_CHECK_TESTS="TRUE"
+    - _R_CHECK_TIMINGS_="0"

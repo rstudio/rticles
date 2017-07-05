@@ -1,4 +1,6 @@
 
+[![Travis-CI Build Status](https://travis-ci.org/rstudio/rticles.svg?branch=master)](https://travis-ci.org/rstudio/rticles)
+
 ### Installation
 
 You can install and use **rticles** from CRAN as follows:
