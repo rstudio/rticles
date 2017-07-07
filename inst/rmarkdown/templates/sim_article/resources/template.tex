@@ -4,6 +4,10 @@
 \usepackage[numbers, sort&compress]{natbib}
 \def\volumeyear{$year$}
 
+$if(longtable)$
+\usepackage{longtable}
+$endif$
+
 $for(header-includes)$
 $header-includes$
 $endfor$

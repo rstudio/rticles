@@ -77,7 +77,15 @@ Configure the YAML header including the following elements:
 
 * `keywords`: Up to 6 keywords
 
-* `bibliography`: Bibtex `.bib` file
+* `acknowledgements`: Acknowledgements section, at the end of the manuscript
+
+* `bibliography`: BibTeX `.bib` file
+
+* `bibliographystyle`: BibTeX bibliography style, `wileyj` by default
+
+* `classoption`: options of the `simauth` class
+
+* `longtable`: set to `true` to include the `longtable` package, used by default from `pandoc` to convert markdown to \LaTeX code
 
 ## Author information
 
@@ -128,7 +136,8 @@ Analogously, use Rmarkdown to produce tables as usual:
 
 ```{r, results = "asis"}
 if (!require("xtable")) install.packages("xtable")
-xtable(head(cars), caption = "A table", label = "tab:table")
+xt <- xtable(head(cars), caption = "A table", label = "tab:table")
+print(xt, comment = FALSE)
 ```
 
 Referenced via \ref{tab:table}.
@@ -158,6 +167,8 @@ Then, just write straight-up \LaTeX code and reference is as usual (`\ref{tab:ct
         \LL
 }
 ```
+
+It is also possible to set the `YAML` option `longtable: true` and use markdown tables (or the `knitr::kable` function): `knitr::kable(head(cars))` produces the same table as the `xtable` example presented before.
 
 ## Cross-referencing
 
