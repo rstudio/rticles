@@ -127,7 +127,7 @@ plot(x, y)
 Analogously, use Rmarkdown to produce tables as usual:
 
 ```{r, results = "asis"}
-library(xtable)
+if (!require("xtable")) install.packages("xtable")
 xtable(head(cars), caption = "A table", label = "tab:table")
 ```
 

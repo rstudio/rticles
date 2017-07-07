@@ -6,18 +6,13 @@ r:
   - devel
 
 sudo: false
-cran: http://cran.at.r-project.org
+cran: https://cran.rstudio.com
 
 cache: packages
 
 before_install:
   - Rscript -e 'update.packages(ask = FALSE)'
   - tlmgr install endfloat achemso ametsoc
-
-notifications:
-  email:
-    on_success: change
-    on_failure: always
 
 env:
   global:
