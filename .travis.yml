@@ -10,9 +10,13 @@ cran: https://cran.rstudio.com
 
 cache: packages
 
+addons:
+  apt:
+    packages: texlive-full
+
 before_install:
   - Rscript -e 'update.packages(ask = FALSE)'
-  - tlmgr install texlive-full endfloat achemso ametsoc extsizes lettrine mdframed
+  - tlmgr install endfloat achemso ametsoc extsizes lettrine mdframed
 
 env:
   global:
