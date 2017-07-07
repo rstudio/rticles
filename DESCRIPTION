@@ -29,4 +29,4 @@ License: GPL-3
 Imports: utils, rmarkdown, knitr, yaml
 SystemRequirements: GNU make
 RoxygenNote: 6.0.1
-Suggests: testthat xtable
+Suggests: testthat, xtable
