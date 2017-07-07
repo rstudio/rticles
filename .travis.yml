@@ -12,7 +12,7 @@ cache: packages
 
 before_install:
   - Rscript -e 'update.packages(ask = FALSE)'
-  - tlmgr install endfloat achemso ametsoc extarticle
+  - tlmgr install endfloat achemso ametsoc extsizes
 
 env:
   global:
