@@ -4,7 +4,7 @@
 \alias{peerj_article}
 \title{PeerJ journal format.}
 \usage{
-peerj_article(..., keep_tex = TRUE, citation_package = "natbib",
+peerj_article(..., keep_tex = TRUE, citation_package = "none",
   base_format = rmarkdown::pdf_document)
 }
 \arguments{
