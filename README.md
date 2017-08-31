@@ -30,6 +30,8 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [AMS](https://www.ametsoc.org/) articles
 
+- [PeerJ](https://peerj.com) articles
+
 - [Elsevier](https://www.elsevier.com) journal submissions
 
 - [AEA](https://www.aeaweb.org/journals/policies/templates) journal submissions
