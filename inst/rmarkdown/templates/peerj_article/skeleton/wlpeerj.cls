@@ -41,10 +41,10 @@
                 labelsep=period,%
                 justification=raggedright]{caption}
 
+% \RequirePackage{natbib}
+% \bibliographystyle{apalike}
 
-\RequirePackage{natbib}
-\bibliographystyle{apalike}
-
+%
 % writeLaTeX logo
 %
 \newcommand\wllogo{%
