@@ -1,3 +1,4 @@
 *.tex
 *.log
 *.pdf
+*_files
