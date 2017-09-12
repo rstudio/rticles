@@ -21,7 +21,8 @@ Authors@R: c(
   person("Charlotte", "Wickham", role = c("aut", "cph"), email = "cwickham@gmail.com"),
   person("Oliver", "Keyes", role = c("aut", "cph"), email = "okeyes@wikimedia.org"),
   person("Miao", "Yu", role = c("aut", "cph"), email = "yufreecas@gmail.com"),
-  person("Daniel", "Emaasit", role = c("aut", "cph"), email = "daniel.emaasit@gmail.com")
+  person("Daniel", "Emaasit", role = c("aut", "cph"), email = "daniel.emaasit@gmail.com"),
+  person("Thierry", "Onkelinx", role = c("aut", "cph"), email = "thierry.onkelinx@inbo.be")
   )
 Description: A suite of custom R Markdown formats and templates for
   authoring journal articles and conference submissions.
@@ -29,4 +30,4 @@ License: GPL-3
 Imports: utils, rmarkdown, knitr, yaml
 SystemRequirements: GNU make
 RoxygenNote: 6.0.1
-Suggests: testthat
+Suggests: testthat, bookdown
