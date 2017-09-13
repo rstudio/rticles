@@ -1,0 +1,164 @@
+---
+title: Template for preparing your research report submission to Royal Society Open Science using RMarkdown
+author:
+  - name: Alice Anonymous
+    affiliation: "1,2"
+  - name: Bob Security
+    affiliation: "2"
+address:
+  - code: "1"
+    address: Some Institute of Technology, Department, Street, City, State, Zip
+  - code: "2"
+    address: Another University Department, Street, City, State, Zip
+
+corresp_author_name:  "B. Security"
+corresp_author_email: "bob@email.com"
+
+subject:
+  - "subject 1"
+  - "subject 2"
+  - "subject 3"
+
+keywords:
+  - one
+  - two
+  - optional
+  - optional
+  - optional
+
+abstract: |
+  The abstract text goes here. The abstract text goes here. The abstract text goes here. The abstract text goes here. The abstract text goes here. The abstract text goes here. The abstract text goes here. The abstract text goes here.
+
+## Remove this if not required
+ethics: |
+  Please provide details on the ethics.
+  
+data_accessibility: |
+  Please provide details on the data availability.
+
+author_contributions: |
+  Please provide details of author contributions here.
+
+## Remove this if not required
+conflict_of_interest: |
+  Please declare any conflict of interest here.
+
+## Remove this if not required
+funding: |
+  Please provide details on funding
+
+## Remove this if not required
+permissions: |
+  Please provide details on permissions
+
+## Remove this if not required
+acknowledgements: |
+  Please include your acknowledgments here, set in a single paragraph. Please do not include any acknowledgments in the Supporting Information, or anywhere else in the manuscript.
+
+bibliography: sample.bib
+
+## change to true to add optional line numbering
+lineno: false
+
+site: bookdown::bookdown_site
+output: 
+  bookdown::pdf_book:
+    base_format: rticles::rsos_article
+---
+
+# Insert A head here
+
+This demo file is intended to serve as a "starter file"" for articles submitted to the [Royal Society Open Science](http://rsos.royalsocietypublishing.org/) journal using `RMarkdown`.
+
+Place `\EndFirstPage` at the point where the plain text on the first page stops. Warning: excess text will be hidden behind the copyright box. The example below contains line 1 to 19 in the code. Lines 14 to 17 are hidden behind the copyright box.
+
+## Insert B head here
+
+Subsection text here.
+
+### Insert C head here
+
+Subsubsection text here.
+
+Line 1
+
+Line 2
+
+Line 3
+
+Line 4
+
+Line 5
+
+Line 6
+
+Line 7
+
+Line 8
+
+Line 9
+
+Line 10
+
+Line 11
+
+Line 12
+
+Line 13
+
+Line 14
+
+Line 15
+
+Line 16
+
+Line 17
+
+Line 18
+
+Line 19
+
+\EndFirstPage
+
+# Lists
+
+* one
+* two
+* three
+
+* fruits
+    + apples
+        - macintosh
+        - red delicious
+    + pears
+    + peaches
+* vegetables
+    + broccoli
+    + chard
+
+## Citations
+
+Blabla \cite{Lannes} blabla. Blabla \cite{HJ2} blabla. Blabla \cite{BF, Lannes} blabla. Blabla \cite{Benjamin1967, HJ2, HJ3, HP2} blabla.
+
+### Headling level 3
+
+Subsubsection text here.
+
+# R code
+
+R code can be added as usual. Note that syntax highlighting is not available. Fig. \@ref(fig:nice-plot) is a an example.
+
+```{r echo = TRUE}
+#23456789012345678901234567890123456789012345678901234567890123456789012345
+#       10        20        30        40        50        60        70     
+summary(lm(mpg ~ disp, data = mtcars))
+```
+
+```{r}
+summary(mtcars)
+```
+
+```{r nice-plot, fig.cap="The caption"}
+plot(mtcars[, 1:3])
+```
+

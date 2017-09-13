@@ -1,0 +1,117 @@
+%% Author_tex.tex
+%% V1.0
+%% 2012/13/12
+%% developed by Techset
+%%
+%% This file describes the coding for rsproca.cls
+
+\documentclass[]{rsos}%%%%where rsos is the template name
+
+$if(lineno)$
+\usepackage{lineno}
+\linenumbers
+$endif$
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+%%%% *** Do not adjust lengths that control margins, column widths, etc. ***
+
+%%%%%%%%%%% Defining Enunciations  %%%%%%%%%%%
+\newtheorem{theorem}{\bf Theorem}[section]
+\newtheorem{condition}{\bf Condition}[section]
+\newtheorem{corollary}{\bf Corollary}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%% Article title to be placed here
+\title{$title$}
+
+\author{
+$for(author)$
+$author.name$$$^{$author.affiliation$}$$$sep$,
+$endfor$
+}
+
+\address{
+$for(address)$
+  $$^{$address.code$}$$$address.address$$sep$\\
+$endfor$
+}
+%%%% Subject entries to be placed here %%%%
+\subject{
+$for(subject)$
+$subject$$sep$,
+$endfor$
+}
+
+%%%% Keyword entries to be placed here %%%%
+\keywords{
+$for(keywords)$
+$keywords$$sep$,
+$endfor$
+}
+
+%%%% Insert corresponding author and its email address}
+\corres{
+  $corresp_author_name$\\
+  e-mail: $corresp_author_email$
+}
+
+%%%% Abstract text to be placed here %%%%%%%%%%%%
+\begin{abstract}
+$abstract$
+\end{abstract}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Some pieces required from the pandoc template
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\providecommand{\EndFirstPage}{%
+}
+
+\maketitle
+
+$body$
+
+$if(ethics)$
+\textbf{Ethics.} $ethics$
+$endif$
+
+$if(data_accessibility)$
+\textbf{Data accessibility.} $data_accessibility$
+$endif$
+
+\textbf{Authors' contributions.} $author_contributions$
+
+$if(conflict_of_interest)$
+\textbf{Competing interests.} $conflict_of_interest$
+$endif$
+
+$if(funding)$
+\textbf{Funding.} $funding$
+$endif$
+
+$if(permissions)$
+\textbf{Permissions.} $permissions$
+$endif$
+
+$if(acknowledgements)$
+\textbf{Acknowledgements} $acknowledgements$
+$endif$
+
+$if(natbib)$
+\bibliographystyle{RS}
+\bibliography{$bibliography$}
+$endif$
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+\end{document}
