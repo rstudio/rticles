@@ -16,7 +16,7 @@ $endif$
 
 % ZNK -- Adding headers for pandoc
 
-\setlength{\emergencystretch}{3em} 
+\setlength{\emergencystretch}{3em}
 \providecommand{\tightlist}{
 \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \usepackage{lipsum}
@@ -55,6 +55,17 @@ $endfor$
 % \keywords{$for(keywords)$$keywords$$sep$$endfor$}
 % $endif$
 
+$if(natbib)$
+\usepackage{natbib}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
+$endif$
+$if(biblatex)$
+\usepackage[$if(biblio-style)$style=$biblio-style$,$endif$$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
+$for(bibliography)$
+\addbibresource{$bibliography$}
+$endfor$
+$endif$
+
 \begin{abstract}
 $abstract$
 % Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text.
@@ -68,11 +79,27 @@ $abstract$
 
 $body$
 
+$if(natbib)$
+$if(bibliography)$
+$if(biblio-title)$
+$if(book-class)$
+\renewcommand\bibname{$biblio-title$}
+$else$
+\renewcommand\refname{$biblio-title$}
+$endif$
+$endif$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+
+$endif$
+$endif$
+$if(biblatex)$
+\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+
+$endif$
 $for(include-after)$
 $include-after$
-$endfor$
 
-\bibliography{$bibliography$}
+$endfor$
 
 
 \end{document}

@@ -26,7 +26,7 @@
 #' }
 #'
 #' @export
-peerj_article <- function(..., keep_tex = TRUE, citation_package = "natbib",
+peerj_article <- function(..., keep_tex = TRUE, citation_package = "none",
                           base_format = rmarkdown::pdf_document) {
   if (inherits(base_format, "character")){
     FMT <- eval(parse(text = base_format))
