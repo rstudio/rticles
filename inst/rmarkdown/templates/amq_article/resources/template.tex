@@ -150,7 +150,7 @@
 {\par\noindent
 \textit{Démonstration}\ }
 {
-\hfill{$\Box$}
+\hfill{$$\Box$$}
 }
 
 %%==============================Les siècles====================================================
@@ -205,8 +205,19 @@
 
 %%==========================Packages propres à l'auteur==============================
 %%
+$if(authorpackages)$
+$authorpackages$
+$endif$
 %%
-%%==========================Fin des packages propres à l'auteur========================
+%%==========================Fin des packages propres à l'auteur=======================
+
+%%==========================Commandes propres à l'auteur==============================
+%%
+$if(authorcommands)$
+$authorcommands$
+$endif$
+%%
+%%==========================Fin des commandes propres à l'auteur========================
 
 \usepackage{url}
 \usepackage{hyperref}
@@ -219,9 +230,9 @@
 
 
 %%=== Pour des barres de fraction latérales, une petite, une grande et une très grande ===
-\newcommand{\fracinline}[2]{\raisebox{0.4ex}{$#1$} / \raisebox{-0.7ex}{$#2$}}
-\newcommand{\bigfracinline}[2]{\raisebox{0.8ex}{$#1$}  \Big/ \raisebox{-1.4ex}{$#2$}}
-\newcommand{\biggfracinline}[2]{\raisebox{0.8ex}{$#1$}  \Bigg/ \raisebox{-1.4ex}{$#2$}}
+\newcommand{\fracinline}[2]{\raisebox{0.4ex}{$$#1$$} / \raisebox{-0.7ex}{$$#2$$}}
+\newcommand{\bigfracinline}[2]{\raisebox{0.8ex}{$$#1$$}  \Big/ \raisebox{-1.4ex}{$$#2$$}}
+\newcommand{\biggfracinline}[2]{\raisebox{0.8ex}{$$#1$$}  \Bigg/ \raisebox{-1.4ex}{$$#2$$}}
 
 %%	Exemple:	\fracinline{1 + \cos x}{\sin x}
 %%	Exemple:	\bigfracinline{1 + \cos x}{\sin x}
@@ -229,30 +240,40 @@
 %%=======================================================================================
 
 \everymath{\displaystyle}
+
 \begin{document}
 
 %%==========================Éléments propres à l'auteur==============================
 %%
 %%
-%%==========================Fin des éléments propres à l'auteur========================
+%%==========================Fin des éléments propres à l'auteur======================
 
 
-%%=======================Pour mettre le titre des tableaux en français==================
+%%=====================Pour mettre le titre des tableaux en français==================
 %%
 \renewcommand{\tablename}{\textsc{Tableau}}
 %%
-%%=========================Fin de la nouvelle définition================================
+%%=========================Fin de la nouvelle définition==============================
 
 \begin{center}
 \textsf{\LARGE \textbf{$title$}}
 \end{center}
 
 \begin{flushright}
-\textsc{$author$, $affiliation$\\
-$establishment$}\\
-$email$\\
-\href{https://www.amq.math.ca/}{le site de l'AMQ}\\
+\textsc{$author$, $affiliation$} \\
+\textsc{$establishment$} \\
+$email$ \\
+$website$
 \end{flushright}
+
+$if(author2)$
+\begin{flushright}
+\textsc{$author2$, $affiliation2$} \\
+\textsc{$establishment2$} \\
+$email2$ \\
+$website2$
+\end{flushright}
+$endif$
 
 \baselineskip=1.2\baselineskip
 
@@ -269,6 +290,10 @@ $abstract$
 %%          Fin du résumé
 %%=====================================================================
 
+\textbf{Mots clés: } $keywords$
+
 \bigskip
 
 $body$
+
+\end{document}
