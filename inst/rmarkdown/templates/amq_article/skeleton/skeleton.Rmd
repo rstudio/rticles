@@ -18,12 +18,6 @@ abstract: |
   
 keywords: premier mot, deuxième mot, troisième et dernier mot.
 
-authorpackages: \input{authorpackages}
-  
-authorcommands: \input{authorcommands}
-
-mybibliography: \input{mybibliography}
-
 output: rticles::amq_article
 ---
 

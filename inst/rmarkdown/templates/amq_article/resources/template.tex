@@ -205,17 +205,13 @@
 
 %%==========================Packages propres à l'auteur==============================
 %%
-$if(authorpackages)$
-$authorpackages$
-$endif$
+\input{authorpackages}
 %%
 %%==========================Fin des packages propres à l'auteur=======================
 
 %%==========================Commandes propres à l'auteur==============================
 %%
-$if(authorcommands)$
-$authorcommands$
-$endif$
+\input{authorcommands}
 %%
 %%==========================Fin des commandes propres à l'auteur========================
 
@@ -296,6 +292,6 @@ $abstract$
 
 $body$
 
-$mybibliography$
+\input{mybibliography}
 
 \end{document}
