@@ -48,7 +48,7 @@ template_pandoc <- function(metadata, template, output, verbose = FALSE) {
 }
 
 
-# Call rmarkdown::pdf_documet and mark the return value as inheriting pdf_document
+# Call rmarkdown::pdf_document and mark the return value as inheriting pdf_document
 inherit_pdf_document <- function(...) {
   fmt <- rmarkdown::pdf_document(...)
   fmt$inherits <- "pdf_document"

@@ -1,0 +1,256 @@
+---
+title: Titre du texte, si possible moins de 50 caractères
+
+author: Joseph Bleau
+affiliation: département de mathématiques
+establishment: Cégep de Fleurimont
+email: \href{mailto:jo-bleau@cegepfleurimont.qc.ca}{jo-bleau@cegepfleurimont.qc.ca}
+website: \href{https://www.amq.math.ca/}{Le site de l'AMQ}
+
+author2: Arthur Sauvé
+affiliation2: département de mathématiques
+establishment2: Cégep des Marguerites
+email2: \href{mailto:arthur.sauve@cegepmargueriteses.qc.ca}{arthur.sauve@cegepmargueriteses.qc.ca}
+website2: \href{https://www.amq.math.ca/}{Le site de l'AMQ}
+
+abstract: |
+  Dans ce Gabarit, on devra entrer tous les textes en caractères accentués, comme à l'habitude\footnote{Si vous utilisez les accents habituels, vous nous rendez le grand service de nous éviter d'avoir à modifier un texte qui ne les utiliserait pas.}. Le résumé apparaît ici. Long d'au maximum 100 mots, il peut contenir des expressions en  \emph{italique}, en \textbf{caractères gras} ou en \textsc{petites capitales}. On peut aussi utiliser des symboles particuliers comme $\Bbb{R}$, $\mathscr{F}$ ou encore $\mathscr{P}(E)$ et même des expressions mathématiques comme $f_k(x)=a x^2+bx+c$, ou encore à  l'ensemble $\mathfrak{F}$ des formules du système formel $\mathfrak{L}$ est bien défini. Il est possible de reculer dans le temps. Ainsi, on peut parler du \siecle{1} siècle de notre ère ou des \siecle{20} et \siecle{21} siècles.
+  
+keywords: premier mot, deuxième mot, troisième et dernier mot.
+
+output: rticles::amq_article
+---
+
+# Structuration du texte \label{sec1}
+
+\begin{definition}
+On appelle section toute partie du texte incluse entre une annonce de section et la suivante. La même convention s'applique aux sous-sections.
+\end{definition}
+
+Les sections et sous-sections sont numérotées de façon automatique. La même règle s'applique, catégorie par catégorie, aux théorèmes, aux lemmes, aux corollaires et aux définitions.
+
+Toutefois, on trouvera un moyen de remplacer la numérotation catégorie par catégorie par une numérotation en fonction de la section ou de la sous-section dans le préambule et c'est là aussi que vous devrez l'activer. Vous trouverez plus d'information sur ce sujet et sur bien d'autres, dans M.-P. Kluth et B. Bayart, \emph{FAQ \LaTeX~de l'équipe Grappa}\cite{faq}.
+
+On trouvera une liste de listes de symboles disponibles pour écrire des expressions mathématiques pages 50 à 56, dans T. Oetiker, H. Partl, I. Hyna et E. Schlegl (1999). \emph{Une courte (?) introduction à \LaTeXe, ou  \LaTeXe~en 88 minutes}  \cite{oeti}.
+
+# Les expressions mathématiques et les équations \label{sec2}
+
+## Expressions mathématiques au fil du texte \label{fil}
+
+Le signe de dollar permet d'insérer au fil du texte des expressions mathématiques qui apparaîtront en italique. Ainsi, lorsqu'on utilise une fonction f, pour qu'elle apparaisse comme un objet mathématique, il suffit de l'écrire $f$, entre deux signes de dollar. Les expressions peuvent être plus complexes:
+
+Soit, $f: \Bbb{N}^{2*} \rightarrow \Bbb{R}$ telle que pour tout 
+$(m,n) \in \Bbb{N}^{2*}$ on a 
+$f(m+1,n+1) = f(m+1,n) + f(m,n+1)$.
+
+## Expressions mathématiques sur une ligne dédiée \label{dediee}
+
+On peut souhaiter que l'équation soit mise en évidence sur une ligne qui lui soit dédiée:
+
+Soit, 
+$f: \Bbb{N}^{2*} \rightarrow \Bbb{R}$ telle que pour tout $(m, n) {\in} \Bbb{N}^{2*}$ on a
+\begin{equation*}
+f(m+1,n+1) = f(m+1,n) \qquad+ f(m,n+1).
+\end{equation*}
+
+On peut souhaiter qu'en plus cette équation soit numérotée et qu'on puisse faire référence plus loin dans le texte à ce numéro:
+
+Soit, 
+$f:\Bbb{N}^{2*} \rightarrow \Bbb{R}$ telle que pour tout $(m,n) \in \Bbb{N}^{2*}$ on a
+\begin{equation}
+f(m+1,n+1) = f(m+1,n) + f(m,n+1). \label{recur}
+\end{equation}
+
+Pour faire référence à une équation numérotée, on utilise l'étiquette qui lui a été attribuée. Ainsi on peut invoquer l'équation (\ref{recur}) de la section (\ref{dediee}). Ce système est résistant aux changements de place dans le texte. Il est possible qu'il soit nécessaire de compiler plusieurs fois après une modification du texte pour assurer le suivi des références.
+
+## Expressions mathématiques sur plusieurs lignes, avec numérotation  \label{numero}
+
+$AC=CB$ et $AB=AC$
+Il arrive qu'on ait une suite d'égalités à présenter et qu'on souhaite aligner les signes d'égalité.
+On traite alors la suite d'équations comme un tableau à 3 colonnes délimitées  par le symbole de l'esperluette (et commercial).
+
+Exemple:
+
+\begin{theorem} Si $\vv{v} \neq \vv{0}$, alors le vecteur $\frac{1}{\| \vv{v}\|}\vv{v}$, que l'on écrit parfois $\frac{\vv{v}}{\| \vv{v}\|}$, est un vecteur unitaire de même direction et de même sens que $\vv{v}$.
+\end{theorem}
+
+La partie du théorème précédent portant sur la norme se démontre ainsi:
+
+\begin{proof}
+\begin{eqnarray}
+\Big\|{\frac{1}{\| \vv{v}\|}\vv{v}} \Big\|&=& \Big |\frac{1}{\| \vv{v}\|} \Big |\| \vv{v}\|\label{norme}\\
+&=&\frac{1}{\| \vv{v}\|}\| \vv{v}\|  \nonumber\\
+&=&\frac{\| \vv{v}\|}{\| \vv{v}\|} \nonumber\\
+&=&1 \label{nombre}
+\end{eqnarray}
+La comparaison des équations (\ref{norme}) et (\ref{nombre}) démontre le théorème.\end{proof}
+
+Pour obtenir une suite d'équations non numérotées,
+
+\begin{eqnarray*}
+\Big\|{\frac{1}{\| \vv{v}\|}\vv{v}} \Big\|&=& \Big |\frac{1}{\| \vv{v}\|} \Big |\| \vv{v}\| \\
+&=&\frac{1}{\| \vv{v}\|}\| \vv{v}\| \\
+&=&\frac{\| \vv{v}\|}{\| \vv{v}\|} \\
+&=&1
+\end{eqnarray*}
+
+## Expressions mathématiques d'une fonction définie par morceaux  \label{morceaux}
+
+Un classique:
+\begin{definition}
+On appelle valeur absolue la fonction
+{f}: $\Bbb{R} \rightarrow \Bbb{R}_+$ définie par
+\[f(x)=
+\begin{cases}
+\;\;x & \text{, si } x \geq 0 \\
+-x & \text{, sinon}.
+\end{cases}
+\]
+\end{definition}
+
+ou encore
+\[f(x)=
+\begin{cases}
+\; \;x & \text{, si } x > 0, \\
+\; \;0& \text{, si } x = 0, \\
+-x & \text{, \emph{sinon}}.
+\end{cases}
+\]
+
+# Les tableaux \label{tab}
+
+\bigskip
+
+Ce tableau (\ref{Tableau1}) comporte 2 colonnes, dans lesquelles le texte sera centré, et 3 lignes.
+Sur la première ligne, les deux colonnes sont fusionnées.
+
+ \begin{table}[ht]
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\multicolumn{2}{|c|}{Tableau}\\
+\hline
+Cellule 1&Cellule 2\\
+\hline
+Cellule 3&Cellule 4\\
+\hline
+\end{tabular}
+\end{center}
+\caption{ \label{Tableau1} {Modèle de tableau dans l'environnement table} }
+\end{table}
+
+On peut l'invoquer ailleurs dans le texte car il porte une étiquette. Ainsi, le tableau (\ref{Tableau1}) ne comporte que des lignes simples, alors que dans le tableau (\ref{Tableau2}) on a inséré des doubles lignes horizontales et des doubles lignes verticales.
+
+ \begin{table}[ht]
+\begin{center}
+\begin{tabular}{|l||r| c| c| c| c|| c c|}
+ \hline
+ Nom &  Prénom & Institution & Article &  & &  &  \\ \hline \hline
+   Fayard & Clotilde & École maternelle de la Métare& La maquette & 3 & 4& 5 & 6 \\ \hline
+   1 &1& 2 & 3 & 4& 5& 6 &  0 \\ \hline
+   1 &1& 2 & 3 & 4& 5& 6 &  0 \\ \hline
+   1 &1& 2 & 3 & 4& 5& 6 &  0 \\ \hline
+   1 &1& 2 & 3 & 4& 5& 6 &  0 \\ \hline
+
+\end{tabular}
+\end{center}
+\caption{ \label{Tableau2} {Autre modèle de tableau dans l'environnement table} }
+\end{table}
+
+
+Les tableaux, comme les figures, sont des objets flottants. Cela signifie que le logiciel les insère immédiatement s'il y a suffisamment de place pour qu'il tienne dans la page. Sinon, le logiciel remplit la page avec du texte et insère le tableau en haut de la page suivante.
+
+
+\begin{table}[ht]
+\begin{flushright}
+\begin{tabular}{ll}\
+Estragon.   & -  Allons-nous-en. \\
+~Vladimir.   & -  On ne peut pas. \\
+~Estragon.   & -  Pourquoi ? \\
+~Vladimir. & -  On attend Godot. \\
+ \multicolumn{2}{r}{~~~~~~Samuel Beckett, \begin{itshape} En attendant Godot \end{itshape}} \\
+ \end{tabular}
+ \end{flushright}
+\caption{ \label{Tableau3} {Tableau dramatique} }
+\end{table}
+
+\textsc{Attention}, cet autre tableau (\ref{tab:template}) est un peu plus sophistiqué. Lire les instructions dans le fichier source.
+\bigskip
+
+\begin{table}
+\centering
+\begin{tabular}{lccccc}
+\toprule
+& \multicolumn{5}{c}{Milieu de croissance} \\
+\cmidrule(l){2-6}
+Variété & 1 & 2 & 3 & 4 & 5\\
+\midrule
+GDS1002 & 0.962 & 0.821 & 0.356 & 0.682 & 0.801\\ 	% Contenu de la ligne no 1
+NWN652 & 0.981 & 0.891 & 0.527 & 0.574 & 0.984\\ 	  % Contenu de la ligne no 2
+PPD234 & 0.915 & 0.936 & 0.491 & 0.276 & 0.965\\ 		% Contenu de la ligne no 3
+JSB126 & 0.828 & 0.827 & 0.528 & 0.518 & 0.926\\		% Contenu de la ligne no 4
+JSB724 & 0.916 & 0.933 & 0.482 & 0.644 & 0.937\\ 		% Contenu de la ligne no 5
+\midrule
+\midrule
+Taux moyen & 0.920 & 0.882 & 0.477 & 0.539 & 0.923\\
+\bottomrule
+\end{tabular}
+\caption{Texte de la légende}
+\label{tab:template}
+\end{table}
+
+# Les figures \label{fig}
+
+On insère les figures en formats JPEG ou PDF.
+
+## Insertion d'une figure avec légende étiquetée \label{fig+eti}
+
+\begin{figure}[ht]
+\centerline{\includegraphics[scale=.8]{pics/Figure1}} \caption{ \label{Modele figure1} Modèle d'une figure enregistrée en format JPEG avec légende étiquetée }
+\end{figure}
+
+\begin{figure}[ht]
+\centerline{\includegraphics[scale=.99]{pics/Figure2}} \caption{ \label{Modele figure2} Modèle d'une figure enregistrée en format PDF avec  légende étiquetée}
+\end{figure}
+
+Comme pour les équations numérotées ou les sections, on peut invoquer une figure dont la légende a été étiquetée sans craindre les modifications au texte en cours de composition.
+
+Ainsi, on peut invoquer les figures (\ref{Modele figure1}) et (\ref{Modele figure2}) pour attirer l'attention du lecteur sur la manière de contrôler la taille d'une figure.
+
+## Insertion d'une figure avec légende manuelle \label{leg+manu}
+
+\begin{center}
+\includegraphics[scale=.99]{pics/Figure1}\\
+{\small \textsc{Figure 3} -- Modèle d'une figure avec légende manuelle}
+\end{center}
+
+On ne peut pas invoquer cette figure autrement que manuellement. Nous n'encourageons pas l'insertion de figures de cette façon car dans ce cas il arrive que la figure elle-même et son titre se retrouvent sur deux pages différentes.
+
+Tout ce qui a été étiqueté, sections, sous-sections, figures, tableaux et entrées de la bibliographie, peut être invoqué ailleurs dans le texte.
+
+# Les citations et les notes de bas de page \label{sec5}
+
+On peut faire des citations. Les citation courtes (5 lignes ou moins) apparaîtront au fil du texte, entre guillemets français \og Diophante vivait à une époque où les mathématiques alexandrines perdaient leur puissance créatrice.\fg\ disent Dahan-Dalmedico et Peifer\cite{daha}, p. 65.
+
+Une citation longue (plus de 5 lignes) apparaîtra dans un paragraphe (ou plus selon le texte cité) qui lui sera dédié.
+
+\begin{quote}  Avec Diophante, un nouveau chapitre des mathématiques s'ouvre et il est impossible de mettre en lumière le courant dont il est l'aboutissement. La vie de Diophante est très peu connue, et la période précise pendant laquelle il a vécu reste contestée (\siecle{3} siècle après J.-C.). Sa grande oeuvre, {\ les Arithmétiques}, devait comprendre, d'après ce qu'il écrit lui-même dans l'introduction, treize livres.
+
+ Depuis le \siecle{16} siècle, seuls six livres étaient connus. Ils provenaient d'un manuscrit grec découvert en 1464 par Regiomontanus à Venise, qui était la copie d'un manuscrit plus ancien.(Dahan-Dalmedico et Peifer\cite{daha}, p. 72)\end{quote}
+
+Il est aussi possible d'insérer des notes de bas de page. Toutefois, celles-ci sont à utiliser avec la plus grande parcimonie, et seulement quand l'auteur pense vraiment qu'il lui est impossible d'inclure une incise dans son texte \footnote {Un texte de 10 pages avec 12 notes de bas de page n'est pas acceptable.}. Les références bibliographiques, notamment, ne doivent jamais figurer en notes, mais doivent être incluses dans le texte sous les normes données ci-après. Toutes les références correspondant à celles données dans le texte doivent figurer dans la bibliographie. Nous attirons l'attention des auteurs sur le fait que l'exactitude en matière de références bibliographiques requiert que soit entreprise une vérification, voire une recherche documentaire qui est de la responsabilité de l'auteur.
+
+# Insertion de code `R`
+
+Il est facile d'inclure du code `R`. Par exemple:
+```{r, out.width='0.9\\textwidth'}
+plot(cars)
+```
+
+# Conclusion \label{sec6}
+
+C'est à la fin de cette section qu'on retrouvera le cas échéant de brefs remerciements.
+
+\emph{Remerciements}
+A Leslie Lamport\cite{lamp}, pour la qualité impressionnante de son travail et ses précieux conseils pour la rédaction de ce document, et aux Annales des sciences mathématiques du Québec dont le gabarit nous a inspirés.
+
