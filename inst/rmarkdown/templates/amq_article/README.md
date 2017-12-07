@@ -4,7 +4,7 @@
 
 Vous pouvez ajouter des packages utiles pour vous dans le fichier `authorpackages.tex`. Vous pouvez laisser le fichier vide si vous n'avez aucun package à ajouter.
 
-Voici quelques exemples de packages utiles:
+Voici quelques exemples de packages que vous pouvez ajouter:
 
 ```
 \usepackage{pstricks}
@@ -16,7 +16,7 @@ Voici quelques exemples de packages utiles:
 
 Vous pouvez ajouter des commandes utiles pour vous dans le fichier `authorcommands.tex`. Vous pouvez laisser le fichier vide si vous n'avez aucune commande à ajouter.
 
-Voici quelques exemples de packages utiles:
+Voici quelques exemples de commandes que vous pouvez ajouter:
 
 ```
 \newcommand{\lr}[1]{\left(#1\right)}
@@ -27,7 +27,7 @@ Voici quelques exemples de packages utiles:
 
 Le bulletin de l'AMQ ne vous permet pas d'utiliser `Bibtex` pour votre bibliographie. Vous devez donc entrer vos bibliographies dans le fichiers `mybibliography.tex`.
 
-La liste des références apparaîtra entre les commandes `\begin{thebibliography}{10}` et `\end{thebibliography}{10}`, par ordre alphabé tique du premier auteur.
+La liste des références apparaîtra entre les commandes `\begin{thebibliography}{10}` et `\end{thebibliography}{10}`, par ordre alphabétique du premier auteur.
 
 Toutes les références bibliographiques apparaissant dans la liste des références devraient être citées dans le corps du texte. Réciproquement, toutes les références citées dans le corps du texte devraient apparaître en fin de texte dans la liste des 
 références.

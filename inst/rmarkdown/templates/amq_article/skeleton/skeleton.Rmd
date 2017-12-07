@@ -252,5 +252,5 @@ plot(cars)
 C'est à la fin de cette section qu'on retrouvera le cas échéant de brefs remerciements.
 
 \emph{Remerciements}
-À Leslie Lamport\cite{lamp}, pour la qualité impressionnante de son travail et ses précieux conseils pour la rédaction de ce document, et aux Annales des sciences mathématiques du Québec dont le gabarit nous a inspirés.
+A Leslie Lamport\cite{lamp}, pour la qualité impressionnante de son travail et ses précieux conseils pour la rédaction de ce document, et aux Annales des sciences mathématiques du Québec dont le gabarit nous a inspirés.
 

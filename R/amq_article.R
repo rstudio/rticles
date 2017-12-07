@@ -12,10 +12,12 @@
 #'
 #' @export
 amq_article <- function(...,
+                        latex_engine = 'xelatex',
                         keep_tex = TRUE,
                         md_extensions = c("-autolink_bare_uris"),
                         fig_caption = TRUE){
   pdf_document_format(...,
+                      latex_engine = latex_engine,
                       highlight = NULL,
                       keep_tex = keep_tex,
                       md_extensions = md_extensions,

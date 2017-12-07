@@ -4,11 +4,14 @@
 \alias{amq_article}
 \title{Format pour Bulletin de l'AMQ.}
 \usage{
-amq_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"),
-  fig_caption = TRUE)
+amq_article(..., latex_engine = "xelatex", keep_tex = TRUE,
+  md_extensions = c("-autolink_bare_uris"), fig_caption = TRUE)
 }
 \arguments{
 \item{...}{Arguments to \code{rmarkdown::pdf_document}}
+
+\item{latex_engine}{LaTeX engine for producing PDF output. Options are
+"pdflatex", "lualatex", and "xelatex".}
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 
