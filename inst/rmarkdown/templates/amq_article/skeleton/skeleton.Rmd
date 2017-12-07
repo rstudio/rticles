@@ -22,7 +22,7 @@ authorpackages: \input{authorpackages}
   
 authorcommands: \input{authorcommands}
 
-bibliography: \input{mybibliography}
+mybibliography: \input{mybibliography}
 
 output: rticles::amq_article
 ---
@@ -259,6 +259,4 @@ C'est à la fin de cette section qu'on retrouvera le cas échéant de brefs reme
 
 \emph{Remerciements}
 À Leslie Lamport\cite{lamp}, pour la qualité impressionnante de son travail et ses précieux conseils pour la rédaction de ce document, et aux Annales des sciences mathématiques du Québec dont le gabarit nous a inspirés.
-
-\bigskip
 
