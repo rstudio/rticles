@@ -19,5 +19,5 @@
 mdpi_article <- function(..., keep_tex = TRUE) {
   inherit_pdf_document(...,
                        keep_tex = keep_tex,
-                       template = "~/Git/GitHub/rticles/inst/rmarkdown/templates/mdpi_article/resources/template.tex") #find_resource("mdpi_article", "template.tex"))
+                       template = find_resource("mdpi_article", "template.tex"))
 }
