@@ -5,6 +5,13 @@
 
 %=================================================================
 \documentclass[$journal$,$article$,$status$,moreauthors,pdftex,10pt,a4paper]{mdpi}
+
+%% Some pieces required from the pandoc template
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{4pt}}
+\setlist[itemize]{leftmargin=*,labelsep=5.8mm}
+\setlist[enumerate]{leftmargin=*,labelsep=4.9mm}
+
 %
 %--------------------
 % Class Options:
@@ -61,26 +68,21 @@
 % Full title of the paper (Capitalized)
 \Title{$title$}
 
+% TODO HEADER
 % Author Orchid ID: enter ID or remove command
 \newcommand{\orcidauthorA}{0000-0000-000-000X} % Add \orcidA{} behind the author's name
 %\newcommand{\orcidauthorB}{0000-0000-000-000X} % Add \orcidB{} behind the author's name
 
-% % Authors, for the paper (add full first names)
-%
-% % Authors, for metadata in PDF
-% \AuthorNames{Firstname Lastname, Firstname Lastname and Firstname Lastname}
-%
-% % Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
-% \address{%
-% 1 \quad Affiliation 1; e-mail@e-mail.com\\
-% 2 \quad Affiliation 2; e-mail@e-mail.com}
+% Authors, for the paper (add full first names)
+\Author{Firstname Lastname}
 
+% Authors, for metadata in PDF
+\AuthorNames{Firstname Lastname, Firstname Lastname and Firstname Lastname}
 
-\Author{$for(author)$$author.name$\$^1\$$endfor$}
-
-\address{$for(author)$$author.affiliation${$author.department$}$endfor$}
-
-
+% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
+\address{%
+\quad Affiliation 1; e-mail@e-mail.com\\
+\quad Affiliation 2; e-mail@e-mail.com}
 % Contact information of the corresponding author
 \corres{$correspondence$}
 
@@ -90,13 +92,19 @@
 % The commands \thirdnote{} till \eighthnote{} are available for further notes
 
 % Simple summary
+$if(simplesummary)$
 \simplesumm{$simplesummary$}
+$endif$
 
 % Abstract (Do not insert blank lines, i.e. \\)
+$if(abstract)$
 \abstract{$abstract$}
+$endif$
 
 % Keywords
+$if(keywords)$
 \keyword{$keywords$}
+$endif$
 
 % The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
 %\PACS{J0101}
@@ -134,37 +142,45 @@ $body$
 \vspace{6pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(acknowledgement)$
 \acknowledgments{$acknowledgement$}
+$endif$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(authorcontributions)$
 \authorcontributions{$authorcontributions$}
+$endif$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(conflictsofinterest)$
 \conflictsofinterest{$conflictsofinterest$}
+$endif$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% optional
+$if(abbreviations)$
 \abbreviations{The following abbreviations are used in this manuscript:\\
 
 \noindent
 \begin{tabular}{@{}ll}
-MDPI & Multidisciplinary Digital Publishing Institute\\
-DOAJ & Directory of open access journals\\
-TLA & Three letter acronym\\
-LD & linear dichroism
+$for(abbreviations)$
+$abbreviations.short$ & $abbreviations.long$ \\
+$endfor$
 \end{tabular}}
+$endif$
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% optional
-\appendixtitles{no} %Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
-\appendixsections{multiple} %Leave argument "multiple" if there are multiple sections. Then a counter is printed ("Appendix A"). If there is only one appendix section then change the argument to "one" and no counter is printed ("Appendix").
-\appendix
-\section{}
-\subsection{}
-The appendix is an optional section that can contain details and data supplemental to the main text. For example, explanations of experimental details that would disrupt the flow of the main text, but nonetheless remain crucial to understanding and reproducing the research shown; figures of replicates for experiments of which representative data is shown in the main text can be added here if brief, or as Supplementary data. Mathematical proofs of results not central to the paper can be added as an appendix.
-
-\section{}
-All appendix sections must be cited in the main text. In the appendixes, Figures, Tables, etc. should be labeled starting with `A', e.g., Figure A1, Figure A2, etc.
+% TODO APPENDIX
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %% optional
+% \appendixtitles{no} %Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
+% \appendixsections{multiple} %Leave argument "multiple" if there are multiple sections. Then a counter is printed ("Appendix A"). If there is only one appendix section then change the argument to "one" and no counter is printed ("Appendix").
+% \appendix
+% \section{}
+% \subsection{}
+% The appendix is an optional section that can contain details and data supplemental to the main text. For example, explanations of experimental details that would disrupt the flow of the main text, but nonetheless remain crucial to understanding and reproducing the research shown; figures of replicates for experiments of which representative data is shown in the main text can be added here if brief, or as Supplementary data. Mathematical proofs of results not central to the paper can be added as an appendix.
+%
+% \section{}
+% All appendix sections must be cited in the main text. In the appendixes, Figures, Tables, etc. should be labeled starting with `A', e.g., Figure A1, Figure A2, etc.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Citations and References in Supplementary files are permitted provided that they also appear in the reference list here.
@@ -194,7 +210,9 @@ All appendix sections must be cited in the main text. In the appendixes, Figures
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% optional
+$if(sampleavailability)$
 \sampleavailability{$sampleavailability$}
+$endif$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
