@@ -68,27 +68,30 @@
 % Full title of the paper (Capitalized)
 \Title{$title$}
 
-% TODO HEADER
-% Author Orchid ID: enter ID or remove command
-\newcommand{\orcidauthorA}{0000-0000-000-000X} % Add \orcidA{} behind the author's name
-%\newcommand{\orcidauthorB}{0000-0000-000-000X} % Add \orcidB{} behind the author's name
-
 % Authors, for the paper (add full first names)
-\Author{Firstname Lastname}
+\Author{$for(author)$$author.name$$author.affil$$if(author.orcid)$\href{https://orcid.org/$author.orcid$}{\orcidicon}$endif$$sep$, $endfor$}
 
 % Authors, for metadata in PDF
-\AuthorNames{Firstname Lastname, Firstname Lastname and Firstname Lastname}
+\AuthorNames{$for(author)$$author.name$$sep$, $endfor$}
 
 % Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
-\address{%
-\quad Affiliation 1; e-mail@e-mail.com\\
-\quad Affiliation 2; e-mail@e-mail.com}
+\address{
+$for(affiliation)$
+$affiliation.num$ \quad $affiliation.address$; $affiliation.email$\\
+$endfor$
+}
 % Contact information of the corresponding author
-\corres{$correspondence$}
+\corres{Correspondence: $correspondence$}
 
 % Current address and/or shared authorship
-\firstnote{Current address: Affiliation 3}
-\secondnote{These authors contributed equally to this work.}
+$if(firstnote)$\firstnote{$firstnote$}$endif$
+$if(secondnote)$\secondnote{$secondnote$}$endif$
+$if(thirdnote)$\thirdnote{$thirdnote$}$endif$
+$if(fourthnote)$\fourthnote{$fourthnote$}$endif$
+$if(fifthnote)$\fifthnote{$fifthnote$}$endif$
+$if(sixthnote)$\sixthnote{$sixthnote$}$endif$
+$if(seventhnote)$\seventhnote{$seventhnote$}$endif$
+$if(eighthnote)$\eighthnote{$eighthnote$}$endif$
 % The commands \thirdnote{} till \eighthnote{} are available for further notes
 
 % Simple summary
