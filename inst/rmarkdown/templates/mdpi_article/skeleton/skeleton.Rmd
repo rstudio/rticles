@@ -29,7 +29,7 @@ journal: water
 article: article
 status: submit
 bibliography: mybibfile.bib
-csl: multidisciplinary-digital-publishing-institute.csl
+appendix: appendix.tex
 simplesummary: |
   A Simple summary goes here.
 abstract: |
