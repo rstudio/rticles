@@ -24,7 +24,8 @@ Authors@R: c(
   person("Daniel", "Emaasit", role = c("aut", "cph"), email = "daniel.emaasit@gmail.com"),
   person("Thierry", "Onkelinx", role = c("aut", "cph"), email = "thierry.onkelinx@inbo.be"),
   person("Marc-Andre", "Desautels", role = c("aut", "cph"), email = "marc-andre.desautels@cstjean.qc.ca"),
-  person("Dominik", "Leutnant", role = c("aut", "cph"), email = "leutnant@fh-muenster.de")
+  person("Dominik", "Leutnant", role = c("aut", "cph"), email = "leutnant@fh-muenster.de"),
+  person(family = "MDPI", role = c("aut", "cph"))
   )
 Description: A suite of custom R Markdown formats and templates for
   authoring journal articles and conference submissions.
