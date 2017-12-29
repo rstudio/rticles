@@ -12,6 +12,8 @@
 \setlist[itemize]{leftmargin=*,labelsep=5.8mm}
 \setlist[enumerate]{leftmargin=*,labelsep=4.9mm}
 
+\usepackage{longtable}
+
 %
 %--------------------
 % Class Options:
@@ -69,7 +71,7 @@
 \Title{$title$}
 
 % Authors, for the paper (add full first names)
-\Author{$for(author)$$author.name$$author.affil$$if(author.orcid)$\href{https://orcid.org/$author.orcid$}{\orcidicon}$endif$$sep$, $endfor$}
+\Author{$for(author)$$author.name$$$^{$author.affil$}$$$if(author.orcid)$\href{https://orcid.org/$author.orcid$}{\orcidicon}$endif$$sep$, $endfor$}
 
 % Authors, for metadata in PDF
 \AuthorNames{$for(author)$$author.name$$sep$, $endfor$}
@@ -77,7 +79,7 @@
 % Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
 \address{%
 $for(affiliation)$
-$affiliation.num$ \quad $affiliation.address$; $affiliation.email$\\
+$$^{$affiliation.num$}$$ \quad $affiliation.address$; $affiliation.email$\\
 $endfor$
 }
 % Contact information of the corresponding author

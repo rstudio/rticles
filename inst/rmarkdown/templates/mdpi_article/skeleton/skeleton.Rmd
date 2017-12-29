@@ -2,18 +2,18 @@
 title: Full title of the paper (Capitalized)
 author:
   - name: Dominik Leutnant
-    affil: $^{1,2,\ddagger,*}$
+    affil: 1,2,\ddagger,*
     orcid: 0000-0003-3293-2315
   - name: John Doe
-    affil: $^{2, \dagger, \ddagger}$
+    affil: 2, \dagger, \ddagger
 affiliation:
-  - num: $^{1}$
+  - num: 1
     address: |
       Muenster University of Applied Sciences - 
       Institute for Infrastructure, Water, Resources, Environment
       Correnstr. 25, 48149 Muenster, Germany
     email: leutnant@fh-muenster.de
-  - num: $^{2}$
+  - num: 2
     address: |
       Your department
       Street, City, Country
