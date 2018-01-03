@@ -1,6 +1,9 @@
 #' MDPI journal format.
 #'
-#' Format for creating submissions to MDPI journals.
+#' Format for creating submissions to Multidisciplinary Digital Publishing
+#' Institute (MDPI) journals. Adapted from
+#' \href{http://www.mdpi.com/authors/latex}{http://www.mdpi.com/authors/latex}.
+#' The CSL file was obtained from \href{https://www.zotero.org/styles?q=mdpi}{https://www.zotero.org/styles?q=mdpi}.
 #'
 #' @inheritParams rmarkdown::pdf_document
 #' @param ... Additional arguments to \code{rmarkdown::pdf_document}
