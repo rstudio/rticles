@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% %%	MDPI class for LaTeX files	 11-21-2017
+%% %%	MDPI class for LaTeX files	 12-24-2017
 %% %%	For any information please send an e-mail to:
 %% %%		latex-support@mdpi.com (Dr. Janine Daum) 
 %% %%
@@ -20,7 +20,7 @@
 
 %% IDENTIFICATION
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mdpi}[2017/11/21 MDPI paper class]
+\ProvidesClass{mdpi}[2017/12/24 MDPI paper class]
 
 %%%% Copyright and citebox
  \AtEndDocument{\par \cright \par \vspace{12pt} \citebox}
@@ -212,6 +212,7 @@
 \DeclareOption{nanomaterials}{\gdef\@journal{nanomaterials}}
 \DeclareOption{ncrna}{\gdef\@journal{ncrna}}
 \DeclareOption{neonatalscreening}{\gdef\@journal{neonatalscreening}}
+\DeclareOption{neuroglia}{\gdef\@journal{neuroglia}}
 \DeclareOption{nitrogen}{\gdef\@journal{nitrogen}}
 \DeclareOption{nutrients}{\gdef\@journal{nutrients}}
 \DeclareOption{ohbm}{\gdef\@journal{ohbm}}
@@ -225,6 +226,7 @@
 \DeclareOption{plants}{\gdef\@journal{plants}}
 \DeclareOption{plasma}{\gdef\@journal{plasma}}
 \DeclareOption{polymers}{\gdef\@journal{polymers}}
+\DeclareOption{polysaccharides}{\gdef\@journal{polysaccharides}}
 \DeclareOption{preprints}{\gdef\@journal{preprints}} 
 \DeclareOption{proceedings}{\gdef\@journal{proceedings}}
 \DeclareOption{processes}{\gdef\@journal{processes}}
@@ -235,6 +237,7 @@
 \DeclareOption{recycling}{\gdef\@journal{recycling}}
 \DeclareOption{religions}{\gdef\@journal{religions}}
 \DeclareOption{remotesensing}{\gdef\@journal{remotesensing}}
+\DeclareOption{reports}{\gdef\@journal{reports}}
 \DeclareOption{resources}{\gdef\@journal{resources}}
 \DeclareOption{risks}{\gdef\@journal{risks}}
 \DeclareOption{robotics}{\gdef\@journal{robotics}}
@@ -250,6 +253,7 @@
 \DeclareOption{soils}{\gdef\@journal{soils}}
 \DeclareOption{sports}{\gdef\@journal{sports}}
 \DeclareOption{standards}{\gdef\@journal{standards}}
+\DeclareOption{stats}{\gdef\@journal{stats}}
 \DeclareOption{surgeries}{\gdef\@journal{surgeries}}
 \DeclareOption{sustainability}{\gdef\@journal{sustainability}}
 \DeclareOption{symmetry}{\gdef\@journal{symmetry}}
@@ -426,6 +430,7 @@
 \DeclareOption{Nanomaterials}{\gdef\@journal{nanomaterials}}
 \DeclareOption{ncRNA}{\gdef\@journal{ncrna}}
 \DeclareOption{Neonatalscreening}{\gdef\@journal{neonatalscreening}}
+\DeclareOption{Neuroglia}{\gdef\@journal{neuroglia}}
 \DeclareOption{Nitrogen}{\gdef\@journal{nitrogen}}
 \DeclareOption{Nutrients}{\gdef\@journal{nutrients}}
 \DeclareOption{OHBM}{\gdef\@journal{ohbm}}
@@ -439,6 +444,7 @@
 \DeclareOption{Plants}{\gdef\@journal{plants}}
 \DeclareOption{Plasma}{\gdef\@journal{plasma}}
 \DeclareOption{Polymers}{\gdef\@journal{polymers}}
+\DeclareOption{Polysaccharides}{\gdef\@journal{polysaccharides}}
 \DeclareOption{Proceedings}{\gdef\@journal{proceedings}}
 \DeclareOption{Processes}{\gdef\@journal{processes}}
 \DeclareOption{Proteomes}{\gdef\@journal{proteomes}}
@@ -448,6 +454,7 @@
 \DeclareOption{Recycling}{\gdef\@journal{recycling}}
 \DeclareOption{Religions}{\gdef\@journal{religions}}
 \DeclareOption{RemoteSensing}{\gdef\@journal{remotesensing}}
+\DeclareOption{Reports}{\gdef\@journal{reports}}
 \DeclareOption{Resources}{\gdef\@journal{resources}}
 \DeclareOption{Risks}{\gdef\@journal{risks}}
 \DeclareOption{Robotics}{\gdef\@journal{robotics}}
@@ -463,6 +470,7 @@
 \DeclareOption{Soils}{\gdef\@journal{soils}}
 \DeclareOption{Sports}{\gdef\@journal{sports}}
 \DeclareOption{Standards}{\gdef\@journal{standards}}
+\DeclareOption{Stats}{\gdef\@journal{stats}}
 \DeclareOption{Surgeries}{\gdef\@journal{surgeries}}
 \DeclareOption{Sustainability}{\gdef\@journal{sustainability}}
 \DeclareOption{Symmetry}{\gdef\@journal{symmetry}}
@@ -481,7 +489,7 @@
 \DeclareOption{Vision}{\gdef\@journal{vision}}
 \DeclareOption{Water}{\gdef\@journal{water}}
 \DeclareOption{Wem}{\gdef\@journal{wem}}
-\DeclareOption{journal}{\ClassWarning{mdpi}{You have not specified the journal. The first class option of the document class mdpi specifies the journal. The word journal should be replaced by one of the following journal names: actuators, addictions, admsci, aerospace, agriculture, agronomy, algorithms, animals, antibiotics, antibodies, antioxidants, applsci, arts, asi, atmosphere, atoms, axioms, batteries, bdcc, behavsci, beverages, bioengineering, biology, biomedicines, biomimetics, biomolecules, biosensors, brainsci, buildings, carbon, cancers, catalysts, cells, ceramics, challenges, chemengineering, chemosensors, children, climate, coatings, colloids, computation, computers, condensedmatter, cosmetics, cryptography, crystals, cybersecurity, data, dentistry, designs, diagnostics, diseases, diversity, drones, econometrics, economies, education, electrochemistry, electronics, energies, entropy, environments, epigenomes, est, fermentation, fibers, fire, fishes, fluids, foods, forests, fractalfract, futureinternet, galaxies, games, gastrointestdisord, gels, genealogy, genes, geosciences, geriatrics, hazardousmatters, healthcare, heritage, highthroughput, horticulturae, humanities, hydrology, informatics, information, infrastructures, inorganics, insects, instruments, ijerph, ijfs, ijms, ijgi, ijtpp, inventions, j, jcdd, jcm, jcs, jdb, jfb, jfmk, jimaging, jof, jintelligence, jlpea, jmmp, jmse, jpm, jrfm, jsan, land, languages, laws, life, literature, logistics, lubricants, machines, magnetochemistry, make, marinedrugs, materials, mathematics, mca, medsci, medicines, membranes, metabolites, metals, microarrays, micromachines, microorganisms, minerals, modelling, molbank, molecules, mps, mti, nanomaterials, ncrna, neonatalscreening, nitrogen, nutrients, ohbm, particles, pathogens, pharmaceuticals, pharmaceutics, pharmacy, philosophies, photonics, plants, plasma, polymers, proceedings, processes, proteomes, publications, quaternary, qubs, recycling, religions, remotesensing, resources, risks, robotics, safety, scipharm, sensors, separations, sexes, sinusitis, socsci, societies, soils, sports, standards, surgeries, sustainability, symmetry, systems, technologies, toxics, toxins, tropicalmed, universe, urbansci, vaccines, vetsci, vibration, viruses, vision, water,wem}} 
+\DeclareOption{journal}{\ClassWarning{mdpi}{You have not specified the journal. The first class option of the document class mdpi specifies the journal. The word journal should be replaced by one of the following journal names: actuators, addictions, admsci, aerospace, agriculture, agronomy, algorithms, animals, antibiotics, antibodies, antioxidants, applsci, arts, asi, atmosphere, atoms, axioms, batteries, bdcc, behavsci, beverages, bioengineering, biology, biomedicines, biomimetics, biomolecules, biosensors, brainsci, buildings, carbon, cancers, catalysts, cells, ceramics, challenges, chemengineering, chemosensors, children, climate, coatings, colloids, computation, computers, condensedmatter, cosmetics, cryptography, crystals, cybersecurity, data, dentistry, designs, diagnostics, diseases, diversity, drones, econometrics, economies, education, electrochemistry, electronics, energies, entropy, environments, epigenomes, est, fermentation, fibers, fire, fishes, fluids, foods, forests, fractalfract, futureinternet, galaxies, games, gastrointestdisord, gels, genealogy, genes, geosciences, geriatrics, hazardousmatters, healthcare, heritage, highthroughput, horticulturae, humanities, hydrology, informatics, information, infrastructures, inorganics, insects, instruments, ijerph, ijfs, ijms, ijgi, ijtpp, inventions, j, jcdd, jcm, jcs, jdb, jfb, jfmk, jimaging, jof, jintelligence, jlpea, jmmp, jmse, jpm, jrfm, jsan, land, languages, laws, life, literature, logistics, lubricants, machines, magnetochemistry, make, marinedrugs, materials, mathematics, mca, medsci, medicines, membranes, metabolites, metals, microarrays, micromachines, microorganisms, minerals, modelling, molbank, molecules, mps, mti, nanomaterials, ncrna, neonatalscreening, neuroglia, nitrogen, nutrients, ohbm, particles, pathogens, pharmaceuticals, pharmaceutics, pharmacy, philosophies, photonics, plants, plasma, polymers, polysaccharides, proceedings, processes, proteomes, publications, quaternary, qubs, recycling, religions, remotesensing, reports, resources, risks, robotics, safety, scipharm, sensors, separations, sexes, sinusitis, socsci, societies, soils, sports, standards, stats, surgeries, sustainability, symmetry, systems, technologies, toxics, toxins, tropicalmed, universe, urbansci, vaccines, vetsci, vibration, viruses, vision, water,wem}} 
 
 %% To choose the type of manuscript
 \DeclareOption{abstract}{\gdef\@arttype{Abstract}}
@@ -638,6 +646,7 @@
 \OR \equal{\@journal}{humanities}
 \OR \equal{\@journal}{ijfs}
 \OR \equal{\@journal}{jrfm}
+\OR \equal{\@journal}{languages}
 \OR \equal{\@journal}{laws}
 \OR \equal{\@journal}{religions}
 \OR \equal{\@journal}{risks}
@@ -776,6 +785,8 @@
 \newcommand{\datasetlicense}[1]{\gdef\@datasetlicense{#1}}
 \def\@featuredapplication{}
 \newcommand{\featuredapplication}[1]{\gdef\@featuredapplication{#1}}
+\def\@keycontribution{}
+\newcommand{\keycontribution}[1]{\gdef\@keycontribution{#1}}
 
 
 \def\@firstnote{}
@@ -981,6 +992,7 @@
   \ifthenelse{\equal{\@journal}{nanomaterials}}{Nanomaterials}{}%
   \ifthenelse{\equal{\@journal}{ncrna}}{Non-coding RNA}{}%
   \ifthenelse{\equal{\@journal}{neonatalscreening}}{Int. J. Neonatal Screen.}{}%
+  \ifthenelse{\equal{\@journal}{neuroglia}}{Neuroglia}{}%
   \ifthenelse{\equal{\@journal}{nitrogen}}{Nitrogen}{}%
   \ifthenelse{\equal{\@journal}{nutrients}}{Nutrients}{}%
   \ifthenelse{\equal{\@journal}{ohbm}}{J. Otorhinolaryngol. Hear. Balance Med.}{}%
@@ -994,6 +1006,7 @@
   \ifthenelse{\equal{\@journal}{plants}}{Plants}{}%
   \ifthenelse{\equal{\@journal}{plasma}}{Plasma}{}%
   \ifthenelse{\equal{\@journal}{polymers}}{Polymers}{}%
+  \ifthenelse{\equal{\@journal}{polysaccharides}}{Polysaccharides}{}%
   \ifthenelse{\equal{\@journal}{proceedings}}{Proceedings}{}%
   \ifthenelse{\equal{\@journal}{processes}}{Processes}{}%
   \ifthenelse{\equal{\@journal}{proteomes}}{Proteomes}{}%
@@ -1003,6 +1016,7 @@
   \ifthenelse{\equal{\@journal}{recycling}}{Recycling}{}%
   \ifthenelse{\equal{\@journal}{religions}}{Religions}{}%
   \ifthenelse{\equal{\@journal}{remotesensing}}{Remote Sens.}{}%
+  \ifthenelse{\equal{\@journal}{reports}}{Reports}{}%
   \ifthenelse{\equal{\@journal}{resources}}{Resources}{}%
   \ifthenelse{\equal{\@journal}{risks}}{Risks}{}%
   \ifthenelse{\equal{\@journal}{robotics}}{Robotics}{}%
@@ -1017,6 +1031,7 @@
   \ifthenelse{\equal{\@journal}{soils}}{Soils}{}%
   \ifthenelse{\equal{\@journal}{sports}}{Sports}{}%
   \ifthenelse{\equal{\@journal}{standards}}{Standards}{}%
+  \ifthenelse{\equal{\@journal}{stats}}{Stats}{}%
   \ifthenelse{\equal{\@journal}{surgeries}}{Surgeries}{}%
   \ifthenelse{\equal{\@journal}{sustainability}}{Sustainability}{}%
   \ifthenelse{\equal{\@journal}{symmetry}}{Symmetry}{}%
@@ -1078,8 +1093,8 @@
 			\fancyhead[L]{
 				\footnotesize %
 				\ifthenelse{\equal{\@status}{submit}}{%
-					Version {\@ \today} submitted to {\em \journalname}%
-					}{
+					Version {\@ \today} submitted to {\em\journalname}%
+					}{%
 					{\em \journalname} %
 					{\bfseries \@pubyear}, %
 					{\em \@pubvolume}, %
@@ -1100,7 +1115,7 @@
 			\fancyfoot[L]{
 				\footnotesize%
  	 				\ifthenelse{\equal{\@status}{submit}}{%
-					Submitted to {\em \journalname}, %
+					Submitted to {\em\journalname}, %
 					pages \thepage \ -- \color{black}{\pageref*{LastPage}}%
 					}{
 					{\em \journalname}\ %
@@ -1328,6 +1343,16 @@
 \leftskip0.2cm
 \ifthenelse{\equal{\@keyword}{\@empty}}{}{
 \noindent\textbf{Keywords:\space}\@keyword
+\vspace{12pt}
+\par
+}
+\endgroup
+}%11
+{%For journal Toxins:
+\begingroup
+\leftskip0.2cm
+\ifthenelse{\equal{\@keycontribution}{\@empty}}{}{
+\noindent\textbf{Key contribution:\space}\@keycontribution
 \vspace{12pt}
 \par
 }
