@@ -26,7 +26,7 @@ secondnote: |
 correspondence: |
   leutnant@fh-muenster.de; Tel.: +XX-000-00-0000.
 journal: water
-article: article
+type: article
 status: submit
 bibliography: mybibfile.bib
 appendix: appendix.tex
@@ -168,5 +168,3 @@ This section is not mandatory, but can be added to the manuscript if the discuss
 
 # Patents
 This section is not mandatory, but may be added if there are patents resulting from the work reported in this manuscript.
-
-# References
