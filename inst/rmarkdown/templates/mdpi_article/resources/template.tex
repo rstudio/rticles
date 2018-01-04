@@ -211,8 +211,11 @@ $endif$
 %=====================================
 % References, variant B: external bibliography
 %=====================================
+$if(bibliography)$
+\reftitle{References}
 \externalbibliography{yes}
 \bibliography{$bibliography$}
+$endif$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% optional
