@@ -1,0 +1,4 @@
+name: MDPI Journal Article
+description: >
+ Template for creating an article for submission to any MDPI journal
+create_dir: true
