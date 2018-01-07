@@ -99,6 +99,7 @@ $if(verbatim-in-note)$
 \usepackage{fancyvrb}
 \VerbatimFootnotes
 $endif$
+\RecustomVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},formatcom=\xeCJKVerbAddon}
 $if(tables)$
 \usepackage{longtable,booktabs}
 $endif$
