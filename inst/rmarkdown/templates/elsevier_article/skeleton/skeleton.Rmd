@@ -18,6 +18,8 @@ abstract: |
 
   It consists of two paragraphs.
 
+journal: "An awesome journal"
+date: "`r Sys.Date()`"
 bibliography: mybibfile.bib
 output: rticles::elsevier_article
 ---
@@ -32,8 +34,8 @@ The Elsevier article class
 
 If the document class *elsarticle* is not available on your computer,
 you can download and install the system package *texlive-publishers*
-(Linux) or install the LaTeX package *elsarticle* using the package
-manager of your TeX installation, which is typically TeX Live or MikTeX.
+(Linux) or install the LaTeX package *elsarticle* using the package
+manager of your TeX installation, which is typically TeX Live or MikTeX.
 
 #### Usage
 
