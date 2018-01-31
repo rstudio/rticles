@@ -87,7 +87,7 @@ output: rticles::mdpi_article
 
 This Rmd-skeleton uses the mdpi Latex template published 2018/01. 
 However, the official template gets more frequently updated than the 'rticles'
-pacakge. Therefore, please make sure prior to paper submission, that you're 
+package. Therefore, please make sure prior to paper submission, that you're 
 using the most recent .cls, .tex and .bst files 
 (available [here](http://www.mdpi.com/authors/latex)).
 
