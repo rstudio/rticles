@@ -1,0 +1,4 @@
+name: Bulletin AMQ Article
+description: >
+ Template for creating an article for submission to Bulletin de l'AMQ
+create_dir: true

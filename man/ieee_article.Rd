@@ -76,4 +76,3 @@ Shell, Michael. "How to use the IEEEtran LATEX class." Journal of LATEX Class
  Files 1.11 (2002): 10-20.
 \url{http://mirrors.rit.edu/CTAN/macros/latex/contrib/IEEEtran/IEEEtran_HOWTO.pdf}
 }
-

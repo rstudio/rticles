@@ -27,7 +27,7 @@ classoption: "hyperref,"
 \usepackage{ctex}
 ```
 
-就轻松搞定中文LaTeX排版问题。跨平台通用的LaTeX编译却是个小难题，主要是没有一种跨平台通用且免费的中文字体。好吧，你们Windows用户永远有宋体黑体，你们Mac用户有华文字体，而我们苦逼Linux用户在编译LaTeX文档就没那么简单了^[切，傲娇的Linux用户怎么会干出找你们复制字体的事情]，是啊，我们有文泉驿，但我们要是用了文泉驿之后把文档发给你们八成不能编译，因为你们没有安装文泉驿。
+就轻松搞定中文LaTeX排版问题。
 
 # 字体和选项
 
@@ -44,7 +44,12 @@ output: rticles::ctex
 
 `rticles::ctex`的参数都是普通的`pdf_document`参数，参见文档**rmarkdown**包的文档，这里就不赘述了。
 
-Windows和Mac用户应该都已经有自带的中文字体了。Linux用户可以另外下载 [Fandol字体](http://ctan.org/pkg/fandol)^[http://ctan.org/tex-archive/fonts/fandol]，它号称是免费的，不过我们也没太搞清楚它的来头。把那些.otf字体文件下载下来保存到`~/.fonts`文件夹下，然后命令行切换到那里，运行`fc-cache -fv`。
+Windows和Mac用户应该都已经有自带的中文字体了。Linux用户可以考虑 [Fandol字体](http://ctan.org/pkg/fandol)，它号称是免费的，不过我们也没太搞清楚它的来头。如果你不想操心这些问题，我们强烈建议你卸载你当前的 LaTeX 套装（TeX Live 或 MiKTeX 或 MacTeX），换上 TinyTeX，一切将会自动化搞定。
+
+```{r eval=FALSE}
+devtools::install_github(c('rstudio/rmarkdown', 'yihui/tinytex'))
+tinytex::install_tinytex()
+```
 
 # R代码段
 
