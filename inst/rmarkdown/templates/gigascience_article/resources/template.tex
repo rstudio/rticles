@@ -1,0 +1,90 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Please note that whilst this template provides a
+% preview of the typeset manuscript for submission, it
+% will not necessarily be the final publication layout.
+%
+% letterpaper/a4paper: US/UK paper size toggle
+% num-refs/alpha-refs: numeric/author-year citation and bibliography toggle
+
+%\documentclass[letterpaper]{oup-contemporary}
+\documentclass[a4paper,num-refs]{oup-contemporary}
+
+%%% Journal toggle; only specific options recognised.
+%%% (Only "gigascience" and "general" are implemented now. Support for other journals is planned.)
+\journal{gigascience}
+
+% declare highlighting-macros if any
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+% include header-includes if any
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+% before include preamble if any
+$preamble$
+% after include preamble if any
+
+%%% declare packages to be used
+\usepackage{forarray}
+\usepackage{xstring}
+\usepackage{graphicx}
+\usepackage{siunitx}
+
+%%% unpackged commands
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+%%% Flushend: You can add this package to automatically balance the final page, but if things go awry (e.g. section contents appearing out-of-order or entire blocks or paragraphs are coloured), remove it!
+% \usepackage{flushend}
+
+
+
+\title{$title$}
+
+%%% Authors
+$for(author)$ \author[$for(author.affiliation)$$author.affiliation$$sep$,$endfor$$for(author.note)$,\authfn{$author.note$}$endfor$]{$author.name$} $sep$
+$endfor$
+
+%%% Author Affiliations
+$for(affiliation)$ \affil[$affiliation.id$]{$affiliation.name$$if(affiliation.address)$, $affiliation.address$$endif$}
+$endfor$
+
+%%% Use the \authfn to add symbols for additional footnotes, if any. 1 is reserved for correspondence emails; then continuing with 2 etc for contributions.
+%%% Author Notes
+$for(authnote)$\authnote{\authfn{$authnote.id$}$authnote.note$}$sep$
+$endfor$
+
+
+%%% Paper category
+\papercat{$papercat$}
+
+%%% "Short" author for running page header
+\runningauthor{$runningauthor$}
+
+%%% Should only be set by an editor
+\jvolume{00}
+\jnumber{0}
+\jyear{2018}
+
+\begin{document}
+\begin{frontmatter}
+\maketitle
+\begin{abstract}
+$abstract$
+\end{abstract}
+
+\begin{keywords}
+$for(keywords)$$keywords$$sep$; $endfor$
+\end{keywords}
+\end{frontmatter}
+
+
+
+$body$
+
+%%% The document ends here
+\end{document}

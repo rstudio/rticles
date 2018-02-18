@@ -1,0 +1,5 @@
+name: GigaScience Journal Article
+description: >
+ Template for creating an article for submission to GigaScience <https://academic.oup.com/gigascience>
+create_dir: true
+

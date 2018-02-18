@@ -1,0 +1,135 @@
+---
+title: Title of submission to GigaScience journal
+author:
+  - name: Alice Anonymous
+    email: alice@example.com
+    affiliation:
+      - 1
+    orchid: 0000-0000-0000-0001
+    note:
+      - 1
+      - 2
+  - name: Bob Security
+    email: bob@example.com
+    affiliation:
+      - 2
+      - 3
+    note:
+      - 1
+      - 2
+  - name: Charlie Chaplin
+    email: cc@actor.com
+    affiliation:
+      - 3
+    orchid: 0000-0000-0000-0002
+authnote:
+  - id: 1
+    note: alice@example.com; bob@example.com
+  - id: 2
+    note: Contributed equally
+affiliation:
+  - id: 1
+    name: Some Institute of Technology
+    address: Some Department, Street, City, State, Zip
+  - id: 2
+    name: Another University
+  - id: 3
+    name: British Academy of Film and Television Arts
+    address: 195 Piccadilly, London, England, UK W1J 9LN
+runningauthor: Anonymous et al.
+papercat: Paper
+abstract: |
+  This is my abstract.
+author_summary: |
+  This is my author summary; I need to find out what that means.
+keywords:
+  - foo
+  - bar
+  - baz
+bibliography: paper-refs.bib
+output: rticles::gigascience_article
+# # You can use 'highlighting-macros', 'header-includes' (which are lists) to override some TeX settings, e.g.,
+# header-includes:
+#   - \setcounter{errorcontextlines}{4}
+#   - \setcounter{secnumdepth}{2}
+# # You can use 'preamble' (which is a scalar) to override some TeX settings, e.g.,
+# preamble: |
+#  \setcounter{errorcontextlines}{4}
+#  \setcounter{secnumdepth}{2}
+---
+
+
+_Text *not* based on a GigaScience sample manuscript, see [https://academic.oup.com/gigascience/pages/instructions_to_authors](https://academic.oup.com/gigascience/pages/instructions_to_authors)_
+
+# Instructions to Authors
+
+There are two contradictory suggested TeX formats; this template is based on the former, which is can also be used online at Overleaf.  The Overleaf template is based on oup-contemporary.cls and dates from 2017, whereas the download-only template is based gbe.cls and dates from 2008.
+
+## Submission through Overleaf
+For creating manuscripts in LaTeX, Gigascience recommends the use of its own LaTeX class files. Our class files are available online at Overleaf and also as a downloadable package via the links below.
+
+Overleaf is a free, collaborative online LaTeX editor that allows you to write your manuscript in a TeX or rich text environment, to generate PDF outputs as you write, and to share your manuscript with co-authors and collaborators. When ready for submission, the manuscript files can be downloaded from Overleaf and submitted to the journal’s online submission system.
+
+[Overleaf Template](https://www.overleaf.com/latex/templates/template-for-gigascience-journal-manuscript-submissions/shgtrssvbjhs)
+
+## Additional information for TeX/LaTeX users
+
+Please use [OUP’s TeX template and BibTeX stylefile](https://academic.oup.com/DocumentLibrary/GigaScience/GIGSCI%20TeX%20template.zip) if you use TeX format. When submitting TeX submissions, please submit your TeX file as the main manuscript file and your bib/bbl file as a dependent file. Please also convert your TeX file into a PDF and submit this PDF as an additional file with the name 'Reference PDF'. This PDF will be used by our production team as a reference point to check the layout of the article as the author intended. Please also note that all figures must be coded at the end of the TeX file and not inline.
+
+All relevant editable source files must be uploaded during the submission process. Failing to submit these source files will cause unnecessary delays in the production process.
+
+# Introduction
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget porta erat. Morbi consectetur est vel gravida pretium. Suspendisse ut dui eu ante cursus gravida non sed sem. Phasellus mauris velit, dapibus finibus elementum vel, pulvinar non tellus. Nunc pellentesque pretium diam, quis maximus dolor faucibus id. Nunc convallis sodales ante, ut ullamcorper est egestas vitae. Nam sit amet enim ultrices, ultrices elit pulvinar, volutpat risus.
+
+
+Plain text
+End a line with two spaces to start a new paragraph.  
+*italics* and _italics_
+**bold** and __bold__
+```
+superscript^2^
+```
+```
+~~strikethrough~~
+```
+[link](www.rstudio.com)
+# Header 1
+## Header 2
+### Header 3
+#### Header 4
+##### Header 5
+###### Header 6
+endash: --
+emdash: ---
+ellipsis: ...
+```
+inline equation: $A = \pi*r^{2}$
+```
+
+horizontal rule (or slide break):
+***
+> block quote
+* unordered list
+* item 2
+ + sub-item 1
+ + sub-item 2
+
+1. ordered list
+2. item 2
+ + sub-item 1
+ + sub-item 2
+Table Header | Second Header
+------------- | -------------
+Table Cell | Cell 2
+Cell 3 | Cell 4 
+
+```
+This will be wrapped with beginverbatim endverbatim
+```
+
+
+Here are two sample references: @Arabie80, @Tufte:1983.
+
+# References {#references .unnumbered}
+
