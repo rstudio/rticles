@@ -56,6 +56,23 @@ output: rticles::gigascience_article
 # preamble: |
 #  \setcounter{errorcontextlines}{4}
 #  \setcounter{secnumdepth}{2}
+# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# % Please note that whilst this template provides a
+# % preview of the typeset manuscript for submission, it
+# % will not necessarily be the final publication layout.
+# %
+# % letterpaper/a4paper: US/UK paper size toggle
+# % num-refs/alpha-refs: numeric/author-year citation and bibliography toggle
+#
+# %\documentclass[letterpaper]{oup-contemporary}
+# \documentclass[a4paper,num-refs]{oup-contemporary}
+#
+# %%% Journal toggle; only specific options recognised.
+# %%% (Only "gigascience" and "general" are implemented now. Support for other journals is planned.)
+# \journal{gigascience}
+header-includes:
+  - \journal{gigascience}
+paper-refs: a4paper,num-refs
 ---
 
 
@@ -84,7 +101,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget porta er
 
 
 Plain text
-End a line with two spaces to start a new paragraph.  
+End a line with two spaces to start a new paragraph.
 *italics* and _italics_
 **bold** and __bold__
 ```
@@ -119,10 +136,13 @@ horizontal rule (or slide break):
 2. item 2
  + sub-item 1
  + sub-item 2
+
+```
 Table Header | Second Header
 ------------- | -------------
 Table Cell | Cell 2
-Cell 3 | Cell 4 
+Cell 3 | Cell 4
+```
 
 ```
 This will be wrapped with beginverbatim endverbatim

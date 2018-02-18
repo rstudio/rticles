@@ -7,21 +7,24 @@
 % num-refs/alpha-refs: numeric/author-year citation and bibliography toggle
 
 %\documentclass[letterpaper]{oup-contemporary}
-\documentclass[a4paper,num-refs]{oup-contemporary}
+%\documentclass[a4paper,num-refs]{oup-contemporary}
+\documentclass[$paper-refs$]{oup-contemporary}
 
-%%% Journal toggle; only specific options recognised.
-%%% (Only "gigascience" and "general" are implemented now. Support for other journals is planned.)
-\journal{gigascience}
-
-% declare highlighting-macros if any
-$if(highlighting-macros)$
-$highlighting-macros$
-$endif$
+%# - removed to skeleton.Rmd - start
+%# %%% Journal toggle; only specific options recognised.
+%# %%% (Only "gigascience" and "general" are implemented now. Support for other journals is planned.)
+%# \journal{gigascience}
+%# - removed to skeleton.Rmd - end
 
 % include header-includes if any
 $for(header-includes)$
 $header-includes$
 $endfor$
+
+% declare highlighting-macros if any
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
 
 % before include preamble if any
 $preamble$
