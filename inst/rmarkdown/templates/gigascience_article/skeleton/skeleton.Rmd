@@ -464,11 +464,11 @@ Gadgets & 13 & Under-supplied \\
 
 Use the `num-refs` option for numerical citations in the `reftype` item in the YAML header or `alph-refs` for author-year citations.  `alpha-refs` may not work.
 
-Use the `\citep` command for parenthetical citations, e.g., `both Tufte and Cleveland \citep{Tufte:1983,Cleveland:1993}`:
+Use the `\citep` command for a list of citations (without author names), e.g., `both Tufte and Cleveland \citep{Tufte:1983,Cleveland:1993}`:
 
 > some fact reported by both Tufte and Cleveland \citep{Tufte:1983,Cleveland:1993}.
 
-Use `\citet` command for text citations, e.g., `both \citet{Tufte:1983} and \citet{Cleveland:1993}`:
+Use `\citet` command for isolated citations (including author names), e.g., `both \citet{Tufte:1983} and \citet{Cleveland:1993}`:
 
 > some fact reported by both \citet{Tufte:1983} and \citet{Cleveland:1993}.
 
