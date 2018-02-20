@@ -1,0 +1,48 @@
+#!/bin/bash
+# Here are some TeX packages required to support:
+#   - elsevier
+#   - ACS
+tlmgr update --self
+tlmgr install microtype
+tlmgr install euler
+tlmgr install merriweather
+tlmgr install fontaxes
+tlmgr install mweights
+tlmgr install mathastext
+tlmgr install relsize
+# Searching here led me to 'ms': https://www.ctan.org/pkg/ragged2e
+tlmgr install ms
+tlmgr install xcolor
+tlmgr install colortbl
+tlmgr install xpatch
+tlmgr install environ
+tlmgr install trimspaces
+tlmgr install lastpage
+tlmgr install textpos
+tlmgr install mdframed
+tlmgr install needspace
+tlmgr install titlesec
+# Searching here led me to 'koma-script': https://www.ctan.org/pkg/scrextend
+tlmgr install koma-script
+# Searching here led me to 'preprint': https://www.ctan.org/pkg/authblk
+tlmgr install preprint
+tlmgr install footmisc
+tlmgr install fancyhdr
+tlmgr install abstract
+tlmgr install enumitem
+tlmgr install quoting
+# Searching here led me to 'sttools': https://www.ctan.org/pkg/stfloats
+tlmgr install sttools
+tlmgr install setspace
+tlmgr install wrapfig
+tlmgr install psnfss
+tlmgr install symbol
+tlmgr install lineno
+tlmgr install endfloat
+
+tlmgr install forarray
+tlmgr install extsizes
+tlmgr install xstring
+tlmgr install ametsoc
+tlmgr install siunitx
+tlmgr install achemso
