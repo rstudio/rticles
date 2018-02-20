@@ -3,28 +3,17 @@
 % preview of the typeset manuscript for submission, it
 % will not necessarily be the final publication layout.
 %
-% letterpaper/a4paper: US/UK paper size toggle
-% num-refs/alpha-refs: numeric/author-year citation and bibliography toggle
-
-%\documentclass[letterpaper]{oup-contemporary}
-%\documentclass[a4paper,num-refs]{oup-contemporary}
-\documentclass[$paper-refs$]{oup-contemporary}
-
-%# - removed to skeleton.Rmd - start
-%# %%% Journal toggle; only specific options recognised.
-%# %%% (Only "gigascience" and "general" are implemented now. Support for other journals is planned.)
-%# \journal{gigascience}
-%# - removed to skeleton.Rmd - end
-
-% include header-includes if any
-$for(header-includes)$
-$header-includes$
-$endfor$
+\documentclass[$paper$,$reftype$]{$document-class$}
 
 % declare highlighting-macros if any
 $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
+
+% include header-includes if any
+$for(header-includes)$
+$header-includes$
+$endfor$
 
 % before include preamble if any
 $preamble$
@@ -85,7 +74,12 @@ $for(keywords)$$keywords$$sep$; $endfor$
 \end{keywords}
 \end{frontmatter}
 
-
+\begin{keypoints*}
+\begin{itemize}
+$for(keypoints)$\item{$keypoints$}$sep$
+$endfor$
+\end{itemize}
+\end{keypoints*}
 
 $body$
 

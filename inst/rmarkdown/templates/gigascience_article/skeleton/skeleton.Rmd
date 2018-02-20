@@ -1,5 +1,8 @@
 ---
+# title: title of article here
 title: Title of submission to GigaScience journal
+
+# author: list of {name,email,affiliation{*},orchid?,note{*}}
 author:
   - name: Alice Anonymous
     email: alice@example.com
@@ -22,11 +25,19 @@ author:
     affiliation:
       - 3
     orchid: 0000-0000-0000-0002
+
+
+# authnote: list of {id,note}
+#   - author footnotes
+#   - note for GigaScience that id 1 is should be corresponding authors' addresses
 authnote:
   - id: 1
     note: alice@example.com; bob@example.com
   - id: 2
     note: Contributed equally
+
+# affiliation: list of {id,name,address?}
+#   - authors' institutional affiliations
 affiliation:
   - id: 1
     name: Some Institute of Technology
@@ -36,120 +47,503 @@ affiliation:
   - id: 3
     name: British Academy of Film and Television Arts
     address: 195 Piccadilly, London, England, UK W1J 9LN
+
+# runningauthor: author's name in running title
 runningauthor: Anonymous et al.
-papercat: Paper
+
+# papercat (paper category) - one of:
+#   - Commentary
+#     - http://academic.oup.com/gigascience/pages/commentary
+#   - Data Note
+#     - http://academic.oup.com/gigascience/pages/data_note
+#   - Research
+#     - http://academic.oup.com/gigascience/pages/research
+#   - Review
+#     - http://academic.oup.com/gigascience/pages/review
+#   - Technical Note
+#     - http://academic.oup.com/gigascience/pages/technical_note
+papercat: Technical Note
+
+# abstract: abstract structured according to instructions for paper category
 abstract: |
-  This is my abstract.
-author_summary: |
-  This is my author summary; I need to find out what that means.
+  The Abstract (250 words maximum) should be structured according to the instructions for the corresponding 'papercat' (paper category, see https://academic.oup.com/gigascience/pages/instructions_to_authors).
+
+# keywords: keywords presented as a semicolon-separated list below the abstract  
 keywords:
-  - foo
-  - bar
-  - baz
-bibliography: paper-refs.bib
-output: rticles::gigascience_article
-# # You can use 'highlighting-macros', 'header-includes' (which are lists) to override some TeX settings, e.g.,
-# header-includes:
+  - Keyword 1
+  - keyword 2
+  - keyword 3 (Three to ten keywords representing the main content of the article)
+
+# keypoints: key points presented as a bullet list in a box at the top of the second page
+keypoints:
+  - This is the first point
+  - This is the second point
+  - One last point.
+
+# highlighting-macros: list of {latex_command+}
+#   - This may be for syntax-highlighting source-code, but I'm not sure
+#   - Value is a list; each list-member is a TeX snippet
+#   - This is included just before 'header-includes'
+
+# header-includes: list of {latex_command+}
+#   - Value is a list; each list-member is a TeX snippet
+#   - You can use 'header-includes' to set or override some TeX settings, e.g.,
+#   - This is included just before 'preamble'
+#   - concerning specific keys:
+#     - journal: Only "gigascience" and "general" are implemented now.
+#     - usepackage: use packages that are not declared in the TeX template used by pandoc
+#     - bibliographystyle: apples to the natbib TeX package
+#       - see http://ctan.math.washington.edu/tex-archive/macros/latex/contrib/natbib/natbib.pdf
+header-includes:
+  - \journal{gigascience}
+  - \usepackage{natbib}
+  - \bibliographystyle{vancouver-authoryear}
 #   - \setcounter{errorcontextlines}{4}
 #   - \setcounter{secnumdepth}{2}
-# # You can use 'preamble' (which is a scalar) to override some TeX settings, e.g.,
+
+# preamble: Tex literal (newlines will be stripped out)  
+#   - Value is a TeX snippet that will be collapsed to a single line
 # preamble: |
 #  \setcounter{errorcontextlines}{4}
 #  \setcounter{secnumdepth}{2}
-# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-# % Please note that whilst this template provides a
-# % preview of the typeset manuscript for submission, it
-# % will not necessarily be the final publication layout.
-# %
-# % letterpaper/a4paper: US/UK paper size toggle
-# % num-refs/alpha-refs: numeric/author-year citation and bibliography toggle
-#
-# %\documentclass[letterpaper]{oup-contemporary}
-# \documentclass[a4paper,num-refs]{oup-contemporary}
-#
-# %%% Journal toggle; only specific options recognised.
-# %%% (Only "gigascience" and "general" are implemented now. Support for other journals is planned.)
-# \journal{gigascience}
-header-includes:
-  - \journal{gigascience}
-paper-refs: a4paper,num-refs
+
+# document-class - the TeX document class - for GigaScience, muct be oup-contemporary
+document-class: oup-contemporary
+
+# paper: 'a4paper' or 'letterpaper'
+paper: letterpaper
+#paper: a4paper
+
+# reftype: 'num-refs' or 'alpha-refs', but 'alpha-refs' may not work ...
+reftype: num-refs
+#reftype: alpha-refs
+
+# pandoc_args: arguments to pandoc
+#   - enable with '+' and disable with '-'
+#       - see: https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html#pandoc_markdown
+#   - concerning specific keys:
+#       raw_tex:
+#         - allow direct inclusion of TeX
+#         - see https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html#raw-tex`
+pandoc_args: +raw_tex
+
+# Using rmarkdown for citations is not recommended: 
+#   - TeX citations give you more flexibility
+#   - e.g., references can be deleted or added subsequent to translation from rmarkdown to TeX
+# bibliography and csl are only needed for citations from rmarkdown
+# bibliography: the file with the bibtex entries
+#bibliography: paper-refs.bib
+# csl: this is needed only for citations from rmarkdown 
+#csl: gigascience.csl
+
+# output: specifies the R class used to translate rmarkdown to tex and pdf
+output: rticles::gigascience_article
 ---
 
+\begin{epigraph}  {\small{\href{https://academic.oup.com/gigascience/pages/instructions_to_authors}{GigaScience Instructios to Authors}}}
+Sample epigraph: For creating manuscripts in LaTeX, Gigascience recommends the use of its own LaTeX class files. Our class files are available online \href{https://www.overleaf.com/latex/templates/template-for-gigascience-journal-manuscript-submissions/shgtrssvbjhs}{at Overleaf https://www.overleaf.com/latex/templates/template-for-gigascience-journal-manuscript-submissions/shgtrssvbjhs}.  The GigaScience "oup-contemporary.cls" class obtained via this Overleaf link was used as the basis of this "rticle".
+\end{epigraph}
 
-_Text *not* based on a GigaScience sample manuscript, see [https://academic.oup.com/gigascience/pages/instructions_to_authors](https://academic.oup.com/gigascience/pages/instructions_to_authors)_
+TeX/LaTeX users: Please use OUP’s TeX template and BibTeX stylefile if you use TeX format. During the TeX submission process, please submit your TeX file as the main manuscript file and your bib/bbl file as a dependent file. Please also convert your TeX file into a PDF and submit this PDF as an additional file with the name 'Reference PDF'. This PDF will be used by internal staff as a reference point to check the layout of the article as the author intended. If you have used another template for your manuscript, or if you do not wish to use BibTeX, then please submit your manuscript as a DVI file. We do not recommend converting to RTF.  For all TeX submissions, all relevant editable source must be submitted during the submission process. Failing to submit these source files will cause unnecessary delays in the publication procedures.  [https://academic.oup.com/gigascience/pages/technical_note](https://academic.oup.com/gigascience/pages/technical_note) 
 
-# Instructions to Authors
+# Notes for using this `rticle` template
 
-There are two contradictory suggested TeX formats; this template is based on the former, which is can also be used online at Overleaf.  The Overleaf template is based on oup-contemporary.cls and dates from 2017, whereas the download-only template is based gbe.cls and dates from 2008.
+## About the GigaScience `rticle` template
 
-## Submission through Overleaf
-For creating manuscripts in LaTeX, Gigascience recommends the use of its own LaTeX class files. Our class files are available online at Overleaf and also as a downloadable package via the links below.
-
-Overleaf is a free, collaborative online LaTeX editor that allows you to write your manuscript in a TeX or rich text environment, to generate PDF outputs as you write, and to share your manuscript with co-authors and collaborators. When ready for submission, the manuscript files can be downloaded from Overleaf and submitted to the journal’s online submission system.
-
-[Overleaf Template](https://www.overleaf.com/latex/templates/template-for-gigascience-journal-manuscript-submissions/shgtrssvbjhs)
-
-## Additional information for TeX/LaTeX users
-
-Please use [OUP’s TeX template and BibTeX stylefile](https://academic.oup.com/DocumentLibrary/GigaScience/GIGSCI%20TeX%20template.zip) if you use TeX format. When submitting TeX submissions, please submit your TeX file as the main manuscript file and your bib/bbl file as a dependent file. Please also convert your TeX file into a PDF and submit this PDF as an additional file with the name 'Reference PDF'. This PDF will be used by our production team as a reference point to check the layout of the article as the author intended. Please also note that all figures must be coded at the end of the TeX file and not inline.
-
-All relevant editable source files must be uploaded during the submission process. Failing to submit these source files will cause unnecessary delays in the production process.
-
-# Introduction
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget porta erat. Morbi consectetur est vel gravida pretium. Suspendisse ut dui eu ante cursus gravida non sed sem. Phasellus mauris velit, dapibus finibus elementum vel, pulvinar non tellus. Nunc pellentesque pretium diam, quis maximus dolor faucibus id. Nunc convallis sodales ante, ut ullamcorper est egestas vitae. Nam sit amet enim ultrices, ultrices elit pulvinar, volutpat risus.
-
-
-Plain text
-End a line with two spaces to start a new paragraph.
-*italics* and _italics_
-**bold** and __bold__
+The `rticles::gigascience_journal` template is the blended `rmardkdown` and \LaTeX{} template for GigaScience journal manuscript submissions.  If you do not want to include \LaTeX{} commands inline, remove the following line from the YAML header.
 ```
-superscript^2^
+   pandoc_args: raw_tex
 ```
+
+## Important preliminaries
+
+- Specify your manuscript's category with the `\papercat{...}` command in the preamble.
+- See the sample code in the YAML header for how author and affiliation information can be specified.
+    - Particularly, note that the first footnote id is reserved for corresponding authors' email addresses.
+
+**Please note that whilst this template provides a preview of the typeset manuscript for submission, it will not necessarily be the final publication layout.**
+
+# Using rmarkdown features with this template
+
+Reference (among others): [https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+
+## Sectional Headings
+
+You can use `# Section Name` and `## Subsection name` lines to add more sections and subsections to your manuscript. Further sectional levels are provided by `### Subsubsection name`, `#### Paragraph name`, `##### Subparagraph name` lines; e.g.:
+
 ```
-~~strikethrough~~
+  # Header 1
+  section
+  
+  ## Header 2
+  subsection
+  
+  ### Header 3
+  subsubsection
+  
+  #### Header 4
+  paragraph
+  
+  ##### Header 5
+  subparagraph
+  
+  ###### Header 6
+  subsubparagraph
 ```
-[link](www.rstudio.com)
+###
+becomes:
+
 # Header 1
+section
+
 ## Header 2
+subsection
+
 ### Header 3
+subsubsection
+
 #### Header 4
+paragraph
+
 ##### Header 5
+subparagraph
+
 ###### Header 6
-endash: --
-emdash: ---
-ellipsis: ...
+subsubparagraph
+
+## Blockquotes
+
+> This is a quote. Lorem ipsum dolor sit amet, 
+> consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
+> magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+> laboris nisi ut aliquip ex ea commodo consequat. 
+
+## Unordered list (bullets)
+
+- This is a point in a bullet list.
+    - A sub-point must be indented four more spaces than the parent.
+        - The same is true for a sub-sub-point.
+- A third point.
+
+## Ordered list (numbered list)
+
+1. This is a point in a numbered list.
+    - A sub-point must be indented four more spaces than the parent.
+        - The same is true for a sub-sub-point.
+1. A third point.
+
+Use R to generate tables rather than attempting to specify them in rmarkdown.
+
+## Equations
+
 ```
 inline equation: $A = \pi*r^{2}$
 ```
-
-horizontal rule (or slide break):
-***
-> block quote
-* unordered list
-* item 2
- + sub-item 1
- + sub-item 2
-
-1. ordered list
-2. item 2
- + sub-item 1
- + sub-item 2
+inline equation: $A = \pi*r^{2}$
 
 ```
-Table Header | Second Header
-------------- | -------------
-Table Cell | Cell 2
-Cell 3 | Cell 4
+full-line equation: $$A = \pi*r^{2}$$
+```
+$$A = \pi*r^{2}$$
+
+## Tables
+
+### Making tables with rmarkdown
+
+Use R to generate your rmarkdown tables, e.g., see Table \ref{tab:markdown}.  Granted, literal rendering of rmarkdown tables is not working, but even if it worked, it would makes no sense to use it when you can use R to lay out tables more coherently.
+
+\begin{table}
+\caption{Table generated using rmarkdown}
+\label{tab:markdown}
+```{r setup, echo=FALSE, warning=FALSE}
+library(knitr)
+knitr::opts_chunk$set(echo = TRUE)
+
+kable(
+  t(
+    data.frame(
+      header=c("Right","Left","Center")
+    , value=c(1,2,3) 
+    )
+  )
+, align = c("r","l","c")
+, format = "latex")
+```
+\end{table}
+
+### Laying out tables in \LaTeX{}
+
+Table layout in \LaTeX{} is much less intuitive than using R, but this might be your only choice unless you define a section that has only one column per page.
+
+
+
+## Pre-existing figure
+
+It is inadvisable to generate images from R code chunks, but it's fine to include pre-existing images.
+
+```{r warning=FALSE, dev='pdf', fig.show='hide', echo=FALSE, message=FALSE}
+# That being said, a file is being generated here solely for demonstration purposes.
+invisible({
+  pdf(file=file.path(getwd(),'pressure.pdf'))
+  plot(pressure)
+  dev.off()
+})
 ```
 
+### Including a figure using \LaTeX{}
+
+The easier way to include a figure is with \LaTeX{}.
+Figure \ref{fig:pressure} is included this way, and the figure number is a clickable reference.
 ```
-This will be wrapped with beginverbatim endverbatim
+% "bt!" means favor putting the table at the 
+%       top or bottom of the column, if possible
+% "b!"  means favor putting the table at the 
+%       bottom of the column, if possible
+% "t!"  means favor putting the table at the 
+%       top of the column, if possible
+\begin{figure}[bt!]
+\centering
+\includegraphics[width=\linewidth]{pressure.pdf}
+\caption{Pressure figure from \LaTeX{}}
+\label{fig:pressure}
+\end{figure}
+```
+\begin{figure}[bt!]
+\centering
+\includegraphics[width=\linewidth]{pressure.pdf}
+\caption{Pressure figure from \LaTeX{}}
+\label{fig:pressure}
+\end{figure}
+
+### Including a figure using markdown
+
+The "Pressure from markdown"" figure is scaled 48% because there are two columns, and failing to scale the image results in an image that is two columns wide; when scaled to 50%, it does not quite fit, so the scaling value needed to be determined emprically.  Furthermore, no clickable link to it is available becasue the generated TeX code has no label attribute.  In fact, to get the figure number, it would probably be necessary to resort to using a \LaTeX{} expression anyway....
+```
+![Pressure figure from markdown](pressure.pdf){width=48%}
+```
+![Pressure figure from markdown](pressure.pdf){width=48%}
+
+Overall, it's easier to use \LaTeX{} code than force rmarkdown to do the task.
+
+```{r refs_section_label, echo=FALSE}
+  # \bibliography generates the References section label and makes the bibliography entries available through natbib to citep and citet
+  # However, it does not do so when running knit on .Rmd from within RStudio.
+  #   The workaround is to open the resulting .tex file and click 'Compile PDF' a few times until there is no error.
 ```
 
+## Citations in rmarkdown (not recommended)
 
-Here are two sample references: @Arabie80, @Tufte:1983.
+Using rmarkdown for citations is not recommended: 
+  - TeX citations give you more flexibility
+  - e.g., references can be deleted or added subsequent to translation from rmarkdown to TeX
 
-# References {#references .unnumbered}
+You can generate explicit references in rmarkdown using a semicolon-separated-values syntax, enclosed in square brackets, prefixing each reference with the `@` character, e.g.,  `[@Tufte:1983; @Cleveland:1993]`, which results in this:  [@Tufte:1983; @Cleveland:1993].  The numbers are in the tex output file, which means that editing to add or remove references *must* be done in the rmarkdown file.  So, this is probably *not* a desirable path to take.
+
+Note that, to get this to work, the following need to be defined in the YAML header:
+```
+# these only needed for citations from rmarkdown
+# bibliography: the file with the bibtex entries
+#bibliography: paper-refs.bib
+# csl: this is needed only for citations from rmarkdown 
+#csl: gigascience.csl
+```
+
+\pagebreak
+
+# Using \LaTeX{} features with this template
+
+## Figures and Tables
+
+Figures and tables can be either a single column-width or  double column-width, based on the "environment" passed to begin/end:
+
+- `table` - a single column-width table, e.g., Table \ref{tab:example}
+- `sidewaystable` - a single column-width table, sideways in the column, e.g., Table \ref{tab:example:sideways}
+- `table*` - a two column-width table, e.g., Table \ref{tab:example:wide}
+- `landscape{table}` - a landscaped table spanning both columns, sideways on the page, e.g., Table \ref{tab:example:landscape}
+- `figure` - a single column-width figure, e.g., Figure \ref{fig:pressure}
+- `figure*` - a two column-width figure, e.g., Figure \ref{fig:pressure:wide}
+- `landscape{figure}` - a landscape figure, e.g., Figure \ref{fig:pressure:landscape}
+
+If you have a very wide table or figure, you can use \texttt{sidewaystable} or \texttt{sidewaysfigure}, as in Table \ref{tab:example:sideways}: this will be rotated sideways and occupy a *single column* on its own.
+
+If your table or figure is both wide and tall (so it wouldn't fit well in a single column with \texttt{sidewaystable} or \texttt{figure}), 
+you can use `table` or `figure` inside a `landscape` environment for a full-page landscaped alternative. A page break will be inserted \emph{immediately before and after} the `landscape` environment (Table \ref{tab:example:landscape}), so you'll need to carefully position it in a suitable location in your manuscript.
+
+\begin{table}[b!]
+\caption{An example table, one column-width.}\label{tab:example}
+\begin{tabular}{l r l}
+\toprule
+Item & Quantity & Notes\\
+\midrule
+Widgets & 42 & Over-supplied\textsuperscript{*} \\
+Gadgets & 13 & Under-supplied \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item This is a table note.
+\item \textsuperscript{*}Another note.
+\end{tablenotes}
+\end{table}
+
+
+\begin{sidewaystable}
+\caption{Automobile land speed records (GR 5-10). This is the same table as before, but rotated sideways.}
+\label{tab:example:sideways}
+% Use "S" column identifier (from siunitx) to align on decimal point.
+% Use "L", "R" or "C" column identifier for auto-wrapping columns with tabularx.
+\begin{tabularx}{\linewidth}{S l l l r L}
+\toprule
+{Speed (mph)} & {Driver} & {Car} & {Engine} & {Date} & {Extra comments}\\
+\midrule
+407.447     & Craig Breedlove & Spirit of America          & GE J47    & 8/5/63  & (Just to demo a full-width table with auto-wrapping long lines) \\
+413.199     & Tom Green       & Wingfoot Express           & WE J46    & 10/2/64  \\
+434.22      & Art Arfons      & Green Monster              & GE J79    & 10/5/64  \\
+468.719     & Craig Breedlove & Spirit of America          & GE J79    & 10/13/64 \\
+526.277     & Craig Breedlove & Spirit of America          & GE J79    & 10/15/65 \\
+536.712     & Art Arfons      & Green Monster              & GE J79    & 10/27/65 \\
+555.127     & Craig Breedlove & Spirit of America, Sonic 1 & GE J79    & 11/2/65  \\
+576.553     & Art Arfons      & Green Monster              & GE J79    & 11/7/65  \\
+600.601     & Craig Breedlove & Spirit of America, Sonic 1 & GE J79    & 11/15/65 \\
+622.407     & Gary Gabelich   & Blue Flame                 & Rocket    & 10/23/70 \\
+633.468     & Richard Noble   & Thrust 2                   & RR RG 146 & 10/4/83  \\
+763.035     & Andy Green      & Thrust SSC                 & RR Spey   & 10/15/97\\
+\bottomrule
+\end{tabularx}
+\begin{tablenotes}
+\item Source is from this website: \url{https://www.sedl.org/afterschool/toolkits/science/pdf/ast_sci_data_tables_sample.pdf}
+\end{tablenotes}
+\end{sidewaystable}
+
+
+
+\begin{figure*}%[bt!]
+\centering
+\includegraphics{pressure.pdf}
+\captionsetup{justification=centering}
+\caption{An example wide figure, two column-widths.}\label{fig:pressure:wide}
+\end{figure*}
+
+\begin{landscape}
+\begin{figure}%[b!]
+\centering
+\includegraphics{pressure.pdf}
+\captionsetup{justification=centering}
+\caption{An example wide figure, two column-widths.}\label{fig:pressure:landscape}
+\end{figure}
+\end{landscape}
+
+\begin{table*}[bt!]
+\caption{Automobile land speed records (GR 5-10), two column-widths}\label{tab:example:wide}
+% Use "S" column identifier (from siunitx) to align on decimal point.
+% Use "L", "R" or "C" column identifier for auto-wrapping columns with tabularx.
+\begin{tabularx}{\linewidth}{S l l l r L}
+\toprule
+{Speed (mph)} & {Driver} & {Car} & {Engine} & {Date} & {Extra comments}\\
+\midrule
+407.447     & Craig Breedlove & Spirit of America          & GE J47    & 8/5/63  & (Just to demo a full-width table with auto-wrapping long lines) \\
+413.199     & Tom Green       & Wingfoot Express           & WE J46    & 10/2/64  \\
+434.22      & Art Arfons      & Green Monster              & GE J79    & 10/5/64  \\
+468.719     & Craig Breedlove & Spirit of America          & GE J79    & 10/13/64 \\
+526.277     & Craig Breedlove & Spirit of America          & GE J79    & 10/15/65 \\
+536.712     & Art Arfons      & Green Monster              & GE J79    & 10/27/65 \\
+555.127     & Craig Breedlove & Spirit of America, Sonic 1 & GE J79    & 11/2/65  \\
+576.553     & Art Arfons      & Green Monster              & GE J79    & 11/7/65  \\
+600.601     & Craig Breedlove & Spirit of America, Sonic 1 & GE J79    & 11/15/65 \\
+622.407     & Gary Gabelich   & Blue Flame                 & Rocket    & 10/23/70 \\
+633.468     & Richard Noble   & Thrust 2                   & RR RG 146 & 10/4/83  \\
+763.035     & Andy Green      & Thrust SSC                 & RR Spey   & 10/15/97\\
+\bottomrule
+\end{tabularx}
+
+\begin{tablenotes}
+\item Source is from this website: \url{https://www.sedl.org/afterschool/toolkits/science/pdf/ast_sci_data_tables_sample.pdf}
+\end{tablenotes}
+\end{table*}
+
+## Citations in \LaTeX{}
+
+Use the `num-refs` option for numerical citations in the `reftype` item in the YAML header or `alph-refs` for author-year citations.  `alpha-refs` may not work.
+
+Use the `\citep` command for parenthetical citations, e.g., `both Tufte and Cleveland \citep{Tufte:1983,Cleveland:1993}`:
+
+> some fact reported by both Tufte and Cleveland \citep{Tufte:1983,Cleveland:1993}.
+
+Use `\citet` command for text citations, e.g., `both \citet{Tufte:1983} and \citet{Cleveland:1993}`:
+
+> some fact reported by both \citet{Tufte:1983} and \citet{Cleveland:1993}.
+
+
+## Footnotes
+
+This sentence is footnoted.\footnote{This is the footnote text. Quiquid dignum actu nimium agendum est.} The footnote should appear at the bottom of the column in which the text appears.
+
+
+\subsection{Some Mathematics Sample}
+
+Let $X_1, X_2, \ldots, X_n$ be a sequence of independent and identically distributed random variables with $\text{E}[X_i] = \mu$ and $\text{Var}[X_i] = \sigma^2 < \infty$, and let
+
+$$
+S_n = \frac{X_1 + X_2 + \cdots + X_n}{n}
+      = \frac{1}{n}\sum_{i}^{n} X_i
+$$
+denote their mean. Then as $n$ approaches infinity, the random variables $\sqrt{n}(S_n - \mu)$ converge in distribution to a normal $\mathcal{N}(0, \sigma^2)$.
+
+
+# Findings
+
+## Background
+
+## Performance and testing
+
+# Methods
+
+# Discussion
+
+# Abbreviations
+
+# Acknowledgements
+
+# Funding
+
+# Availability of data and materials
+
+# Availability of supporting code and requirements
+
+# Author contributions
+
+\bibliography{paper-refs}
+
+# Figures and Appendices
+
+
+## Landscape (sideways) table
+\begin{landscape}
+\begin{table}
+\caption{Automobile land speed records (GR 5-10). This is again the same table as before, but on a landscaped page. \textbf{Note that a hard page break is inserted immediately before and after \texttt{landscape}}, so you'll need to carefully position such an environment at a suitable location in your manuscript!}
+\label{tab:example:landscape}
+\begin{tabularx}{\linewidth}{S l l l r L}
+\toprule
+{Speed (mph)} & {Driver} & {Car} & {Engine} & {Date} & {Extra comments}\\
+\midrule
+407.447     & Craig Breedlove & Spirit of America          & GE J47    & 8/5/63  & (Just to demo a full-width table with auto-wrapping long lines) \\
+413.199     & Tom Green       & Wingfoot Express           & WE J46    & 10/2/64  \\
+434.22      & Art Arfons      & Green Monster              & GE J79    & 10/5/64  \\
+468.719     & Craig Breedlove & Spirit of America          & GE J79    & 10/13/64 \\
+526.277     & Craig Breedlove & Spirit of America          & GE J79    & 10/15/65 \\
+536.712     & Art Arfons      & Green Monster              & GE J79    & 10/27/65 \\
+555.127     & Craig Breedlove & Spirit of America, Sonic 1 & GE J79    & 11/2/65  \\
+576.553     & Art Arfons      & Green Monster              & GE J79    & 11/7/65  \\
+600.601     & Craig Breedlove & Spirit of America, Sonic 1 & GE J79    & 11/15/65 \\
+622.407     & Gary Gabelich   & Blue Flame                 & Rocket    & 10/23/70 \\
+633.468     & Richard Noble   & Thrust 2                   & RR RG 146 & 10/4/83  \\
+763.035     & Andy Green      & Thrust SSC                 & RR Spey   & 10/15/97\\
+\bottomrule
+\end{tabularx}
+
+\begin{tablenotes}
+\item Source is from this website: \url{https://www.sedl.org/afterschool/toolkits/science/pdf/ast_sci_data_tables_sample.pdf}
+\end{tablenotes}
+\end{table}
+\end{landscape}
+
 
