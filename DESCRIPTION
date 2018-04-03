@@ -34,3 +34,4 @@ Imports: utils, rmarkdown, knitr, yaml
 SystemRequirements: GNU make
 RoxygenNote: 6.0.1
 Suggests: testthat, bookdown
+Encoding: UTF-8
