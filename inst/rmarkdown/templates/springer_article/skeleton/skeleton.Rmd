@@ -9,11 +9,11 @@ thanks: |
     end of the article.
 
 authors: 
-- name: Author 1
+- name: Äüthör 1
   address: Department of YYY, University of XXX
   email: abc@def
   
-- name: Author 2
+- name: Âuthóř 2
   address: Department of ZZZ, University of WWW
   email: djf@wef
 

@@ -18,7 +18,8 @@ or \code{biblatex}. Use \code{none} if neither package is to be used.}
 R Markdown output format to pass to \code{\link[rmarkdown:render]{render}}
 }
 \description{
-This format was adapted from Journal of American Statistical association
+This format was adapted from the Springer Macro package for Springer
+Journals.
 }
 \examples{
 \dontrun{
