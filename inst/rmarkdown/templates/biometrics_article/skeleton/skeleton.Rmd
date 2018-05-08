@@ -20,9 +20,11 @@ abstract: |
 
 bibliography: bibliography.bib
 output: rticles::biometrics_article
-month: June
-year: 2018
-referee: true
+month: "`r format(Sys.Date(), '%b')`"
+year: "`r format(Sys.Date(), '%Y')`"
+referee: true # Papers submitted to Biometrics should ALWAYS be prepared
+              # using the referee option!!!! Turn off only to preview
+              # two column-format
 ---
 
 # Introduction {#intro}
@@ -35,17 +37,70 @@ Text with citations by @heagerty2000time, [@pepe2003statistical].
 
 ## Subsection title {#sec:2}
 
-as required. Don't forget to give each section
+as required [@hoerl1970ridge; @zou2005regularization]. Don't forget to give each section
 and subsection a unique label (see Sect. \ref{sec:1}).
 
 #### Paragraph headings 
 
 Use paragraph headings as needed.
 
+## Equations
+
+Here is an equation:
+
+$$ f_{X}(x) = \left(\frac{\alpha}{\beta}\right)\left(\frac{x}{\beta}\right)^{\alpha-1}e^{-\left(\frac{x}{\beta}\right)^{\alpha}}; \alpha,\beta,x > 0 $$
+
+Here is another:
 \begin{align}
 a^2+b^2=c^2
 \end{align}
 
+Inline equations: $\sum_{i = 2}^\infty\{\alpha_i^\beta\}$
+
+# Figures and tables
+
+Use the tikzDevice to help with typesetting:
+
+```{r setup}
+library(knitr)
+knit_hooks$set(plot = function(x, options) {
+  if ('tikz' %in% options$dev && !options$external) {
+    hook_plot_tex(x, options)
+  } else hook_plot_md(x, options)
+})
+```
+
+## Figures coming from R
+
+
+```{r fig1, fig.width = 4, fig.height = 4, fig.cap = "Output from `tikz()`", dev = "tikz", external=FALSE, echo = FALSE}
+library(ggplot2)
+print(ggplot(mtcars, aes(x = mpg, y = qsec)) + geom_point() + theme_bw())
+```
+
+#### Normal figure embedded in text
+
+```{r fig2, fig.width = 4, fig.height = 4, fig.cap = "Output from `pdf()`", echo = FALSE, dev = "pdf"}
+plot(runif(25) ~ runif(25))
+```
+
+\clearpage
+
+## Tables coming from R
+
+
+```{r tab1, results = 'asis'}
+print(xtable::xtable(head(mtcars)[,1:4], 
+caption = "Caption centered under table", label = "tab1"), 
+comment = FALSE, timestamp = FALSE, caption.placement = "top")
+```
+
+Table \ref{tab1} shows these numbers. Some of those numbers are plotted in Figure \ref{fig:fig1}.
+
+
+```{r tab2}
+head(mtcars[,1:4])
+```
 
 
 # References
