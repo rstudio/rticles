@@ -16,10 +16,13 @@ keywords:
 - word
 
 abstract: |
-  The text of your abstract.  150 -- 250 words.
+  The text of your summary.  Should not exceed 225 words.
 
 bibliography: bibliography.bib
 output: rticles::biometrics_article
+month: June
+year: 2018
+referee: true
 ---
 
 # Introduction {#intro}
