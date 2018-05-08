@@ -1,0 +1,48 @@
+---
+title: Title here
+
+authors: 
+- name: Author 1
+  affiliation: Department of YYY, University of XXX
+  email: abc@def
+  
+- name: Author 2
+  affiliation: Department of ZZZ, University of WWW
+  email: djf@wef
+
+keywords:
+- key
+- dictionary
+- word
+
+abstract: |
+  The text of your abstract.  150 -- 250 words.
+
+bibliography: bibliography.bib
+output: rticles::biometrics_article
+---
+
+# Introduction {#intro}
+
+Your text comes here. Separate text sections with
+
+# Section title {#sec:1}
+
+Text with citations by @heagerty2000time, [@pepe2003statistical].
+
+## Subsection title {#sec:2}
+
+as required. Don't forget to give each section
+and subsection a unique label (see Sect. \ref{sec:1}).
+
+#### Paragraph headings 
+
+Use paragraph headings as needed.
+
+\begin{align}
+a^2+b^2=c^2
+\end{align}
+
+
+
+# References
