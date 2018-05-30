@@ -1,0 +1,65 @@
+%
+% File conll2018.tex
+%
+%% Based on the style files for CoNLL 2018, which were
+%% Based on the style files for EMNLP 2018, which were
+%% Based on the style files for ACL 2018, which were
+%% Based on the style files for ACL-2015, with some improvements
+%%  taken from the NAACL-2016 style
+%% Based on the style files for ACL-2014, which were, in turn,
+%% based on ACL-2013, ACL-2012, ACL-2011, ACL-2010, ACL-IJCNLP-2009,
+%% EACL-2009, IJCNLP-2008...
+%% Based on the style files for EACL 2006 by
+%%e.agirre@ehu.es or Sergi.Balari@uab.es
+%% and that of ACL 08 by Joakim Nivre and Noah Smith
+
+\documentclass[11pt,a4paper]{article}
+\usepackage[hyperref]{conll2018}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{url}
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+$if(aclfinalcopy)$
+\aclfinalcopy
+$endif$
+
+\bibliographystyle{acl_natbib_nourl}
+
+\title{$title$}
+
+\author{
+$for(author)$
+$author.name$ \\ $author.affiliation$ \\ {\tt $author.email$} \And
+$endfor$
+}
+
+% \author{First Author \\
+%   Affiliation / Address line 1 \\
+%   Affiliation / Address line 2 \\
+%   Affiliation / Address line 3 \\
+%   {\tt email@domain} \\\And
+%   Second Author \\
+%   Affiliation / Address line 1 \\
+%   Affiliation / Address line 2 \\
+%   Affiliation / Address line 3 \\
+%   {\tt email@domain} \\}
+
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+$abstract$
+\end{abstract}
+
+$body$
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+\end{document}

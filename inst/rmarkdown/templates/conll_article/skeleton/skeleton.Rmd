@@ -1,0 +1,35 @@
+---
+title: Template for CoNLL 2018 Proceedings
+
+author:
+  - name: Alice Anonymous
+    affiliation: Some Institute of Technology, Address
+    email: alice@institute.edu
+  - name: Bob Security
+    affiliation: Another University Department, Address
+    email: bob@security.org
+    
+abstract: |
+  Dolor rerum beatae doloremque animi qui fugit. Dolor ut sed consequatur rem facilis. Unde quisquam id et voluptate et natus. Amet assumenda rerum autem reiciendis. Et sed et deserunt possimus cupiditate aut totam fuga.
+
+aclfinalcopy: false
+bibliography: conll2018.bib
+output: rticles::conll_article
+---
+
+
+# Paper goes here
+
+Tempore et aliquid occaecati et sed non optio. In sit et laboriosam doloremque error dolor quam est. Quis maxime cupiditate sit velit illo impedit consequatur. Reprehenderit et sed perferendis. Ut et dolorum perferendis molestiae aut eaque impedit veritatis. Officia error repellat eaque libero eveniet deleniti.
+
+Dolorem dignissimos itaque saepe earum. Officia consequuntur adipisci enim. Molestiae iusto provident ullam labore consequatur ipsam perferendis.
+
+Fugit ullam aperiam harum. Dolores facilis maiores rerum sint vero enim. Et facilis impedit possimus ut. Eaque facilis suscipit unde quasi facere. Unde explicabo quibusdam maiores deleniti placeat id voluptas.
+
+Vitae aut molestiae itaque possimus ipsam. Et qui repudiandae sint et ad. Fugit quam est dignissimos provident nam. Ducimus et ducimus eius qui voluptatem.
+
+Debitis et fuga ea. Rerum ut odit officiis consequuntur quis voluptatem sit tempore. A a assumenda veniam aperiam doloribus nulla.
+
+Cite things like this [@Gusfield:97] and this [@andrew2007scalable].
+
+# References
