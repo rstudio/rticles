@@ -1,0 +1,5 @@
+name: Monthly Notices of Royal Astronomical Society
+description: >
+ Template for creating an article for submission to MNRAS
+create_dir: true
+
