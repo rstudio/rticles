@@ -60,23 +60,36 @@
 % Title of the paper, and the short title which is used in the headers.
 % Keep the title short and informative.
 $if(title)$
-\title{$title$}
+\title$if(shorttitle)$[$shorttitle$]$endif${$title$}
 $endif$
 
 % The list of authors, and the short list which is used in the headers.
 % If you need two or more lines of authors, add an extra line using \newauthor
 
-\author[et al.]{
-$for(author)$
-$author.name$\\
-$endfor$
+$if(authors)$
+\author$if(shortauthor)$[$shortauthor$]$endif${
+$for(authors)$
+	$authors.name$
+	$if(authors.email)$
+		\thanks{$authors.email$}
+	$endif$
+	$if(authors.affiliations)$
+		$$^{$for(authors.affiliations)$$authors.affiliations$$sep$,$endfor$}$$
+	$endif$
+$endfor$\\
+$if(affiliations)$
+	$for(affiliations)$
+		$$^{$affiliations.number$}$$$affiliations.name$$sep$\\
+	$endfor$
+$endif$
 }
+$endif$
 
 % These dates will be filled out by the publisher
 \date{Accepted XXX. Received YYY; in original form ZZZ}
 
 % Enter the current year, for the copyright statements etc.
-\pubyear{2015}
+\pubyear{2018}
 
 % Don't change these lines
 \begin{document}
