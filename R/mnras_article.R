@@ -17,12 +17,13 @@
 #'
 #' @export
 mnras_article <- function(...,
-                        keep_tex = TRUE,
-                        md_extensions = c(),
-                        fig_caption = TRUE){
-  inherit_pdf_document(...,
-                       keep_tex = keep_tex,
-                       md_extensions = md_extensions,
-                       template = find_resource("mnras_article", "template.tex"),
-                       csl = find_resource("mnras_article", "mnras.csl"))
+                          keep_tex = TRUE,
+                          md_extensions = c(),
+                          fig_caption = TRUE) {
+    pdf_document_format(...,
+                        keep_tex = keep_tex,
+                        md_extensions = md_extensions,
+                        format = "mnras_article",
+                        template = "template.tex",
+                        csl = "mnras.csl")
 }
