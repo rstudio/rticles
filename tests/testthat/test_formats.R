@@ -1,5 +1,6 @@
-
 context("Formats")
+
+options(tinytex.verbose = TRUE)
 
 test_format <- function(name, os_skip = NULL) {
 

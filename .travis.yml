@@ -1,5 +1,9 @@
 language: r
 cache: packages
 
+env:
+  global:
+    - _R_CHECK_TESTS_NLINES_=0
+
 before_install:
   - tlmgr install endfloat achemso ametsoc extsizes lettrine mdframed
