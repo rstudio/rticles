@@ -1,0 +1,5 @@
+language: r
+cache: packages
+
+before_install:
+  - tlmgr install endfloat achemso ametsoc extsizes lettrine mdframed

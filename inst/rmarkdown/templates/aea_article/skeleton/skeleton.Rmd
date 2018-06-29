@@ -2,8 +2,8 @@
 title: "Untitled"
 short: "A shorter title"
 journal: "AER" # AER, AEJ, PP, JEL
-month: "`r lubridate::month(Sys.time())`"
-year: "`r lubridate::year(Sys.time())`"
+month: "`r format(Sys.Date(), '%m')`"
+year: "`r format(Sys.Date(), '%Y')`"
 vol: 1
 issue: 1
 jel:
