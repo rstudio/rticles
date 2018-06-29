@@ -12,7 +12,7 @@ corraddr: some@academic.email.org
 authabbr: "Uthor \\emph{et al}."
 date: 2017
 year: 2017
-abstract: "This paper describes the use of the \LaTeX `simauth.cls` class file for setting papers for Statistics in Medicine using Rmarkdown."
+abstract: "This paper describes the use of the \\LaTeX `simauth.cls` class file for setting papers for Statistics in Medicine using Rmarkdown."
 acknowledgements: "We thank [Stack Overflow](https://stackoverflow.com/) for the invaluable support to our research."
 keywords: Class file; \LaTeX; Statist. Med.; Rmarkdown;
 bibliography: bibfile.bib
