@@ -53,13 +53,13 @@
 
 
 % Remove comment for double spacing
-%\usepackage{setspace} 
+%\usepackage{setspace}
 %\doublespacing
 
 % Text layout
 \raggedright
 \setlength{\parindent}{0.5cm}
-\textwidth 5.25in 
+\textwidth 5.25in
 \textheight 8.75in
 
 % Bold the 'Figure #' in the caption and separate it from the title/caption with a period
@@ -132,7 +132,7 @@ $preamble$
 \newline
 \\
 $for(author)$
-$author.name$\textsuperscript{\getAff{$author.affiliation$}}$if(author.corresponding)$\textsuperscript{*}$endif$$sep$,
+$author.name$\textsuperscript{$for(author.affiliation)$\getAff{$author.affiliation$}$sep$, $endfor$}$if(author.corresponding)$\textsuperscript{*}$endif$$sep$,
 $endfor$
 \\
 \bigskip
@@ -153,8 +153,8 @@ $abstract$
 $endif$
 
 % Please keep the Author Summary between 150 and 200 words
-% Use first person. PLOS ONE authors please skip this step. 
-% Author Summary not valid for PLOS ONE submissions.   
+% Use first person. PLOS ONE authors please skip this step.
+% Author Summary not valid for PLOS ONE submissions.
 $if(author_summary)$
 \section*{Author summary}
 $author_summary$

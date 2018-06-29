@@ -32,6 +32,8 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [AMS](https://www.ametsoc.org/) articles
 
+- [PeerJ](https://peerj.com) articles
+
 - [Elsevier](https://www.elsevier.com) journal submissions
 
 - [AEA](https://www.aeaweb.org/journals/policies/templates) journal submissions
@@ -39,6 +41,14 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 - [IEEE Transaction](http://www.ieee.org/publications_standards/publications/authors/author_templates.html) journal submissions
 
 - [Statistics in Medicine](http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm) journal submissions
+
+- [Royal Society Open Science](http://rsos.royalsocietypublishing.org/) journal submissions
+
+- [Bulletin de l'AMQ](https://www.amq.math.ca/bulletin/) journal submissions
+
+- [MDPI](http://www.mdpi.com) journal submissions
+
+- [Springer](https://www.springer.com/gp/livingreviews/latex-templates) journal submissions
 
 Under the hood, LaTeX templates are used to ensure that documents conform precisely to submission standards. At the same time, composition and formatting can be done using lightweight [markdown](http://rmarkdown.rstudio.com/authoring_basics.html) syntax, and R code and its output can be seamlessly included using [knitr](http://yihui.name/knitr/).
 

@@ -1,0 +1,301 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%  Modèle pour le  Bulletin de l'Association
+%%           mathématique du Québec
+%%
+%%                 Décembre 2017
+%%       Adapté par Marc-André Désautels
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[10pt]{article}
+
+%=====================================Ensemble des packages================================
+
+% Ce package sert à accueillir les accents et à faire
+% les césures comme on aime qu'elles soient faites en français.
+\usepackage[T1]{fontenc}
+
+% Choix de la fonte
+\usepackage{lmodern}
+
+%% Permet de traiter les textes accentués
+% Pour Windows
+\usepackage[utf8]{inputenc}
+% Pour Unix
+%\usepackage[latin1]{inputenc}
+% Pour Apple
+%\usepackage[applemac]{inputenc}
+
+% Ensuite, entrer le texte accentué comme à l'ordinaire.
+\usepackage[english,french]{babel}
+
+% Permet de rendre le fichier maître plus compatible,
+% en particulier avec l'insertion de figures,
+% (sauf celle de figures flottantes (package floatingfigure))
+% et avec la définition des caractères à doubles jambes.
+\usepackage{graphicx}
+
+% Packages qui permettent l'utilisation des symboles et des commandes
+% mathématiques de AMS-LaTeX,
+\usepackage{amssymb,latexsym,amsmath}
+
+% Package qui donne accès à une police calligraphique, comme eucal.
+\usepackage{mathrsfs}
+
+% Package qui permet de fusionner des lignes ou des colonnes de tableaux
+\usepackage{multirow}
+
+% Package qui donne accès à la fonte Euler.
+\usepackage{euscript}
+
+% Package qui permet de définir ses propres en-têtes et pieds de page.
+\usepackage{fancyhdr}
+
+% Package qui permet de passer du texte sur le fichier
+% pdf à la ligne du fichier source correspondant.
+\usepackage{pdfsync}
+
+% Package permettant de définir son propre style
+% de présentation des théorèmes.
+\usepackage{theorem}
+
+% Package qui permet au texte de s'enrouler autour de flotants.
+\usepackage{wrapfig}
+\usepackage{floatflt}
+
+% Package qui "rectifie" les caractères qui dépassent dans la marge.
+\usepackage[protrusion=true]{microtype}
+
+% Permet de tracer des graphes flèchés.
+% Voir http://www.tug.org/TUGboat/tb22-4/tb72perlax.pdf
+\usepackage[all]{xy}
+
+%  Permet de définir les dimensions de la partie imprimée de la page.
+% Voir http://ctan.cms.math.ca/tex-archive/macros/latex/contrib/geometry/geometry.pdf
+\usepackage{geometry}
+
+% Permet, entre autres, de mettre du texte en filigrane.
+% Voir http://math.et.info.free.fr/TikZ/bdd/TikZ-Impatient.pdf
+% p. 165
+\usepackage{tikz}
+
+% Permet d'utiliser le gabarit de tableaux utilisant les commandes
+% of \toprule, \midrule and \bottomrule pour les lignes horizontales dans les tableaux.
+\usepackage{booktabs}
+
+\usepackage{color}
+
+% Permet la présentation d'adresses url sous leur forme habituelle.
+% Voir http://www.tex.ac.uk/cgi-bin/texfaq2html?label=setURL
+\usepackage{url}
+
+% Permet de rendre actifs les liens créés avec le package précédent.
+% Voir /usr/local/share/texmf-dist/doc/latex/hyperref/manual.pdf
+\usepackage[colorlinks=true,urlcolor=blue, citecolor=cyan, linkcolor=magenta]{hyperref}
+
+% Pour une adresse de courriel: \href{mailto:foo@bar.abc}{Good Link!}
+% Pour de belles flèches sur les vecteurs, cadeau de Jean-Philippe Morin
+\usepackage{esvect}
+
+%==================================Fin de l'ensemble des packages============================
+
+
+%=================Pour de belles flèches sur les vecteurs, cadeau de Jean-Philippe Morin=====
+\renewcommand{\vec}[1]{\protect\vv{#1}}
+% notation de vecteur (\vv définie par package esvect)
+% Exemple: \vv{v} ou \vv{AB} ou \vv{A_1A_2}
+%============================================================================================
+
+
+%%%======= Début macro pour numérotation des équations selon les sections du texte==========
+%\makeatletter
+%\renewcommand\theequation{\thesection.\arabic{equation}}
+%\@addtoreset{equation}{section}
+%\makeatother
+%%%======================  macro: mode d'emploi ============================================
+%%% Pour activer cette macro commande, enlever le symbole % au début de la ligne suivante
+%\numberwithin{equation}{section}
+%%============================================================================================
+
+
+
+
+%%===========Les énoncés ayant la même présentation que les théorèmes=========================
+\newtheorem{theorem}{Théorème}
+%[section]
+\newtheorem{lemma}{Lemme}
+%[section]
+\newtheorem{proposition}{Proposition}
+%[section]
+\newtheorem{corollary}{Corollaire}
+%[section]
+\newtheorem{definition}{Définition}
+%[section]
+\newtheorem{nota}{Notation}
+%[section]
+\newtheorem{ex}{Exemple}
+%[section]
+\newtheorem{nb}{N.B.}
+%[section]
+\newtheorem{remark}{Remarque}
+%%============================================================================================
+
+
+%%==========================Les démonstrations============================
+\newenvironment{proof}
+{\par\noindent
+\textit{Démonstration}\ }
+{
+\hfill{$$\Box$$}
+}
+
+%%==============================Les siècles====================================================
+%%        Pour la notation des siècles en chiffres romains
+%%        La commande est  \siecle{#}
+%%        Exemple  \siecle{21}.
+%%==========================================================================================
+\newcommand{\siecle}[1]{%
+\ifnum #1=1%
+\uppercase\expandafter{\romannumeral #1}\textsuperscript{er}%
+\else%
+\uppercase\expandafter{\romannumeral #1}\up{e}%
+\fi}
+
+%%=====================================================================
+%   Définition des marges pour le Bulletin (NE PAS MODIFIER)
+\geometry{height=18.6cm,width=14.4cm}
+\geometry{hmargin={3.6cm,3.6cm}}
+\geometry{vmargin={4.3cm,5cm}}
+%%Ces trois lignes doivent rester avant le \begin{document}.
+\parindent=0.0in
+\parskip=0.1in
+\setcounter{page}{1}
+%%=====================================================================
+
+%%========================Caractères particuliers usuels======================
+%%
+%%==============================Double jambe.============================
+\DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+\DeclareSymbolFontAlphabet{\Bbb}{AMSb}
+\newcommand{\ds}{\displaystyle}
+
+\usepackage[]{lineno}
+
+\newcommand*\patchAmsMathEnvironmentForLineno[1]{%
+  \expandafter\let\csname old#1\expandafter\endcsname\csname #1\endcsname
+  \expandafter\let\csname oldend#1\expandafter\endcsname\csname end#1\endcsname
+  \renewenvironment{#1}%
+     {\linenomath\csname old#1\endcsname}%
+     {\csname oldend#1\endcsname\endlinenomath}}%
+\newcommand*\patchBothAmsMathEnvironmentsForLineno[1]{%
+  \patchAmsMathEnvironmentForLineno{#1}%
+  \patchAmsMathEnvironmentForLineno{#1*}}%
+\AtBeginDocument{%
+\patchBothAmsMathEnvironmentsForLineno{equation}%
+\patchBothAmsMathEnvironmentsForLineno{align}%
+\patchBothAmsMathEnvironmentsForLineno{flalign}%
+\patchBothAmsMathEnvironmentsForLineno{alignat}%
+\patchBothAmsMathEnvironmentsForLineno{gather}%
+\patchBothAmsMathEnvironmentsForLineno{multline}%
+}
+
+%%==========================Packages propres à l'auteur==============================
+%%
+\input{authorpackages}
+%%
+%%==========================Fin des packages propres à l'auteur=======================
+
+%%==========================Commandes propres à l'auteur==============================
+%%
+\input{authorcommands}
+%%
+%%==========================Fin des commandes propres à l'auteur========================
+
+\usepackage{url}
+\usepackage{hyperref}
+
+%%============================pour des barres de fraction obliques=======================
+%running fraction with slash - requires math mode.
+\newcommand*\rfrac[2]{{}^{#1}\!/_{#2}}
+%	Exemple :	\rfrac{3}{7}
+%%===============================================================================
+
+
+%%=== Pour des barres de fraction latérales, une petite, une grande et une très grande ===
+\newcommand{\fracinline}[2]{\raisebox{0.4ex}{$$#1$$} / \raisebox{-0.7ex}{$$#2$$}}
+\newcommand{\bigfracinline}[2]{\raisebox{0.8ex}{$$#1$$}  \Big/ \raisebox{-1.4ex}{$$#2$$}}
+\newcommand{\biggfracinline}[2]{\raisebox{0.8ex}{$$#1$$}  \Bigg/ \raisebox{-1.4ex}{$$#2$$}}
+
+%%	Exemple:	\fracinline{1 + \cos x}{\sin x}
+%%	Exemple:	\bigfracinline{1 + \cos x}{\sin x}
+%%	Exemple:	\biggfracinline{1 + \cos x}{\sin x}
+%%=======================================================================================
+
+\everymath{\displaystyle}
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+\begin{document}
+
+%%==========================Éléments propres à l'auteur==============================
+%%
+%%
+%%==========================Fin des éléments propres à l'auteur======================
+
+
+%%=====================Pour mettre le titre des tableaux en français==================
+%%
+\renewcommand{\tablename}{\textsc{Tableau}}
+%%
+%%=========================Fin de la nouvelle définition==============================
+
+\begin{center}
+\textsf{\LARGE \textbf{$title$}}
+\end{center}
+
+\begin{flushright}
+\textsc{$author$, $affiliation$} \\
+\textsc{$establishment$} \\
+$email$ \\
+$website$
+\end{flushright}
+
+$if(author2)$
+\begin{flushright}
+\textsc{$author2$, $affiliation2$} \\
+\textsc{$establishment2$} \\
+$email2$ \\
+$website2$
+\end{flushright}
+$endif$
+
+\baselineskip=1.2\baselineskip
+
+%%=====================================================================
+%%          Résumé
+%%=====================================================================
+
+\begin{abstract}
+
+$abstract$
+
+\end{abstract}
+%%=====================================================================
+%%          Fin du résumé
+%%=====================================================================
+
+\textbf{Mots clés: } $keywords$
+
+\bigskip
+
+$body$
+
+\input{mybibliography}
+
+\end{document}

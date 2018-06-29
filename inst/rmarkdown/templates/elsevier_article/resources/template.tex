@@ -1,6 +1,12 @@
 \documentclass[$layout$]{elsarticle} %review=doublespace preprint=single 5p=2 column
 %%% Begin My package additions %%%%%%%%%%%%%%%%%%%
 \usepackage[hyphens]{url}
+
+$if(journal)$
+  \journal{$journal$} % Sets Journal name
+$endif$
+
+
 \usepackage{lineno} % add
 $if(linenumbers)$
   \linenumbers % turns line numbering on
@@ -158,7 +164,7 @@ $preamble$
   \begin{abstract}
   $abstract$
   \end{abstract}
-  $if(keywords)$ \begin{keyword} $for(keywords)$$keywords$ \sep $endfor$\end{keyword}$endif$
+  $if(keywords)$ \begin{keyword} $for(keywords)$$keywords$$sep$ $endfor$\end{keyword}$endif$
  \end{frontmatter}
 
 $body$

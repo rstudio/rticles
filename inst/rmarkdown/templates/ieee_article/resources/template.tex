@@ -392,7 +392,9 @@ $endif$
 $for(header-includes)$
 $header-includes$
 $endfor$
-\usepackage[nomarkers]{endfloat}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 %% END MY ADDITIONS %%
 
