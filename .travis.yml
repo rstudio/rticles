@@ -1,27 +1,5 @@
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
-
 language: r
-r:
-  - release
-  - devel
-
-sudo: false
-cran: https://cran.rstudio.com
-
 cache: packages
 
-addons:
-  apt:
-    packages: texlive-full
-
 before_install:
-  - Rscript -e 'update.packages(ask = FALSE)'
   - tlmgr install endfloat achemso ametsoc extsizes lettrine mdframed
-
-env:
-  global:
-    - NOT_CRAN: true
-    - R_CHECK_ARGS="--as-cran --timings"
-    - R_CHECK_TIME="TRUE"
-    - R_CHECK_TESTS="TRUE"
-    - _R_CHECK_TIMINGS_="0"
