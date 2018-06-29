@@ -33,5 +33,5 @@ License: GPL-3
 Imports: utils, rmarkdown, knitr, yaml
 SystemRequirements: GNU make
 RoxygenNote: 6.0.1
-Suggests: testthat, bookdown, xtable
+Suggests: testit, bookdown, xtable
 Encoding: UTF-8
