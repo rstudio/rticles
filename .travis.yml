@@ -16,4 +16,3 @@ addons:
 
 before_install:
   - wget -qO- https://github.com/yihui/tinytex/raw/master/tools/download-travis-linux.sh | sh
-  - gs --version

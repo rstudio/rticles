@@ -83,11 +83,6 @@ abbreviations:
 output: rticles::mdpi_article
 ---
 
-```{r setup, include=FALSE}
-# the LaTeX package epstopdf requires -shell-escape
-options(tinytex.engine_args = '-shell-escape', tinytex.verbose = TRUE)
-```
-
 # Version
 
 This Rmd-skeleton uses the mdpi Latex template published 2018/01. 
