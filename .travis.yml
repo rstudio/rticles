@@ -11,3 +11,4 @@ env:
 
 before_install:
   - wget -qO- https://github.com/yihui/tinytex/raw/master/tools/download-travis-linux.sh | sh
+  - tlmgr conf texmf shell_escape 1
