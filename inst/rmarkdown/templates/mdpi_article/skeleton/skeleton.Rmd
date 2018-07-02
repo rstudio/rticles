@@ -85,7 +85,7 @@ output: rticles::mdpi_article
 
 ```{r setup, include=FALSE}
 # the LaTeX package epstopdf requires -shell-escape
-options(tinytex.engine_args = '-shell-escape')
+options(tinytex.engine_args = '-shell-escape', tinytex.verbose = TRUE)
 ```
 
 # Version
