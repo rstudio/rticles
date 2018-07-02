@@ -35,3 +35,4 @@ SystemRequirements: GNU make
 RoxygenNote: 6.0.1
 Suggests: testit, bookdown, xtable
 Encoding: UTF-8
+Remotes: yihui/tinytex
