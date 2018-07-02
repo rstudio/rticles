@@ -1,5 +1,3 @@
-options(tinytex.verbose = TRUE)
-
 test_format <- function(name, os_skip = NULL) {
 
   # don't run on CRAN due to complicated dependencies (Pandoc/LaTeX packages)
