@@ -20,6 +20,8 @@
 #' @export
 rjournal_article <- function(...) {
 
+  rmarkdown::pandoc_available('2.2', TRUE)
+
   template <- find_resource("rjournal_article", "template.tex")
 
   base <- inherit_pdf_document(..., template = template)
@@ -45,7 +47,7 @@ rjournal_article <- function(...) {
   hilight_source <- knitr_fun('hilight_source')
   hook_chunk = function(x, options) {
     if (output_asis(x, options)) return(x)
-    paste('\\begin{Schunk}\n', x, '\\end{Schunk}', sep = '')
+    paste0('```{=latex}\n\\begin{Schunk}\n', x, '\\end{Schunk}\n```')
   }
   hook_input <- function(x, options)
     paste(c('\\begin{Sinput}', hilight_source(x, 'sweave', options), '\\end{Sinput}', ''),
