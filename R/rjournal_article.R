@@ -36,8 +36,7 @@ rjournal_article <- function(...) {
     wrapper_output <- file.path(getwd(), "RJwrapper.tex")
     template_pandoc(wrapper_metadata, wrapper_template, wrapper_output, verbose)
 
-    tools::texi2pdf("RJwrapper.tex", clean = clean)
-    "RJwrapper.pdf"
+    tinytex::latexmk("RJwrapper.tex", base$pandoc$latex_engine, clean = clean)
   }
 
   # Mostly copied from knitr::render_sweave

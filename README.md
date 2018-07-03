@@ -1,4 +1,6 @@
 
+[![Travis-CI Build Status](https://travis-ci.org/rstudio/rticles.svg?branch=master)](https://travis-ci.org/rstudio/rticles)
+
 ### Installation
 
 You can install and use **rticles** from CRAN as follows:
@@ -45,6 +47,8 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 - [Bulletin de l'AMQ](https://www.amq.math.ca/bulletin/) journal submissions
 
 - [MDPI](http://www.mdpi.com) journal submissions
+
+- [Springer](https://www.springer.com/gp/livingreviews/latex-templates) journal submissions
 
 Under the hood, LaTeX templates are used to ensure that documents conform precisely to submission standards. At the same time, composition and formatting can be done using lightweight [markdown](http://rmarkdown.rstudio.com/authoring_basics.html) syntax, and R code and its output can be seamlessly included using [knitr](http://yihui.name/knitr/).
 

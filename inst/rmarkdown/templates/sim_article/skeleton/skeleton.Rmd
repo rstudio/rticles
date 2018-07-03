@@ -1,6 +1,6 @@
 ---
 title: A demonstration of the \LaTeX class file for Statistics in Medicine with Rmarkdown
-author: 
+author:
 - name: A. Uthor*
   num: a,b
 - name: O. Tro
@@ -67,7 +67,7 @@ Configure the YAML header including the following elements:
 
 1. In `authormark` use _et al._ if there are three or more authors.
 
-2. Note the use of `num` to link names and addresses. 
+2. Note the use of `num` to link names and addresses.
 
 3. For submitting a double-spaced manuscript, add `doublespace` as an option to a `classoption` line in the YAML header: `classoption: doublespace`.
 
@@ -94,14 +94,14 @@ plot(x, y)
 Analogously, use Rmarkdown to produce tables as usual:
 
 ```{r, results = "asis"}
-library(xtable)
+if (!require("xtable")) install.packages("xtable")
 xt <- xtable(head(cars), caption = "A table", label = "tab:table")
 print(xt, comment = FALSE)
 ```
 
 Referenced via \ref{tab:table}. You can also use the YAML option `header-includes` to includes custom \LaTeX packages for tables (keep in mind that `pandoc` uses `longtables` by default, and it is hardcoded; some things may require including the package `longtable`). E.g., using `ctable`:
 ```
-header-includes: 
+header-includes:
 - \usepackage{ctable}
 ```
 Then, just write straight-up \LaTeX code and reference is as usual (`\ref{tab:ctable}`):
@@ -115,8 +115,8 @@ Then, just write straight-up \LaTeX code and reference is as usual (`\ref{tab:ct
         \tnote[$\dagger$]{Other footnote}
         \tnote[b]{Mistakes are possible.}
         }{
-        \FL 
-        COL 1\tmark[a] & COL 2\tmark[$\ast$] 
+        \FL
+        COL 1\tmark[a] & COL 2\tmark[$\ast$]
         \ML
         6.92\tmark[$\dagger$] & 0.09781 \\
         6.93\tmark[$\dagger$] & 0.09901 \\
@@ -146,4 +146,4 @@ To include all citation from the `.bib` file, add `\nocite{*}` before the end of
 
 # Further information
 
-All \LaTeX enviroments supported by the main template are supported here as well; see the `.tex` sample file [here](http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm) for more details and example. 
+All \LaTeX enviroments supported by the main template are supported here as well; see the `.tex` sample file [here](http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm) for more details and example.

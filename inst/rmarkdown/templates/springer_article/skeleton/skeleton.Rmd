@@ -1,0 +1,65 @@
+---
+title: Title here
+subtitle: Do you have a subtitle? If so, write it here
+titlerunning: Short form of title (if too long for head)
+authorrunning: Short form of author list if too long for running head
+thanks: | 
+    Grants or other notes about the article that should go on the front 
+    page should be placed here. General acknowledgments should be placed at the
+    end of the article.
+
+authors: 
+- name: Äüthör 1
+  address: Department of YYY, University of XXX
+  email: abc@def
+  
+- name: Âuthóř 2
+  address: Department of ZZZ, University of WWW
+  email: djf@wef
+
+keywords:
+- key
+- dictionary
+- word
+
+#PACS: 
+#- PAC1
+#- superPAC
+    
+MSC:
+- MSC code 1
+- MSC code 2    
+
+abstract: |
+  The text of your abstract.  150 -- 250 words.
+
+bibliography: bibliography.bib
+output: rticles::springer_article
+---
+
+# Introduction {#intro}
+
+Your text comes here. Separate text sections with
+
+# Section title {#sec:1}
+
+Text with citations by @Galyardt14mmm, [@Mislevy06Cog].
+
+## Subsection title {#sec:2}
+
+as required. Don't forget to give each section
+and subsection a unique label (see Sect. \ref{sec:1}).
+
+#### Paragraph headings 
+
+Use paragraph headings as needed.
+
+\begin{align}
+a^2+b^2=c^2
+\end{align}
+
+
+
+
+
+# References

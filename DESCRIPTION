@@ -1,7 +1,7 @@
 Package: rticles
 Type: Package
 Title: Article Formats for R Markdown
-Version: 0.4.2.9000
+Version: 0.4.4
 Authors@R: c(
   person("JJ", "Allaire", role = c("aut", "cre"), email = "jj@rstudio.com"),
   person(family = "R Foundation", role = c("aut", "cph")),
@@ -31,7 +31,9 @@ Authors@R: c(
 Description: A suite of custom R Markdown formats and templates for
   authoring journal articles and conference submissions.
 License: GPL-3
-Imports: utils, rmarkdown, knitr, yaml
+Imports: utils, rmarkdown, knitr, yaml, tinytex
 SystemRequirements: GNU make
 RoxygenNote: 6.0.1
-Suggests: testthat, bookdown
+Suggests: testit, bookdown, xtable
+Encoding: UTF-8
+Remotes: yihui/tinytex

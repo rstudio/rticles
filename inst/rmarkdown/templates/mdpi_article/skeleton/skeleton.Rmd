@@ -83,11 +83,21 @@ abbreviations:
 output: rticles::mdpi_article
 ---
 
+# Version
+
+This Rmd-skeleton uses the mdpi Latex template published 2018/01. 
+However, the official template gets more frequently updated than the 'rticles'
+package. Therefore, please make sure prior to paper submission, that you're 
+using the most recent .cls, .tex and .bst files 
+(available [here](http://www.mdpi.com/authors/latex)).
+
 # Introduction
+
 The introduction should briefly place the study in a broad context and highlight why it is important. It should define the purpose of the work and its significance. The current state of the research field should be reviewed carefully and key publications cited. Please highlight controversial and diverging hypotheses when necessary. Finally, briefly mention the main aim of the work and highlight the principal conclusions. As far as possible, please keep the introduction comprehensible to scientists outside your particular field of research. Citing a journal paper [@bertrand-krajewski_distribution_1998; @leutnant_stormwater_2016]. And now citing a book reference @gujer_systems_2008. Please use the command [@leutnant_stormwater_2016] for the following MDPI journals, which use author-date citation: Administrative Sciences, Arts, Econometrics, Economies, Genealogy, Humanities, IJFS, JRFM, Laws, Religions, Risks, Social Sciences.
 
 
 # Materials and Methods
+
 Materials and Methods should be described with sufficient details to allow others to replicate and build on published results. Please note that publication of your manuscript implicates that you must make all materials, data, computer code, and protocols associated with the publication available to readers. Please disclose at the submission stage any restrictions on the availability of materials or information. New methods and protocols should be described in detail while well-established methods can be briefly described and appropriately cited.
 
 Research manuscripts reporting large datasets that are deposited in a publicly available database should specify where the data have been deposited and provide the relevant accession numbers. If the accession numbers have not yet been obtained at the time of submission, please state that they will be provided during review. They must be provided prior to publication.
@@ -95,9 +105,11 @@ Research manuscripts reporting large datasets that are deposited in a publicly a
 Interventionary studies involving animals or humans, and other studies require ethical approval must list the authority that provided approval and the corresponding ethical approval code.
 
 # Results
+
 This section may be divided by subheadings. It should provide a concise and precise description of the experimental results, their interpretation as well as the experimental conclusions that can be drawn.
 
 ## Subsection Heading Here
+
 Subsection text here.
 
 ### Subsubsection Heading Here
@@ -161,10 +173,13 @@ Text of the proof. Note that the phrase `of Theorem 1' is optional if it is clea
 The text continues here.
 
 # Discussion
+
 Authors should discuss the results and how they can be interpreted in perspective of previous studies and of the working hypotheses. The findings and their implications should be discussed in the broadest context possible. Future research directions may also be highlighted.
 
 # Conclusion
+
 This section is not mandatory, but can be added to the manuscript if the discussion is unusually long or complex.
 
 # Patents
+
 This section is not mandatory, but may be added if there are patents resulting from the work reported in this manuscript.

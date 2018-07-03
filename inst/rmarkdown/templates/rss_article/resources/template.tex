@@ -5,6 +5,7 @@
 \usepackage{color}
 \usepackage{amssymb, amsmath, geometry}
 \usepackage{natbib}
+\usepackage{hyperref}
 
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -34,6 +35,10 @@ $endif$
 % BIBLIOGRAPHY
 \usepackage[authoryear]{natbib}
 \bibpunct{(}{)}{;}{a}{}{,}
+
+$for(header-includes)$
+$header-includes$
+$endfor$
 
 \begin{document}
 
