@@ -32,6 +32,7 @@ jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
   base$knitr$opts_chunk$prompt <- TRUE
   base$knitr$opts_chunk$comment <- NA
   base$knitr$opts_chunk$highlight <- FALSE
+  base$knitr$opts_chunk$tidy <- FALSE
 
   base$knitr$opts_chunk$dev.args <- list(pointsize = 11)
   base$knitr$opts_chunk$fig.width <- 4.9 # 6.125" * 0.8, as in template
