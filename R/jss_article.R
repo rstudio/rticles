@@ -20,7 +20,7 @@
 #' @export
 jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
 
-  rmarkdown::pandoc_available('2.2.1', TRUE)
+  rmarkdown::pandoc_available('2.2', TRUE)
 
   template <- find_resource("jss_article", "template.tex")
 

@@ -4,7 +4,7 @@ rticles 0.5 (unreleased)
 - Add MDPI journal template
 
 - Fixed #6 and #132: dollar signs can be used in code chunks in JSS articles
-  now, but it will require Pandoc 2.2.1 (you can use the Preview version of
+  now, but it will require Pandoc 2.x (you can use the Preview version of
   RStudio if you do not want to install Pandoc separately).
 
 rticles 0.4.1
