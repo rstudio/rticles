@@ -20,6 +20,8 @@
 #' @export
 jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
 
+  rmarkdown::pandoc_available('2.2.1', TRUE)
+
   template <- find_resource("jss_article", "template.tex")
 
   base <- inherit_pdf_document(
@@ -40,7 +42,7 @@ jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
   base$knitr$opts_chunk$fig.align <- "center"
   hook_chunk <- function(x, options) {
     if (output_asis(x, options)) return(x)
-    paste0('\\begin{CodeChunk}\n', x, '\\end{CodeChunk}')
+    paste0('```{=latex}\n\\begin{CodeChunk}\n', x, '\\end{CodeChunk}\n```')
   }
   hook_input <- function(x, options) {
     if (options$prompt && length(x)) {
