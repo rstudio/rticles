@@ -107,3 +107,14 @@ colleagues, acknowledge funding agencies, telescopes and facilities used etc.
 Try to keep it short.
 
 # References {-}
+
+<div id="refs"></div>
+
+\appendix
+
+# Some extra material
+
+If you want to present additional material which would interrupt the flow of the
+main paper, it can be placed in an Appendix which appears after the list of
+references.
+
