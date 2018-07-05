@@ -19,6 +19,8 @@ rticles 0.5 (unreleased)
 
 - Fixed #9: special characters such as spaces and underscores can be used in Rmd filenames for R Journal articles now.
 
+- Fixed #71: bibliography is supported for The R Journal articles now.
+
 rticles 0.4.1
 ---------------------------------------------------------------------
 
