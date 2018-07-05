@@ -37,6 +37,23 @@ jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
     fig.width = 4.9,  # 6.125" * 0.8, as in template
     fig.height = 3.675  # 4.9 * 3:4
   ))
+
+  base$pandoc$ext <- '.tex'
+  post <- base$post_processor
+  # a hack for https://github.com/rstudio/rticles/issues/100 to add \AND to the author list
+  base$post_processor <- function(metadata, input, output, clean, verbose) {
+    if (is.function(post)) output = post(metadata, input, output, clean, verbose)
+    f <- xfun::with_ext(output, '.tex')
+    x <- xfun::read_utf8(f)
+    x <- gsub('( \\\\AND )\\\\And ', '\\1', x)
+    x <- gsub(' \\\\AND(\\\\\\\\)$', '\\1', x)
+    xfun::write_utf8(x, f)
+    tinytex::latexmk(
+      f, base$pandoc$latex_engine,
+      if ('--biblatex' %in% base$pandoc$args) 'biber' else 'bibtex'
+    )
+  }
+
   hook_chunk <- function(x, options) {
     if (output_asis(x, options)) return(x)
     paste0('```{=latex}\n\\begin{CodeChunk}\n', x, '\\end{CodeChunk}\n```')

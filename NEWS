@@ -21,6 +21,8 @@ rticles 0.5 (unreleased)
 
 - Fixed #71: bibliography is supported for The R Journal articles now.
 
+- Supports breaking the JSS author list into multiple lines; see #100 for details.
+
 rticles 0.4.1
 ---------------------------------------------------------------------
 
