@@ -31,7 +31,7 @@ Authors@R: c(
 Description: A suite of custom R Markdown formats and templates for
   authoring journal articles and conference submissions.
 License: GPL-3
-Imports: utils, rmarkdown, knitr, yaml, tinytex
+Imports: utils, rmarkdown, knitr, yaml, tinytex, xfun
 SystemRequirements: GNU make
 RoxygenNote: 6.0.1
 Suggests: testit, bookdown, xtable
