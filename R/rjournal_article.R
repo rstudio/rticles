@@ -60,12 +60,14 @@ rjournal_article <- function(...) {
       collapse = '\n')
   hook_output <- function(x, options) paste('\\begin{Soutput}\n', x, '\\end{Soutput}\n', sep = '')
 
-  base$knitr$knit_hooks$chunk   <- hook_chunk
-  base$knitr$knit_hooks$source  <- hook_input
-  base$knitr$knit_hooks$output  <- hook_output
-  base$knitr$knit_hooks$message <- hook_output
-  base$knitr$knit_hooks$warning <- hook_output
-  base$knitr$knit_hooks$plot <- knitr::hook_plot_tex
+  base$knitr$knit_hooks <- merge_list(base$knitr$knit_hooks, list(
+    chunk   = hook_chunk,
+    source  = hook_input,
+    output  = hook_output,
+    message = hook_output,
+    warning = hook_output,
+    plot = knitr::hook_plot_tex
+  ))
 
   base
 }
