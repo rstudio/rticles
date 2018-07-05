@@ -32,8 +32,14 @@ rjournal_article <- function(...) {
   base$pandoc$ext <- ".tex"
 
   base$post_processor <- function(metadata, utf8_input, output_file, clean, verbose) {
-    filename <- tools::file_path_sans_ext(basename(output_file))
-    wrapper_metadata <- list(preamble = metadata$preamble, filename = filename)
+    filename <- basename(output_file)
+    # underscores in the filename will be problematic in \input{filename};
+    # pandoc will escape underscores but it should not, i.e., should be
+    # \input{foo_bar} instead of \input{foo\_bar}
+    if (filename != (filename2 <- gsub('_', '-', filename))) {
+      file.rename(filename, filename2); filename <- filename2
+    }
+    wrapper_metadata <- list(preamble = metadata$preamble, filename = xfun::sans_ext(filename))
     wrapper_template <- find_resource("rjournal_article", "RJwrapper.tex")
     wrapper_output <- file.path(getwd(), "RJwrapper.tex")
     template_pandoc(wrapper_metadata, wrapper_template, wrapper_output, verbose)

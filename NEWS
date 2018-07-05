@@ -22,6 +22,8 @@ rticles 0.5 (unreleased)
   articles now, but Pandoc 2.x will be required (you can use the Preview version
   of RStudio if you do not want to install Pandoc separately).
 
+- Fixed #9: special characters such as spaces and underscores can be used in Rmd filenames for R Journal articles now.
+
 rticles 0.4.1
 ---------------------------------------------------------------------
 
