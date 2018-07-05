@@ -1,7 +1,21 @@
 rticles 0.5 (unreleased)
 ---------------------------------------------------------------------
 
-- Add MDPI journal template
+- Added the template for the IEEE Transaction Journals (thanks, @Emaasit, #97).
+
+- Added the PeerJ format (thanks, @zkamvar, #127).
+
+- Added a template for the Royal Society Open Science Journal (thanks,
+  @ThierryO, #135).
+
+- Added a template for Bulletin de l'AMQ (thanks, @desautm, #145).
+
+- Added the MDPI journal template (thanks, @dleutnant, #147).
+
+- Added the Springer Journal Article template (thanks, @strakaps, #164).
+
+- Added the template for MNRAS (Monthly Notices of the Royal Astronomical
+  Society) articles (thanks, @oleskiewicz, #175).
 
 - Fixed #6, #10, #49, #132, and #149: dollar signs and other special LaTeX
   characters such as `^` can be used in code chunks in JSS and R Journal
