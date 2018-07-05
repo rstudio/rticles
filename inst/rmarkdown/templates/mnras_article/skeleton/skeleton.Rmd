@@ -1,0 +1,120 @@
+---
+title: Short Paper
+shorttitle: Short Paper
+shortauthor: K. T. Smith et al.
+authors:
+  - name: Keith T. Smith
+    email: mn@ras.org.uk
+    affiliations: [1]
+  - name: A. N. Other
+    affiliations: [2]
+  - name: Third Author
+    affiliations: [2,3]
+  - name: Fourth Author
+    affiliations: [3]
+affiliations:
+  - number: 1
+    name: Royal Astronomical Society, Burlington House, Piccadilly, London W1J 0BQ, UK
+  - number: 2
+    name: Department, Institution, Street Address, City Postal Code, Country
+  - number: 3
+    name: Another Department, Different Institution, Street Address, City Postal Code, Country
+abstract: |
+  This is a simple template for authors to write new MNRAS papers.
+  The abstract should briefly describe the aims, methods, and main results of the paper.
+  It should be a single paragraph not more than 250 words (200 words for Letters).
+  No references should appear in the abstract.
+keywords: ["keyword1", "keyword2", "keyword3"]
+bibliography: references.bib
+output: rticles::mnras_article
+---
+
+
+# Introduction
+
+This is a simple template for authors to write new MNRAS papers.  See
+`mnras_sample.tex` for a more complex example, and `mnras_guide.tex` for a full
+user guide.
+
+All papers should start with an Introduction section, which sets the work
+in context, cites relevant earlier studies in the field by @Others2013,
+and describes the problem the authors aim to solve @Author2012.
+
+# Methods, Observations, Simulations etc.
+
+Normally the next section describes the techniques the authors used.  It is
+frequently split into subsections, such as Section \ref{maths} below.
+
+## Maths
+
+Labels are auto--generated, i.e. this one has `\label{maths}`.
+
+Simple mathematics can be inserted into the flow of the text e.g. $2\times3=6$
+or $v=220$ km s$^{-1}$, but more complicated expressions should be entered as
+a numbered equation:
+
+\begin{equation}
+  x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+  \label{eq:quadratic}
+\end{equation}
+
+Refer back to them as e.g. equation (\ref{eq:quadratic}).
+
+## Figures and tables
+
+Figures and tables should be placed at logical positions in the text. Don't
+worry about the exact layout, which will be handled by the publishers.
+
+Figures are referred to as e.g. Fig. \ref{fig:example_figure}, and tables as
+e.g. Table \ref{tab:example_table}.
+
+\begin{figure}
+  % To include a figure from a file named example.*
+  % Allowable file formats are eps or ps if compiling using latex
+  % or pdf, png, jpg if compiling using pdflatex
+  \includegraphics[width=\columnwidth]{example}
+    \caption{This is an example figure. Captions appear below each figure.
+  Give enough detail for the reader to understand what they're looking at,
+  but leave detailed discussion to the main body of the text.}
+    \label{fig:example_figure}
+\end{figure}
+
+\begin{table}
+  \centering
+  \caption{This is an example table. Captions appear above each table.
+  Remember to define the quantities, symbols and units used.}
+  \label{tab:example_table}
+  \begin{tabular}{lccr} % four columns, alignment for each
+    \hline
+    A & B & C & D\\
+    \hline
+    1 & 2 & 3 & 4\\
+    2 & 4 & 6 & 8\\
+    3 & 5 & 7 & 9\\
+    \hline
+  \end{tabular}
+\end{table}
+
+# Conclusions
+
+The last numbered section should briefly summarise what has been done, and
+describe the final conclusions which the authors draw from their work.
+
+# Acknowledgements {-}
+
+The Acknowledgements section is not numbered. Here you can thank helpful
+colleagues, acknowledge funding agencies, telescopes and facilities used etc.
+Try to keep it short.
+
+# References {-}
+
+<div id="refs"></div>
+
+\appendix
+
+# Some extra material
+
+If you want to present additional material which would interrupt the flow of the
+main paper, it can be placed in an Appendix which appears after the list of
+references.
+
