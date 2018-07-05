@@ -72,7 +72,7 @@ e.g. Table \ref{tab:example_table}.
   % To include a figure from a file named example.*
   % Allowable file formats are eps or ps if compiling using latex
   % or pdf, png, jpg if compiling using pdflatex
-  \includegraphics[width=\columnwidth]{example.png}
+  \includegraphics[width=\columnwidth]{example}
     \caption{This is an example figure. Captions appear below each figure.
   Give enough detail for the reader to understand what they're looking at,
   but leave detailed discussion to the main body of the text.}
