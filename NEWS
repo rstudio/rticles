@@ -5,8 +5,7 @@ rticles 0.5 (unreleased)
 
 - Added the PeerJ format (thanks, @zkamvar, #127).
 
-- Added a template for the Royal Society Open Science Journal (thanks,
-  @ThierryO, #135).
+- Added a template for the Royal Society Open Science Journal (thanks, @ThierryO, #135).
 
 - Added a template for Bulletin de l'AMQ (thanks, @desautm, #145).
 
@@ -14,13 +13,9 @@ rticles 0.5 (unreleased)
 
 - Added the Springer Journal Article template (thanks, @strakaps, #164).
 
-- Added the template for MNRAS (Monthly Notices of the Royal Astronomical
-  Society) articles (thanks, @oleskiewicz, #175).
+- Added the template for MNRAS (Monthly Notices of the Royal Astronomical Society) articles (thanks, @oleskiewicz, #175).
 
-- Fixed #6, #10, #49, #132, and #149: dollar signs and other special LaTeX
-  characters such as `^` can be used in code chunks in JSS and R Journal
-  articles now, but Pandoc 2.x will be required (you can use the Preview version
-  of RStudio if you do not want to install Pandoc separately).
+- Fixed #6, #10, #49, #132, and #149: dollar signs and other special LaTeX characters such as `^` can be used in code chunks in JSS and R Journal articles now, but Pandoc 2.x will be required (you can use the Preview version of RStudio if you do not want to install Pandoc separately).
 
 - Fixed #9: special characters such as spaces and underscores can be used in Rmd filenames for R Journal articles now.
 
