@@ -1,21 +1,20 @@
-
 [![Travis-CI Build Status](https://travis-ci.org/rstudio/rticles.svg?branch=master)](https://travis-ci.org/rstudio/rticles)
 
-### Installation
+## Installation
 
 You can install and use **rticles** from CRAN as follows:
 
 ```r
-install.packages("rticles", type = "source")
+install.packages("rticles")
 ```
 
-If you wish to install the development version from GitHub you can do this:
+If you wish to install the development version from GitHub (which often contains new article formats), you can do this:
 
 ```r
 devtools::install_github("rstudio/rticles")
 ```
 
-### Overview
+## Overview
 
 The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown.rstudio.com) LaTeX formats and templates for various formats, including:
 
@@ -57,7 +56,7 @@ Under the hood, LaTeX templates are used to ensure that documents conform precis
 
 Using **rticles** requires the prerequisites described below. You can get most of these automatically by installing the latest release of RStudio (instructions for using **rticles** without RStudio are also provided).
 
-### Using rticles from RStudio
+## Using rticles from RStudio
 
 To use **rticles** from RStudio:
 
@@ -73,7 +72,7 @@ To use **rticles** from RStudio:
 
     ![New R Markdown](http://rmarkdown.rstudio.com/images/new_r_markdown.png)
 
-### Using rticles outside of RStudio
+## Using rticles outside of RStudio
 
 1. Install [pandoc](http://pandoc.org) using the [instructions for your platform](https://github.com/rstudio/rmarkdown/blob/master/PANDOC.md).
 
