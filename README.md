@@ -46,6 +46,8 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [Royal Society Open Science](http://rsos.royalsocietypublishing.org/) journal submissions
 
+- [Sage](https://uk.sagepub.com/en-gb/eur/manuscript-submission-guidelines) journal submissions
+
 - [Springer](https://www.springer.com/gp/livingreviews/latex-templates) journal submissions
 
 - [Statistics in Medicine](http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm) journal submissions

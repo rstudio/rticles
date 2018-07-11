@@ -1,6 +1,6 @@
-\documentclass[$for(classoption)$$classoption$,$endfor$]{sagej}
+\documentclass[$for(classoption)$$classoption$$sep$,$endfor$,$bibliographystyle$]{sagej}
 
-\usepackage{moreverb,url,natbib}
+\usepackage{moreverb,url,natbib, multirow, tabularx}
 \usepackage[colorlinks,bookmarksopen,bookmarksnumbered,citecolor=red,urlcolor=red]{hyperref}
 
 $if(longtable)$
@@ -11,10 +11,6 @@ $for(header-includes)$
 $header-includes$
 $endfor$
 
-%\textsc{\raggedbottom
-%
-%\providecommand{\tightlist}{%
-%  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\textsc{}}
 
 \begin{document}
 
@@ -22,9 +18,9 @@ $endfor$
 
 \runninghead{$runninghead$}
 
-$if(author)$
-\author{$author$}
-$endif$
+\author{$for(author)$$author.name$\affilnum{$author.num$}$sep$, $endfor$}
+
+\affiliation{$for(address)$\affilnum{$address.num$}{$address.org$}$sep$\\$endfor$}
 
 $if(corrauth)$
 \corrauth{$corrauth$}
