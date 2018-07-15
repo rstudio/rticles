@@ -1,20 +1,20 @@
 ---
-title: Template for CoNLL 2018 Proceedings
+title: Template for ACL Papers
 
 author:
   - name: Alice Anonymous
-    affiliation: Some Institute of Technology, Address
+    affiliation: Some Institute of Technology
     email: alice@institute.edu
   - name: Bob Security
-    affiliation: Another University Department, Address
+    affiliation: Another University Department
     email: bob@security.org
-    
+
 abstract: |
   Dolor rerum beatae doloremque animi qui fugit. Dolor ut sed consequatur rem facilis. Unde quisquam id et voluptate et natus. Amet assumenda rerum autem reiciendis. Et sed et deserunt possimus cupiditate aut totam fuga.
 
-aclfinalcopy: false
-bibliography: conll2018.bib
-output: rticles::conll_article
+aclfinalcopy: true
+bibliography: naaclhlt2018.bib
+output: rticles::acl_article
 ---
 
 

@@ -1,4 +1,4 @@
-#' CoNLL paper format
+#' ACL paper format
 #'
 #' @inheritParams rmarkdown::pdf_document
 #' @param ... Additional arguments to \code{rmarkdown::pdf_document}
@@ -14,8 +14,8 @@
 #' }
 #'
 #' @export
-conll_article <- function(..., keep_tex = TRUE) {
+acl_article <- function(..., keep_tex = TRUE) {
   inherit_pdf_document(...,
                        keep_tex = keep_tex,
-                       template = find_resource("conll_article", "template.tex"))
+                       template = find_resource("acl_article", "template.tex"))
 }
