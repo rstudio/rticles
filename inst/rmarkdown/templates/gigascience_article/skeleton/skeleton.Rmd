@@ -97,9 +97,8 @@ keypoints:
 header-includes:
   - \journal{gigascience}
   - \usepackage{natbib}
-  - \bibliographystyle{vancouver-authoryear}
-#   - \setcounter{errorcontextlines}{4}
-#   - \setcounter{secnumdepth}{2}
+#   # the next line is part of the document-class, oup-contemporary
+#   - \bibliographystyle{vancouver-authoryear}
 
 # preamble: Tex literal (newlines will be stripped out)  
 #   - Value is a TeX snippet that will be collapsed to a single line
