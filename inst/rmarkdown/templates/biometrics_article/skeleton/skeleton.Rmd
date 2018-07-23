@@ -59,24 +59,8 @@ Inline equations: $\sum_{i = 2}^\infty\{\alpha_i^\beta\}$
 
 # Figures and tables
 
-Use the tikzDevice to help with typesetting:
-
-```{r setup}
-library(knitr)
-knit_hooks$set(plot = function(x, options) {
-  if ('tikz' %in% options$dev && !options$external) {
-    hook_plot_tex(x, options)
-  } else hook_plot_md(x, options)
-})
-```
 
 ## Figures coming from R
-
-
-```{r fig1, fig.width = 4, fig.height = 4, fig.cap = "Output from `tikz()`", dev = "tikz", external=FALSE, echo = FALSE}
-library(ggplot2)
-print(ggplot(mtcars, aes(x = mpg, y = qsec)) + geom_point() + theme_bw())
-```
 
 #### Normal figure embedded in text
 
