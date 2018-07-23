@@ -28,7 +28,7 @@ Authors@R: c(
   person("Dominik", "Leutnant", role = c("aut", "cph"), email = "leutnant@fh-muenster.de"),
   person(family = "MDPI", role = c("aut", "cph")),
   person("Arthur", "Eschenlauer", role = c("aut", "cph"), email = "esch0041@umn.edu", comment = c(ORCID = "0000-0002-2882-0508")),
-  person(family = "GigaScience", role = c("aut", "cph"))
+  person(family = "GigaScience", role = c("aut", "cph")),
   person("Oğuzhan", "Öğreden", role = c("aut"), comment = c(ORCID = "0000-0002-9949-3348"))
   )
 Description: A suite of custom R Markdown formats and templates for
