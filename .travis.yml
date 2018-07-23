@@ -1,0 +1,18 @@
+language: r
+cache:
+  packages: true
+  directories:
+    - $HOME/.TinyTeX
+latex: false
+
+env:
+  global:
+    - _R_CHECK_TESTS_NLINES_=0 PATH=$HOME/bin:$PATH
+
+addons:
+  apt:
+    packages:
+    - ghostscript
+
+before_install:
+  - wget -qO- https://github.com/yihui/tinytex/raw/master/tools/download-travis-linux.sh | sh

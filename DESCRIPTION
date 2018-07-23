@@ -1,13 +1,13 @@
 Package: rticles
 Type: Package
 Title: Article Formats for R Markdown
-Version: 0.4.2.9001
+Version: 0.5.2.9001
 Authors@R: c(
-  person("JJ", "Allaire", role = c("aut", "cre"), email = "jj@rstudio.com"),
+  person("JJ", "Allaire", role = "aut", email = "jj@rstudio.com"),
+  person("Yihui", "Xie", role = c("aut", "cre"), email = "xie@yihui.name", comment = c(ORCID = "0000-0003-0645-5666")),
   person(family = "R Foundation", role = c("aut", "cph")),
   person("Hadley", "Wickham", role = "aut", email = "hadley@rstudio.com"),
   person(family = "Journal of Statistical Software", role = c("aut", "cph")),
-  person("Yihui", "Xie", role = "aut", email = "yihui@rstudio.com"),
   person(family = "RStudio", role = "cph"),
   person("Ramnath ", "Vaidyanathan", role = c("aut", "cph"), email = "ramnath.vaidya@gmail.com"),
   person(family = "Association for Computing Machinery", role = c("aut", "cph")),
@@ -23,16 +23,21 @@ Authors@R: c(
   person("Miao", "Yu", role = c("aut", "cph"), email = "yufreecas@gmail.com"),
   person("Daniel", "Emaasit", role = c("aut", "cph"), email = "daniel.emaasit@gmail.com"),
   person("Thierry", "Onkelinx", role = c("aut", "cph"), email = "thierry.onkelinx@inbo.be"),
+  person("Alessandro", "Gasparini", role = c("aut", "cph"), email = "ag475@leicester.ac.uk"),
   person("Marc-Andre", "Desautels", role = c("aut", "cph"), email = "marc-andre.desautels@cstjean.qc.ca"),
   person("Dominik", "Leutnant", role = c("aut", "cph"), email = "leutnant@fh-muenster.de"),
   person(family = "MDPI", role = c("aut", "cph")),
-  person("Arthur", "Eschenlauer", role = c("aut", "cph"), email = "esch0041@umn.edu"),
+  person("Arthur", "Eschenlauer", role = c("aut", "cph"), email = "esch0041@umn.edu", comment = c(ORCID = "0000-0002-2882-0508")),
   person(family = "GigaScience", role = c("aut", "cph"))
+  person("Oğuzhan", "Öğreden", role = c("aut"), comment = c(ORCID = "0000-0002-9949-3348"))
   )
 Description: A suite of custom R Markdown formats and templates for
   authoring journal articles and conference submissions.
 License: GPL-3
-Imports: utils, rmarkdown, knitr, yaml
+Imports: utils, rmarkdown, knitr, yaml, tinytex, xfun
 SystemRequirements: GNU make
+URL: https://github.com/rstudio/rticles
+BugReports: https://github.com/rstudio/rticles/issues
 RoxygenNote: 6.0.1
-Suggests: testthat, bookdown
+Suggests: testit, bookdown, xtable
+Encoding: UTF-8

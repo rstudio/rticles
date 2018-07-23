@@ -1,0 +1,145 @@
+---
+title: A demonstration of the \LaTeX class file for Statistical Methods in Medical Research with Rmarkdown
+runninghead: Uthor \emph{et al}.
+author:
+- name: A. Uthor*
+  num: 1,2
+- name: O. Tro
+  num: 2
+- name: O. Vriga
+  num: 3
+address:
+- num: 1
+  org: Department of Incredible Research, University A, City A, Country A
+- num: 2
+  org: Department of Applied Things, University B, City B, Country B
+- num: 3
+  org: Very Important Stuff Committee, Institute C, City C, Country C
+corrauth: "Corresponding author name, This is sample corresponding address."
+email: correspondingauthor@protonmail.com
+abstract: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut elit odio. Donec fermentum tellus neque, vitae fringilla orci pretium vitae. Fusce maximus finibus facilisis. Donec ut ullamcorper turpis. Donec ut porta ipsum. Nullam cursus mauris a sapien ornare pulvinar. Aenean malesuada molestie erat quis mattis. Praesent scelerisque posuere faucibus. Praesent nunc nulla, ullamcorper ut ullamcorper sed, molestie ut est. Donec consequat libero nisi, non semper velit vulputate et. Quisque eleifend tincidunt ligula, bibendum finibus massa cursus eget. Curabitur aliquet vehicula quam non pulvinar. Aliquam facilisis tortor nec purus finibus, sit amet elementum eros sodales. Ut porta porttitor vestibulum. Integer molestie, leo ut maximus aliquam, velit dui iaculis nibh, eget hendrerit purus risus sit amet dolor. Sed sed tincidunt ex. Curabitur imperdiet egestas tellus in iaculis. Maecenas ante neque, pretium vel nisl at, lobortis lacinia neque. In gravida elit vel volutpat imperdiet. Sed ut nulla arcu. Proin blandit interdum ex sit amet laoreet. Phasellus efficitur, sem hendrerit mattis dapibus, nunc tellus ornare nisi, nec eleifend enim nibh ac ipsum. Aenean tincidunt nisl sit amet facilisis faucibus. Donec odio erat, bibendum eu imperdiet sed, gravida luctus turpis."
+keywords: Class file; \LaTeX; SMMR; Rmarkdown;
+classoption:
+  - Royal
+  - times
+bibliography: bibfile
+bibliographystyle: sageh
+output:
+  rticles::sage_article:
+    keep_tex: yes
+---
+
+# The Article Header Information
+
+YAML header:
+
+```
+output:
+  rticles::sim_article:
+    keep_tex: TRUE
+```
+
+Configure the YAML header including the following elements:
+
+* `title`: Title
+
+* `runninghead`: Author last names, use _et al._ if there are three or more authors.
+
+* `author`: List of author(s) containing `name` and `num`
+
+* `corrauth`: Corresponding author's name and address.
+
+* `email`: Correspondence email
+
+* `abstract`: Limited to 200 words
+
+* `keywords`: Keywords for the article
+
+* `bibliography`: BibTeX `.bib` file
+
+* `bibliographystyle`: sageh or sagev
+
+* `classoption`: options of the `sagej` class
+
+## Remarks
+
+2. `bibliographystyle`
+
+3. `classoption`
+
+4. Keywords are separated by commas.
+
+# The Body of the Article
+
+## Mathematics
+
+Use mathematics in Rmarkdown as usual.
+
+## Figures and Tables
+
+Figures are supported from R code:
+
+```{r plot-ref, fig.cap = "Fancy Caption\\label{fig:plot}", out.width='100%'}
+x = rnorm(10)
+y = rnorm(10)
+plot(x, y)
+```
+
+...and can be referenced (Figure \ref{fig:plot}) by including the `\\label{}` tag in the `fig.cap` attribute of the R chunk: `fig.cap = "Fancy Caption\\label{fig:plot}"`. It is a quirky hack at the moment, see [here](https://github.com/yihui/knitr/issues/323).
+
+Analogously, use Rmarkdown to produce tables as usual:
+
+```{r, results = "asis"}
+if (!require("xtable")) install.packages("xtable")
+xt <- xtable(head(cars), caption = "A table", label = "tab:table")
+print(xt, comment = FALSE)
+```
+
+Referenced via \ref{tab:table}. You can also use the YAML option `header-includes` to includes custom \LaTeX packages for tables (keep in mind that `pandoc` uses `longtables` by default, and it is hardcoded; some things may require including the package `longtable`). E.g., using `ctable`:
+```
+header-includes:
+- \usepackage{ctable}
+```
+Then, just write straight-up \LaTeX code and reference is as usual (`\ref{tab:ctable}`):
+```
+\ctable[cap = {Short caption},
+        caption = {A caption for this table.},
+        label={tab:ctable},]
+        {cc}
+        {
+        \tnote[$\ast$]{Footnote 1}
+        \tnote[$\dagger$]{Other footnote}
+        \tnote[b]{Mistakes are possible.}
+        }{
+        \FL
+        COL 1\tmark[a] & COL 2\tmark[$\ast$]
+        \ML
+        6.92\tmark[$\dagger$] & 0.09781 \\
+        6.93\tmark[$\dagger$] & 0.09901 \\
+        97 & 2000
+        \LL
+}
+```
+
+It is also possible to set the `YAML` option `longtable: true` and use markdown tables (or the `knitr::kable` function): `knitr::kable(head(cars))` produces the same table as the `xtable` example presented before.
+
+## Cross-referencing
+
+The use of the Rmarkdown equivalent of the \LaTeX cross-reference system
+for figures, tables, equations, etc., is encouraged (using `[@<name>]`, equivalent of `\ref{<name>}` and `\label{<name>}`). That works well for citations in Rmarkdown, not so well for figures and tables. In that case, it is possible to revert to standard \LaTeX syntax.
+
+## Double Spacing
+
+If you need to double space your document for submission please use the `doublespace` option in the header.
+
+# Bibliography
+
+Link a `.bib` document via the YAML header, and bibliography will be printed at the very end (as usual). The default bibliography style is provided by Wiley as in `WileyNJD-AMA.bst`, do not delete that file.
+
+Use the Rmarkdown equivalent of the \LaTeX citation system using `[@<name>]`. Example: [@Taylor1937], [@Knupp1999; @Kamm2000].
+
+To include all citation from the `.bib` file, add `\nocite{*}` before the end of the document.
+
+# Further information
+
+All \LaTeX enviroments supported by the main template are supported here as well; see the `.tex` sample file [here](http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm) for more details and example.

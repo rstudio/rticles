@@ -1,8 +1,4 @@
-\documentclass[times,$for(classoption)$$classoption$$sep$,$endfor$]{simauth}
-\usepackage{moreverb}
-\usepackage[colorlinks,bookmarksopen,bookmarksnumbered,citecolor=red,urlcolor=red]{hyperref}
-\usepackage[numbers, sort&compress]{natbib}
-\def\volumeyear{$year$}
+\documentclass[AMA,STIX1COL,$for(classoption)$$classoption$$sep$,$endfor$]{WileyNJD-v2}
 
 $if(longtable)$
 \usepackage{longtable}
@@ -12,19 +8,53 @@ $for(header-includes)$
 $header-includes$
 $endfor$
 
+$if(articletype)$
+\articletype{$articletype$}
+$endif$
+
+$if(received)$
+\received{$received$}
+$endif$
+
+$if(revised)$
+\revised{$revised$}
+$endif$
+
+$if(accepted)$
+\accepted{$accepted$}
+$endif$
+
+\raggedbottom
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
 \begin{document}
 
-\runninghead{$authabbr$}
-
 \title{$title$}
-\author{$author$}
-\address{$for(address)$\affilnum{$address.num$} $address.address$\\$endfor$}
-\corraddr{$corraddr$}
+
+$for(author)$
+\author[$author.num$]{$author.name$}
+$endfor$
+
+$if(authormark)$
+\authormark{$authormark$}
+$endif$
+
+$for(address)$
+\address[$address.num$]{$address.org$}
+$endfor$
+
+$if(corres)$
+\corres{$corres$}
+$endif$
+
+$if(presentaddress)$
+\presentaddress{$presentaddress$}
+$endif$
 
 $if(abstract)$
-\begin{abstract}
-$abstract$
-\end{abstract}
+\abstract{$abstract$}
 $endif$
 
 $if(keywords)$
@@ -35,16 +65,7 @@ $endif$
 
 $body$
 
-$if(acknowledgements)$
-\acks $acknowledgements$
-$endif$
-
-$if(natbib)$
-$if(bibliographystyle)$
-\bibliographystyle{$bibliographystyle$}
-$else$
-\bibliographystyle{wileyj}
-$endif$
+$if(bibliography)$
 \bibliography{$bibliography$}
 $endif$
 
@@ -52,4 +73,5 @@ $for(include-after)$
 $include-after$
 
 $endfor$
+
 \end{document}

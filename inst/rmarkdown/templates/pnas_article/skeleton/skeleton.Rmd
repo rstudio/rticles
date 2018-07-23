@@ -67,7 +67,7 @@ This PNAS journal template is provided to help you write your work in the
 correct journal format. Instructions for use are provided below.
 
 Note: please start your introduction without including the word
-“Introduction” as a section heading (except for math articles in the
+"Introduction" as a section heading (except for math articles in the
 Physical Sciences section); this heading is implied in the first
 paragraphs.
 
@@ -94,7 +94,7 @@ Submitting Manuscripts {#submitting-manuscripts .unnumbered}
 
 All authors must submit their articles at
 [PNAScentral](http://www.pnascentral.org/cgi-bin/main.plex). If you are
-using Overleaf to write your article, you can use the “Submit to PNAS”
+using Overleaf to write your article, you can use the "Submit to PNAS"
 option in the top bar of the editor window.
 
 Format {#format .unnumbered}
