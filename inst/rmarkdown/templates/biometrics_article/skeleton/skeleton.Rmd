@@ -1,7 +1,7 @@
 ---
 title: Title here
 
-authors: 
+author: 
 - name: Author 1
   affiliation: Department of YYY, University of XXX
   email: abc@def
