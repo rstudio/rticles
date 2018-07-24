@@ -4,7 +4,7 @@
 \alias{biometrics_article}
 \title{Biometrics Journal format.}
 \usage{
-biometrics_article(..., keep_tex = TRUE, citation_package = "none")
+biometrics_article(..., keep_tex = TRUE, citation_package = "natbib")
 }
 \arguments{
 \item{...}{Arguments to \code{rmarkdown::pdf_document}}
