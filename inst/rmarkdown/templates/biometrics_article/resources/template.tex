@@ -34,12 +34,16 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{longtable}
+\usepackage{booktabs}
 %% \raggedbottom % To avoid glue in typesetteing, sbs>>
 
 $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
 
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setcounter{footnote}{2}

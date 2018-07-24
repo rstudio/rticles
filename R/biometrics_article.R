@@ -12,7 +12,7 @@
 #' }
 #'
 #' @export
-biometrics_article <- function(..., keep_tex = TRUE, citation_package = 'none'){
+biometrics_article <- function(..., keep_tex = TRUE, citation_package = 'natbib'){
   template <- find_resource("biometrics_article", "template.tex")
   inherit_pdf_document(template = template,
                               keep_tex = keep_tex,
