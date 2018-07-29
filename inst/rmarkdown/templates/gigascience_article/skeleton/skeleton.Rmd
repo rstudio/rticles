@@ -106,8 +106,8 @@ header-includes:
 #  \setcounter{errorcontextlines}{4}
 #  \setcounter{secnumdepth}{2}
 
-# document-class - the TeX document class - for GigaScience, muct be oup-contemporary
-document-class: oup-contemporary
+# documentclass - the TeX document class - for GigaScience, must be oup-contemporary
+documentclass: oup-contemporary
 
 # paper: 'a4paper' or 'letterpaper'
 paper: letterpaper
@@ -117,29 +117,26 @@ paper: letterpaper
 reftype: num-refs
 #reftype: alpha-refs
 
-# pandoc_args: arguments to pandoc
-#   - enable with '+' and disable with '-'
-#       - see: https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html#pandoc_markdown
-#   - concerning specific keys:
-#       raw_tex:
-#         - allow direct inclusion of TeX
-#         - see https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html#raw-tex`
-pandoc_args: +raw_tex
-
-# Using rmarkdown for citations is not recommended: 
-#   - TeX citations give you more flexibility
+# In some cases, it may be easier to use TeX than rmarkdown for citations: 
+#   - TeX citations may give you more flexibility
 #   - e.g., references can be deleted or added subsequent to translation from rmarkdown to TeX
-# bibliography and csl are only needed for citations from rmarkdown
+#      - This may be important if you need to delete references on Overleaf and regenerating
+#        the TeX is not an option
+# Hence: 'bibliography' and 'csl' below are commented out because they are only needed for citations from rmarkdown
+#
 # bibliography: the file with the bibtex entries
 #bibliography: paper-refs.bib
+#
 # csl: this is needed only for citations from rmarkdown 
 #csl: gigascience.csl
 
 # output: specifies the R class used to translate rmarkdown to tex and pdf
-output: rticles::gigascience_article
+output: 
+  rticles::gigascience_article:
+    md_extensions: +raw_tex
 ---
 
-\begin{epigraph}  {\small{\href{https://academic.oup.com/gigascience/pages/instructions_to_authors}{GigaScience Instructios to Authors}}}
+\begin{epigraph}  {\small{\href{https://academic.oup.com/gigascience/pages/instructions_to_authors}{GigaScience Instructions to Authors}}}
 Sample epigraph: For creating manuscripts in LaTeX, Gigascience recommends the use of its own LaTeX class files. Our class files are available online \href{https://www.overleaf.com/latex/templates/template-for-gigascience-journal-manuscript-submissions/shgtrssvbjhs}{at Overleaf https://www.overleaf.com/latex/templates/template-for-gigascience-journal-manuscript-submissions/shgtrssvbjhs}.  The GigaScience "oup-contemporary.cls" class obtained via this Overleaf link was used as the basis of this "rticle".
 \end{epigraph}
 
@@ -149,10 +146,7 @@ TeX/LaTeX users: Please use OUP’s TeX template and BibTeX stylefile if you use
 
 ## About the GigaScience `rticle` template
 
-The `rticles::gigascience_journal` template is the blended `rmardkdown` and \LaTeX{} template for GigaScience journal manuscript submissions.  If you do not want to include \LaTeX{} commands inline, remove the following line from the YAML header.
-```
-   pandoc_args: raw_tex
-```
+The `rticles::gigascience_journal` template is the blended `rmarkdown` and \text{\LaTeX} template for GigaScience journal manuscript submissions.
 
 ## Important preliminaries
 
@@ -236,12 +230,13 @@ Use R to generate tables rather than attempting to specify them in rmarkdown.
 ## Equations
 
 ```
-inline equation: $A = \pi*r^{2}$
+inline equation: $A = \pi*r^{2}$ (Area of a circle)
 ```
-inline equation: $A = \pi*r^{2}$
+inline equation: $A = \pi*r^{2}$ (Area of a circle)
 
 ```
-full-line equation: $$A = \pi*r^{2}$$
+full-line equation: 
+$$A = \pi*r^{2}$$
 ```
 $$A = \pi*r^{2}$$
 
@@ -270,15 +265,14 @@ kable(
 ```
 \end{table}
 
-### Laying out tables in \LaTeX{}
+### Laying out tables in \text{\LaTeX}
 
-Table layout in \LaTeX{} is much less intuitive than using R, but this might be your only choice unless you define a section that has only one column per page.
-
+Table layout in \text{\LaTeX} is much less intuitive than using R, but this is possible if you find it expedient.
 
 
 ## Pre-existing figure
 
-It is inadvisable to generate images from R code chunks, but it's fine to include pre-existing images.
+When you are using RMarkdown to edit a manuscript, it may not always be better to generate images from R code chunks than to include pre-existing images; on the other hand, there certainly is nothing wrong with generating images from markdown.
 
 ```{r warning=FALSE, dev='pdf', fig.show='hide', echo=FALSE, message=FALSE}
 # That being said, a file is being generated here solely for demonstration purposes.
@@ -289,9 +283,9 @@ invisible({
 })
 ```
 
-### Including a figure using \LaTeX{}
+### Including a figure using \text{\LaTeX}
 
-The easier way to include a figure is with \LaTeX{}.
+With the right \text{\LaTeX} it is comparatively easy to include and control the presentation of a figure is with \text{\LaTeX}.
 Figure \ref{fig:pressure} is included this way, and the figure number is a clickable reference.
 ```
 % "bt!" means favor putting the table at the 
@@ -303,26 +297,40 @@ Figure \ref{fig:pressure} is included this way, and the figure number is a click
 \begin{figure}[bt!]
 \centering
 \includegraphics[width=\linewidth]{pressure.pdf}
-\caption{Pressure figure from \LaTeX{}}
+\caption{Pressure figure from \text{\LaTeX}}
 \label{fig:pressure}
 \end{figure}
 ```
 \begin{figure}[bt!]
 \centering
 \includegraphics[width=\linewidth]{pressure.pdf}
-\caption{Pressure figure from \LaTeX{}}
+\caption{Pressure figure from \text{\LaTeX}}
 \label{fig:pressure}
 \end{figure}
 
 ### Including a figure using markdown
 
-The "Pressure from markdown"" figure is scaled 48% because there are two columns, and failing to scale the image results in an image that is two columns wide; when scaled to 50%, it does not quite fit, so the scaling value needed to be determined emprically.  Furthermore, no clickable link to it is available becasue the generated TeX code has no label attribute.  In fact, to get the figure number, it would probably be necessary to resort to using a \LaTeX{} expression anyway....
-```
-![Pressure figure from markdown](pressure.pdf){width=48%}
-```
-![Pressure figure from markdown](pressure.pdf){width=48%}
+The "Pressure from markdown"" figure is scaled to 100% because there are two columns, and failing to scale the image results in an image that is two columns wide.  Furthermore, no clickable link to it is available becasue the generated TeX code has no label attribute.  So, you may resort to using a \text{\LaTeX} expression anyway....
 
-Overall, it's easier to use \LaTeX{} code than force rmarkdown to do the task.
+\begingroup
+    \fontsize{6pt}{8pt}\selectfont
+    \begin{verbatim}  
+```{r, results='asis', echo=FALSE}
+cat("    ```{r,out.width='100%',fig.align='center',fig.cap='Pressure',echo=FALSE}
+    # Note that out.width='100%' is necessary to
+    #   fit the figure to a single column
+    knitr::include_graphics('pressure.pdf')
+    ```")
+```
+    \end{verbatim}  
+\endgroup
+
+```{r, out.width='100%', fig.align='center', fig.cap='Pressure', echo=FALSE}
+# note: out.width='100%' is necessary to fit the figure to a single column
+knitr::include_graphics('pressure.pdf')
+```
+
+Overall, it may be easier to use \text{\LaTeX} code than force rmarkdown to do the task.
 
 ```{r refs_section_label, echo=FALSE}
   # \bibliography generates the References section label and makes the bibliography entries available through natbib to citep and citet
@@ -330,26 +338,25 @@ Overall, it's easier to use \LaTeX{} code than force rmarkdown to do the task.
   #   The workaround is to open the resulting .tex file and click 'Compile PDF' a few times until there is no error.
 ```
 
-## Citations in rmarkdown (not recommended)
+## Citations in rmarkdown
 
-Using rmarkdown for citations is not recommended: 
-  - TeX citations give you more flexibility
-  - e.g., references can be deleted or added subsequent to translation from rmarkdown to TeX
+Using TeX for citations rather than rmarkdown for citations may be advantageous.  For example, TeX citations give you the flexibility of deleting or adding references can be deleted or added subsequent to translation from rmarkdown to TeX, which could be very helpful under circumstances where you don't have the option of regenerating your TeX from rmarkdown.
 
-You can generate explicit references in rmarkdown using a semicolon-separated-values syntax, enclosed in square brackets, prefixing each reference with the `@` character, e.g.,  `[@Tufte:1983; @Cleveland:1993]`, which results in this:  [@Tufte:1983; @Cleveland:1993].  The numbers are in the tex output file, which means that editing to add or remove references *must* be done in the rmarkdown file.  So, this is probably *not* a desirable path to take.
+That being said, you can generate explicit references in rmarkdown using a semicolon-separated-values syntax, enclosed in square brackets, prefixing each reference with the `@` character, e.g.,  `[@Tufte:1983; @Cleveland:1993]`, which results in this:  [@Tufte:1983; @Cleveland:1993].  The reference numbers are coded as integers in the TeX output file, which means that editing to add or remove references *must* be done in the rmarkdown file to avoid labor-intensive searching and replacing of the TeX file if the references change.  So, this may not be a desirable path to take unless you are absolutely sure that you always have the option of generating TeX from your markdown, i.e., you won't be exchanging TeX with and editor.
 
 Note that, to get this to work, the following need to be defined in the YAML header:
 ```
 # these only needed for citations from rmarkdown
 # bibliography: the file with the bibtex entries
-#bibliography: paper-refs.bib
+bibliography: paper-refs.bib
 # csl: this is needed only for citations from rmarkdown 
-#csl: gigascience.csl
+csl: gigascience.csl
 ```
-
+<!--
 \pagebreak
+-->
 
-# Using \LaTeX{} features with this template
+# Using \text{\LaTeX} features with this template
 
 ## Figures and Tables
 
@@ -459,7 +466,7 @@ Gadgets & 13 & Under-supplied \\
 \end{tablenotes}
 \end{table*}
 
-## Citations in \LaTeX{}
+## Citations in \text{\LaTeX}
 
 Use the `num-refs` option for numerical citations in the `reftype` item in the YAML header or `alph-refs` for author-year citations.  `alpha-refs` may not work.
 
