@@ -1,6 +1,6 @@
 ---
 title: Template for preparing your manuscript submission to Copernicus journals using RMarkdown
-journal: "`r rticles::copernicus_journal_abbreviations(name = 'communication')`"
+journal: "`r rticles::copernicus_journal_abbreviations(journal_name = 'communication')`"
 author:
   - given_name: Daniel
     surname: Nüst

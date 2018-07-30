@@ -7,6 +7,7 @@
 #' @param base_format The function to use for the base format of the article.
 #'   By default, this is \code{rmarkdown::pdf_document}, but to use bookdown's
 #'   cross-referencing feature, this can be set to \code{bookdown::pdf_document2}
+#' @param journal_name A regular expression to filter the by the journal name, see \code{pattern} in \code{\link[base]{grep}}; defaults to \code{*}.
 #'
 #' @return R Markdown output format to pass to
 #'   \code{\link[rmarkdown:render]{render}}
@@ -17,6 +18,8 @@
 #' An number of required and optional manuscript sections, e.g. \code{acknowledgements}, \code{competinginterests}, or \code{authorcontribution}, must be declared using the respective properties of the R Markdown header - see skeleton file.
 #'
 #' \strong{Version:} Based on copernicus_package.zip in the version 5.0, 21 March 2018, using \code{copernicus.cls} in version 8.67, 30 January 2018
+#'
+#' \strong{Copernicus journal abbreviations:} You can use the function \code{copernicus_journal_abbreviations()} to get the journal abbreviation for all journals supported by the copernicus article template.
 #'
 #' \strong{Important note:} The online guidelines by Copernicus are the official resource.
 #' Copernicus is not responsible for the community contributions made to support the template in this package.
@@ -41,7 +44,8 @@
 #' \url{https://publications.copernicus.org/for_authors/manuscript_preparation.html}
 #'
 #' @examples
-#'
+#' names(copernicus_journal_abbreviations())
+#' copernicus_journal_abbreviations(journal_name = "Science Data")
 #' \dontrun{
 #' library("rmarkdown")
 #' draft("MyArticle.Rmd", template = "copernicus_article", package = "rticles")
@@ -57,7 +61,7 @@ copernicus_article <- function(...,
                            "-autolink_bare_uris", # disables automatic links, needed for plain email in \correspondence
                            "-auto_identifiers"    # disables \hypertarget commands
                            )) {
-  if (inherits(base_format, "character")) {
+  if (is.character(base_format)) {
     FMT <- eval(parse(text = base_format))
   } else {
     FMT <- match.fun(base_format)
@@ -112,18 +116,9 @@ copernicus_journals <- list(
   "Wind Energy Science" = "wes"
 )
 
-#' Copernicus journal abbreviations
-#'
-#' Get the journal abbreviation for all journals supported by the copernicus article template.
-#'
-#' @param name A regular expression to filter the by the journal name, see \code{pattern} in \code{\link[base]{grep}}; defaults to \code{*}.
-#'
-#' @examples
-#' names(copernicus_journal_abbreviations())
-#' copernicus_journal_abbreviations(name = "Science Data")
-#'
+#' @rdname copernicus_article
 #' @export
-copernicus_journal_abbreviations <- function(name = "*") {
-  journal <- copernicus_journals[grepl(pattern = name, x = names(copernicus_journals), ignore.case = TRUE)]
+copernicus_journal_abbreviations <- function(journal_name = "*") {
+  journal <- copernicus_journals[grepl(pattern = journal_name, x = names(copernicus_journals), ignore.case = TRUE)]
   return(unlist(journal))
 }

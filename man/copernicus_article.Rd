@@ -2,11 +2,14 @@
 % Please edit documentation in R/copernicus_article.R
 \name{copernicus_article}
 \alias{copernicus_article}
+\alias{copernicus_journal_abbreviations}
 \title{Copernicus journals format.}
 \usage{
 copernicus_article(..., keep_tex = TRUE, citation_package = "natbib",
   base_format = rmarkdown::pdf_document,
-  md_extensions = c("-autolink_bare_uris"))
+  md_extensions = c("-autolink_bare_uris", "-auto_identifiers"))
+
+copernicus_journal_abbreviations(journal_name = "*")
 }
 \arguments{
 \item{...}{Additional arguments to \code{base_format}}
@@ -23,6 +26,8 @@ cross-referencing feature, this can be set to \code{bookdown::pdf_document2}}
 \item{md_extensions}{Markdown extensions to be added or removed from the
 default definition or R Markdown. See the \code{\link{rmarkdown_format}} for
 additional details.}
+
+\item{journal_name}{A regular expression to filter the by the journal name, see \code{pattern} in \code{\link[base]{grep}}; defaults to \code{*}.}
 }
 \value{
 R Markdown output format to pass to
@@ -38,6 +43,8 @@ This was adapted from
 An number of required and optional manuscript sections, e.g. \code{acknowledgements}, \code{competinginterests}, or \code{authorcontribution}, must be declared using the respective properties of the R Markdown header - see skeleton file.
 
 \strong{Version:} Based on copernicus_package.zip in the version 5.0, 21 March 2018, using \code{copernicus.cls} in version 8.67, 30 January 2018
+
+\strong{Copernicus journal abbreviations:} You can use the function \code{copernicus_journal_abbreviations()} to get the journal abbreviation for all journals supported by the copernicus article template.
 
 \strong{Important note:} The online guidelines by Copernicus are the official resource.
 Copernicus is not responsible for the community contributions made to support the template in this package.
@@ -59,7 +66,8 @@ Therefore, please keep the following in mind:
 If you use \code{rmarkdown::pdf_document()}, all internal references (i.e. tables and figures) must use \code{\\ref\{\}} whereas with \code{bookdown::pdf_document2()}, you can additionally use \code{\\@ref()}.
 }
 \examples{
-
+names(copernicus_journal_abbreviations())
+copernicus_journal_abbreviations(journal_name = "Science Data")
 \dontrun{
 library("rmarkdown")
 draft("MyArticle.Rmd", template = "copernicus_article", package = "rticles")
