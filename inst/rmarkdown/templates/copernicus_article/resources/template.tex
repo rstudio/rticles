@@ -1,0 +1,226 @@
+%% Copernicus Publications Manuscript Preparation Template for LaTeX Submissions
+%% ---------------------------------
+%% This template should be used for copernicus.cls
+%% The class file and some style files are bundled in the Copernicus Latex Package, which can be downloaded from the different journal webpages.
+%% For further assistance please contact Copernicus Publications at: production@copernicus.org
+%% https://publications.copernicus.org/for_authors/manuscript_preparation.html
+
+
+%% Please use the following documentclass and journal abbreviations for discussion papers and final revised papers.
+
+%% 2-column papers and discussion papers
+\documentclass[$journal$, manuscript]{copernicus}
+
+
+
+%% Journal abbreviations (please use the same for discussion papers and final revised papers)
+
+
+% Advances in Geosciences (adgeo)
+% Advances in Radio Science (ars)
+% Advances in Science and Research (asr)
+% Advances in Statistical Climatology, Meteorology and Oceanography (ascmo)
+% Annales Geophysicae (angeo)
+% Archives Animal Breeding (aab)
+% ASTRA Proceedings (ap)
+% Atmospheric Chemistry and Physics (acp)
+% Atmospheric Measurement Techniques (amt)
+% Biogeosciences (bg)
+% Climate of the Past (cp)
+% Drinking Water Engineering and Science (dwes)
+% Earth Surface Dynamics (esurf)
+% Earth System Dynamics (esd)
+% Earth System Science Data (essd)
+% E&G Quaternary Science Journal (egqsj)
+% Fossil Record (fr)
+% Geographica Helvetica (gh)
+% Geoscience Communication (gc)
+% Geoscientific Instrumentation, Methods and Data Systems (gi)
+% Geoscientific Model Development (gmd)
+% History of Geo- and Space Sciences (hgss)
+% Hydrology and Earth System Sciences (hess)
+% Journal of Micropalaeontology (jm)
+% Journal of Sensors and Sensor Systems (jsss)
+% Mechanical Sciences (ms)
+% Natural Hazards and Earth System Sciences (nhess)
+% Nonlinear Processes in Geophysics (npg)
+% Ocean Science (os)
+% Primate Biology (pb)
+% Proceedings of the International Association of Hydrological Sciences (piahs)
+% Scientific Drilling (sd)
+% SOIL (soil)
+% Solid Earth (se)
+% The Cryosphere (tc)
+% Web Ecology (we)
+% Wind Energy Science (wes)
+
+
+%% \usepackage commands included in the copernicus.cls:
+%\usepackage[german, english]{babel}
+%\usepackage{tabularx}
+%\usepackage{cancel}
+%\usepackage{multirow}
+%\usepackage{supertabular}
+%\usepackage{algorithmic}
+%\usepackage{algorithm}
+%\usepackage{amsthm}
+%\usepackage{float}
+%\usepackage{subfig}
+%\usepackage{rotating}
+
+% The "Technical instructions for LaTex" by Copernicus require _not_ to insert any additional packages.
+%$for(header-includes)$
+%$header-includes$
+%$endfor$
+
+$if(algorithms)$
+\usepackage{algorithmic}
+\usepackage{algorithm}
+$endif$
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+\begin{document}
+
+\title{$title$}
+
+
+$for(author)$
+\Author[$author.affiliation$]{$author.given_name$}{$author.surname$}
+$endfor$
+
+
+$for(affiliation)$
+\affil[$affiliation.code$]{$affiliation.address$}
+$endfor$
+
+%% The [] brackets identify the author with the corresponding affiliation. 1, 2, 3, etc. should be inserted.
+
+
+
+\runningtitle{$running.title$}
+
+\runningauthor{$running.author$}
+
+$for(author)$
+$if(author.corresponding)$
+\correspondence{$author.given_name$\ $author.surname$\ ($author.email$)}
+$endif$
+$endfor$
+
+
+
+\received{}
+\pubdiscuss{} %% only important for two-stage journals
+\revised{}
+\accepted{}
+\published{}
+
+%% These dates will be inserted by Copernicus Publications during the typesetting process.
+
+
+\firstpage{1}
+
+\maketitle
+
+
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
+
+
+$if(copyrightstatement)$
+\copyrightstatement{$copyrightstatement$}
+$endif$
+
+
+$body$
+
+
+$if(availability.code)$
+\codeavailability{$availability.code$} %% use this section when having only software code available
+$endif$
+
+$if(availability.data)$
+\dataavailability{$availability.data$} %% use this section when having only data sets available
+$endif$
+
+$if(availability.codedata)$
+\codedataavailability{$availability.codedata$} %% use this section when having data sets and software code available
+$endif$
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% optional
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(appendix)$
+\appendix
+$appendix$
+\noappendix
+$endif$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(authorcontribution)$
+\authorcontribution{$authorcontribution$} %% optional section
+$endif$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\competinginterests{$competinginterests$} %% this section is mandatory even if you declare that no competing interests are present
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(disclaimer)$
+\disclaimer{$disclaimer$} %% optional section
+$endif$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(acknowledgements)$
+\begin{acknowledgements}
+$acknowledgements$
+\end{acknowledgements}
+$endif$
+
+%% REFERENCES
+%% DN: pre-configured to BibTeX for rticles
+
+%% The reference list is compiled as follows:
+%%
+%% \begin{thebibliography}{}
+%%
+%% \bibitem[AUTHOR(YEAR)]{LABEL1}
+%% REFERENCE 1
+%%
+%% \bibitem[AUTHOR(YEAR)]{LABEL2}
+%% REFERENCE 2
+%%
+%% \end{thebibliography}
+
+%% Since the Copernicus LaTeX package includes the BibTeX style file copernicus.bst,
+%% authors experienced with BibTeX only have to include the following two lines:
+%%
+\bibliographystyle{copernicus}
+\bibliography{$bibliography$}
+%%
+%% URLs and DOIs can be entered in your BibTeX file as:
+%%
+%% URL = {http://www.xyz.org/~jones/idx_g.htm}
+%% DOI = {10.5194/xyz}
+
+
+%% LITERATURE CITATIONS
+%%
+%% command                        & example result
+%% \citet{jones90}|               & Jones et al. (1990)
+%% \citep{jones90}|               & (Jones et al., 1990)
+%% \citep{jones90,jones93}|       & (Jones et al., 1990, 1993)
+%% \citep[p.~32]{jones90}|        & (Jones et al., 1990, p.~32)
+%% \citep[e.g.,][]{jones90}|      & (e.g., Jones et al., 1990)
+%% \citep[e.g.,][p.~32]{jones90}| & (e.g., Jones et al., 1990, p.~32)
+%% \citeauthor{jones90}|          & Jones et al.
+%% \citeyear{jones90}|            & 1990
+
+\end{document}
