@@ -1,0 +1,4 @@
+name: TACL Paper
+description: >
+ Template for creating a TACL-style paper
+create_dir: true
