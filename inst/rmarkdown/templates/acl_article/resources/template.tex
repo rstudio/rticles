@@ -14,6 +14,7 @@
 
 \documentclass[11pt,a4paper]{article}
 \usepackage[hyperref]{naaclhlt2018}
+\usepackage{widetext}
 \usepackage{times}
 \usepackage{latexsym}
 \usepackage{url}
@@ -26,13 +27,15 @@ $if(aclfinalcopy)$
 \aclfinalcopy
 $endif$
 
+\def\aclpaperid{$aclpaperid$}
+
 \bibliographystyle{acl_natbib}
 
 \title{$title$}
 
 \author{
   $for(author)$
-  $author.name$ \\ $author.affiliation$ \\ {\tt $author.email$} $sep$\And
+  $author.name$ \\ $author.affiliation$ \\ {\tt {\normalsize $author.email$}} $sep$\And
   $endfor$
 }
 

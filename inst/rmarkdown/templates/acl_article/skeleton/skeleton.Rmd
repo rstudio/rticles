@@ -12,7 +12,8 @@ author:
 abstract: |
   Dolor rerum beatae doloremque animi qui fugit. Dolor ut sed consequatur rem facilis. Unde quisquam id et voluptate et natus. Amet assumenda rerum autem reiciendis. Et sed et deserunt possimus cupiditate aut totam fuga.
 
-aclfinalcopy: true
+aclfinalcopy: false
+aclpaperid: 12345
 bibliography: naaclhlt2018.bib
 output: rticles::acl_article
 ---
