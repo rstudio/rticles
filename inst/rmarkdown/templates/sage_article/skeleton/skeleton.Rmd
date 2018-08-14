@@ -1,30 +1,32 @@
 ---
-title: A demonstration of the \LaTeX class file for Statistics in Medicine with Rmarkdown
+title: A demonstration of the \LaTeX class file for Statistical Methods in Medical Research with Rmarkdown
+runninghead: Uthor \emph{et al}.
 author:
 - name: A. Uthor*
-  num: a,b
+  num: 1,2
 - name: O. Tro
-  num: b
+  num: 2
 - name: O. Vriga
-  num: c
+  num: 3
 address:
-- num: a
+- num: 1
   org: Department of Incredible Research, University A, City A, Country A
-- num: b
+- num: 2
   org: Department of Applied Things, University B, City B, Country B
-- num: c
+- num: 3
   org: Very Important Stuff Committee, Institute C, City C, Country C
-corres: "*Corresponding author name, This is sample corresponding address. \\email{authorone@gmail.com}"
-presentaddress: This is sample for present address text this is sample for present address text
-authormark: Uthor \emph{et al}.
-articletype: Research article
-received: 2017-01-01
-revised: 2017-02-01
-accepted: 2017-03-01
+corrauth: "Corresponding author name, This is sample corresponding address."
+email: correspondingauthor@protonmail.com
 abstract: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut elit odio. Donec fermentum tellus neque, vitae fringilla orci pretium vitae. Fusce maximus finibus facilisis. Donec ut ullamcorper turpis. Donec ut porta ipsum. Nullam cursus mauris a sapien ornare pulvinar. Aenean malesuada molestie erat quis mattis. Praesent scelerisque posuere faucibus. Praesent nunc nulla, ullamcorper ut ullamcorper sed, molestie ut est. Donec consequat libero nisi, non semper velit vulputate et. Quisque eleifend tincidunt ligula, bibendum finibus massa cursus eget. Curabitur aliquet vehicula quam non pulvinar. Aliquam facilisis tortor nec purus finibus, sit amet elementum eros sodales. Ut porta porttitor vestibulum. Integer molestie, leo ut maximus aliquam, velit dui iaculis nibh, eget hendrerit purus risus sit amet dolor. Sed sed tincidunt ex. Curabitur imperdiet egestas tellus in iaculis. Maecenas ante neque, pretium vel nisl at, lobortis lacinia neque. In gravida elit vel volutpat imperdiet. Sed ut nulla arcu. Proin blandit interdum ex sit amet laoreet. Phasellus efficitur, sem hendrerit mattis dapibus, nunc tellus ornare nisi, nec eleifend enim nibh ac ipsum. Aenean tincidunt nisl sit amet facilisis faucibus. Donec odio erat, bibendum eu imperdiet sed, gravida luctus turpis."
-keywords: Class file; \LaTeX; Statist. Med.; Rmarkdown;
-bibliography: bibfile.bib
-output: rticles::sim_article
+keywords: Class file; \LaTeX; SMMR; Rmarkdown;
+classoption:
+  - Royal
+  - times
+bibliography: bibfile
+bibliographystyle: sageh
+output:
+  rticles::sage_article:
+    keep_tex: yes
 ---
 
 # The Article Header Information
@@ -41,37 +43,31 @@ Configure the YAML header including the following elements:
 
 * `title`: Title
 
+* `runninghead`: Author last names, use _et al._ if there are three or more authors.
+
 * `author`: List of author(s) containing `name` and `num`
 
-* `address`: List containing `num` and `org` for defining `author` affiliations
+* `corrauth`: Corresponding author's name and address.
 
-* `presentaddress`: Not sure what they mean with this
+* `email`: Correspondence email
 
-* `corres`: Author and address for correspondence
+* `abstract`: Limited to 200 words
 
-* `authormark`: Short author list for header
-
-* `received`, `revised`, `accepted`: dates of submission, revision, and acceptance of the manuscript
-
-* `abstract`: Limited to 250 words
-
-* `keywords`: Up to 6 keywords
+* `keywords`: Keywords for the article
 
 * `bibliography`: BibTeX `.bib` file
 
-* `classoption`: options of the `WileyNJD-v2` class
+* `bibliographystyle`: sageh or sagev
 
-* `longtable`: set to `true` to include the `longtable` package, used by default from `pandoc` to convert markdown to \LaTeX code
+* `classoption`: options of the `sagej` class
 
 ## Remarks
 
-1. In `authormark` use _et al._ if there are three or more authors.
+2. `bibliographystyle`
 
-2. Note the use of `num` to link names and addresses.
+3. `classoption`
 
-3. For submitting a double-spaced manuscript, add `doublespace` as an option to a `classoption` line in the YAML header: `classoption: doublespace`.
-
-4. Keywords are separated by semicolons.
+4. Keywords are separated by commas.
 
 # The Body of the Article
 
@@ -83,7 +79,7 @@ Use mathematics in Rmarkdown as usual.
 
 Figures are supported from R code:
 
-```{r plot-ref, fig.cap = "Fancy Caption\\label{fig:plot}"}
+```{r plot-ref, fig.cap = "Fancy Caption\\label{fig:plot}", out.width='100%'}
 x = rnorm(10)
 y = rnorm(10)
 plot(x, y)
@@ -107,7 +103,7 @@ header-includes:
 Then, just write straight-up \LaTeX code and reference is as usual (`\ref{tab:ctable}`):
 ```
 \ctable[cap = {Short caption},
-        caption = {A long, long, long, long, long caption for this table.},
+        caption = {A caption for this table.},
         label={tab:ctable},]
         {cc}
         {
