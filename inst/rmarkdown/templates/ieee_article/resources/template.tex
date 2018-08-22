@@ -425,7 +425,9 @@ $endfor$
 $for(author)$
 \IEEEauthorblockN{$author.name$}
 \IEEEauthorblockA{$author.affiliation$\\
+$if(author.department)$
 $author.department$\\
+$endif$
 $author.location$\\
 $author.email$
 }
