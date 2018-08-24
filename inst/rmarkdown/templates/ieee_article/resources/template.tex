@@ -423,50 +423,59 @@ $endfor$
 
 \author{
 $if(affiliation)$
-% %% ---- classic IEEETrans wide author list
-% \IEEEauthorblockN{
-% $for(author)$  %% -- beg for/author ------
-% $author.name$\IEEEauthorrefmark{$author.affiliation$}
-% $sep$,
-% $endfor$ %% -- end for/author ------
-% }
-%
-% $for(affiliation)$ %% -- beg for/affiliation
-% \IEEEauthorblockA{\IEEEauthorrefmark{$affiliation.index$}
-% $if(affiliation.department)$
-% $affiliation.department$\\
-% $endif$
-% $affiliation.name$,
-% $affiliation.location$
-% $if(affiliation.email)$
-% \\ $affiliation.email$
-% $endif$
-% }
-% $endfor$ %% -- end for/affiliation
-% %% ---------------------------------------
-
-%% ---- SEESAR Innovation Days IEEETrans author list
-$for(affiliation)$
+$if(affiliation.wide)$
+%% ---- classic IEEETrans wide author list
 \IEEEauthorblockN{
-$for(affiliation.author)$  %% -- beg for/author
-$affiliation.author.name$$sep$,
-$endfor$ %% -- end for/author
+$for(affiliation.institution)$ %% -- beg for/affiliation.institution ------
+$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author ------
+$affiliation.institution.author.name$\IEEEauthorrefmark{$affiliation.institution.mark$}
+$sep$,
+$endfor$ %% -- end for/affiliation.institution.author ------
+$sep$,
+$endfor$ %% -- end for/affiliation.institution
 }
-\IEEEauthorblockA{$affiliation.name$\\
-$if(affiliation.department)$
-$affiliation.department$\\
+
+$for(affiliation.institution)$ %% -- beg for/affiliation.institution
+\IEEEauthorblockA{\IEEEauthorrefmark{$affiliation.institution.mark$}
+$if(affiliation.institution.department)$
+$affiliation.institution.department$\\
 $endif$
-$affiliation.location$
-$if(affiliation.email)$
-\\$affiliation.email$\\
+$affiliation.institution.name$,
+$affiliation.institution.location$
+$if(affiliation.institution.email)$
+\\ $affiliation.institution.email$
+$endif$
+}
+$endfor$ %% -- end for/affiliation.institution
+%% ---------------------------------------
+$else$ % -- else affiliation.wide
+%% ---- multiple authors columnar affiliations
+$for(affiliation.institution)$
+\IEEEauthorblockN{
+$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
+$affiliation.institution.author.name$$sep$,
+$endfor$ %% -- end for/affiliation.institution.author
+}
+\IEEEauthorblockA{$affiliation.institution.name$\\
+$if(affiliation.institution.department)$
+$affiliation.institution.department$\\
+$endif$
+$affiliation.institution.location$
+$if(affiliation.institution.email)$
+\\$affiliation.institution.email$
+$else$
+$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
+$if(affiliation.institution.author.email)$
+\\$affiliation.institution.author.email$
+$endif$
+$endfor$ %% -- end for/affiliation.institution.author
 $endif$
 }
 $sep$\and
-$endfor$ %% -- end for/affiliation
+$endfor$ %% -- end for/affiliation.institution
 %% ---------------------------------------
-
-
-$else$
+$endif$ % -- end if/affiliation.wide
+$else$ % -- else/affiliation
 
 %% ---- classic IEEETrans max 3 author list
 $for(author)$
@@ -480,7 +489,7 @@ $author.email$
 }
 $sep$\and
 $endfor$
-$endif$
+$endif$ % -- end if/affiliation
 %% ----------------------------------------
 
 }
