@@ -1,31 +1,17 @@
 ---
 title: Bare Demo of IEEEtran.cls for IEEE Conferences
-##### up-to-3 authors
-# author:
-#   - name: Michael Shell
-#     affiliation: Georgia Institute of Technology
-#     department: Computer Engineering
-#     location: Atlanta, Georgia 30332--0250
-#     email: ieetran@michaelshell.org
-#   - name: Daniel Emaasit
-#     affiliation: University of Nevada   
-#     department: Civil Engineering
-#     location: Las Vegas, Nevada 89119
-#     email: daniel.emaasit@gmail.com
-#   - name: Alice Wonderland
-#     affiliation: Another University
-#     department: Your Department
-#     location: City, State Zip
-#     email: alice@host.com    
-##### 1) more-than-3 authors wide author/affiliation fields
 ##### 2) multiple authors columnar affiliations (omit wide: true)
 affiliation:
-  # wide: true
+  ## use one only of the following (default: author-columnar)
+  author-columnar: true         ## one column per author
+  # institution-columnar: true  ## one column per institution (multiple autors eventually)
+  # wide: true                  ## one column wide author/affiliation fields
+
   institution:
     - name: Georgia Institute of Technology
       department: School of Electrical and Computer Engineering
       location: Atlanta, Georgia 30332--0250
-      other: "Email: see http://www.michaelshell.org/contact.html"
+      email: ece@datech.edu
       mark: 1
       author:
         - name: Michael Shell
@@ -51,6 +37,7 @@ affiliation:
           email: roy@replicant.offworld
 abstract: |
   The abstract goes here.
+  On multiple lines eventually.
 
 bibliography: mybibfile.bib
 output: rticles::ieee_article

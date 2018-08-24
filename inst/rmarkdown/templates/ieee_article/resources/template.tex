@@ -423,14 +423,15 @@ $endfor$
 
 \author{
 $if(affiliation)$
+
+%% ---- classic IEEETrans wide authors' list ----------------
 $if(affiliation.wide)$
-%% ---- classic IEEETrans wide author list
 \IEEEauthorblockN{
-$for(affiliation.institution)$ %% -- beg for/affiliation.institution ------
-$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author ------
+$for(affiliation.institution)$ %% -- beg for/affiliation.institution
+$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
 $affiliation.institution.author.name$\IEEEauthorrefmark{$affiliation.institution.mark$}
 $sep$,
-$endfor$ %% -- end for/affiliation.institution.author ------
+$endfor$ %% -- end for/affiliation.institution.author
 $sep$,
 $endfor$ %% -- end for/affiliation.institution
 }
@@ -447,9 +448,13 @@ $if(affiliation.institution.email)$
 $endif$
 }
 $endfor$ %% -- end for/affiliation.institution
-%% ---------------------------------------
-$else$ % -- else affiliation.wide
-%% ---- multiple authors columnar affiliations
+$endif$ % -- end affiliation.wide
+%% ----------------------------------------------------------
+
+
+
+%% ---- classic IEEETrans one column per institution --------
+$if(affiliation.institution-columnar)$ %% -- beg if/affiliation.institution-columnar
 $for(affiliation.institution)$
 \IEEEauthorblockN{
 $for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
@@ -473,25 +478,43 @@ $endif$
 }
 $sep$\and
 $endfor$ %% -- end for/affiliation.institution
-%% ---------------------------------------
-$endif$ % -- end if/affiliation.wide
-$else$ % -- else/affiliation
+$endif$ %% -- end if/affiliation.institution-columnar
+%% ----------------------------------------------------------
 
-%% ---- classic IEEETrans max 3 author list
-$for(author)$
-\IEEEauthorblockN{$author.name$}
-\IEEEauthorblockA{$author.affiliation$\\
-$if(author.department)$
-$author.department$\\
+
+
+
+
+%% ---- one column per author, classic/default IEEETrans ----
+$if(affiliation.author-columnar)$ % -- beg affiliation.author-columnar
+$for(affiliation.institution)$
+$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
+\IEEEauthorblockN{
+$affiliation.institution.author.name$
+}
+\IEEEauthorblockA{$affiliation.institution.name$\\
+$if(affiliation.institution.department)$
+$affiliation.institution.department$\\
 $endif$
-$author.location$\\
-$author.email$
+$affiliation.institution.location$
+$if(affiliation.institution.email)$
+\\$affiliation.institution.email$
+$else$
+$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
+$if(affiliation.institution.author.email)$
+\\$affiliation.institution.author.email$
+$endif$
+$endfor$ %% -- end for/affiliation.institution.author
+$endif$
 }
 $sep$\and
-$endfor$
-$endif$ % -- end if/affiliation
-%% ----------------------------------------
+$endfor$ %% -- end for/affiliation.institution.author
+$sep$\and
+$endfor$ %% -- end for/affiliation.institution
+$endif$ %% -- end if/affiliation.institution-columnar
+%% ----------------------------------------------------------
 
+$endif$
 }
 
 % conference papers do not typically use \thanks and this command
