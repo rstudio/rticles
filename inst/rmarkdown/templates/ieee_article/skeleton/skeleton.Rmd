@@ -1,8 +1,7 @@
 ---
 title: Bare Demo of IEEEtran.cls for IEEE Conferences
-##### 2) multiple authors columnar affiliations (omit wide: true)
 affiliation:
-  ## use one only of the following (default: author-columnar)
+  ## use one only of the following
   author-columnar: true         ## one column per author
   # institution-columnar: true  ## one column per institution (multiple autors eventually)
   # wide: true                  ## one column wide author/affiliation fields
