@@ -16,6 +16,11 @@ knitr_fun <- function(name) utils::getFromNamespace(name, 'knitr')
 
 output_asis <- knitr_fun('output_asis')
 
+merge_list <- function(x, y) {
+  fun <- knitr_fun('merge_list')
+  fun(as.list(x), y)
+}
+
 #' Render a pandoc template.
 #'
 #' This is a hacky way to access the pandoc templating engine.

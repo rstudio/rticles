@@ -1,0 +1,5 @@
+name: Sage Journals Article Template
+description: >
+ Template for creating an article for submission to Sage Journals.
+create_dir: true
+

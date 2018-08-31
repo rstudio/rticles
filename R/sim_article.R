@@ -11,21 +11,20 @@
 #'
 #' @details Possible arguments for the YAML header are:
 #' \itemize{
-#'  \item \code{classoption}:,class options for the Statistics in Medicine class such as \code{doublespace} for double spacing the document
-#'  \item \code{year} and \code{date}: year of the manuscript submission
-#'  \item \code{longtable}: set to \code{true} for including the \code{longtable} package
+#'   \item \code{title} title of the manuscript
+#'   \item \code{author} list of authors, containing \code{name} and \code{num}
+#'   \item \code{address} list containing \code{num} and \code{org} for defining \code{author} affiliations
+#'   \item \code{presentaddress} not sure what they mean with this
+#'   \item \code{corres} author and address for correspondence
+#'   \item \code{authormark} short author list for header
+#'   \item \code{received}, \code{revised}, \code{accepted} dates of submission, revision, and acceptance of the manuscript
+#'   \item \code{abstract} abstract, limited to 250 words
+#'   \item \code{keywords} up to 6 keywords
+#'   \item \code{bibliography} BibTeX \code{.bib} file
+#'   \item \code{classoption} options of the \code{WileyNJD-v2} class
+#'   \item \code{longtable} set to \code{true} to include the \code{longtable} package, used by default from \code{pandoc} to convert markdown to LaTeX code
 #'  \item \code{header-includes}: custom additions to the header, before the \code{\\begin\{document\}} statement
-#'  \item \code{authabbr}: abbreviation of the author for page headers
-#'  \item \code{title}: title of the manuscript
-#'  \item \code{author}: author(s), include as a string with \code{\\affilnum\{\}} statements for defining affiliations
-#'  \item \code{address}: a list of \code{num} and \code{address}, where the former is the equivalent of \code{affilnum} specified in the \code{author} field and the latter is the description of the institution
-#'  \item \code{corraddr}: corresponding address
-#'  \item \code{abstract}: abstract of the manuscript
-#'  \item \code{keywords}: keywords
-#'  \item \code{acknowledgements}: acknowledgements section, to appear at the end of the main body
-#'  \item \code{bibliography}: BibTeX file to include for references
-#'  \item \code{bibliographystyle}: bibliograpy style (\code{wileyj} by default)
-#'  \item \code{include-after}}: for including additional LaTeX code before the \code{\\end\{document\} statement}
+#'  \item \code{include-after}: for including additional LaTeX code before the \code{\\end\{document\}} statement}
 #'
 #' @examples
 #'

@@ -24,7 +24,16 @@
 %% load any required packages here
 $preamble$
 
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
 \begin{document}
+
 
 \def\spacingset#1{\renewcommand{\baselinestretch}%
 {#1}\small\normalsize} \spacingset{1}

@@ -388,10 +388,19 @@ $if(numbersections)$
 $else$
 \setcounter{secnumdepth}{0}
 $endif$
+
+% Pandoc syntax highlighting
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
 % Pandoc header
 $for(header-includes)$
 $header-includes$
 $endfor$
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 %% END MY ADDITIONS %%
 

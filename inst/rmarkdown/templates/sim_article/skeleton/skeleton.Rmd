@@ -1,51 +1,35 @@
 ---
 title: A demonstration of the \LaTeX class file for Statistics in Medicine with Rmarkdown
-author: "A. Uthor\\affilnum{a,b}, O. Tro\\affilnum{b} and O. Vriga\\affilnum{c}"
+author:
+- name: A. Uthor*
+  num: a,b
+- name: O. Tro
+  num: b
+- name: O. Vriga
+  num: c
 address:
 - num: a
-  address: "Department of Incredible Research, University A"
+  org: Department of Incredible Research, University A, City A, Country A
 - num: b
-  address: "Department of Applied Things, University B"
+  org: Department of Applied Things, University B, City B, Country B
 - num: c
-  address: "Very Important Stuff Committee, Institute C"
-corraddr: some@academic.email.org
-authabbr: "Uthor \\emph{et al}."
-date: 2017
-year: 2017
-abstract: "This paper describes the use of the \LaTeX `simauth.cls` class file for setting papers for Statistics in Medicine using Rmarkdown."
-acknowledgements: "We thank [Stack Overflow](https://stackoverflow.com/) for the invaluable support to our research."
+  org: Very Important Stuff Committee, Institute C, City C, Country C
+corres: "*Corresponding author name, This is sample corresponding address. \\email{authorone@gmail.com}"
+presentaddress: This is sample for present address text this is sample for present address text
+authormark: Uthor \emph{et al}.
+articletype: Research article
+received: 2017-01-01
+revised: 2017-02-01
+accepted: 2017-03-01
+abstract: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut elit odio. Donec fermentum tellus neque, vitae fringilla orci pretium vitae. Fusce maximus finibus facilisis. Donec ut ullamcorper turpis. Donec ut porta ipsum. Nullam cursus mauris a sapien ornare pulvinar. Aenean malesuada molestie erat quis mattis. Praesent scelerisque posuere faucibus. Praesent nunc nulla, ullamcorper ut ullamcorper sed, molestie ut est. Donec consequat libero nisi, non semper velit vulputate et. Quisque eleifend tincidunt ligula, bibendum finibus massa cursus eget. Curabitur aliquet vehicula quam non pulvinar. Aliquam facilisis tortor nec purus finibus, sit amet elementum eros sodales. Ut porta porttitor vestibulum. Integer molestie, leo ut maximus aliquam, velit dui iaculis nibh, eget hendrerit purus risus sit amet dolor. Sed sed tincidunt ex. Curabitur imperdiet egestas tellus in iaculis. Maecenas ante neque, pretium vel nisl at, lobortis lacinia neque. In gravida elit vel volutpat imperdiet. Sed ut nulla arcu. Proin blandit interdum ex sit amet laoreet. Phasellus efficitur, sem hendrerit mattis dapibus, nunc tellus ornare nisi, nec eleifend enim nibh ac ipsum. Aenean tincidunt nisl sit amet facilisis faucibus. Donec odio erat, bibendum eu imperdiet sed, gravida luctus turpis."
 keywords: Class file; \LaTeX; Statist. Med.; Rmarkdown;
 bibliography: bibfile.bib
 output: rticles::sim_article
 ---
 
-# Introduction
+# The Article Header Information
 
-Many authors submitting to research journals use \LaTeX to prepare their papers. This paper describes the `simauth.cls` class file which can be used to convert articles produced with other \LaTeX class files into the correct form for publication in _Statistics in Medicine_.
-
-The `simauth.cls` class file preserves much of the standard \LaTeX interface so that any document which was produced using the standard \LaTeX `article` style can easily be converted to work with the `simauth` style. However, the width of text and typesize will vary from that of `article.cls`; therefore, _line breaks will change_
-and it is likely that displayed mathematics and tabular material will need re-setting.
-
-In the following sections we describe how to lay out your code to use `simauth.cls` to reproduce the typographical look of _Statistics in Medicine_. However, this paper is not a guide to using \LaTeX and we would refer you to any of the many books available (see, for example, [@R1; @R2; @R3]).
-
-# The Three Golden Rules
-Before we proceed, we would like to stress _three golden rules_ that need to be followed to enable the most efficient use of your code at the typesetting stage:
-
-1. keep your own macros to an absolute minimum;
-
-2. as `TeX` is designed to make sensible spacing decisions by itself, do _not_ use explicit horizontal or vertical spacing commands, except in a few accepted (mostly
-mathematical) situations, such as `\,` before a differential~d, or `\quad` to separate an equation from its qualifier;
-
-3. follow the _Statistics in Medicine_ reference style.
-
-# Getting Started
-
-The `simauth` class file should run on any standard \LaTeX installation. If any of the fonts, class files or packages it requires are missing from your installation,
-they can be found on the _TeX Collection_ DVDs or from CTAN.
-
-Details on Rmarkdown can be found online [http://rmarkdown.rstudio.com/](here).
-
-_Statistics in Medicine_ is published using Times fonts and this is achieved by using the `times` option as `\documentclass[times]{simauth}`. Times fonts are also used for mathematics. This is achieved by adding the \LaTeX package `mathtime`. Being `mathtime` not available on \TeX Live installations, the default template does not include it. If you need/want to re-enable it, add the option `keep_tex: TRUE` to the YAML header as follows and edit the resulting `.tex`  file manually.
+YAML header:
 
 ```
 output:
@@ -53,98 +37,71 @@ output:
     keep_tex: TRUE
 ```
 
-If for any reason you have a problem using Times you can easily resort to Computer Modern fonts by removing the `times` option.
-
-# The Article Header Information
-
 Configure the YAML header including the following elements:
 
 * `title`: Title
 
-* `author`: Author(s) information, as a string, see below
+* `author`: List of author(s) containing `name` and `num`
 
-* `address`: List containing `address` and `num` for defining `author` affiliations
+* `address`: List containing `num` and `org` for defining `author` affiliations
 
-* `corraddr`: Corresponding author address
+* `presentaddress`: Not sure what they mean with this
 
-* `authabbr`: Short author list for header
+* `corres`: Author and address for correspondence
 
-* `date`: Date of submission
+* `authormark`: Short author list for header
 
-* `year`: Year of submission
+* `received`, `revised`, `accepted`: dates of submission, revision, and acceptance of the manuscript
 
 * `abstract`: Limited to 250 words
 
 * `keywords`: Up to 6 keywords
 
-* `acknowledgements`: Acknowledgements section, at the end of the manuscript
-
 * `bibliography`: BibTeX `.bib` file
 
-* `bibliographystyle`: BibTeX bibliography style, `wileyj` by default
-
-* `classoption`: options of the `simauth` class
+* `classoption`: options of the `WileyNJD-v2` class
 
 * `longtable`: set to `true` to include the `longtable` package, used by default from `pandoc` to convert markdown to \LaTeX code
 
-## Author information
-
-In order to obtain better results, author(s) information should be provided as a string with \LaTeX elements:
-
-```
-author: "A.U. Thor\\affilnum{a,b}, O. Tro\\affilnum{b} and O. Vriga\\affilnum{c}"
-```
-
 ## Remarks
 
-1. In `authabbr` use _et al._ if there are three or more authors.
+1. In `authormark` use _et al._ if there are three or more authors.
 
-2. Note the use of `affilnum` and `num` to link names and addresses. The author for correspondence can be marked via a custom `address` entry and `corraddr` is used to give that author's address, which will be printed as a footnote, prefaced by
-_Correspondence to:_.
+2. Note the use of `num` to link names and addresses.
 
 3. For submitting a double-spaced manuscript, add `doublespace` as an option to a `classoption` line in the YAML header: `classoption: doublespace`.
 
-4. Use `\cgs` for giving details of financial sponsors. These details will be printed as a footnote, with _Contract/grant sponsor:_ inserted in the appropriate places. This has to be implemented using \LaTeX, and not Rmarkdown.
-
-5. The abstract should be capable of standing by itself, in the absence of the body of the article and of the bibliography. Therefore, it must not contain any reference citations.
-
-6. Keywords are separated by semicolons.
+4. Keywords are separated by semicolons.
 
 # The Body of the Article
 
 ## Mathematics
 
-`simauth.cls` makes the full functionality of `AmS/TeX` available. We encourage the use of the `align`, `gather` and `multline` environments for displayed mathematics.
-
 Use mathematics in Rmarkdown as usual.
 
 ## Figures and Tables
 
-`simauth.cls` uses the `graphicx` package for handling figures.
+Figures are supported from R code:
 
-Figures are supported from R code too:
-
-```{r plot_ref, fig.cap = "Fancy Caption\\label{fig:plot}"}
+```{r plot-ref, fig.cap = "Fancy Caption\\label{fig:plot}"}
 x = rnorm(10)
 y = rnorm(10)
 plot(x, y)
 ```
 
-...and can be referenced: \ref{fig:plot}. It is a quirky hack at the moment, see [https://github.com/yihui/knitr/issues/323](here).
+...and can be referenced (Figure \ref{fig:plot}) by including the `\\label{}` tag in the `fig.cap` attribute of the R chunk: `fig.cap = "Fancy Caption\\label{fig:plot}"`. It is a quirky hack at the moment, see [here](https://github.com/yihui/knitr/issues/323).
 
 Analogously, use Rmarkdown to produce tables as usual:
 
 ```{r, results = "asis"}
-library(xtable)
+if (!require("xtable")) install.packages("xtable")
 xt <- xtable(head(cars), caption = "A table", label = "tab:table")
 print(xt, comment = FALSE)
 ```
 
-Referenced via \ref{tab:table}.
-
-You can also use the YAML option `header-includes` to includes custom \LaTeX packages for tables (keep in mind that `pandoc` uses `longtables` by default, and it is hardcoded; some things may require including the package `longtable`). E.g., using `ctable`:
+Referenced via \ref{tab:table}. You can also use the YAML option `header-includes` to includes custom \LaTeX packages for tables (keep in mind that `pandoc` uses `longtables` by default, and it is hardcoded; some things may require including the package `longtable`). E.g., using `ctable`:
 ```
-header-includes: 
+header-includes:
 - \usepackage{ctable}
 ```
 Then, just write straight-up \LaTeX code and reference is as usual (`\ref{tab:ctable}`):
@@ -158,8 +115,8 @@ Then, just write straight-up \LaTeX code and reference is as usual (`\ref{tab:ct
         \tnote[$\dagger$]{Other footnote}
         \tnote[b]{Mistakes are possible.}
         }{
-        \FL 
-        COL 1\tmark[a] & COL 2\tmark[$\ast$] 
+        \FL
+        COL 1\tmark[a] & COL 2\tmark[$\ast$]
         \ML
         6.92\tmark[$\dagger$] & 0.09781 \\
         6.93\tmark[$\dagger$] & 0.09901 \\
@@ -175,34 +132,18 @@ It is also possible to set the `YAML` option `longtable: true` and use markdown 
 The use of the Rmarkdown equivalent of the \LaTeX cross-reference system
 for figures, tables, equations, etc., is encouraged (using `[@<name>]`, equivalent of `\ref{<name>}` and `\label{<name>}`). That works well for citations in Rmarkdown, not so well for figures and tables. In that case, it is possible to revert to standard \LaTeX syntax.
 
-Example: [@pepe2003statistical; @zou2005regularization].
-
-## Acknowledgements
-
-An Acknowledgements section is started with `\ack` or `\acks` for _Acknowledgement_ or _Acknowledgements_, respectively. It must be placed just before the References. Define the content of the acknowledgment section in the YAML header.
-
-## Bibliography
-
-Link a `.bib` document via the YAML header, and bibliography will be printed at the very end (as usual). Remember to include a `#Bibliography` section.
-
-The default bibliography style is provided by Wiley as in `wileyj.bst`. It is possible to provide a custom style by providing a `.csl`/`.bst` in the `bibliographystyle` field of the YAML header.  
-
 ## Double Spacing
 
 If you need to double space your document for submission please use the `doublespace` option in the header.
 
-# Copyright Statement
-
-Please be aware that the use of this \LaTeX class file is governed by the following conditions.
-
-## Copyright
-
-Copyright 2010 John Wiley & Sons, Ltd, The Atrium, Southern Gate, Chichester, West Sussex, PO19 8SQ, UK. All rights reserved.
-
-## Rules of Use
-
-This class file is made available for use by authors who wish to prepare an article for publication in _Statistics in Medicine_ published by John Wiley & Sons, Ltd.  The user may not exploit any part of the class file commercially.
-
-This class file is provided on an _as is_  basis, without warranties of any kind, either express or implied, including but not limited to warranties of title, or implied warranties of merchantablility or fitness for a particular purpose. There will be no duty on the author[s] of the software or John Wiley & Sons, Ltd to correct any errors or defects in the software. Any statutory rights you may have remain unaffected by your acceptance of these rules of use.
-
 # Bibliography
+
+Link a `.bib` document via the YAML header, and bibliography will be printed at the very end (as usual). The default bibliography style is provided by Wiley as in `WileyNJD-AMA.bst`, do not delete that file.
+
+Use the Rmarkdown equivalent of the \LaTeX citation system using `[@<name>]`. Example: [@Taylor1937], [@Knupp1999; @Kamm2000].
+
+To include all citation from the `.bib` file, add `\nocite{*}` before the end of the document.
+
+# Further information
+
+All \LaTeX enviroments supported by the main template are supported here as well; see the `.tex` sample file [here](http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm) for more details and example.

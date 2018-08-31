@@ -10,7 +10,15 @@ $abstract$
 }
 $endif$
 
+$for(header-includes)$
+$header-includes$
+$endfor$
+
 $body$
+
+$if(bibliography)$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
 
 $for(author)$
 \address{%

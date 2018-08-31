@@ -1,0 +1,108 @@
+% !TeX program = pdfLaTeX
+\documentclass[smallextended]{svjour3}       % onecolumn (second format)
+%\documentclass[twocolumn]{svjour3}          % twocolumn
+%
+\smartqed  % flush right qed marks, e.g. at end of proof
+%
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+
+\usepackage[hyphens]{url} % not crucial - just used below for the URL
+\usepackage{hyperref}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+%
+% \usepackage{mathptmx}      % use Times fonts if available on your TeX system
+%
+% insert here the call for the packages your document requires
+%\usepackage{latexsym}
+% etc.
+%
+% please place your own definitions here and don't use \def but
+% \newcommand{}{}
+%
+% Insert the name of "your journal" with
+% \journalname{myjournal}
+%
+
+%% load any required packages here
+$preamble$
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+\begin{document}
+
+\title{$title$ $if(thanks)$\thanks{$thanks$} $endif$}
+$if(subtitle)$ \subtitle{$subtitle$} $endif$
+
+$if(titlerunning)$
+    \titlerunning{$titlerunning$}
+$endif$
+
+\author{ $for(authors)$ $authors.name$ \and $endfor$ }
+
+$if(authorrunning)$
+    \authorrunning{ $authorrunning$ }
+$endif$
+
+\institute{
+    $for(authors)$
+    $authors.name$ \at
+    $if(authors.address)$ $authors.address$ $endif$\\
+    $if(authors.email)$ \email{$authors.email$} $endif$ %  \\
+%             \emph{Present address:} of F. Author  %  if needed
+    \and
+    $endfor$
+}
+
+\date{Received: date / Accepted: date}
+% The correct dates will be entered by the editor
+
+
+\maketitle
+
+\begin{abstract}
+$abstract$
+\\
+\keywords{
+    $for(keywords)$
+    $keywords$ \and
+    $endfor$
+}
+$if(PACS)$
+    \PACS{
+        $for(PACS)$
+            $PACS$ \and
+        $endfor$
+    }
+$endif$
+
+$if(MSC)$
+    \subclass{
+        $for(MSC)$
+            $MSC$ \and
+        $endfor$
+    }
+$endif$
+
+\end{abstract}
+
+
+\def\spacingset#1{\renewcommand{\baselinestretch}%
+{#1}\small\normalsize} \spacingset{1}
+
+
+$body$
+
+\bibliographystyle{spbasic}
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+
+\end{document}

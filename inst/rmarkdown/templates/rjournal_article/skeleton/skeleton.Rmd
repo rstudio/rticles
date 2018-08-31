@@ -15,9 +15,10 @@ author:
     email:  author2@work
 abstract: >
   An abstract of less than 150 words.
-preamble: >
-  % Any extra latex you need in the preamble
-output: rticles::rjournal_article
+output:
+  rticles::rjournal_article:
+    includes:
+      in_header: preamble.tex
 ---
 
 ## Introduction
