@@ -2,8 +2,8 @@
 title: Bare Demo of IEEEtran.cls for IEEE Conferences
 affiliation:
   ## use one only of the following
-  author-columnar: true         ## one column per author
-  # institution-columnar: true  ## one column per institution (multiple autors eventually)
+  # author-columnar: true         ## one column per author
+  institution-columnar: true  ## one column per institution (multiple autors eventually)
   # wide: true                  ## one column wide author/affiliation fields
 
   institution:
@@ -27,7 +27,7 @@ affiliation:
       author:
         - name: Montgomery Scott
     - name: Tyrell Inc.
-      location: 123 Replicant Street, Los Angeles, California 90210--4321
+      location: 123 Replicant Street, Los Angeles, USA 90210--4321
       mark: 4
       author:
         - name: Eldon Tyrell

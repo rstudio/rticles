@@ -337,9 +337,11 @@ $endif$
 $if(biblatex)$
 \usepackage{biblatex}
 \bibliographystyle{IEEEtran}
-\bibliography{IEEEabrv,mybibfile}
-$if(biblio-files)$
-\bibliography{$biblio-files$}
+\bibliography{IEEEabrv}
+$if(bibliography)$
+$for(bibliography)$
+\addbibresource{$bibliography$}
+$endfor$
 $endif$
 $endif$
 
