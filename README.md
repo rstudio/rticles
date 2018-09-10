@@ -52,7 +52,7 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [Statistics in Medicine](http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm) journal submissions
 
-- [Copernicus](https://publications.copernicus.org) journal submissions
+- [Copernicus Publications](https://publications.copernicus.org) journal submissions
 
 - [The R Journal](https://journal.r-project.org/) articles
 
