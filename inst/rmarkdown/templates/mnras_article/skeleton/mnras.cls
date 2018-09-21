@@ -1403,9 +1403,9 @@ $\reset@font\displaystyle##$\hfil\cr>\cr\approx\cr}}}
 \def\@doi[#1]#2{%
   \def\@tempa{#1}%
   \ifx\@tempa\@empty
-    \href{http://dx.doi.org/#2}{doi:#2}%
+    \href{https://doi.org/#2}{doi:#2}%
   \else
-    \href{http://dx.doi.org/#2}{#1}%
+    \href{https://doi.org/#2}{#1}%
   \fi
   \endgroup
   }
