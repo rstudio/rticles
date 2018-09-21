@@ -1104,7 +1104,7 @@
 						\@articlenumber%
 						}%
 					; doi:{\changeurlcolor{black}%
-        					\href{http://dx.doi.org/\@doinum}%
+        					\href{https://doi.org/\@doinum}%
         					{\@doinum}}%
 					}%
 				}%
@@ -1127,7 +1127,7 @@
 						\@articlenumber%
 						}%
 						; doi:{\changeurlcolor{black}%
-        					\href{http://dx.doi.org/\@doinum}%
+        					\href{https://doi.org/\@doinum}%
         					{\@doinum}}%
 					}%
 				}%
@@ -1638,7 +1638,7 @@
 			\@firstpage --\pageref*{LastPage}%
 			}{\@articlenumber}%
 			; doi:{\changeurlcolor{black}%
-        					\href{http://dx.doi.org/\@doinum}%
+        					\href{https://doi.org/\@doinum}%
         					{\@doinum}}%
 			}{%
 			{\em \journalname} {\bfseries \@pubyear}, {\em \@pubvolume}, %

@@ -256,7 +256,7 @@
     {\@Month{} \@Year, Volume~\@Volume, \@Seriesname~\@Issue}
     \hfill
     \@Firstdate\\ \nopagebreak
-    {\href{http://dx.doi.org/\@DOI}{\tt doi:\@DOI}}
+    {\href{https://doi.org/\@DOI}{\tt doi:\@DOI}}
     \hfill
     \@Seconddate  \nopagebreak
     \vspace{.3\baselineskip}
@@ -280,7 +280,7 @@
    {\fontfamily{pzc} \fontsize{28}{32} \selectfont Journal of Statistical Software}
    \vfill
    {\it \small \@Month{} \@Year, Volume~\@Volume, \@Seriesname~\@Issue.%
-            \hfill \href{http://dx.doi.org/\@DOI}{doi:\,\@DOI}}}\\[0.1cm]
+            \hfill \href{https://doi.org/\@DOI}{doi:\,\@DOI}}}\\[0.1cm]
      \hrule height 3pt}}
 \if@review
   \renewcommand{\maketitle}{
@@ -499,7 +499,7 @@
   \newcommand\@doi[1]{doi:\discretionary{}{}{}#1}\else
   \newcommand\@doi{doi:\discretionary{}{}{}\begingroup
 \urlstyle{tt}\Url}\fi
-\newcommand{\doi}[1]{\href{http://dx.doi.org/#1}{\normalfont\texttt{\@doi{#1}}}}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{\normalfont\texttt{\@doi{#1}}}}
 \newcommand{\E}{\mathsf{E}}
 \newcommand{\VAR}{\mathsf{VAR}}
 \newcommand{\COV}{\mathsf{COV}}

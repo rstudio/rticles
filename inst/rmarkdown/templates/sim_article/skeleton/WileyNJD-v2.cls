@@ -1589,14 +1589,14 @@ false setoverprint}}
 \@pubname\par%
 \@jname\par%
 Volume\ \@jvol, Article ID\ \@artid, \thepage~pages\par%
-%%\if@hyperrefon\urlstyle{same}\burlalt{http://dx.doi.org/\@doi}{http://dx.doi.org/\@doi}\else{http://dx.doi.org/\@doi}\fi% this line is not required in the output
+%%\if@hyperrefon\urlstyle{same}\burlalt{https://doi.org/\@doi}{https://doi.org/\@doi}\else{https://doi.org/\@doi}\fi% this line is not required in the output
 }}
 
 \def\nullartoprunningheaders{\vbox{\OPRHfont\raggedright%
 \phantom{\@pubname}\par%
 \phantom{\@jname}\par%
 \phantom{Volume\ \@jvol, Article ID\ \@artid, \thepage pages}\par%
-%%\if@hyperrefon\urlstyle{same}\burlalt{http://dx.doi.org/\@doi}{http://dx.doi.org/\@doi}\else{http://dx.doi.org/\@doi}\fi%
+%%\if@hyperrefon\urlstyle{same}\burlalt{https://doi.org/\@doi}{https://doi.org/\@doi}\else{https://doi.org/\@doi}\fi%
 }}
 
 %% article category %%
