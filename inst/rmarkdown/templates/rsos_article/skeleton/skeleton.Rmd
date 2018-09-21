@@ -48,8 +48,8 @@ funding: |
   Please provide details on funding
 
 ## Remove this if not required
-permissions: |
-  Please provide details on permissions
+disclaimer: |
+  Please provide disclaimer text here.
 
 ## Remove this if not required
 acknowledgements: |
