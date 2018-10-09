@@ -1,23 +1,42 @@
 ---
 title: Bare Demo of IEEEtran.cls for IEEE Conferences
-author:
-  - name: Michael Shell
-    affiliation: Georgia Institute of Technology
-    department: Computer Engineering
-    location: Atlanta, Georgia 30332--0250
-    email: ieetran@michaelshell.org
-  - name: Daniel Emaasit
-    affiliation: University of Nevada   
-    department: Civil Engineering
-    location: Las Vegas, Nevada 89119
-    email: daniel.emaasit@gmail.com
-  - name: Alice Wonderland
-    affiliation: Another University
-    department: Your Department
-    location: City, State Zip
-    email: alice@host.com    
+affiliation:
+  ## use one only of the following
+  # author-columnar: true         ## one column per author
+  institution-columnar: true  ## one column per institution (multiple autors eventually)
+  # wide: true                  ## one column wide author/affiliation fields
+
+  institution:
+    - name: Georgia Institute of Technology
+      department: School of Electrical and Computer Engineering
+      location: Atlanta, Georgia 30332--0250
+      email: ece@datech.edu
+      mark: 1
+      author:
+        - name: Michael Shell
+    - name: Twentieth Century Fox
+      location: Springfield, USA
+      mark: 2
+      author:
+        - name: Homer Simpson
+          email: homer@thesimpsons.com
+    - name: Starfleet Academy
+      location: San Francisco, California 96678-2391
+      other: "Telephone: (800) 555--1212, Fax: (888) 555--1212"
+      mark: 3
+      author:
+        - name: Montgomery Scott
+    - name: Tyrell Inc.
+      location: 123 Replicant Street, Los Angeles, USA 90210--4321
+      mark: 4
+      author:
+        - name: Eldon Tyrell
+          email: eldon@starfleet-academy.star
+        - name: Roy Batty
+          email: roy@replicant.offworld
 abstract: |
   The abstract goes here.
+  On multiple lines eventually.
 
 bibliography: mybibfile.bib
 output: rticles::ieee_article

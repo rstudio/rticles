@@ -1193,7 +1193,7 @@
 \def\@citearticle{}
 \newcommand\citearticle[3]{%
      \global\@citearticle@providedtrue%
-     \gdef\@citearticle{{\researchname}\par \resau{Cite this article:} #1. \@Year\ #2. Proc R Soc A #3. http://dx.doi.org/\@doi}}%
+     \gdef\@citearticle{{\researchname}\par \resau{Cite this article:} #1. \@Year\ #2. Proc R Soc A #3. https://doi.org/\@doi}}%
 
 \def\@corres{}
 \newcommand\corres[1]{%
@@ -1219,7 +1219,7 @@
 \newcommand\esm[1]{%
      \global\@esm@providedtrue%
      \gdef\@esm{{\fontfamily{\sfdefault}\fontseries{m}\fontshape{n}\fontsize{10}{14}\selectfont Electronic supplementary material is available
-at http://dx.doi.org/\@doi\ or via http://\@jname.royalsocietypublishing.org.\par}}}%
+at https://doi.org/\@doi\ or via http://\@jname.royalsocietypublishing.org.\par}}}%
 
 \def\@others{}
 \newcommand\others[1]{%

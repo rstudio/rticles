@@ -335,11 +335,11 @@ $if(natbib)$
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $endif$
 $if(biblatex)$
-\usepackage{biblatex}
-\bibliographystyle{IEEEtran}
-\bibliography{IEEEabrv,mybibfile}
-$if(biblio-files)$
-\bibliography{$biblio-files$}
+\usepackage[backend=bibtex,citestyle=ieee,style=numeric]{biblatex}
+$if(bibliography)$
+$for(bibliography)$
+\addbibresource{$bibliography$}
+$endfor$
 $endif$
 $endif$
 
@@ -388,6 +388,12 @@ $if(numbersections)$
 $else$
 \setcounter{secnumdepth}{0}
 $endif$
+
+% Pandoc syntax highlighting
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
 % Pandoc header
 $for(header-includes)$
 $header-includes$
@@ -416,15 +422,99 @@ $endfor$
 % affiliations
 
 \author{
-$for(author)$
-\IEEEauthorblockN{$author.name$}
-\IEEEauthorblockA{$author.affiliation$\\
-$author.department$\\
-$author.location$\\
-$author.email$
+$if(affiliation)$
+
+%% ---- classic IEEETrans wide authors' list ----------------
+$if(affiliation.wide)$
+\IEEEauthorblockN{
+$for(affiliation.institution)$ %% -- beg for/affiliation.institution
+$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
+$affiliation.institution.author.name$\IEEEauthorrefmark{$affiliation.institution.mark$}
+$sep$,
+$endfor$ %% -- end for/affiliation.institution.author
+$sep$,
+$endfor$ %% -- end for/affiliation.institution
+}
+
+$for(affiliation.institution)$ %% -- beg for/affiliation.institution
+\IEEEauthorblockA{\IEEEauthorrefmark{$affiliation.institution.mark$}
+$if(affiliation.institution.department)$
+$affiliation.institution.department$\\
+$endif$
+$affiliation.institution.name$,
+$affiliation.institution.location$
+$if(affiliation.institution.email)$
+\\ $affiliation.institution.email$
+$endif$
+}
+$endfor$ %% -- end for/affiliation.institution
+$endif$ % -- end affiliation.wide
+%% ----------------------------------------------------------
+
+
+
+%% ---- classic IEEETrans one column per institution --------
+$if(affiliation.institution-columnar)$ %% -- beg if/affiliation.institution-columnar
+$for(affiliation.institution)$
+\IEEEauthorblockN{
+$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
+$affiliation.institution.author.name$$sep$,
+$endfor$ %% -- end for/affiliation.institution.author
+}
+\IEEEauthorblockA{$affiliation.institution.name$\\
+$if(affiliation.institution.department)$
+$affiliation.institution.department$\\
+$endif$
+$affiliation.institution.location$
+$if(affiliation.institution.email)$
+\\$affiliation.institution.email$
+$else$
+$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
+$if(affiliation.institution.author.email)$
+\\$affiliation.institution.author.email$
+$endif$
+$endfor$ %% -- end for/affiliation.institution.author
+$endif$
 }
 $sep$\and
-$endfor$
+$endfor$ %% -- end for/affiliation.institution
+$endif$ %% -- end if/affiliation.institution-columnar
+%% ----------------------------------------------------------
+
+
+
+
+
+%% ---- one column per author, classic/default IEEETrans ----
+$if(affiliation.author-columnar)$ % -- beg affiliation.author-columnar
+$for(affiliation.institution)$
+$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
+\IEEEauthorblockN{
+$affiliation.institution.author.name$
+}
+\IEEEauthorblockA{$affiliation.institution.name$\\
+$if(affiliation.institution.department)$
+$affiliation.institution.department$\\
+$endif$
+$affiliation.institution.location$
+$if(affiliation.institution.email)$
+\\$affiliation.institution.email$
+$else$
+$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
+$if(affiliation.institution.author.email)$
+\\$affiliation.institution.author.email$
+$endif$
+$endfor$ %% -- end for/affiliation.institution.author
+$endif$
+}
+$sep$\and
+$endfor$ %% -- end for/affiliation.institution.author
+$sep$\and
+$endfor$ %% -- end for/affiliation.institution
+$endif$ %% -- end if/affiliation.institution-columnar
+%% ----------------------------------------------------------
+
+$endif$
 }
 
 % conference papers do not typically use \thanks and this command

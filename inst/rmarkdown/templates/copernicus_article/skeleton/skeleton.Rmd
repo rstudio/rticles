@@ -1,0 +1,318 @@
+---
+title: Template for preparing your manuscript submission to Copernicus journals using RMarkdown
+journal: "`r rticles::copernicus_journal_abbreviations(journal_name = 'communication')`"
+author:
+  - given_name: Daniel
+    surname: Nüst
+    affiliation: 1
+    email: daniel.nuest@uni-muenster.de
+    corresponding: true
+  - given_name: Josiah
+    surname: Carberry
+    affiliation: 2
+    email: j.carberry@orcid.org
+  - given_name: Markus
+    surname: Konkol
+    affiliation: 1
+affiliation:
+  - code: 1
+    address: Institute for Geoinformatics, University of Münster, 48149 Münster, Germany
+  - code: 2
+    address: Psychoceramics, Wesleyan University, Middletown, CT, United State
+abstract: |
+  The abstract goes here.
+  It can also be on _multiple lines_.
+bibliography: sample.bib
+running:
+  title: RMarkdown Template for Copernicus
+  author: Nüst et al.
+# This section is mandatory even if you declare that no competing interests are present.
+competinginterests: |
+  The authors declare no competing interests.
+# OPTIONAL:
+algorithms: true
+# See https://publications.copernicus.org/for_authors/licence_and_copyright.html, normally used for transferring the copyright, if needed.
+copyrightstatement: |
+  The author's copyright for this publication is transferred to institution/company.
+### The following commands are for the statements about the availability of data sets and/or software code corresponding to the manuscript.
+### It is strongly recommended to make use of these sections in case data sets and/or software code have been part of your research the article is based on.
+availability:
+  #code: |
+  #  use this to add a statement when having only software code available
+  #data: |
+  #  use this to add a statement when having only data sets available
+  codedata: |
+    use this to add a statement when having data sets and software code available
+authorcontribution: |
+  Daniel wrote the package. Josiah thought about poterry. Markus filled in for a second author.
+disclaimer: |
+  We like Copernicus.
+acknowledgements: |
+  Thanks to the rticles contributors!
+appendix: |
+  \section{Figures and tables in appendices}
+  Regarding figures and tables in appendices, the following two options are possible depending on your general handling of figures and tables in the manuscript environment:
+  \subsection{Option 1}
+  If you sorted all figures and tables into the sections of the text, please also sort the appendix figures and appendix tables into the respective appendix sections.
+  They will be correctly named automatically.
+  \subsection{Option 2}
+  If you put all figures after the reference list, please insert appendix tables and figures after the normal tables and figures.
+  
+  To rename them correctly to A1, A2, etc., please add the following commands in front of them:
+  `\appendixfigures` needs to be added in front of appendix figures
+  `\appendixtables` needs to be added in front of appendix tables
+  
+  Please add `\clearpage` between each table and/or figure. Further guidelines on figures and tables can be found below.
+output:
+  rticles::copernicus_article:
+    base_format: rmarkdown::pdf_document
+---
+
+\introduction
+
+Introduction text goes here.
+You can change the name of the section if neccessary using `\introduction[modified heading]`.
+
+The following settings can or must be configured in the header of this file and are bespoke for Copernicus manuscripts:
+
+- The `journal` you are submitting to using the official abbreviation. You can use the function `rticles::copernicus_journal_abbreviations(name = '...')` to search the existing journals.
+
+- Specific sections of the manuscript:
+
+  - `running` with `title` and `author`
+
+  - `competinginterests`
+
+  - `copyrightstatement` (optional)
+
+  - `availability` (strongly recommended if any used), one of `code`, `data`, or `codedata`
+
+  - `authorcontribution`
+
+  - `disclaimer`
+
+  - `acknowledgements`
+
+See the defaults and examples from the skeleton and the official Copernicus documentation for details.
+
+**Important**: Always double-check with the official manuscript preparation guidelines at [https://publications.copernicus.org/for_authors/manuscript_preparation.html](https://publications.copernicus.org/for_authors/manuscript_preparation.html), especially the sections "Technical instructions for LaTeX" and "Manuscript composition".
+Please contact Daniel Nüst, `daniel.nuest@uni-muenster.de`, with any problems.
+
+# Content section one
+
+## Subsection Heading Here
+
+Subsection text here. 
+
+### Subsubsection Heading Here
+
+Subsubsection text here. 
+
+# Content section with citations
+
+See the [R Markdown docs for bibliographies and citations](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html).
+
+Copernicus supports biblatex and a sample bibliography is in file `sample.bib`.
+Read [@Feynman1963118], and [see @Dirac1953888].
+
+# Content section with R code chunks
+
+```{r, echo = FALSE}
+sum <- 1 + 41
+```
+
+You should always use `echo = FALSE` on R Markdown code blocks as they add formatting and styling not desired by Copernicus.
+The hidden workflow results in `r sum`.
+
+You can add verbatim code snippets without extra styles by using ` ``` ` without additional instructions.
+
+```
+sum <- 1 + 41
+```
+
+# Content section with list
+
+If you want to insert a list, you must
+
+- leave
+
+- empty lines
+
+- between each list item
+
+because the `\tightlist` format used by R Markdown is not supported in the Copernicus template. Example:
+
+```
+- leave
+
+- empty lines
+
+- between each list item
+```
+
+# Examples from the official template
+
+## FIGURES
+
+When figures and tables are placed at the end of the MS (article in one-column style), please add \clearpage between bibliography and first table and/or figure as well as between each table and/or figure.
+
+### ONE-COLUMN FIGURES
+
+Include a 12cm width figure of Nikolaus Copernicus from [Wikipedia](https://en.wikipedia.org/wiki/File:Nikolaus_Kopernikus.jpg) with caption using R Markdown.
+
+```{r, out.width = "8.3cm", echo = FALSE, fig.cap = "one column figure"}
+knitr::include_graphics("Nikolaus_Kopernikus.jpg")
+```
+
+### TWO-COLUMN FIGURES
+
+You can also include a larger figure.
+
+```{r, out.width = "12cm", echo = FALSE, fig.cap = "two column figure"}
+knitr::include_graphics("Nikolaus_Kopernikus.jpg")
+```
+
+## TABLES
+
+You can ad \LaTeX table in an R Markdown document to meet the template requirements.
+
+### ONE-COLUMN TABLE
+
+\begin{table}[t]
+\caption{TEXT}
+\begin{tabular}{l c r}
+\tophline
+
+a & b & c \\
+\middlehline
+1 & 2 & 3 \\
+
+\bottomhline
+\end{tabular}
+\belowtable{Table Footnotes}
+\end{table}
+
+### TWO-COLUMN TABLE
+
+\begin{table*}[t]
+\caption{TEXT}
+\begin{tabular}{l c r}
+\tophline
+
+a & b & c \\
+\middlehline
+1 & 2 & 3 \\
+
+\bottomhline
+\end{tabular}
+\belowtable{Table footnotes}
+\end{table*}
+
+## MATHEMATICAL EXPRESSIONS
+
+All papers typeset by Copernicus Publications follow the math typesetting regulations given by the IUPAC Green Book (IUPAC: Quantities, Units and Symbols in Physical Chemistry, 2nd Edn., Blackwell Science, available at: http://old.iupac.org/publications/books/gbook/green_book_2ed.pdf, 1993).
+
+Physical quantities/variables are typeset in italic font (t for time, T for Temperature)
+
+Indices which are not defined are typeset in italic font (x, y, z, a, b, c)
+
+Items/objects which are defined are typeset in roman font (Car A, Car B)
+
+Descriptions/specifications which are defined by itself are typeset in roman font (abs, rel, ref, tot, net, ice)
+
+Abbreviations from 2 letters are typeset in roman font (RH, LAI)
+
+Vectors are identified in bold italic font using \vec{x}
+
+Matrices are identified in bold roman font
+
+Multiplication signs are typeset using the LaTeX commands `\times` (for vector products, grids, and exponential notations) or `\cdot`
+
+The character * should not be applied as mutliplication sign
+
+## EQUATIONS
+
+### Single-row equation
+
+Unnumbered equations (i.e. using `$$` and getting inline preview in RStudio) are not supported by Copernicus.
+
+\begin{equation}
+1 \times 1 \cdot 1 = 42
+\end{equation}
+
+\begin{equation}
+A = \pi r^2
+\end{equation}
+
+\begin{equation}
+x=\frac{2b\pm\sqrt{b^{2}-4ac}}{2c}.  
+\end{equation}
+
+### Multiline equation
+
+\begin{align}
+& 3 + 5 = 8\\
+& 3 + 5 = 8\\
+& 3 + 5 = 8
+\end{align}
+
+## MATRICES
+
+$$
+\begin{matrix}
+x & y & z\\
+x & y & z\\
+x & y & z\\
+\end{matrix}
+$$
+
+## ALGORITHM
+
+If you want to use algorithms, you can either enable the required packages in the header (the default, see `algorithms: true`), or make sure yourself that the \LaTeX packages `algorithms` and `algorithmicx` are installed so that `algorithm.sty` respectively `algorithmic.sty` can be loaded by the Copernicus template.
+Copernicus staff will remove all undesirable packages from your LaTeX source code, so please stick to using the header option, which only adds the two acceptable packages.
+
+\begin{algorithm}
+\caption{Algorithm Caption}
+\label{a1}
+\begin{algorithmic}
+\STATE $i\gets 10$
+\IF {$i\geq 5$} 
+        \STATE $i\gets i-1$
+\ELSE
+        \IF {$i\leq 3$}
+                \STATE $i\gets i+2$
+        \ENDIF
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
+
+## CHEMICAL FORMULAS AND REACTIONS
+
+For formulas embedded in the text, please use `\chem{}`, e.g. \chem{A \rightarrow B}.
+
+The reaction environment creates labels including the letter R, i.e. (R1), (R2), etc.
+
+- `\rightarrow` should be used for normal (one-way) chemical reactions
+
+- `\rightleftharpoons` should be used for equilibria
+
+- `\leftrightarrow` should be used for resonance structures
+
+\begin{reaction}
+A \rightarrow B \\
+\end{reaction}
+\begin{reaction}
+Coper \rightleftharpoons nicus \\
+\end{reaction}
+\begin{reaction}
+Publi \leftrightarrow cations
+\end{reaction}
+
+## PHYSICAL UNITS
+
+Please use `\unit{}` (allows to save the math/`$` environment) and apply the exponential notation, for example \( 3.14\,\unit{km\,h^{-1}} \) (using LaTeX mode: `\( 3.14\,\unit{...} \)`) or \unit{0.872\,m\,s^{-1}} (using only `\unit{0.872\,m\,s^{-1}}`).
+
+\conclusions
+
+The conclusion goes here.
+You can modify the section name with  `\conclusions[modified heading if necessary]`.
