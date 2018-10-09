@@ -1,0 +1,92 @@
+\def\filename{endrotfloat}
+\def\fileversion{v1.0}
+\def\filedate{2007/01/23}
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{endrotfloat}[\filedate\space\fileversion\space
+				LaTeX2e package puts sideways figures and tables at end]
+
+\let\@bbfig\sidewaysfigure % bj
+\let\@bbtab\sidewaystable  % bj
+   
+\def\sidewaysfigure{%
+	\efloat@condopen{fff}
+	\efloat@iwrite{fff}{\string\begin{sidewaysfigure*}}%
+   \if@domarkers%
+			\addtocounter{postfig}{1}% % bj
+			\figureplace%              % bj
+   \fi%
+   \def\@currenvir{efloat@float}%
+   \begingroup%
+   \let\do\ef@makeinnocent \dospecials%
+   \ef@makeinnocent\^^L% and whatever other special cases
+   \endlinechar`\^^M \catcode`\^^M=12 \ef@xfigure}%
+{\catcode`\^^M=12 \endlinechar=-1 %
+\gdef\ef@xfigure#1^^M{\def\test{#1}%
+	\ifx\test\ef@endfiguretest
+		\efloat@foundend{fff}{figure*}
+	\else\ifx\test\ef@enddblfiguretest
+		\efloat@foundend{fff}{figure*}
+	\else\ifx\test\ef@endrotfiguretest
+		\efloat@foundend{fff}{sidewaysfigure*}
+	\else\ifx\test\ef@enddblrotfiguretest
+		\efloat@foundend{fff}{sidewaysfigure*}
+	\else%
+		\efloat@iwrite{fff}{#1}%
+		\let\next\ef@xfigure%
+	\fi \fi \fi \fi \next}%
+}%
+{\escapechar=-1%
+ \xdef\ef@endfiguretest{\string\\end\string\{figure\string\}}%
+ \xdef\ef@enddblfiguretest{\string\\end\string\{figure*\string\}}%
+ \xdef\ef@endrotfiguretest{\string\\end\string\{sidewaysfigure\string\}}%
+ \xdef\ef@enddblrotfiguretest{\string\\end\string\{sidewaysfigure*\string\}}%
+}%
+%
+\def\sidewaystable{\efloat@condopen{ttt}%
+   \efloat@iwrite{ttt}{\string\begin{sidewaystable*}}%
+   \if@domarkers
+		\addtocounter{posttbl}{1} % bj
+		\tableplace               % bj
+   \fi
+   \def\@currenvir{efloat@float}%
+   \begingroup
+   \let\do\ef@makeinnocent \dospecials
+   \ef@makeinnocent\^^L% and whatever other special cases
+   \endlinechar`\^^M \catcode`\^^M=12 \ef@xtable}
+{\catcode`\^^M=12 \endlinechar=-1 %
+ \gdef\ef@xtable#1^^M{\def\test{#1}
+	\ifx\test\ef@enddbltabletest
+			\efloat@foundend{ttt}{table*}
+	\else\ifx\test\ef@endtabletest
+			\efloat@foundend{ttt}{table*}
+	\else\ifx\test\ef@endrottabletest
+			\efloat@foundend{ttt}{sidewaystable*}
+	\else\ifx\test\ef@enddblrottabletest
+			\efloat@foundend{ttt}{sidewaystable*}
+	\else
+		\efloat@iwrite{ttt}{#1}%
+			\let\next\ef@xtable
+		\fi \fi \fi \fi \next}
+}
+{\escapechar=-1
+\xdef\ef@enddblrottabletest{\string\\end\string\{sidewaystable*\string\}}
+\xdef\ef@endrottabletest{\string\\end\string\{sidewaystable\string\}}
+\xdef\ef@enddbltabletest{\string\\end\string\{table*\string\}}
+\xdef\ef@endtabletest{\string\\end\string\{table\string\}}
+}
+
+\@namedef{sidewaystable*}{\sidewaystable}
+
+\renewcommand{\processdelayedfloats}{{%
+   \def\baselinestretch{1}\normalsize
+   \let\figure\@bfig
+   \let\table\@btab
+   \let\sidewaysfigure\@bbfig
+   \let\sidewaystable\@bbtab
+   \processdelayedfloats@hook
+   \if@tablesfirst \processtables\processfigures
+   \else \processfigures\processtables \fi
+   \processotherdelayedfloats}}
+
+\endinput

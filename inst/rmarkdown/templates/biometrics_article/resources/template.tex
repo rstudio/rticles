@@ -1,0 +1,101 @@
+\documentclass[useAMS,usenatbib$if(referee)$,referee$endif$]{biom}
+%\documentclass[useAMS,usenatbib,referee]{biom}
+%
+%
+%  Papers submitted to Biometrics should ALWAYS be prepared
+%  using the referee option!!!!
+%
+%
+% If your system does not have the AMS fonts version 2.0 installed, then
+% remove the useAMS option.
+%
+% useAMS allows you to obtain upright Greek characters.
+% e.g. \umu, \upi etc.  See the section on "Upright Greek characters" in
+% this guide for further information.
+%
+% If you are using AMS 2.0 fonts, bold math letters/symbols are available
+% at a larger range of sizes for NFSS release 1 and 2 (using \boldmath or
+% preferably \bmath).
+%
+% The usenatbib command allows the use of Patrick Daly's natbib package for
+% cross-referencing.
+%
+% If you wish to typeset the paper in Times font (if you do not have the
+% PostScript Type 1 Computer Modern fonts you will need to do this to get
+% smoother fonts in a PDF file) then uncomment the next line
+% \usepackage{Times}
+%%%%% AUTHORS - PLACE YOUR OWN MACROS HERE %%%%%
+
+\usepackage[figuresright]{rotating}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage[hyphens]{url} % not crucial - just used below for the URL
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{booktabs}
+%% \raggedbottom % To avoid glue in typesetteing, sbs>>
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setcounter{footnote}{2}
+
+\title[$header$]{$title$}
+
+\author{$for(author)$ $author.name$ \email{$author.email$} \\ $author.affiliation$ $sep$ \and
+		$endfor$
+	   }
+
+\begin{document}
+
+\date{{\it Received $month$} $year$}
+
+\pagerange{\pageref{firstpage}--\pageref{lastpage}} \pubyear{$year$}
+
+\volume{0}
+\artmonth{January}
+\doi{0000-0000-0000}
+
+%  This label and the label ``lastpage'' are used by the \pagerange
+%  command above to give the page range for the article
+
+\label{firstpage}
+
+%  pub the summary here
+
+\begin{abstract}
+$abstract$
+\end{abstract}
+
+%
+%  Please place your key words in alphabetical order, separated
+%  by semicolons, with the first letter of the first word capitalized,
+%  and a period at the end of the list.
+%
+
+\begin{keywords}
+$keywords$.
+\end{keywords}
+
+\maketitle
+
+$body$
+
+$if(natbib)$
+
+\bibliographystyle{biom}
+\bibliography{$bibliography$}
+
+$endif$
+
+\label{lastpage}
+
+\end{document}
