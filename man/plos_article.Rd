@@ -4,7 +4,8 @@
 \alias{plos_article}
 \title{PLOS journal format.}
 \usage{
-plos_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
+plos_article(..., keep_tex = TRUE,
+  md_extensions = c("-autolink_bare_uris"))
 }
 \arguments{
 \item{...}{Additional arguments to \code{rmarkdown::pdf_document}}

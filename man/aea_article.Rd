@@ -4,7 +4,8 @@
 \alias{aea_article}
 \title{American Economic Association journal submissions.}
 \usage{
-aea_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
+aea_article(..., keep_tex = TRUE,
+  md_extensions = c("-autolink_bare_uris"))
 }
 \arguments{
 \item{...}{Additional arguments to \code{rmarkdown::pdf_document}}

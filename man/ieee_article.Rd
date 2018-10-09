@@ -7,9 +7,9 @@
 ieee_article(..., draftmode = c("final", "draft", "draftcls",
   "draftclsnofoot"), hyphenfixes = "op-tical net-works semi-conduc-tor",
   IEEEspecialpaper = "", with_ifpdf = FALSE, with_cite = FALSE,
-  with_amsmath = FALSE, with_algorithmic = FALSE, with_subfig = FALSE,
-  with_array = FALSE, with_dblfloatfix = FALSE, keep_tex = TRUE,
-  md_extensions = c("-autolink_bare_uris"))
+  with_amsmath = FALSE, with_algorithmic = FALSE,
+  with_subfig = FALSE, with_array = FALSE, with_dblfloatfix = FALSE,
+  keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 }
 \arguments{
 \item{...}{Additional arguments to \code{rmarkdown::pdf_document}}
