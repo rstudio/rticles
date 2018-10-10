@@ -26,6 +26,8 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [AMS](https://www.ametsoc.org/) articles
 
+- [Biometrics](http://www.biometrics.tibs.org/) articles
+
 - [Bulletin de l'AMQ](https://www.amq.math.ca/bulletin/) journal submissions
 
 - [CTeX](http://ctex.org) documents
@@ -51,6 +53,8 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 - [Springer](https://www.springer.com/gp/livingreviews/latex-templates) journal submissions
 
 - [Statistics in Medicine](http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm) journal submissions
+
+- [Copernicus Publications](https://publications.copernicus.org) journal submissions
 
 - [The R Journal](https://journal.r-project.org/) articles
 

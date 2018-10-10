@@ -4,8 +4,8 @@
 \alias{rsos_article}
 \title{Royal Society Open Science journal format.}
 \usage{
-rsos_article(..., keep_tex = TRUE, pandoc_args = NULL, includes = NULL,
-  fig_crop = TRUE)
+rsos_article(..., keep_tex = TRUE, pandoc_args = NULL,
+  includes = NULL, fig_crop = TRUE)
 }
 \arguments{
 \item{...}{Additional arguments to \code{rmarkdown::pdf_document}}

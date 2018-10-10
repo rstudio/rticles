@@ -4,7 +4,8 @@
 \alias{ams_article}
 \title{American Meteorological Society (AMS) Journal format.}
 \usage{
-ams_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
+ams_article(..., keep_tex = TRUE,
+  md_extensions = c("-autolink_bare_uris"))
 }
 \arguments{
 \item{...}{Arguments to \code{rmarkdown::pdf_document}}
