@@ -56,7 +56,7 @@ $endif$
 \correspondingauthor{\textsuperscript{$corresponding_author.code$} $corresponding_author.text$}
 
 % Keywords are not mandatory, but authors are strongly encouraged to provide them. If provided, please include two to five keywords, separated by the pipe symbol, e.g:
-$if(keywords)$ \keywords{ $for(keywords)$ $keywords$ $sep$| $endfor$ $endif$ }
+$if(keywords)$ \keywords{ $for(keywords)$ $keywords$ $sep$| $endfor$ } $endif$
 
 \begin{abstract}
 $abstract$
