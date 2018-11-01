@@ -27,7 +27,7 @@ rsos_article <- function(
   )
   args <- c(
     "--template", template,
-    "--latex-engine", "xelatex",
+    "--pdf-engine", "xelatex",
     pandoc_variable_arg("documentclass", "article"),
     pandoc_args,
     "--natbib",

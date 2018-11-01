@@ -1,9 +1,15 @@
-rticles 0.6 (unreleased)
+rticles 0.6
 ---------------------------------------------------------------------
 
 - Added the template for the SAGE Journals (thanks, @oguzhanogreden, #181).
 
+- Added the template for Biometrics (thanks, @daltonhance, #170).
+
+- Added the template for Copernicus Publications journals (thanks, @nuest, #172).
+
 - Supports syntax highlighting in the `ieee_article()` and `acm_article()` formats (thanks, @rainer-rq-koelle, #182).
+
+- Disabled syntax highlighting for `rjournal_article()` (thanks, @eddelbuettel, #185).
 
 rticles 0.5
 ---------------------------------------------------------------------

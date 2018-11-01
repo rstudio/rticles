@@ -4,8 +4,8 @@
 \alias{acs_article}
 \title{American Chemical Society (ACS) Journal format.}
 \usage{
-acs_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"),
-  fig_caption = TRUE)
+acs_article(..., keep_tex = TRUE,
+  md_extensions = c("-autolink_bare_uris"), fig_caption = TRUE)
 }
 \arguments{
 \item{...}{Arguments to \code{rmarkdown::pdf_document}}

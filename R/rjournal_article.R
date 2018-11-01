@@ -24,7 +24,7 @@ rjournal_article <- function(...) {
 
   template <- find_resource("rjournal_article", "template.tex")
 
-  base <- inherit_pdf_document(..., template = template)
+  base <- inherit_pdf_document(..., template = template, highlight = NULL)
 
   # Render will generate tex file, post-process hook generates appropriate
   # RJwrapper.tex and use pandoc to build pdf from that

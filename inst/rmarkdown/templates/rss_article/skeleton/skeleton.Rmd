@@ -7,13 +7,13 @@ affiliation: "Affiliation"
 address: "Address"
 city: "City"
 country: "Country"
-email: "email (at) address"
+email: "email1\\@example.com"
 author2: "Author 2"
 affiliation2: "Affiliation"
 address2: "Address"
 city2: "Los Angeles"
 country2: "Country"
-email2: "email (at) address"
+email2: "email2\\@example.com"
 abstract: |
   Abstract goes here
 keywords: keywords
