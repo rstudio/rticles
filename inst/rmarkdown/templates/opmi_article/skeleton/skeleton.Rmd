@@ -1,0 +1,86 @@
+---
+title: Title of Article
+shorttitle: Title of Article
+
+## Remove this if not required
+subtitle: Subtitle Here
+
+## Or 'manuscript' for double spaced, larger fonts
+class_option: OpenMind
+## Only needed if you use 'manuscript' option
+journal_name: Open Mind
+
+author:
+  - name: Author Name
+    affiliation: 1
+  - name: Another Name
+    affiliation: 2
+  - name: Still another Name
+    affiliation: 2
+  - name: and Final Name
+    affiliation: 1
+
+affiliation:
+  - code: 1
+    address: Department, Institution, City, Country
+  - code: 2
+    address: Another Department, Institution, City, Country
+
+corresponding_author:
+  name: Author Name
+  email: Email address
+
+supplements_links: |
+  Links to Supplementary Materials.
+
+## Remove this if not required
+conflicts_of_interest: |
+  Please declare any conflict of interest here.
+
+keywords:
+  - one
+  - two
+  - three
+
+abstract: |
+  Abstract text here.
+
+supportive_information: |
+  Here you enter further sources of information, if desired. A possible entry might be: No supportive information is available at this time.
+
+acknowledgments: |
+  Enter your acknowledgments here.
+
+author_contributions: |
+  Who helped formulate the project, who supplied data, analyses and experiments, etc.
+
+## Remove this if not required
+appendix: |
+  Optional appendix
+  \section{Sample appendix section}
+  
+bibliography: opmi.bib
+output: rticles::opmi_article
+---
+
+
+# Sample Section
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+
+## Sample Subsection
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+
+### Sample Subsubsection
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+
+
+# References
