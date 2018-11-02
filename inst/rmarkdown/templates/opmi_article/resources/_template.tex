@@ -1,0 +1,51 @@
+% File tacl2018.tex
+% Aug 3, 2018
+
+% The English content of this file was modified from various *ACL instructions
+% by Lillian Lee and Kristina Toutanova
+%
+% LaTeXery is all adapted from acl2018.sty.
+
+\documentclass[11pt,a4paper]{article}
+\usepackage[hyperref]{tacl2018} % use ``nohyperref'' to disable  hyperref
+\usepackage{times,latexsym}
+\usepackage{url}
+\usepackage[T1]{fontenc}
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+$if(taclfinal)$
+\taclfinalcopy
+$else$
+\taclfinalfalse
+$endif$
+
+\title{$title$}
+
+\author{
+  $for(author)$
+  $author.name$ \\ $author.affiliation$ \\ {\sf $author.email$} $sep$\And
+  $endfor$
+}
+
+  % $author.name$ \\ $author.affiliation$ \\ {\tt {\normalsize $author.email$}}
+
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+$abstract$
+\end{abstract}
+
+$body$
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+\bibliographystyle{acl_natbib}
+
+\end{document}

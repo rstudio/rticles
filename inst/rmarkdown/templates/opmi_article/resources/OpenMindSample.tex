@@ -1,0 +1,603 @@
+%% Documentclass:
+\documentclass[OpenMind]{stjour}
+
+%% Or,
+
+%% Manuscript, for double spaced, larger fonts
+% \documentclass[manuscript]{stjour}
+%% Only needed if you use `manuscript' option
+% \journalname{Open Mind}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% For production only, not authors:
+%%\documentclass[OpenMind,finalfonts]{stjour}
+
+%%%%%%%%%%% Please supply information %%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% For Open Mind:
+%% Supplementary Materials:
+\supplementslinks{dx.doi.org/10.1098/rsif.2013.0969}
+
+%% If no conflicts, this command doesn't need to be used
+%% \conflictsofinterest{}
+
+%%%%%%%%%%% to be supplied by MIT Press, only %%%%%%%%%%%%%%%%%
+
+\citation{Niyogi, R. K., Breton, Y.-A., Solomon,
+R. B., Conover, K.,\\ Shizgal, P., Dayan, P. (2015).\\ 
+Optimal indolence: a normative microscopic approach to work and leisure. Open Mind 1(1):
+1−12.}
+
+\received{20 October 2013}
+\accepted{7 November 2013}
+\published{26 January 2014}
+
+%% DOI address:
+\setdoi{10.1098/rsif.2013.0969}
+
+%%%%%%%% End MIT Press commands %%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% author definitions should be placed here:
+
+%% example definition
+\def\taupav{\tau_{\mathrm{Pav}}}
+\begin{document}
+
+\title{Title of Article}
+\subtitle{Subtitle Here}
+
+%% If shortened title for running head is needed so that the article title can fit
+%%   in the running head, use [] argument, ie,
+%%
+%%   \title[Shortened Title for Running Head]{Title of Article}
+%%   \subtitle{Subtitle Here}
+
+%% Since we use \affil{} in the argument of the \author command, we
+%% need to supply another version of the author names, without \affil{}
+%% to be used for running heads:
+
+\author[Author Names]
+{Author Names with affiliations\thanks{Current address: MacMurdo
+Sound, Antartica}\affil{1},
+Another Name\affil{2}, Still another Name\affil{2},\\
+\and Final Name\affil{1}}
+
+\affiliation{1}{Department, Institution, City, Country}
+
+%ie.
+%\affiliation{1}{Gatsby Computational Neuroscience Unit, University
+%College London, London, United Kingdom} 
+
+\affiliation{2}{Another Department, Institution, City, Country}
+
+%ie
+%\affiliation{2}{Center for Studies in
+%Behavioral Neurobiology, Concordia University, Montreal, Quebec,
+%Canada}
+
+\correspondingauthor{Author Name}{Corresponding author email address}
+
+% ie,
+%\correspondingauthor{Ritwik K. Niyogi}{ritwik.niyogi@gatsby.ucl.ac.uk}
+
+\keywords{(a series of uncapitalized words, separated with commas)}
+
+%ie
+%\keywords{work, leisure, normative, microscopic,  reinforcement learning, economics}
+
+\begin{abstract}
+Abstract text here.
+\end{abstract}
+
+
+\section{Sample Section}
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+
+\subsection{Sample Subsection}
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+
+\subsubsection{Sample Subsubsection}
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+
+\section{Sample equations}
+\begin{equation}
+\label{eq:rhoCHT}
+\rho^{\pi}= \frac{RI + \mathbb{E}_{\pi([L,\tau_L]|\textrm{post})}
+\left[C_L(\taupav+\tau_L) \right]   +
+\displaystyle{\int_{0}^{P}}{dw~ \mathbb{E}_{\pi_{w_L}}}
+\Biggl[\/\sum_{n_{L|[\textrm{pre},w]}}C_L(\tau_L)
+\Biggr]            }      {P +
+\mathbb{E}_{\pi([L,\tau_L] |\textrm{post})}[\tau_{L}] +\taupav +
+\displaystyle{ \int_{0}^{P}}{dw~ \mathbb{E}_{\pi_{w_L}}}   
+\Biggl[\sum_{n_{L|[\textrm{pre},w]}}\tau_L\Biggr]  
+}
+\end{equation}
+As long as
+$RI - K_LP > 
+\frac{1}{\beta}$
+\begin{equation}
+%\def\theequation{5.1}
+\left.\begin{array}{lrcl}
+&\rho^{\pi} &=&  \displaystyle\frac{\beta ( RI + K_L \taupav )-1} {\beta
+(P+\taupav )}    \\[12pt]
+\hbox{and}\hbox to .25in{\hfill}&\mathbb{E}[\tau_L | \text{post}] &=&\displaystyle \frac{P+\taupav}{\beta ( RI -
+K_LP)-1}  
+\label{eq:analytical_linear}
+\end{array}\right\}\hbox to 1.25in{\hfill}
+\end{equation} 
+
+\subsection{Simple code sample}
+
+\begin{code}
+\begin{verbatim}
+procedure bubbleSort( A : list of sortable items )
+    n = length(A)
+    repeat
+       newn = 0
+       for i = 1 to n-1 inclusive do
+          if A[i-1] > A[i] then
+             swap(A[i-1], A[i])
+             newn = i
+          end if
+       end for
+       n = newn
+    until n = 0
+end procedure
+\end{verbatim}
+\end{code}
+
+
+
+\subsection{Algorithm environment}
+
+%% \begin{algorithm} takes option [p][b][t][h],  or some combination, like \begin{figure}
+%% See documentation for algorithmic.sty for more information on formatting algorithms.
+
+\begin{algorithm}[h]
+\caption{A sample in an algorithm environment.}
+\begin{algorithmic}
+\If {$i\geq maxval$}
+    \State $i\gets 0$
+\Else
+    \If {$i+k\leq maxval$}
+        \State $i\gets i+k$
+    \EndIf
+\EndIf
+\end{algorithmic}
+\end{algorithm}
+
+
+\section{Jargon definitions}
+
+\begin{wideboxedtext}
+\begin{glossary}
+\symbol{Term} Definition
+\symbol{Term} Definition
+%ie
+%\symbol{$1/\lambda$} mean of exponential effective prior probability density for leisure time
+%\symbol{CHT} Cumulative Handling Time 
+\end{glossary}
+\end{wideboxedtext}
+
+\begin{boxedtext}
+\begin{glossary}
+\symbol{Term} Definition
+\symbol{Term} Definition
+%ie
+%\symbol{$1/\lambda$} mean of exponential effective prior probability density for leisure time
+%\symbol{CHT} Cumulative Handling Time 
+\end{glossary}
+\end{boxedtext}
+
+\section{Itemized Lists}
+
+\subsection{Roman list:}
+
+\begin{enumerate}
+\item[(i)] at high 
+payoffs, subjects work almost continuously, engaging in little leisure
+in between work bouts; 
+\item[(ii)] at low payoffs, they 
+engage in leisure all at once, in long bouts after working, rather
+than distributing the same amount of leisure time into multiple short
+leisure bouts; 
+\item[(iii)] subjects work continuously for the entire price duration, as long as
+the price is not very long (as shown by an analysis conducted by Y-AB, to be published separately); %(\textbf{Figure \ref{fig:task_data}D}).
+\item[(iv)] the duration of leisure bouts is variable.
+\end{enumerate}
+
+\subsection{Numbered list:}
+
+\begin{enumerate}
+\item at high 
+payoffs, subjects work almost continuously, engaging in little leisure
+inbetween work bouts; 
+\item at low payoffs, they 
+engage in leisure all at once, in long bouts after working, rather
+than distributing the same amount of leisure time into multiple short
+leisure bouts; 
+\item subjects work continuously for the entire price duration, as long as
+the price is not very long (as shown by an analysis conducted by Y-AB, to be published separately); %(\textbf{Figure \ref{fig:task_data}D}).
+\item the duration of leisure bouts is variable.
+\end{enumerate}
+
+
+\subsection{Bulleted list:}
+
+\begin{itemize}
+\item at high 
+payoffs, subjects work almost continuously, engaging in little leisure
+inbetween work bouts; 
+\item at low payoffs, they 
+engage in leisure all at once, in long bouts after working, rather
+than distributing the same amount of leisure time into multiple short
+leisure bouts; 
+\item subjects work continuously for the entire price duration, as long as
+the price is not very long (as shown by an analysis conducted by Y-AB, to be published separately); %(\textbf{Figure \ref{fig:task_data}D}).
+\item the duration of leisure bouts is variable.
+\end{itemize}
+
+
+\section{Sample citations}
+For general information on the correct form for citations using
+the APA 6 format, see the following sites:
+\href{https://owl.english.purdue.edu/owl/resource/560/02/}
+{APA 6, In-text citations, The Basics} and
+\href{https://owl.english.purdue.edu/owl/resource/560/03/}
+{APA 6, In-text citations}
+
+\section{Natbib citation mark up}
+
+\subsection{Single citations}
+\noindent
+\begin{tabular}{ll}
+\bf Type&\bf Results\\
+\hline
+\verb+\citet{jon90}+&Jones et al. (1990)\\
+\verb+\citet[chap. 2]{jon90}+&Jones et al. (1990, chap. 2)\\
+    \verb+\citep{jon90}+	    &   	(Jones et al., 1990)\\
+    \verb+\citep[chap. 2]{jon90}+ 	&    	(Jones et al., 1990, chap. 2)\\
+    \verb+\citep[see][]{jon90}+ 	 &    	(see Jones et al., 1990)\\
+    \verb+\citep[see][chap. 2]{jon90}+ 	&    	(see Jones et al., 1990, chap. 2)\\
+    \verb+\citet*{jon90}+ 	    &    	Jones, Baker, and Williams (1990)\\
+    \verb+\citep*{jon90}+	    &    	(Jones, Baker, and Williams,
+    1990) \\
+\end{tabular}
+
+For example, some citations from the OpenMindSample bibliography:
+citet:\citet{anderson}, citep:\citep{antibayes}, and
+cite*: \citet*{anderson}.
+
+\subsection{Multiple citations}
+Multiple citations may be made by including more than one citation
+key in the \verb+\cite+ command argument.
+
+\noindent
+\begin{tabular}{ll}
+\bf Type&\bf Results\\
+\hline
+\verb+\citet{jon90,jam91}+&Jones et al. (1990); James et al. (1991)\\
+\verb+\citep{jon90,jam91}+&(Jones et al., 1990; James et al. 1991)\\
+\verb+\citep{jon90,jon91}+&(Jones et al., 1990, 1991)\\
+\verb+\citep{jon90a,jon90b}+&(Jones et al., 1990a,b)\\
+\end{tabular}
+
+For example, multiple citations from the OpenMindSample bibliography:
+citet:\citet{anderson,antibayes}, citep:\citep{anderson,antibayes}.
+As you see, the citations are automatically hyperlinked to their
+reference in the bibliography.
+
+\newpage
+
+\section{Sample figures}
+
+\begin{figure}[h] 
+\centerline{\includegraphics[width=\textwidth]{Fig1}}
+\caption{(Colour online) \textbf{Task and key features of the
+ data.} \\
+ A) Cumulative handling time (CHT) task. Grey bars denote work
+(depressing a lever), white gaps show leisure. The subject must
+ accumulate work up to a total period of time called the
+\emph{price} ($P$) in order to obtain a single reward (black dot) of subjective reward
+intensity $RI$. The trial duration is $25\times \mathrm{price}$ (plus
+$2$s each time the price is attained, during which the lever is retracted so it cannot
+work; not shown).
+}
+\label{fig:task_data}
+\end{figure}
+
+\begin{figure}[ht] 
+\widefigure{\fullpagewidth}{Fig1}
+\caption{(Colour online) \textbf{Task and key features of the
+ data.} \\
+A) Cumulative handling time (CHT) task. Grey bars denote work
+(depressing a lever), white gaps show leisure. The subject must
+accumulate work up to a total period of time called the
+\emph{price} ($P$) in order to obtain a single reward (black dot) of subjective reward
+intensity $RI$. The trial duration is $25\times \mathrm{price}$ (plus
+$2$s each time the price is attained, during which the lever is retracted so it cannot
+work; not shown).
+}
+\label{newfig:task_data}
+\end{figure}
+
+\clearpage
+\section{Sample tables}
+
+\begin{table}[!ht]
+\caption{Time of the Transition Between Phase 1 and Phase 2$^{a}$}
+\label{tab:label}
+\centering
+\begin{tabular}{lc}
+\hline
+ Run  & Time (min)  \\
+\hline
+  $l1$  & 260   \\
+  $l2$  & 300   \\
+  $l3$  & 340   \\
+  $h1$  & 270   \\
+  $h2$  & 250   \\
+  $h3$  & 380   \\
+  $r1$  & 370   \\
+  $r2$  & 390   \\
+\hline
+\multicolumn{2}{l}{$^{a}$Table note text here.}
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\widecaption{Sample table taken from [treu03]\label{tbl-1}}
+\begin{widetable}
+\advance\tabcolsep-1pt
+\small
+\begin{tabular}{ccrrccccccccc}
+\hline
+\bf 
+POS &\bf  chip &\multicolumn1c{\bf ID} &\multicolumn1c{\bf X}
+&\multicolumn1c{\bf Y} &\bf
+RA &\bf DEC &\bf IAU$\pm$ $\delta$ IAU &\bf
+IAP1$\pm$ $\delta$ IAP1 &\bf IAP2 $\pm$ $\delta$
+IAP2 &\bf star &\bf E &\bf Comment\\
+\hline
+0 & 2 & 1 & 1370.99 & 57.35\rlap{$^a$}    &   6.651120 &  17.131149 &
+21.344$\pm$0.006\rlap{$^b$}  & 2 4.385$\pm$0.016 & 23.528$\pm$0.013 & 0.0 & 9 & -    \\
+0 & 2 & 2 & 1476.62 & 8.03     &   6.651480 &  17.129572 & 21.641$\pm$0.005  & 2 3.141$\pm$0.007 & 22.007$\pm$0.004 & 0.0 & 9 & -    \\
+0 & 2 & 3 & 1079.62 & 28.92    &   6.652430 &  17.135000 & 23.953$\pm$0.030  & 2 4.890$\pm$0.023 & 24.240$\pm$0.023 & 0.0 & - & -    \\
+0 & 2 & 4 & 114.58  & 21.22    &   6.655560 &  17.148020 & 23.801$\pm$0.025  & 2 5.039$\pm$0.026 & 24.112$\pm$0.021 & 0.0 & - & -    \\
+0 & 2 & 5 & 46.78   & 19.46    &   6.655800 &  17.148932 & 23.012$\pm$0.012  & 2 3.924$\pm$0.012 & 23.282$\pm$0.011 & 0.0 & - & -    \\
+0 & 2 & 6 & 1441.84 & 16.16    &   6.651480 &  17.130072 & 24.393$\pm$0.045  & 2 6.099$\pm$0.062 & 25.119$\pm$0.049 & 0.0 & - & -    \\
+0 & 2 & 7 & 205.43  & 3.96     &   6.655520 &  17.146742 & 24.424$\pm$0.032  & 2 5.028$\pm$0.025 & 24.597$\pm$0.027 & 0.0 & - & -    \\
+0 & 2 & 8 & 1321.63 & 9.76     &   6.651950 &  17.131672 &
+22.189$\pm$0.011  & 2 4.743$\pm$0.021 & 23.298$\pm$0.011 & 0.0 & 4 &
+edge \\
+\hline
+\multicolumn{13}{l}{%
+Table 2 is published in its entirety in the electronic
+edition of the {\it Astrophysical Journal}.}\\[3pt]
+\multicolumn{13}{l}{%
+$^a$ Sample footnote for table 2.}\\[3pt]
+\multicolumn{13}{l}{%
+$^b$ Another sample footnote for table 2.}
+\end{tabular}
+\end{widetable}
+\end{table}
+
+\begin{table}[p]
+\rotatebox{90}{\vbox{\hsize=\textheight
+\caption{Here is a caption for a table that is found in landscape
+mode.}
+\begin{tabular}{ccrrccccccccc}
+\hline
+\bf 
+POS &\bf  chip &\multicolumn1c{\bf ID} &\multicolumn1c{\bf X}
+&\multicolumn1c{\bf Y} &\bf
+RA &\bf DEC &\bf IAU$\pm$ $\delta$ IAU &\bf
+IAP1$\pm$ $\delta$ IAP1 &\bf IAP2 $\pm$ $\delta$
+IAP2 &\bf star &\bf E &\bf Comment\\
+\hline
+0 & 2 & 1 & 1370.99 & 57.35\rlap{$^a$}    &   6.651120 &  17.131149 &
+21.344$\pm$0.006\rlap{$^b$}  & 2 4.385$\pm$0.016 & 23.528$\pm$0.013 & 0.0 & 9 & -    \\
+0 & 2 & 2 & 1476.62 & 8.03     &   6.651480 &  17.129572 & 21.641$\pm$0.005  & 2 3.141$\pm$0.007 & 22.007$\pm$0.004 & 0.0 & 9 & -    \\
+0 & 2 & 3 & 1079.62 & 28.92    &   6.652430 &  17.135000 & 23.953$\pm$0.030  & 2 4.890$\pm$0.023 & 24.240$\pm$0.023 & 0.0 & - & -    \\
+0 & 2 & 4 & 114.58  & 21.22    &   6.655560 &  17.148020 & 23.801$\pm$0.025  & 2 5.039$\pm$0.026 & 24.112$\pm$0.021 & 0.0 & - & -    \\
+0 & 2 & 5 & 46.78   & 19.46    &   6.655800 &  17.148932 & 23.012$\pm$0.012  & 2 3.924$\pm$0.012 & 23.282$\pm$0.011 & 0.0 & - & -    \\
+0 & 2 & 6 & 1441.84 & 16.16    &   6.651480 &  17.130072 & 24.393$\pm$0.045  & 2 6.099$\pm$0.062 & 25.119$\pm$0.049 & 0.0 & - & -    \\
+0 & 2 & 7 & 205.43  & 3.96     &   6.655520 &  17.146742 & 24.424$\pm$0.032  & 2 5.028$\pm$0.025 & 24.597$\pm$0.027 & 0.0 & - & -    \\
+0 & 2 & 8 & 1321.63 & 9.76     &   6.651950 &  17.131672 &
+22.189$\pm$0.011  & 2 4.743$\pm$0.021 & 23.298$\pm$0.011 & 0.0 & 4 &
+edge \\
+\hline
+\multicolumn{13}{l}{%
+Table 2 is published in its entirety in the electronic
+edition of the {\it Astrophysical Journal}.}\\[3pt]
+\multicolumn{13}{l}{%
+$^a$ Sample footnote for table 2.}\\[3pt]
+\multicolumn{13}{l}{%
+$^b$ Another sample footnote for table 2.}
+\end{tabular}
+}}
+\end{table}
+\clearpage
+
+
+\vglue 3in
+Example of table continuing over pages:
+
+
+\begin{center}
+\begin{longtable}{ccc@{}}
+\caption{ApJ costs from 1991 to 2013
+\label{tab:table}} \\[2pt]
+\hline
+\bf Year & \bf Subscription & \bf Publication \\
+ & \bf cost &\bf charges\\
+ & \bf(\$) & \bf (\$/page)\\
+\hline
+\endfirsthead
+
+\multicolumn3c{Table \thetable, \it continued from previous page.}\\[6pt]
+\multicolumn3c{ApJ costs from 1991 to 2013}\\[2pt]
+\hline
+\bf Year & \bf Subscription & \bf Publication \\
+ & \bf cost &\bf charges\\
+ & \bf(\$) & \bf (\$/page)\\
+\hline
+\endhead
+\\\hline
+\\[-8pt]
+\multicolumn{3}{r}{\it Table continued on next page}\\ 
+\endfoot
+
+\hline
+\endlastfoot
+
+1991 & 600 & 100 \\
+1992 & 650 & 105 \\
+1993 & 550 & 103 \\
+1994 & 450 & 110 \\
+1995 & 410 & 112 \\
+1996 & 400 & 114 \\
+1997 & 525 & 115 \\
+1998 & 590 & 116 \\
+1999 & 575 & 115 \\
+2000 & 450 & 103 \\
+2001 & 490 &  90 \\
+2002 & 500 &  88 \\
+2003 & 450 &  90 \\
+2004 & 460 &  88 \\
+2005 & 440 &  79 \\
+2006 & 350 &  77 \\
+2007 & 325 &  70 \\
+2008 & 320 &  65 \\
+2009 & 190 &  68 \\
+2010 & 280 &  70 \\
+2011 & 275 &  68 \\
+2012 & 150 &  56 \\
+2013 & 140 &  55 \\
+\end{longtable}
+\end{center}
+
+\section{Supportive Information}
+Here you enter further sources of information, if desired.
+
+%% A possible entry might be:
+% No supportive information is available at this time.
+
+
+\acknowledgments
+Enter your acknowledgments here.
+
+%% ie.,
+
+% The authors thank Laurence Aitchison for fruitful discussions.  RKN
+% and PD received funding from the Gatsby Charitable Foundation. Y-AB,
+% RBS, KC and PS received funding from Canadian Institutes of Health
+% Research grant $MOP74577$,
+% Fond de recherche Qu\'{e}bec - Sant\'{e} (Group grant to the Groupe 
+% de recherche en neurobiologie comportementale, Shimon Amir, P.I.), and
+% Concordia University Research Chair (Tier I). 
+
+\authorcontributions 
+Who helped formulate the project, who supplied data, analyses and
+experiments, etc.
+
+%% ie.
+%% Project was formulated by RKN, PD, PS,
+%% based on substantial data, analyses and experiments of Y-AB, KC, RS,
+%% PS. RKN, PD formalised the model, RKN implemented and ran the model;
+%% RKN analysed the molecular ethogram data; Y-AB formalised and
+%% implemented a CTMC model. All authors wrote the manuscript.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% The bibliography
+
+%% \nocite{*} is used here as a quick way to get every entry  in the .bib file to
+%% appear in the bibliography. Normally the bibliography is made using only
+%% the bibentries that you cite using \cite{}, or one of the Natbib citation
+%% entries, like \citep{}, \citet{} etc.
+
+\nocite{*}
+\bibliography{bibsamp}
+
+
+\appendix
+
+\section{Sample Appendix Section}
+We derive the result in Eq. \eqref{eq:analytical_linear}. We consider a linear $C_L(\tau_L+\taupav)=K_L(\tau_L+\taupav)$, and
+make two further 
+simplifications: (i) the subject does not
+engage in leisure in the pre-reward state (and so works for the whole
+price when it works); and (ii) \emph{a priori}, arbitrarily long leisure durations are possible
+($\lambda=0$).
+Then the reward rate in Eq. \eqref{eq:rhoCHT} becomes
+\begin{equation}\label{eq:analyticalrho}
+\rho^{\pi}= \frac{\vrule height 10pt width0pt RI + K_L \{~ \mathbb{E}[ \tau_L | \textrm{post} ] + \taupav  \} }
+     {P +
+\mathbb{E}[ \tau_L | \textrm{post} ] +\taupav  } 
+\end{equation} 
+As discussed in the \emph{Results} section, the probability of engaging in instrumental leisure in the post-reward state is $\pi([L,\tau_L]
+~| \textrm{post}) = \exp\left[-\{\beta (\rho^\pi-K_L) 
+ \} \tau_L\right]$, which is an exponential distribution with
+mean 
+\begin{equation}
+\mathbb{E}[\tau_L | \textrm{post}]=\frac{1}{\beta (\rho^\pi-K_L) }
+\label{eq:analyticaltauL}
+\end{equation}  
+Re-arranging terms of this equation,
+\begin{equation}\label{eq:rhoversion2}
+\rho^{\pi}=\frac{1}{\beta ~\mathbb{E}[\tau_L | \textrm{post}]} +K_L 
+\end{equation} 
+Equating Eqs. \eqref{eq:analyticalrho} and \eqref{eq:rhoversion2} and solving for the mean instrumental leisure duration $\mathbb{E}[\tau_L | \textrm{post}]$, we derive
+\begin{equation}
+\mathbb{E}[\tau_L | \textrm{post}] = \frac{P+\taupav}{\beta ( RI - K_LP)-1} 
+\label{eq:solvedtauL}
+\end{equation}
+which is the second line of Eq.\eqref{eq:analytical_linear}. This is the mean instrumental leisure duration as long as  $RI - K_LP>1$, and  $\mathbb{E}[\tau_L | \textrm{post}] \rightarrow \infty$ otherwise. When the former condition holds, we may
+substitute Eq. \eqref{eq:solvedtauL} into Eq. \eqref{eq:analyticalrho} and solve for $\rho^{\pi}$
+
+\begin{figure}
+\widefigure{\fullpagewidth}{Fig1}
+\caption{Sample Appendix Caption. Here is a caption that might
+appear in an appendix. It is as wide as the full width of the page.}
+\end{figure}
+
+\newpage
+
+\section{Making Your Bibliography for an Open Mind Article}
+{\it Open Mind} uses the APA author-date  bibliography style,
+apacite.bst. For more
+information on apacite, for examples in how to make your .bib file and more, see:\\
+\href{http://mirror.jmu.edu/pub/CTAN/biblio/bibtex/contrib/apacite/apacite.pdf}
+{http://mirror.jmu.edu/pub/CTAN/biblio/bibtex/contrib/apacite/apacite.pdf}
+
+\noindent
+(In spite of the mention of apacite cite commands, please use only
+Natbib commands for in text citations, as shown above.)
+
+\subsection{BibTeX}
+You will need to use BibTeX to form your bibliography; typing in the
+references would be
+a huge and unpleasant task. Look at the openmindsample.bbl file and you'll see why
+typing in the bibitems would be difficult. 
+
+For a good basic introduction to using BibTeX, see
+\href{https://www.economics.utoronto.ca/osborne/latex/BIBTEX.HTM}
+{https://www.economics.utoronto.ca/osborne/latex/BIBTEX.HTM}
+
+When you use BibTeX, the form of the bibliography will be correct. You
+don't need to supply a bibliography style, since that is built into
+the stjour.cls file.
+
+\end{document}
+
