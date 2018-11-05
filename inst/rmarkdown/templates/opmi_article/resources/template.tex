@@ -8,10 +8,10 @@ $if(journal_name)$\journalname{$journal_name$}$endif$
 
 %%%%%%%%%%% Please supply information %%%%%%%%%%%%%%%%%%%%%%%%%
 
-\supplementslinks{supplementslinks}
+\supplementslinks{$supplements_links$}
 
-$if(conflictsofinterest)$
-\conflictsofinterest{$conflictsofinterest$}
+$if(conflicts_of_interest)$
+\conflictsofinterest{$conflicts_of_interest$}
 $endif$
 
 %%%%%%%%%%% to be supplied by MIT Press, only %%%%%%%%%%%%%%%%%
@@ -30,14 +30,18 @@ $endif$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% author definitions should be placed here:
 
+$for(header-includes)$
+$header-includes$
+$endfor$
+
 \begin{document}
 
-\title[$shorttitle$]{$title$}
+\title[$short_title$]{$title$}
 $if(subtitle)$
 \subtitle{$subtitle$}
 $endif$
 
-\author[$for(author)$$author.name$$sep$, $endfor$]{
+\author[$short_author$]{
   $for(author)$
     $author.name$\affil{$author.affiliation$}$sep$,
   $endfor$
@@ -59,8 +63,10 @@ $body$
 
 %%% End of Article
 
-\section{Supportive Information}
-$supportive_information$
+$if(supportive_information)$
+  \section{Supportive Information}
+  $supportive_information$
+$endif$
 
 \acknowledgments
 $acknowledgments$
@@ -68,11 +74,12 @@ $acknowledgments$
 \authorcontributions
 $author_contributions$
 
-\bibliography{$bibliography$}
+\bibliography{$biblio$}
 
-$if(appendix)$
-  \appendix
-  $appendix$
-$endif$
+\clearpage
+
+$for(include-after)$
+  $include-after$
+$endfor$
 
 \end{document}

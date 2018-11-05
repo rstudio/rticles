@@ -1,11 +1,10 @@
 ---
 title: Title of Article
-shorttitle: Title of Article
-
 ## Remove this if not required
 subtitle: Subtitle Here
+short_title: Title of Article
 
-## Or 'manuscript' for double spaced, larger fonts
+## 'OpenMind' or 'manuscript'
 class_option: OpenMind
 ## Only needed if you use 'manuscript' option
 journal_name: Open Mind
@@ -29,6 +28,8 @@ affiliation:
 corresponding_author:
   name: Author Name
   email: Email address
+
+short_author: Author Names
 
 supplements_links: |
   Links to Supplementary Materials.
