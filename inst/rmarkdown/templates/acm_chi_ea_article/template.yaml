@@ -1,0 +1,4 @@
+name: ACM CHI Extended Abstract
+description: >
+  Template for creating a submission to the ACM CHI conference, in the extended abstracts format.
+create_dir: true

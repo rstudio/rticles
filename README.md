@@ -18,7 +18,7 @@ devtools::install_github("rstudio/rticles")
 
 The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown.rstudio.com) LaTeX formats and templates for various formats, including:
 
-- [ACM](http://www.acm.org/) articles - including [ACM CHI Proceedings](http://chi2019.acm.org/authors/papers/) format
+- [ACM](http://www.acm.org/) articles - including ACM [CHI Proceedings](http://chi2019.acm.org/authors/papers/) [CHI Extended Abstract](http://chi2019.acm.org/authors/chi-proceedings-format/) formats
 
 - [ACS](http://pubs.acs.org/) articles
 

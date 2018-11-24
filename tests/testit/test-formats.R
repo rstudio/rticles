@@ -27,6 +27,7 @@ test_format <- function(name, os_skip = NULL) {
 
 test_format("acm_article")
 test_format("acm_chi_proc_article")
+test_format("acm_chi_ea_article")
 test_format("acs_article")
 test_format("aea_article")
 test_format("ams_article")
