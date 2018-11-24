@@ -97,4 +97,4 @@ To use **rticles** from RStudio:
     ```
 
 ## Contributing to the rticles package
-Please [follow these guidelines](htteps://github.com/rstudio/rticles/blob/master/.github/PULL_REQUEST_TEMPLATE.md) to contribute new article templates to this package.
+Please [follow these guidelines](https://github.com/rstudio/rticles/blob/master/.github/PULL_REQUEST_TEMPLATE.md) to contribute new article templates to this package.
