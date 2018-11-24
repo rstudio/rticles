@@ -63,9 +63,11 @@ author:
 abstract: This is a guided illustration of how to write a CHI Extended Abstracts paper in R Markdown, using the official ACM \LaTeX\ template [Version 1.55](https://www.acm.org/publications/proceedings-template). #If you put the abstract in quotes, you must escape LaTeX syntax with an extra '\', e.g. '\\LaTeX\\'.
 keywords: CHI Extended Abstracts; \LaTeX; R Markdown; reproducible papers
 bibliography: sample-bibliography
-output: rticles::acm_chi_ea_article
-    #latex_engine: xelatex #some special characters like ẽ might require you to use xelatex instead of pdflatex
-#NOTE: to update the CCSXML (i.e. the code to generate the 'CCS Concepts') directly in sample-sigchi.tex - it's too messy to do from the YAML in here.
+output: 
+  rticles::acm_chi_ea_article:
+    includes:
+      in_header: ccsxml.tex
+#NOTE: change the content in ccsxml.tex (i.e. the code to generate the 'CCS Concepts'), to reflect your article, using http://dl.acm.org/ccs.cfm
 ---
 
 # Introduction{-}

@@ -82,8 +82,11 @@ teaser-label: teaser
 review: true
 anonymous: false
 bibliography: sample-bibliography
-output: rticles::acm_chi_proc_article
-#NOTE: to update the CCSXML (i.e. the code to generate the 'CCS Concepts'), do this directly in the .tex file generated which is generated when you knit the .Rmd file to PDF, then recompile that .tex file to PDF - the CCSXML code is a bit too messy to pass it in from the YAML header.
+output: 
+  rticles::acm_chi_proc_article:
+    includes:
+      in_header: ccsxml.tex
+#NOTE: change the content in ccsxml.tex (i.e. the code to generate the 'CCS Concepts'), to reflect your article, using http://dl.acm.org/ccs.cfm
 ---
 
 # Introduction{-}
