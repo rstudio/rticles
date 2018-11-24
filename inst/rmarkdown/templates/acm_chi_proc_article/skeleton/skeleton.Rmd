@@ -81,6 +81,7 @@ teaser-caption: Write your teaser caption here
 teaser-label: teaser
 review: true
 anonymous: false
+bibliography: sample-bibliography
 output: rticles::acm_chi_proc_article
 #NOTE: to update the CCSXML (i.e. the code to generate the 'CCS Concepts') directly in sample-sigchi.tex - it's too messy to do from the YAML in here.
 ---
