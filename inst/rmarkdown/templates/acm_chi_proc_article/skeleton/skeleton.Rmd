@@ -83,7 +83,8 @@ review: true
 anonymous: false
 bibliography: sample-bibliography
 output: 
-  rticles::acm_chi_proc_article:
+  bookdown::pdf_book:
+    base_format: rticles::acm_chi_proc_article
     includes:
       in_header: ccsxml.tex
 #NOTE: change the content in ccsxml.tex (i.e. the code to generate the 'CCS Concepts'), to reflect your article, using http://dl.acm.org/ccs.cfm

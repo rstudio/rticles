@@ -64,7 +64,8 @@ abstract: This is a guided illustration of how to write a CHI Extended Abstracts
 keywords: CHI Extended Abstracts; \LaTeX; R Markdown; reproducible papers
 bibliography: sample-bibliography
 output: 
-  rticles::acm_chi_ea_article:
+  bookdown::pdf_book:
+    base_format: rticles::acm_chi_ea_article
     includes:
       in_header: ccsxml.tex
 #NOTE: change the content in ccsxml.tex (i.e. the code to generate the 'CCS Concepts'), to reflect your article, using http://dl.acm.org/ccs.cfm
