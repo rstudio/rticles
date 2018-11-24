@@ -135,7 +135,7 @@ The first chunk in an R Markdown document is usually used to load packages and s
 ```{ r setup, include=FALSE}
 library(tidyverse)
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)  
-# by default, don't include code output, messages, or warnings in manuscript 
+# these options will exclude code output, messages, or warnings in knitted manuscript
 ```
 ````
 ```{r setup, include=FALSE}
