@@ -34,7 +34,7 @@ author:
     email: author2\@author.ac.uk
   - name: Third Author
     affiliation:
-      institution: Lẽkhaka Labs
+      institution: Lekhaka Labs
       city: Bengaluru
       postcode: 560 080
       country: India
@@ -60,39 +60,40 @@ author:
       city: Pretoria
       country: South Africa
     email: author6\@umbhaliu.ac.za
-abstract: This is a guided illustration of how to write a CHI Extended Abstracts paper in R Markdown, using the latest official ACM \LaTeX\ template [Version 1.55, September 11, 2018](https://www.acm.org/publications/proceedings-template). This R package is last updated on 23rd October 2018. #If you put the abstract in quotes, you must escape LaTeX syntax with an extra '\', e.g. '\\LaTeX\\'.
+abstract: This is a guided illustration of how to write a CHI Extended Abstracts paper in R Markdown, using the official ACM \LaTeX\ template [Version 1.55](https://www.acm.org/publications/proceedings-template). #If you put the abstract in quotes, you must escape LaTeX syntax with an extra '\', e.g. '\\LaTeX\\'.
 keywords: CHI Extended Abstracts; \LaTeX; R Markdown; reproducible papers
 bibliography: sample-bibliography
-output: 
-  rticles::acm_chi_ea_article:
-    latex_engine: xelatex #if you use pdflatex, some special characters like ẽ might cause error
+output: rticles::acm_chi_ea_article
+    #latex_engine: xelatex #some special characters like ẽ might require you to use xelatex instead of pdflatex
 #NOTE: to update the CCSXML (i.e. the code to generate the 'CCS Concepts') directly in sample-sigchi.tex - it's too messy to do from the YAML in here.
 ---
-
-\begin{sidebar}
-  \textbf{How to Make a Side Bar}
-
-  \textbf{Use \LaTeX\ Syntax:} Sidebars need to be placed in the \texttt{sidebar} \LaTeX\ environment. To achieve that, you can either: 1) write the text for the sidebar with markdown syntax, compile to PDF (if you are using RStudio, then just click the 'Knit' button), then open the generated \textbf{.tex} file for your manuscript wrap the desired parts inside \texttt{{\textbackslash}begin\{sidebar\}} and \texttt{{\textbackslash}end\{sidebar\}}, 2) simply all of the content for your sidebar using \LaTeX\ syntax in your R Markdown manuscript.
-  
-  The first option is better if you want to be able to compile your content to other formats than PDF, for example HTML or Microsoft Word.
-  
-  In the source file for this example document, the sidebar is written in \LaTeX\ syntax inside the R Markdown document.
-  
-  \textbf{Margin figures and tables:} For these, however, there is R Markdown syntax you can use to automatically put dynamically generated tables or figures, as well as static figures, in the right \LaTeX\ environment. This is explained later.
-
-  \caption{This is the optional caption}
-  \label{bar:sidebar}
-\end{sidebar}
 
 # Introduction{-}
 Using a tool like [R Markdown](https://rmarkdown.rstudio.com) to write scientific papers makes your work more transparent and reproducible. It also reduces the risk of errors, because you can dynamically insert tables, figures, and summary statistics directly from the data they are generated from insted of transferring results manually from statistical software to manuscript.
 
 This example illustrates how to use the latest ACM \LaTeX\ templates (Version 1.55, from September 11, 2018) with R Markdown to write papers for the [CHI conference](https://sigchi.org), in the CHI Extended Abtracts format. The content in this example is adapted and adjusted from content in **sample-sigchi.tex** as well as **sample-sigchi-a.tex** included with the ACM template, to illustrate how to create the same content through an R Markdown workflow as well as to showcase additional features made possible by R Markdown.
 
-# Paper meta data
-Set meta data (copyright, authors, keywords, title, keywords, etc.) in the YAML header of the .Rmd file in which you write the manuscript. This is done in the form of `key: value` pairs, e.g. `title: Writing CHI Proceedings Papers With R Markdown`. When compiling to a PDF (in RStudio, just click the 'Knit' button), the information in the YAML header is plugged into the CHI Extended Abstracts \LaTeX\ template (specified in the YAML header with `template: sample-sigchi-a.tex`). If you take a look at this template file, you will see e.g. `\title[$short-title$]{$title$}` - things between dollar signs are interpreted as a variable to be searched for in the YAML header and plugged into the template when generating a PDF.
+\begin{sidebar}
+  \vspace{-5cm}
+  
+  \textbf{How to Make a Side Bar}
 
-**Note the sole exception for adding paper meta data**: The CCS Concepts are messy to insert from the YAML header, so you should manually insert this into either the template `sample-sigchi-a.tex` or the **.tex** file generated for your manuscript when you knit to PDF.
+  \textbf{Use \LaTeX\ Syntax:} Sidebars need to be placed in the \texttt{sidebar} \LaTeX\ environment. To achieve that, you can either: 1) write the text for the sidebar with markdown syntax, compile to PDF (if you are using RStudio, just click the 'Knit' button), open the generated \textbf{.tex} file for your manuscript, and wrap the desired parts inside \texttt{{\textbackslash}begin\{sidebar\}} and \texttt{{\textbackslash}end\{sidebar\}}, or 2) simply write the content for your sidebar using \LaTeX\ syntax in your R Markdown manuscript.
+  
+  The first option is better if you want to be able to compile your content to other formats than PDF, for example HTML or Microsoft Word.
+  
+  In the source file for this example document, the sidebar is written in \LaTeX\ syntax inside the .Rmd file.
+  
+  \textbf{Margin figures and tables:} For these, as you will see, you can use R Markdown syntax directly to put dynamically generated tables or figures, as well as static figures, in the right \LaTeX\ environment. This is explained later.
+
+  \caption{This is the optional caption}
+  \label{bar:sidebar}
+\end{sidebar}
+
+# Paper meta data
+Set meta data (copyright, authors, keywords, title, keywords, etc.) in the YAML header of the .Rmd file in which you write the manuscript. This is done in the form of `key: value` pairs, e.g. `title: Writing CHI Proceedings Papers With R Markdown`. When compiling to a PDF (in RStudio, just click the 'Knit' button), the information in the YAML header is plugged into the CHI Extended Abstracts \LaTeX\ template. (If you were to take a look at this template file inside of the rticles package, you would see e.g. `\title[$short-title$]{$title$}` - stuff between dollar signs is interpreted as a variable to be searched for in the YAML header and plugged into the template when generating a PDF).
+
+**Note the sole exception for adding paper meta data**: The CCS Concepts are messy to insert from the YAML header, so you should manually insert this into the **.tex** file generated for your manuscript when you knit to PDF. Then compile that .tex to your final PDF.
 
 # The Body of The Paper
 Typically, the body of a paper has a hierarchical structure, with numbered or unnumbered headings for sections, subsections, sub-subsections, and paragraphs. Whereas in \LaTeX\ you use the command `\section` for main sections, in R Markdown you simply use `#`, as in `# The Body of The Paper`. For subsections, or sub-subsections, use additional hashes, as in `## This Become a Subsection`, and `#### This Becomes a Paragraph Heading`.^[By the way, this is how to insert footnotes. In the Extended Abstracts format, footnotes are displayed as side notes in the margin.] 
@@ -285,7 +286,7 @@ Here is a definition:
 In the ACM \LaTeX\ template, pre-defined theorem-like constructs are **theorem**, **conjecture**, **proposition**, **lemma** and **corollary**.  The pre-defined definition-like constructs are **example** and **definition**. See the documentation for the [2017 ACM Master article template](https://www.acm.org/publications/proceedings-template).
 
 # Finishing touches
-For the Extended Abstracts template in particular, it can be fiddly to get the final touches of the layout right, mostly in relation to the arrangement of the tables and figures in the margin. By default, `keep_tex:` is therefore set to `true` in the YAML header. This keeps the intermediary **.tex** file in your working directory after you have compiled to PDF. You can then make finishing touches in this file (e.g. using [OverLeaf](https://www.overleaf.com)), e.g. you might want to play around with varying amounts of `\vspace` to position the margin content.
+For the Extended Abstracts template in particular, it can be fiddly to get the final touches of the layout right, mostly in relation to the arrangement of the tables and figures in the margin. When you knit this template to PDF, the intermediary **.tex** file is stored in your working directory. You can make finishing touches in this .tex directly file (e.g. by uploading it to [OverLeaf](https://www.overleaf.com). In particular, you might want to add varying amounts of `\vspace{}` to position the margin content.
 
 # Conclusions
 If you prefer using Markdown syntax over \LaTeX, the CHI Proceedings format is a bit more straight-forward than the Extended Abstracts format, because the latter may force you to resort to more direct use of \LaTeX\ syntax to handle margin content appropriately. If you love \LaTeX, of course, it's entirely possible to exclusively use \LaTeX\ within R Markdown and only use R Markdown for its benefits of dynamic reporting of results.
