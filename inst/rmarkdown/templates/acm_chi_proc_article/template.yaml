@@ -1,0 +1,4 @@
+name: ACM CHI Proceedings
+description: >
+  Template for creating a submission to the ACM CHI conference, in the proceedings format.
+create_dir: true

@@ -1,0 +1,351 @@
+---
+#conference and copyright metadata
+copyright: acmcopyright #otherwise e.g. none, acmlicensed, ...
+copyright-year: 2016
+DOI: 10.475/123_4
+ISBN: 123-4567-24-567/08/06
+conference: ACM Woodstock conference
+conference-short: WOODSTOCK'97
+conference-date: July 1997
+conference-location: El Paso, Texas USA
+acm-year: 1997
+acm-price: 15.00
+
+#paper metadata
+title: Writing CHI Proceedings Papers With R Markdown
+subtitle: Using the 2018 ACM \LaTeX\ template
+short-title: CHI Papers With R Markdown
+titlenote: Who needs titlenotes anyway?
+subtitlenote: "Certainly can't recall the last time I used subtitlenotes, but it's good to have the option."
+short-authors: B. Trovato et al.
+author:
+  - name: Ben Trovato
+    authornote: Dr. Trovato insisted his name be first.
+    email: trovato\@corporation.com  #NOTE: you must escape the @
+    affiliation:
+      institution: Institute for Clarity in Documentation
+      city: Dublin
+      state: Ohio
+      postcode: 43017-6221
+  - name: G.K.M. Tobin
+    authornote: The secretary disavows any knowledge of this author's actions.
+    affiliation:
+      institution: Institute for Clarity in Documentation
+      city: Dublin
+      state: Ohio
+      postcode: 43017-6221
+    email: webmaster\@marysville-ohio.com
+  - name: Lars Thørväld
+    authornote: This author is the one who did all the really hard work.
+    affiliation:
+      institution: The Thørväld Group
+      city: Hekla
+      country: Iceland
+    email: larst\@affiliation.org
+  - name: Valerie Béranger
+    affiliation:
+      institution: Inria Paris-Rocquencourt
+      city: Rocquencourt
+      country: France
+  - name: Aparna Patel
+    affiliation:
+      institution: Rajiv Gandhi University
+      city: Doimukh
+      state: Arunachal Pradesh
+      country: India
+  - name: Huifen Chan
+    affiliation:
+      institution: Tsinghua University
+      city: Haidian Qu
+      state: Beijing Shi
+      country: China
+  - name: Charles Palmer
+    affiliation:
+      institution: Palmer Research Laboratories
+      city: San Antonio
+      state: Texas
+      country: China
+    email: cpalmer\@prl.com
+  - name: John Smith
+    affiliation:
+      institution: The Thørväld Group
+    email: jsmith\@affiliation.org
+  - name: Julius P. Kumquat
+    affiliation:
+      institution: The Kumquat Consortium
+    email: jpkumquat\@consortium.net
+abstract: This is a guided illustration of how to write a full paper for CHI, using the latest official ACM \LaTeX\ template [Version 1.55, September 11, 2018](https://www.acm.org/publications/proceedings-template). #If you put the abstract in quotes, you must escape LaTeX syntax with an extra '\', e.g. '\\LaTeX\\'.
+keywords: ACM proceedings, \LaTeX, text tagging
+teaser-figure: figures/sampleteaser.pdf
+teaser-caption: Write your teaser caption here
+teaser-label: teaser
+review: true
+anonymous: false
+output: rticles::acm_chi_proc_article
+#NOTE: to update the CCSXML (i.e. the code to generate the 'CCS Concepts') directly in sample-sigchi.tex - it's too messy to do from the YAML in here.
+---
+
+# Introduction{-}
+Using a tool like [R Markdown](https://rmarkdown.rstudio.com) to write scientific papers makes your work more transparent and reproducible. It also reduces the risk of errors, because you can dynamically insert tables, figures, and summary statistics directly from the data they are generated from insted of transferring results manually from statistical software to manuscript.
+
+This example illustrates how to use the latest ACM \LaTeX\ templates (Version 1.55, from September 11, 2018) with R Markdown to write papers for the [CHI conference](https://sigchi.org), in the CHI proceedings format. The content in this example is adapted and adjusted from content in the **sample-sigchi.tex** template included with the ACM template, to illustrate how to create the same content through the R Markdown workflow as well as to showcase additional features made possible by R Markdown.
+
+# Paper meta data
+Set meta data (copyright, authors, keywords, title, keywords, optional teaser figure, etc.) in the YAML header of the .Rmd file in which you write the manuscript. This is done in the form of `key: value` pairs, e.g. `title: Writing CHI Proceedings Papers With R Markdown`. When compiling to a PDF (in RStudio, just click the 'Knit' button), the information in the YAML header is plugged into the CHI Proceedings \LaTeX\ template (specified in the YAML header with `template: sample-sigchi.tex`). If you take a look at this template file, you will see e.g. `\title[$short-title$]{$title$}` - things between dollar signs are interpreted as a variable to be searched for in the YAML header and plugged into the template when generating a PDF.
+
+**Note the sole exception for adding paper meta data**: The CCS Concepts are messy to insert from the YAML header, so you should manually insert this into either the template `sample-sigchi.tex` or the **.tex** file generated for your manuscript when you knit to PDF.
+
+# The Body of The Paper
+Typically, the body of a paper has a hierarchical structure, with numbered or unnumbered headings for sections, subsections, sub-subsections, and paragraphs. Whereas in \LaTeX\ you use the command `\section` for main sections, in R Markdown you simply use `#`, as in `# The Body of The Paper`. For subsections, or sub-subsections, use additional hashes, as in `## This Become a Subsection`, and `#### This Becomes a Paragraph Heading`.^[By the way, this is how to insert footnotes.] 
+
+If you want some section to be unnumbered in the output, add `{-}` after the section name, as in `# Unnumbered Section{-}`.
+
+Indicate the start of a new paragraph with a blank line in your input file; that is why this sentence forms a separate paragraph.
+This line, however, does not form a separate paragraph.
+
+## Type Changes and *Special* Characters
+Make words or phrases *italicized* by surrounding them with a single \*; **embolden** them by surrounding them with \*\***two**\*\*. `Typewriter-style` (for instance, for computer code) you create by surrounding text with `` `backticks` ``.^[Another footnote here. Let's make this a rather long one to see how it looks.]
+
+## Citations
+Citations to articles [@bowman:reasoning; @braams:babel; @Cohen07], conference proceedings [@clark:pct] or maybe books [@Lamport:LaTeX; @salas:calculus] listed in the Bibliography section of your article will occur throughout the text of your article. To insert a reference in the R Markdown syntax, type \@ followed by the citation key. The key is a short reference uniquely identifying each entry in in the `.bib` file for your article, in which your references are listed in [BibTex](http://www.bibtex.org) format.
+
+For example, to cite the article "Deciding equivalances among conjunctive aggregate queries" from our `.bib` file, write `[@Cohen07]`. If you drop the `[]`'s, you get author names, as well as the citation: @Cohen07. See [this short guide for more](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html).
+
+# Dynamic reporting
+One of the most important benefits of writing in R Markdown (aside from being able to compile to other formats than PDF, such as HTML or even Microsoft Word), is the ability to insert results dynamically into your manuscript using code chunks or inline code. This means that you can do analyses **directly** in your manuscript or, probably better, read file(s) with data, summaries, or results directly into your manuscript and refer to them dynamically.
+
+This is important for two (related) reasons:
+1. You avoid initial manual transfer of results from statistical software to manuscript, which reduces the risk of error.
+2. If at a later stage you update the analysis files, the results reported in your manuscript are automatically also updated - this again reduces the risk of mistakes, because you don't need to manually update figures and tables.
+
+In R Markdown syntax, **code chunks** have the following form:
+
+````
+```{ coding_language chunk_label, chunk_options}
+# your code goes here
+```
+````
+
+**Inline code** has the form `` `coding_language #code here` ``.
+
+## Setup chunks
+The first chunk in an R Markdown document is usually used to load packages and set default chunk options, for example like so:
+
+````
+```{ r setup, include=FALSE}
+library(tidyverse)
+knitr::opts_chunk$set(echo = FALSE, 
+  message = FALSE, warning = FALSE)  
+# by default, don't include code output, 
+# messages, or warnings in manuscript 
+```
+````
+```{r setup, include=FALSE}
+#the chunk above is for illustration purposes
+library(tidyverse) 
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+You might read in a made-up data set of goals scored by basketball players like so (the chunk option `include=FALSE` means we don't want this chunk to have any output in the manuscript):
+
+````
+```{ r, include=FALSE}
+data <- read_csv("data/fakeBasketData.csv")
+```
+````
+
+```{r, include=FALSE}
+#the chunk above is for illustration purposes
+data <- read_csv("data/fakeBasketData.csv")
+mean(data$goals)
+```
+
+## Inline results
+We can use inline code to dynamically report properties of this data set. For example, "there are a total of `r nrow(data)` observations of goals scored. The mean number of goals made by any player in a given game is: `r mean(data$goals)`".
+
+## Tables
+For tables, you could use \LaTeX\ syntax directly. This might be useful if your table itself contains \LaTeX\ syntax, as in Figure \ref{tab:freq}.
+
+\begin{table}
+  \caption{Frequency of Special Characters}
+  \label{tab:freq}
+  \begin{tabular}{ccl}
+    \toprule
+    Non-English or Math&Frequency&Comments\\
+    \midrule
+    \O & 1 in 1,000& For Swedish names\\
+    $\pi$ & 1 in 5& Common in math\\
+    \$ & 4 in 5 & Used in business\\
+    $\Psi^2_1$ & 1 in 40,000& Unexplained usage\\
+  \bottomrule
+\end{tabular}
+\end{table}
+
+However, the power of writing in R Markdown is that you can read in data and automatically create corresponding LaTeX tables. The easiest way is probably to use [kable function](https://rdrr.io/cran/knitr/man/kable.html) For example, Table \@ref(tab:basket-data) shows the first 5 rows in our basket data set.
+
+```{r basket-data, echo=FALSE, message=FALSE}
+data %>%
+  head() %>%
+  knitr::kable(format = "latex", booktabs = TRUE, caption = "The first 5 rows of some made-up basket data.")
+```
+
+You can reference Table \@ref(tab:basket-data) with `\@ref(tab:basket-data)`.
+
+You can also do arbitrary transformations and analyses of the data before creating a table, as in Table \@ref(tab:basket-summary).
+
+```{r basket-summary, echo=FALSE, message=FALSE}
+data %>%
+  group_by(Player) %>%
+  summarise(`Total goals scored` = sum(goals)) %>%
+  knitr::kable(format = "latex", booktabs = TRUE, caption = "Summary statistics of goals scored by top players in made-up basketball season.")
+```
+
+To set a wider table, which takes up the whole width of the page's live area, put it in a `\table*` environment by adding the parameter `table.env = 'table*'` to the `kable` function, like in Table \@ref(tab:basket-summary-wide).
+
+```{r basket-summary-wide, echo=FALSE, message=FALSE}
+data %>%
+  group_by(Player) %>%
+  summarise(`Total goals scored` = sum(goals),
+             `Goals per game` = `Total goals scored` / n()) %>%
+  knitr::kable(format = "latex", booktabs = TRUE, caption = "Bigger display of more summary statistics of goals scored by top players in made-up basketball season.", table.env = 'table*') #note table.env = 'table*'
+  
+```
+
+## Figures
+### Static figures
+Figures are similarly included via code chunks. You can include arbitrary image files, as in Figure \@ref(fig:static-image). 
+
+```{r static-image, fig.cap="Here's a little pretty fly."}
+knitr::include_graphics("figures/fly.eps")
+```
+
+If you don't give it a caption in the chunk options (with `fig.cap="My caption"`), the figure does not float:
+
+```{r static-image-non-float"}
+knitr::include_graphics("figures/fly.eps")
+```
+
+You can resize the figures with the chunk options `out.height` and `out.width`, as in Figure \@ref(fig:static-image-resized).
+
+```{r static-image-resized, echo=FALSE, out.height='1in', out.width='1in', fig.cap="A sample black and white graphic that has been resized with the \\texttt{out.height} and \\texttt{out.width} chunk options."}
+knitr::include_graphics("figures/fly.eps")
+```
+
+At the moment, if you need to style text in the caption, or include references in the caption, you need to use \LaTeX\ rather than markdown syntax. As the figure caption is a string, you must escape the \LaTeX\ syntax's `\` with another `\`, as in Figure \@ref(fig:static-image-resized).
+
+### Dynamic figures
+Again, the power of R Markdown is that you can include e.g. plots that are dynamically generated from the underlying data. For example, Figure \@ref(fig:basket-plot) is a simple visualisation of the basket data (note that we restrict the figure size to the column width).
+
+```{r basket-plot, fig.cap="Total number of goals by the top 3 players in made-up basketball season", out.width='0.98\\columnwidth'}
+data %>%
+  group_by(Player) %>%
+  summarise(total_goals = sum(goals)) %>%
+  arrange(desc(total_goals)) %>%
+  head(3) %>%
+  ggplot() +
+    geom_bar(aes(x = Player, y = total_goals), stat = "identity") +
+    labs(x = "", y = "Total goals") + 
+    theme_minimal()
+```
+
+As with tables, you may want a figure to span two columns. To do this, set the environment to `figure*` with the chunk option `fig.env = 'figure*'`. If your image is very large, restrict its width to the text width with the chunk option `out.width='0.98\\textwidth'`.
+
+```{r basket-plot-wide, fig.cap="Distribution of goals scored by game for players in made-up basketball season", fig.env = 'figure*', out.width='0.98\\textwidth'}
+data %>%
+  ggplot() +
+    geom_boxplot(aes(y = goals, x = Player)) +
+    geom_point(aes(y = goals, x = Player), position = "jitter") +
+    coord_flip() +
+    labs(x = "", y = "Goals in game") +
+    theme_minimal()
+```
+
+## Math Equations
+You may want to display math equations in three distinct styles: inline, numbered or non-numbered display. Each of the three are discussed in the next sections. You can use usual \LaTeX\ syntax directly, or [R Markdown](https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#theorems).
+
+### Inline (In-text) Equations
+A formula that appears in the running text is called an inline or in-text formula.  It is produced by the
+**math** environment, which can be invoked by surrounding text with dollar signs: \$. You can use any of the symbols and structures, from $\alpha$ to $\omega$, available in \LaTeX\. For example, here's a nice equation inline: $\lim_{n\rightarrow \infty}x=0$. If you're writing in RStudio, you can even hover over it to see the rendered output displayed!
+
+### Display Equations
+A numbered display equation---one set off by vertical space from the text and centered horizontally---is produced by using \LaTeX\ syntax directly to put the content in an `equation` environment^[In fact, you can use any arbitrary \LaTeX\ syntax directly in your .Rmd document.]. So here's that nice equation from above:
+\begin{equation}
+\lim_{n\rightarrow \infty}x=0
+\end{equation}
+
+To make an unnumbered display equation,  surround the expression with two dollar signs:
+$$
+\lim_{n\rightarrow \infty}x=0
+$$
+
+## Theorem-like Constructs
+See [bookdown.org](https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#theorems) for guidance if you want to do it the R Markdown way. Here's the usual way, using \LaTeX\ syntax:
+
+\begin{theorem}
+  Let $f$ be continuous on $[a,b]$.  If $G$ is
+  an antiderivative for $f$ on $[a,b]$, then
+  \begin{displaymath}
+    \int^b_af(t)\,dt = G(b) - G(a).
+  \end{displaymath}
+\end{theorem}
+
+Here is a definition:
+\begin{definition}
+  If $z$ is irrational, then by $e^z$ we mean the
+  unique number that has
+  logarithm $z$:
+  \begin{displaymath}
+    \log e^z = z.
+  \end{displaymath}
+\end{definition}
+
+In the ACM \LaTeX\ template, pre-defined theorem-like constructs are **theorem**, **conjecture**, **proposition**, **lemma** and **corollary**.  The pre-defined definition-like constructs are **example** and **definition**.
+
+Another construct is **proof**, for example,
+
+\begin{proof}
+  Suppose on the contrary there exists a real number $L$ such that
+  \begin{displaymath}
+    \lim_{x\rightarrow\infty} \frac{f(x)}{g(x)} = L.
+  \end{displaymath}
+  Then
+  \begin{displaymath}
+    l=\lim_{x\rightarrow c} f(x)
+    = \lim_{x\rightarrow c}
+    \left[ g{x} \cdot \frac{f(x)}{g(x)} \right ]
+    = \lim_{x\rightarrow c} g(x) \cdot \lim_{x\rightarrow c}
+    \frac{f(x)}{g(x)} = 0\cdot L = 0,
+  \end{displaymath}
+  which contradicts our assumption that $l\neq 0$.
+\end{proof}
+
+# Conclusions
+This paragraph ends the body of this sample document. Remember that you might still have Acknowledgments or Appendices; brief samples of these follow.  There is still the Bibliography to deal with; and we will make a disclaimer about that here: with the exception of the reference to the \LaTeX\ book, the citations in this paper are to articles which have nothing to do with the present subject and are used as examples only.
+
+# (APPENDIX) Appendix {-} 
+# Headings in Appendices
+The rules about hierarchical headings discussed above for the body of the article are different in the appendices. You being the **appendix** section with the special header `# (APPENDIX) Appendix {-}`. Then, any subsequent top level headers (`#`) indicates the start of each Appendix, with alphabetic order designation (i.e., the first is A, the second B, etc.).  So, if you need hierarchical structure *within* an Appendix, start with **subsection** (`##`) as the highest level. Here is an outline of the body of this document in Appendix-appropriate form:
+
+## Introduction
+## Paper meta data
+## The Body of the Paper
+### Type Changes and Special Characters
+### Citations
+## Dynamic reporting
+### Inline results
+### Tables
+### Figures
+### Math Equations
+#### Inline (In-text) Equations
+#### Display Equations
+### Theorem-like Constructs
+## Conclusions
+## References
+
+# More Help for the Hardy
+For acknowledgements, you may want to use the \LaTeX\ syntax for this from the ACM template example, in which case you'll put acknowledgement text in between `\begin{acks}` and `\end{acks}`. Alternatively, just start an unnumbered heading `# Acknowledgements{-}` and write your text:
+
+# Acknowledgements{-}
+The authors would like to thank Dr. Yuhua Li for providing the MATLAB code of the *BEPS* method.
+
+The authors would also like to thank the anonymous referees for their valuable comments and helpful suggestions. The work is supported by the National Natural Science Foundation of China under Grant No. 61273304 and Young Scientists' Support Program [(http://www.nnsf.cn/youngscientists)](http://www.nnsf.cn/youngscientists).

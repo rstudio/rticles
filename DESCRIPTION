@@ -30,7 +30,8 @@ Authors@R: c(
   person("Oğuzhan", "Öğreden", role = c("aut"), comment = c(ORCID = "0000-0002-9949-3348")),
   person("Dalton", "Hance", role = c("aut"), email = "dhance@usgs.gov"),
   person("Daniel", "Nüst", role = c("aut", "cph"), email = "daniel.nuest@uni-muenster.de", comment = c(ORCID = "0000-0002-0024-5046")),
-  person("Petter", "Uvesten", role = c("aut", "cph"), email = "petter.uvesten.7362@student.lu.se")
+  person("Petter", "Uvesten", role = c("aut", "cph"), email = "petter.uvesten.7362@student.lu.se"),
+  person("Ulrik", "Lyngs", role = c("aut", "cph"), email = "ulrik.lyngs@cs.ox.ac.uk")
   )
 Description: A suite of custom R Markdown formats and templates for
   authoring journal articles and conference submissions.
@@ -39,6 +40,6 @@ Imports: utils, rmarkdown, knitr, yaml, tinytex, xfun
 SystemRequirements: GNU make
 URL: https://github.com/rstudio/rticles
 BugReports: https://github.com/rstudio/rticles/issues
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 Suggests: testit, bookdown, xtable
 Encoding: UTF-8
