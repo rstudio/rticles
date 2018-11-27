@@ -4,13 +4,16 @@
 \alias{rsos_article}
 \title{Royal Society Open Science journal format.}
 \usage{
-rsos_article(..., keep_tex = TRUE, pandoc_args = NULL,
-  includes = NULL, fig_crop = TRUE)
+rsos_article(..., keep_tex = TRUE, latex_engine = "xelatex",
+  pandoc_args = NULL, includes = NULL, fig_crop = TRUE)
 }
 \arguments{
 \item{...}{Additional arguments to \code{rmarkdown::pdf_document}}
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
+
+\item{latex_engine}{LaTeX engine for producing PDF output. Options are
+"pdflatex", "lualatex", and "xelatex".}
 
 \item{pandoc_args}{Additional command line options to pass to pandoc}
 
