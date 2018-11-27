@@ -14,6 +14,7 @@
 rsos_article <- function(
   ...,
   keep_tex = TRUE,
+  latex_engine = 'xelatex',
   pandoc_args = NULL,
   includes = NULL,
   fig_crop = TRUE
@@ -27,7 +28,6 @@ rsos_article <- function(
   )
   args <- c(
     "--template", template,
-    "--pdf-engine", "xelatex",
     pandoc_variable_arg("documentclass", "article"),
     pandoc_args,
     "--natbib",
@@ -99,7 +99,7 @@ rsos_article <- function(
     ),
     pandoc = pandoc_options(
       to = "latex",
-      latex_engine = "xelatex",
+      latex_engine = latex_engine,
       args = args,
       keep_tex = keep_tex
     ),
