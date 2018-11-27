@@ -69,7 +69,7 @@ rsos_article <- function(
   post_processor <- function(
     metadata, input_file, output_file, clean, verbose
   ) {
-    text <- readLines(output_file, warn = FALSE)
+    text <- xfun::read_utf8(output_file)
 
     # set correct text in fmtext environment
     end_first_page <- grep("^\\\\EndFirstPage", text) #nolint
@@ -84,7 +84,7 @@ rsos_article <- function(
         text[(end_first_page + 1):length(text)]
       )
     }
-    writeLines(enc2utf8(text), output_file, useBytes = TRUE)
+    xfun::write_utf8(text, output_file)
     output_file
   }
 
