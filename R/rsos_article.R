@@ -12,52 +12,29 @@
 #' @importFrom rmarkdown output_format knitr_options pandoc_options pandoc_variable_arg includes_to_pandoc_args
 #' @author Thierry Onkelinx, \email{thierry.onkelinx@@inbo.be}
 rsos_article <- function(
-  ...,
-  keep_tex = TRUE,
-  latex_engine = 'xelatex',
-  pandoc_args = NULL,
-  includes = NULL,
-  fig_crop = TRUE
+  ..., keep_tex = TRUE, latex_engine = 'xelatex', pandoc_args = NULL,
+  includes = NULL, fig_crop = TRUE
 ) {
 
   extra <- list(...)
 
   template <- system.file(
-    "rmarkdown/templates/rsos_article/resources/template.tex",
-    package = "rticles"
+    "rmarkdown/templates/rsos_article/resources/template.tex", package = "rticles"
   )
   args <- c(
-    "--template", template,
-    pandoc_variable_arg("documentclass", "article"),
-    pandoc_args,
-    "--natbib",
-    includes_to_pandoc_args(includes)
+    "--template", template, pandoc_variable_arg("documentclass", "article"),
+    pandoc_args, "--natbib", includes_to_pandoc_args(includes)
   )
 
-  if (length(extra) > 0) {
-    args <- c(
-      args,
-      sapply(
-        names(extra),
-        function(x){
-          pandoc_variable_arg(x, extra[[x]])
-        }
-      )
-    )
-  }
+  if (length(extra) > 0) args <- c(args, sapply(names(extra), function(x){
+    pandoc_variable_arg(x, extra[[x]])
+  }))
 
   opts_chunk <- list(
-    latex.options = "{}",
-    dev = "pdf",
-    fig.align = "center",
-    dpi = 300,
-    fig.width = 4.5,
-    fig.height = 2.9,
-    highlight = FALSE,
-    echo = FALSE
+    latex.options = "{}", dev = "pdf", fig.align = "center", dpi = 300,
+    fig.width = 4.5, fig.height = 2.9, highlight = FALSE, echo = FALSE
   )
-  crop <- fig_crop &&
-    !identical(.Platform$OS.type, "windows") &&
+  crop <- fig_crop && !identical(.Platform$OS.type, "windows") &&
     nzchar(Sys.which("pdfcrop"))
   if (crop) {
     knit_hooks <- list(crop = knitr::hook_pdfcrop)
@@ -66,9 +43,7 @@ rsos_article <- function(
     knit_hooks <- NULL
   }
 
-  post_processor <- function(
-    metadata, input_file, output_file, clean, verbose
-  ) {
+  post_processor <- function(metadata, input_file, output_file, clean, verbose) {
     text <- xfun::read_utf8(output_file)
 
     # set correct text in fmtext environment
@@ -90,18 +65,11 @@ rsos_article <- function(
 
   output_format(
     knitr = knitr_options(
-      opts_knit = list(
-        width = 75,
-        concordance = TRUE
-      ),
-      opts_chunk = opts_chunk,
-      knit_hooks = knit_hooks
+      opts_knit = list(width = 75, concordance = TRUE),
+      opts_chunk = opts_chunk, knit_hooks = knit_hooks
     ),
     pandoc = pandoc_options(
-      to = "latex",
-      latex_engine = latex_engine,
-      args = args,
-      keep_tex = keep_tex
+      to = "latex", latex_engine = latex_engine, args = args, keep_tex = keep_tex
     ),
     post_processor = post_processor,
     clean_supporting = !keep_tex
