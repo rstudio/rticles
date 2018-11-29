@@ -24,6 +24,8 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [AEA](https://www.aeaweb.org/journals/policies/templates) journal submissions
 
+- [AGU](https://agupubs.onlinelibrary.wiley.com/journal/19448007) journal submissions
+
 - [AMS](https://www.ametsoc.org/) articles
 
 - [Biometrics](http://www.biometrics.tibs.org/) articles
