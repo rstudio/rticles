@@ -17,13 +17,14 @@
 #' }
 #'
 #' @export
-agu_article <- function(...) {
-  pdf_document_format(...,
-                      highlight = NULL,
-                      citation_package = "natbib",
-                      format = "agu_article",
-                      template = "template.tex",
-                      md_extensions = c("-autolink_bare_uris",
-                                        "-auto_identifiers"),
-                      csl = "")
+agu_article <- function(..., keep_tex = TRUE, citation_package = 'natbib',
+                        highlight = NULL, md_extensions = c("-autolink_bare_uris",
+                                                            "-auto_identifiers")) {
+  template <- find_resource("agu_article", "template.tex")
+  fmt <- inherit_pdf_document(template = template,
+                              keep_tex = keep_tex,
+                              citation_package = citation_package,
+                              md_extensions = md_extensions,
+                              highlight = highlight,
+                              ...)
 }
