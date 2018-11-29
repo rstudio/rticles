@@ -52,16 +52,6 @@ output:
     rticles::agu_article:
       keep_tex: yes
 bibliography: agutest.bib
-# As of 2018 we recommend use of the TrackChanges package to mark revisions.
-# The trackchanges package adds five new LaTeX commands:
-#
-#  \note[editor]{The note}
-#  \annote[editor]{Text to annotate}{The note}
-#  \add[editor]{Text to add}
-#  \remove[editor]{Text to remove}
-#  \change[editor]{Text to remove}{Text to add}
-#
-# complete documentation is here: http://trackchanges.sourceforge.net/
 ---
 
 ```{r echo=FALSE}
@@ -106,6 +96,20 @@ Example \\citet and \\citep:
 
 Or section title might be a descriptive heading about data
 
+As of 2018 we recommend use of the TrackChanges package to mark revisions. The trackchanges package adds five new LaTeX commands:
+
+\\note[editor]{The note}
+
+\\annote[editor]{Text to annotate}{The note}
+
+\\add[editor]{Text to add}
+
+\\remove[editor]{Text to remove}
+
+\\change[editor]{Text to remove}{Text to add}
+
+complete documentation is here: http://trackchanges.sourceforge.net/
+
 # Results
 
 Or section title might be a descriptive heading about the results
@@ -114,7 +118,7 @@ Enter Figures and Tables near as possible to where they are first mentioned:
 DO NOT USE \\psfrag or \\subfigure commands.
 DO NOT USE \\newcommand, \\renewcommand, or \\def, etc.
 
-```{r, fig.width=3}
+```{r}
 plot(pressure)
 ```
 
