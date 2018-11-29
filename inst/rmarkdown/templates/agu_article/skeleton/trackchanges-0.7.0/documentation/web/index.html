@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+
+
+<!-- 
+
+This file is part of the TrackChanges Website
+Copyright 2009 Novimir Antoniuk Pablant
+
+This work is licensed under the Creative Commons Attribution-Share Alike 3.0 United States License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/us/ or send a letter to Creative Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+
+-->
+
+<head>
+<title>TrackChanges - Collaborative editing in LaTeX</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="author" content="Novimir Antoniuk Pablant" />
+<meta name="description" content="TrackChanges - Collaborative editing for LaTeX." />
+
+<link href="doc.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+
+
+</head>
+</body>
+<div id="nav_bar">
+  <div id="nav_bar_decor_1"></div>
+  <div id="nav_bar_decor_2"></div>
+  <div id="nav_bar_body">
+    
+
+<span class="index_main"><a href="index.html">MAIN</a></span>
+<div class="index_indent">
+</div>
+
+<br />
+<span class="index_main"><a href="web_preview.html">PREVIEW</a></span>
+<div class="index_indent">
+</div>
+
+<br />
+<span class="index_main"><a href="web_download.html">DOWNLOAD</a></span>
+<div class="index_indent">
+</div>
+
+<br />
+<span class="index_main"><a href="help.html">DOCS</a></span>
+<div class="index_indent">
+</div>
+
+<br />
+<br />
+<br />
+<span class="index_main"><a href="web_contact.html">CONTACT</a></span>
+<div class="index_indent">
+</div>
+
+<br />
+<span class="index_main"><a href="web_credits.html">CREDITS</a></span>
+<div class="index_indent">
+</div>
+
+
+  </div>
+</div>
+
+<div id="body_frame">
+  <div id="body_header">
+  </div>
+  <div id="body_main">
+    
+
+
+<br />
+<div id="simple_title" align=center>TrackChanges</div>
+<div id="simple_subtitle" align=center>Collaborative editing of LaTeX documents.</div>
+<br />
+<br />
+<br />TrackChanges is a package for collaboratively editing LaTeX documents.  It allows multiple editors to make changes and add annotations to a document.  These changes and notes will be color coded by editor and added to the compiled document.  The TrackChanges GUI allows the author to quickly find and accept, reject or modify the suggested edits.
+<br />
+<br />TrackChanges can be used for:
+<ul>
+  <li>Collaborative authoring of a LaTeX document.</li>
+  <li>Proofreading by multiple editors.</li>
+  <li>Annotating a document.</li>
+</ul>
+      When used along with a versioning system (such as bazaar, mercurial or subversion) TrackChanges can serve as change tracking system for multiple authors.
+<br />
+<br />
+<br />
+<br />The TrackChanges package consists of two parts:
+<ol>
+  <li>A LaTeX style file: <span class="code">trackchanges.sty</span>
+  </li>
+  <li>A GUI used to accept/reject/change edits: <span class="code">trackchanges.py</span>
+  </li>
+</ol>
+      Also included is a command line utility <span class="code">acceptchanges.py</span> for accepting or rejecting changes.
+<br />
+<br />For information on how to use TrackChanges see the <a href="help.html">Documentation</a>.
+<br />
+<br />
+<br />
+<br />
+
+
+
+
+<hr />
+<div class="subtitle">LaTeX Package Summary</div>
+<br />
+<br />The <span class="code">trackchanges.sty</span> style file adds five new LaTeX comands commands:
+<br />
+<br />
+<div class="indent">
+  <span class="tex_command">&nbsp;&nbsp;\note</span><span class="code">[</span><span class="code_option">editor</span><span class="code">]{The note}</span>
+  <br /><span class="tex_command">\annote</span><span class="code">[</span><span class="code_option">editor</span><span class="code">]{Text to annotate}{The note}</span>
+  <br /><span class="tex_command">&nbsp;&nbsp;&nbsp;\add</span><span class="code">[</span><span class="code_option">editor</span><span class="code">]{Text to add}</span>
+  <br /><span class="tex_command">\remove</span><span class="code">[</span><span class="code_option">editor</span><span class="code">]{Text to remove}</span>
+  <br /><span class="tex_command">\change</span><span class="code">[</span><span class="code_option">editor</span><span class="code">]{Text to remove}{Text to add}</span>
+</div>
+<br />In all cases <span class="code">[</span><span class="code_option">editor</span><span class="code">]</span> can be ommitted.
+
+<br />
+<br />All of the TrackChanges commands allow for the specification of an editor.  Specifing an editor will prefix the edits with the editor name and color code their changes in the final <span class="code">pdf</span> or <span class="code">dvi</span> file.
+<br />
+<br />To specify an editor name, the editor must first be declared in the preamble:
+<div class="indent">
+        <span class="tex_command">\addeditor</span><span class="code">{</span><span class="code_option">editor one</span><span class="code">}</span>
+  <br /><span class="tex_command">\addeditor</span><span class="code">{</span><span class="code_option">editor two</span><span class="code">}</span>
+  <br />
+</div>
+
+
+<br />
+<br /><span class="sub3title">Display Options</span>
+<br />Track changes has a number of different ways that it can display the edits in the final <span class="code">dvi</span> or <span class="code">pdf</span> file.
+<div class="indent">
+        <span class="code">finalold&nbsp;</span> - Reject all edits.
+  <br /><span class="code">finalnew&nbsp;</span> - Accept all edits.
+  <br /><span class="code">footnotes</span> - Display edits as footnotes.
+  <br /><span class="code">margins&nbsp;&nbsp;</span> - Display edits as margin notes.
+  <br /><span class="code">inline&nbsp;&nbsp;&nbsp;</span> - Display edits inline.
+</div>
+
+
+<br />See the <a href="help.html">Documentation</a> for additional options.  
+<br />Examples with the differnt display options can be found on the <a href="help_preview.html">Preview</a> page.
+<br />
+<br />
+<br />
+
+<hr />
+<div class="subtitle">Introduction</div>
+<br />
+While planning to write some complex document together with some of my colleagues the same discussion was started over and over again: should LaTeX or some office suite like OpenOffice.org be used? 
+<br />
+<br />The strengths of LaTeX are its deterministic behavior, its reliable handling of split documents and unreached typesetting of formulas. On the other hand, current office suites provide the user with several features that are at least very desirable when collaboratively writing a document: they provide integrated merging facilities and are able to track changes and attach notes to the text. 
+<br />
+<br />The merging issue can be handled reasonably well by version tracking systems like SVN or CVS, but there was no acceptable solution to the issue of change tracking available. Of course, some militant LaTeX purists tried to convince me that all change tracking can be handled by insertion of LaTeX comments. I have tried so once but it did not work out! The main reason was that reading and editing large documents is mostly handled in DVI format and not on the LaTeX source level -- but LaTeX comments cannot be seen in DVI! Especially if you have sent one version of the document to a colleague and you want to skim quickly over it to see what has been changed DVI is the format of your choice.
+<br />
+<br />While returning from a project meeting and staring out of the train's window I had the idea how we could combine the ``best of both worlds'' for collaborative text editing: by adding change tracking and note facilities to LaTeX! This is the basic idea of the <SPAN class="code">TrackChanges</span> LaTeX package. But this is only one part of the change tracking convenience offered by an office suite. The second part of the story is that changes and notes need to be accepted or rejected in order to produce some final version! This is the goal of the other programs of the TrackChanges open source project.
+<br />
+<br />&nbsp;&nbsp;-- Felix Salfner
+
+<hr />
+<br />
+<!-- Creative Commons License -->
+<a href="http://creativecommons.org/licenses/GPL/2.0/">
+<img alt="CC-GNU GPL" border="0" src="http://creativecommons.org/images/public/cc-GPL-a.png" /></a>
+This software is licensed under the <a href="http://creativecommons.org/licenses/GPL/2.0/">GNU GPL</a> version 2.0 or later.
+<!-- /Creative Commons License -->
+
+  </div>
+  <div id="body_footer">
+    
+
+NOVIMIR PABLANT
+<br />FELIX SALFNER
+<br />
+<br />LAST UPDATE
+<br />2009-04
+<br />
+<br /><a rel="license"
+	 href="http://creativecommons.org/licenses/by-sa/3.0/us/">
+      <img alt="Creative Commons License" style="border-width:0"
+      src="http://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" />
+      </a>
+
+
+    <br />
+    
+
+<a href="http://sourceforge.net/projects/trackchanges"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=168034&amp;type=10" width="80" height="15" alt="Get TrackChanges at SourceForge.net. Fast, secure and Free Open Source software downloads" style="border-style:none;" /></a>
+
+
+  </div>
+</div>
+
+</body>
+</html>

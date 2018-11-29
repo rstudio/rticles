@@ -3,6 +3,7 @@
 export(acm_article)
 export(acs_article)
 export(aea_article)
+export(agu_article)
 export(amq_article)
 export(ams_article)
 export(asa_article)

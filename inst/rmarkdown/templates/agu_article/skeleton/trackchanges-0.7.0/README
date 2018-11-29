@@ -1,0 +1,124 @@
+
+TrackChanges
+Multiple editors in LaTeX.
+========================================================================
+
+INTRODUCTION:
+
+  The TrackChanges package consists of two parts:
+  1.  A LaTex style file: 
+        trackchanges.sty
+  2.  A GUI, written in python:
+         trackchanges.py
+
+  The style file may be used without the GUI.  The GUI is to be used to
+  facilitate accepting, rejecting, or modifying the edits made using the
+  commands defined in the style file.
+
+  This packages also includes a command line utility: acceptchanges.py.
+  This utility will only work in posix environments.
+
+  Help files are available as part of this package:
+    ./documentation/web/help.html
+
+  Documentation is also  available at the TrackChanges website.
+
+  To get the latest version of this sofware go to:
+    http://trackchanges.sourceforge.net
+
+========================================================================
+
+LaTeX STYLEFILE:
+
+  INSTALLATION:
+    Copy the style file to the directory with your LaTeX document.
+    The style file can be found at: ./LatexPackage/trackchanges.sty
+
+  USAGE:
+    Add the following line to you latex document:
+      \usepackage{trackchanges}
+
+    Add the names of the editors in the preamble [OPTIONAL]:
+      \addeditor{editor}
+
+    Now you have access to all of the TrackChanges commands:
+      \add[editor]{added text}
+      \remove[editor]{removed text}
+      \change[editor]{removed text}{added text}
+      \note[editor]{note text}
+      \annote[editor]{text to annotate}{note text}
+
+    See the documentation or website for display options.
+
+========================================================================
+
+TRACKCHANGES GUI
+
+  This is a Beta version of the TrackChanges GUI. 
+  That means: Beware! Bugs may lurk ahead.
+
+  If you choose to use this software plese be careful to back up your 
+  TeX files.  This software has not been thoroughly tested and may
+  corrupt your TeX files.  (The style file is fine and can't mess any
+  thing up but the GUI for accepting/rejecting/modifying might.)
+
+  ----------------------------------------------------------------------
+  
+  WARNING:  
+    This program has not be generalized to handle international
+    characters.  Such characters may cause unexpected behavior.
+  
+  NOTE:
+    So far the GUI has only been tested on Windows XP and Os X.
+    While it should work on linux, it might not.
+  
+  WARNING (AGAIN):
+    This is beta software. It has not been tested much.
+    Things may be broken.
+  
+  
+  
+  ----------------------------------------------------------------------
+  INSTALLATION:
+    Once you have all the dependencies installed, 
+    just run ./PythonPackage/trackchanges.py
+    
+      $> cd PythonPackage
+      $> python trackchanges.py
+  
+  
+  ----------------------------------------------------------------------
+  DEPENDANCIES:
+    To get the trackchanges GUI to run you will need several things:
+     
+    1. Python 2.6 or later
+    2. PyQt 4.4.4 or later
+  
+  ----------------------------------------------------------------------
+  WHERE TO GET DEPENDANCIES:
+    Python 2.6  -- http://www.python.org/
+    PyQt 4      -- http://www.riverbankcomputing.co.uk/
+  
+  
+
+
+========================================================================
+
+This file is part of TrackChanges
+Copyright 2009 Novimir Antoniuk Pablant
+               Felix Salfner
+
+TrackChanges is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+TrackChanges is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with TrackChanges.  If not, see <http://www.gnu.org/licenses/>.
+
+------------------------------------------------------------------------

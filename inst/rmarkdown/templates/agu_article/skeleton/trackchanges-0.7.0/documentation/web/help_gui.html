@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+
+
+<!-- 
+
+This file is part of the TrackChanges Website
+Copyright 2009 Novimir Antoniuk Pablant
+
+This work is licensed under the Creative Commons Attribution-Share Alike 3.0 United States License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/us/ or send a letter to Creative Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+
+-->
+
+<head>
+<title>TrackChanges - Help System</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="author" content="Novimir Antoniuk Pablant" />
+<meta name="description" content="TrackChanges - Collaborative editing for LaTeX." />
+
+<link href="doc.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+
+
+</head>
+</body>
+<div id="nav_bar">
+  <div id="nav_bar_decor_1"></div>
+  <div id="nav_bar_decor_2"></div>
+  <div id="nav_bar_body">
+    
+
+<span class="index_main"><a href="index.html">MAIN</a></span>
+<div class="index_indent">
+</div>
+
+<br /><span class="index_main"><a href="help.html">HELP MAIN</a></span>
+<div class="index_indent">
+</div>
+
+<br />
+<span class="index_main"><a href="help_stylefile.html">STYLE FILE</a></span>
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_stylefile.html#commands">Commands</a></span>
+</div>
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_stylefile.html#setup">Setup</a></span>
+</div>
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_stylefile.html#options">Options</a></span>
+</div>
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_stylefile.html#advanced_usage">Advanced Usage</a></span>
+</div>
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_stylefile.html#limitations">Limitations</a></span>
+</div>
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_stylefile.html#troubleshooting">Troubleshooting</a></span>
+</div>
+
+<br />
+<span class="index_main"><a href="help_gui.html">GUI</a></span>
+
+<div class="index_indent vspace">
+        <span class="index_sub"><a href="help_gui.html#warnings">Warnings</a></span>
+</div>
+
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_gui.html#main_window">Main Window</a></span>
+</div>
+
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_gui.html#editor">Editor</a></span>
+</div>
+
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_gui.html#editing_controls">Editing Controls</a></span>
+</div>
+
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_gui.html#more_editing_controls">Additional Controls</a></span>
+</div>
+
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_gui.html#main_menu">Main Menu</a></span>
+</div>
+<br />
+<br />
+<br />
+
+
+  </div>
+</div>
+
+<div id="body_frame">
+  <div id="body_header">
+  </div>
+  <div id="body_main">
+    
+
+
+<br />
+<div id="simple_title" align=center>TrackChanges Help</div>
+<div id="simple_subtitle" align=center>GUI</div>
+<br />
+<br />
+<br />The TrackChanges GUI can be used to quickly find and take action on edits made in LaTeX documents.  To add the editing commands to LaTeX use the <a href="help_stylefile.html"><span class="code">trackchanges.sty</span></a> style file.
+<br />
+
+
+
+<br />
+<a name="warnings"></a>
+<br /><span class="subsubtitle">Notes and Warnings</span>
+<div class="indent">
+  <br />It is quite easy for an editor to incorrectly place the TrackChanges edit commands into the TeX file.  The most common mistake is to not add spaces in the correct places.  This is particularly true for <span class="tex_command">\remove</span> commands.  This GUI does not attempt to correct these mistakes.  Make sure that you proofread the file after using TrackChanges.
+  <br />
+  <br />It is highly recommended that a versioning system be used along with TrackChanges.  There are a number of these available (for free) such as bazaar, mercurial, git, svn and a host of others (including some LaTeX specific ones).  A document should always be committed to the versioning system before edits are made using TrackChanges.  If something gets changed inadvertently or otherwise goes wrong, it will then be possible to undo the changes.
+</div>
+
+
+<br />
+<a name="main_window"></a>
+<br /><span class="subsubtitle">Main Window</span>
+<div class="indent">
+  <br />The main window is split into two halves:  
+  <ul>
+    <li>On the left hand side is a text editor.</li>
+    <li>On the right hand side are the editing controls.</li>
+  </ul>  
+  <br />When A TeX file is loaded, the document will be displayed on the left hand side.  
+  <br />A search of the document will begin for any of the TrackChanges edit commands.  When an edit is found the contents of the edit will be shown on the right hand side.
+  <br />
+</div>
+
+
+<br />
+<a name="editor"></a>
+<br /><span class="subsubtitle">Editor</span>
+<div class="indent">
+<br />The TeX document can be edited at any time by working in the text editor.  Once an edit has been detected the editing controls (on the right hand side) will be paused.  To resume using the editing tool press on the resume button.  This will restart the search for edits.
+<br />
+</div>
+
+
+<br />
+<a name="editing_controls"></a>
+<br /><span class="subsubtitle">Editing Controls</span>
+<div class="indent">
+  <br />When an edit is found, its contents will be shown on the right hand side.  
+  <br />There are three text boxes on the right hand side.  These will display the relevant parts of the edit.  The text in the "Old Text" and "New Text" boxes can be edited before an action is taken.  This allows you more flexibility than simply accepting or rejecting the edit outright.
+  <br />
+  <br />For each edit there are 4 basic actions.  
+  <br />These can be performed using the buttons on the bottom of the right hand side.
+  <br />Which actions are available will depend on which command was found.
+  <br />
+  <ul>
+    <a name="button_skip"></a>
+    <li><span class="sub3title">Skip</span>
+      <br />This skips the current edit.  The edit will be left in place and no changes will be made to the document.</li>
+
+    <a name="button_old"></a>
+    <li><span class="sub3title">Keep Old</span>
+      <br />This is valid for the <span class="tex_command">\add</span>, <span class="tex_command">\remove</span> and <span class="tex_command">\change</span> commands.
+      <br />This will replace the command with the text in the "Old Text" box.  If you have not changed the text in the "Old Text" box then this is equivalent to rejecting the edit.  If the "Old Text" box is empty then the command will be entirely removed (the default for the add command).</li>
+
+    <a name="button_new"></a>
+    <li><span class="sub3title">Keep New</span>
+      <br />This is valid for the <span class="tex_command">\add</span>, <span class="tex_command">\remove</span> and <span class="tex_command">\change</span> commands.
+      <br />This will replace the command with the text in the "New Text" box.  If you have not changed the text in the "New Text" box then this is equivalent to accepting the edit.  If the "New Text" box is empty then the command will be entirely removed (the default for the remove command).</li>
+
+    <a name="button_remove_note"></a>
+    <li><span class="sub3title">Remove Note</span>
+      <br />This is valid for the <span class="tex_command">\note</span> and <span class="tex_command">\annote</span> commands.
+      <br />This will remove the note from document.  With the annote command the annotated text will be displayed in the "Old Text" box.  This text may be edited and will be used to replace the command when the "Remove Note" button is pressed.</li>
+  </ul>
+</div>
+
+
+<br />
+<a name="more_editing_controls"></a>
+<br /><span class="subsubtitle">Additional Editing Controls</span>
+<div class="indent">
+  <br />Additional editing controls are available from the menu bar.  These can be found under "Commands".
+  <ul>
+    <a name="menu_skip_all"></a>
+    <li><span class="sub3title">Skip All</span>
+      <br />This skips the remainder of the edits.  If the document has been changed the save window will pop up.</li>
+
+    <a name="menu_cancel"></a>
+    <li><span class="sub3title">Cancel</span>
+      <br />This skips the remainder of the edits.  No save window will be brought up.  The document can still be saved from File&rarr;Save.  
+      <br />Note: This does not revert the document.  To reset the document, reload it.</li>
+  </ul>
+</div>
+
+
+<br />
+<a name="main_menu"></a>
+<br /><span class="subsubtitle">Main Menu</span>
+<div class="indent">
+  <br />Loading and Saving can be done from the main menu.
+  <br />
+  <br />The File menu:
+  <ul>
+    <a name="menu_load"></a>
+    <li><span class="sub3title">Load</span>
+      <br />Load a new TeX document.</li>
+    <a name="menu_save"></a>
+    <li><span class="sub3title">Save</span>
+      <br />Save the current document.  The default action is to replace the original file.  You may choose a different location.</li>
+    <a name="menu_exit"></a>
+    <li><span class="sub3title">Exit</span>
+      <br />Exit TrackChanges.</li>
+</ul>
+</div>
+
+
+
+  </div>
+  <div id="body_footer">
+    
+
+NOVIMIR PABLANT
+<br />FELIX SALFNER
+<br />
+<br />LAST UPDATE
+<br />2009-04
+<br />
+<br /><a rel="license"
+	 href="http://creativecommons.org/licenses/by-sa/3.0/us/">
+      <img alt="Creative Commons License" style="border-width:0"
+      src="http://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" />
+      </a>
+
+
+  </div>
+</div>
+
+</body>
+</html>

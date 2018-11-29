@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+
+
+<!-- 
+
+This file is part of the TrackChanges Website
+Copyright 2009 Novimir Antoniuk Pablant
+
+This work is licensed under the Creative Commons Attribution-Share Alike 3.0 United States License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/us/ or send a letter to Creative Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+
+-->
+
+<head>
+<title>TrackChanges - Help System</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="author" content="Novimir Antoniuk Pablant" />
+<meta name="description" content="TrackChanges - Collaborative editing for LaTeX." />
+
+<link href="doc.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+
+
+</head>
+</body>
+<div id="nav_bar">
+  <div id="nav_bar_decor_1"></div>
+  <div id="nav_bar_decor_2"></div>
+  <div id="nav_bar_body">
+    
+
+<span class="index_main"><a href="index.html">MAIN</a></span>
+<div class="index_indent">
+</div>
+
+<br /><span class="index_main"><a href="help.html">HELP MAIN</a></span>
+<div class="index_indent">
+</div>
+
+<br />
+<span class="index_main"><a href="help_stylefile.html">STYLE FILE</a></span>
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_stylefile.html#commands">Commands</a></span>
+</div>
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_stylefile.html#setup">Setup</a></span>
+</div>
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_stylefile.html#options">Options</a></span>
+</div>
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_stylefile.html#advanced_usage">Advanced Usage</a></span>
+</div>
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_stylefile.html#limitations">Limitations</a></span>
+</div>
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_stylefile.html#troubleshooting">Troubleshooting</a></span>
+</div>
+
+<br />
+<span class="index_main"><a href="help_gui.html">GUI</a></span>
+
+<div class="index_indent vspace">
+        <span class="index_sub"><a href="help_gui.html#warnings">Warnings</a></span>
+</div>
+
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_gui.html#main_window">Main Window</a></span>
+</div>
+
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_gui.html#editor">Editor</a></span>
+</div>
+
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_gui.html#editing_controls">Editing Controls</a></span>
+</div>
+
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_gui.html#more_editing_controls">Additional Controls</a></span>
+</div>
+
+<div class="index_indent vspace">
+  <span class="index_sub"><a href="help_gui.html#main_menu">Main Menu</a></span>
+</div>
+<br />
+<br />
+<br />
+
+
+  </div>
+</div>
+
+<div id="body_frame">
+  <div id="body_header">
+  </div>
+  <div id="body_main">
+    
+<br />
+<div id="simple_title" align=center>TrackChanges Help</div>
+<div id="simple_subtitle" align=center>Style File</div>
+<br />
+<br />
+<br />The TrackChanges stylefile allows multiple editors to make changes and add notes to a document.  These changes and notes will be color coded and added to the compiled document.
+<br />
+
+
+<br />
+<a name="commands"></a>
+<br /><span class="subsubtitle">Commands</span>
+<div class="indent">
+  <br />The <span class="code">trackchanges.sty</span> style file adds five new LaTeX comands commands:
+  <br />
+  <br />
+  <div class="indent">
+        <span class="tex_command">&nbsp;&nbsp;\note</span><span class="code">[</span><span class="code_option">editor</span><span class="code">]{The note}</span>
+  <br /><span class="tex_command">\annote</span><span class="code">[</span><span class="code_option">editor</span><span class="code">]{Text to annotate}{The note}</span>
+  <br /><span class="tex_command">&nbsp;&nbsp;&nbsp;\add</span><span class="code">[</span><span class="code_option">editor</span><span class="code">]{Text to add}</span>
+  <br /><span class="tex_command">\remove</span><span class="code">[</span><span class="code_option">editor</span><span class="code">]{Text to remove}</span>
+  <br /><span class="tex_command">\change</span><span class="code">[</span><span class="code_option">editor</span><span class="code">]{Text to remove}{Text to add}</span>
+</div>
+  <br />In all cases <span class="code">[</span><span class="code_option">editor</span><span class="code">]</span> can be ommitted.
+</div>
+
+<br />
+<a name="setup"></a>
+<br /><span class="subsubtitle">Setup</span>
+<div class="indent">
+  <br />To use <span class="code">trackchanges.sty</span> place the following line in the preamble of your LaTeX document:
+  <br />
+  <br /><span class="tex_command">\usepackage</span><span class="code">[</span><span class="code_option">options</span><span class="code">]{trackchanges}</span>
+  <br />
+  <br />Options are described below.
+  <br />
+  <br />All of the TrackChanges commands allow for the specification of an editor.  Specifing an editor will prefix the edits with the editor name and color code their changes in the final <span class="code">pdf</span> or <span class="code">dvi</span> file.
+  <br />
+  <br />To specify an editor name, the editor must first be declared in the preamble:
+  <br />
+  <br /><span class="tex_command">\addeditor</span><span class="code">{</span><span class="code_option">editor one</span><span class="code">}</span>
+  <br /><span class="tex_command">\addeditor</span><span class="code">{</span><span class="code_option">editor two</span><span class="code">}</span>
+  <br />
+  <br />Up to five editors can be specifed.  It is recomeded that short names or initials are used for readability.
+</div>
+
+
+<br />
+<a name="options"></a>
+<br /><span class="subsubtitle">Options</span>
+<div class="indent">
+  
+  <br /><span class="sub3title">Display Options</span>
+  <br />TrackChanges has a number of different ways that it can display the edits in the final <span class="code">dvi</span> or <span class="code">pdf</span> file.
+  <div class="indent">
+    <br />
+
+    <span class="code">finalold</span>
+    <div class="indent">
+      Ignore all of the edits.  
+      <br />The document will look as if the edits had not been added.
+    </div>
+    
+    <span class="code">finalnew</span>
+    <div class="indent">
+      Accept all of the edits. 
+      <br />Notes will not be shown in the final output.
+    </div>
+    
+    <span class="code">footnotes</span>
+    <div class="indent">
+      Added text will be shown inline. Removed text and notes will be shown as footnotes.
+      <br /><i>This is the default option.</i>
+    </div>
+    
+    <span class="code">margins</span>
+    <div class="indent">
+      Added text will be shown inline. Removed text and notes will be shown in the margin.
+      Margin notes will be aligned with the edits when possible.
+    </div>
+    
+    <span class="code">inline</span>
+    <div class="indent">
+      All changes and notes will be shown inline.
+    </div>
+  </div>
+
+  <br />
+  <br /><span class="sub3title">Margin Options</span>
+  <br />These options are to be used with the <span class="code">margins</span> display style.  They are used to make more space for the margin notes.  
+  <br />By default the margins are left as in the original document.
+  <div class="indent">
+    <br />
+    <span class="code">movemargins</span>
+    <div class="indent">
+      Move the text over to the left hand side.  The textwidth will stay the same.
+    </div>
+
+    <span class="code">adjustmargins</span>
+    <div class="indent">
+      Reduce the textwidth and move the text over to the left hand side.
+      <br />This option will produced the most space for the margin notes.
+    </div>
+  </div>
+
+  <br />
+  <br />Note: For these margin options to work properly, the <span class="tex_command">\usepackage</span><span class="code">{trackchanges}</span> command will have to come after any other packages or commands that adjust the margins.
+
+
+
+
+<br />
+<br />
+<a name="advanced_usage"></a>
+<br /><span class="subsubtitle">Advanced Usage</span>
+<div class="indent">
+
+        Certain types of commands cannot be used inside of the TrackChanges edit 
+        commands without special handling.  For more details see the 
+        <a href="#limitations">limitations</a> section.
+  <br />
+  <br />The following option can be used to deal with incompatible commands.
+  <br />
+  <br />
+  <div class="indent">
+    <span class="code">ignoremode</span>
+  </div>
+  <br />Additional commands can be added to the ignore list with the following command.
+  <br />
+<br />
+  <div class="indent">
+     <span class="tex_command">\tcignore</span><span class="code">{</span><span class="code_option">command</span><span class="code">}{</span><span class="code_option">num args</span><span class="code">}{</span><span class="code_option">arg num to pass</span><span class="code">}</span>
+  </div>
+  <br />The last argument specifies which, if any, argument to pass as plain text 
+        when the command is ignored.  If the last argument is zero, then all of the 
+        arguments will be ignored.
+        If <span class="tex_command">\color</span> and <span class="tex_command">
+        \textcolor</span> were not already on the ignore list then the following commands 
+        could be used to add them:
+  <br />
+  <br />
+  <div class="indent">
+     <span class="tex_command">\tcignore</span><span class="code">{</span><span class="tex_command">\textcolor</span><span class="code">}{2}{2}</span>
+     <br /><span class="tex_command">\tcignore</span><span class="code">{</span><span class="tex_command">\color</span><span class="code">}{1}{0}</span>
+  </div>
+  <br />TrackChanges also requires special handling for font changing
+        commands.  These type of commands may have to be registered
+        with TrackChanges to be dealt with properly.  
+        To register a new command use the following command.
+  <br />
+  <br />
+  <div class="indent">
+     <span class="tex_command">\tcregister</span><span class="code">{</span><span class="code_option">command</span><span class="code">}{</span><span class="code_option">num args</span><span class="code">}</span>
+  </div>
+  <br />All of the standard font switching command are registered by 
+        default.  If <span class="tex_command">\bf</span> and 
+        <span class="tex_command">\emph</span> were not already registered then
+        the following commands could be used to add them:
+  <br />
+  <br />
+  <div class="indent">
+     <span class="tex_command">\tcregister</span><span class="code">{</span><span class="tex_command">\bf</span><span class="code">}{0}</span>
+     <br /><span class="tex_command">\tcregister</span><span class="code">{</span><span class="tex_command">\emph</span><span class="code">}{1}</span>
+  </div>
+  <br />While registering commands is primarily for font changing it may
+        work for other types of commands that are causing problems. 
+        For more information see the documentation for the 
+        <span class="code">soul</span> package.
+</div>
+
+<br />
+<a name="limitations"></a>
+<br /><span class="subsubtitle">Limitations</span>
+<div class="indent">
+  <ul>
+    <li>
+      If another package is used that adjusts the margins, it
+      can take precedence over the TrackChanges margin handling.
+      To make sure TrackChanges can adjust the margins correctly,
+      load it after any other packages or commands that adjust the margins.
+    <br /><br /></li>
+    <li>
+      TrackChanges cannot handle certain kinds of commands inside
+      the edit commands.  In particular <span class="tex_command">\color</span>, 
+      <span class="tex_command">\textcolor</span> and 
+      any commands from the underlining package <span class="code">soul</span> 
+      will not work. There are two ways to get around these issues.
+      <ol>
+	<li>
+	  The <span class="code">ignoremode</span> option can be used.
+          This will tell TrackChanges to ignore certain commands
+          (Including the ones mentioned above).
+          Additional commands can be added to the ignore list with
+          the <span class="tex_command">\tcignore</span> command.
+	  See the <a href="#advanced_usage">Advanced Usage</a> section
+	  for more details.
+	</li>
+	<li>
+	  Put <span class="tex_command">\protect</span> in front of
+	  the problematic command. This will not always work, and 
+	  may cause strange behavior.
+	</li>
+      </ol>
+    <br /><br /></li>
+    <li>
+      TrackChanges requires special handling for certain kinds of
+      commands inside of edit commands.  These problematic commands
+      are generally font switching commands.  All of the common
+      font switching commands (such as <span class="tex_command">\emph</span>, 
+      <span class="tex_command">\textbf</span>, etc.)
+      are already handled.  If you run into an issue you can try
+      using <span class="tex_command">\tcregister</span> to register the 
+      problematic command.
+    <br /><br /></li>
+    <li>
+      TrackChanges is Incompatible with the package <span class="code">ulem</span>
+      Use the package <span class="code">soul</span> instead for underlining/strikeout.
+    <br /><br /></li>
+    <li>
+      Some other packages that take over footnote handling may be
+      incompatible with TrackChanges.  Using a footnote package
+      such as <span class="code">footmisc</span> may fix these problems.
+    <br /><br /></li>
+    <li>
+      Older versions of <span class="code">pdflatex</span> have very poor 
+      color handling.  Color may not be retained across pages or even across 
+      lines in certain cases.
+    </li>
+  </ul>
+</div>
+
+
+<br />
+<a name="troubleshooting"></a>
+<br /><span class="subsubtitle">Troubleshooting</span>
+<div class="indent"> 
+        TrackChanges can have problems dealing with certain commands inside 
+        placed inside the edit commands. These problems can often produce
+        confusing error messages.
+  <br />The <a href="#limitations">Limitations</a> and 
+        <a href="#advance_usage">Advance Usage</a> sections have information 
+        on ways to get around these type of errors.
+</div>
+<br />
+<br />
+
+  </div>
+  <div id="body_footer">
+    
+
+NOVIMIR PABLANT
+<br />FELIX SALFNER
+<br />
+<br />LAST UPDATE
+<br />2009-04
+<br />
+<br /><a rel="license"
+	 href="http://creativecommons.org/licenses/by-sa/3.0/us/">
+      <img alt="Creative Commons License" style="border-width:0"
+      src="http://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" />
+      </a>
+
+
+  </div>
+</div>
+
+</body>
+</html>
