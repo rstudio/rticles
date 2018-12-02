@@ -76,22 +76,20 @@ Using a tool like [R Markdown](https://rmarkdown.rstudio.com) to write scientifi
 
 This example illustrates how to use the latest ACM \LaTeX\ templates (Version 1.55, from September 11, 2018) with R Markdown to write papers for the [CHI conference](https://sigchi.org), in the CHI Extended Abtracts format. The content in this example is adapted and adjusted from content in **sample-sigchi.tex** as well as **sample-sigchi-a.tex** included with the ACM template, to illustrate how to create the same content through an R Markdown workflow as well as to showcase additional features made possible by R Markdown.
 
-\begin{sidebar}
-  \vspace{-5cm}
-  
-  \textbf{How to Make a Side Bar}
+```{block type='sidebar'}
+**How to Make a Side Bar**
 
-  \textbf{Use \LaTeX\ Syntax:} Sidebars need to be placed in the \texttt{sidebar} \LaTeX\ environment. To achieve that, you can either: 1) write the text for the sidebar with markdown syntax, compile to PDF (if you are using RStudio, just click the 'Knit' button), open the generated \textbf{.tex} file for your manuscript, and wrap the desired parts inside \texttt{{\textbackslash}begin\{sidebar\}} and \texttt{{\textbackslash}end\{sidebar\}}, or 2) simply write the content for your sidebar using \LaTeX\ syntax in your R Markdown manuscript.
+  **Use a [custom block](https://bookdown.org/yihui/bookdown/custom-blocks.html) of type 'sidebar'**. Sidebars need to be placed in the `sidebar` \LaTeX\ environment. To achieve that, use the syntax ```` ```{block, type='sidebar'} ```` to begin such a block, ending the block with another three backticks.
   
-  The first option is better if you want to be able to compile your content to other formats than PDF, for example HTML or Microsoft Word.
+  Use this approach for arbitrary text you want to put over her - for dynamically created tables and figures, there is a separate syntax, as will be explained later.
   
-  In the source file for this example document, the sidebar is written in \LaTeX\ syntax inside the .Rmd file.
+  - If you want to add a caption for this kind of sidebar, you have to create this with \LaTeX\ syntax directly, e.g.  `\caption{my caption}`.
+  - Similarly, if you want a label for this kind of sidebar so you can refer to it, you must add with \LaTeX\ syntax within the sidebar, e.g. `\label{bar:arbitrary-sidebar}`.
   
-  \textbf{Margin figures and tables:} For these, as you will see, you can use R Markdown syntax directly to put dynamically generated tables or figures, as well as static figures, in the right \LaTeX\ environment. This is explained later.
+\caption{This is the optional caption}
+\label{bar:arbitrary-sidebar}
+```
 
-  \caption{This is the optional caption}
-  \label{bar:sidebar}
-\end{sidebar}
 
 # Paper meta data
 Set meta data (copyright, authors, keywords, title, keywords, etc.) in the YAML header of the .Rmd file in which you write the manuscript. This is done in the form of `key: value` pairs, e.g. `title: Writing CHI Proceedings Papers With R Markdown`. When compiling to a PDF (in RStudio, just click the 'Knit' button), the information in the YAML header is plugged into the CHI Extended Abstracts \LaTeX\ template. (If you were to take a look at this template file inside of the rticles package, you would see e.g. `\title[$short-title$]{$title$}` where stuff between dollar signs is interpreted as a variable to be searched for in the YAML header and plugged into the template when generating a PDF).
