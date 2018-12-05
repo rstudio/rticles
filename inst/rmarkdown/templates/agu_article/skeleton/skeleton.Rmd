@@ -49,9 +49,10 @@ abstract: |
   briefly states the main conclusion(s) and how they are supported and
   uncertainties. 
 output: 
-    rticles::agu_article:
-      keep_tex: yes
+    rticles::agu_article
 bibliography: agutest.bib
+header-includes: 
+      - \usepackage{soulutf8}  # For UTF8 chars in TrackChanges
 ---
 
 ```{r echo=FALSE}
