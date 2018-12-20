@@ -461,10 +461,10 @@ $for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.aut
 $affiliation.institution.author.name$$sep$,
 $endfor$ %% -- end for/affiliation.institution.author
 }
-\IEEEauthorblockA{$affiliation.institution.name$\\
-$if(affiliation.institution.department)$
+\IEEEauthorblockA{$if(affiliation.institution.department)$
 $affiliation.institution.department$\\
 $endif$
+$affiliation.institution.name$\\
 $affiliation.institution.location$
 $if(affiliation.institution.email)$
 \\$affiliation.institution.email$
