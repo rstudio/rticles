@@ -146,7 +146,7 @@ Bulleted lists are produced using the \texttt{itemize} environment. For example,
 
 * First bulleted item
 * Second bulleted item
-* item Third bulleted item
+* Third bulleted item
 
 ## Figures
 
