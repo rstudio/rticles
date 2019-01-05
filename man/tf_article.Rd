@@ -2,7 +2,7 @@
 % Please edit documentation in R/tf_article.R
 \name{tf_article}
 \alias{tf_article}
-\title{Taylor and Fracis journal format.}
+\title{Taylor & Fracis journal format.}
 \usage{
 tf_article(..., keep_tex = TRUE)
 }
@@ -17,8 +17,7 @@ R Markdown output format to pass to
 }
 \description{
 Format for creating submissions to a Taylor & Francis journal. Adapted from
-\href{http://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}
-{http://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
+\href{http://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}{http://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
 }
 \examples{
 

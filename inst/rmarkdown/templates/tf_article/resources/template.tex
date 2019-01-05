@@ -25,16 +25,27 @@
 \newtheorem{remark}{Remark}
 \newtheorem{notation}{Notation}
 
-\usepackage{hyperref}
+% see https://stackoverflow.com/a/47122900
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+$if(header-includes)$
+$header-includes$
+$endif$
 
 \begin{document}
 
+\articletype{$type$}
+
 \title{$title$}
 
-\author{
-\name{A.~N. Author\textsuperscript{a}\thanks{CONTACT A.~N. Author. Email: latex.helpdesk@tandf.co.uk} and John Smith\textsuperscript{b}}
-\affil{\textsuperscript{a}Taylor \& Francis, 4 Park Square, Milton Park, Abingdon, UK; \textsuperscript{b}Institut f\"{u}r Informatik, Albert-Ludwigs-Universit\"{a}t, Freiburg, Germany}
+
+\author{\name{$for(author)$$author.name$$$^{$author.affil$}$$$sep$, $endfor$}
+\affil{$for(affiliation)$$$^{$affiliation.num$}$$$affiliation.address$$sep$; $endfor$}
 }
+
+\thanks{CONTACT $for(author)$$author.name$. Email: $author.email$$sep$, $endfor$}
 
 \maketitle
 
@@ -53,7 +64,6 @@ $endif$
 $body$
 
 $if(bibliography)$
-\bibliographystyle{tfcad}
 \bibliography{$bibliography$}
 $endif$
 

@@ -1,8 +1,7 @@
-#' Taylor and Fracis journal format.
+#' Taylor & Fracis journal format.
 #'
 #' Format for creating submissions to a Taylor & Francis journal. Adapted from
-#' \href{http://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}
-#' {http://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
+#' \href{http://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}{http://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
 #'
 #' @inheritParams rmarkdown::pdf_document
 #' @param ... Additional arguments to \code{rmarkdown::pdf_document}

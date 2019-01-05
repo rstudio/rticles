@@ -1,32 +1,43 @@
 ---
-title: Taylor \& Francis Rmarkdown template for authors (\textsf{Interact} layout + Chicago author-date reference style)
+title: |
+  Taylor & Francis Rmarkdown template for authors (\LaTeX\-based 
+  \textsf{Interact} layout + Chicago author-date reference style)
+type: ARTICLE TEMPLATE
 author:
   - name: A. N. Author
-    affil: 1,2,\ddagger,*
-    orcid: 0000-0003-3293-2315
-  - name: John Doe
-    affil: 2, \dagger, \ddagger
+    affil: a
+    email: latex.helpdesk@tandf.co.uk
+  - name: John Smith
+    affil: b
+    email: john.smith@uni-freiburg.de
+  - name: Dominik Leutnant
+    affil: c, \dagger, \ddagger
+    email: leutnant@fh-muenster.de
 affiliation:
-  - num: 1
+  - num: a
+    address: |
+      Taylor & Francis, 4 Park Square, Milton Park, Abingdon, UK
+  - num: b
+    address: |
+      Institut für Informatik, Albert-Ludwigs-Universität, Freiburg, Germany
+  - num: c
     address: |
       Muenster University of Applied Sciences - 
-      Institute for Infrastructure, Water, Resources, Environment
-      Correnstr. 25, 48149 Muenster, Germany
-    email: leutnant@fh-muenster.de
-  - num: 2
-    address: |
-      Your department
-      Street, City, Country
-    email: mail@mail.com
+      Institute for Infrastructure, Water, Resources, Environment,
+      Correnstr. 25, 48149 Münster, Germany
 bibliography: interactcadsample.bib
 appendix: appendix.tex
 abstract: |
-  This template is for authors who are preparing a manuscript for a Taylor \& 
+  This template is for authors who are preparing a manuscript for a Taylor & 
   Francis journal using the \LaTeX\ document preparation system and the 
   \texttt{interact} class file, which is available via selected journals' home 
-  pages on the Taylor \& Francis website.
+  pages on the Taylor & Francis website.
 keywords: |
   Sections; lists; figures; tables; mathematics; fonts; references; appendices
+header-includes: |
+  \usepackage{hyperref}
+  \usepackage[utf8]{inputenc}
+  \def\tightlist{}
 output: rticles::tf_article
 ---
 
@@ -93,6 +104,28 @@ AMS, JEL or PACS classification codes may be included if required. The \texttt{i
 
 Note that any \verb"footnote"s to the main text will automatically be assigned the superscript symbols 1, 2, 3, etc. by the class file.\footnote{If preferred, the \texttt{endnotes} package may be used to set the notes at the end of your text, before the bibliography. The symbols will be changed to match the style of the journal if necessary by the typesetter.}
 
+# Embedding R code
+
+## Code chunks
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE, out.width='80%'}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
 # Some guidelines for using the standard features of \LaTeX
 
 ## Sections
@@ -102,35 +135,18 @@ The \textsf{Interact} layout style allows for five levels of section heading, al
 ## Lists
 
 Numbered lists are produced using the \texttt{enumerate} environment, which will number each list item with arabic numerals by default. For example,
-\begin{enumerate}
-  \item first item
-  \item second item
-  \item third item
-\end{enumerate}
-was produced by
-\begin{verbatim}
-\begin{enumerate}
-  \item first item
-  \item second item
-  \item third item
-\end{enumerate}
-\end{verbatim}
+
+1. first item
+2. second item
+3. third item
+
 Alternative numbering styles can be achieved by inserting an optional argument in square brackets to each \verb"item", e.g.\ \verb"\item[(i)] first item"\, to create a list numbered with roman numerals at level one.
 
 Bulleted lists are produced using the \texttt{itemize} environment. For example,
-\begin{itemize}
-  \item First bulleted item
-  \item Second bulleted item
-  \item Third bulleted item
-\end{itemize}
-was produced by
-\begin{verbatim}
-\begin{itemize}
-  \item First bulleted item
-  \item Second bulleted item
-  \item Third bulleted item
-\end{itemize}
-\end{verbatim}
+
+* First bulleted item
+* Second bulleted item
+* item Third bulleted item
 
 ## Figures
 
@@ -349,7 +365,6 @@ An unnumbered `Notes' section may be included before the References (if using th
 
 ## References cited in the text
 
-
 ## The list of references
 
 References should be listed at the end of the main text in alphabetical order by authors' surnames, then chronologically (earliest first). If references have the same author(s), editor(s), etc., arrange by year of publication, with undated works at the end.
@@ -359,4 +374,6 @@ Successive entries by two or more authors when only the first author is the same
 If a reference has more than ten named authors, list only the first seven, followed by 'et al.'.
 If a reference has no author or editor, order by title; if a date of publication is impossible to find, use `n.d.' in its place.
 
-The following list shows some sample references prepared in the Taylor \& Francis Chicago author-date style.
+The following list shows some sample references prepared in the Taylor & Francis Chicago author-date style.
+
+[@Alb05; @Bro02; @Bro86; @Cho08; @ChoGul08; @Ell68; @FogEHPD04; @FogJEE04; @Fow89; @Gre08; @JTL97; @Lev05; @Mor08; @Roh08; @Sam06; @Str00; @Wau50; @Wei02]
