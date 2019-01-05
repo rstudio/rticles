@@ -1,5 +1,77 @@
 % Template for PLoS
-% Version 3.4 January 2017
+% Version 3.5 March 2018
+%
+% % % % % % % % % % % % % % % % % % % % % %
+%
+% -- IMPORTANT NOTE
+%
+% This template contains comments intended
+% to minimize problems and delays during our production
+% process. Please follow the template instructions
+% whenever possible.
+%
+% % % % % % % % % % % % % % % % % % % % % % %
+%
+% Once your paper is accepted for publication,
+% PLEASE REMOVE ALL TRACKED CHANGES in this file
+% and leave only the final text of your manuscript.
+% PLOS recommends the use of latexdiff to track changes during review, as this will help to maintain a clean tex file.
+% Visit https://www.ctan.org/pkg/latexdiff?lang=en for info or contact us at latex@plos.org.
+%
+%
+% There are no restrictions on package use within the LaTeX files except that
+% no packages listed in the template may be deleted.
+%
+% Please do not include colors or graphics in the text.
+%
+% The manuscript LaTeX source should be contained within a single file (do not use \input, \externaldocument, or similar commands).
+%
+% % % % % % % % % % % % % % % % % % % % % % %
+%
+% -- FIGURES AND TABLES
+%
+% Please include tables/figure captions directly after the paragraph where they are first cited in the text.
+%
+% DO NOT INCLUDE GRAPHICS IN YOUR MANUSCRIPT
+% - Figures should be uploaded separately from your manuscript file.
+% - Figures generated using LaTeX should be extracted and removed from the PDF before submission.
+% - Figures containing multiple panels/subfigures must be combined into one image file before submission.
+% For figure citations, please use "Fig" instead of "Figure".
+% See http://journals.plos.org/plosone/s/figures for PLOS figure guidelines.
+%
+% Tables should be cell-based and may not contain:
+% - spacing/line breaks within cells to alter layout or alignment
+% - do not nest tabular environments (no tabular environments within tabular environments)
+% - no graphics or colored text (cell background color/shading OK)
+% See http://journals.plos.org/plosone/s/tables for table guidelines.
+%
+% For tables that exceed the width of the text column, use the adjustwidth environment as illustrated in the example table in text below.
+%
+% % % % % % % % % % % % % % % % % % % % % % % %
+%
+% -- EQUATIONS, MATH SYMBOLS, SUBSCRIPTS, AND SUPERSCRIPTS
+%
+% IMPORTANT
+% Below are a few tips to help format your equations and other special characters according to our specifications. For more tips to help reduce the possibility of formatting errors during conversion, please see our LaTeX guidelines at http://journals.plos.org/plosone/s/latex
+%
+% For inline equations, please be sure to include all portions of an equation in the math environment.
+%
+% Do not include text that is not math in the math environment.
+%
+% Please add line breaks to long display equations when possible in order to fit size of the column.
+%
+% For inline equations, please do not include punctuation (commas, etc) within the math environment unless this is part of the equation.
+%
+% When adding superscript or subscripts outside of brackets/braces, please group using {}.
+%
+% Do not use \cal for caligraphic font.  Instead, use \mathcal{}
+%
+% % % % % % % % % % % % % % % % % % % % % % % %
+%
+% Please contact latex@plos.org with any questions.
+%
+% % % % % % % % % % % % % % % % % % % % % % % %
+
 \documentclass[10pt,letterpaper]{article}
 \usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}
 
@@ -75,24 +147,25 @@
 \renewcommand{\@biblabel}[1]{\quad#1.}
 \makeatother
 
-% Leave date blank
-\date{}
+
 
 % Header and Footer with logo
 \usepackage{lastpage,fancyhdr,graphicx}
 \usepackage{epstopdf}
-\pagestyle{myheadings}
+%\pagestyle{myheadings}
 \pagestyle{fancy}
 \fancyhf{}
-\setlength{\headheight}{27.023pt}
-\lhead{\includegraphics[width=2.0in]{PLOS-submission.eps}}
+%\setlength{\headheight}{27.023pt}
+%\lhead{\includegraphics[width=2.0in]{PLOS-submission.eps}}
 \rfoot{\thepage/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrule}{\hrule height 2pt \vspace{2mm}}
 \fancyheadoffset[L]{2.25in}
 \fancyfootoffset[L]{2.25in}
-\lfoot{\sf PLOS}
+\lfoot{\today}
 
 %% Include all macros below
+
 \newcommand{\lorem}{{\bf LOREM}}
 \newcommand{\ipsum}{{\bf IPSUM}}
 
@@ -130,6 +203,7 @@ $preamble$
 \textbf\newline{$title$} % Please use "sentence case" for title and headings (capitalize only the first word in a title (or heading), the first word in a subtitle (or subheading), and any proper nouns).
 }
 \newline
+% Insert author names, affiliations and corresponding author email (do not include titles, positions, or degrees).
 \\
 $for(author)$
 $author.name$\textsuperscript{$for(author.affiliation)$\getAff{$author.affiliation$}$sep$, $endfor$}$if(author.corresponding)$\textsuperscript{*}$endif$$sep$,

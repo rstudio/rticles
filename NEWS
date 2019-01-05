@@ -1,3 +1,10 @@
+rticles 0.7
+---------------------------------------------------------------------
+
+- Updated the template for PLOS to version 3.5 (thanks, @uvesten, #196).
+
+- No longer hardcode the LaTeX engine to `xelatex` in `rsos_article()` (thanks, @bensprung, #198).
+
 rticles 0.6
 ---------------------------------------------------------------------
 
