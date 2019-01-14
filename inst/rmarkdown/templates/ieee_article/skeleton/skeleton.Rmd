@@ -39,7 +39,8 @@ abstract: |
   On multiple lines eventually.
 
 bibliography: mybibfile.bib
-output: rticles::ieee_article
+  rticles::ieee_article:
+    base_format: rmarkdown::pdf_document # bookdown::pdf_document2 # for using \@ref()
 ---
 
 Introduction

@@ -47,19 +47,20 @@
 #' \url{http://mirrors.rit.edu/CTAN/macros/latex/contrib/IEEEtran/IEEEtran_HOWTO.pdf}
 #' @export
 ieee_article <- function(...,
-                         draftmode        = c("final", "draft", "draftcls",
-                                              "draftclsnofoot"),
-                         hyphenfixes      = "op-tical net-works semi-conduc-tor",
-                         IEEEspecialpaper = "",
-                         with_ifpdf       = FALSE,
-                         with_cite        = FALSE,
-                         with_amsmath     = FALSE,
-                         with_algorithmic = FALSE,
-                         with_subfig      = FALSE,
-                         with_array       = FALSE,
-                         with_dblfloatfix = FALSE,
-                         keep_tex         = TRUE,
-                         md_extensions    = c("-autolink_bare_uris")) {
+  base_format = rmarkdown::pdf_document,
+  draftmode        = c("final", "draft", "draftcls",
+                      "draftclsnofoot"),
+  hyphenfixes      = "op-tical net-works semi-conduc-tor",
+  IEEEspecialpaper = "",
+  with_ifpdf       = FALSE,
+  with_cite        = FALSE,
+  with_amsmath     = FALSE,
+  with_algorithmic = FALSE,
+  with_subfig      = FALSE,
+  with_array       = FALSE,
+  with_dblfloatfix = FALSE,
+  keep_tex         = TRUE,
+  md_extensions    = c("-autolink_bare_uris")) {
 
   args <- c()
 
@@ -93,10 +94,14 @@ ieee_article <- function(...,
 
   # Convert to pandoc arguments
   pandoc_arg_list <- mapply(pandoc_arg_variable, names(args), args)
-
-  inherit_pdf_document(...,
-                       pandoc_args = pandoc_arg_list,
-                       template = find_resource("ieee_article", "template.tex"),
-                       keep_tex = keep_tex,
-                       md_extensions = md_extensions)
+  if (is.character(base_format)) {
+    FMT <- eval(parse(text = base_format))
+  } else {
+    FMT <- match.fun(base_format)
+  }
+  FMT(...,
+    pandoc_args = pandoc_arg_list,
+    template = find_resource("ieee_article", "template.tex"),
+    keep_tex = keep_tex,
+    md_extensions = md_extensions)
 }
