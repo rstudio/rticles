@@ -1,0 +1,179 @@
+%% Documentclass:
+\documentclass[manuscript]{stjour}
+
+%% Manuscript, for double spaced, larger fonts
+% \documentclass[manuscript]{stjour}
+%% Only needed if you use `manuscript' option
+\journalname{Open Mind}
+%\journalname{Computational Psychiatry}
+
+
+%%%%%%%%%%% Please supply information %%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% For Open Mind:
+%% Supplementary Materials:
+\supplementslinks{dx.doi.org/10.1098/rsif.2013.0969}
+
+%% For Computational Psychiatry
+\supportinginfo{dx.doi.org/10.7910/DVN/PQ6ILM}
+
+%% If no conflicts, this command doesn't need to be used
+%% \conflictsofinterest{}
+
+%%%%%%%%%%% to be supplied by MIT Press, only %%%%%%%%%%%%%%%%%
+
+\citation{Niyogi, R. K., Breton, Y.-A., Solomon,
+R. B., Conover, K.,\\ Shizgal, P., Dayan, P. (2015).\\ 
+Optimal indolence: a normative microscopic approach to work and leisure. Open Mind 1(1):
+1−12.}
+
+\received{20 October 2013}
+\accepted{7 November 2013}
+\published{26 January 2014}
+
+%% DOI address:
+\setdoi{10.1098/rsif.2013.0969}
+
+%%%%%%%% End MIT Press commands %%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% author definitions should be placed here:
+
+%% example definition
+\def\taupav{\tau_{\mathrm{Pav}}}
+
+\begin{document}
+\title{Title of Article}
+\subtitle{Subtitle Here}
+
+%% If shortened title for running head is needed so that the article title can fit
+%%   in the running head, use [] argument, ie,
+%%
+%%   \title[Shortened Title for Running Head]{Title of Article}
+%%   \subtitle{Subtitle Here}
+
+%% Since we use \affil{} in the argument of the \author command, we
+%% need to supply another version of the author names, without \affil{}
+%% to be used for running heads:
+
+\author[Author Names]
+{Author Names with affiliations\thanks{Current address: MacMurdo
+Sound, Antartica}\affil{1},
+Another Name\affil{2}, Still another Name\affil{2},\\
+\and Final Name\affil{1}}
+
+\affiliation{1}{Department, Institution, City, Country}
+
+%ie.
+%\affiliation{1}{Gatsby Computational Neuroscience Unit, University
+%College London, London, United Kingdom} 
+
+\affiliation{2}{Another Department, Institution, City, Country}
+
+%ie
+%\affiliation{2}{Center for Studies in
+%Behavioral Neurobiology, Concordia University, Montreal, Quebec,
+%Canada}
+
+\correspondingauthor{Author Name}{Corresponding author email address}
+
+% ie,
+%\correspondingauthor{Ritwik K. Niyogi}{ritwik.niyogi@gatsby.ucl.ac.uk}
+
+\keywords{(a series of uncapitalized words, separated with commas)}
+
+%ie
+%\keywords{work, leisure, normative, microscopic,  reinforcement learning, economics}
+
+\begin{abstract}
+Abstract text here.
+\end{abstract}
+
+
+
+\section{Sample Section}
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+
+\subsection{Sample Subsection}
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+
+\subsubsection{Sample Subsubsection}
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+Text here. Text here. Text here. Text here.
+
+
+\newpage
+\section{Track Changes}
+These tracking commands allow copyeditors to mark text so
+that the author can consider whether he/she wants to make
+the change. In the manuscript version of the article, 
+a list of changes will automatically appear at the end of the
+article, as you see here.
+
+The comments will be seen when
+\verb+\documentclass[manuscript]{stjour}+
+is used, but will disappear in the final version,
+leaving only the suggested change.
+
+Thus, if the author doesn't like the change, he/she should
+delete it before resubmitting his/her manuscript.
+
+These commands are used:
+\begin{verbatim}
+\added{}
+\deleted{}
+\replaced{}{}
+\explained{}
+\end{verbatim}
+
+Here is some text to illustrate the track changes
+commands, quotes (with apologies) from Albert Einstein:
+
+\begin{quotation}
+Two things are \replaced{almost infinite}{infinite}\explain{`almost'
+detracts from the strength of the statement}: the universe and
+human stupidity;  and I'm not sure about the universe.
+
+The most beautiful thing we can experience is the mysterious. It is
+the source of all true art and science. \added{-- Albert Einstein}
+
+It is the \added{supreme} art of the teacher to awaken joy in creative
+expression and knowledge.
+\end{quotation}
+
+\subsection{Using [] to add comments to appear in the List of Changes}
+
+\begin{verbatim}
+\added[]{}
+\deleted[]{}
+\replaced[]{}{}
+\end{verbatim}
+
+\begin{quotation}
+Two things are \replaced[AH]{almost infinite}{infinite}\explain{`almost'
+detracts from the strength of the statement}: the universe and
+human stupidity;  and I'm not sure about the universe.
+
+The most beautiful thing we can experience is the mysterious. It is
+the source of all true art and science. \added[RB, April 7, 2016,
+4:30pm]{-- Albert Einstein}
+
+It is the \added[NWK]{supreme} art of the teacher to awaken joy in creative
+expression and knowledge.
+\end{quotation}
+\subsection{Citatation Tests}
+Citing, \citet{anderson}, \citep{anderson}, and \cite{anderson}.
+
+\nocite{*}
+\bibliography{bibsamp}
+
+
+\end{document}

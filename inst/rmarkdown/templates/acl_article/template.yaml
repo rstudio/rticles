@@ -1,0 +1,4 @@
+name: ACL Paper
+description: >
+ Template for creating an ACL-style paper
+create_dir: true

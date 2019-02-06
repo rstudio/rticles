@@ -1,0 +1,86 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{widetext}
+
+%% Mimics the widetext environment of revtex4 for any other class package
+%% Eg: article.cls
+%%
+%% Compiled by: Anjishnu Sarkar
+%%
+%% Advantages: 
+%% *) Supports float (eg: figure) in two column format (Advantage over
+%%      multicol package) 
+%% *) One and twocolumn exist on the same page
+%% *) Flow of text shown via rule
+%% *) Equal height of text when in two column format
+%%
+%% Acknowledgment(s):
+%% 1. Instead of re-inventing the wheel, two packages (flushend, cuted) of
+%% the sttools bundle are used. The sttools bundle is available from CTAN. 
+%% Lisence of these packages rests with their corresponding author.
+%% Any bug/problem with flushend and cuted should be forwarded to their
+%% corresponding package authors.
+%% 2. The idea of the rule came from the following latex community website
+%% http://www.latex-community.org/forum/viewtopic.php?f=5&t=2770
+%%
+%% This package just defines the widetext environment and the rules.
+%%
+%% Usage: 
+%% \documentclass[a4paper,12pt,twocolumn]{article}
+%% \usepackage{widetext} 
+%%
+%% \begin{document}
+%% 
+%% Some text in twocolumn
+%%
+%% \begin{widetext}
+%% Text in onecolumn format.
+%% \end{widetext}
+%%
+%% Some more text in twocolumn
+%%
+%% \end{document}
+%%%%%%%%%%%%%%%%%%%%
+
+%% Package required for equal height while in 2 columns format
+\IfFileExists{flushend.sty}
+    {\RequirePackage{flushend}}
+    {\typeout{}
+    \typeout{Package widetext error: Install the flushend package which is
+    a part of sttools bundle. Available from CTAN.}
+    \typeout{}
+    \stop
+    }
+
+%% Package required for onecolumn and twocolumn to exist on the same page.
+%% and also required for widetext environment.
+\IfFileExists{cuted.sty}
+    {\RequirePackage{cuted}}
+    {\typeout{}
+    \typeout{Package widetext error: Install the cuted package which is
+    a part of sttools bundle. Available from CTAN.}
+    \typeout{}
+    \stop
+    }
+
+
+\newlength\@parindent
+\setlength\@parindent{\parindent}
+
+\if@twocolumn
+    \newenvironment{widetext}
+        {%
+            \begin{strip}
+            \rule{\dimexpr(0.5\textwidth-0.5\columnsep-0.4pt)}{0.4pt}%
+            \rule{0.4pt}{6pt}
+            \par %\vspace{6pt}
+            \parindent \@parindent
+        }%
+        {%
+            \par
+            \hfill\rule[-6pt]{0.4pt}{6.4pt}%
+            \rule{\dimexpr(0.5\textwidth-0.5\columnsep-1pt)}{0.4pt}
+            \end{strip}
+        }
+\else
+    \newenvironment{widetext}{}{}
+\fi

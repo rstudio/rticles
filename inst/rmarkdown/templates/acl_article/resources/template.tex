@@ -1,0 +1,56 @@
+%
+% File naaclhlt2018.tex
+%
+%% Based on the style files for NAACL-HLT 2018, which were
+%% Based on the style files for ACL-2015, with some improvements
+%%  taken from the NAACL-2016 style
+%% Based on the style files for ACL-2014, which were, in turn,
+%% based on ACL-2013, ACL-2012, ACL-2011, ACL-2010, ACL-IJCNLP-2009,
+%% EACL-2009, IJCNLP-2008...
+%% Based on the style files for EACL 2006 by
+%%e.agirre@ehu.es or Sergi.Balari@uab.es
+%% and that of ACL 08 by Joakim Nivre and Noah Smith
+
+
+\documentclass[11pt,a4paper]{article}
+\usepackage[hyperref]{naaclhlt2018}
+\usepackage{widetext}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{url}
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+$if(aclfinalcopy)$
+\aclfinalcopy
+$endif$
+
+\def\aclpaperid{$aclpaperid$}
+
+\bibliographystyle{acl_natbib}
+
+\title{$title$}
+
+\author{
+  $for(author)$
+  $author.name$ \\ $author.affiliation$ \\ {\tt {\normalsize $author.email$}} $sep$\And
+  $endfor$
+}
+
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+$abstract$
+\end{abstract}
+
+$body$
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+\end{document}
