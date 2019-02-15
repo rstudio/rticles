@@ -545,9 +545,6 @@ $endif$
 % use for special paper notices
 %\IEEEspecialpapernotice{(Invited Paper)}
 
-
-
-
 % make the title area
 \maketitle
 
@@ -557,7 +554,14 @@ $endif$
 $abstract$
 \end{abstract}
 
-% no keywords
+% keywords
+$if(keywords)$
+\begin{IEEEkeywords}
+$for(keywords)$$keywords$$sep$; $endfor$
+\end{IEEEkeywords}
+$endif$
+
+
 
 % use for special paper notices
 
@@ -569,7 +573,6 @@ $endif$
 % make the title area
 \maketitle
 
-% no keywords
 
 % For peer review papers, you can put extra information on the cover
 % page as needed:
