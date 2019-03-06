@@ -53,6 +53,9 @@ output:
 bibliography: agutest.bib
 header-includes: 
       - \usepackage{soulutf8}  # For UTF8 chars in TrackChanges
+# AGU recommends using the trackchanges LaTeX package in the edition process
+# which is available from this link:
+# https://publications.agu.org/files/2019/02/January-14-2019-latex-templates.zip
 ---
 
 ```{r echo=FALSE}
