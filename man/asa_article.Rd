@@ -4,7 +4,8 @@
 \alias{asa_article}
 \title{American Statistical Association (ASA) Journal format.}
 \usage{
-asa_article(..., keep_tex = TRUE, citation_package = "natbib")
+asa_article(..., keep_tex = TRUE, citation_package = "natbib",
+  base_format = rmarkdown::pdf_document)
 }
 \arguments{
 \item{...}{Arguments to \code{rmarkdown::pdf_document}}
@@ -13,6 +14,10 @@ asa_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 \item{citation_package}{The LaTeX package to process citations, \code{natbib}
 or \code{biblatex}. Use \code{none} if neither package is to be used.}
+
+\item{base_format}{The function to use for the base format of the article.
+By default, this is \code{rmarkdown::pdf_document}, but to use bookdown's
+cross-referencing feature, this can be set to \code{bookdown::pdf_document2}}
 }
 \value{
 R Markdown output format to pass to \code{\link[rmarkdown:render]{render}}
@@ -20,6 +25,11 @@ R Markdown output format to pass to \code{\link[rmarkdown:render]{render}}
 \description{
 This format was adapted from The American Statistican format, but it
 should be fairly consistent across ASA journals
+}
+\note{
+If you use \code{rmarkdown::pdf_document()}, all internal references
+(i.e. tables and figures) must use \code{\\ref\{\}} whereas with
+\code{bookdown::pdf_document2()}, you can additionally use \code{\\@ref()}.
 }
 \examples{
 \dontrun{
