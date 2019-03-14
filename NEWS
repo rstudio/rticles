@@ -5,6 +5,8 @@ rticles 0.7
 
 - No longer hardcode the LaTeX engine to `xelatex` in `rsos_article()` (thanks, @bensprung, #198).
 
+- Added an argument `pandoc_args` to `ieee_article()` so that users can pass custom Pandoc arguments. This also makes it work with `bookdown::pdf_book()` (thanks, @espinielli, #206).
+
 rticles 0.6
 ---------------------------------------------------------------------
 
