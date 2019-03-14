@@ -9,7 +9,7 @@
 # Earth's Future, Earth and Space Science, Geohealth
 journal: "JGR: Atmospheres"
 # Use draft to submit a paper
-options: "draft,linenumbers"
+classoption: "draft,linenumbers"
 # A title should be specific, informative, and brief. Use
 # abbreviations only if they are defined in the abstract. Titles that
 # start with general keywords then specific terms are optimized in
