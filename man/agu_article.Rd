@@ -9,7 +9,7 @@ agu_article(..., keep_tex = TRUE, citation_package = "natbib",
   "-auto_identifiers"))
 }
 \arguments{
-\item{...}{Arguments to \code{rmarkdown::pdf_document}}
+\item{...}{Arguments to \code{rmarkdown::pdf_document()}.}
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 
@@ -25,18 +25,14 @@ default definition or R Markdown. See the \code{\link{rmarkdown_format}} for
 additional details.}
 }
 \value{
-R Markdown output format to pass to \code{\link[rmarkdown:render]{render}}
+An R Markdown output format.
 }
 \description{
-Format for creating a American Geophysical Union (AGU) article.
-Adapted from
-\href{https://publications.agu.org/author-resource-center/checklists-and-templates/}{https://publications.agu.org/author-resource-center/checklists-and-templates/}.
+Format for creating a American Geophysical Union (AGU) article. Adapted from
+\url{https://publications.agu.org/author-resource-center/checklists-and-templates/}.
 }
 \examples{
-
 \dontrun{
-library(rmarkdown)
-draft("MyArticle.Rmd", template = "agu_article", package = "rticles")
+rmarkdown::draft("MyArticle.Rmd", template = "agu_article", package = "rticles")
 }
-
 }
