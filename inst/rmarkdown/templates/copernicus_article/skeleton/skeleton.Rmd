@@ -64,8 +64,9 @@ appendix: |
   
   Please add `\clearpage` between each table and/or figure. Further guidelines on figures and tables can be found below.
 output:
-  rticles::copernicus_article:
-    base_format: rmarkdown::pdf_document
+  rticles::copernicus_article: default
+  bookdown::pdf_book:
+    base_format: rticles::copernicus_article # for using bookdown features like \@ref()
 ---
 
 \introduction

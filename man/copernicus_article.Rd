@@ -6,22 +6,17 @@
 \title{Copernicus journals format.}
 \usage{
 copernicus_article(..., keep_tex = TRUE, citation_package = "natbib",
-  base_format = rmarkdown::pdf_document,
   md_extensions = c("-autolink_bare_uris", "-auto_identifiers"))
 
 copernicus_journal_abbreviations(journal_name = "*")
 }
 \arguments{
-\item{...}{Additional arguments to \code{base_format}}
+\item{...}{Additional arguments to \code{rmarkdown::pdf_document()}.}
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 
 \item{citation_package}{The LaTeX package to process citations, \code{natbib}
 or \code{biblatex}. Use \code{none} if neither package is to be used.}
-
-\item{base_format}{The function to use for the base format of the article.
-By default, this is \code{rmarkdown::pdf_document}, but to use bookdown's
-cross-referencing feature, this can be set to \code{bookdown::pdf_document2}}
 
 \item{md_extensions}{Markdown extensions to be added or removed from the
 default definition or R Markdown. See the \code{\link{rmarkdown_format}} for
