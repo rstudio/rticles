@@ -1,6 +1,7 @@
 ---
 title: "Article Title"
 runtitle: "Short Title"
+documentclass: frontiersSCNS  # or frontiersHLTH, or frontiersFPHY
 author:
   - name: First Author
     affiliation: '1'
