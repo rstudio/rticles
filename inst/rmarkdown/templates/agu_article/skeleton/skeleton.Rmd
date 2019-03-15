@@ -68,7 +68,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r keypoints_check,  results='asis', eval = TRUE}
+```{r keypoints_check, echo=FALSE, results='asis', eval = TRUE}
 # This chunk adds a warning if any keypoint is longer than 100 characters. 
 # To disable it, you can remove it or set eval to FALSE.
 if (any(nchar(rmarkdown::metadata$keypoints) > 100)) {
