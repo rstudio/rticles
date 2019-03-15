@@ -11,18 +11,6 @@ pnas_article(..., keep_tex = TRUE)
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 }
-\value{
-R Markdown output format to pass to
-  \code{\link[rmarkdown:render]{render}}
-}
 \description{
 Format for creating submissions to PNAS journals.
-}
-\examples{
-
-\dontrun{
-library(rmarkdown)
-draft("MyArticle.Rmd", template = "pnas_article", package = "rticles")
-}
-
 }

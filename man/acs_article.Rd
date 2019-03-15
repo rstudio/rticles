@@ -18,19 +18,7 @@ additional details.}
 
 \item{fig_caption}{\code{TRUE} to render figures with captions}
 }
-\value{
-R Markdown output format to pass to \code{\link[rmarkdown:render]{render}}
-}
 \description{
 Format for creating an American Chemical Society (ACS) Journal articles.
-Adapted from
-\href{http://pubs.acs.org/page/4authors/submission/tex.html}{http://pubs.acs.org/page/4authors/submission/tex.html}.
-}
-\examples{
-
-\dontrun{
-library(rmarkdown)
-draft("MyArticle.Rmd", template = "acs_article", package = "rticles")
-}
-
+Adapted from \url{http://pubs.acs.org/page/4authors/submission/tex.html}.
 }

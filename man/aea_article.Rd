@@ -8,7 +8,7 @@ aea_article(..., keep_tex = TRUE,
   md_extensions = c("-autolink_bare_uris"))
 }
 \arguments{
-\item{...}{Additional arguments to \code{rmarkdown::pdf_document}}
+\item{...}{Additional arguments to \code{rmarkdown::pdf_document()}.}
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 
@@ -16,18 +16,6 @@ aea_article(..., keep_tex = TRUE,
 default definition or R Markdown. See the \code{\link{rmarkdown_format}} for
 additional details.}
 }
-\value{
-R Markdown output format to pass to
-  \code{\link[rmarkdown:render]{render}}
-}
 \description{
 Format for creating submissions to the American Economic Association (AER, AEJ, JEL, PP).
-}
-\examples{
-
-\dontrun{
-library(rmarkdown)
-draft("MyArticle.Rmd", template = "aea_article", package = "rticles")
-}
-
 }

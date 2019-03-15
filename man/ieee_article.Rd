@@ -54,25 +54,13 @@ off (\code{FALSE}) the \code{dblfloatfix} LaTeX package.}
 default definition or R Markdown. See the \code{\link{rmarkdown_format}} for
 additional details.}
 }
-\value{
-R Markdown output format to pass to
-  \code{\link[rmarkdown:render]{render}}
-}
 \description{
 Format for creating submissions to IEEE Transaction journals. Adapted from
-\href{http://www.ieee.org/publications_standards/publications/authors/author_templates.html}{http://www.ieee.org/publications_standards/publications/authors/author_templates.html}.
+\url{http://www.ieee.org/publications_standards/publications/authors/author_templates.html}.
 }
 \details{
 Presently, only the \code{"conference"} paper mode offered by the
 \code{IEEEtran.cls} is supported.
-}
-\examples{
-
-\dontrun{
-library(rmarkdown)
-draft("MyArticle.Rmd", template = "ieee_article", package = "rticles")
-}
-
 }
 \references{
 Shell, Michael. "How to use the IEEEtran LATEX class." Journal of LATEX Class

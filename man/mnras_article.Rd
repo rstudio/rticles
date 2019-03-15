@@ -4,33 +4,17 @@
 \alias{mnras_article}
 \title{Monthly Notices of the Royal Astronomical Society (MNRAS) Journal format.}
 \usage{
-mnras_article(..., keep_tex = TRUE, md_extensions = c(),
-  fig_caption = TRUE)
+mnras_article(..., keep_tex = TRUE, fig_caption = TRUE)
 }
 \arguments{
 \item{...}{Arguments to \code{rmarkdown::pdf_document}}
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 
-\item{md_extensions}{Markdown extensions to be added or removed from the
-default definition or R Markdown. See the \code{\link{rmarkdown_format}} for
-additional details.}
-
 \item{fig_caption}{\code{TRUE} to render figures with captions}
 }
-\value{
-R Markdown output format to pass to \code{\link[rmarkdown:render]{render}}
-}
 \description{
-Format for creating an Monthly Notices of Royal Astronomical Society (MNRAS) Journal articles.
-Adapted from
-\href{https://www.ras.org.uk/news-and-press/2641-new-version-of-the-mnras-latex-package}{https://www.ras.org.uk/news-and-press/2641-new-version-of-the-mnras-latex-package}.
-}
-\examples{
-
-\dontrun{
-library(rmarkdown)
-draft("MyArticle.Rmd", template = "mnras_article", package = "rticles")
-}
-
+Format for creating an Monthly Notices of Royal Astronomical Society (MNRAS)
+Journal articles. Adapted from
+\url{https://www.ras.org.uk/news-and-press/2641-new-version-of-the-mnras-latex-package}.
 }

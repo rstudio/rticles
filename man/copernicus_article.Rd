@@ -33,7 +33,7 @@ Format for creating submissions to Copernicus journals.
 }
 \details{
 This was adapted from
-\href{https://publications.copernicus.org/for_authors/manuscript_preparation.html}{https://publications.copernicus.org/for_authors/manuscript_preparation.html}.
+\url{https://publications.copernicus.org/for_authors/manuscript_preparation.html}.
 
 An number of required and optional manuscript sections, e.g. \code{acknowledgements}, \code{competinginterests}, or \code{authorcontribution}, must be declared using the respective properties of the R Markdown header - see skeleton file.
 

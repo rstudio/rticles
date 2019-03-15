@@ -8,7 +8,7 @@ ams_article(..., keep_tex = TRUE,
   md_extensions = c("-autolink_bare_uris"))
 }
 \arguments{
-\item{...}{Arguments to \code{rmarkdown::pdf_document}}
+\item{...}{Arguments to \code{rmarkdown::pdf_document()}.}
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 
@@ -16,19 +16,8 @@ ams_article(..., keep_tex = TRUE,
 default definition or R Markdown. See the \code{\link{rmarkdown_format}} for
 additional details.}
 }
-\value{
-R Markdown output format to pass to \code{\link[rmarkdown:render]{render}}
-}
 \description{
 Format for creating an American Meteorological Society (AMS) Journal articles.
 Adapted from
-\href{https://www.ametsoc.org/ams/index.cfm/publications/authors/journal-and-bams-authors/author-resources/latex-author-info/}{https://www.ametsoc.org/ams/index.cfm/publications/authors/journal-and-bams-authors/author-resources/latex-author-info/}.
-}
-\examples{
-
-\dontrun{
-library(rmarkdown)
-draft("MyArticle.Rmd", template = "ams_article", package = "rticles")
-}
-
+\url{https://www.ametsoc.org/ams/index.cfm/publications/authors/journal-and-bams-authors/author-resources/latex-author-info/}.
 }

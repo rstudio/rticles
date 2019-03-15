@@ -14,16 +14,7 @@ asa_article(..., keep_tex = TRUE, citation_package = "natbib")
 \item{citation_package}{The LaTeX package to process citations, \code{natbib}
 or \code{biblatex}. Use \code{none} if neither package is to be used.}
 }
-\value{
-R Markdown output format to pass to \code{\link[rmarkdown:render]{render}}
-}
 \description{
 This format was adapted from The American Statistican format, but it
 should be fairly consistent across ASA journals
-}
-\examples{
-\dontrun{
-rmarkdown::draft("MyArticle.Rmd", template = "asa_article", package = "rticles")
-}
-
 }

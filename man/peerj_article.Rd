@@ -4,19 +4,12 @@
 \alias{peerj_article}
 \title{PeerJ journal format.}
 \usage{
-peerj_article(..., keep_tex = TRUE, citation_package = "none")
+peerj_article(..., keep_tex = TRUE)
 }
 \arguments{
 \item{...}{Additional arguments to \code{rmarkdown::pdf_document()}.}
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
-
-\item{citation_package}{The LaTeX package to process citations, \code{natbib}
-or \code{biblatex}. Use \code{none} if neither package is to be used.}
-}
-\value{
-R Markdown output format to pass to
-  \code{\link[rmarkdown:render]{render}}
 }
 \description{
 Format for creating submissions to The PeerJ.
@@ -24,17 +17,4 @@ Format for creating submissions to The PeerJ.
 \details{
 This was adapted from the
 \href{https://www.overleaf.com/latex/templates/latex-template-for-peerj-journal-and-pre-print-submissions/ptdwfrqxqzbn}{PeerJ Overleaf Template}.
-}
-\note{
-If you use \code{rmarkdown::pdf_document()}, all internal references
-(i.e. tables and figures) must use \code{\\ref\{\}} whereas with
-\code{bookdown::pdf_document2()}, you can additionally use \code{\\@ref()}.
-}
-\examples{
-
-\dontrun{
-library(rmarkdown)
-draft("MyArticle.Rmd", template = "peerj_article", package = "rticles")
-}
-
 }

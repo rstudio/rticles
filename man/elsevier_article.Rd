@@ -16,19 +16,7 @@ elsevier_article(..., keep_tex = TRUE,
 default definition or R Markdown. See the \code{\link{rmarkdown_format}} for
 additional details.}
 }
-\value{
-R Markdown output format to pass to
-  \code{\link[rmarkdown:render]{render}}
-}
 \description{
 Format for creating submissions to Elsevier journals. Adapted from
-\href{https://www.elsevier.com/authors/author-schemas/latex-instructions}{https://www.elsevier.com/authors/author-schemas/latex-instructions}.
-}
-\examples{
-
-\dontrun{
-library(rmarkdown)
-draft("MyArticle.Rmd", template = "elsevier_article", package = "rticles")
-}
-
+\url{https://www.elsevier.com/authors/author-schemas/latex-instructions}.
 }

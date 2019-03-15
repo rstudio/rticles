@@ -11,11 +11,7 @@ frontiers_article(..., keep_tex = TRUE)
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 }
-\value{
-R Markdown output format to pass to
-  \code{\link[rmarkdown:render]{render}}
-}
 \description{
 Format for creating Frontiers journal articles. Adapted from
-\href{http://home.frontiersin.org/about/author-guidelines}{http://home.frontiersin.org/about/author-guidelines}.
+\url{http://home.frontiersin.org/about/author-guidelines}.
 }

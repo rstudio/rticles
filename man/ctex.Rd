@@ -2,33 +2,16 @@
 % Please edit documentation in R/ctex.R
 \name{ctex}
 \alias{ctex}
-\alias{ctex_template}
 \title{A PDF format for documents based on the LaTeX package \pkg{ctex}}
 \usage{
-ctex(..., template = ctex_template(), latex_engine = "xelatex")
-
-ctex_template()
+ctex(..., latex_engine = "xelatex")
 }
 \arguments{
-\item{..., template, latex_engine}{Passed to
-\code{markdown::\link[rmarkdown]{pdf_document}()}}
-}
-\value{
-\code{ctex()} returns a format that can be passed to
-  \code{rmarkdown::render()}; \code{ctex_template()} returns the path to a
-  LaTeX template in \pkg{rticles} for Chinese documents using the \pkg{ctex}
-  package.
+\item{..., latex_engine}{Passed to
+\code{markdown::\link[rmarkdown]{pdf_document}()}.}
 }
 \description{
 \code{ctex()} is a wrapper function for \code{rmarkdown::pdf_document()} and
 changed the default values of two arguments \code{template} and
 \code{latex_engine} so it works better with the \pkg{ctex} package.
-}
-\examples{
-
-\dontrun{
-library(rmarkdown)
-draft("MyArticle.Rmd", template = "ctex", package = "rticles")
-}
-
 }

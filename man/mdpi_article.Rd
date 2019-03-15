@@ -11,20 +11,8 @@ mdpi_article(..., keep_tex = TRUE)
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 }
-\value{
-R Markdown output format to pass to
-  \code{\link[rmarkdown:render]{render}}
-}
 \description{
 Format for creating submissions to Multidisciplinary Digital Publishing
 Institute (MDPI) journals. Adapted from
-\href{http://www.mdpi.com/authors/latex}{http://www.mdpi.com/authors/latex}.
-}
-\examples{
-
-\dontrun{
-library(rmarkdown)
-draft("MyArticle.Rmd", template = "mdpi_article", package = "rticles")
-}
-
+\url{http://www.mdpi.com/authors/latex}.
 }

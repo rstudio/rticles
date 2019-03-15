@@ -24,15 +24,7 @@ or \code{biblatex}. Use \code{none} if neither package is to be used.}
 default definition or R Markdown. See the \code{\link{rmarkdown_format}} for
 additional details.}
 }
-\value{
-An R Markdown output format.
-}
 \description{
 Format for creating a American Geophysical Union (AGU) article. Adapted from
 \url{https://publications.agu.org/author-resource-center/checklists-and-templates/}.
-}
-\examples{
-\dontrun{
-rmarkdown::draft("MyArticle.Rmd", template = "agu_article", package = "rticles")
-}
 }

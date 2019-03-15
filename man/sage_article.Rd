@@ -16,10 +16,6 @@ sage_article(..., highlight = NULL, citation_package = "natbib")
 \item{citation_package}{The LaTeX package to process citations, \code{natbib}
 or \code{biblatex}. Use \code{none} if neither package is to be used.}
 }
-\value{
-R Markdown output format to pass to
-  \code{\link[rmarkdown:render]{render}}
-}
 \description{
 Format for creating submissions to Sage Journals. Based on the official Sage Journals
 \href{https://uk.sagepub.com/sites/default/files/sage_latex_template_4.zip}{class}.
@@ -39,12 +35,4 @@ Possible arguments for the YAML header are:
   \item \code{classoption} options of the \code{sagej} class
  \item \code{header-includes}: custom additions to the header, before the \code{\\begin\{document\}} statement
  \item \code{include-after}: for including additional LaTeX code before the \code{\\end\{document\}} statement}
-}
-\examples{
-
-\dontrun{
-library(rmarkdown)
-draft("MyArticle.Rmd", template = "sage_article", package = "rticles")
-}
-
 }

@@ -16,10 +16,6 @@ sim_article(..., highlight = NULL, citation_package = "natbib")
 \item{citation_package}{The LaTeX package to process citations, \code{natbib}
 or \code{biblatex}. Use \code{none} if neither package is to be used.}
 }
-\value{
-R Markdown output format to pass to
-  \code{\link[rmarkdown:render]{render}}
-}
 \description{
 Format for creating submissions to Statistics in Medicine. Based on the official Statistics in Medicine
 \href{http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm}{class}.
@@ -41,12 +37,4 @@ Possible arguments for the YAML header are:
   \item \code{longtable} set to \code{true} to include the \code{longtable} package, used by default from \code{pandoc} to convert markdown to LaTeX code
  \item \code{header-includes}: custom additions to the header, before the \code{\\begin\{document\}} statement
  \item \code{include-after}: for including additional LaTeX code before the \code{\\end\{document\}} statement}
-}
-\examples{
-
-\dontrun{
-library(rmarkdown)
-draft("MyArticle.Rmd", template = "sim_article", package = "rticles")
-}
-
 }

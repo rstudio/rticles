@@ -16,19 +16,7 @@ plos_article(..., keep_tex = TRUE,
 default definition or R Markdown. See the \code{\link{rmarkdown_format}} for
 additional details.}
 }
-\value{
-R Markdown output format to pass to
-  \code{\link[rmarkdown:render]{render}}
-}
 \description{
 Format for creating submissions to PLOS journals. Adapted from
-\href{http://journals.plos.org/ploscompbiol/s/latex}{http://journals.plos.org/ploscompbiol/s/latex}.
-}
-\examples{
-
-\dontrun{
-library(rmarkdown)
-draft("MyArticle.Rmd", template = "plos_article", package = "rticles")
-}
-
+\url{http://journals.plos.org/ploscompbiol/s/latex}.
 }
