@@ -64,17 +64,13 @@ also be automatically reference. Multiple references are separated by semicolons
 
 ## Subsection 1 {-}
 
-You can use R chunks directly to plot graphs.
+You can use `R` chunks directly to plot graphs.  
 
-```{r, graph, echo=TRUE, message=FALSE, fig.show = "hide"}
-require("ggplot2")
+```{r graph, echo = TRUE, message=FALSE, fig.show = "hide"}
 x <- 0:100
 set.seed(999)
 y <- 2 * (x + rnorm(length(x), sd = 3) + 3)
-ggplot(data = data.frame(x, y), 
-       aes(x = x, y = y)) + 
-  geom_point() + 
-  geom_smooth(method = "lm")
+plot(x, y)
 ```
 
 ## Subsection 2 {-}
