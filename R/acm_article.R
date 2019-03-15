@@ -13,6 +13,6 @@
 #' }
 #' @export
 acm_article <- function(...) {
-  pdf_document_format("acm_article", csl = "acm-sig-proceedings.csl", ...)
+  pdf_document_format("acm_article", ...)
 }
 

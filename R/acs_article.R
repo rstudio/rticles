@@ -10,6 +10,6 @@ acs_article <- function(
 ) {
   pdf_document_format(
     "acs_article", keep_tex = keep_tex, md_extensions = md_extensions,
-    csl = "american-chemical-society.csl", fig_caption = fig_caption, ...
+    fig_caption = fig_caption, ...
   )
 }

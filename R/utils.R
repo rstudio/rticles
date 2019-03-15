@@ -46,17 +46,11 @@ template_pandoc <- function(metadata, template, output, verbose = FALSE) {
 
 
 # Helper function to create a custom format derived from pdf_document that
-# includes a custom LaTeX template and custom CSL definition
+# includes a custom LaTeX template
 pdf_document_format <- function(
-  format, template = find_resource(format, 'template.tex'), csl = NULL,
-  pandoc_args = NULL, ...
+  format, template = find_resource(format, 'template.tex'), ...
 ) {
-  fmt <- rmarkdown::pdf_document(
-    ..., template = template,
-    pandoc_args = c(if (length(csl)) c(
-      "--csl", rmarkdown::pandoc_path_arg(find_resource(format, csl))
-    ), pandoc_args)
-  )
+  fmt <- rmarkdown::pdf_document(..., template = template)
   fmt$inherits <- "pdf_document"
   fmt
 }

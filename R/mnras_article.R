@@ -8,7 +8,6 @@
 #' @export
 mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
   pdf_document_format(
-    "mnras_article", keep_tex = keep_tex, csl = "mnras.csl",
-    fig_caption = fig_caption, ...
+    "mnras_article", keep_tex = keep_tex, fig_caption = fig_caption, ...
   )
 }

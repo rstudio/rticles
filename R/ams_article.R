@@ -8,7 +8,6 @@
 #' @export
 ams_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris")) {
   pdf_document_format(
-    "ams_article", keep_tex = keep_tex, md_extensions = md_extensions,
-    csl = "american-meteorological-society.csl", ...
+    "ams_article", keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
 }

@@ -26,6 +26,7 @@ abstract: |
   No references should appear in the abstract.
 keywords: ["keyword1", "keyword2", "keyword3"]
 bibliography: references.bib
+csl: mnras.csl
 output: rticles::mnras_article
 ---
 
