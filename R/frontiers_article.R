@@ -13,6 +13,7 @@
 #' \item{\code{frontiersFPHY}}{Physics and Applied Mathematics
 #' and Statistics articles}
 #' }
+#'
 #' @return R Markdown output format to pass to
 #'   \code{\link[rmarkdown:render]{render}}
 #'
@@ -27,7 +28,6 @@ frontiers_article <- function(
                            keep_tex = keep_tex)
   documentclass = match.arg(documentclass)
   x$pandoc$args = c(x$pandoc$args,
-                    c("--variable", paste0("documentclass=", documentclass))
-  )
+                    c("--variable", paste0("documentclass=", documentclass)))
   x
 }
