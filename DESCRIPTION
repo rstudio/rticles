@@ -37,7 +37,7 @@ Description: A suite of custom R Markdown formats and templates for
   authoring journal articles and conference submissions.
 License: GPL-3
 Imports: utils, rmarkdown, knitr, yaml, tinytex, xfun
-SystemRequirements: make
+SystemRequirements: GNU make
 URL: https://github.com/rstudio/rticles
 BugReports: https://github.com/rstudio/rticles/issues
 RoxygenNote: 6.1.1
