@@ -4,10 +4,6 @@
 #'
 #' @inheritParams rmarkdown::pdf_document
 #' @param ... Additional arguments to \code{rmarkdown::pdf_document}
-#'
-#' @return R Markdown output format to pass to
-#'   \code{\link[rmarkdown:render]{render}}
-#'
 #' @export
 #' @importFrom rmarkdown output_format knitr_options pandoc_options pandoc_variable_arg includes_to_pandoc_args
 #' @author Thierry Onkelinx, \email{thierry.onkelinx@@inbo.be}
@@ -18,9 +14,7 @@ rsos_article <- function(
 
   extra <- list(...)
 
-  template <- system.file(
-    "rmarkdown/templates/rsos_article/resources/template.tex", package = "rticles"
-  )
+  template <- find_resource('rsos_article')
   args <- c(
     "--template", template, pandoc_variable_arg("documentclass", "article"),
     pandoc_args, "--natbib", includes_to_pandoc_args(includes)

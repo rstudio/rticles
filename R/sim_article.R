@@ -3,13 +3,7 @@
 #' Format for creating submissions to Statistics in Medicine. Based on the official Statistics in Medicine
 #' \href{http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm}{class}.
 #'
-#' @inheritParams rmarkdown::pdf_document
-#' @param ... Additional arguments to \code{rmarkdown::pdf_document}
-#'
-#' @return R Markdown output format to pass to
-#'   \code{\link[rmarkdown:render]{render}}
-#'
-#' @details Possible arguments for the YAML header are:
+#' Possible arguments for the YAML header are:
 #' \itemize{
 #'   \item \code{title} title of the manuscript
 #'   \item \code{author} list of authors, containing \code{name} and \code{num}
@@ -25,18 +19,11 @@
 #'   \item \code{longtable} set to \code{true} to include the \code{longtable} package, used by default from \code{pandoc} to convert markdown to LaTeX code
 #'  \item \code{header-includes}: custom additions to the header, before the \code{\\begin\{document\}} statement
 #'  \item \code{include-after}: for including additional LaTeX code before the \code{\\end\{document\}} statement}
-#'
-#' @examples
-#'
-#' \dontrun{
-#' library(rmarkdown)
-#' draft("MyArticle.Rmd", template = "sim_article", package = "rticles")
-#' }
-#'
+#' @inheritParams rmarkdown::pdf_document
+#' @param ... Additional arguments to \code{rmarkdown::pdf_document}
 #' @export
 sim_article <- function(..., highlight = NULL, citation_package = "natbib") {
-  inherit_pdf_document(...,
-                       template = find_resource("sim_article", "template.tex"),
-                       highlight = highlight,
-                       citation_package = citation_package)
+  pdf_document_format(
+    "sim_article", highlight = highlight, citation_package = citation_package, ...
+  )
 }

@@ -10,7 +10,7 @@
 #'   \code{\link[rmarkdown:render]{render}}
 #'
 #' @details This was adapted from
-#' \href{https://publications.copernicus.org/for_authors/manuscript_preparation.html}{https://publications.copernicus.org/for_authors/manuscript_preparation.html}.
+#' \url{https://publications.copernicus.org/for_authors/manuscript_preparation.html}.
 #'
 #' An number of required and optional manuscript sections, e.g. \code{acknowledgements}, \code{competinginterests}, or \code{authorcontribution}, must be declared using the respective properties of the R Markdown header - see skeleton file.
 #'
@@ -50,17 +50,15 @@
 #' }
 #'
 #' @export
-copernicus_article <- function(...,
-                         keep_tex         = TRUE,
-                         citation_package = "natbib",
-                         md_extensions = c(
-                           "-autolink_bare_uris", # disables automatic links, needed for plain email in \correspondence
-                           "-auto_identifiers"    # disables \hypertarget commands
-                           )) {
-  inherit_pdf_document(
-    ..., citation_package = citation_package, keep_tex = keep_tex,
-    md_extensions = md_extensions,
-    template = find_resource("copernicus_article", "template.tex")
+copernicus_article <- function(
+  ..., keep_tex = TRUE, citation_package = "natbib", md_extensions = c(
+    "-autolink_bare_uris", # disables automatic links, needed for plain email in \correspondence
+    "-auto_identifiers"    # disables \hypertarget commands
+  )
+) {
+  pdf_document_format(
+    "copernicus_article", citation_package = citation_package,
+    keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
 }
 
@@ -110,6 +108,7 @@ copernicus_journals <- list(
 #' @rdname copernicus_article
 #' @export
 copernicus_journal_abbreviations <- function(journal_name = "*") {
-  journal <- copernicus_journals[grepl(pattern = journal_name, x = names(copernicus_journals), ignore.case = TRUE)]
-  return(unlist(journal))
+  unlist(copernicus_journals[grep(
+    journal_name, names(copernicus_journals), ignore.case = TRUE
+  )])
 }

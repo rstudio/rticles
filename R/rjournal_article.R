@@ -1,30 +1,15 @@
 #' R Journal format.
 #'
 #' Format for creating R Journal articles. Adapted from
-#' \href{https://journal.r-project.org/submissions.html}{https://journal.r-project.org/submissions.html}.
-#'
-#'
+#' \url{https://journal.r-project.org/submissions.html}.
 #' @inheritParams rmarkdown::pdf_document
 #' @param ... Arguments to \code{rmarkdown::pdf_document}
-#'
-#' @return R Markdown output format to pass to
-#'   \code{\link[rmarkdown:render]{render}}
-#'
-#' @examples
-#'
-#' \dontrun{
-#' library(rmarkdown)
-#' draft("MyArticle.Rmd", template = "rjournal_article", package = "rticles")
-#' }
-#'
 #' @export
 rjournal_article <- function(...) {
 
   rmarkdown::pandoc_available('2.2', TRUE)
 
-  template <- find_resource("rjournal_article", "template.tex")
-
-  base <- inherit_pdf_document(..., template = template, highlight = NULL)
+  base <- pdf_document_format("rjournal_article", highlight = NULL, ...)
 
   # Render will generate tex file, post-process hook generates appropriate
   # RJwrapper.tex and use pandoc to build pdf from that
