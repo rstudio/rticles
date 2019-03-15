@@ -4,14 +4,10 @@
 \alias{frontiers_article}
 \title{Frontiers open access journal format.}
 \usage{
-frontiers_article(..., highlight = "tango", keep_tex = TRUE)
+frontiers_article(..., keep_tex = TRUE)
 }
 \arguments{
 \item{...}{Additional arguments to \code{rmarkdown::pdf_document}}
-
-\item{highlight}{Syntax highlighting style. Supported styles include
-"default", "tango", "pygments", "kate", "monochrome", "espresso",
-"zenburn", and "haddock". Pass \code{NULL} to prevent syntax highlighting.}
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 }

@@ -73,11 +73,13 @@
 %% PLEASE INCLUDE ALL MACROS BELOW
 
 %% END MACROS SECTION
-
 $for(header-includes)$
 $header-includes$
 $endfor$
 
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
 
 \def\Authors{
 $for(author)$
