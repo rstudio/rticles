@@ -1,4 +1,5 @@
 [![Travis-CI Build Status](https://travis-ci.org/rstudio/rticles.svg?branch=master)](https://travis-ci.org/rstudio/rticles)
+[![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/rticles)](https://cran.r-project.org/package=rticles)
 
 ## Installation
 
@@ -11,7 +12,7 @@ install.packages("rticles")
 If you wish to install the development version from GitHub (which often contains new article formats), you can do this:
 
 ```r
-devtools::install_github("rstudio/rticles")
+remotes::install_github("rstudio/rticles")
 ```
 
 ## Overview
@@ -72,26 +73,17 @@ To use **rticles** from RStudio:
 
 1. Install the latest [RStudio](http://www.rstudio.com/products/rstudio/download/).
 
-2. Install the **rticles** package: 
+2. Install the **rticles** package. 
 
-    ```r    
-    install.packages("rticles")
-    ```
-    
 3. Use the **New R Markdown** dialog to create an article from one of the templates:
 
-    ![New R Markdown](http://rmarkdown.rstudio.com/images/new_r_markdown.png)
+    ![New R Markdown](https://rmarkdown.rstudio.com/images/new_r_markdown.png)
 
 ## Using rticles outside of RStudio
 
 1. Install [pandoc](http://pandoc.org) using the [instructions for your platform](https://github.com/rstudio/rmarkdown/blob/master/PANDOC.md).
 
-2. Install the **rmarkdown** and **rticles** packages:
-
-    ```r
-    install.packages("rmarkdown")
-    devtools::install_github("rstudio/rticles")
-    ```
+2. Install the **rticles** packages.
 
 3. Use the `rmarkdown::draft()` function to create articles:
 
