@@ -1,6 +1,6 @@
 \newcommand\classname{frontiersSCNS} %this file is based in bioninfo.cls
-\newcommand\lastmodifieddate{2015/01/08}
-\newcommand\versionnumber{2.4}
+\newcommand\lastmodifieddate{2016/11/10}
+\newcommand\versionnumber{2.6}
 
 % For printing crop marks
 \newif\if@cropmarkson \@cropmarksontrue
@@ -22,18 +22,21 @@
 \DeclareOption{info}{\PassOptionsToPackage{info}{crop}}
 \DeclareOption{noinfo}{\PassOptionsToPackage{noinfo}{crop}}
 \DeclareOption{final}{\global\@finaltrue}
+\DeclareOption{utf8}{\PassOptionsToPackage{utf8}{inputenc}}
 
 \ExecuteOptions{a4paper,nocrop,centre,info,paper}
 
 \ProcessOptions
 
 % Load all necessary packages
-\RequirePackage{crop,graphicx,amsmath,array,color,amssymb,flushend,stfloats,amsthm,chngpage,times,datetime,parskip,epstopdf}
+\RequirePackage{inputenc,crop,graphicx,amsmath,array,color,amssymb,flushend,stfloats,amsthm,chngpage,times,datetime,parskip,epstopdf}
 \def\helvetica{\fontfamily{phv}\selectfont}
 \def\helveticaitalic{\fontfamily{phv}\itshape\selectfont}
 \def\helveticabold{\fontfamily{phv}\bfseries\selectfont}
 \def\helveticabolditalic{\fontfamily{phv}\bfseries\itshape\selectfont}
 \usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[labelsep=quad,indention=10pt]{caption}
+\usepackage[labelfont=bf,list=true]{subcaption}
 
 \newcommand\@ptsize{0}
 
@@ -54,6 +57,7 @@
    \let\@listi\@listI}
 \normalsize
 \let\@bls\baselineskip
+
 
 \newcommand\small{%
     \@setfontsize\small{11}{12}%
@@ -83,8 +87,6 @@
 \def\Huge{\@setfontsize\Huge{30pt}{30pt}}
 
 
-
-
 \DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
 \DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
 \DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}
@@ -97,6 +99,7 @@
 \setlength\lineskip{1\p@}
 \setlength\normallineskip{1\p@}
 \renewcommand\baselinestretch{}
+
 
 % Set inter-para skips
 \setlength\smallskipamount{3\p@ \@plus 1\p@ \@minus 1\p@}
@@ -136,7 +139,7 @@
 % Set page layout dimensions
 %
 \setlength\headheight{16\p@}        % height of running head
-\setlength\topmargin{2.9pc}         % head margin
+\setlength\topmargin{1.3pc}         % head margin
 \addtolength\topmargin{-1in}        % subtract out the 1 inch driver margin
 
 \setlength\topskip{10\p@}           % height of first line of text
@@ -147,7 +150,7 @@
 
 \setlength\textwidth{42pc}          % text measure excluding margins
 
-\setlength\textheight{52\baselineskip} % 54 lines on a full page,
+\setlength\textheight{56\baselineskip} % 54 lines on a full page,
 \addtolength\textheight{\topskip}      %   including the first
                                        %   line on the page
 
@@ -312,6 +315,7 @@
     \clearpage
     \fi}
 
+
 %
 % Sectional units
 %
@@ -323,6 +327,7 @@
 \newcounter{paragraph}[subsubsection]
 \newcounter{subparagraph}[paragraph]
 \newcounter{figure}
+\newcounter{subfigure}
 \newcounter{table}
 
 % Form of the numbers
@@ -402,11 +407,8 @@
 \def\history#1{\global\def\@history{#1}}
 \def\correspondance#1{\global\def\@correspondance{#1}}
 \def\extraAuth#1{\global\def\@extraAuth{#1}}
-\def\topic#1{\global\def\@topic{#1}}
-\def\pubyear#1{\global\def\@pubyear{#1}}
-\def\copyrightyear#1{\global\def\@copyrightyear{#1}}
 \def\address#1{\global\def\@address{#1}}
-\def\DOI#1{\global\def\@DOI{#1}}
+
 
 \def\date#1{\gdef\@date{#1}}
 
@@ -477,10 +479,10 @@
   \vspace{\dropfromtop}%
   \hbox to \textwidth{%
 
-  \parbox[c]{15pc}{%
+  \parbox[t]{15pc}{%
     \helvetica
     \hfil
-    \flushleft  \includegraphics[width=15pc,angle=0]{./logo1.jpg}
+    \flushleft  \includegraphics[width=12pc,angle=0]{./logo1.eps}
 
 
 }}
@@ -494,20 +496,15 @@
     \vspace{4.5\p@}
     {\helveticabold\fontsize{12}{15}\selectfont\raggedright \@author \par}%
         \vspace{4\p@}
-    {\helvetica\fontsize{12}{12}\selectfont\raggedright\slshape\@address \Address \par}%
+    {\helvetica\fontsize{12}{12}\selectfont\raggedright\slshape\@address \Address \\ \par}%
       \vspace{6\p@}
-  {\helvetica\fontsize{12}{10}\selectfont\raggedright {Correspondence*:\\ }\@correspondance \corrAuthor \\ \corrAddress, \corrEmail \par}
+  {\helvetica\fontsize{12}{10}\selectfont\raggedright {Correspondence*:\\ }\@correspondance \corrAuthor \\  \corrEmail \par}
         \vspace{4\p@}
     {\helvetica\fontsize{12}{12}\selectfont\raggedright\@extraAuth \par}%
     \vspace{8\p@}
-    {\helveticabold\color{darkgray}\fontsize{12}{12}\selectfont\raggedright\@topic \par}
-    %\vspace{20\p@}
     }%
   }
   \vspace{14.5\p@}%
-%  \rule{\textwidth}{1\p@}%
-  \vspace{8\p@ plus 6\p@ minus 6\p@}%
-  \vspace{\extraspace}
   }
 
 %***********
@@ -521,37 +518,41 @@
   \let\section\absection
   \fontfamily{\sfdefault}\fontsize{12}{12}\sffamily\selectfont
   {\fontseries{b}\selectfont ABSTRACT}\par}
-{\endgroup\bigskip\@afterheading\@afterindentfalse\vskip 12pt plus 3pt minus 1pt}
+{\endgroup\smallskip\@afterheading\@afterindentfalse\vskip 12pt plus -2pt minus 2pt}
 
 % Section macros
 
 % Lowest level heading that takes a number by default
-\setcounter{secnumdepth}{3}
+\setcounter{secnumdepth}{5}
 
 \renewcommand{\@seccntformat}[1]{\csname the#1\endcsname\quad}
 
 \def\section{%
   \@startsection{section}{1}{\z@}
-  {-22\p@ plus -3\p@}{3\p@}
+  {-10\p@ plus -3\p@}{3\p@}
   {\reset@font\raggedright\helveticabold\fontsize{13}{13}\color{black}\selectfont\MakeUppercase}}
 
 \def\subsection{%
   \@startsection{subsection}{2}{\z@}
-  {-11\p@ plus -2\p@}{3\p@}
-  {\reset@font\raggedright\mathversion{bold}\helveticabold\fontsize{11.5}{12}\selectfont\MakeUppercase}}
+  {2\p@ plus -1\p@}{2\p@}
+  {\reset@font\raggedright\mathversion{bold}\helveticabold\fontsize{11.5}{12}}}
 
 \def\subsubsection{%
   \@startsection{subsubsection}{3}{\z@}
-  {-11\p@ plus -1\p@}{-1em}
-  {\reset@font\normalfont\normalsize\itshape}}
-
-\def\textcolon{\text{\rm :}}
+  {1\p@ plus -1\p@}{1\p@}
+  {\reset@font\raggedright\mathversion{bold}\helvetica\fontsize{11.5}{12}}}
 
  \def\paragraph{%
    \@startsection{paragraph}{4}{\z@}
-   {-6\p@}
-   {-.4em}
-   {\reset@font\itshape}}
+  {1\p@ plus -1\p@}{1\p@}
+   {\reset@font\itshape\helveticabold\fontsize{11.5}{12}}}
+
+ \def\subparagraph{%
+   \@startsection{subparagraph}{5}{\z@}
+  {1\p@ plus -1\p@}{1\p@}
+   {\reset@font\itshape\helvetica\fontsize{11.5}{12}}}
+
+\def\textcolon{\text{\rm :}}
 
 % ********************
 % Figures and tables *
@@ -565,14 +566,14 @@
 \setlength\extrarowheight{\z@}
 \renewcommand\arraystretch{1}
 
-\newlength{\abovecaptionskip}
-\newlength{\belowcaptionskip}
-\setlength{\abovecaptionskip}{13pt}
-\setlength{\belowcaptionskip}{10.5pt}
+%\newlength{\abovecaptionskip}
+%\newlength{\belowcaptionskip}
+%\setlength{\abovecaptionskip}{13pt}
+%\setlength{\belowcaptionskip}{10.5pt}
 
 \long\def\@makecaption#1#2{\vspace{\abovecaptionskip}%
   \begingroup
-  \footnotesize
+  \normalsize
   \textbf{#1.}\enskip{#2}\par
   \endgroup}
 
@@ -600,9 +601,9 @@
 \def\ftype@table{2}
 \def\ext@table{lot}
 \def\fnum@table{Table~\thetable}
-\def\table{\let\@makecaption\@tablecaption\let\source\tablesource\@float{table}}
+\def\table{\let\source\tablesource\@float{table}}
 \def\endtable{\end@float}
-\@namedef{table*}{\let\@makecaption\@tablecaption\@dblfloat{table}}
+\@namedef{table*}{\@dblfloat{table}}
 \@namedef{endtable*}{\end@dblfloat}
 
 \newif\if@rotate \@rotatefalse
@@ -621,6 +622,22 @@
 \def\rotr#1{\rotdimen=\ht #1\advance\rotdimen by \dp#1
     \hbox to \rotdimen{\vbox to \wd#1{\vskip \wd#1
     \rotstart{90 rotate}\box #1\vss}\hss}\rotfinish}
+
+\newif\ifsub@@figure   \sub@@figuretrue
+\def\thesubfigure{\@arabic\c@figure\alph{subfigure}}
+\def\fps@subfigure{tbp}
+\def\ftype@subfigure{1}
+\def\ext@subfigure{lof}
+\def\fnum@subfigure{Figure \thesubfigure}
+\def\subfigure{\ifsub@@figure\global\sub@@figurefalse\stepcounter{figure}\fi%
+ \@float{subfigure}}
+\let\endsubfigure\end@float
+\@namedef{subfigure*}{\ifsub@@figure\global\sub@@figurefalse%
+ \stepcounter{figure}\fi \@dblfloat{subfigure}}
+\@namedef{endsubfigure*}{\end@dblfloat}
+
+\def\endfigure{\global\sub@@figuretrue\end@float}
+\@namedef{endfigure*}{\global\sub@@figuretrue\end@dblfloat}
 
 \newdimen\tempdime
 \newbox\temptbox
@@ -700,7 +717,7 @@
    \labelsep      0.5em
    \listparindent \parindent
    \itemindent    \z@
-   \topsep 11\p@
+   \topsep 2\p@
 }
 
 \def\enumerate{%
@@ -731,7 +748,7 @@
    \rightmargin   \z@
    \listparindent \parindent
    \itemindent    \z@
-   \topsep11\p@
+   \topsep 2\p@
 }
 
 \def\itemize{%
@@ -848,7 +865,7 @@
 % **********
 % Appendix *
 % **********
-\newif\ifappend % Are we in the Appendix?
+\newif\ifappend 
 \def\appendix{\par
         \setcounter{section}{0}
         \setcounter{subsection}{0}

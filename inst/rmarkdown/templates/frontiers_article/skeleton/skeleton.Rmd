@@ -37,7 +37,7 @@ affiliation:
     country: Country X
 output: rticles::frontiers_article
 csl: frontiers.csl
-bibliography: test.BIB
+bibliography: test.bib
 ---
 
 \begin{abstract}
