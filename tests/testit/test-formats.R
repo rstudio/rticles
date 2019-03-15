@@ -1,4 +1,4 @@
-test_format <- function(name, os_skip = NULL) {
+test_format <- function(name, os_skip = NULL, ...) {
 
   # don't run on CRAN due to complicated dependencies (Pandoc/LaTeX packages)
   if (!identical(Sys.getenv("NOT_CRAN"), "true")) return()
@@ -19,7 +19,7 @@ test_format <- function(name, os_skip = NULL) {
   )
 
   message('Rendering the ', name, ' format...')
-  output_file <- rmarkdown::render(testdoc, quiet = TRUE)
+  output_file <- rmarkdown::render(testdoc, quiet = TRUE, ...)
   assert(paste(name, "format works"), {
     file.exists(output_file)
   })
@@ -47,3 +47,8 @@ test_format("mdpi_article")
 test_format("mnras_article")
 test_format("copernicus_article")
 test_format("frontiers_article")
+test_format("frontiers_article")
+test_format("frontiers_article",
+            output_options = list(documentclass = "frontiersFPHY"))
+test_format("frontiers_article",
+            output_options = list(documentclass = "frontiersHLTH"))
