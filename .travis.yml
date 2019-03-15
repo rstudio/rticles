@@ -3,6 +3,7 @@ cache:
   packages: true
   directories:
     - $HOME/.TinyTeX
+warnings_are_errors: true
 latex: false
 
 env:
