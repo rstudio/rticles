@@ -7,21 +7,18 @@
 acm_article(...)
 }
 \arguments{
-\item{...}{Arguments to \code{rmarkdown::pdf_document}}
+\item{...}{Arguments to \code{rmarkdown::pdf_document()}.}
 }
 \value{
-R Markdown output format to pass to \code{\link[rmarkdown:render]{render}}
+An R Markdown output format.
 }
 \description{
 Format for creating an Association for Computing Machinery (ACM) articles.
 Adapted from
-\href{http://www.acm.org/publications/article-templates/proceedings-template.html}{http://www.acm.org/publications/article-templates/proceedings-template.html}.
+\url{http://www.acm.org/publications/article-templates/proceedings-template.html}.
 }
 \examples{
-
 \dontrun{
-library(rmarkdown)
-draft("MyArticle.Rmd", template = "acm_article", package = "rticles")
+rmarkdown::draft("MyArticle.Rmd", template = "acm_article", package = "rticles")
 }
-
 }
