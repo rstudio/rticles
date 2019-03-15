@@ -1,4 +1,4 @@
-find_resource <- function(template, file) {
+find_resource <- function(template, file = 'template.tex') {
   res <- system.file(
     "rmarkdown", "templates", template, "resources", file, package = "rticles"
   )
