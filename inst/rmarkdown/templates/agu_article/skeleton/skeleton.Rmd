@@ -41,8 +41,8 @@ corresponding_author:
     email: groupleader@fancy.university.com
 keypoints:  
   - "List up to three key points (at least one is required)"
-  - "Key Points summarize the main points and conclusions of the article sdfasdfadfasdfasdf adsf asdf asdf ad fasd fadf adfs "
-  - "Each must be 100 characters or less with no special characters or punctuation asddfjhsdlkh adsliufyh alkj asdufk haldkufjh adslfh adsjkf h"
+  - "Key Points summarize the main points and conclusions of the article"
+  - "Each must be 100 characters or less with no special characters or punctuation"
 abstract: |
   A good abstract will begin with a short description of the problem
   being addressed, briefly describe the new data or analyses, then
