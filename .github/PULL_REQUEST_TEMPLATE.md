@@ -22,4 +22,6 @@ To contribute a new article template to this package, please make sure you have 
 
 - [ ] Add your name to the list of authors `Authors@R` in DESCRIPTION. You don't need to bump the package version in DESCRIPTION.
 
+Lastly, please try your best to do only one thing per pull request, and refrain from making cosmetic changes in the code base: https://yihui.name/en/2018/02/bite-sized-pull-requests/
+
 Thank you!
