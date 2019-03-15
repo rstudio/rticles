@@ -22,10 +22,53 @@
 \linenumbers
 
 
+% BELOW TAKEN FROM rticles plos template
+%
+% amsmath package, useful for mathematical formulas
+\usepackage{amsmath}
+% amssymb package, useful for mathematical symbols
+\usepackage{amssymb}
+
+% hyperref package, useful for hyperlinks
+\usepackage{hyperref}
+
+% graphicx package, useful for including eps and pdf graphics
+% include graphics with the command \includegraphics
+\usepackage{graphicx}
+
+% Sweave(-like)
+\usepackage{fancyvrb}
+\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl}
+\DefineVerbatimEnvironment{Soutput}{Verbatim}{}
+\DefineVerbatimEnvironment{Scode}{Verbatim}{fontshape=sl}
+\newenvironment{Schunk}{}{}
+\DefineVerbatimEnvironment{Code}{Verbatim}{}
+\DefineVerbatimEnvironment{CodeInput}{Verbatim}{fontshape=sl}
+\DefineVerbatimEnvironment{CodeOutput}{Verbatim}{}
+\newenvironment{CodeChunk}{}{}
+
+% cite package, to clean up citations in the main text. Do not remove.
+\usepackage{cite}
+
+\usepackage{color}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Below is from frontiers
+%
+\bibliographystyle{frontiersinSCNS}
+% Use doublespacing - comment out for single spacing
+%\usepackage{setspace}
+%\doublespacing
+
+
 % Leave a blank line between paragraphs instead of using \\
 
 
 \def\keyFont{\fontsize{8}{11}\helveticabold }
+
+
 %% ** EDIT HERE **
 %% PLEASE INCLUDE ALL MACROS BELOW
 
@@ -36,20 +79,20 @@ $header-includes$
 $endfor$
 
 
- \def\Authors{
+\def\Authors{
 $for(author)$
   $author.name$\,\textsuperscript{$author.affiliation$$if(author.email)$*$endif$}$sep$,
 $endfor$
 }
-% \\
+
 \def\Address{
 $for(affiliation)$
-  \textsuperscript{$affiliation.id$} $if(affiliation.department)$$affiliation.department$, $endif$$if(affiliation.institution)$$affiliation.institution$, $endif$ $if(affiliation.city)$$affiliation.city$, $endif$ $if(affiliation.state)$$affiliation.state$, $endif$ $if(affiliation.country)$$affiliation.country$\\$endif$
-$endfor$
-}
+
+  \textsuperscript{$affiliation.id$} $if(affiliation.department)$$affiliation.department$, $endif$$if(affiliation.institution)$$affiliation.institution$, $endif$ $if(affiliation.city)$$affiliation.city$, $endif$ $if(affiliation.state)$$affiliation.state$, $endif$ $if(affiliation.country)$$affiliation.country$$endif$
+  $endfor$}
 
 $for(author)$
-  $if(author.email)$\def\corrAuthor{$author.name$}\def\corrAddress{$if(author.institution)$$author.institution$\\$endif$$if(author.street)$$author.street$\\$endif$$author.city$, $if(author.state)$$author.state$, $endif$$author.zip$$if(author.country)$$author.country$$endif$}\def\corrEmail{$author.email$}$endif$
+  $if(author.email)$\def\corrAuthor{$author.name$}\def\corrAddress{$if(author.institution)$$author.institution$\\$endif$$if(author.street)$$author.street$\\$endif$$author.city$, $if(author.state)$$author.state$, $endif$$author.zip$ $if(author.country)$$author.country$$endif$}\def\corrEmail{$author.email$}$endif$
   $if(author.etal)$\def\firstAuthorLast{$author.etal$ {et~al.}}$endif$
 $endfor$
 
@@ -58,9 +101,8 @@ $endfor$
 \onecolumn
 \firstpage{1}
 
-\title[Running Title]{Article Title} 
-
 \title[$runtitle$]{$title$}
+\author[\firstAuthorLast]{\Authors}
 \address{} %This field will be automatically populated
 \correspondance{} %This field will be automatically populated
 
