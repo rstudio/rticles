@@ -29,7 +29,7 @@
 \ProcessOptions
 
 % Load all necessary packages
-\RequirePackage{inputenc,crop,graphicx,amsmath,array,color,amssymb,flushend,stfloats,amsthm,chngpage,times,datetime,parskip,epstopdf}
+\RequirePackage{inputenc,crop,graphicx,amsmath,array,color,amssymb,flushend,stfloats,amsthm,chngpage,times,datetime,parskip}
 \def\helvetica{\fontfamily{phv}\selectfont}
 \def\helveticaitalic{\fontfamily{phv}\itshape\selectfont}
 \def\helveticabold{\fontfamily{phv}\bfseries\selectfont}
@@ -482,7 +482,7 @@
   \parbox[t]{15pc}{%
     \helvetica
     \hfil
-    \flushleft  \includegraphics[width=12pc,angle=0]{./logo1.eps}
+    \flushleft  \includegraphics[width=12pc,angle=0]{./logo1.pdf}
 
 
 }}
