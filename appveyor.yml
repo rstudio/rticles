@@ -7,6 +7,11 @@ init:
         Invoke-WebRequest http://raw.github.com/krlmlr/r-appveyor/master/scripts/appveyor-tool.ps1 -OutFile "..\appveyor-tool.ps1"
         Import-Module '..\appveyor-tool.ps1'
 
+environment:
+  global:
+    WARNINGS_ARE_ERRORS: 1
+    _R_CHECK_TESTS_NLINES_: 0
+
 install:
   ps: Bootstrap
 
