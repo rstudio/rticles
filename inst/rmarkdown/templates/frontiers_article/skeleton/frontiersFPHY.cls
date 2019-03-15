@@ -1,5 +1,5 @@
-\newcommand\classname{frontiersSCNS} %this file is based in bioninfo.cls
-\newcommand\lastmodifieddate{2016/11/10}
+\newcommand\classname{frontiersFPHY} %this file is based in bioninfo.cls
+\newcommand\lastmodifieddate{2016/01/11}
 \newcommand\versionnumber{2.6}
 
 % For printing crop marks
@@ -58,7 +58,6 @@
 \normalsize
 \let\@bls\baselineskip
 
-
 \newcommand\small{%
     \@setfontsize\small{11}{12}%
     \abovedisplayskip 11\p@ minus 3\p@
@@ -87,6 +86,8 @@
 \def\Huge{\@setfontsize\Huge{30pt}{30pt}}
 
 
+
+
 \DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
 \DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
 \DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}
@@ -99,7 +100,6 @@
 \setlength\lineskip{1\p@}
 \setlength\normallineskip{1\p@}
 \renewcommand\baselinestretch{}
-
 
 % Set inter-para skips
 \setlength\smallskipamount{3\p@ \@plus 1\p@ \@minus 1\p@}
@@ -315,7 +315,6 @@
     \clearpage
     \fi}
 
-
 %
 % Sectional units
 %
@@ -373,7 +372,7 @@
   \clearpage
   \@mainmatterfalse}
 
-  \newdateformat{mydate}{\THEDAY \ \monthname[\THEMONTH] \THEYEAR}
+  \newdateformat{mydate}{\THEDAY \ \monthname[ \THEMONTH] \THEYEAR}
   \newdateformat{mydate2}{\monthname[\THEMONTH] \THEYEAR}
 
 %********
@@ -411,6 +410,8 @@
 
 
 \def\date#1{\gdef\@date{#1}}
+
+% To define special colors
 
 %***********
 % Colors *
@@ -479,11 +480,10 @@
   \vspace{\dropfromtop}%
   \hbox to \textwidth{%
 
-  \parbox[t]{15pc}{%
+ \parbox[t]{15pc}{%
     \helvetica
     \hfil
     \flushleft  \includegraphics[width=12pc,angle=0]{./logo1.pdf}
-
 
 }}
 
@@ -498,7 +498,7 @@
         \vspace{4\p@}
     {\helvetica\fontsize{12}{12}\selectfont\raggedright\slshape\@address \Address \\ \par}%
       \vspace{6\p@}
-  {\helvetica\fontsize{12}{10}\selectfont\raggedright {Correspondence*:\\ }\@correspondance \corrAuthor \\  \corrEmail \par}
+  {\helvetica\fontsize{12}{10}\selectfont\raggedright {Correspondence*:\\ }\@correspondance \corrAuthor \\ \corrEmail \par}
         \vspace{4\p@}
     {\helvetica\fontsize{12}{12}\selectfont\raggedright\@extraAuth \par}%
     \vspace{8\p@}
@@ -859,13 +859,13 @@
       \setlength{\itemindent}{-4mm}}\small}
 {\end{list}\endgroup}
 
-\RequirePackage{natbib}
-
+\usepackage[numbers,square]{natbib}
+\renewcommand\@biblabel[1]{\textbf [#1] }
 
 % **********
 % Appendix *
 % **********
-\newif\ifappend 
+\newif\ifappend
 \def\appendix{\par
         \setcounter{section}{0}
         \setcounter{subsection}{0}
