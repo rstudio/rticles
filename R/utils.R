@@ -34,17 +34,13 @@ merge_list <- function(x, y) {
 #' if (interactive()) file.show(x)
 #' @noRd
 template_pandoc <- function(metadata, template, output, verbose = FALSE) {
-  tmp <- tempfile(fileext = ".md")
-  on.exit(unlink(tmp))
+  tmp <- tempfile(fileext = ".md"); on.exit(unlink(tmp), add = TRUE)
+  xfun::write_utf8(c("---", yaml::as.yaml(metadata), "---\n"), tmp)
 
-  cat("---\n", file = tmp)
-  cat(yaml::as.yaml(metadata), file = tmp, append = TRUE)
-  cat("---\n", file = tmp, append = TRUE)
-  cat("\n", file = tmp, append = TRUE)
-
-  rmarkdown::pandoc_convert(tmp, "markdown", output = output,
-                            options = paste0("--template=", template), verbose = verbose)
-
+  rmarkdown::pandoc_convert(
+    tmp, "markdown", output = output, verbose = verbose,
+    options = paste0("--template=", template),
+  )
   invisible(output)
 }
 
