@@ -41,8 +41,8 @@ corresponding_author:
     email: groupleader@fancy.university.com
 keypoints:  
   - "List up to three key points (at least one is required)"
-  - "Key Points summarize the main points and conclusions of the article"
-  - "Each must be 100 characters or less with no special characters or punctuation"
+  - "Key Points summarize the main points and conclusions of the article sdfasdfadfasdfasdf adsf asdf asdf ad fasd fadf adfs "
+  - "Each must be 100 characters or less with no special characters or punctuation asddfjhsdlkh adsliufyh alkj asdufk haldkufjh adslfh adsjkf h"
 abstract: |
   A good abstract will begin with a short description of the problem
   being addressed, briefly describe the new data or analyses, then
@@ -66,7 +66,16 @@ knitr::opts_chunk$set(
   out.extra = "",   # To force the use of figure enviroment
   fig.cap = "Please caption every figure"
 )
+```
 
+```{r keypoints_check,  results='asis', eval = TRUE}
+# This chunk adds a warning if any keypoint is longer than 100 characters. 
+# To disable it, you can remove it or set eval to FALSE.
+if (any(nchar(rmarkdown::metadata$keypoints) > 100)) {
+  cat("\\textcolor{red}{\\textbf{Warning}: keypoint(s)", 
+      knitr::combine_words(which(nchar(rmarkdown::metadata$keypoints) > 100)), 
+      "longer than 100 characters.}")
+}
 ```
 
 Suggested section heads
