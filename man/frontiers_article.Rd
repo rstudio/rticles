@@ -4,12 +4,22 @@
 \alias{frontiers_article}
 \title{Frontiers open access journal format.}
 \usage{
-frontiers_article(..., keep_tex = TRUE)
+frontiers_article(..., keep_tex = TRUE,
+  documentclass = c("frontiersSCNS", "frontiersHLTH", "frontiersFPHY"))
 }
 \arguments{
 \item{...}{Additional arguments to \code{rmarkdown::pdf_document}}
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
+
+\item{documentclass}{The document class for the Frontiers In Article:
+\describe{
+\item{\code{frontiersSCNS}}{Science, Engineering and Humanities and
+Social Sciences articles}
+\item{\code{frontiersHLTH}}{Health articles}
+\item{\code{frontiersFPHY}}{Physics and Applied Mathematics
+and Statistics articles}
+}}
 }
 \value{
 R Markdown output format to pass to
