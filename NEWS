@@ -1,9 +1,15 @@
 rticles 0.7
 ---------------------------------------------------------------------
 
+- Added the template for the AGU Journals (thanks, @eliocamp, #199).
+
 - Updated the template for PLOS to version 3.5 (thanks, @uvesten, #196).
 
 - No longer hardcode the LaTeX engine to `xelatex` in `rsos_article()` (thanks, @bensprung, #198).
+
+- Added an argument `pandoc_args` to `ieee_article()` so that users can pass custom Pandoc arguments. This also makes it work with `bookdown::pdf_book()` (thanks, @espinielli, #206).
+
+- The `base_format` argument has been removed from `peerj_article()` and `copernicus_article()`. This argument was originally added mainly for supporting `bookdown::pdf_book()`, but you should really pass these formats to the `base_format` argument of `bookdown::pdf_book` instead of the other way around.
 
 rticles 0.6
 ---------------------------------------------------------------------

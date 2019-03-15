@@ -3,11 +3,7 @@
 #' Format for creating submissions to The PeerJ.
 #'
 #' @inheritParams rmarkdown::pdf_document
-#' @param ... Additional arguments to \code{base_format}
-#' @param base_format The function to use for the base format of the article.
-#'   By default, this is \code{rmarkdown::pdf_document}, but to use bookdown's
-#'   cross-referencing feature, this can be set to \code{bookdown::pdf_document2}
-#'
+#' @param ... Additional arguments to \code{rmarkdown::pdf_document()}.
 #' @return R Markdown output format to pass to
 #'   \code{\link[rmarkdown:render]{render}}
 #'
@@ -26,15 +22,9 @@
 #' }
 #'
 #' @export
-peerj_article <- function(..., keep_tex = TRUE, citation_package = "none",
-                          base_format = rmarkdown::pdf_document) {
-  if (inherits(base_format, "character")){
-    FMT <- eval(parse(text = base_format))
-  } else {
-    FMT <- match.fun(base_format)
-  }
-  out <- FMT(...,
-             citation_package = citation_package,
-             keep_tex = keep_tex,
-             template = find_resource("peerj_article", "template.tex"))
+peerj_article <- function(..., keep_tex = TRUE, citation_package = "none") {
+  inherit_pdf_document(
+    ..., citation_package = citation_package, keep_tex = keep_tex,
+    template = find_resource("peerj_article", "template.tex")
+  )
 }

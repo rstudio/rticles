@@ -59,6 +59,7 @@ ieee_article <- function(...,
                          with_array       = FALSE,
                          with_dblfloatfix = FALSE,
                          keep_tex         = TRUE,
+                         pandoc_args = NULL,
                          md_extensions    = c("-autolink_bare_uris")) {
 
   args <- c()
@@ -69,7 +70,7 @@ ieee_article <- function(...,
   args <- c(args, "hyphenfixes" = hyphenfixes)
 
   # Avoid declaration of pandoc variable if field is empty
-  if(nchar(IEEEspecialpaper) > 1){
+  if (nchar(IEEEspecialpaper) > 1) {
     args <- c(args, "IEEEspecialpaper" = IEEEspecialpaper)
   }
 
@@ -95,7 +96,7 @@ ieee_article <- function(...,
   pandoc_arg_list <- mapply(pandoc_arg_variable, names(args), args)
 
   inherit_pdf_document(...,
-                       pandoc_args = pandoc_arg_list,
+                       pandoc_args = c(pandoc_arg_list, pandoc_args),
                        template = find_resource("ieee_article", "template.tex"),
                        keep_tex = keep_tex,
                        md_extensions = md_extensions)

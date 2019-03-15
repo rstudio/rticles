@@ -1,7 +1,7 @@
 Package: rticles
 Type: Package
 Title: Article Formats for R Markdown
-Version: 0.6.1
+Version: 0.6.4
 Authors@R: c(
   person("JJ", "Allaire", role = "aut", email = "jj@rstudio.com"),
   person("Yihui", "Xie", role = c("aut", "cre"), email = "xie@yihui.name", comment = c(ORCID = "0000-0003-0645-5666")),
@@ -30,7 +30,8 @@ Authors@R: c(
   person("Oğuzhan", "Öğreden", role = c("aut"), comment = c(ORCID = "0000-0002-9949-3348")),
   person("Dalton", "Hance", role = c("aut"), email = "dhance@usgs.gov"),
   person("Daniel", "Nüst", role = c("aut", "cph"), email = "daniel.nuest@uni-muenster.de", comment = c(ORCID = "0000-0002-0024-5046")),
-  person("Petter", "Uvesten", role = c("aut", "cph"), email = "petter.uvesten.7362@student.lu.se")
+  person("Petter", "Uvesten", role = c("aut", "cph"), email = "petter.uvesten.7362@student.lu.se"),
+  person("Elio", "Campitelli", role = c("aut", "cph"), email = "elio.campitelli@cima.fcen.uba.ar", comment = c(ORCID = "0000-0002-7742-9230"))
   )
 Description: A suite of custom R Markdown formats and templates for
   authoring journal articles and conference submissions.
