@@ -82,10 +82,7 @@ ieee_article <- function(...,
              "with_array"       = with_array,
              "with_dblfloatfix" = with_dblfloatfix)
 
-  # Obtain only variables that should be turned on
-  requested_withs <- sapply(plist, isTRUE)
-
-  args <- c(args, plist[requested_withs])
+  args <- c(args, plist[plist])
 
   # pandoc_variable_arg not exported from rmarkdown
   pandoc_arg_variable = function(var_name, value){
