@@ -5,7 +5,8 @@
 #' @inheritParams rmarkdown::pdf_document
 #' @param ... Additional arguments to \code{rmarkdown::pdf_document}
 #' @export
-#' @importFrom rmarkdown output_format knitr_options pandoc_options pandoc_variable_arg includes_to_pandoc_args
+#' @importFrom rmarkdown output_format knitr_options pandoc_options
+#'   pandoc_variable_arg includes_to_pandoc_args
 #' @author Thierry Onkelinx, \email{thierry.onkelinx@@inbo.be}
 rsos_article <- function(
   ..., keep_tex = TRUE, latex_engine = 'xelatex', pandoc_args = NULL,

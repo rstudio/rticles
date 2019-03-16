@@ -6,9 +6,7 @@
 #' @param ... Additional arguments to \code{rmarkdown::pdf_document()}.
 #' @param journal_name A regular expression to filter the by the journal name, see \code{pattern} in \code{\link[base]{grep}}; defaults to \code{*}.
 #'
-#' @return R Markdown output format to pass to
-#'   \code{\link[rmarkdown:render]{render}}
-#'
+#' @return An R Markdown output format.
 #' @details This was adapted from
 #' \url{https://publications.copernicus.org/for_authors/manuscript_preparation.html}.
 #'
@@ -48,7 +46,6 @@
 #' draft("MyArticle.Rmd", template = "copernicus_article", package = "rticles")
 #' render("MyArticle/MyArticle.Rmd")
 #' }
-#'
 #' @export
 copernicus_article <- function(
   ..., keep_tex = TRUE, citation_package = "natbib", md_extensions = c(

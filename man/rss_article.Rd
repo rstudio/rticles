@@ -15,6 +15,6 @@ rss_article(..., keep_tex = TRUE, citation_package = "natbib")
 or \code{biblatex}. Use \code{none} if neither package is to be used.}
 }
 \description{
-Format for creating articles for Royal Statistical Society
-Adapted from \url{https://www.rss.org.uk/RSS/Publications/Journals/Journals_get_involved/RSS/Publications/Journals_sub/Get_Involved.aspx}
+Format for creating articles for Royal Statistical Society Adapted from
+\url{https://www.rss.org.uk/RSS/Publications/Journals/Journals_get_involved/RSS/Publications/Journals_sub/Get_Involved.aspx}.
 }

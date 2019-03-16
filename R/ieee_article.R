@@ -74,7 +74,7 @@ ieee_article <- function(
   args <- c(args, plist[plist])
 
   # pandoc_variable_arg not exported from rmarkdown
-  pandoc_arg_variable = function(var_name, value){
+  pandoc_arg_variable <- function(var_name, value) {
     c("-V", paste0(var_name, "=", value))
   }
 

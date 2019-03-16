@@ -25,8 +25,7 @@ additional details.}
 \item{journal_name}{A regular expression to filter the by the journal name, see \code{pattern} in \code{\link[base]{grep}}; defaults to \code{*}.}
 }
 \value{
-R Markdown output format to pass to
-  \code{\link[rmarkdown:render]{render}}
+An R Markdown output format.
 }
 \description{
 Format for creating submissions to Copernicus journals.
@@ -68,7 +67,6 @@ library("rmarkdown")
 draft("MyArticle.Rmd", template = "copernicus_article", package = "rticles")
 render("MyArticle/MyArticle.Rmd")
 }
-
 }
 \references{
 Manuscript preparation guidelines for authors.
