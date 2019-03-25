@@ -64,7 +64,7 @@
 
 \journalname{$journal$}
 
-$for(header-includes)$ 
+$for(header-includes)$
 $header-includes$
 $endfor$
 
@@ -175,7 +175,7 @@ $abstract$
 $body$
 
 $if(bibliography)$
-\bibliography{$bibliography$}
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 $endif$
 
 
