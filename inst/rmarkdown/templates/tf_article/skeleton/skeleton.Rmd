@@ -150,6 +150,13 @@ Bulleted lists are produced using the \texttt{itemize} environment. For example,
 
 ## Figures
 
+```{r fig}
+  tmp_fig_path <- paste0(tempfile(), ".pdf")
+  pdf(file = tmp_fig_path)
+  plot(pressure)
+  invisible(dev.off())
+```
+
 The \texttt{interact} class file will deal with positioning your figures in the same way as standard \LaTeX. It should not normally be necessary to use the optional \texttt{[htb]} location specifiers of the \texttt{figure} environment in your manuscript; you may, however, find the \verb"[p]" placement option or the \verb"endfloat" package useful if a journal insists on the need to separate figures from the text.
 
 Figure captions appear below the figures themselves, therefore the \verb"\caption" command should appear after the body of the figure. For example, Figure~\ref{sample-figure} with caption and sub-captions is produced using the following commands:
@@ -157,9 +164,9 @@ Figure captions appear below the figures themselves, therefore the \verb"\captio
 \begin{figure}
 \centering
 \subfigure[An example of an individual figure sub-caption.]{%
-\resizebox*{5cm}{!}{\includegraphics{graph1.eps}}}\hspace{5pt}
+\resizebox*{5cm}{!}{\includegraphics{`r tmp_fig_path`}}}\hspace{5pt}
 \subfigure[A slightly shorter sub-caption.]{%
-\resizebox*{5cm}{!}{\includegraphics{graph2.eps}}}
+\resizebox*{5cm}{!}{\includegraphics{`r tmp_fig_path`}}}
 \caption{Example of a two-part figure with individual sub-captions
  showing that captions are flush left and justified if greater
  than one line of text.} \label{sample-figure}
@@ -168,9 +175,9 @@ Figure captions appear below the figures themselves, therefore the \verb"\captio
 \begin{figure}
 \centering
 \subfigure[An example of an individual figure sub-caption.]{%
-\resizebox*{5cm}{!}{\includegraphics{graph1.eps}}}\hspace{5pt}
+\resizebox*{5cm}{!}{\includegraphics{`r tmp_fig_path`}}}\hspace{5pt}
 \subfigure[A slightly shorter sub-caption.]{%
-\resizebox*{5cm}{!}{\includegraphics{graph2.eps}}}
+\resizebox*{5cm}{!}{\includegraphics{`r tmp_fig_path`}}}
 \caption{Example of a two-part figure with individual sub-captions
  showing that captions are flush left and justified if greater
  than one line of text.} \label{sample-figure}
