@@ -164,9 +164,9 @@ Figure captions appear below the figures themselves, therefore the \verb"\captio
 \begin{figure}
 \centering
 \subfigure[An example of an individual figure sub-caption.]{%
-\resizebox*{5cm}{!}{\includegraphics{`r tmp_fig_path`}}}\hspace{5pt}
+\resizebox*{5cm}{!}{\includegraphics{path/to/fig}}}\hspace{5pt}
 \subfigure[A slightly shorter sub-caption.]{%
-\resizebox*{5cm}{!}{\includegraphics{`r tmp_fig_path`}}}
+\resizebox*{5cm}{!}{\includegraphics{path/to/fig}}}
 \caption{Example of a two-part figure with individual sub-captions
  showing that captions are flush left and justified if greater
  than one line of text.} \label{sample-figure}
