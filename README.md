@@ -63,6 +63,8 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [Frontiers](https://www.frontiersin.org/) articles
 
+- [Taylor & Francis](http://www.tandf.co.uk/) articles
+
 Under the hood, LaTeX templates are used to ensure that documents conform precisely to submission standards. At the same time, composition and formatting can be done using lightweight [markdown](https://rmarkdown.rstudio.com/authoring_basics.html) syntax, and R code and its output can be seamlessly included using [knitr](https://yihui.name/knitr/).
 
 Using **rticles** requires the prerequisites described below. You can get most of these automatically by installing the latest release of RStudio (instructions for using **rticles** without RStudio are also provided).
