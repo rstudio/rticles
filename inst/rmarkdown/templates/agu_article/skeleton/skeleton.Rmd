@@ -1,0 +1,238 @@
+---
+# Choose from this list of Journals:
+# JGR: Atmospheres, JGR: Biogeosciences, JGR: Earth Surface, 
+# JGR: Oceans, JGR: Planets, JGR: Solid Earth, JGR: Space Physics, 
+# Global Biogeochemical Cycles, Geophysical Research Letters, 
+# Paleoceanography and Paleoclimatology, Radio Science, Reviews of Geophysics, 
+# Tectonics, Space Weather, Water Resources Research, Geochemistry, Geophysics, 
+# Geosystems, Journal of Advances in Modeling Earth Systems (JAMES),
+# Earth's Future, Earth and Space Science, Geohealth
+journal: "JGR: Atmospheres"
+# Use draft to submit a paper
+classoption: "draft,linenumbers"
+# A title should be specific, informative, and brief. Use
+# abbreviations only if they are defined in the abstract. Titles that
+# start with general keywords then specific terms are optimized in
+# searches
+title: "The title of my paper"
+# First name or initial followed by last name
+# Authors are individuals who have significantly contributed to the
+# research and preparation of the article. Group authors are allowed, if
+# each author in the group is separately identified in an appendix.
+# Additional author notes should be indicated with
+authors:
+  - name: Andrew N. Other
+    affil: 1
+    thanks: Andrew's thanks
+  - name: Fred T. Secondauthor
+    affil: 1
+    thanks: "Current address: Some other place, Germany"
+  - name: I. Ken Groupleader
+    affil: "1, 2"
+affiliations:
+  - number: 1
+    name: "The first affiliation"
+  - number: 2
+    name: "The second affiliation"
+# More than one corresponding author is allowed in this LaTeX file and for
+# publication; but only one corresponding author is allowed in our editorial system.
+corresponding_author:
+  - name: I. Ken Groupleader
+    email: groupleader@fancy.university.com
+keypoints:  
+  - "List up to three key points (at least one is required)"
+  - "Key Points summarize the main points and conclusions of the article"
+  - "Each must be 100 characters or less with no special characters or punctuation"
+abstract: |
+  A good abstract will begin with a short description of the problem
+  being addressed, briefly describe the new data or analyses, then
+  briefly states the main conclusion(s) and how they are supported and
+  uncertainties. 
+output: 
+    rticles::agu_article
+bibliography: agutest.bib
+header-includes: 
+      - \usepackage{soulutf8}  # For UTF8 chars in TrackChanges
+# AGU recommends using the trackchanges LaTeX package in the edition process
+# which is available from this link:
+# https://publications.agu.org/files/2019/02/January-14-2019-latex-templates.zip
+---
+
+```{r echo=FALSE}
+# Some recommended settings. 
+knitr::opts_chunk$set(
+  echo = FALSE,
+  fig.pos = 'h',
+  out.extra = "",   # To force the use of figure enviroment
+  fig.cap = "Please caption every figure"
+)
+```
+
+```{r keypoints_check, echo=FALSE, results='asis', eval = TRUE}
+# This chunk adds a warning if any keypoint is longer than 100 characters. 
+# To disable it, you can remove it or set eval to FALSE.
+if (any(nchar(rmarkdown::metadata$keypoints) > 100)) {
+  cat("\\textcolor{red}{\\textbf{Warning}: keypoint(s)", 
+      knitr::combine_words(which(nchar(rmarkdown::metadata$keypoints) > 100)), 
+      "longer than 100 characters.}")
+}
+```
+
+Suggested section heads
+
+# Introduction
+
+The main text should start with an introduction. Except for short manuscripts (such as comments and replies), the text should be divided into sections, each with its own heading.
+
+Headings should be sentence fragments and do not begin with a lowercase letter or number. Capitalize the first letter of each word (except for prepositions, conjunctions, and articles that are three or fewer letters).
+
+# Materials and Methods
+
+Here is text on Materials and Methods.
+
+Do not use bulleted lists; enumerated lists are okay. Use #. for list for a cleaner LaTeX output.
+
+#. First element
+
+#. Second element
+
+## A descriptive heading about methods
+
+Please use ONLY \\citet and \\citep for reference citations.
+DO NOT use other cite commands (e.g., \\cite, \\citeyear, \\nocite, \\citealp, etc.).
+Example \\citet and \\citep:
+  ...as shown by \citet{Levitus2012}, \citet{Nuncio2011} and \citet{Raphael2004}
+  ...as shown by \citep{Levitus2012}, \citep{Nuncio2011}, \citep{Raphael2004}.
+  ...has been shown \citep[e.g.,][]{Levitus2012, Nuncio2011, Raphael2004}.
+
+# Data
+
+Or section title might be a descriptive heading about data
+
+As of 2018 we recommend use of the TrackChanges package to mark revisions. The trackchanges package adds five new LaTeX commands:
+
+\\note[editor]{The note}
+
+\\annote[editor]{Text to annotate}{The note}
+
+\\add[editor]{Text to add}
+
+\\remove[editor]{Text to remove}
+
+\\change[editor]{Text to remove}{Text to add}
+
+complete documentation is here: http://trackchanges.sourceforge.net/
+
+# Results
+
+Or section title might be a descriptive heading about the results
+
+Enter Figures and Tables near as possible to where they are first mentioned:
+DO NOT USE \\psfrag or \\subfigure commands.
+DO NOT USE \\newcommand, \\renewcommand, or \\def, etc.
+
+```{r}
+plot(pressure)
+```
+
+Example table
+
+\begin{table}
+ \caption{Time of the Transition Between Phase 1 and Phase 2$^{a}$}
+ \centering
+ \begin{tabular}{l c}
+ \hline
+  Run  & Time (min)  \\
+ \hline
+   $l1$  & 260   \\
+   $l2$  & 300   \\
+   $l3$  & 340   \\
+   $h1$  & 270   \\
+   $h2$  & 250   \\
+   $h3$  & 380   \\
+   $r1$  & 370   \\
+   $r2$  & 390   \\
+ \hline
+ \multicolumn{2}{l}{$^{a}$Footnote text here.}
+ \end{tabular}
+ \end{table}
+
+AGU prefers the use of {sidewaystable} over {landscapetable} as it causes fewer problems.
+
+```{r, fig.env = "sidewaysfigure"}
+plot(pressure)
+```
+
+\begin{sidewaystable}
+\caption{Caption here}
+\label{tab:signif_gap_clos}
+\begin{tabular}{ccc}
+one&two&three\\
+four&five&six
+\end{tabular}
+\end{sidewaystable}
+
+If using numbered lines, please surround equations with \\begin{linenomath\*}... \\end{linenomath\*}
+
+\begin{linenomath*}
+\begin{equation}
+y|{f} \sim g(m, \sigma)
+\end{equation}
+\end{linenomath*}
+
+# Conclusions
+
+\appendix
+\section{Here is a sample appendix}
+
+Optional Appendix goes here
+
+Optional Glossary, Notation or Acronym section goes here:
+
+Glossary is only allowed in Reviews of Geophysics
+
+\begin{glossary}
+\term{Term}
+ Term Definition here
+\term{Term}
+ Term Definition here
+\term{Term}
+ Term Definition here
+\end{glossary}
+
+
+\begin{acronyms}
+\acro{Acronym}
+ Definition here
+\acro{EMOS}
+ Ensemble model output statistics
+\acro{ECMWF}
+ Centre for Medium-Range Weather Forecasts
+\end{acronyms}
+
+\begin{notation}
+\notation{$a+b$} Notation Definition here
+\notation{$e=mc^2$}
+Equation in German-born physicist Albert Einstein's theory of special
+relativity that showed that the increased relativistic mass ($m$) of a
+body comes from the energy of motion of the body—that is, its kinetic
+energy ($E$)—divided by the speed of light squared ($c^2$).
+\end{notation}
+
+
+\acknowledgments
+The acknowledgments must list:
+A statement that indicates to the reader where the data
+supporting the conclusions can be obtained (for example, in the
+references, tables, supporting information, and other databases).
+
+All funding sources related to this work from all authors
+
+Any real or perceived financial conflicts of interests for any author
+
+Other affiliations for any author that may be perceived as having a conflict of 
+interest with respect to the results of this paper.
+
+It is also the appropriate place to thank colleagues and other contributors.
+
+AGU does not normally allow dedications. 

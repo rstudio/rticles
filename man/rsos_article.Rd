@@ -23,10 +23,6 @@ document (typically created using the \code{\link{includes}} function).}
 \item{fig_crop}{\code{TRUE} to automatically apply the \code{pdfcrop} utility
 (if available) to pdf figures}
 }
-\value{
-R Markdown output format to pass to
-  \code{\link[rmarkdown:render]{render}}
-}
 \description{
 Format for creating submissions to Royal Society Open Science journals.
 }

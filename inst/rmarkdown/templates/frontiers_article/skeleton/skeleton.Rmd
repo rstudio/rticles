@@ -1,0 +1,170 @@
+---
+title: "Article Title"
+runtitle: "Short Title"
+documentclass: frontiersSCNS  # or frontiersHLTH, or frontiersFPHY
+author:
+  - name: First Author
+    affiliation: '1'
+    etal: LASTNAME # First author's last name. 
+  - name: Co-Author
+    affiliation: '2'
+  - name: Co-Author
+    affiliation: '1,3'
+    email: email@uni.edu # Indicates corresponding Author
+    institution: Laboratory X, Institute X, Department X, Organization X
+    street: Street X
+    city: City X
+    state: State XX # only USA, Australia, Canada
+    zip: Zip Code X
+    country: Country X
+affiliation:
+  - id: '1'
+    department: Department X
+    institution: Institution X
+    city: City X
+    state: State XX # only USA, Australia, Canada
+    country: Country X
+  - id: '2' 
+    department: Department X
+    institution: Institution X
+    city: City X
+    state: State XX # only USA, Australia, Canada
+    country: Country X
+  - id: '3' 
+    department: Department X
+    institution: Institution X
+    city: City X
+    state: State XX # only USA, Australia, Canada
+    country: Country X
+output: rticles::frontiers_article
+csl: frontiers.csl
+bibliography: test.bib
+---
+
+\begin{abstract}
+
+Abstract length and content varies depending on article type. Refer to 
+\url{http://www.frontiersin.org/about/AuthorGuidelines} for abstract requirement
+and length according to article type.
+
+%All article types: you may provide up to 8 keywords; at least 5 are mandatory.
+\tiny
+ \keyFont{ \section{Keywords:} Text Text Text Text Text Text Text Text } 
+
+\end{abstract}
+
+
+# Introduction {-}
+Cite fancy references [@Neuro2013]. As demonstrated in @Gene2012, citations can
+also be automatically reference. Multiple references are separated by semicolons
+[@Neuro2013; @Neurobot2013].
+
+# Results {-}
+
+<!-- Comments should be HTML-style comments -->
+
+## Subsection 1 {-}
+
+You can use `R` chunks directly to plot graphs.  
+
+```{r graph, echo = TRUE, message=FALSE, fig.show = "hide"}
+x <- 0:100
+set.seed(999)
+y <- 2 * (x + rnorm(length(x), sd = 3) + 3)
+plot(x, y)
+```
+
+## Subsection 2 {-}
+
+Frontiers requires figures to be submitted individually, in the same order as
+they are referred to in the manuscript. Figures will then be automatically
+embedded at the bottom of the submitted manuscript. Kindly ensure that each
+table and figure is mentioned in the text and in numerical order. Permission
+must be obtained for use of copyrighted material from other sources (including
+the web). Please note that it is compulsory to follow figure instructions.
+Figures which are not according to the guidelines will cause substantial delay
+during the production process.
+
+# Discussion
+
+# Disclosure/Conflict-of-Interest Statement {-}
+
+<!--  
+Frontiers follows the recommendations by the International Committee of Medical
+Journal Editors (http://www.icmje.org/ethical_4conflicts.html) which require
+that all financial, commercial or other relationships that might be perceived by
+the academic community as representing a potential conflict of interest must be
+disclosed. If no such relationship exists, authors will be asked to declare that
+the research was conducted in the absence of any commercial or financial
+relationships that could be construed as a potential conflict of interest. When
+disclosing the potential conflict of interest, the authors need to address the
+following points:
+
+ - Did you or your institution at any time receive payment or services from a
+   third party for any aspect of the submitted work?
+ - Please declare financial relationships with entities that could be perceived
+   to influence, or that give the appearance of potentially influencing, what
+   you wrote in the submitted work.
+ - Please declare patents and copyrights, whether pending, issued, licensed
+   and/or receiving royalties relevant to the work.
+ - Please state other relationships or activities that readers could perceive to
+   have influenced, or that give the appearance of potentially influencing, what
+   you wrote in the submitted work.
+ -->
+
+The authors declare that the research was conducted in the absence of any
+commercial or financial relationships that could be construed as a potential
+conflict of interest.
+
+# Author Contributions {-}
+
+<!--  
+
+When determining authorship the following criteria should be observed:
+
+ - Substantial contributions to the conception or design of the work; or the
+   acquisition, analysis, or interpretation of data for the work; AND
+ - Drafting the work or revising it critically for important intellectual
+   content; AND
+ - Final approval of the version to be published ; AND
+ - Agreement to be accountable for all aspects of the work in ensuring that
+   questions related to the accuracy or integrity of any part of the work are
+   appropriately investigated and resolved.
+
+Contributors who meet fewer than all 4 of the above criteria for authorship
+should not be listed as authors, but they should be acknowledged.
+(http://www.icmje.org/roles_a.html)
+
+-->
+
+The statement about the authors and contributors can be up to several sentences
+long, describing the tasks of individual authors referred to by their initials
+and should be included at the end of the manuscript before the References
+section.
+
+
+# Acknowledgments {-}
+
+Funding:
+
+# Supplemental Data 
+
+Supplementary Material should be uploaded separately on submission, if there are
+Supplementary Figures, please include the caption in the same file as the
+figure. LaTeX Supplementary Material templates can be found in the Frontiers
+LaTeX folder
+
+# References
+
+A reference list should be automatically created here. However it won't. Pandoc 
+will place the list of references at the end of the document instead. There are 
+no convenient solution for now to force Pandoc to do otherwise. The easiest way 
+to get around this problem is to edit the LaTeX file created by Pandoc before 
+compiling it again using the traditional LaTeX commands.
+
+# Figures {-}
+
+```{r, Figure-1, ref.label = "graph", results = "hide", echo = FALSE, message = FALSE, fig.height=4, fig.width=4, fig.align='center', fig.cap='Figure caption', out.width = "85mm", out.height = "85mm"}
+# You can also refer to code chunks from above to place figures at the bottom.
+```
+

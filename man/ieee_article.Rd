@@ -9,7 +9,8 @@ ieee_article(..., draftmode = c("final", "draft", "draftcls",
   IEEEspecialpaper = "", with_ifpdf = FALSE, with_cite = FALSE,
   with_amsmath = FALSE, with_algorithmic = FALSE,
   with_subfig = FALSE, with_array = FALSE, with_dblfloatfix = FALSE,
-  keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
+  keep_tex = TRUE, pandoc_args = NULL,
+  md_extensions = c("-autolink_bare_uris"))
 }
 \arguments{
 \item{...}{Additional arguments to \code{rmarkdown::pdf_document}}
@@ -47,29 +48,19 @@ off (\code{FALSE}) the \code{dblfloatfix} LaTeX package.}
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 
+\item{pandoc_args}{Additional command line options to pass to pandoc}
+
 \item{md_extensions}{Markdown extensions to be added or removed from the
 default definition or R Markdown. See the \code{\link{rmarkdown_format}} for
 additional details.}
 }
-\value{
-R Markdown output format to pass to
-  \code{\link[rmarkdown:render]{render}}
-}
 \description{
 Format for creating submissions to IEEE Transaction journals. Adapted from
-\href{http://www.ieee.org/publications_standards/publications/authors/author_templates.html}{http://www.ieee.org/publications_standards/publications/authors/author_templates.html}.
+\url{http://www.ieee.org/publications_standards/publications/authors/author_templates.html}.
 }
 \details{
 Presently, only the \code{"conference"} paper mode offered by the
 \code{IEEEtran.cls} is supported.
-}
-\examples{
-
-\dontrun{
-library(rmarkdown)
-draft("MyArticle.Rmd", template = "ieee_article", package = "rticles")
-}
-
 }
 \references{
 Shell, Michael. "How to use the IEEEtran LATEX class." Journal of LATEX Class

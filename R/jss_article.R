@@ -1,31 +1,16 @@
 #' Journal of Statistical Software (JSS) format.
 #'
 #' Format for creating a Journal of Statistical Software (JSS) articles. Adapted
-#' from
-#' \href{http://www.jstatsoft.org/about/submissions}{http://www.jstatsoft.org/about/submissions}.
-#'
+#' from \url{http://www.jstatsoft.org/about/submissions}.
 #' @inheritParams rmarkdown::pdf_document
 #' @param ... Arguments to \code{rmarkdown::pdf_document}
-#'
-#' @return R Markdown output format to pass to
-#'   \code{\link[rmarkdown:render]{render}}
-#'
-#' @examples
-#'
-#' \dontrun{
-#' library(rmarkdown)
-#' draft("MyArticle.Rmd", template = "jss_article", package = "rticles")
-#' }
-#'
 #' @export
 jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
 
   rmarkdown::pandoc_available('2.2', TRUE)
 
-  template <- find_resource("jss_article", "template.tex")
-
-  base <- inherit_pdf_document(
-    ..., template = template, keep_tex = keep_tex, citation_package = citation_package
+  base <- pdf_document_format(
+    "jss_article", keep_tex = keep_tex, citation_package = citation_package, ...
   )
 
   # Mostly copied from knitr::render_sweave

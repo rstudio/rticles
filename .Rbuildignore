@@ -1,3 +1,4 @@
+^appveyor\.yml$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.travis\.yml$

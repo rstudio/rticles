@@ -19,9 +19,10 @@ abstract: >
 header-includes: >
   \usepackage{lipsum}
 bibliography: sample.bib
-output: 
-  rticles::peerj_article:
-    base_format: rmarkdown::pdf_document # bookdown::pdf_document2 # for using \@ref()
+output:
+  bookdown::pdf_book:
+    base_format: rticles::peerj_article # for using bookdown features like \@ref()
+  rticles::peerj_article: default
 ---
 
 
