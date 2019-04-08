@@ -1,7 +1,7 @@
 rticles 0.8
 ---------------------------------------------------------------------
 
-- Added the Taylor & Francis journal template (@dleutnant)
+- Added the Taylor & Francis journal template (@dleutnant, #218)
 
 rticles 0.7
 ---------------------------------------------------------------------
