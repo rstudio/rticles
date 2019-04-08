@@ -376,4 +376,4 @@ If a reference has no author or editor, order by title; if a date of publication
 
 The following list shows some sample references prepared in the Taylor & Francis Chicago author-date style.
 
-[@Alb05; @Bro02; @Bro86; @Cho08; @ChoGul08; @Ell68; @FogEHPD04; @FogJEE04; @Fow89; @Gre08; @JTL97; @Lev05; @Mor08; @Roh08; @Sam06; @Str00; @Wau50; @Wei02]
+[@Ade09; @Alb05]
