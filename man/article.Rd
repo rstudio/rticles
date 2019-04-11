@@ -20,6 +20,7 @@
 \alias{sage_article}
 \alias{sim_article}
 \alias{springer_article}
+\alias{tf_article}
 \title{R Markdown output formats for (journal) articles}
 \usage{
 acm_article(...)
@@ -67,6 +68,9 @@ sage_article(..., highlight = NULL, citation_package = "natbib")
 sim_article(..., highlight = NULL, citation_package = "natbib")
 
 springer_article(..., keep_tex = TRUE, citation_package = "none")
+
+tf_article(..., keep_tex = TRUE, citation_package = "natbib")
+
 }
 \arguments{
 \item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions}{Arguments passed to \code{rmarkdown::\link{pdf_document}()}.}
@@ -223,6 +227,11 @@ Possible arguments for the YAML header are:
 \section{\code{springer_article}}{
  This format was adapted from the Springer
   Macro package for Springer Journals.
+}
+
+\section{\code{tf_article}}{
+ Format for creating submissions to a Taylor & Francis journal. Adapted from
+\href{http://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}{http://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
 }
 
 \examples{

@@ -1,0 +1,43 @@
+\section{Appendices}
+
+Any appendices should be placed after the list of references, beginning with the command \verb"\appendix" followed by the command \verb"\section" for each appendix title, e.g.
+\begin{verbatim}
+\appendix
+\section{This is the title of the first appendix}
+\section{This is the title of the second appendix}
+\end{verbatim}
+produces:\medskip
+
+\noindent\textbf{Appendix A. This is the title of the first appendix}\medskip
+
+\noindent\textbf{Appendix B. This is the title of the second appendix}\medskip
+
+\noindent Subsections, equations, figures, tables, etc.\ within appendices will then be automatically numbered as appropriate. Some theorem-like environments may need to have their counters reset manually (e.g.\ if they are not numbered within sections in the main text). You can achieve this by using \verb"\numberwithin{remark}{section}" (for example) just after the \verb"\appendix" command.
+
+Please note that if the \verb"endfloat" package is used on a document containing appendices, the \verb"\processdelayedfloats" command must be included immediately before the \verb"\appendix" command in order to ensure that the floats in the main body of the text are numbered as such.
+
+%\processdelayedfloats %%% See above for an explanation of why this command might be needed.
+
+\appendix
+
+\section{Troubleshooting}
+
+Authors may occasionally encounter problems with the preparation of a manuscript using \LaTeX. The appropriate action to take will depend on the nature of the problem:
+\begin{enumerate}
+\item[(i)] If the problem is with \LaTeX\ itself, rather than with the actual macros, please consult an appropriate \LaTeXe\ manual for initial advice. If the solution cannot be found, or if you suspect that the problem does lie with the macros, then please contact Taylor \& Francis for assistance (\texttt{latex.helpdesk@tandf.co.uk}).
+\item[(ii)] Problems with page make-up (e.g.\ occasional overlong lines of text; figures or tables appearing out of order): please do not try to fix these using `hard' page make-up commands -- the typesetter will deal with such problems. (You may, if you wish, draw attention to particular problems when submitting the final version of your manuscript.)
+\item[(iii)] If a required font is not available on your system, allow \TeX\ to substitute the font and specify which font is required in a covering letter accompanying your files.
+\end{enumerate}
+
+
+\section{Obtaining the template and class file}
+
+\subsection{Via the Taylor \& Francis website}
+
+This article template and the \texttt{interact} class file may be obtained via the `Instructions for Authors' pages of selected Taylor \& Francis journals.
+
+Please note that the class file calls up the open-source \LaTeX\ packages booktabs.sty, epsfig.sty and rotating.sty, which will, for convenience, unpack with the downloaded template and class file. The template calls for natbib.sty and subfigure.sty, which are also supplied for convenience.
+
+\subsection{Via e-mail}
+
+This article template, the \texttt{interact} class file and the associated open-source \LaTeX\ packages are also available via e-mail. Requests should be addressed to \texttt{latex.helpdesk@tandf.co.uk}, clearly stating for which journal you require the template and class file.

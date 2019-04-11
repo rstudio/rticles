@@ -261,3 +261,13 @@ springer_article <- function(..., keep_tex = TRUE, citation_package = 'none'){
     "springer_article", keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
+
+#' @section \code{tf_article}: Format for creating submissions to a Taylor & Francis journal. Adapted from
+#' \url{http://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
+#' @export
+#' @rdname article
+tf_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
+  pdf_document_format(
+    "tf_article", keep_tex = keep_tex, citation_package = citation_package, ...
+  )
+}

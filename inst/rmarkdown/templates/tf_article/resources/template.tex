@@ -1,0 +1,77 @@
+% interactcadsample.tex
+% v1.03 - April 2017
+
+\documentclass[]{interact}
+
+\usepackage{epstopdf}% To incorporate .eps illustrations using PDFLaTeX, etc.
+\usepackage{subfigure}% Support for small, `sub' figures and tables
+%\usepackage[nolists,tablesfirst]{endfloat}% To `separate' figures and tables from text if required
+
+\usepackage{natbib}% Citation support using natbib.sty
+\bibpunct[, ]{(}{)}{;}{a}{}{,}% Citation support using natbib.sty
+\renewcommand\bibfont{\fontsize{10}{12}\selectfont}% Bibliography support using natbib.sty
+
+\theoremstyle{plain}% Theorem-like structures provided by amsthm.sty
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem{notation}{Notation}
+
+% see https://stackoverflow.com/a/47122900
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+$if(header-includes)$
+$header-includes$
+$endif$
+
+\begin{document}
+
+\articletype{$type$}
+
+\title{$title$}
+
+
+\author{\name{$for(author)$$author.name$$$^{$author.affil$}$$$sep$, $endfor$}
+\affil{$for(affiliation)$$$^{$affiliation.num$}$$$affiliation.address$$sep$; $endfor$}
+}
+
+\thanks{CONTACT $for(author)$$author.name$. Email: $author.email$$sep$, $endfor$}
+
+\maketitle
+
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
+
+$if(keywords)$
+\begin{keywords}
+$keywords$
+\end{keywords}
+$endif$
+
+$body$
+
+$if(bibliography)$
+\bibliographystyle{tfcad}
+\bibliography{$bibliography$}
+$endif$
+
+
+$if(appendix)$
+\input{"$appendix$"}
+$endif$
+
+
+\end{document}
