@@ -268,6 +268,6 @@ springer_article <- function(..., keep_tex = TRUE, citation_package = 'none'){
 #' @rdname article
 tf_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
   pdf_document_format(
-    "tf_article", keep_tex = keep_tex, citation_package = "natbib", ...
+    "tf_article", keep_tex = keep_tex, citation_package = citation_package, ...
     )
 }
