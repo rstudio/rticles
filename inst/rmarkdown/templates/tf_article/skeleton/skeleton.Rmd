@@ -59,11 +59,11 @@ If your article is accepted for publication it will be typeset as the journal re
 
 Manuscripts for possible publication should be submitted to the Editors for review as directed in the journal's Instructions for Authors, and in accordance with any technical instructions provided in the journal's ScholarOne Manuscripts or Editorial Manager site. Your \LaTeX\ source file(s), the class file and any graphics files will be required in addition to the final PDF version when final, revised versions of accepted manuscripts are submitted.
 
-Please ensure that any author-defined macros used in your article are gathered together in the preamble of your .tex file, i.e.\ before the \verb"\begin{document}" command. Note that if serious problems are encountered in the coding of a document (missing author-defined macros, for example), the typesetter may resort to rekeying it.
+Please ensure that any author-defined macros used in your article are gathered together in the preamble of your .tex file, i.e.\ before the `\begin{document}` command. Note that if serious problems are encountered in the coding of a document (missing author-defined macros, for example), the typesetter may resort to rekeying it.
 
 # Using the `interact` class file
 
-For convenience, simply copy the `interact.cls` file into the same directory as your manuscript files (you do not need to install it in your \TeX\ distribution). In order to use the `interact` document class, replace the command \verb"\documentclass{article}" at the beginning of your document with the command \verb"\documentclass{interact}".
+For convenience, simply copy the `interact.cls` file into the same directory as your manuscript files (you do not need to install it in your \TeX\ distribution). In order to use the `interact` document class, replace the command `\documentclass{article}` at the beginning of your document with the command `\documentclass{interact}`.
 
 The following document-class options should _not_ be used with the `interact` class file:
 \begin{itemize}
@@ -73,9 +73,9 @@ The following document-class options should _not_ be used with the `interact` cl
   \item `twocolumn` -- should not be used (see Subsection~\ref{class});
   \item `onecolumn` -- not necessary as it is the default style.
 \end{itemize}
-To prepare a manuscript for a journal that is printed in A4 (two column) format, use the \verb"largeformat" document-class option provided by `interact.cls`; otherwise the class file produces pages sized for B5 (single column) format by default. The `geometry` package should not be used to make any further adjustments to the page dimensions.
+To prepare a manuscript for a journal that is printed in A4 (two column) format, use the `largeformat` document-class option provided by `interact.cls`; otherwise the class file produces pages sized for B5 (single column) format by default. The `geometry` package should not be used to make any further adjustments to the page dimensions.
 
-<!-- If your manuscript has supplementary content you can prepare this using the \verb"suppldata" document-class option, which will suppress the `article history' date. This option must _not_ be used on any primary content. -->
+<!-- If your manuscript has supplementary content you can prepare this using the `suppldata` document-class option, which will suppress the `article history' date. This option must _not_ be used on any primary content. -->
 
 # Additional features of the `interact} class file
 
@@ -83,26 +83,26 @@ To prepare a manuscript for a journal that is printed in A4 (two column) format,
 
 ## Abbreviations
 
-A list of abbreviations may be included if required, enclosed within an `abbreviations` environment, i.e.\ \verb"\begin{abbreviations}"\ldots\verb"\end{abbreviations}", immediately following the \verb"abstract" environment.
+A list of abbreviations may be included if required, enclosed within an `abbreviations` environment, i.e.\ `\begin{abbreviations}`\ldots`\end{abbreviations}`, immediately following the `abstract` environment.
 
 
 ## Keywords
 
-A list of keywords may be included if required, enclosed within a `keywords` environment, i.e.\ \verb"\begin{keywords}"\ldots\verb"\end{keywords}". Additional keywords in other languages (preceded by a translation of the word `keywords`) may also be included within the \verb"keywords" environment if required.
+A list of keywords may be included if required, enclosed within a `keywords` environment, i.e.\ `\begin{keywords}`\ldots`\end{keywords}`. Additional keywords in other languages (preceded by a translation of the word `keywords`) may also be included within the `keywords` environment if required.
 
 
 ## Subject classification codes
 
-AMS, JEL or PACS classification codes may be included if required. The `interact` class file provides an `amscode` environment, i.e.\ \verb"\begin{amscode}"\ldots\verb"\end{amscode}", a `jelcode` environment, i.e.\ \verb"\begin{jelcode}"\ldots\verb"\end{jelcode}", and a `pacscode` environment, i.e.\ \verb"\begin{pacscode}"\ldots\verb"\end{pacscode}" to assist with this.
+AMS, JEL or PACS classification codes may be included if required. The `interact` class file provides an `amscode` environment, i.e.\ `\begin{amscode}`\ldots`\end{amscode}`, a `jelcode` environment, i.e.\ `\begin{jelcode}`\ldots`\end{jelcode}`, and a `pacscode` environment, i.e.\ `\begin{pacscode}`\ldots`\end{pacscode}` to assist with this.
 
 
 ## Additional footnotes to the title or authors' names
 
-<!-- The \verb"\thanks" command may be used to create additional footnotes to the title or authors' names if required. Footnote symbols for this purpose should be used in the order -->
-<!-- $^\ast$~(coded as \verb"$^\ast$"), $\dagger$~(\verb"$\dagger$"), $\ddagger$~(\verb"$\ddagger$"), $\S$~(\verb"$\S$"), $\P$~(\verb"$\P$"), $\|$~(\verb"$\|$"), -->
-<!-- $\dagger\dagger$~(\verb"$\dagger\dagger$"), $\ddagger\ddagger$~(\verb"$\ddagger\ddagger$"), $\S\S$~(\verb"$\S\S$"), $\P\P$~(\verb"$\P\P$"). -->
+<!-- The `\thanks` command may be used to create additional footnotes to the title or authors' names if required. Footnote symbols for this purpose should be used in the order -->
+<!-- $^\ast$~(coded as `$^\ast$`), $\dagger$~(`$\dagger$`), $\ddagger$~(`$\ddagger$`), $\S$~(`$\S$`), $\P$~(`$\P$`), $\|$~(`$\|$`), -->
+<!-- $\dagger\dagger$~(`$\dagger\dagger$`), $\ddagger\ddagger$~(`$\ddagger\ddagger$`), $\S\S$~(`$\S\S$`), $\P\P$~(`$\P\P$`). -->
 
-Note that any \verb"footnote"s to the main text will automatically be assigned the superscript symbols 1, 2, 3, etc. by the class file.\footnote{If preferred, the `endnotes` package may be used to set the notes at the end of your text, before the bibliography. The symbols will be changed to match the style of the journal if necessary by the typesetter.}
+Note that any `footnote`s to the main text will automatically be assigned the superscript symbols 1, 2, 3, etc. by the class file.\footnote{If preferred, the `endnotes` package may be used to set the notes at the end of your text, before the bibliography. The symbols will be changed to match the style of the journal if necessary by the typesetter.}
 
 # Embedding R code
 
@@ -130,7 +130,7 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 ## Sections
 
-The \textsf{Interact} layout style allows for five levels of section heading, all of which are provided in the `interact` class file using the standard \LaTeX\ commands \verb"\section", \verb"\subsection", \verb"\subsubsection", \verb"\paragraph" and \verb"\subparagraph". Numbering will be automatically generated for all these headings by default.
+The \textsf{Interact} layout style allows for five levels of section heading, all of which are provided in the `interact` class file using the standard \LaTeX\ commands `\section`, `\subsection`, `\subsubsection`, `\paragraph` and `\subparagraph`. Numbering will be automatically generated for all these headings by default.
 
 ## Lists
 
@@ -140,7 +140,7 @@ Numbered lists are produced using the `enumerate` environment, which will number
 2. second item
 3. third item
 
-Alternative numbering styles can be achieved by inserting an optional argument in square brackets to each \verb"item", e.g.\ \verb"\item[(i)] first item"\, to create a list numbered with roman numerals at level one.
+Alternative numbering styles can be achieved by inserting an optional argument in square brackets to each `item`, e.g.\ `\item[(i)] first item`\, to create a list numbered with roman numerals at level one.
 
 Bulleted lists are produced using the `itemize` environment. For example,
 
@@ -157,9 +157,9 @@ Bulleted lists are produced using the `itemize` environment. For example,
   invisible(dev.off())
 ```
 
-The `interact` class file will deal with positioning your figures in the same way as standard \LaTeX. It should not normally be necessary to use the optional `[htb]` location specifiers of the `figure` environment in your manuscript; you may, however, find the \verb"[p]" placement option or the \verb"endfloat" package useful if a journal insists on the need to separate figures from the text.
+The `interact` class file will deal with positioning your figures in the same way as standard \LaTeX. It should not normally be necessary to use the optional `[htb]` location specifiers of the `figure` environment in your manuscript; you may, however, find the `[p]` placement option or the `endfloat` package useful if a journal insists on the need to separate figures from the text.
 
-Figure captions appear below the figures themselves, therefore the \verb"\caption" command should appear after the body of the figure. For example, Figure~\ref{sample-figure} with caption and sub-captions is produced using the following commands:
+Figure captions appear below the figures themselves, therefore the `\caption` command should appear after the body of the figure. For example, Figure~\ref{sample-figure} with caption and sub-captions is produced using the following commands:
 \begin{verbatim}
 \begin{figure}
 \centering
@@ -183,9 +183,9 @@ Figure captions appear below the figures themselves, therefore the \verb"\captio
  than one line of text.} \label{sample-figure}
 \end{figure}
 
-To ensure that figures are correctly numbered automatically, the \verb"\label" command should be included just after the \verb"\caption" command, or in its argument.
+To ensure that figures are correctly numbered automatically, the `\label` command should be included just after the `\caption` command, or in its argument.
 
-The \verb"\subfigure" command requires \verb"subfigure.sty", which is called in the preamble of the `interacttfssample.tex` file (to allow your choice of an alternative package if preferred) and included in the \textsf{Interact} \LaTeX\ bundle for convenience. Please supply any additional figure macros used with your article in the preamble of your .tex file.
+The `\subfigure` command requires `subfigure.sty`, which is called in the preamble of the `interacttfssample.tex` file (to allow your choice of an alternative package if preferred) and included in the \textsf{Interact} \LaTeX\ bundle for convenience. Please supply any additional figure macros used with your article in the preamble of your .tex file.
 
 The source files of any figures will be required when the final, revised version of a manuscript is submitted. Authors should ensure that these are suitable (in terms of lettering size, etc.) for the reductions they envisage.
 
@@ -194,9 +194,9 @@ The `epstopdf` package can be used to incorporate encapsulated PostScript (.eps)
 
 ## Tables
 
-The `interact` class file will deal with positioning your tables in the same way as standard \LaTeX. It should not normally be necessary to use the optional `[htb]` location specifiers of the `table` environment in your manuscript; you may, however, find the \verb"[p]" placement option or the \verb"endfloat" package useful if a journal insists on the need to separate tables from the text.
+The `interact` class file will deal with positioning your tables in the same way as standard \LaTeX. It should not normally be necessary to use the optional `[htb]` location specifiers of the `table` environment in your manuscript; you may, however, find the `[p]` placement option or the `endfloat` package useful if a journal insists on the need to separate tables from the text.
 
-The `tabular` environment can be used as shown to create tables with single horizontal rules at the head, foot and elsewhere as appropriate. The captions appear above the tables in the \textsf{Interact} style, therefore the \verb"\tbl" command should be used before the body of the table. For example, Table~\ref{sample-table} is produced using the following commands:
+The `tabular` environment can be used as shown to create tables with single horizontal rules at the head, foot and elsewhere as appropriate. The captions appear above the tables in the \textsf{Interact} style, therefore the `\tbl` command should be used before the body of the table. For example, Table~\ref{sample-table} is produced using the following commands:
 \begin{table}
 \tbl{Example of a table showing that its caption is as wide as
  the table itself and justified.}
@@ -228,14 +228,14 @@ The `tabular` environment can be used as shown to create tables with single hori
 \end{table}
 \end{verbatim}
 
-To ensure that tables are correctly numbered automatically, the \verb"\label" command should be included just before \verb"\end{table}".
+To ensure that tables are correctly numbered automatically, the `\label` command should be included just before `\end{table}`.
 
-The \verb"\toprule", \verb"\midrule", \verb"\bottomrule" and \verb"\cmidrule" commands are those used by \verb"booktabs.sty", which is called by the `interact` class file and included in the \textsf{Interact} \LaTeX\ bundle for convenience. Tables produced using the standard commands of the `tabular` environment are also compatible with the `interact` class file.
+The `\toprule`, `\midrule`, `\bottomrule` and `\cmidrule` commands are those used by `booktabs.sty`, which is called by the `interact` class file and included in the \textsf{Interact} \LaTeX\ bundle for convenience. Tables produced using the standard commands of the `tabular` environment are also compatible with the `interact` class file.
 
 
 ## Landscape pages
 
-If a figure or table is too wide to fit the page it will need to be rotated, along with its caption, through 90$^{\circ}$ anticlockwise. Landscape figures and tables can be produced using the \verb"rotating" package, which is called by the `interact` class file. The following commands (for example) can be used to produce such pages.
+If a figure or table is too wide to fit the page it will need to be rotated, along with its caption, through 90$^{\circ}$ anticlockwise. Landscape figures and tables can be produced using the `rotating` package, which is called by the `interact` class file. The following commands (for example) can be used to produce such pages.
 \begin{verbatim}
 \setcounter{figure}{1}
 \begin{sidewaysfigure}
@@ -255,19 +255,19 @@ If a figure or table is too wide to fit the page it will need to be rotated, alo
   \end{tabular}}\label{landtab}
 \end{sidewaystable}
 \end{verbatim}
-Before any such float environment, use the \verb"\setcounter" command as above to fix the numbering of the caption (the value of the counter being the number given to the preceding figure or table). Subsequent captions will then be automatically renumbered accordingly. The \verb"\epsfbox" command requires \verb"epsfig.sty", which is called by the `interact` class file and is also included in the \textsf{Interact} \LaTeX\ bundle for convenience.
+Before any such float environment, use the `\setcounter` command as above to fix the numbering of the caption (the value of the counter being the number given to the preceding figure or table). Subsequent captions will then be automatically renumbered accordingly. The `\epsfbox` command requires `epsfig.sty`, which is called by the `interact` class file and is also included in the \textsf{Interact} \LaTeX\ bundle for convenience.
 
-Please note that if the \verb"endfloat" package is used, one or both of the commands
+Please note that if the `endfloat` package is used, one or both of the commands
 \begin{verbatim}
 \DeclareDelayedFloatFlavor{sidewaysfigure}{figure}
 \DeclareDelayedFloatFlavor{sidewaystable}{table}
 \end{verbatim}
-will need to be included in the preamble of your .tex file, after the \verb"endfloat" package is loaded, in order to process any landscape figures and/or tables correctly.
+will need to be included in the preamble of your .tex file, after the `endfloat` package is loaded, in order to process any landscape figures and/or tables correctly.
 
 
 ## Theorem-like structures
 
-A predefined \verb"proof" environment is provided by the `amsthm` package (which is called by the `interact` class file), as follows:
+A predefined `proof` environment is provided by the `amsthm` package (which is called by the `interact` class file), as follows:
 \begin{proof}
 More recent algorithms for solving the semidefinite programming relaxation are particularly efficient, because they explore the structure of the MAX-CUT problem.
 \end{proof}
@@ -279,14 +279,14 @@ relaxation are particularly efficient, because they explore the
 structure of the MAX-CUT problem.
 \end{proof}
 \end{verbatim}
-Other theorem-like environments (theorem, definition, remark, etc.) need to be defined as required, e.g.\ using \verb"\newtheorem{theorem}{Theorem}" in the preamble of your .tex file (see the preamble of \verb"interactcadsample.tex" for more examples). You can define the numbering scheme for these structures however suits your article best. Please note that the format of the text in these environments may be changed if necessary to match the style of individual journals by the typesetter during preparation of the proofs.
+Other theorem-like environments (theorem, definition, remark, etc.) need to be defined as required, e.g.\ using `\newtheorem{theorem}{Theorem}` in the preamble of your .tex file (see the preamble of `interactcadsample.tex` for more examples). You can define the numbering scheme for these structures however suits your article best. Please note that the format of the text in these environments may be changed if necessary to match the style of individual journals by the typesetter during preparation of the proofs.
 
 
 ## Mathematics
 
 ### Displayed mathematics
 
-The `interact` class file will set displayed mathematical formulas centred on the page without equation numbers if you use the `displaymath` environment or the equivalent \verb"\[...\]" construction. For example, the equation
+The `interact` class file will set displayed mathematical formulas centred on the page without equation numbers if you use the `displaymath` environment or the equivalent `\[...\]` construction. For example, the equation
 \[
  \hat{\theta}_{w_i} = \hat{\theta}(s(t,\mathcal{U}_{w_i}))
 \]
@@ -331,42 +331,42 @@ which was typeset using the commands
 \end{equation}
 \end{subequations}
 \end{verbatim}
-<!-- This is made possible by the `amsmath` package, which is called by the class file. If you put a \verb"\label" just after the \verb"\begin{subequations}" command, references can be made to the collection of equations, i.e.\ `(\ref{subeqnexample})' in the example above. Or, as the example also shows, you can label and refer to each equation individually -- i.e.\ `(\ref{subeqnparta})' and `(\ref{subeqnpartb})'. -->
+<!-- This is made possible by the `amsmath` package, which is called by the class file. If you put a `\label` just after the `\begin{subequations}` command, references can be made to the collection of equations, i.e.\ `(\ref{subeqnexample})' in the example above. Or, as the example also shows, you can label and refer to each equation individually -- i.e.\ `(\ref{subeqnparta})' and `(\ref{subeqnpartb})'. -->
 
 Displayed mathematics should be given end-of-line punctuation appropriate to the running text sentence of which it forms a part, if required.
 
 ### Math fonts
 
 \paragraph{Superscripts and subscripts}
-Superscripts and subscripts will automatically come out in the correct size in a math environment (i.e.\ enclosed within \verb"\(...\)" or \verb"$...$" commands in running text, or within \verb"\[...\]" or the `equation` environment for displayed equations). Sub/superscripts that are physical variables should be italic, whereas those that are labels should be roman (e.g.\ $C_p$, $T_\mathrm{eff}$). If the subscripts or superscripts need to be other than italic, they must be coded individually.
+Superscripts and subscripts will automatically come out in the correct size in a math environment (i.e.\ enclosed within `\(...\)` or `$...$` commands in running text, or within `\[...\]` or the `equation` environment for displayed equations). Sub/superscripts that are physical variables should be italic, whereas those that are labels should be roman (e.g.\ $C_p$, $T_\mathrm{eff}$). If the subscripts or superscripts need to be other than italic, they must be coded individually.
 
 \paragraph{Upright Greek characters and the upright partial derivative sign}
-Upright lowercase Greek characters can be obtained by inserting the letter `u' in the control code for the character, e.g.\ \verb"\umu" and \verb"\upi" produce $\umu$ (used, for example, in the symbol for the unit microns -- $\umu\mathrm{m}$) and $\upi$ (the ratio of the circumference of a circle to its diameter). Similarly, the control code for the upright partial derivative $\upartial$ is \verb"\upartial". Bold lowercase as well as uppercase Greek characters can be obtained by \verb"{\bm \gamma}", for example, which gives ${\bm \gamma}$, and \verb"{\bm \Gamma}", which gives ${\bm \Gamma}$.
+Upright lowercase Greek characters can be obtained by inserting the letter `u` in the control code for the character, e.g.\ `\umu` and `\upi` produce $\umu$ (used, for example, in the symbol for the unit microns -- $\umu\mathrm{m}$) and $\upi$ (the ratio of the circumference of a circle to its diameter). Similarly, the control code for the upright partial derivative $\upartial$ is `\upartial`. Bold lowercase as well as uppercase Greek characters can be obtained by `{\bm \gamma}`, for example, which gives ${\bm \gamma}$, and `{\bm \Gamma}`, which gives ${\bm \Gamma}$.
 
 
 # Acknowledgement(s) {-}
 
-An unnumbered section, e.g.\ \verb"\section*{Acknowledgements}", may be used for thanks, etc.\ if required and included _in the non-anonymous version_ before any Notes or References.
+An unnumbered section, e.g.\ `\section*{Acknowledgements}`, may be used for thanks, etc.\ if required and included _in the non-anonymous version_ before any Notes or References.
 
 # Disclosure statement {-}
 
-An unnumbered section, e.g.\ \verb"\section*{Disclosure statement}", may be used to declare any potential conflict of interest and included _in the non-anonymous version_ before any Notes or References, after any Acknowledgements and before any Funding information.
+An unnumbered section, e.g.\ `\section*{Disclosure statement}`, may be used to declare any potential conflict of interest and included _in the non-anonymous version_ before any Notes or References, after any Acknowledgements and before any Funding information.
 
 # Funding {-}
 
-An unnumbered section, e.g.\ \verb"\section*{Funding}", may be used for grant details, etc.\ if required and included _in the non-anonymous version_ before any Notes or References.
+An unnumbered section, e.g.\ `\section*{Funding}`, may be used for grant details, etc.\ if required and included _in the non-anonymous version_ before any Notes or References.
 
 # Notes on contributor(s) {-}
 
-An unnumbered section, e.g.\ \verb"\section*{Notes on contributors}", may be included _in the non-anonymous version_ if required. A photograph may be added if requested.
+An unnumbered section, e.g.\ `\section*{Notes on contributors}`, may be included _in the non-anonymous version_ if required. A photograph may be added if requested.
 
 # Nomenclature/Notation {-}
 
-An unnumbered section, e.g.\ \verb"\section*{Nomenclature}" (or \verb"\section*{Notation}"), may be included if required, before any Notes or References.
+An unnumbered section, e.g.\ `\section*{Nomenclature}` (or `\section*{Notation}`), may be included if required, before any Notes or References.
 
 # Notes {-}
 
-An unnumbered `Notes' section may be included before the References (if using the \verb"endnotes" package, use the command \verb"\theendnotes" where the notes are to appear, instead of creating a \verb"\section*").
+An unnumbered `Notes` section may be included before the References (if using the `endnotes` package, use the command `\theendnotes` where the notes are to appear, instead of creating a `\section*`).
 
 # References
 
