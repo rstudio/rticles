@@ -7,6 +7,8 @@ rticles 0.8
 
 - Added header option `correspongdingauthors` to configure multiple corresponding authors for Copernicus Publications (@nuest, #221).
 
+- Updated the template for MDPI to 02/2019 (@dleutnant, #203).
+
 rticles 0.7
 ---------------------------------------------------------------------
 
