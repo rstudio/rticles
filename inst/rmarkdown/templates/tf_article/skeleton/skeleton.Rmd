@@ -337,10 +337,10 @@ Displayed mathematics should be given end-of-line punctuation appropriate to the
 
 ### Math fonts
 
-\paragraph{Superscripts and subscripts}
+#### Superscripts and subscripts
 Superscripts and subscripts will automatically come out in the correct size in a math environment (i.e.\ enclosed within `\(...\)` or `$...$` commands in running text, or within `\[...\]` or the `equation` environment for displayed equations). Sub/superscripts that are physical variables should be italic, whereas those that are labels should be roman (e.g.\ $C_p$, $T_\mathrm{eff}$). If the subscripts or superscripts need to be other than italic, they must be coded individually.
 
-\paragraph{Upright Greek characters and the upright partial derivative sign}
+#### Upright Greek characters and the upright partial derivative sign
 Upright lowercase Greek characters can be obtained by inserting the letter `u` in the control code for the character, e.g.\ `\umu` and `\upi` produce $\umu$ (used, for example, in the symbol for the unit microns -- $\umu\mathrm{m}$) and $\upi$ (the ratio of the circumference of a circle to its diameter). Similarly, the control code for the upright partial derivative $\upartial$ is `\upartial`. Bold lowercase as well as uppercase Greek characters can be obtained by `{\bm \gamma}`, for example, which gives ${\bm \gamma}$, and `{\bm \Gamma}`, which gives ${\bm \Gamma}$.
 
 
