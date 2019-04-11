@@ -66,13 +66,13 @@ Please ensure that any author-defined macros used in your article are gathered t
 For convenience, simply copy the `interact.cls` file into the same directory as your manuscript files (you do not need to install it in your \TeX\ distribution). In order to use the `interact` document class, replace the command `\documentclass{article}` at the beginning of your document with the command `\documentclass{interact}`.
 
 The following document-class options should _not_ be used with the `interact` class file:
-\begin{itemize}
-  \item `10pt`, `11pt`, `12pt` -- unavailable;
-  \item `oneside`, `twoside` -- not necessary, `oneside` is the default;
-  \item `leqno`, `titlepage` -- should not be used;
-  \item `twocolumn` -- should not be used (see Subsection~\ref{class});
-  \item `onecolumn` -- not necessary as it is the default style.
-\end{itemize}
+
+* `10pt`, `11pt`, `12pt` -- unavailable;
+* `oneside`, `twoside` -- not necessary, `oneside` is the default;
+* `leqno`, `titlepage` -- should not be used;
+* `twocolumn` -- should not be used (see Subsection~\ref{class});
+* `onecolumn` -- not necessary as it is the default style.
+
 To prepare a manuscript for a journal that is printed in A4 (two column) format, use the `largeformat` document-class option provided by `interact.cls`; otherwise the class file produces pages sized for B5 (single column) format by default. The `geometry` package should not be used to make any further adjustments to the page dimensions.
 
 <!-- If your manuscript has supplementary content you can prepare this using the `suppldata` document-class option, which will suppress the `article history' date. This option must _not_ be used on any primary content. -->
