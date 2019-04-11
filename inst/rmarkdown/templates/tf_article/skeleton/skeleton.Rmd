@@ -30,7 +30,7 @@ appendix: appendix.tex
 abstract: |
   This template is for authors who are preparing a manuscript for a Taylor & 
   Francis journal using the \LaTeX\ document preparation system and the 
-  \texttt{interact} class file, which is available via selected journals' home 
+  `interact} class file, which is available via selected journals' home 
   pages on the Taylor & Francis website.
 keywords: |
   Sections; lists; figures; tables; mathematics; fonts; references; appendices
@@ -43,17 +43,17 @@ output: rticles::tf_article
 
 # Introduction
 
-In order to assist authors in the process of preparing a manuscript for a journal, the Taylor & Francis '\textsf{Interact}' layout style has been implemented as a \LaTeXe\ class file based on the \texttt{article} document class. A \textsc{Bib}\TeX\ bibliography style file and a sample bibliography are also provided in order to assist with the formatting of your references.
+In order to assist authors in the process of preparing a manuscript for a journal, the Taylor & Francis '\textsf{Interact}' layout style has been implemented as a \LaTeXe\ class file based on the `article` document class. A \textsc{Bib}\TeX\ bibliography style file and a sample bibliography are also provided in order to assist with the formatting of your references.
 
 Commands that differ from or are provided in addition to standard \LaTeXe\ are described in this document, which is \emph{not} a substitute for a \LaTeXe\ tutorial.
 
-The \texttt{interactcadsample.tex} file can be used as a template for a manuscript by cutting, pasting, inserting and deleting text as appropriate, using the preamble and the \LaTeX\ environments provided (e.g.\ \verb"\begin{abstract}", \verb"\begin{keywords}").
+The `interactcadsample.tex` file can be used as a template for a manuscript by cutting, pasting, inserting and deleting text as appropriate, using the preamble and the \LaTeX\ environments provided (e.g.\ `\begin{abstract}`, `\begin{keywords}`).
 
 ## The \textsf{Interact} class file
 
-The \texttt{interact} class file preserves the standard \LaTeXe\ interface such that any document that can be produced using \texttt{article.cls} can also be produced with minimal alteration using the \texttt{interact} class file as described in this document.
+The `interact` class file preserves the standard \LaTeXe\ interface such that any document that can be produced using `article.cls` can also be produced with minimal alteration using the `interact` class file as described in this document.
 
-If your article is accepted for publication it will be typeset as the journal requires in Minion Pro and/or Myriad Pro. Since most authors will not have these fonts installed, the page make-up is liable to alter slightly with the change of font. Also, the \texttt{interact} class file produces only single-column format, which is preferred for peer review and will be converted to two-column format by the typesetter if necessary during preparation of the proofs. Please therefore do not try to match the typeset format exactly, but use the standard \LaTeX\ fonts instead and ignore details such as slightly long lines of text or figures/tables not appearing in exact synchronization with their citations in the text: these details will be dealt with by the typesetter. Similarly, it is unnecessary to spend time addressing warnings in the log file -- if your .tex file compiles to produce a PDF document that correctly shows how you wish your paper to appear, such warnings will not prevent your source files being imported into the typesetter's program.
+If your article is accepted for publication it will be typeset as the journal requires in Minion Pro and/or Myriad Pro. Since most authors will not have these fonts installed, the page make-up is liable to alter slightly with the change of font. Also, the `interact` class file produces only single-column format, which is preferred for peer review and will be converted to two-column format by the typesetter if necessary during preparation of the proofs. Please therefore do not try to match the typeset format exactly, but use the standard \LaTeX\ fonts instead and ignore details such as slightly long lines of text or figures/tables not appearing in exact synchronization with their citations in the text: these details will be dealt with by the typesetter. Similarly, it is unnecessary to spend time addressing warnings in the log file -- if your .tex file compiles to produce a PDF document that correctly shows how you wish your paper to appear, such warnings will not prevent your source files being imported into the typesetter's program.
 
 ## Submission of manuscripts prepared using \emph{\LaTeX}
 
@@ -61,39 +61,39 @@ Manuscripts for possible publication should be submitted to the Editors for revi
 
 Please ensure that any author-defined macros used in your article are gathered together in the preamble of your .tex file, i.e.\ before the \verb"\begin{document}" command. Note that if serious problems are encountered in the coding of a document (missing author-defined macros, for example), the typesetter may resort to rekeying it.
 
-# Using the \texttt{interact} class file
+# Using the `interact` class file
 
-For convenience, simply copy the \texttt{interact.cls} file into the same directory as your manuscript files (you do not need to install it in your \TeX\ distribution). In order to use the \texttt{interact} document class, replace the command \verb"\documentclass{article}" at the beginning of your document with the command \verb"\documentclass{interact}".
+For convenience, simply copy the `interact.cls` file into the same directory as your manuscript files (you do not need to install it in your \TeX\ distribution). In order to use the `interact` document class, replace the command \verb"\documentclass{article}" at the beginning of your document with the command \verb"\documentclass{interact}".
 
-The following document-class options should \emph{not} be used with the \texttt{interact} class file:
+The following document-class options should \emph{not} be used with the `interact` class file:
 \begin{itemize}
-  \item \texttt{10pt}, \texttt{11pt}, \texttt{12pt} -- unavailable;
-  \item \texttt{oneside}, \texttt{twoside} -- not necessary, \texttt{oneside} is the default;
-  \item \texttt{leqno}, \texttt{titlepage} -- should not be used;
-  \item \texttt{twocolumn} -- should not be used (see Subsection~\ref{class});
-  \item \texttt{onecolumn} -- not necessary as it is the default style.
+  \item `10pt`, `11pt`, `12pt` -- unavailable;
+  \item `oneside`, `twoside` -- not necessary, `oneside` is the default;
+  \item `leqno`, `titlepage` -- should not be used;
+  \item `twocolumn` -- should not be used (see Subsection~\ref{class});
+  \item `onecolumn` -- not necessary as it is the default style.
 \end{itemize}
-To prepare a manuscript for a journal that is printed in A4 (two column) format, use the \verb"largeformat" document-class option provided by \texttt{interact.cls}; otherwise the class file produces pages sized for B5 (single column) format by default. The \texttt{geometry} package should not be used to make any further adjustments to the page dimensions.
+To prepare a manuscript for a journal that is printed in A4 (two column) format, use the \verb"largeformat" document-class option provided by `interact.cls`; otherwise the class file produces pages sized for B5 (single column) format by default. The `geometry` package should not be used to make any further adjustments to the page dimensions.
 
 <!-- If your manuscript has supplementary content you can prepare this using the \verb"suppldata" document-class option, which will suppress the `article history' date. This option must \emph{not} be used on any primary content. -->
 
-# Additional features of the \texttt{interact} class file
+# Additional features of the `interact} class file
 
 ## Title, authors' names and affiliations, abstracts and article types
 
 ## Abbreviations
 
-A list of abbreviations may be included if required, enclosed within an \texttt{abbreviations} environment, i.e.\ \verb"\begin{abbreviations}"\ldots\verb"\end{abbreviations}", immediately following the \verb"abstract" environment.
+A list of abbreviations may be included if required, enclosed within an `abbreviations` environment, i.e.\ \verb"\begin{abbreviations}"\ldots\verb"\end{abbreviations}", immediately following the \verb"abstract" environment.
 
 
 ## Keywords
 
-A list of keywords may be included if required, enclosed within a \texttt{keywords} environment, i.e.\ \verb"\begin{keywords}"\ldots\verb"\end{keywords}". Additional keywords in other languages (preceded by a translation of the word `keywords') may also be included within the \verb"keywords" environment if required.
+A list of keywords may be included if required, enclosed within a `keywords` environment, i.e.\ \verb"\begin{keywords}"\ldots\verb"\end{keywords}". Additional keywords in other languages (preceded by a translation of the word `keywords`) may also be included within the \verb"keywords" environment if required.
 
 
 ## Subject classification codes
 
-AMS, JEL or PACS classification codes may be included if required. The \texttt{interact} class file provides an \texttt{amscode} environment, i.e.\ \verb"\begin{amscode}"\ldots\verb"\end{amscode}", a \texttt{jelcode} environment, i.e.\ \verb"\begin{jelcode}"\ldots\verb"\end{jelcode}", and a \texttt{pacscode} environment, i.e.\ \verb"\begin{pacscode}"\ldots\verb"\end{pacscode}" to assist with this.
+AMS, JEL or PACS classification codes may be included if required. The `interact` class file provides an `amscode` environment, i.e.\ \verb"\begin{amscode}"\ldots\verb"\end{amscode}", a `jelcode` environment, i.e.\ \verb"\begin{jelcode}"\ldots\verb"\end{jelcode}", and a `pacscode` environment, i.e.\ \verb"\begin{pacscode}"\ldots\verb"\end{pacscode}" to assist with this.
 
 
 ## Additional footnotes to the title or authors' names
@@ -102,7 +102,7 @@ AMS, JEL or PACS classification codes may be included if required. The \texttt{i
 <!-- $^\ast$~(coded as \verb"$^\ast$"), $\dagger$~(\verb"$\dagger$"), $\ddagger$~(\verb"$\ddagger$"), $\S$~(\verb"$\S$"), $\P$~(\verb"$\P$"), $\|$~(\verb"$\|$"), -->
 <!-- $\dagger\dagger$~(\verb"$\dagger\dagger$"), $\ddagger\ddagger$~(\verb"$\ddagger\ddagger$"), $\S\S$~(\verb"$\S\S$"), $\P\P$~(\verb"$\P\P$"). -->
 
-Note that any \verb"footnote"s to the main text will automatically be assigned the superscript symbols 1, 2, 3, etc. by the class file.\footnote{If preferred, the \texttt{endnotes} package may be used to set the notes at the end of your text, before the bibliography. The symbols will be changed to match the style of the journal if necessary by the typesetter.}
+Note that any \verb"footnote"s to the main text will automatically be assigned the superscript symbols 1, 2, 3, etc. by the class file.\footnote{If preferred, the `endnotes` package may be used to set the notes at the end of your text, before the bibliography. The symbols will be changed to match the style of the journal if necessary by the typesetter.}
 
 # Embedding R code
 
@@ -130,11 +130,11 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 ## Sections
 
-The \textsf{Interact} layout style allows for five levels of section heading, all of which are provided in the \texttt{interact} class file using the standard \LaTeX\ commands \verb"\section", \verb"\subsection", \verb"\subsubsection", \verb"\paragraph" and \verb"\subparagraph". Numbering will be automatically generated for all these headings by default.
+The \textsf{Interact} layout style allows for five levels of section heading, all of which are provided in the `interact` class file using the standard \LaTeX\ commands \verb"\section", \verb"\subsection", \verb"\subsubsection", \verb"\paragraph" and \verb"\subparagraph". Numbering will be automatically generated for all these headings by default.
 
 ## Lists
 
-Numbered lists are produced using the \texttt{enumerate} environment, which will number each list item with arabic numerals by default. For example,
+Numbered lists are produced using the `enumerate` environment, which will number each list item with arabic numerals by default. For example,
 
 1. first item
 2. second item
@@ -142,7 +142,7 @@ Numbered lists are produced using the \texttt{enumerate} environment, which will
 
 Alternative numbering styles can be achieved by inserting an optional argument in square brackets to each \verb"item", e.g.\ \verb"\item[(i)] first item"\, to create a list numbered with roman numerals at level one.
 
-Bulleted lists are produced using the \texttt{itemize} environment. For example,
+Bulleted lists are produced using the `itemize` environment. For example,
 
 * First bulleted item
 * Second bulleted item
@@ -157,7 +157,7 @@ Bulleted lists are produced using the \texttt{itemize} environment. For example,
   invisible(dev.off())
 ```
 
-The \texttt{interact} class file will deal with positioning your figures in the same way as standard \LaTeX. It should not normally be necessary to use the optional \texttt{[htb]} location specifiers of the \texttt{figure} environment in your manuscript; you may, however, find the \verb"[p]" placement option or the \verb"endfloat" package useful if a journal insists on the need to separate figures from the text.
+The `interact` class file will deal with positioning your figures in the same way as standard \LaTeX. It should not normally be necessary to use the optional `[htb]` location specifiers of the `figure` environment in your manuscript; you may, however, find the \verb"[p]" placement option or the \verb"endfloat" package useful if a journal insists on the need to separate figures from the text.
 
 Figure captions appear below the figures themselves, therefore the \verb"\caption" command should appear after the body of the figure. For example, Figure~\ref{sample-figure} with caption and sub-captions is produced using the following commands:
 \begin{verbatim}
@@ -185,18 +185,18 @@ Figure captions appear below the figures themselves, therefore the \verb"\captio
 
 To ensure that figures are correctly numbered automatically, the \verb"\label" command should be included just after the \verb"\caption" command, or in its argument.
 
-The \verb"\subfigure" command requires \verb"subfigure.sty", which is called in the preamble of the \texttt{interacttfssample.tex} file (to allow your choice of an alternative package if preferred) and included in the \textsf{Interact} \LaTeX\ bundle for convenience. Please supply any additional figure macros used with your article in the preamble of your .tex file.
+The \verb"\subfigure" command requires \verb"subfigure.sty", which is called in the preamble of the `interacttfssample.tex` file (to allow your choice of an alternative package if preferred) and included in the \textsf{Interact} \LaTeX\ bundle for convenience. Please supply any additional figure macros used with your article in the preamble of your .tex file.
 
 The source files of any figures will be required when the final, revised version of a manuscript is submitted. Authors should ensure that these are suitable (in terms of lettering size, etc.) for the reductions they envisage.
 
-The \texttt{epstopdf} package can be used to incorporate encapsulated PostScript (.eps) illustrations when using PDF\LaTeX, etc. Please provide the original .eps source files rather than the generated PDF images of those illustrations for production purposes.
+The `epstopdf` package can be used to incorporate encapsulated PostScript (.eps) illustrations when using PDF\LaTeX, etc. Please provide the original .eps source files rather than the generated PDF images of those illustrations for production purposes.
 
 
 ## Tables
 
-The \texttt{interact} class file will deal with positioning your tables in the same way as standard \LaTeX. It should not normally be necessary to use the optional \texttt{[htb]} location specifiers of the \texttt{table} environment in your manuscript; you may, however, find the \verb"[p]" placement option or the \verb"endfloat" package useful if a journal insists on the need to separate tables from the text.
+The `interact` class file will deal with positioning your tables in the same way as standard \LaTeX. It should not normally be necessary to use the optional `[htb]` location specifiers of the `table` environment in your manuscript; you may, however, find the \verb"[p]" placement option or the \verb"endfloat" package useful if a journal insists on the need to separate tables from the text.
 
-The \texttt{tabular} environment can be used as shown to create tables with single horizontal rules at the head, foot and elsewhere as appropriate. The captions appear above the tables in the \textsf{Interact} style, therefore the \verb"\tbl" command should be used before the body of the table. For example, Table~\ref{sample-table} is produced using the following commands:
+The `tabular` environment can be used as shown to create tables with single horizontal rules at the head, foot and elsewhere as appropriate. The captions appear above the tables in the \textsf{Interact} style, therefore the \verb"\tbl" command should be used before the body of the table. For example, Table~\ref{sample-table} is produced using the following commands:
 \begin{table}
 \tbl{Example of a table showing that its caption is as wide as
  the table itself and justified.}
@@ -230,12 +230,12 @@ The \texttt{tabular} environment can be used as shown to create tables with sing
 
 To ensure that tables are correctly numbered automatically, the \verb"\label" command should be included just before \verb"\end{table}".
 
-The \verb"\toprule", \verb"\midrule", \verb"\bottomrule" and \verb"\cmidrule" commands are those used by \verb"booktabs.sty", which is called by the \texttt{interact} class file and included in the \textsf{Interact} \LaTeX\ bundle for convenience. Tables produced using the standard commands of the \texttt{tabular} environment are also compatible with the \texttt{interact} class file.
+The \verb"\toprule", \verb"\midrule", \verb"\bottomrule" and \verb"\cmidrule" commands are those used by \verb"booktabs.sty", which is called by the `interact` class file and included in the \textsf{Interact} \LaTeX\ bundle for convenience. Tables produced using the standard commands of the `tabular` environment are also compatible with the `interact` class file.
 
 
 ## Landscape pages
 
-If a figure or table is too wide to fit the page it will need to be rotated, along with its caption, through 90$^{\circ}$ anticlockwise. Landscape figures and tables can be produced using the \verb"rotating" package, which is called by the \texttt{interact} class file. The following commands (for example) can be used to produce such pages.
+If a figure or table is too wide to fit the page it will need to be rotated, along with its caption, through 90$^{\circ}$ anticlockwise. Landscape figures and tables can be produced using the \verb"rotating" package, which is called by the `interact` class file. The following commands (for example) can be used to produce such pages.
 \begin{verbatim}
 \setcounter{figure}{1}
 \begin{sidewaysfigure}
@@ -255,7 +255,7 @@ If a figure or table is too wide to fit the page it will need to be rotated, alo
   \end{tabular}}\label{landtab}
 \end{sidewaystable}
 \end{verbatim}
-Before any such float environment, use the \verb"\setcounter" command as above to fix the numbering of the caption (the value of the counter being the number given to the preceding figure or table). Subsequent captions will then be automatically renumbered accordingly. The \verb"\epsfbox" command requires \verb"epsfig.sty", which is called by the \texttt{interact} class file and is also included in the \textsf{Interact} \LaTeX\ bundle for convenience.
+Before any such float environment, use the \verb"\setcounter" command as above to fix the numbering of the caption (the value of the counter being the number given to the preceding figure or table). Subsequent captions will then be automatically renumbered accordingly. The \verb"\epsfbox" command requires \verb"epsfig.sty", which is called by the `interact` class file and is also included in the \textsf{Interact} \LaTeX\ bundle for convenience.
 
 Please note that if the \verb"endfloat" package is used, one or both of the commands
 \begin{verbatim}
@@ -267,7 +267,7 @@ will need to be included in the preamble of your .tex file, after the \verb"endf
 
 ## Theorem-like structures
 
-A predefined \verb"proof" environment is provided by the \texttt{amsthm} package (which is called by the \texttt{interact} class file), as follows:
+A predefined \verb"proof" environment is provided by the `amsthm` package (which is called by the `interact` class file), as follows:
 \begin{proof}
 More recent algorithms for solving the semidefinite programming relaxation are particularly efficient, because they explore the structure of the MAX-CUT problem.
 \end{proof}
@@ -286,7 +286,7 @@ Other theorem-like environments (theorem, definition, remark, etc.) need to be d
 
 ### Displayed mathematics
 
-The \texttt{interact} class file will set displayed mathematical formulas centred on the page without equation numbers if you use the \texttt{displaymath} environment or the equivalent \verb"\[...\]" construction. For example, the equation
+The `interact` class file will set displayed mathematical formulas centred on the page without equation numbers if you use the `displaymath` environment or the equivalent \verb"\[...\]" construction. For example, the equation
 \[
  \hat{\theta}_{w_i} = \hat{\theta}(s(t,\mathcal{U}_{w_i}))
 \]
@@ -297,7 +297,7 @@ was typeset using the commands
 \]
 \end{verbatim}
 
-For those of your equations that you wish to be automatically numbered sequentially throughout the text for future reference, use the \texttt{equation} environment, e.g.
+For those of your equations that you wish to be automatically numbered sequentially throughout the text for future reference, use the `equation` environment, e.g.
 \begin{equation}
  \hat{\theta}_{w_i} = \hat{\theta}(s(t,\mathcal{U}_{w_i}))
 \end{equation}
@@ -308,7 +308,7 @@ was typeset using the commands
 \end{equation}
 \end{verbatim}
 
-Part numbers for sets of equations may be generated using the \texttt{subequations} environment, e.g.
+Part numbers for sets of equations may be generated using the `subequations` environment, e.g.
 \begin{subequations} \label{subeqnexample}
 \begin{equation}
      \varepsilon \rho w_{tt}(s,t) = N[w_{s}(s,t),w_{st}(s,t)]_{s},
@@ -331,14 +331,14 @@ which was typeset using the commands
 \end{equation}
 \end{subequations}
 \end{verbatim}
-<!-- This is made possible by the \texttt{amsmath} package, which is called by the class file. If you put a \verb"\label" just after the \verb"\begin{subequations}" command, references can be made to the collection of equations, i.e.\ `(\ref{subeqnexample})' in the example above. Or, as the example also shows, you can label and refer to each equation individually -- i.e.\ `(\ref{subeqnparta})' and `(\ref{subeqnpartb})'. -->
+<!-- This is made possible by the `amsmath` package, which is called by the class file. If you put a \verb"\label" just after the \verb"\begin{subequations}" command, references can be made to the collection of equations, i.e.\ `(\ref{subeqnexample})' in the example above. Or, as the example also shows, you can label and refer to each equation individually -- i.e.\ `(\ref{subeqnparta})' and `(\ref{subeqnpartb})'. -->
 
 Displayed mathematics should be given end-of-line punctuation appropriate to the running text sentence of which it forms a part, if required.
 
 ### Math fonts
 
 \paragraph{Superscripts and subscripts}
-Superscripts and subscripts will automatically come out in the correct size in a math environment (i.e.\ enclosed within \verb"\(...\)" or \verb"$...$" commands in running text, or within \verb"\[...\]" or the \texttt{equation} environment for displayed equations). Sub/superscripts that are physical variables should be italic, whereas those that are labels should be roman (e.g.\ $C_p$, $T_\mathrm{eff}$). If the subscripts or superscripts need to be other than italic, they must be coded individually.
+Superscripts and subscripts will automatically come out in the correct size in a math environment (i.e.\ enclosed within \verb"\(...\)" or \verb"$...$" commands in running text, or within \verb"\[...\]" or the `equation` environment for displayed equations). Sub/superscripts that are physical variables should be italic, whereas those that are labels should be roman (e.g.\ $C_p$, $T_\mathrm{eff}$). If the subscripts or superscripts need to be other than italic, they must be coded individually.
 
 \paragraph{Upright Greek characters and the upright partial derivative sign}
 Upright lowercase Greek characters can be obtained by inserting the letter `u' in the control code for the character, e.g.\ \verb"\umu" and \verb"\upi" produce $\umu$ (used, for example, in the symbol for the unit microns -- $\umu\mathrm{m}$) and $\upi$ (the ratio of the circumference of a circle to its diameter). Similarly, the control code for the upright partial derivative $\upartial$ is \verb"\upartial". Bold lowercase as well as uppercase Greek characters can be obtained by \verb"{\bm \gamma}", for example, which gives ${\bm \gamma}$, and \verb"{\bm \Gamma}", which gives ${\bm \Gamma}$.
