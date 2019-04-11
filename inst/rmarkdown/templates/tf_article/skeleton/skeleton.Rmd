@@ -160,7 +160,7 @@ Bulleted lists are produced using the `itemize` environment. For example,
 The `interact` class file will deal with positioning your figures in the same way as standard \LaTeX. It should not normally be necessary to use the optional `[htb]` location specifiers of the `figure` environment in your manuscript; you may, however, find the `[p]` placement option or the `endfloat` package useful if a journal insists on the need to separate figures from the text.
 
 Figure captions appear below the figures themselves, therefore the `\caption` command should appear after the body of the figure. For example, Figure~\ref{sample-figure} with caption and sub-captions is produced using the following commands:
-\begin{verbatim}
+```
 \begin{figure}
 \centering
 \subfigure[An example of an individual figure sub-caption.]{%
@@ -171,7 +171,7 @@ Figure captions appear below the figures themselves, therefore the `\caption` co
  showing that captions are flush left and justified if greater
  than one line of text.} \label{sample-figure}
 \end{figure}
-\end{verbatim}
+```
 \begin{figure}
 \centering
 \subfigure[An example of an individual figure sub-caption.]{%
@@ -211,7 +211,7 @@ The `tabular` environment can be used as shown to create tables with single hori
  footnotes to a table if required.}
 \label{sample-table}
 \end{table}
-\begin{verbatim}
+```
 \begin{table}
 \tbl{Example of a table showing that its caption is as wide as
  the table itself and justified.}
@@ -226,7 +226,7 @@ The `tabular` environment can be used as shown to create tables with single hori
  footnotes to a table if required.}
 \label{sample-table}
 \end{table}
-\end{verbatim}
+```
 
 To ensure that tables are correctly numbered automatically, the `\label` command should be included just before `\end{table}`.
 
@@ -236,15 +236,15 @@ The `\toprule`, `\midrule`, `\bottomrule` and `\cmidrule` commands are those use
 ## Landscape pages
 
 If a figure or table is too wide to fit the page it will need to be rotated, along with its caption, through 90$^{\circ}$ anticlockwise. Landscape figures and tables can be produced using the `rotating` package, which is called by the `interact` class file. The following commands (for example) can be used to produce such pages.
-\begin{verbatim}
+```
 \setcounter{figure}{1}
 \begin{sidewaysfigure}
 \centerline{\epsfbox{figname.eps}}
 \caption{Example landscape figure caption.}
 \label{landfig}
 \end{sidewaysfigure}
-\end{verbatim}
-\begin{verbatim}
+```
+```
 \setcounter{table}{1}
 \begin{sidewaystable}
  \tbl{Example landscape table caption.}
@@ -254,14 +254,14 @@ If a figure or table is too wide to fit the page it will need to be rotated, alo
     .
   \end{tabular}}\label{landtab}
 \end{sidewaystable}
-\end{verbatim}
+```
 Before any such float environment, use the `\setcounter` command as above to fix the numbering of the caption (the value of the counter being the number given to the preceding figure or table). Subsequent captions will then be automatically renumbered accordingly. The `\epsfbox` command requires `epsfig.sty`, which is called by the `interact` class file and is also included in the \textsf{Interact} \LaTeX\ bundle for convenience.
 
 Please note that if the `endfloat` package is used, one or both of the commands
-\begin{verbatim}
+```
 \DeclareDelayedFloatFlavor{sidewaysfigure}{figure}
 \DeclareDelayedFloatFlavor{sidewaystable}{table}
-\end{verbatim}
+```
 will need to be included in the preamble of your .tex file, after the `endfloat` package is loaded, in order to process any landscape figures and/or tables correctly.
 
 
@@ -272,13 +272,13 @@ A predefined `proof` environment is provided by the `amsthm` package (which is c
 More recent algorithms for solving the semidefinite programming relaxation are particularly efficient, because they explore the structure of the MAX-CUT problem.
 \end{proof}
 \noindent This was produced by simply typing:
-\begin{verbatim}
+```
 \begin{proof}
 More recent algorithms for solving the semidefinite programming
 relaxation are particularly efficient, because they explore the
 structure of the MAX-CUT problem.
 \end{proof}
-\end{verbatim}
+```
 Other theorem-like environments (theorem, definition, remark, etc.) need to be defined as required, e.g.\ using `\newtheorem{theorem}{Theorem}` in the preamble of your .tex file (see the preamble of `interactcadsample.tex` for more examples). You can define the numbering scheme for these structures however suits your article best. Please note that the format of the text in these environments may be changed if necessary to match the style of individual journals by the typesetter during preparation of the proofs.
 
 
@@ -291,22 +291,22 @@ The `interact` class file will set displayed mathematical formulas centred on th
  \hat{\theta}_{w_i} = \hat{\theta}(s(t,\mathcal{U}_{w_i}))
 \]
 was typeset using the commands
-\begin{verbatim}
+```
 \[
  \hat{\theta}_{w_i} = \hat{\theta}(s(t,\mathcal{U}_{w_i}))
 \]
-\end{verbatim}
+```
 
 For those of your equations that you wish to be automatically numbered sequentially throughout the text for future reference, use the `equation` environment, e.g.
 \begin{equation}
  \hat{\theta}_{w_i} = \hat{\theta}(s(t,\mathcal{U}_{w_i}))
 \end{equation}
 was typeset using the commands
-\begin{verbatim}
+```
 \begin{equation}
  \hat{\theta}_{w_i} = \hat{\theta}(s(t,\mathcal{U}_{w_i}))
 \end{equation}
-\end{verbatim}
+```
 
 Part numbers for sets of equations may be generated using the `subequations` environment, e.g.
 \begin{subequations} \label{subeqnexample}
@@ -320,7 +320,7 @@ Part numbers for sets of equations may be generated using the `subequations` env
 \end{equation}
 \end{subequations}
 which was typeset using the commands
-\begin{verbatim}
+```
 \begin{subequations} \label{subeqnexample}
 \begin{equation}
      \varepsilon \rho w_{tt}(s,t) = N[w_{s}(s,t),w_{st}(s,t)]_{s},
@@ -330,7 +330,7 @@ which was typeset using the commands
      w_{tt}(1,t)+N[w_{s}(1,t),w_{st}(1,t)] = 0,   \label{subeqnpartb}
 \end{equation}
 \end{subequations}
-\end{verbatim}
+```
 <!-- This is made possible by the `amsmath` package, which is called by the class file. If you put a `\label` just after the `\begin{subequations}` command, references can be made to the collection of equations, i.e.\ `(\ref{subeqnexample})' in the example above. Or, as the example also shows, you can label and refer to each equation individually -- i.e.\ `(\ref{subeqnparta})' and `(\ref{subeqnpartb})'. -->
 
 Displayed mathematics should be given end-of-line punctuation appropriate to the running text sentence of which it forms a part, if required.
