@@ -102,7 +102,7 @@ AMS, JEL or PACS classification codes may be included if required. The `interact
 <!-- $^\ast$~(coded as `$^\ast$`), $\dagger$~(`$\dagger$`), $\ddagger$~(`$\ddagger$`), $\S$~(`$\S$`), $\P$~(`$\P$`), $\|$~(`$\|$`), -->
 <!-- $\dagger\dagger$~(`$\dagger\dagger$`), $\ddagger\ddagger$~(`$\ddagger\ddagger$`), $\S\S$~(`$\S\S$`), $\P\P$~(`$\P\P$`). -->
 
-Note that any `footnote`s to the main text will automatically be assigned the superscript symbols 1, 2, 3, etc. by the class file.\footnote{If preferred, the `endnotes` package may be used to set the notes at the end of your text, before the bibliography. The symbols will be changed to match the style of the journal if necessary by the typesetter.}
+Note that any `footnote`s to the main text will automatically be assigned the superscript symbols 1, 2, 3, etc. by the class file.^[If preferred, the `endnotes` package may be used to set the notes at the end of your text, before the bibliography. The symbols will be changed to match the style of the journal if necessary by the typesetter.]
 
 # Embedding R code
 
