@@ -77,7 +77,7 @@ To prepare a manuscript for a journal that is printed in A4 (two column) format,
 
 <!-- If your manuscript has supplementary content you can prepare this using the `suppldata` document-class option, which will suppress the `article history' date. This option must _not_ be used on any primary content. -->
 
-# Additional features of the `interact} class file
+# Additional features of the `interact` class file
 
 ## Title, authors' names and affiliations, abstracts and article types
 
