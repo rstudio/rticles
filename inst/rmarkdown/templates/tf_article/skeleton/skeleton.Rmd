@@ -45,7 +45,7 @@ output: rticles::tf_article
 
 In order to assist authors in the process of preparing a manuscript for a journal, the Taylor & Francis '\textsf{Interact}' layout style has been implemented as a \LaTeXe\ class file based on the `article` document class. A \textsc{Bib}\TeX\ bibliography style file and a sample bibliography are also provided in order to assist with the formatting of your references.
 
-Commands that differ from or are provided in addition to standard \LaTeXe\ are described in this document, which is \emph{not} a substitute for a \LaTeXe\ tutorial.
+Commands that differ from or are provided in addition to standard \LaTeXe\ are described in this document, which is _not_ a substitute for a \LaTeXe\ tutorial.
 
 The `interactcadsample.tex` file can be used as a template for a manuscript by cutting, pasting, inserting and deleting text as appropriate, using the preamble and the \LaTeX\ environments provided (e.g.\ `\begin{abstract}`, `\begin{keywords}`).
 
@@ -55,7 +55,7 @@ The `interact` class file preserves the standard \LaTeXe\ interface such that an
 
 If your article is accepted for publication it will be typeset as the journal requires in Minion Pro and/or Myriad Pro. Since most authors will not have these fonts installed, the page make-up is liable to alter slightly with the change of font. Also, the `interact` class file produces only single-column format, which is preferred for peer review and will be converted to two-column format by the typesetter if necessary during preparation of the proofs. Please therefore do not try to match the typeset format exactly, but use the standard \LaTeX\ fonts instead and ignore details such as slightly long lines of text or figures/tables not appearing in exact synchronization with their citations in the text: these details will be dealt with by the typesetter. Similarly, it is unnecessary to spend time addressing warnings in the log file -- if your .tex file compiles to produce a PDF document that correctly shows how you wish your paper to appear, such warnings will not prevent your source files being imported into the typesetter's program.
 
-## Submission of manuscripts prepared using \emph{\LaTeX}
+## Submission of manuscripts prepared using _\LaTeX_
 
 Manuscripts for possible publication should be submitted to the Editors for review as directed in the journal's Instructions for Authors, and in accordance with any technical instructions provided in the journal's ScholarOne Manuscripts or Editorial Manager site. Your \LaTeX\ source file(s), the class file and any graphics files will be required in addition to the final PDF version when final, revised versions of accepted manuscripts are submitted.
 
@@ -65,7 +65,7 @@ Please ensure that any author-defined macros used in your article are gathered t
 
 For convenience, simply copy the `interact.cls` file into the same directory as your manuscript files (you do not need to install it in your \TeX\ distribution). In order to use the `interact` document class, replace the command \verb"\documentclass{article}" at the beginning of your document with the command \verb"\documentclass{interact}".
 
-The following document-class options should \emph{not} be used with the `interact` class file:
+The following document-class options should _not_ be used with the `interact` class file:
 \begin{itemize}
   \item `10pt`, `11pt`, `12pt` -- unavailable;
   \item `oneside`, `twoside` -- not necessary, `oneside` is the default;
@@ -75,7 +75,7 @@ The following document-class options should \emph{not} be used with the `interac
 \end{itemize}
 To prepare a manuscript for a journal that is printed in A4 (two column) format, use the \verb"largeformat" document-class option provided by `interact.cls`; otherwise the class file produces pages sized for B5 (single column) format by default. The `geometry` package should not be used to make any further adjustments to the page dimensions.
 
-<!-- If your manuscript has supplementary content you can prepare this using the \verb"suppldata" document-class option, which will suppress the `article history' date. This option must \emph{not} be used on any primary content. -->
+<!-- If your manuscript has supplementary content you can prepare this using the \verb"suppldata" document-class option, which will suppress the `article history' date. This option must _not_ be used on any primary content. -->
 
 # Additional features of the `interact} class file
 
@@ -346,19 +346,19 @@ Upright lowercase Greek characters can be obtained by inserting the letter `u' i
 
 # Acknowledgement(s) {-}
 
-An unnumbered section, e.g.\ \verb"\section*{Acknowledgements}", may be used for thanks, etc.\ if required and included \emph{in the non-anonymous version} before any Notes or References.
+An unnumbered section, e.g.\ \verb"\section*{Acknowledgements}", may be used for thanks, etc.\ if required and included _in the non-anonymous version_ before any Notes or References.
 
 # Disclosure statement {-}
 
-An unnumbered section, e.g.\ \verb"\section*{Disclosure statement}", may be used to declare any potential conflict of interest and included \emph{in the non-anonymous version} before any Notes or References, after any Acknowledgements and before any Funding information.
+An unnumbered section, e.g.\ \verb"\section*{Disclosure statement}", may be used to declare any potential conflict of interest and included _in the non-anonymous version_ before any Notes or References, after any Acknowledgements and before any Funding information.
 
 # Funding {-}
 
-An unnumbered section, e.g.\ \verb"\section*{Funding}", may be used for grant details, etc.\ if required and included \emph{in the non-anonymous version} before any Notes or References.
+An unnumbered section, e.g.\ \verb"\section*{Funding}", may be used for grant details, etc.\ if required and included _in the non-anonymous version_ before any Notes or References.
 
 # Notes on contributor(s) {-}
 
-An unnumbered section, e.g.\ \verb"\section*{Notes on contributors}", may be included \emph{in the non-anonymous version} if required. A photograph may be added if requested.
+An unnumbered section, e.g.\ \verb"\section*{Notes on contributors}", may be included _in the non-anonymous version_ if required. A photograph may be added if requested.
 
 # Nomenclature/Notation {-}
 
