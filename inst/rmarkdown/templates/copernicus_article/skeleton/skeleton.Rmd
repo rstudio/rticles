@@ -14,6 +14,11 @@ author:
   - given_name: Markus
     surname: Konkol
     affiliation: 1
+# If you have more than one corresponding author, add them manually using the following structure:
+# Two authors: \correspondence{Daniel Nüst (daniel.nuest@uni-muenster.de) and Josiah Carberry (j.carberry@orcid.org)}
+# Three authors or more: \correspondence{Daniel Nüst (daniel.nuest@uni-muenster.de), Josiah Carberry j.carberry@orcid.org), and Markus Konkol (m.konkol@wwu.de)}
+# If the following line is uncommented, the "corresponding: true" above are ignored
+#correspongdingauthors: Daniel Nüst (daniel.nuest@uni-muenster.de) and Josiah Carberry (j.carberry@orcid.org)
 affiliation:
   - code: 1
     address: Institute for Geoinformatics, University of Münster, 48149 Münster, Germany
@@ -24,7 +29,7 @@ abstract: |
   It can also be on _multiple lines_.
 bibliography: sample.bib
 running:
-  title: RMarkdown Template for Copernicus
+  title: R Markdown Template for Copernicus
   author: Nüst et al.
 # This section is mandatory even if you declare that no competing interests are present.
 competinginterests: |

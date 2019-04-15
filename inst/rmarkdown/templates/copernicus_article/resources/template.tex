@@ -104,12 +104,17 @@ $endfor$
 
 \runningauthor{$running.author$}
 
+$if(correspongdingauthors)$
+\correspondence{$correspongdingauthors$}
+$else$
+
 $for(author)$
 $if(author.corresponding)$
 \correspondence{$author.given_name$\ $author.surname$\ ($author.email$)}
 $endif$
 $endfor$
 
+$endif$
 
 
 \received{}

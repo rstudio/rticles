@@ -1,7 +1,9 @@
 rticles 0.8
 ---------------------------------------------------------------------
 
-- Added the Taylor & Francis journal template (@dleutnant, #218)
+- Added the Taylor & Francis journal template (@dleutnant, #218).
+
+- Added header option `correspongdingauthors` to configure multiple corresponding authors for Copernicus Publications (@nuest, #221).
 
 rticles 0.7
 ---------------------------------------------------------------------
