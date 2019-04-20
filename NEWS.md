@@ -22,6 +22,8 @@ rticles 0.7
 
 - The function `ctex_template()` was removed. If you need to use a custom LaTeX template for the `ctex` output format, just use the `template` option under `ctex`.
 
+- The template for `elsevier_article()` was changed in that way that the argument `bibliography` is taken into account.
+
 rticles 0.6
 ---------------------------------------------------------------------
 
