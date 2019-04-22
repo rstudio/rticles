@@ -1,7 +1,9 @@
 rticles 0.8
 ---------------------------------------------------------------------
 
-- Added the Taylor & Francis journal template (@dleutnant, #218)
+- Added the Taylor & Francis journal template (@dleutnant, #218).
+
+- The top-level option `biblio-files` in the YAML frontmatter was changed to `bibliography` in the `elsevier_article()` template (@JohannesFriedrich, #222).
 
 rticles 0.7
 ---------------------------------------------------------------------
@@ -21,8 +23,6 @@ rticles 0.7
 - For output formats `acm_article()`, `acs_article()`, `ams_article()`, `mnras_article()`, the csl file should be specified as a top-level option in the YAML header of the document (this has been done in the R Markdown templates). It is no longer specified automatically by the output format functions.
 
 - The function `ctex_template()` was removed. If you need to use a custom LaTeX template for the `ctex` output format, just use the `template` option under `ctex`.
-
-- The template for `elsevier_article()` was changed in that way that the argument `bibliography` is taken into account.
 
 rticles 0.6
 ---------------------------------------------------------------------
