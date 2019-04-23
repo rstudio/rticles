@@ -3,6 +3,8 @@ rticles 0.8
 
 - Added the Taylor & Francis journal template (@dleutnant, #218).
 
+- The top-level option `biblio-files` in the YAML frontmatter was changed to `bibliography` in the `elsevier_article()` template (@JohannesFriedrich, #222).
+
 - Added header option `correspongdingauthors` to configure multiple corresponding authors for Copernicus Publications (@nuest, #221).
 
 rticles 0.7
