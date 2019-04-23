@@ -434,7 +434,7 @@
 
 %% ORCID
 % Make Orcid icon
-\newcommand{\orcidicon}{\includegraphics[width=0.32cm]{logo-orcid.eps}}
+\newcommand{\orcidicon}{\includegraphics[width=0.32cm]{logo-orcid.pdf}}
 
 % Define link and button for each author
 \foreach \x in {A, ..., Z}{%
@@ -539,7 +539,7 @@
 			\OR \equal{\@arttype}{Book}}{}{%
 				\ifthenelse{\equal{\@status}{submit}}{%	
 					\hfill \href{http://www.mdpi.com}{%
-					\includegraphics[height=1cm]{logo-mdpi.eps}}\vspace{0.5cm}%
+					\includegraphics[height=1cm]{logo-mdpi.pdf}}\vspace{0.5cm}%
 					}{
 					\href{http://www.mdpi.com/journal/\@journal}{
 					\includegraphics[height=1.2cm]{\@journal-logo.eps}}%
@@ -552,7 +552,7 @@
 					\ifthenelse{\equal{\@journal}{scipharm}}{%
 						\href{http://www.mdpi.com}{\includegraphics[height=1cm]{logo-mdpi-scipharm.eps}}%
 						}{%
-						\href{http://www.mdpi.com}{\includegraphics[height=1cm]{logo-mdpi.eps}}%
+						\href{http://www.mdpi.com}{\includegraphics[height=1cm]{logo-mdpi.pdf}}%
 						}%
 					}%
 			}%
@@ -1145,7 +1145,7 @@
 				\ifthenelse{\equal{\@journal}{ijtpp}}{%
 					\includegraphics[width=0.94\textwidth]{logo-ccby-nc-nd.eps}%
 					}{%
-					\includegraphics[width=0.94\textwidth]{logo-ccby.eps}
+					\includegraphics[width=0.94\textwidth]{logo-ccby.pdf}
 					}
 				}
 			\end{minipage}%
