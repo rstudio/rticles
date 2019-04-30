@@ -1,6 +1,6 @@
 rticles 0.8
 ---------------------------------------------------------------------
-
+- Added the Biophysical journal template (@tcgriffith).
 - Added the Taylor & Francis journal template (@dleutnant, #218).
 
 - The top-level option `biblio-files` in the YAML frontmatter was changed to `bibliography` in the `elsevier_article()` template (@JohannesFriedrich, #222).

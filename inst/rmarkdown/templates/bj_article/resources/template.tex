@@ -1,0 +1,65 @@
+% adapted from https://www.overleaf.com/latex/templates/biophysical-journal-template/pxxcptphxdhv
+%
+% \documentclass[lineno,twocolumn,endfloat,biblatex]{biophys-new}
+\documentclass{biophys-new}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[colorlinks,allcolors=cyan!70!black]{hyperref}
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+% Uncomment if using biblatex
+% \addbibresource{sample.bib}
+
+\title{$title$}
+\runningtitle{$running$} %% For page header
+
+
+$for(author)$
+\author[$author.id$]{$author.name$}
+$endfor$
+
+\runningauthor{$runningauthor$}
+
+$for(affil)$
+  \affil[$affil.id$]{$affil.affiliation$}
+$endfor$
+
+\corrauthor[*]{$correspondence$}
+
+% adapted to use yaml header above
+% original code: 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \author[1,*]{First author}
+% \author[2]{Second author}
+% \runningauthor{$runningauthor$} %% For page header
+
+% \affil[1]{Institution A, Address A}
+% \affil[2]{Institution B, Address B}
+
+% \corrauthor[*]{$correspondence$}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \papertype{Letters}
+\papertype{$papertype$}
+% \papertype{Computational Tools}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\begin{abstract}
+$abstract$
+\end{abstract}
+
+\begin{sigstatement}
+$sigstatement$
+\end{sigstatement}
+\end{frontmatter}
+
+$body$
+
+\end{document}

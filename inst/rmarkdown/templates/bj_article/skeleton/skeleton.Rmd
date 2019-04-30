@@ -1,0 +1,150 @@
+---
+title: New Biophysical Journal Template
+running: Biophysical Journal Template
+author: 
+- name: Author 1
+  email: abc@def
+  id: 1, *
+  correspondence: yes
+- name: Author 2
+  email: djf@wef
+  id: 2, 3
+- name: Author 3
+  email: abx@xyz.edu
+  id: 1, 3
+
+affil:
+- id: 1
+  affiliation: Department of YYY, University of XXX
+- id: 2
+  affiliation: Department of ZZZ, University of WWW
+- id: 3
+  affiliation: Department of ZZZ, University of WWW
+  
+correspondence: abx@xyz.edu
+runningauthor: Author1 and Author2
+keywords:
+- key
+- dictionary
+- word
+
+abstract: |
+  The text of your summary.  Should not exceed 225 words.
+
+sigstatement: |
+  Each manuscript must also have a statement of significance or no more than 120 words. Each manuscript must also have a statement of significance or no more than 120 words. Each manuscript must also have a statement of significance or no more than 120 words.
+
+bibliography: bibliography.bib
+output: rticles::bj_article
+month: "`r format(Sys.Date(), '%b')`"
+year: "`r format(Sys.Date(), '%Y')`"
+papertype: Article #  Letters or Computational Tools
+---
+
+# Introduction {-}
+
+Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started. Leave a blank line between blocks of text to start a new paragraph---use `\\` for separating tabular rows or hard line-breaks only. Abbreviations should be defined in the text at first mention.
+
+Please also take note of the `\section*{...}` titles in this template: they are the required sections in a regular research Article manuscript. 
+
+In particular, the main text of regular Articles and Computational Tools manuscripts must be structured with the following sections: **Introduction**, **Materials and Methods**, **Results**, **Discussion** (or **Results and Discussion**), **Conclusion**.
+
+Theoretical manuscripts may include just a **Methods** section and do not require **Materials**.
+
+No particular organization structure is required for Letters.
+
+If your manuscript is accepted, the Biophysical production team will re-format the references for publication. *It is not necessary to format the reference list yourself to mirror the final published form.*
+
+# Materials and Methods {-}
+
+Capitalize trade names and give manufacturers' full names and addresses (city and state). 
+
+
+## Sectioning commands {-}
+
+Use `#` and `##` to create first- and second-level headings. 
+
+
+## Figures and tables {-}
+
+
+### Figures coming from R {-}
+
+#### Normal figure embedded in text {-}
+
+```{r fig2, fig.width = 4, fig.height = 4, fig.cap = "Output from `pdf()`", echo = FALSE, dev = "pdf"}
+plot(runif(25) ~ runif(25))
+```
+
+\clearpage
+
+### Tables coming from R {-}
+
+
+```{r tab1, results = 'asis'}
+print(xtable::xtable(head(mtcars)[,1:4], 
+caption = "Caption centered under table", label = "tab1"), 
+comment = FALSE, timestamp = FALSE, caption.placement = "top")
+```
+
+Table \ref{tab1} shows these numbers. Some of those numbers are plotted in Figure \ref{fig:fig1}.
+
+
+# Results {-}
+
+\LaTeX{} is great at typesetting mathematics:
+
+
+Let $X_1, X_2, \ldots, X_n$ be a sequence of independent and identically distributed random variables with $\text{E}[X_i] = \mu$ and $\text{Var}[X_i] = \sigma^2 < \infty$, and let
+\begin{equation}
+\label{eq:CLT}
+S_n = \frac{X_1 + X_2 + \cdots + X_n}{n}
+      = \frac{1}{n}\sum_{i}^{n} X_i
+\end{equation}
+denote their mean. Then as $n$ approaches infinity, the random variables $\sqrt{n}(S_n - \mu)$ converge in distribution to a normal $\mathcal{N}(0, \sigma^2)$. Thus concludes the explanation about Eq.~\ref{eq:CLT}.
+
+You can make lists with automatic numbering...
+
+(note that tightlist not supported in this template, separate list elements with a new line)
+
+1. Like this,
+
+1. and like this.
+
+
+...or bullet points...
+
+
+- Like this,
+
+- and like this.
+
+
+An example quotation:
+
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+
+# Discussion  {-}
+
+\LaTeX{} formats citations and references automatically using the bibliography records in your .bib file. Text with citations by @heagerty2000time, [@pepe2003statistical].
+
+ If your manuscript is accepted, the Biophysical production team will re-format the references for publication. *It is not necessary to format the reference list yourself to mirror the final published form.* 
+
+# Conclusion {-}
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+
+# Author Contribution {-}
+
+Author1 designed the research. Author2 carried out all simulations, analyzed the data. Author1 and Author2 wrote the article. 
+
+# Acknowledgments {-}
+
+We thank G. Harrison, B. Harper, and J. Doe for their help.
+
+\bibliography{bibliography}
+
+# Supplementary Material {-}
+
+An online supplement to this article can be found by visiting BJ Online at [http://www.biophysj.org](http://www.biophysj.org).

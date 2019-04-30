@@ -9,6 +9,7 @@
 \alias{ams_article}
 \alias{asa_article}
 \alias{biometrics_article}
+\alias{bj_article}
 \alias{ctex}
 \alias{elsevier_article}
 \alias{frontiers_article}
@@ -45,6 +46,8 @@ asa_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 biometrics_article(..., keep_tex = TRUE, citation_package = "natbib")
 
+bj_article(..., keep_tex = TRUE, citation_package = "natbib")
+
 ctex(..., latex_engine = "xelatex")
 
 elsevier_article(..., keep_tex = TRUE,
@@ -70,7 +73,6 @@ sim_article(..., highlight = NULL, citation_package = "natbib")
 springer_article(..., keep_tex = TRUE, citation_package = "none")
 
 tf_article(..., keep_tex = TRUE, citation_package = "natbib")
-
 }
 \arguments{
 \item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions}{Arguments passed to \code{rmarkdown::\link{pdf_document}()}.}
@@ -128,6 +130,9 @@ custom Pandoc LaTeX template and different default values for other arguments
 }
 
 \section{\code{biometrics_article}}{
+ This format was adapted from the
+  Biometrics journal.
+
  This format was adapted from the
   Biometrics journal.
 }
@@ -231,7 +236,7 @@ Possible arguments for the YAML header are:
 
 \section{\code{tf_article}}{
  Format for creating submissions to a Taylor & Francis journal. Adapted from
-\href{http://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}{http://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
+\url{http://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
 }
 
 \examples{

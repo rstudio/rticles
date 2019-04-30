@@ -114,6 +114,17 @@ biometrics_article <- function(..., keep_tex = TRUE, citation_package = 'natbib'
   )
 }
 
+#' @section \code{biometrics_article}: This format was adapted from the
+#'   Biometrics journal.
+#' @export
+#' @rdname article
+bj_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
+  pdf_document_format(
+    'bj_article', number_sections = FALSE, keep_tex = keep_tex, citation_package = citation_package, ...
+  )
+}
+
+
 #' @section \code{ctex}: A wrapper function for \code{rmarkdown::pdf_document()}
 #'   and changed the default values of two arguments \code{template} and
 #'   \code{latex_engine} so it works better for typesetting Chinese documents
