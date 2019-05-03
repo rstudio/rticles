@@ -171,7 +171,12 @@ $endfor$
 \begin{abstract}
 $abstract$
 \end{abstract}
+$if(plain_language_summary)$
+\noindent{\bf Plain language summary}\vskip-\parskip
 
+\noindent{$plain_language_summary$}
+\vskip18pt
+$endif$
 $body$
 
 $if(bibliography)$

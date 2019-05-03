@@ -43,11 +43,8 @@ keypoints:
   - "List up to three key points (at least one is required)"
   - "Key Points summarize the main points and conclusions of the article"
   - "Each must be 100 characters or less with no special characters or punctuation"
-abstract: |
-  A good abstract will begin with a short description of the problem
-  being addressed, briefly describe the new data or analyses, then
-  briefly states the main conclusion(s) and how they are supported and
-  uncertainties. 
+abstract: "A good abstract will begin with a short description of the problem being addressed, briefly describe the new data or analyses, then briefly states the main conclusion(s) and how they are supported and uncertainties."
+plain_language_summary: "Some journals require a plain language summary. See: https://publications.agu.org/author-resource-center/text-requirements/#abstract"
 output: 
     rticles::agu_article
 bibliography: agutest.bib
