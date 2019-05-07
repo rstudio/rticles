@@ -9,6 +9,7 @@ ENTRY
     edition
     editor
     eprint %
+    doi
     howpublished
     institution
     journal
@@ -739,6 +740,22 @@ if$
 }
 
 
+%% For printing DOI numbers (it is a hyperlink but printed in black)
+FUNCTION {format.doi}
+{ doi empty$
+  { ""  }
+  {"\href{https://doi.org/" doi * "}" * }
+  if$
+}
+
+FUNCTION {formatfull.doi}
+{ doi empty$
+  { ""  }
+  {"doi:{\changeurlcolor{black}\href{https://doi.org/" doi * "}{\detokenize{" * doi * "}}}" * }
+  if$
+}
+
+
 
 FUNCTION {article}
 { output.bibitem
@@ -758,6 +775,7 @@ FUNCTION {article}
 format.eprint output
 new.block
 note output
+formatfull.doi output
 fin.entry
 }
 
@@ -792,6 +810,7 @@ FUNCTION {book}
   format.eprint output
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -807,6 +826,7 @@ FUNCTION {booklet}
   format.eprint output
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -845,6 +865,7 @@ FUNCTION {inbook}
   format.eprint output
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -872,6 +893,7 @@ FUNCTION {incollection}
   format.eprint output
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -907,6 +929,7 @@ FUNCTION {inproceedings}
   format.eprint output
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -944,6 +967,7 @@ FUNCTION {manual}
   format.eprint output
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -960,6 +984,7 @@ FUNCTION {mastersthesis}
   format.eprint output
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -974,6 +999,7 @@ FUNCTION {misc}
   format.eprint output
   new.block
   note output
+  formatfull.doi output
   fin.entry
   empty.misc.check
 }
@@ -991,6 +1017,7 @@ FUNCTION {phdthesis}
   format.eprint output
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -1027,6 +1054,7 @@ FUNCTION {proceedings}
   format.eprint output
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -1043,6 +1071,7 @@ FUNCTION {techreport}
   format.eprint output
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -1054,6 +1083,7 @@ FUNCTION {unpublished}
   format.eprint output
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -1061,10 +1091,13 @@ FUNCTION {www}
 { output.bibitem
   format.authors "author" output.checkwoa
   new.block
+  format.title "title" output.check
+  new.block
   format.website "url" output.check
   format.eprint output
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -1080,6 +1113,7 @@ FUNCTION {patent}
   format.eprint output
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
