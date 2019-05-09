@@ -1,4 +1,9 @@
-\documentclass[$if(documentclass)$$documentclass$$else$article$endif$$if(classoption)$,$classoption$$endif$]{jss}
+\documentclass[
+$for(classoption)$
+  $classoption$$sep$,
+$endfor$
+]{$documentclass$}
+
 \usepackage[utf8]{inputenc}
 
 \providecommand{\tightlist}{%

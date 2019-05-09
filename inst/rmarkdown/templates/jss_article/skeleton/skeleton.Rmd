@@ -1,4 +1,5 @@
 ---
+documentclass: jss
 author:
   - name: FirstName LastName
     affiliation: University/Company
