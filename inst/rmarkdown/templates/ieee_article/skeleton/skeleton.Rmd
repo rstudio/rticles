@@ -34,6 +34,7 @@ affiliation:
           email: eldon@starfleet-academy.star
         - name: Roy Batty
           email: roy@replicant.offworld
+keywords: ["keyword 1", "keyword 2"]
 abstract: |
   The abstract goes here.
   On multiple lines eventually.

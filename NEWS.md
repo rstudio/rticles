@@ -1,6 +1,7 @@
 rticles 0.9
 ---------------------------------------------------------------------
 
+- Added support for Keywords in IEEE Trans template (@espinielli, #227).
 
 
 rticles 0.8

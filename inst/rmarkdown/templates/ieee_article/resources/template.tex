@@ -557,7 +557,12 @@ $endif$
 $abstract$
 \end{abstract}
 
-% no keywords
+% keywords
+$if(keywords)$
+\begin{IEEEkeywords}
+$for(keywords)$$keywords$$sep$; $endfor$
+\end{IEEEkeywords}
+$endif$
 
 % use for special paper notices
 
