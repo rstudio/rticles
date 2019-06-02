@@ -11,6 +11,9 @@ rticles 0.10
 rticles 0.9
 ---------------------------------------------------------------------
 
+- Added the Journal of Open Source Software (and Education) template
+  (@noamross, #229)
+
 - Added support for Keywords in IEEE Trans template (@espinielli, #227).
 
 - Updated Statistics in Medicine template to its latest version (@ellessenne, #231).
