@@ -4,19 +4,14 @@
 \alias{joss_article}
 \title{Journal of Open Source Software (JOSS) format.}
 \usage{
-joss_article(journal = "JOSS", keep_md = TRUE, doi = "", year = "",
-  volume = "", issue = "", page = "", submitted = "",
-  published = "", review_url = "", repository = "",
-  archive_doi = "", latex_engine = "xelatex", ...)
+joss_article(journal = "JOSS", keep_md = TRUE,
+  latex_engine = "xelatex", ...)
 }
 \arguments{
 \item{journal}{one of "JOSS" or"JOSE"}
 
 \item{keep_md}{Whether to retain the intermediate markdown and images.
 Defaults to TRUE.}
-
-\item{doi, year, volume, issue, page, submitted, published, review_url, repository, archive_doi}{Article metadata, all optional for generating PDF preview, auto-generated
-on submission.}
 
 \item{latex_engine, ...}{Arguments passed to \code{rmarkdown::pdf_document}}
 }
@@ -26,4 +21,9 @@ Open Source Education (JOSE) articles. Adapted
 from \url{https://github.com/openjournals/whedon}. As these journals take
 articles as markdown, this format can be used to generate markdown from
 R Markdown and to locally preview how the article will appear as PDF.
+}
+\details{
+The following variables may be set in YAML metadata to populate fields in the
+article PDF: \code{doi, year, volume, issue, page, submitted, published,
+review_url, repository}, and \code{archive_doi}.
 }

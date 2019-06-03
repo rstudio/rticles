@@ -6,27 +6,18 @@
 #' articles as markdown, this format can be used to generate markdown from
 #' R Markdown and to locally preview how the article will appear as PDF.
 #'
+#' The following variables may be set in YAML metadata to populate fields in the
+#' article PDF: \code{doi, year, volume, issue, page, submitted, published,
+#' review_url, repository}, and \code{archive_doi}.
+#'
 #' @inheritParams rmarkdown::pdf_document
 #' @param journal one of "JOSS" or"JOSE"
 #' @param keep_md Whether to retain the intermediate markdown and images.
 #'   Defaults to TRUE.
-#' @param doi,year,volume,issue,page,submitted,published,review_url,repository,archive_doi
-#'   Article metadata, all optional for generating PDF preview, auto-generated
-#'   on submission.
 #' @param latex_engine,... Arguments passed to \code{rmarkdown::pdf_document}
 #' @export
 joss_article <- function(journal = "JOSS",
                          keep_md = TRUE,
-                         doi = "",
-                         year = "",
-                         volume = "",
-                         issue = "",
-                         page = "",
-                         submitted = "",
-                         published = "",
-                         review_url = "",
-                         repository = "",
-                         archive_doi = "",
                          latex_engine = "xelatex",
                          ...) {
 
@@ -38,27 +29,10 @@ joss_article <- function(journal = "JOSS",
                         "Journal of Open Source Software",
                         "Journal of Open Source Education")
 
-  template_variables <- c(
-      paste0("logo_path=", logo_path),
-      paste0("year=", year),
-      paste0("journal_name=", journalname),
-      paste0("formatted_doi=", doi),
-      paste0("archive_doi=https://doi.org/", archive_doi),
-      paste0("review_issue_url=", review_url),
-      paste0("repository=", repository),
-      paste0("submitted=", submitted),
-      paste0("published=", published),
-      paste0("issue=", issue),
-      paste0("volume=", volume),
-      paste0("page=", page),
-      "graphics=true"
-    )
-
-  template_variables <- c(rbind(rep("-V", length(template_variables)),
-                                template_variables))
-
   pandoc_args <- c(
-    template_variables,
+    "-V", paste0("logo_path=", logo_path),
+    "-V", paste0("journal_name=", journalname),
+    "-V", "graphics=true",
     "--csl", find_resource("joss_article", "apa.csl")
   )
 
@@ -66,24 +40,23 @@ joss_article <- function(journal = "JOSS",
     "joss_article",
     latex_engine = latex_engine,
     pandoc_args = pandoc_args,
-    citation_package = "none"
-  )
+    citation_package = "none",
+    fig_width = 6, fig_height = 4.15,
+    dev = "png"
 
-  base$knitr$opts_chunk$dev <- c("png")
-  base$knitr$opts_chunk$dpi <- 300
-  base$knitr$opts_chunk$fig.width <- 6
-  base$knitr$opts_chunk$fig.height <- 4.15
+  )
   base$keep_md <- keep_md
   base$clean_supporting <- !keep_md
 
-  base$post_knit <- function(metadata, imput_file, runtime, ...) {
-    citation_author <- ifelse(
-      length(metadata$authors) > 1,
-      paste(metadata$authors[[1]]$name, "et. al."),
-      metadata$authors[[1]]$name
-    )
-
-    c("-V", paste0("citation_author=", citation_author))
+  base$post_knit <- function(metadata, input_file, runtime, ...) {
+    if (!is.null(metadata$authors)) {
+      citation_author <- ifelse(
+        length(metadata$authors) > 1,
+        paste(metadata$authors[[1]]$name, "et. al."),
+        metadata$authors[[1]]$name
+      )
+      return(c("-V", paste0("citation_author=", citation_author)))
+    }
   }
 
   base
