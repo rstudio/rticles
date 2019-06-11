@@ -27,12 +27,14 @@
 % Atmospheric Measurement Techniques (amt)
 % Biogeosciences (bg)
 % Climate of the Past (cp)
+% DEUQUA Special Publications (deuquasp)
 % Drinking Water Engineering and Science (dwes)
 % Earth Surface Dynamics (esurf)
 % Earth System Dynamics (esd)
 % Earth System Science Data (essd)
 % E&G Quaternary Science Journal (egqsj)
 % Fossil Record (fr)
+% Geochronology (gchron)
 % Geographica Helvetica (gh)
 % Geoscience Communication (gc)
 % Geoscientific Instrumentation, Methods and Data Systems (gi)
@@ -158,6 +160,13 @@ $if(availability.codedata)$
 \codedataavailability{$availability.codedata$} %% use this section when having data sets and software code available
 $endif$
 
+$if(availability.sample)$
+\sampleavailability{$availability.sample$} %% use this section when having geoscientific samples available
+$endif$
+
+$if(videosupplement)$
+\videosupplement{$videosupplement$} %% use this section when having geoscientific samples available
+$endif$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% optional

@@ -48,6 +48,10 @@ availability:
   #  use this to add a statement when having only data sets available
   codedata: |
     use this to add a statement when having data sets and software code available
+  sample: |
+    use this section when having geoscientific samples available
+videosupplement: |
+  use this section when having video supplements available
 authorcontribution: |
   Daniel wrote the package. Josiah thought about poterry. Markus filled in for a second author.
 disclaimer: |
