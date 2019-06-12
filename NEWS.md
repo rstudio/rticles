@@ -5,6 +5,8 @@ rticles 0.9
 
 - Updated Statistics in Medicine template to its latest version (@ellessenne, #231).
 
+- Update Copernicus Publications template to version 5.3 (@nuest, #228).
+
 rticles 0.8
 ---------------------------------------------------------------------
 
