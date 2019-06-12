@@ -23,7 +23,7 @@ Authors@R: c(
   person("Miao", "Yu", role = c("aut", "cph"), email = "yufreecas@gmail.com"),
   person("Daniel", "Emaasit", role = c("aut", "cph"), email = "daniel.emaasit@gmail.com"),
   person("Thierry", "Onkelinx", role = c("aut", "cph"), email = "thierry.onkelinx@inbo.be"),
-  person("Alessandro", "Gasparini", role = c("aut", "cph"), email = "ag475@leicester.ac.uk"),
+  person("Alessandro", "Gasparini", role = c("aut", "cph"), email = "ellessenne@gmail.com", comment = c(ORCID = "0000-0002-8319-7624")),
   person("Marc-Andre", "Desautels", role = c("aut", "cph"), email = "marc-andre.desautels@cstjean.qc.ca"),
   person("Dominik", "Leutnant", role = c("aut", "cph"), email = "leutnant@fh-muenster.de", comment = c(ORCID = "0000-0003-3293-2315")),
   person(family = "MDPI", role = c("aut", "cph")),

@@ -3,6 +3,7 @@ rticles 0.9
 
 - Added support for Keywords in IEEE Trans template (@espinielli, #227).
 
+- Updated Statistics in Medicine template to its latest version (@ellessenne, #231).
 
 rticles 0.8
 ---------------------------------------------------------------------
