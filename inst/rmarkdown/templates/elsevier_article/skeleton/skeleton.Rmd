@@ -21,6 +21,9 @@ abstract: |
 journal: "An awesome journal"
 date: "`r Sys.Date()`"
 bibliography: mybibfile.bib
+#linenumbers: true
+#numbersections: true
+csl: elsevier-harvard.csl
 output: rticles::elsevier_article
 ---
 
