@@ -20,7 +20,6 @@ keywords:
   - bloo
   - these are optional and can be removed
 bibliography: references.bib
-link-citations: true
 output: rticles::arxiv_article
 ---
 
@@ -50,7 +49,7 @@ output: rticles::arxiv_article
 # Examples of citations, figures, tables, references
 \label{sec:others}
 
-\lipsum[8] [@kour2014real; @kour2014fast] and see @hadash2018estimate.
+\lipsum[8] some text [@kour2014real; @kour2014fast] and see @hadash2018estimate.
 
 The documentation for \verb+natbib+ may be found at
 \begin{center}

@@ -109,9 +109,9 @@ asa_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
 #'   unofficial but still a staple.
 #' @export
 #' @rdname article
-arxiv_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
+arxiv_article <- function(..., keep_tex = TRUE) {
   pdf_document_format(
-    "arxiv_article", keep_tex = keep_tex, citation_package = citation_package, ...
+    "arxiv_article", keep_tex = keep_tex, ...
   )
 }
 

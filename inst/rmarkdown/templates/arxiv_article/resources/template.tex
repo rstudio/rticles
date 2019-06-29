@@ -16,27 +16,24 @@
 
 \author{
   $for(authors)$
-
   $authors.name$
-
   $if(authors.thanks)$
   \thanks{$authors.thanks$}
   $endif$ \\
-
   $if(authors.department)$
   $authors.department$ \\
   $endif$
-
   $authors.affiliation$ \\
   $authors.location$ \\
   \texttt{$authors.email$} \\
-
   $sep$ \And
   $endfor$
 }
 
 \begin{document}
 \maketitle
+
+\def\tightlist{}
 
 $for(include-before)$
 $include-before$
