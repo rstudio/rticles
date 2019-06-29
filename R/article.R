@@ -104,6 +104,17 @@ asa_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
   )
 }
 
+#' @section \code{arxiv_article}: Adapted from the Overleaf format for
+#'   arXiv and bio-arXiv preprints. So far as I'm aware, entirely
+#'   unofficial but still a staple.
+#' @export
+#' @rdname article
+arxiv_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
+  pdf_document_format(
+    "arxiv_article", keep_tex = keep_tex, citation_package = citation_package, ...
+  )
+}
+
 #' @section \code{biometrics_article}: This format was adapted from the
 #'   Biometrics journal.
 #' @export
