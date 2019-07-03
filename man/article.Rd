@@ -44,7 +44,7 @@ ams_article(..., keep_tex = TRUE,
 
 asa_article(..., keep_tex = TRUE, citation_package = "natbib")
 
-arxiv_article(..., keep_tex = TRUE, citation_package = "natbib")
+arxiv_article(..., keep_tex = TRUE)
 
 biometrics_article(..., keep_tex = TRUE, citation_package = "natbib")
 
@@ -130,7 +130,7 @@ custom Pandoc LaTeX template and different default values for other arguments
 }
 
 \section{\code{arxiv_article}}{
- Adapted from the Overleaf format for
+ Adapted from the George Kour's format for
   arXiv and bio-arXiv preprints. So far as I'm aware, entirely
   unofficial but still a staple.
 }
