@@ -83,7 +83,7 @@ To use **rticles** from RStudio:
 
 ## Using rticles outside of RStudio
 
-1. Install [pandoc](http://pandoc.org) using the [instructions for your platform](https://github.com/rstudio/rmarkdown/blob/master/PANDOC.md).
+1. Install [pandoc](http://pandoc.org) using the [instructions for your platform](https://rmarkdown.rstudio.com/docs/articles/pandoc.html).
 
 2. Install the **rticles** packages.
 
