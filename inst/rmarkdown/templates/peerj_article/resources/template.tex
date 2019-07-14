@@ -24,7 +24,13 @@ $endif$
 \usepackage{longtable}
 
 
+% Pandoc syntax highlighting
+% See https://github.com/rstudio/rticles/issues/182
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
 
+% Pandoc Header
 $for(header-includes)$
 $header-includes$
 $endfor$
