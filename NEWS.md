@@ -1,7 +1,7 @@
 rticles 0.10
 ---------------------------------------------------------------------
 
-- Support syntax highlighting in the `peerj_article()` (@zkamvar, #238)
+- Support syntax highlighting in the `peerj_article()` format (@zkamvar, #238).
 
 rticles 0.9
 ---------------------------------------------------------------------
