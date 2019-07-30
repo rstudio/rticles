@@ -2,3 +2,6 @@
 .Rproj.user
 .Rhistory
 .RData
+*.pdf
+*.log
+*_files/

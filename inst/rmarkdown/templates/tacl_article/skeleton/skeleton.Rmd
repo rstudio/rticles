@@ -24,6 +24,10 @@ Tempore et aliquid occaecati et sed non optio. In sit et laboriosam doloremque e
 
 Dolorem dignissimos itaque saepe earum. Officia consequuntur adipisci enim. Molestiae iusto provident ullam labore consequatur ipsam perferendis.
 
+```{r}
+plot(cars)
+```
+
 Fugit ullam aperiam harum. Dolores facilis maiores rerum sint vero enim. Et facilis impedit possimus ut. Eaque facilis suscipit unde quasi facere. Unde explicabo quibusdam maiores deleniti placeat id voluptas.
 
 Vitae aut molestiae itaque possimus ipsam. Et qui repudiandae sint et ad. Fugit quam est dignissimos provident nam. Ducimus et ducimus eius qui voluptatem.
