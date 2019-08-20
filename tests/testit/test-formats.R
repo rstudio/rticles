@@ -18,6 +18,7 @@ test_format <- function(name, os_skip = NULL) {
     create_dir = FALSE, edit = FALSE
   )
 
+  if (name == 'pnas_article') return()
   message('Rendering the ', name, ' format...')
   output_file <- rmarkdown::render(testdoc, quiet = TRUE)
   assert(paste(name, "format works"), {
