@@ -1,0 +1,35 @@
+---
+title: Template for preparing your research report submission to NAR using RMarkdown
+author:
+  - name: Alice Anonymous
+    affiliation: 1,
+  - name: Bob Boob
+    affiliation: 2,
+  - name: Carl Car
+    affiliation: 3,
+    correspond: "To whom correspondence should be addressed.  Email: xxx@yyyy.ac.zz"
+address:
+  - code: 1
+    address: Some Institute of Technology, Department, Street, City, State, Zip
+  - code: 2
+    address: Another University Department, Street, City, State, Zip
+
+abstract: |
+  Please provide an abstract of no more than 250 words in a single paragraph. Abstracts should explain to the general reader the major contributions of the article. References in the abstract must be cited in full within the abstract itself and cited in the text.
+
+bibliography: NAR-sample.bib
+csl: NAR.csl
+
+## change to true to add optional line numbering
+lineno: false
+
+output: rticles::nar_article
+---
+
+# Introduction
+
+aabcd
+
+# Discussion
+
+abcd

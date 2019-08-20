@@ -168,6 +168,17 @@ mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
   )
 }
 
+#' @section \code{nar_article}: Format for creating submissions to
+#'   NAR, Adapted
+#'   from \url{https://academic.oup.com/nar/pages/Ms_Prep_Submission}.
+#' @export
+#' @rdname article
+nar_article <- function(..., keep_tex = TRUE, md_extensions = c("-auto_identifiers")) {
+  pdf_document_format(
+    "nar_article", keep_tex = keep_tex, citation_package = "natbib",  md_extensions = md_extensions,  ...
+  )
+}
+
 #' @section \code{peerj_article}: Format for creating submissions to The PeerJ
 #'   Journal. This was adapted from the
 #'   \href{https://www.overleaf.com/latex/templates/latex-template-for-peerj-journal-and-pre-print-submissions/ptdwfrqxqzbn}{PeerJ

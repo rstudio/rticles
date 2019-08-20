@@ -1,0 +1,46 @@
+\documentclass[a4,center,fleqn]{NAR}
+
+% Enter dates of publication
+\copyrightyear{2008}
+\pubdate{31 July 2009}
+\pubyear{2009}
+\jvolume{37}
+\jissue{12}
+
+%\articlesubtype{This is the article type (optional)}
+
+\begin{document}
+
+\title{$title$}
+
+
+\author{$for(author)$ $author.name$ \,$$^{$author.affiliation$}$$ 
+            $if(author.correspond)$ \footnote{$author.correspond$}  $endif$
+            $sep$ and
+        $endfor$ $if(footnote)$ \footnote{$footnote$} $endif$    
+}
+
+
+
+\address{
+$for(address)$
+  $$^{$address.code$}$$ $address.address$ 
+  $sep$ and
+$endfor$
+}
+
+\history{%
+Received January 1, 2009;
+Revised February 1, 2009;
+Accepted March 1, 2009}
+
+
+\maketitle
+
+\begin{abstract}
+$abstract$
+\end{abstract}
+
+$body$
+
+\end{document}

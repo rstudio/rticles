@@ -14,6 +14,7 @@
 \alias{frontiers_article}
 \alias{mdpi_article}
 \alias{mnras_article}
+\alias{nar_article}
 \alias{peerj_article}
 \alias{plos_article}
 \alias{pnas_article}
@@ -55,6 +56,8 @@ frontiers_article(..., keep_tex = TRUE)
 mdpi_article(..., keep_tex = TRUE)
 
 mnras_article(..., keep_tex = TRUE, fig_caption = TRUE)
+
+nar_article(..., keep_tex = TRUE)
 
 peerj_article(..., keep_tex = TRUE)
 
@@ -160,6 +163,12 @@ custom Pandoc LaTeX template and different default values for other arguments
  Format for creating an Monthly Notices of
   Royal Astronomical Society (MNRAS) Journal articles. Adapted from
   \url{https://www.ras.org.uk/news-and-press/2641-new-version-of-the-mnras-latex-package}.
+}
+
+\section{\code{nar_article}}{
+ Format for creating submissions to
+  NAR, Adapted
+  from \url{https://academic.oup.com/nar/pages/Ms_Prep_Submission}.
 }
 
 \section{\code{peerj_article}}{
