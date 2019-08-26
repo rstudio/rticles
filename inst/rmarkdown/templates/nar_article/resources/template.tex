@@ -9,23 +9,24 @@
 
 %\articlesubtype{This is the article type (optional)}
 
+$for(header-includes)$
+$header-includes$
+$endfor$
+
 \begin{document}
 
 \title{$title$}
 
-
-\author{$for(author)$ $author.name$ \,$$^{$author.affiliation$}$$ 
-            $if(author.correspond)$ \footnote{$author.correspond$}  $endif$
-            $sep$ and
-        $endfor$ $if(footnote)$ \footnote{$footnote$} $endif$    
+\author{
+$for(author)$
+   $author.separator$ $author.name$\,$$^{$author.affiliation$}$$$if(author.correspond)$ \footnote{$author.correspond$} $endif$
+$endfor$
 }
-
-
+        
 
 \address{
 $for(address)$
-  $$^{$address.code$}$$ $address.address$ 
-  $sep$ and
+  $address.separator$ $$^{$address.code$}$$ $address.address$ 
 $endfor$
 }
 
@@ -42,5 +43,10 @@ $abstract$
 \end{abstract}
 
 $body$
+
+\bibliographystyle{nar}
+$if(bibliography)$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
 
 \end{document}

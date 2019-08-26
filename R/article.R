@@ -173,10 +173,8 @@ mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
 #'   from \url{https://academic.oup.com/nar/pages/Ms_Prep_Submission}.
 #' @export
 #' @rdname article
-nar_article <- function(..., keep_tex = TRUE, md_extensions = c("-auto_identifiers")) {
-  pdf_document_format(
-    "nar_article", keep_tex = keep_tex, citation_package = "natbib",  md_extensions = md_extensions,  ...
-  )
+nar_article <- function(..., keep_tex = TRUE, md_extensions = c("-auto_identifiers"), citation_package = "natbib") {
+  pdf_document_format("nar_article", keep_tex = keep_tex,  md_extensions = md_extensions, citation_package=citation_package, ...)
 }
 
 #' @section \code{peerj_article}: Format for creating submissions to The PeerJ
