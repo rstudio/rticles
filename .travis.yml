@@ -4,6 +4,7 @@ cache:
   directories:
     - $HOME/.TinyTeX
 latex: false
+pandoc_version: 2.3.1
 
 env:
   global:

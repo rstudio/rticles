@@ -33,7 +33,7 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [Bulletin de l'AMQ](https://www.amq.math.ca/bulletin/) journal submissions
 
-- [CTeX](http://ctex.org) documents
+- [CTeX](https://ctan.org/pkg/ctex) documents
 
 - [Elsevier](https://www.elsevier.com) journal submissions
 
