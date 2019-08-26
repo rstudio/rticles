@@ -57,7 +57,8 @@ mdpi_article(..., keep_tex = TRUE)
 
 mnras_article(..., keep_tex = TRUE, fig_caption = TRUE)
 
-nar_article(..., keep_tex = TRUE)
+nar_article(..., keep_tex = TRUE,
+  md_extensions = c("-auto_identifiers"), citation_package = "natbib")
 
 peerj_article(..., keep_tex = TRUE)
 
