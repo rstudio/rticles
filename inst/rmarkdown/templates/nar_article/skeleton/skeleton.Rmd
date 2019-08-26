@@ -44,12 +44,14 @@ abstract: |
   Text. Text.
 
 bibliography: NAR-sample.bib
-csl: NAR.csl
-## change to true to add optional line numbering
-lineno: false
-
 output: rticles::nar_article
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
 
 # Introduction
 
@@ -155,6 +157,33 @@ Text
 
 ## Materials subsection one
 
+Table \ref{tab:tab1}
+
+```{r tab1, results='asis'}
+
+knitr::kable(mtcars[1:8, 1:4], format="latex", caption = "This is a table caption of knitr::kable")
+
+## I recommend kableExtra to create awesome latex tables, uncomment to use:
+
+# library(dplyr)
+# library(kableExtra)
+# kable(
+#   mtcars[1:8, 1:4],
+#   "latex",
+#   booktabs = T,
+#   linesep = "",
+#   caption = "This is a table caption of kableExtra"
+# ) %>%
+#   kable_styling(latex_options = "striped", stripe_index = c(1, 2, 5:6)) %>%
+#   footnote(
+#     general = "Here is a general comments of the table. ",
+#     number = c("Footnote 1; ", "Footnote 2; "),
+#     alphabet = c("Footnote A; ", "Footnote B; "),
+#     symbol = c("Footnote Symbol 1; ", "Footnote Symbol 2")
+#   )
+```
+
+
 Text. Text. Text. Text. Text. Text. Text. Text. Text. Text. Text.
 Text. Text. Text. Text. Text. Text. Text. Text. Text. Text. Text.
 Text. Text. Text. Text. Text. Text. Text. Text. Text. Text. Text.
@@ -207,7 +236,7 @@ Text. Text. Text. Text. Text. Text. Text. Text. Text. Text. Text.
 Text. Text. Text. Text. Text. Text. Text. Text. Text. Text. Text.
 Text. Text. Text. Text. Text. Text. Text. Text. Text. Text. Text.
 Text. Text. Text. Text. Text. Text. Text
-(see Figure \ref{NAR-fig1}).
+(see Figure \ref{fig:NAR-fig1}).
 
 Text. Text. Text. Text. Text. Text. Text. Text. Text. Text. Text.
 Text. Text. Text. Text. Text. Text. Text. Text. Text. Text. Text.
@@ -256,7 +285,7 @@ Text. Text. Text. Text. Text. Text. Text. Text. Text.
 
 \begin{table}[b]
 \tableparts{%
-\caption{This is a table caption}
+\caption{This is a latex table caption}
 \label{table:01}%
 }{%
 \begin{tabular*}{\columnwidth}{@{}lllll@{}}
@@ -273,7 +302,7 @@ Row 2 & Row 2 & Row 2 & Row 2 & Row 2
 \botrule
 \end{tabular*}%
 }
-{This is a table footnote}
+{This is a latex table footnote}
 \end{table}
 
 ## Results subsection two
@@ -285,7 +314,7 @@ Text (see Table \ref{table:01}).
 Text. Text. Text. Text. Text. Text.
 Text. Text. Text. Text. Text. Text. Text. Text. Text. Text. Text.
 Text. Text. Text. Text. Text. Text. Text. Text. Text.
-Text (see Figure \ref{NAR-fig2}a).
+Text (see Figure \ref{fig:NAR-fig2}).
 
 Text. Text. Text. Text. Text.
 Text. Text. Text. Text. Text. Text. Text. Text. Text. Text. Text.
@@ -300,16 +329,16 @@ Text. Text. Text. Text. Text. Text. Text. Text. Text. Text. Text.
 Text. Text. Text. Text. Text. Text. Text. Text. Text. Text. Text.
 Text. Text. Text. Text. Text. Text. Text. Text. Text. Text.
 
-<!-- \begin{figure*}[t]
-\begin{center}
-\includegraphics{NAR-fig2.eps}
-\end{center}
-\caption{Caption for wide figure over two columns.
-\textbf{(a)} Left figure.
-\textbf{(b)} Right figure (see (a)).
-}
-\label{NAR-fig2}
-\end{figure*} -->
+
+```{r NAR-fig1, fig.align='center', fig.cap="This is a one-col figure caption",out.width="100%"}
+## example of one-column figure
+plot(pressure)
+```
+
+```{r NAR-fig2, fig.align='center', fig.cap="This is a two-col figure caption",out.width="100%", fig.env="figure*"}
+## example of two-column figure, use environment figure*
+plot(pressure)
+```
 
 ## Results subsection three
 
