@@ -47,6 +47,8 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [NNRAS](https://www.ras.org.uk/news-and-press/2641-new-version-of-the-mnras-latex-package) journal submissions
 
+- [NAR](https://academic.oup.com/nar/pages/Ms_Prep_Submission) journal submissions 
+
 - [PeerJ](https://peerj.com) articles
 
 - [Royal Society Open Science](http://rsos.royalsocietypublishing.org/) journal submissions

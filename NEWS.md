@@ -1,6 +1,7 @@
 rticles 0.11
 ---------------------------------------------------------------------
 
+- Added the NAR journal template (@tcgriffith, issue #239 PR #244).
 
 
 rticles 0.10
