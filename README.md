@@ -39,6 +39,8 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [IEEE Transaction](http://www.ieee.org/publications_standards/publications/authors/author_templates.html) journal submissions
 
+- [Journal of Llearning Analytics](https://learning-analytics.info/journals/index.php/JLA/about/submissions) journal submissions
+
 - [JSS](http://www.jstatsoft.org/) articles
 
 - [MDPI](http://www.mdpi.com) journal submissions

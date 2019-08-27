@@ -1,6 +1,7 @@
 rticles 0.11
 ---------------------------------------------------------------------
 
+- Added the Journal of Llearning Analytics template.
 
 
 rticles 0.10

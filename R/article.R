@@ -146,6 +146,15 @@ frontiers_article <- function(..., keep_tex = TRUE) {
   pdf_document_format("frontiers_article", keep_tex = keep_tex, ...)
 }
 
+#' @section \code{jla_article}: Format for creating Journal of Learning 
+#'   Analytics (JLA) articles. Adapted from
+#'   \url{https://learning-analytics.info/journals/index.php/JLA/about/submissions#authorGuidelines}.
+#' @export
+#' @rdname article
+jla_article <- function(..., keep_tex = TRUE) {
+  pdf_document_format("jla_article", keep_tex = keep_tex, ...)
+}
+
 #' @section \code{mdpi_article}: Format for creating submissions to
 #'   Multidisciplinary Digital Publishing Institute (MDPI) journals. Adapted
 #'   from \url{http://www.mdpi.com/authors/latex}.

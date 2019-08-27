@@ -12,6 +12,7 @@
 \alias{ctex}
 \alias{elsevier_article}
 \alias{frontiers_article}
+\alias{jla_article}
 \alias{mdpi_article}
 \alias{mnras_article}
 \alias{peerj_article}
@@ -51,6 +52,8 @@ elsevier_article(..., keep_tex = TRUE,
   md_extensions = c("-autolink_bare_uris"))
 
 frontiers_article(..., keep_tex = TRUE)
+
+jla_article(..., keep_tex = TRUE)
 
 mdpi_article(..., keep_tex = TRUE)
 
@@ -148,6 +151,12 @@ custom Pandoc LaTeX template and different default values for other arguments
  Format for creating Frontiers journal
   articles. Adapted from
   \url{http://home.frontiersin.org/about/author-guidelines}.
+}
+
+\section{\code{jla_article}}{
+ Format for creating Journal of Learning 
+  Analytics (JLA) articles. Adapted from
+  \url{https://learning-analytics.info/journals/index.php/JLA/about/submissions#authorGuidelines}.
 }
 
 \section{\code{mdpi_article}}{
