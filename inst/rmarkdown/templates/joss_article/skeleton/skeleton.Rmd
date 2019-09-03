@@ -19,9 +19,14 @@ affiliations:
    index: 1
  - name: Institution 2
    index: 2
+citation_author: Price-Whelan et. al.
 date: 13 August 2017
+year: 2017
+formatted_doi: 10.21105/joss.00388
 bibliography: paper.bib
 output: rticles::joss_article
+csl: apa.csl
+journal: JOSS
 ---
 
 # Summary
@@ -81,7 +86,7 @@ For a quick reference, the following citation commands can be used:
 
 # Rendered R Figures
 
-Figures can be plotted like so.  Note figures are rendered as PNG.
+Figures can be plotted like so:
 
 ```{r}
 plot(1:10)
