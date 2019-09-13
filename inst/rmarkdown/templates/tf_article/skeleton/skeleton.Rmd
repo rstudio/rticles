@@ -150,11 +150,8 @@ Bulleted lists are produced using the `itemize` environment. For example,
 
 ## Figures
 
-```{r fig}
-  tmp_fig_path <- paste0(tempfile(), ".pdf")
-  pdf(file = tmp_fig_path)
-  plot(pressure)
-  invisible(dev.off())
+```{r pressure-plot, fig.show='hide'}
+plot(pressure)
 ```
 
 The `interact` class file will deal with positioning your figures in the same way as standard \LaTeX. It should not normally be necessary to use the optional `[htb]` location specifiers of the `figure` environment in your manuscript; you may, however, find the `[p]` placement option or the `endfloat` package useful if a journal insists on the need to separate figures from the text.
@@ -175,9 +172,9 @@ Figure captions appear below the figures themselves, therefore the `\caption` co
 \begin{figure}
 \centering
 \subfigure[An example of an individual figure sub-caption.]{%
-\resizebox*{5cm}{!}{\includegraphics{`r tmp_fig_path`}}}\hspace{5pt}
+\resizebox*{5cm}{!}{\includegraphics{`r knitr::fig_chunk('pressure-plot', 'pdf')`}}}\hspace{5pt}
 \subfigure[A slightly shorter sub-caption.]{%
-\resizebox*{5cm}{!}{\includegraphics{`r tmp_fig_path`}}}
+\resizebox*{5cm}{!}{\includegraphics{`r knitr::fig_chunk('pressure-plot', 'pdf')`}}}
 \caption{Example of a two-part figure with individual sub-captions
  showing that captions are flush left and justified if greater
  than one line of text.} \label{sample-figure}
