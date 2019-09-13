@@ -29,7 +29,7 @@ joss_article <- function(journal = "JOSS",
                         "Journal of Open Source Software",
                         "Journal of Open Source Education")
 
-  base <- pdf_document_format(
+  pdf_document_format(
     "joss_article",
     latex_engine = latex_engine,
     citation_package = "none",
