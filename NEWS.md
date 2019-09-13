@@ -1,6 +1,8 @@
 rticles 0.11
 ---------------------------------------------------------------------
 
+- Added the Journal of Open Source Software (and Education) template (@noamross, #229).
+
 - Tweaked the `tf_article` template to avoid using absolute full paths for figures in the "Figures" section (@jooyoungseo, #246).
 
 rticles 0.10
