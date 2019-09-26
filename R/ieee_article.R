@@ -36,7 +36,7 @@
 #' \url{http://mirrors.rit.edu/CTAN/macros/latex/contrib/IEEEtran/IEEEtran_HOWTO.pdf}
 #' @export
 ieee_article <- function(
-  ..., draftmode   = c("final", "draft", "draftcls", "draftclsnofoot"),
+  draftmode   = c("final", "draft", "draftcls", "draftclsnofoot"),
   hyphenfixes      = "op-tical net-works semi-conduc-tor",
   IEEEspecialpaper = "",
   with_ifpdf       = FALSE,
@@ -48,7 +48,8 @@ ieee_article <- function(
   with_dblfloatfix = FALSE,
   keep_tex         = TRUE,
   pandoc_args = NULL,
-  md_extensions    = c("-autolink_bare_uris")
+  md_extensions    = c("-autolink_bare_uris"),
+  ...
 ) {
 
   args <- c()
@@ -83,6 +84,7 @@ ieee_article <- function(
 
   pdf_document_format(
     "ieee_article", pandoc_args = c(pandoc_arg_list, pandoc_args),
-    keep_tex = keep_tex, md_extensions = md_extensions
+    keep_tex = keep_tex, md_extensions = md_extensions,
+    ...
   )
 }
