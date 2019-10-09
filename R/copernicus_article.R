@@ -76,6 +76,7 @@ copernicus_journals <- list(
   "Climate of the Past" = "cp",
   "DEUQUA Special Publications" = "deuquasp",
   "Drinking Water Engineering and Science" = "dwes",
+  "European Journal of Mineralogy" = "ejm",
   "Earth Surface Dynamics" = "esurf",
   "Earth System Dynamics" = "esd",
   "Earth System Science Data" = "essd",
@@ -101,6 +102,7 @@ copernicus_journals <- list(
   "Solid Earth" = "se",
   "The Cryosphere" = "tc",
   "Web Ecology" = "we",
+  "Weather and Climate Dynamics" = "wcd",
   "Wind Energy Science" = "wes"
 )
 
