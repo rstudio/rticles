@@ -14,16 +14,24 @@ author:
   - given_name: Markus
     surname: Konkol
     affiliation: 1
-# If you have more than one corresponding author, add them manually using the following structure:
-# Two authors: \correspondence{Daniel Nüst (daniel.nuest@uni-muenster.de) and Josiah Carberry (j.carberry@orcid.org)}
-# Three authors or more: \correspondence{Daniel Nüst (daniel.nuest@uni-muenster.de), Josiah Carberry j.carberry@orcid.org), and Markus Konkol (m.konkol@wwu.de)}
+  - given_name: Nikolaus
+    surname: Copernicus
+    # authors can have multiple affiliations, which can also be used to mark deceased coauthors
+    affiliation: "3, †"
+# If you have more than one corresponding author, add them manually using the following structure (note the commas):
+# Two authors: Daniel Nüst (daniel.nuest@uni-muenster.de) and Josiah Carberry (j.carberry@orcid.org)
+# Three authors or more: Daniel Nüst (daniel.nuest@uni-muenster.de), Josiah Carberry (j.carberry@orcid.org), and Markus Konkol (m.konkol@wwu.de)
 # If the following line is uncommented, the "corresponding: true" above are ignored
 #correspongdingauthors: Daniel Nüst (daniel.nuest@uni-muenster.de) and Josiah Carberry (j.carberry@orcid.org)
 affiliation:
   - code: 1
     address: Institute for Geoinformatics, University of Münster, 48149 Münster, Germany
   - code: 2
-    address: Psychoceramics, Wesleyan University, Middletown, CT, United State
+    address: Psychoceramics, Wesleyan University, Middletown, CT, United States
+  - code: 3
+    address: University of Ferrara, Ferrara, Italy
+  - code: †
+    address: deceased, 24 May 1543
 abstract: |
   The abstract goes here.
   It can also be on _multiple lines_.
