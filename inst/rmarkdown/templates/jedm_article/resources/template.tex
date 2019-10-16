@@ -1,0 +1,55 @@
+%----------------------------------------------------------------------------------------
+% The original JEDM LaTeX template has been modified by JooYoung Seo (jooyoung@psu.edu) to work with R Markdown.
+%----------------------------------------------------------------------------------------
+
+\documentclass[notitlepage,12pt]{jedm}
+%\usepackage[sc,sf,small]{titlesec}
+\usepackage[table]{xcolor}
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = blue, %Colour of internal links
+  citecolor   = blue %Colour of citations
+}
+
+%-----------------------------------------------------------------------
+% FINAL COPYEDITTED SUBMISSION - UNCOMMENT THIS TO SUPPRESS PAGE NUMBERS
+%\pagenumbering{gobble}
+%-----------------------------------------------------------------------
+
+% Pandoc syntax highlighting
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+\begin{document}
+
+\title{$title$}
+\date{} %do not delete this, it suppresses insertion of the date
+
+\author{$for(author)${\large $author.name$}\\$author.institution$\\$author.email$$sep$ \and $endfor$}
+
+\maketitle
+
+\begin{abstract}
+$abstract$\\ %Keep \\ for spacing to keywords
+
+{\parindent0pt
+\textbf{Keywords:} $keywords$
+}
+\end{abstract}
+
+$body$
+
+$if(bibliography)$
+\bibliographystyle{acmtrans}
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+
+\end{document}

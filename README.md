@@ -39,6 +39,8 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [IEEE Transaction](http://www.ieee.org/publications_standards/publications/authors/author_templates.html) journal submissions
 
+- [Journal of Educational Data Mining](https://jedm.educationaldatamining.org/index.php/JEDM/about/submissions) journal submissions
+
 - [JSS](http://www.jstatsoft.org/) articles
 
 - [JOSS](http://joss.theoj.org/) and [JOSE](https://jose.theoj.org/) articles

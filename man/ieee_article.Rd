@@ -4,13 +4,22 @@
 \alias{ieee_article}
 \title{IEEE Transactions journal format.}
 \usage{
-ieee_article(draftmode = c("final", "draft", "draftcls",
-  "draftclsnofoot"), hyphenfixes = "op-tical net-works semi-conduc-tor",
-  IEEEspecialpaper = "", with_ifpdf = FALSE, with_cite = FALSE,
-  with_amsmath = FALSE, with_algorithmic = FALSE,
-  with_subfig = FALSE, with_array = FALSE, with_dblfloatfix = FALSE,
-  keep_tex = TRUE, pandoc_args = NULL,
-  md_extensions = c("-autolink_bare_uris"), ...)
+ieee_article(
+  draftmode = c("final", "draft", "draftcls", "draftclsnofoot"),
+  hyphenfixes = "op-tical net-works semi-conduc-tor",
+  IEEEspecialpaper = "",
+  with_ifpdf = FALSE,
+  with_cite = FALSE,
+  with_amsmath = FALSE,
+  with_algorithmic = FALSE,
+  with_subfig = FALSE,
+  with_array = FALSE,
+  with_dblfloatfix = FALSE,
+  keep_tex = TRUE,
+  pandoc_args = NULL,
+  md_extensions = c("-autolink_bare_uris"),
+  ...
+)
 }
 \arguments{
 \item{draftmode}{Specify the draft mode to control spacing and whether images
@@ -49,7 +58,7 @@ off (\code{FALSE}) the \code{dblfloatfix} LaTeX package.}
 \item{pandoc_args}{Additional command line options to pass to pandoc}
 
 \item{md_extensions}{Markdown extensions to be added or removed from the
-default definition or R Markdown. See the \code{\link{rmarkdown_format}} for
+default definition or R Markdown. See the \code{\link[rmarkdown]{rmarkdown_format}} for
 additional details.}
 
 \item{...}{Additional arguments to \code{rmarkdown::pdf_document}}
