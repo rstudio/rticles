@@ -12,6 +12,7 @@
 \alias{ctex}
 \alias{elsevier_article}
 \alias{frontiers_article}
+\alias{jla_article}
 \alias{mdpi_article}
 \alias{mnras_article}
 \alias{peerj_article}
@@ -25,21 +26,32 @@
 \usage{
 acm_article(...)
 
-acs_article(..., keep_tex = TRUE,
-  md_extensions = c("-autolink_bare_uris"), fig_caption = TRUE)
+acs_article(
+  ...,
+  keep_tex = TRUE,
+  md_extensions = c("-autolink_bare_uris"),
+  fig_caption = TRUE
+)
 
-aea_article(..., keep_tex = TRUE,
-  md_extensions = c("-autolink_bare_uris"))
+aea_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
-agu_article(..., keep_tex = TRUE, citation_package = "natbib",
-  highlight = NULL, md_extensions = c("-autolink_bare_uris",
-  "-auto_identifiers"))
+agu_article(
+  ...,
+  keep_tex = TRUE,
+  citation_package = "natbib",
+  highlight = NULL,
+  md_extensions = c("-autolink_bare_uris", "-auto_identifiers")
+)
 
-amq_article(..., latex_engine = "xelatex", keep_tex = TRUE,
-  fig_caption = TRUE, md_extensions = c("-autolink_bare_uris"))
+amq_article(
+  ...,
+  latex_engine = "xelatex",
+  keep_tex = TRUE,
+  fig_caption = TRUE,
+  md_extensions = c("-autolink_bare_uris")
+)
 
-ams_article(..., keep_tex = TRUE,
-  md_extensions = c("-autolink_bare_uris"))
+ams_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
 asa_article(..., keep_tex = TRUE, citation_package = "natbib")
 
@@ -47,10 +59,15 @@ biometrics_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 ctex(..., latex_engine = "xelatex")
 
-elsevier_article(..., keep_tex = TRUE,
-  md_extensions = c("-autolink_bare_uris"))
+elsevier_article(
+  ...,
+  keep_tex = TRUE,
+  md_extensions = c("-autolink_bare_uris")
+)
 
 frontiers_article(..., keep_tex = TRUE)
+
+jla_article(..., keep_tex = TRUE)
 
 mdpi_article(..., keep_tex = TRUE)
 
@@ -58,8 +75,7 @@ mnras_article(..., keep_tex = TRUE, fig_caption = TRUE)
 
 peerj_article(..., keep_tex = TRUE)
 
-plos_article(..., keep_tex = TRUE,
-  md_extensions = c("-autolink_bare_uris"))
+plos_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
 pnas_article(..., keep_tex = TRUE)
 
@@ -150,6 +166,12 @@ custom Pandoc LaTeX template and different default values for other arguments
   \url{http://home.frontiersin.org/about/author-guidelines}.
 }
 
+\section{\code{jla_article}}{
+ Format for creating Journal of Learning 
+  Analytics (JLA) articles. Adapted from
+  \url{https://learning-analytics.info/journals/index.php/JLA/about/submissions#authorGuidelines}.
+}
+
 \section{\code{mdpi_article}}{
  Format for creating submissions to
   Multidisciplinary Digital Publishing Institute (MDPI) journals. Adapted
@@ -236,5 +258,6 @@ Possible arguments for the YAML header are:
 \examples{
 \dontrun{
 rmarkdown::draft("MyArticle.Rmd", template = "acm_article", package = "rticles")
-rmarkdown::draft("MyArticle.Rmd", template = "asa_article", package = "rticles")}
+rmarkdown::draft("MyArticle.Rmd", template = "asa_article", package = "rticles")
+}
 }

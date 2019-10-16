@@ -1,0 +1,117 @@
+%----------------------------------------------------------------------------------------
+% The original JLA LaTeX template has been modified by JooYoung Seo (jooyoung@psu.edu) to work with R Markdown.
+%----------------------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Stylish Article
+% LaTeX Template
+% Version 2.1 (1/10/15)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Mathias Legrand (legrand.mathias@gmail.com) 
+% With extensive modifications by:
+% Vel(vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[fleqn,10pt]{JLA_article} % Document font size and equations flushed left
+
+\usepackage[english]{babel} % Specify a different language here - english by default
+
+%\usepackage{lipsum} % Required to insert dummy text. To be removed otherwise
+
+
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+
+\usepackage{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,colorlinks,breaklinks=true,urlcolor=color2,citecolor=color1,linkcolor=color1,bookmarksopen=false,pdftitle={Title},pdfauthor={Author}}
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE INFORMATION
+%----------------------------------------------------------------------------------------
+
+$if(title)$
+\PaperTitle{$title$} % Article title
+$endif$
+
+\Authors{$for(author)$$author.name$\textsuperscript{$author.num$}$sep$, $endfor$} % Authors
+\affiliation{$for(affiliation)$$if(affiliation.correspondence)$Corresponding author $endif$\textsuperscript{$affiliation.num$}\textit{Email: $affiliation.email$ $affiliation.address$$if(affiliation.orcid)$, $affiliation.orcid$$endif$}$sep$\\$endfor$} % Author affiliation
+
+$if(keywords)$
+\Keywords{$keywords$} 
+$endif$
+
+\Submitted{$submitted$}
+\Accepted{$accepted$}
+\Published{$published$}
+
+\Volume{$volume$}
+\Number{$number$}
+\Pages{$pages$}
+\Doi{$doi$}
+%----------------------------------------------------------------------------------------
+%	NOTES FOR PRACTICE OR RESEARCH
+%----------------------------------------------------------------------------------------
+$if(without-notes)$
+\WithoutNotestrue %If this paper does NOT have notes
+$endif$
+
+\Notesname{$notesname$} %If this is a Research Paper
+%\Notesname{Notes for Research} %If this is a Practitioner Paper
+
+$if(note)$
+$for(note)$
+\note{$note$}
+$endfor$
+$endif$
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+$if(abstract)$
+\Abstract{$abstract$}
+$endif$
+
+%----------------------------------------------------------------------------------------
+
+% Pandoc syntax highlighting
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+\begin{document}
+
+\flushbottom % Makes all text pages the same height
+
+$if(title)$
+\maketitle % Print the title and abstract box
+$endif$
+
+%\tableofcontents % Print the contents section
+
+\thispagestyle{fancy} % Add header to first page
+
+$body$
+
+$if(bibliography)$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+
+\end{document}
