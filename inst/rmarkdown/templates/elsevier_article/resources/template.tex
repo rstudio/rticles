@@ -147,12 +147,14 @@ $preamble$
 
   \title{$title$}
   $for(author)$
-  \author[$author.affiliation$]{$author.name$$if(author.footnote)$\corref{c1}$endif$}
+  \author[$author.affiliation$]{$author.name$$if(author.footnote)$\corref{$author.footnote$}$endif$}
   $if(author.email)$ \ead{$author.email$} $endif$
-  $if(author.footnote)$ \cortext[c1]{$author.footnote$}$endif$
   $endfor$
   $for(address)$
   \address[$address.code$]{$address.address$}
+  $endfor$
+  $for(fn)$
+  \cortext[$fn.code$]{$fn.text$}
   $endfor$
 
   \begin{abstract}
