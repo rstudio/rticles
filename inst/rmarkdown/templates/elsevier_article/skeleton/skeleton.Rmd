@@ -21,7 +21,7 @@ address:
     address: Department, Street, City, State, Zip
   - code: Another University
     address: Department, Street, City, State, Zip
-fn:
+footnote:
   - code: 1
     text: "Corresponding Author"
   - code: 2
