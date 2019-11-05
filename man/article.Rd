@@ -193,7 +193,7 @@ Possible arguments for the YAML header are:
   \item \code{corrauth} corresponding author name and address
   \item \code{email} correspondence email
   \item \code{abstract} abstract, limited to 200 words
-  \item \code{keywords} keywords for the artucle
+  \item \code{keywords} keywords for the article
   \item \code{bibliography} BibTeX \code{.bib} file name
   \item \code{classoption} options of the \code{sagej} class
  \item \code{header-includes}: custom additions to the header, before the \code{\\begin\{document\}} statement
