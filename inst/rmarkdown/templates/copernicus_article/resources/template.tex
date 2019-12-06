@@ -71,6 +71,15 @@
 %\usepackage{subfig}
 %\usepackage{rotating}
 
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+$endif$
+
 % The "Technical instructions for LaTex" by Copernicus require _not_ to insert any additional packages.
 %$for(header-includes)$
 %$header-includes$

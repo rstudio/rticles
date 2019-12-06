@@ -1,6 +1,8 @@
 rticles 0.13
 ---------------------------------------------------------------------
 
+- Added the `cslreferences` environment to all templates (thanks, @bbauzile, #260).
+
 - Updated the template for `elsevier_article()` to allow for two authors to share the same footnote (e.g. "these authors made equal contributions") and updated the corresponding skeleton to demonstrate how to use a shared footnote (thanks, @salauer, #255).
 
 rticles 0.12
