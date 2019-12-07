@@ -27,7 +27,14 @@ rjournal_article <- function(...) {
     wrapper_metadata <- list(preamble = metadata$preamble, filename = xfun::sans_ext(filename))
     wrapper_template <- find_resource("rjournal_article", "RJwrapper.tex")
     wrapper_output <- file.path(getwd(), "RJwrapper.tex")
-    template_pandoc(wrapper_metadata, wrapper_template, wrapper_output, verbose)
+    in_header <- metadata$output$`rticles::rjournal_article`$includes$in_header
+    wrapper_include_in_header <-
+      if (!is.null(in_header)) {
+        file.path(getwd(), in_header)
+      } else {
+        NULL
+      }
+    template_pandoc(wrapper_metadata, wrapper_template, wrapper_output, wrapper_include_in_header, verbose)
 
     tinytex::latexmk("RJwrapper.tex", base$pandoc$latex_engine, clean = clean)
   }

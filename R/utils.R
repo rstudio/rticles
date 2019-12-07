@@ -24,6 +24,7 @@ merge_list <- function(x, y) {
 #' @param metadata A named list containing metadata to pass to template.
 #' @param template Path to a pandoc template.
 #' @param output Path to save output.
+#' @param include_in_header Path to a file to include in the header.
 #' @return (Invisibly) The path of the generate file.
 #' @examples
 #' x <- rticles:::template_pandoc(
@@ -33,13 +34,23 @@ merge_list <- function(x, y) {
 #' )
 #' if (interactive()) file.show(x)
 #' @noRd
-template_pandoc <- function(metadata, template, output, verbose = FALSE) {
+template_pandoc <- function(metadata, template, output, include_in_header = NULL, verbose = FALSE) {
   tmp <- tempfile(fileext = ".md"); on.exit(unlink(tmp), add = TRUE)
   xfun::write_utf8(c("---", yaml::as.yaml(metadata), "---\n"), tmp)
 
+  include_str <-
+    if (!is.null(include_in_header)) {
+      paste0("--include-in-header=", include_in_header)
+    } else {
+      NULL
+    }
+
   rmarkdown::pandoc_convert(
     tmp, "markdown", output = output, verbose = verbose,
-    options = paste0("--template=", template),
+    options = c(
+      paste0("--template=", template),
+      include_str
+    )
   )
   invisible(output)
 }
