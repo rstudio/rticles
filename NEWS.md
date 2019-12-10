@@ -5,7 +5,7 @@ rticles 0.13
 
 - Updated the template for `elsevier_article()` to allow for two authors to share the same footnote (e.g. "these authors made equal contributions") and updated the corresponding skeleton to demonstrate how to use a shared footnote (thanks, @salauer, #255).
 
-- Fixed header includes for `rjournal_article()` (@rcannood, #261)
+- Fixed header includes for `rjournal_article()` (thanks, @rcannood, #261)
 
 rticles 0.12
 ---------------------------------------------------------------------
