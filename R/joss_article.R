@@ -11,7 +11,6 @@
 #' \code{formatted_doi, citation_author, year, volume, issue, page, submitted, published,
 #' review_url, repository}, and \code{archive_doi}.
 #'
-#' @inheritParams rmarkdown::pdf_document
 #' @param journal one of "JOSS" or"JOSE"
 #' @param keep_md Whether to retain the intermediate markdown and images.
 #'   Defaults to TRUE.
