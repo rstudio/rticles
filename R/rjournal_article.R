@@ -2,14 +2,15 @@
 #'
 #' Format for creating R Journal articles. Adapted from
 #' \url{https://journal.r-project.org/submissions.html}.
-#' @inheritParams rmarkdown::pdf_document
-#' @param ... Arguments to \code{rmarkdown::pdf_document}
+#' @param ...,citation_package Arguments to \code{rmarkdown::pdf_document}.
 #' @export
-rjournal_article <- function(...) {
+rjournal_article <- function(..., citation_package = 'natbib') {
 
   rmarkdown::pandoc_available('2.2', TRUE)
 
-  base <- pdf_document_format("rjournal_article", highlight = NULL, ...)
+  base <- pdf_document_format(
+    "rjournal_article", highlight = NULL, citation_package = citation_package, ...
+  )
 
   # Render will generate tex file, post-process hook generates appropriate
   # RJwrapper.tex and use pandoc to build pdf from that
@@ -24,10 +25,15 @@ rjournal_article <- function(...) {
     if (filename != (filename2 <- gsub('_', '-', filename))) {
       file.rename(filename, filename2); filename <- filename2
     }
-    wrapper_metadata <- list(preamble = metadata$preamble, filename = xfun::sans_ext(filename))
-    wrapper_template <- find_resource("rjournal_article", "RJwrapper.tex")
-    wrapper_output <- file.path(getwd(), "RJwrapper.tex")
-    template_pandoc(wrapper_metadata, wrapper_template, wrapper_output, verbose)
+    m <- list(filename = xfun::sans_ext(filename))
+    h <- get_list_element(metadata, c('output', 'rticles::rjournal_article', 'includes', 'in_header'))
+    h <- c(h, if (length(preamble <- unlist(metadata[c('preamble', 'header-includes')]))) {
+      f <- tempfile(fileext = '.tex'); on.exit(unlink(f), add = TRUE)
+      xfun::write_utf8(preamble, f)
+      f
+    })
+    t <- find_resource("rjournal_article", "RJwrapper.tex")
+    template_pandoc(m, t, "RJwrapper.tex", h, verbose)
 
     tinytex::latexmk("RJwrapper.tex", base$pandoc$latex_engine, clean = clean)
   }

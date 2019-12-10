@@ -4,10 +4,10 @@
 \alias{rjournal_article}
 \title{R Journal format.}
 \usage{
-rjournal_article(...)
+rjournal_article(..., citation_package = "natbib")
 }
 \arguments{
-\item{...}{Arguments to \code{rmarkdown::pdf_document}}
+\item{..., citation_package}{Arguments to \code{rmarkdown::pdf_document}.}
 }
 \description{
 Format for creating R Journal articles. Adapted from
