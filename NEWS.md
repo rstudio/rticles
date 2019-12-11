@@ -7,6 +7,8 @@ rticles 0.13
 
 - Fixed header includes for `rjournal_article()` (thanks, @agila5 #257, @rcannood #261).
 
+- Add support for bibliography styles on the Springer template (thanks, @swhaat, #262).
+
 rticles 0.12
 ---------------------------------------------------------------------
 

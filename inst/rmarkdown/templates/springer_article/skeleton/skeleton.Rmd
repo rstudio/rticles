@@ -28,12 +28,14 @@ keywords:
     
 MSC:
 - MSC code 1
-- MSC code 2    
+- MSC code 2
 
 abstract: |
   The text of your abstract.  150 -- 250 words.
 
 bibliography: bibliography.bib
+bibstyle: spphys
+# bibstyle options spbasic(default), spphys, spmpsci
 output: rticles::springer_article
 ---
 
