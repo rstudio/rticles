@@ -436,6 +436,12 @@ $if(affiliation)$
 %% ---- classic IEEETrans wide authors' list ----------------
 $if(affiliation.wide)$
 \IEEEauthorblockN{
+$if(affiliation.author)$
+$for(affiliation.author)$
+$affiliation.author.name$\IEEEauthorrefmark{$affiliation.author.mark$}
+$sep$,
+$endfor$
+$else$
 $for(affiliation.institution)$ %% -- beg for/affiliation.institution
 $for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
 $affiliation.institution.author.name$\IEEEauthorrefmark{$affiliation.institution.mark$}
@@ -443,6 +449,7 @@ $sep$,
 $endfor$ %% -- end for/affiliation.institution.author
 $sep$,
 $endfor$ %% -- end for/affiliation.institution
+$endif$
 }
 
 $for(affiliation.institution)$ %% -- beg for/affiliation.institution
