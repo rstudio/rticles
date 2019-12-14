@@ -1,3 +1,7 @@
+rticles 0.14
+---------------------------------------------------------------------
+- Added citation_sorting option to change the biblatex's sorting option
+
 rticles 0.13
 ---------------------------------------------------------------------
 
