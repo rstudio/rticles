@@ -335,7 +335,7 @@ $if(natbib)$
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $endif$
 $if(biblatex)$
-\usepackage[backend=bibtex,citestyle=ieee,style=numeric]{biblatex}
+\usepackage[backend=bibtex,citestyle=ieee,style=numeric$if(citation_sorting)$,sorting=$citation_sorting$$endif$]{biblatex}
 $if(bibliography)$
 $for(bibliography)$
 \addbibresource{$bibliography$}
