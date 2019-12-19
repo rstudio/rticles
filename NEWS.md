@@ -1,3 +1,8 @@
+rticles 0.14
+---------------------------------------------------------------------
+
+- Added the `citation_sorting` YAML option to change the biblatex's sorting option in `ieee_article()` output (thanks, @DunLug, #265).
+
 rticles 0.13
 ---------------------------------------------------------------------
 
@@ -8,8 +13,6 @@ rticles 0.13
 - Fixed header includes for `rjournal_article()` (thanks, @agila5 #257, @rcannood #261).
 
 - Add support for bibliography styles on the Springer template (thanks, @swhaat, #262).
-
-- Added the `citation_sorting` YAML option to change the biblatex's sorting option in `ieee_article()` output (thanks, @DunLug, #265).
 
 rticles 0.12
 ---------------------------------------------------------------------
