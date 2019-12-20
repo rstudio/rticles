@@ -1,6 +1,9 @@
 rticles 0.14
 ---------------------------------------------------------------------
-- Added a multiline authoring option in IEEE template
+
+- Added a multi-line authoring option in the IEEE template (thanks, @DunLug, #264).
+
+- Added the `citation_sorting` YAML option to change the biblatex's sorting option in `ieee_article()` output (thanks, @DunLug, #265).
 
 rticles 0.13
 ---------------------------------------------------------------------
