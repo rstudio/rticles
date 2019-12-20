@@ -1,7 +1,7 @@
 rticles 0.14
 ---------------------------------------------------------------------
 
-
+- Added the `citation_sorting` YAML option to change the biblatex's sorting option in `ieee_article()` output (thanks, @DunLug, #265).
 
 rticles 0.13
 ---------------------------------------------------------------------
