@@ -335,7 +335,7 @@ $if(natbib)$
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $endif$
 $if(biblatex)$
-\usepackage[backend=bibtex,citestyle=ieee,style=numeric]{biblatex}
+\usepackage[backend=bibtex,citestyle=ieee,style=numeric$if(citation_sorting)$,sorting=$citation_sorting$$endif$]{biblatex}
 $if(bibliography)$
 $for(bibliography)$
 \addbibresource{$bibliography$}
@@ -438,8 +438,16 @@ $if(affiliation.wide)$
 \IEEEauthorblockN{
 $if(affiliation.author)$
 $for(affiliation.author)$
-$affiliation.author.name$\IEEEauthorrefmark{$affiliation.author.mark$}
+$affiliation.author.name$\IEEEauthorrefmark{$affiliation.author.mark$}$sep$,
+$endfor$
+$else$
+$if(affiliation.author_multiline)$
+$for(affiliation.author_multiline)$
+$for(affiliation.author_multiline.line)$
+$affiliation.author_multiline.line.name$\IEEEauthorrefmark{$affiliation.author_multiline.line.mark$}
 $sep$,
+$endfor$
+$sep$}\IEEEauthorblockN{
 $endfor$
 $else$
 $for(affiliation.institution)$ %% -- beg for/affiliation.institution
@@ -449,6 +457,7 @@ $sep$,
 $endfor$ %% -- end for/affiliation.institution.author
 $sep$,
 $endfor$ %% -- end for/affiliation.institution
+$endif$
 $endif$
 }
 
