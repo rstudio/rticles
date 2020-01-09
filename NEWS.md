@@ -7,6 +7,8 @@ rticles 0.14
 
 - Added the `citation_sorting` YAML option to change the biblatex's sorting option in `ieee_article()` output (thanks, @DunLug, #265).
 
+- `mnras.cls` was removed from this package because it exists on CTAN.
+
 rticles 0.13
 ---------------------------------------------------------------------
 
