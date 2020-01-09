@@ -49,3 +49,4 @@ BugReports: https://github.com/rstudio/rticles/issues
 RoxygenNote: 7.0.2
 Suggests: testit, bookdown, xtable
 Encoding: UTF-8
+Remotes: yihui/tinytex
