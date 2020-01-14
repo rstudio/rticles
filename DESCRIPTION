@@ -42,11 +42,10 @@ Authors@R: c(
 Description: A suite of custom R Markdown formats and templates for
   authoring journal articles and conference submissions.
 License: GPL-3
-Imports: utils, rmarkdown, knitr, yaml, tinytex, xfun
+Imports: utils, rmarkdown, knitr, yaml, tinytex (>= 0.19), xfun
 SystemRequirements: GNU make
 URL: https://github.com/rstudio/rticles
 BugReports: https://github.com/rstudio/rticles/issues
 RoxygenNote: 7.0.2
 Suggests: testit, bookdown, xtable
 Encoding: UTF-8
-Remotes: yihui/tinytex
