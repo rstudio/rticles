@@ -64,14 +64,14 @@ Standard \LaTeX references will work as well (e.g. Fig. \ref{fig:view}).
 <!-- 2. The RMarkdown way -->
 
 ```{r view, out.width = "100%", fig.cap = "An example image.", echo = FALSE}
-knitr::include_graphics("view.pdf")
+knitr::include_graphics("view.jpg")
 ```
 
 
 <!-- 3. The pandoc way -->
 <!-- 
 
-![An example image. Text *can* be processed with markdown.](view.pdf){#view width = 100%}
+![An example image. Text *can* be processed with markdown.](view.jpg){#view width = 100%}
 
  -->
 
