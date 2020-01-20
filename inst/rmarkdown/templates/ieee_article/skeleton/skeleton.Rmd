@@ -66,6 +66,7 @@ abstract: |
   The abstract goes here.
   On multiple lines eventually.
 
+bibtex: true
 bibliography: mybibfile.bib
 output: rticles::ieee_article
 #citation_sorting: none   ## used as sorting option of the biblatex package (if selected)
@@ -192,12 +193,12 @@ The conclusion goes here.
 Acknowledgment {#acknowledgment}
 ==============
 
-The authors would like to thank...
+The authors \cite{Feynman1963118} would like to thank...
 
 Bibliography styles
 ===================
 
-Here are two sample references: @Feynman1963118 [@Dirac1953888].
+Here are two sample references: \cite{Feynman1963118,Dirac1953888}.
 
 \newpage
 References {#references .numbered}
