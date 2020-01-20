@@ -69,7 +69,6 @@ abstract: |
 bibtex: true
 bibliography: mybibfile.bib
 output: rticles::ieee_article
-#citation_sorting: none   ## used as sorting option of the biblatex package (if selected)
 ---
 
 Introduction
