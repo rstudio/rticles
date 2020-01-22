@@ -5,7 +5,7 @@ rticles 0.14
 
 - Added a multi-line authoring option in the IEEE template (thanks, @DunLug, #264).
 
-- Added the `citation_sorting` YAML option to change the biblatex's sorting option in `ieee_article()` output (thanks, @DunLug, #265).
+- IEEE template uses biblatex by default when a bibliography file is given (@swhaat #269).
 
 - `mnras.cls` was removed from this package because it exists on CTAN.
 
