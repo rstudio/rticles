@@ -334,14 +334,14 @@ $if(natbib)$
 \usepackage{natbib}
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $endif$
-$if(biblatex)$
-\usepackage[backend=bibtex,citestyle=ieee]{biblatex}
 $if(bibliography)$
+\usepackage[backend=bibtex,citestyle=ieee]{biblatex}
+
 $for(bibliography)$
 \addbibresource{$bibliography$}
 $endfor$
 $endif$
-$endif$
+
 
 $if(tables)$
 \usepackage{longtable,booktabs}
@@ -631,7 +631,7 @@ $endif$
 
 $endif$
 $endif$
-$if(biblatex)$
+$if(bibliography)$
 \printbibliography[heading=none]
 
 $endif$
@@ -640,4 +640,3 @@ $include-after$
 
 $endfor$
 \end{document}
-
