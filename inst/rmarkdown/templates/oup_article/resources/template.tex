@@ -82,7 +82,7 @@ $endfor$
 
 \author{%
 $for(authors)$
-\name{$authors.name$}$if(authors.address)$\address{$authors.address$}$endif$$if(authors.email)$\email{$authors.email$}$endif$$if(authors.corresponding_author)$\thanks{Corresponding author; Email: $authors.email$}$endif$
+\name{$authors.name$}$if(authors.address)$\address{$authors.address$}$endif$$if(authors.email)$\email{\href{mailto:$authors.email$}{$authors.email$}}$endif$$if(authors.thanks)$\thanks{$authors.thanks$}$else$$if(authors.corresponding_author)$\thanks{Corresponding author; Email: \href{mailto:$authors.email$}{$authors.email$}}$endif$$endif$
 $sep$\and
 $endfor$
 }
