@@ -1,5 +1,5 @@
 ---
-title: Short Paper
+title: Template for Oxford University Press papers
 #date: "`r Sys.Date()`"
 authors:
   - name: Alice Anonymous
@@ -35,22 +35,75 @@ bibliography: mybibfile.bib
 output: rticles::oup_article
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE) # By default, hide code; set to TRUE to see code
+knitr::opts_chunk$set(fig.pos = 'p') # Places figures on their own pages
+knitr::opts_chunk$set(out.width = '100%', dpi=300) # Figure resolution and size
+
+library(xtable) # Creates tables that follow OUP guidelines; other options, such as kable, may also be workable
+```
+
 # Introduction
 
-This template is based on the generic OUP template available [here](https://academic.oup.com/icesjms/pages/General_Instructions).
+This template is based on the generic OUP template available [here](https://academic.oup.com/icesjms/pages/General_Instructions). See the accompanying document [ouparticle_sample.tex](./ouparticle_sample.tex) for more details.
 
-Here are two sample references: @Feynman1963118 [@Dirac1953888]. They will appear in Section \ref{references}
+Here are two sample references: @Feynman1963118 [@Dirac1953888]. Bibliography will appear at the end of the document.
 
 # Materials and methods
 
-An equation:
+An equation with a label for cross-referencing:
 
-$$
-E = mc^2
-$$
+\begin{equation}\label{eq:eq1}
+\int^{r_2}_0 F(r,\varphi){\rm d}r\,{\rm d}\varphi = [\sigma r_2/(2\mu_0)]
+\int^{\infty}_0\exp(-\lambda|z_j-z_i|)\lambda^{-1}J_1 (\lambda r_2)J_0
+(\lambda r_i\,\lambda {\rm d}\lambda)
+\end{equation}
+
+This equation can be referenced as follows: Eq. \ref{eq:eq1}
+
+## A subsection
+
+A numbered list:
+
+1) First point
+2) Second point
+    - Subpoint
+    
+A bullet list:
+
+* First point
+* Second point
 
 # Results
 
+Generate a figure.
+
+```{r fig1, fig.cap="This is the first figure.",echo=TRUE}
+plot(1:10,main="Some data",xlab="Distance (cm)",ylab="Time (hours)")
+```
+
+With this figure caption, you can reference this figure as follows: Fig. \ref{fig:fig1}.
+
+```{r fig2, fig.cap="This is the second figure.",echo=TRUE}
+plot(1:5,pch=19,main="Some data",xlab="Distance (cm)",ylab="Time (hours)")
+```
+
+Reference to second figure: Fig. \ref{fig:fig2}
+
+Generate a table.
+
+```{r tab1, results="asis", echo=TRUE}
+df = data.frame(ID=1:3,code=letters[1:3])
+print(xtable(df,caption="This is the table caption",label="tab:tab1"),
+      comment=FALSE)
+```
+
+You can reference this table as follows: Table \ref{tab:tab1}.
+
 # Discussion
+
+You can cross-reference sections and subsections as follows: Section \ref{materials-and-methods} and Section \ref{a-subsection}.
+
+***Note:*** the last section in the document will be used as the section title for the bibliography.
 
 # References
