@@ -39,13 +39,14 @@ output: rticles::oup_article
 knitr::opts_chunk$set(echo = FALSE) # By default, hide code; set to TRUE to see code
 knitr::opts_chunk$set(fig.pos = 'p') # Places figures on their own pages
 knitr::opts_chunk$set(out.width = '100%', dpi=300) # Figure resolution and size
+knitr::opts_chunk$set(fig.env="figure") # Latex figure environment
 
 library(xtable) # Creates tables that follow OUP guidelines; other options, such as kable, may also be workable
 ```
 
 # Introduction
 
-This template is based on the generic OUP template available [here](https://academic.oup.com/icesjms/pages/General_Instructions). See the accompanying document [ouparticle_sample.tex](./ouparticle_sample.tex) for more details.
+This template is based on the generic OUP template available [here](https://academic.oup.com/icesjms/pages/General_Instructions). The original OUP sample tex document, providing more details on prefered formatting for LaTeX documents, is included with the template in the file `ouparticle_sample.tex`.
 
 Here are two sample references: @Feynman1963118 [@Dirac1953888]. Bibliography will appear at the end of the document.
 
@@ -82,7 +83,7 @@ Generate a figure.
 plot(1:10,main="Some data",xlab="Distance (cm)",ylab="Time (hours)")
 ```
 
-With this figure caption, you can reference this figure as follows: Fig. \ref{fig:fig1}.
+You can reference this figure as follows: Fig. \ref{fig:fig1}.
 
 ```{r fig2, fig.cap="This is the second figure.",echo=TRUE}
 plot(1:5,pch=19,main="Some data",xlab="Distance (cm)",ylab="Time (hours)")

@@ -8,6 +8,9 @@
 \usepackage{fancyvrb}
 \usepackage{framed}
 
+%% To allow better options for figure placement
+%\usepackage{float}
+
 % Packages that are supposedly required by OUP sty file
 \usepackage{amssymb, amsmath, geometry, amsfonts, verbatim, endnotes, setspace}
 
@@ -79,7 +82,7 @@ $endfor$
 
 \author{%
 $for(authors)$
-\name{$authors.name$}$if(authors.address)$\address{$authors.address$}$endif$$if(authors.email)$\email{$authors.email$}$endif$$if(authors.corresponding_author)$\thanks{Corresponding author: $authors.email$}$endif$
+\name{$authors.name$}$if(authors.address)$\address{$authors.address$}$endif$$if(authors.email)$\email{$authors.email$}$endif$$if(authors.corresponding_author)$\thanks{Corresponding author; Email: $authors.email$}$endif$
 $sep$\and
 $endfor$
 }
