@@ -22,7 +22,6 @@ affiliations:
 citation_author: Price-Whelan et. al.
 date: 13 August 2017
 year: 2017
-formatted_doi: 10.21105/joss.00388
 bibliography: paper.bib
 output: rticles::joss_article
 csl: apa.csl
