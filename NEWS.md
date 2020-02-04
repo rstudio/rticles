@@ -9,6 +9,8 @@ rticles 0.14
 
 - `mnras.cls` was removed from this package because it exists on CTAN.
 
+- Added Oxford University Press (OUP) template (thanks, @dmkaplan2000, #271).
+
 rticles 0.13
 ---------------------------------------------------------------------
 
