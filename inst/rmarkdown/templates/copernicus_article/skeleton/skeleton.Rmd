@@ -4,7 +4,7 @@ journal: "`r rticles::copernicus_journal_abbreviations(journal_name = 'communica
 author:
   - given_name: Daniel
     surname: Nüst
-    affiliation: 1
+    affiliation: "1, *"
     email: daniel.nuest@uni-muenster.de
     corresponding: true
   - given_name: Josiah
@@ -13,7 +13,7 @@ author:
     email: j.carberry@orcid.org
   - given_name: Markus
     surname: Konkol
-    affiliation: 1
+    affiliation: "1, *"
   - given_name: Nikolaus
     surname: Copernicus
     # authors can have multiple affiliations, which can also be used to mark deceased coauthors
@@ -23,6 +23,8 @@ author:
 # Three authors or more: Daniel Nüst (daniel.nuest@uni-muenster.de), Josiah Carberry (j.carberry@orcid.org), and Markus Konkol (m.konkol@wwu.de)
 # If the following line is uncommented, the "corresponding: true" above are ignored
 #correspongdingauthors: Daniel Nüst (daniel.nuest@uni-muenster.de) and Josiah Carberry (j.carberry@orcid.org)
+# If an author is deceased, please mark the respective author name(s) with a dagger '†' and add a further affiliation; put the decease date in the 'address' field", see 'Nikolaus Copernicus' in template.
+# If authors contributed equally, please mark the respective author names with an asterisk '*' and add a further affiliation: 'These authors contributed equally to this work.'", see template.
 affiliation:
   - code: 1
     address: Institute for Geoinformatics, University of Münster, 48149 Münster, Germany
@@ -30,8 +32,10 @@ affiliation:
     address: Psychoceramics, Wesleyan University, Middletown, CT, United States
   - code: 3
     address: University of Ferrara, Ferrara, Italy
-  - code: †
+  - code: "†"
     address: deceased, 24 May 1543
+  - code: "*"
+    address: These authors contributed equally to this work.
 abstract: |
   The abstract goes here.
   It can also be on _multiple lines_.
@@ -86,7 +90,7 @@ output:
     base_format: rticles::copernicus_article # for using bookdown features like \@ref()
 ---
 
-\introduction
+\introduction[Introduction]
 
 Introduction text goes here.
 You can change the name of the section if neccessary using `\introduction[modified heading]`.
@@ -330,7 +334,7 @@ Publi \leftrightarrow cations
 
 Please use `\unit{}` (allows to save the math/`$` environment) and apply the exponential notation, for example \( 3.14\,\unit{km\,h^{-1}} \) (using LaTeX mode: `\( 3.14\,\unit{...} \)`) or \unit{0.872\,m\,s^{-1}} (using only `\unit{0.872\,m\,s^{-1}}`).
 
-\conclusions
+\conclusions[Conclusions]
 
 The conclusion goes here.
 You can modify the section name with  `\conclusions[modified heading if necessary]`.

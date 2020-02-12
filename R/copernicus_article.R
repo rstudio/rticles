@@ -60,7 +60,7 @@ copernicus_article <- function(
 }
 
 # quick dev shortcut for Ubuntu: click "Install and restart" then run:
-# unlink("MyArticle/", recursive = TRUE); rmarkdown::draft("MyArticle.Rmd", template = "copernicus_article", package = "rticles", edit = FALSE); rmarkdown::render("MyArticle/MyArticle.Rmd"); system(paste0("gnome-open ", here::here("MyArticle", "MyArticle.pdf")))
+# unlink("MyArticle/", recursive = TRUE); rmarkdown::draft("MyArticle.Rmd", template = "copernicus_article", package = "rticles", edit = FALSE); rmarkdown::render("MyArticle/MyArticle.Rmd"); system(paste0("xdg-open ", here::here("MyArticle", "MyArticle.pdf")))
 
 copernicus_journals <- list(
   "Advances in Geosciences" = "adgeo",
@@ -91,6 +91,7 @@ copernicus_journals <- list(
   "Hydrology and Earth System Sciences" = "hess",
   "Journal of Micropalaeontology" = "jm",
   "Journal of Sensors and Sensor Systems" = "jsss",
+  "Magnetic Resonance" = "mr",
   "Mechanical Sciences" = "ms",
   "Natural Hazards and Earth System Sciences" = "nhess",
   "Nonlinear Processes in Geophysics" = "npg",
