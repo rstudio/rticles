@@ -1,0 +1,109 @@
+%%
+%% This is file `everyshi.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% everyshi.dtx  (with options: `package')
+%% 
+%% Copyright (C) [1994..1999] by Martin Schroeder. All rights reserved.
+%% 
+%% This file is part of the EveryShi package
+%% 
+%% This program may be redistributed and/or modified under the terms
+%% of the LaTeX Project Public License, either version 1.0 of this
+%% license, or (at your option) any later version.
+%% The latest version of this license is in
+%%    CTAN:macros/latex/base/lppl.txt.
+%% 
+%% Happy users are requested to send me a postcard. :-)
+%% 
+%% The EveryShi package contains these files:
+%% 
+%%       everyshi.asc
+%%       everyshi.dtx
+%%       everyshi.dvi
+%%       everyshi.ins
+%%       everyshi.bug
+%% 
+%% Error Reports in case of UNCHANGED versions to
+%% 
+%%                         Martin Schr"oder
+%%                         Cr"usemannallee 3
+%%                         D-28213 Bremen
+%%                         Martin.Schroeder@ACM.org
+%% 
+%% File: everyshi.dtx Copyright (C) 2001 Martin Schr\"oder
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{everyshi}
+         [2001/05/15 v3.00 EveryShipout Package (MS)]
+%% \CharacterTable
+%% {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%%  Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%%  Digits        \0\1\2\3\4\5\6\7\8\9
+%%  Exclamation   \!     Double quote  \"     Hash (number) \#
+%%  Dollar        \$     Percent       \%     Ampersand     \&
+%%  Acute accent  \'     Left paren    \(     Right paren   \)
+%%  Asterisk      \*     Plus          \+     Comma         \,
+%%  Minus         \-     Point         \.     Solidus       \/
+%%  Colon         \:     Semicolon     \;     Less than     \<
+%%  Equals        \=     Greater than  \>     Question mark \?
+%%  Commercial at \@     Left bracket  \[     Backslash     \\
+%%  Right bracket \]     Circumflex    \^     Underscore    \_
+%%  Grave accent  \`     Left brace    \{     Vertical bar  \|
+%%  Right brace   \}     Tilde         \~}
+%%
+%% \iffalse meta-comment
+%% ===================================================================
+%%  @LaTeX-package-file{
+%%     author          = {Martin Schr\"oder},
+%%     version         = "3.00",
+%%     date            = "15 May 2001",
+%%     filename        = "everyshi.sty",
+%%     address         = {Martin Schr\"oder
+%%                        Cr\"usemannallee 3
+%%                        28213 Bremen
+%%                        Germany},
+%%     telephone       = "+49-421-2239425",
+%%     email           = "martin@oneiros.de",
+%%     pgp-Key         = "2048 bit / KeyID 292814E5",
+%%     pgp-fingerprint = "7E86 6EC8 97FA 2995 82C3  FEA5 2719 090E",
+%%     docstring       = "LaTeX package which provides hooks into
+%%                        \cs{shipout}.
+%%  }
+%% ===================================================================
+%% \fi
+
+\newcommand{\@EveryShipout@Hook}{}
+\newcommand{\@EveryShipout@AtNextHook}{}
+\newcommand*{\EveryShipout}[1]
+   {\g@addto@macro\@EveryShipout@Hook{#1}}
+\newcommand*{\AtNextShipout}[1]
+   {\g@addto@macro\@EveryShipout@AtNextHook{#1}}
+\newcommand{\@EveryShipout@Shipout}{%
+   \afterassignment\@EveryShipout@Test
+   \global\setbox\@cclv= %
+   }
+\newcommand{\@EveryShipout@Test}{%
+   \ifvoid\@cclv\relax
+      \aftergroup\@EveryShipout@Output
+   \else
+      \@EveryShipout@Output
+   \fi%
+   }
+\newcommand{\@EveryShipout@Output}{%
+   \@EveryShipout@Hook%
+   \@EveryShipout@AtNextHook%
+      \gdef\@EveryShipout@AtNextHook{}%
+   \@EveryShipout@Org@Shipout\box\@cclv%
+   }
+\newcommand{\@EveryShipout@Org@Shipout}{}
+\newcommand*{\@EveryShipout@Init}{%
+   \message{ABD: EveryShipout initializing macros}%
+   \let\@EveryShipout@Org@Shipout\shipout
+   \let\shipout\@EveryShipout@Shipout
+   }
+\AtBeginDocument{\@EveryShipout@Init}
+\endinput
+%%
+%% End of file `everyshi.sty'.

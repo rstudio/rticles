@@ -1,0 +1,76 @@
+\documentclass[$if(classoption)$$classoption$$else$10pt,twocolumn,letterpaper$endif$]{article}
+
+\usepackage{cvpr}
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Include other packages here, before hyperref.
+
+% If you comment hyperref and then uncomment it, you should delete
+% egpaper.aux before re-running latex.  (Or just hit 'q' on the first latex
+% run, let it finish, and you should be clear).
+\usepackage[$if(finalcopy)$$else$pagebackref=true,letterpaper=true,colorlinks,$endif$breaklinks=true,bookmarks=false]{hyperref}
+
+% Pandoc header
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+$if(finalcopy)$
+\cvprfinalcopy
+$endif$
+
+\def\cvprPaperID{$paper_id$}
+\def\httilde{\mbox{\tt\raisebox{-.5ex}{\symbol{126}}}}
+
+% Pages are numbered in submission mode, and unnumbered in camera-ready
+$if(first_page)$
+\setcounter{page}{$first_page$}
+$else$
+\ifcvprfinal\pagestyle{empty}\fi
+$endif$
+\begin{document}
+
+%%%%%%%%% TITLE
+\title{$title$}
+
+\author{
+$if(affiliation)$
+$for(affiliation)$
+$for(affiliation.author)$
+$affiliation.author.name$\\
+$endfor$
+$affiliation.institution.name$ \\
+$affiliation.institution.address$ \\
+$for(affiliation.author)$
+{\tt\small $affiliation.author.mail$}
+$sep$\\
+$endfor$
+$if(affiliation.institution.mail)$
+{\tt\small $affiliation.institution.mail$}
+$endif$
+$sep$\and
+$endfor$
+$endif$
+}
+
+\maketitle
+%\thispagestyle{empty}
+
+%%%%%%%%% ABSTRACT
+\begin{abstract}
+   $abstract$
+\end{abstract}
+
+%%%%%%%%% BODY TEXT
+$body$
+
+{\small
+\bibliographystyle{$biblio-style$}
+\bibliography{$biblio-files$}
+}
+
+\end{document}

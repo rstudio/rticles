@@ -1,0 +1,5 @@
+name: CVPR Conference Article
+description: >
+ Template for creating an article for submission to the CVPR conference
+create_dir: true
+

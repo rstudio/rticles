@@ -1,0 +1,68 @@
+---
+finalcopy: false
+paper_id: 1234
+first_page: 9876
+title: Bare Demo of cvpr.sty for CVPR Conferences
+affiliation:
+  - author:
+    - name: Michael Shell
+    institution:
+      name: Georgia Institute of Technology
+      address: Atlanta, Georgia 30332--0250
+      mail: "ece@datech.edu"
+  - author:
+    - name: Eldon Tyrell
+      mail: eldon@starfleet-academy.star
+    - name: Roy Batty
+      mail: roy@replicant.offworld
+    institution:
+      name: Tyrell Inc.
+      address: 123 Replicant Street, Los Angeles, USA 90210--4321
+keywords: ["keyword 1", "keyword 2"]
+abstract: |
+  The abstract goes here.
+  On multiple lines eventually.
+
+biblio-files: egbib.bib
+output: rticles::cvpr_article
+---
+
+Introduction
+=============
+This demo file is intended to serve as a ``starter file''
+for CVPR conference papers produced under \LaTeX\ using cvpr2020AuthorKit (cvpr2020.thecvf.com/sites/default/files/2019-09/cvpr2020AuthorKit.tar).
+
+## Unpublished work
+If you are making a submission to another conference at the same time,
+which covers similar or overlapping material, you may need to refer to that
+submission in order to explain the differences, just as you would if you
+had previously published related work.  In such cases, include the
+anonymized parallel submission~\cite{Authors14} as additional material and
+cite it as
+\begin{quote}
+[1] Authors. ``The frobnicatable foo filter'', F\&G 2014 Submission ID 324,
+Supplied as additional material {\tt fg324.pdf}.
+\end{quote}
+## Subsection Heading Here
+Subsection text here.
+
+### Subsubsection Heading Here
+Subsubsection text here.
+
+Conclusion
+============
+The conclusion goes here.
+
+<!-- conference papers do not normally have an appendix -->
+
+Acknowledgment {#acknowledgment}
+==============
+
+The authors would like to thank...
+
+Bibliography styles
+===================
+
+Here are two sample references: @Authors14 [@Alpher02].
+
+\newpage
