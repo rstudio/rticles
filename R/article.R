@@ -124,6 +124,14 @@ ctex <- function(..., latex_engine = 'xelatex') {
   pdf_document_format('ctex', latex_engine = latex_engine, ...)
 }
 
+#' @section \code{cvpr_article}: Format for creating submissions to the CVPR conference.
+#' Adapted from \url{http://cvpr2020.thecvf.com/submission/main-conference/author-guidelines#submission-guidelines}.
+#' @export
+#' @rdname article
+cvpr_article <- function(keep_tex = TRUE)
+{
+  pdf_document_format('cvpr', keep_tex=keep_tex, ...)
+}
 #' @section \code{elsevier_article}: Format for creating submissions to Elsevier
 #'   journals. Adapted from
 #'   \url{https://www.elsevier.com/authors/author-schemas/latex-instructions}.
