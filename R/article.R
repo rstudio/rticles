@@ -132,6 +132,7 @@ cvpr_article <- function(keep_tex = TRUE)
 {
   pdf_document_format('cvpr', keep_tex=keep_tex, ...)
 }
+
 #' @section \code{elsevier_article}: Format for creating submissions to Elsevier
 #'   journals. Adapted from
 #'   \url{https://www.elsevier.com/authors/author-schemas/latex-instructions}.

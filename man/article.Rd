@@ -10,6 +10,7 @@
 \alias{asa_article}
 \alias{biometrics_article}
 \alias{ctex}
+\alias{cvpr_article}
 \alias{elsevier_article}
 \alias{frontiers_article}
 \alias{mdpi_article}
@@ -58,6 +59,8 @@ asa_article(..., keep_tex = TRUE, citation_package = "natbib")
 biometrics_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 ctex(..., latex_engine = "xelatex")
+
+cvpr_article(keep_tex = TRUE)
 
 elsevier_article(
   ...,
@@ -157,6 +160,11 @@ custom Pandoc LaTeX template and different default values for other arguments
   and changed the default values of two arguments \code{template} and
   \code{latex_engine} so it works better for typesetting Chinese documents
   with the \pkg{ctex} LaTeX package.
+}
+
+\section{\code{cvpr_article}}{
+ Format for creating submissions to the CVPR conference.
+Adapted from \url{http://cvpr2020.thecvf.com/submission/main-conference/author-guidelines#submission-guidelines}.
 }
 
 \section{\code{elsevier_article}}{
