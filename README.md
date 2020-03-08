@@ -35,6 +35,8 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [CTeX](https://ctan.org/pkg/ctex) documents
 
+- [CVPR](http://cvpr2020.thecvf.com/submission/main-conference/author-guidelines#submission-guidelines) conference submissions
+
 - [Elsevier](https://www.elsevier.com) journal submissions
 
 - [IEEE Transaction](http://www.ieee.org/publications_standards/publications/authors/author_templates.html) journal submissions
