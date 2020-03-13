@@ -50,6 +50,7 @@
 % change the name here:
 \font\cvprtenhv  = phvb at 8pt % *** IF THIS FAILS, SEE cvpr.sty ***
 \font\elvbf  = ptmb scaled 1100
+\font\tenvbf = ptmb scaled 1000
 
 % If the above lines give an error message, try to comment them and
 % uncomment these:
@@ -153,6 +154,12 @@ Paper ID \cvprPaperID \fi
 \def\cvprssubsect#1{\cvprsubsection*{#1}}
 \def\cvprsubsect#1{\cvprsubsection{\hskip -1em.~#1}}
 \def\subsection{\@ifstar\cvprssubsect\cvprsubsect}
+
+\def\cvprsubsubsection{\@startsection {subsubsection}{3}{\z@}
+   {8pt plus 2pt minus 2pt}{-6pt} {\tenvbf}}
+\def\cvprssubsubsect#1{\cvprsubsubsection*{#1.}}
+\def\cvprsubsubsect#1{\cvprsubsubsection{\hskip -1em.~#1.}}
+\def\subsubsection{\@ifstar\cvprssubsubsect\cvprsubsubsect}
 
 %% --------- Page background marks: Ruler and confidentiality
 
