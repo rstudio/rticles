@@ -44,13 +44,14 @@ $for(affiliation.author)$
 $affiliation.author.name$\\
 $endfor$
 $affiliation.institution.name$ \\
-$affiliation.institution.address$ \\
+$affiliation.institution.address$
 $for(affiliation.author)$
-{\tt\small $affiliation.author.mail$}
-$sep$\\
+$if(affiliation.author.mail)$
+\\{\tt\small $affiliation.author.mail$}
+$endif$
 $endfor$
 $if(affiliation.institution.mail)$
-{\tt\small $affiliation.institution.mail$}
+\\{\tt\small $affiliation.institution.mail$}
 $endif$
 $sep$\and
 $endfor$
