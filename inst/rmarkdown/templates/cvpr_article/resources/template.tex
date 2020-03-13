@@ -28,7 +28,11 @@ $endif$
 
 % Pages are numbered in submission mode, and unnumbered in camera-ready
 $if(first_page)$
+$if(finalcopy)$
 \setcounter{page}{$first_page$}
+$else$
+\ifcvprfinal\pagestyle{empty}\fi
+$endif$
 $else$
 \ifcvprfinal\pagestyle{empty}\fi
 $endif$
