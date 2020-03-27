@@ -1,6 +1,6 @@
 rticles 0.15
 ---------------------------------------------------------------------
-
+- Update to OUP format for knitr::kable table generation and optionally placing floats at end of document (thanks, @dmkaplan2000, #279)
 
 rticles 0.14
 ---------------------------------------------------------------------
