@@ -1,5 +1,6 @@
 rticles 0.15
 ---------------------------------------------------------------------
+- Added multi-affiliation support to `rjournal_article()`.
 - Added for `rjournal_article()` (1) automated file renaming to better match the author's guidelines, (2) an R script file with for the reproduction of examples
 
 rticles 0.14

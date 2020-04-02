@@ -8,11 +8,16 @@ author:
     - line 2
     email:  author1@work
   - name: Author Two
-    affiliation: Affiliation
-    address:
-    - line 1
-    - line 2
-    email:  author2@work
+    affiliation: 
+      - name: Affiliation 1
+      - address:
+        - line 1 affiliation 1
+        - line 2 affiliation 1
+      - email: author2@work
+      - name: Affiliation 2
+      - address:
+        - line 1 affiliation 2
+        - line 2 affiliation 2
 abstract: >
   An abstract of less than 150 words.
 preamble: |
