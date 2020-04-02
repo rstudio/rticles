@@ -19,9 +19,17 @@ $endif$
 $for(author)$
 \address{%
 $author.name$\\
-$author.affiliation$\\
-$for(author.address)$$author.address$$sep$\\ $endfor$\\
+$for(author.affiliation/pairs)$
+  $if(it.value)$
+    $for(it.value.name)$$it.value.name$\\$endfor$%
+    $for(it.value.address)$$it.value.address$$sep$ \\$endfor$%
+    $for(it.value.email)$\\$it.value.email$\\\\$endfor$%
+  $else$
+   $author.affiliation$\\
+  $endif$
+$endfor$
+$for(author.address)$$author.address$$sep$ \\$endfor$%
 }
-$if(author.email)$$author.email$$endif$
+$if(author.email)$\\$author.email$$endif$
 
 $endfor$
