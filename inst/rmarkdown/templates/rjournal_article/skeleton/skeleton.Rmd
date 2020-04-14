@@ -6,14 +6,18 @@ author:
     address:
     - line 1
     - line 2
+    url: https://journal.r-project.org
+    orcid: 0000-0002-9079-593X
     email:  author1@work
   - name: Author Two
+    url: https://journal.r-project.org
+    email: author2@work
+    orcid: 0000-0002-9079-593X
     affiliation: 
       - name: Affiliation 1
       - address:
         - line 1 affiliation 1
         - line 2 affiliation 1
-      - email: author2@work
       - name: Affiliation 2
       - address:
         - line 1 affiliation 2
