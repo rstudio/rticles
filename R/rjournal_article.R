@@ -6,6 +6,30 @@
 #' @export
 rjournal_article <- function(..., citation_package = 'natbib') {
 
+  ## make sure that all files are correctly named according to the R journal
+  ## requirements https://journal.r-project.org/submissions.html
+
+  ## get name of Bib-file and Rmd-file
+  Rmd_file_name <- list.files(
+    path = ".", pattern = ".Rmd", include.dirs = FALSE)[1]
+  bib_file_name <- list.files(
+    path = ".", pattern = ".bib", include.dirs = FALSE)[1]
+
+  ## correct bibliography entry in Rmd-file
+  Rmd_file_text <- readLines(Rmd_file_name)
+  pat <- regexpr("(?<=\\\\bibliography{).+[^}]", Rmd_file_text, perl = TRUE)
+  regmatches(Rmd_file_text, pat) <- xfun::sans_ext(Rmd_file_name)
+  writeLines(text = Rmd_file_text, con =  Rmd_file_name)
+
+  ## correct bib-filename to match the name of the Rmd-file
+  file.rename(from = bib_file_name, to = paste0(xfun::sans_ext(Rmd_file_name), ".bib"))
+
+  ## create R file with executable R code as requested
+  knitr::purl(Rmd_file_name, documentation = 1)
+
+  ##remove objects
+  suppressWarnings(rm(Rmd_file_name, Rmd_file_text, bib_file_name))
+
   rmarkdown::pandoc_available('2.2', TRUE)
 
   base <- pdf_document_format(
