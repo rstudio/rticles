@@ -175,6 +175,32 @@ frontiers_article <- function(..., keep_tex = TRUE) {
   pdf_document_format("frontiers", keep_tex = keep_tex, ...)
 }
 
+#' @section \code{lipics_article}: Format for creating submissions to
+#'   LIPIcs - Leibniz International Proceedings Informatics - articles.
+#'   Adapted from the official Instructions for Authors at
+#'   \url{https://submission.dagstuhl.de/documentation/authors} and the
+#'   template from the archive \code{authors-lipics-v2019.zip} downloaded
+#'   with version tag v2019.2. The template is provided under The LaTeX
+#'   Project Public License (LPPL), Version 1.3c.
+#' @export
+#' @rdname article
+lipics_article <- function(
+  ..., latex_engine = 'xelatex', # xelatex used for 'thin space' Unicode
+                                 # character, see YAML field 'authorrunning'
+  keep_tex = TRUE, citation_package = "natbib", md_extensions = c(
+    "-autolink_bare_uris", # disables automatic links
+    "-auto_identifiers"    # disables \hypertarget commands
+  )
+) {
+  # quick dev shortcut for Ubuntu: click "Install and restart" then run:
+  # unlink("MyArticle/", recursive = TRUE); rmarkdown::draft("MyArticle.Rmd", template = "lipics", package = "rticles", edit = FALSE); rmarkdown::render("MyArticle/MyArticle.Rmd"); system(paste0("xdg-open ", here::here("MyArticle", "MyArticle.pdf")))
+  pdf_document_format(
+    "lipics", latex_engine = latex_engine,
+    citation_package = citation_package, keep_tex = keep_tex,
+    md_extensions = md_extensions, ...
+  )
+}
+
 #' @section \code{mdpi_article}: Format for creating submissions to
 #'   Multidisciplinary Digital Publishing Institute (MDPI) journals. Adapted
 #'   from \url{https://www.mdpi.com/authors/latex}.
@@ -301,7 +327,7 @@ sim_article <- function(..., highlight = NULL, citation_package = "natbib") {
 #'   Macro package for Springer Journals.
 #' @export
 #' @rdname article
-springer_article <- function(..., keep_tex = TRUE, citation_package = 'none'){
+springer_article <- function(..., keep_tex = TRUE, citation_package = 'default'){
   pdf_document_format(
     "springer", keep_tex = keep_tex, citation_package = citation_package, ...
   )
