@@ -58,7 +58,6 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-
 % Part for setting citation format package: natbib
 $if(natbib)$
 \usepackage{natbib}
@@ -73,6 +72,16 @@ $for(bibliography)$
 \addbibresource{$bibliography$}
 $endfor$
 $endif$
+$endif$
+
+% Part for indenting CSL refs
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
 $endif$
 
 % Pandoc header
