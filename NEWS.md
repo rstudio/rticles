@@ -1,6 +1,8 @@
 rticles 0.15
 ---------------------------------------------------------------------
 
+- Fixed issue with multi-line authors on JSS template when using `\AND` (firstly implemented in https://github.com/rstudio/rticles/commit/b740b19b90cd6f7afe2cd7d66456c9efa0bb4cdf).
+
 
 rticles 0.14
 ---------------------------------------------------------------------
