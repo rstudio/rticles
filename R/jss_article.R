@@ -30,7 +30,7 @@ jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
     if (is.function(post)) output = post(metadata, input, output, clean, verbose)
     f <- xfun::with_ext(output, '.tex')
     x <- xfun::read_utf8(f)
-    x <- gsub('( \\\\AND )\\\\And ', '\\1', x)
+    x <- gsub('(\\\\AND )\\\\And ', '\\1', x)
     x <- gsub(' \\\\AND(\\\\\\\\)$', '\\1', x)
     xfun::write_utf8(x, f)
     tinytex::latexmk(
