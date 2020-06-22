@@ -33,11 +33,16 @@ This template demonstrates some of the basic latex you'll need to know to create
 
 ## Code formatting
 
-Don't use markdown, instead use the more precise latex commands:
+Markdown backticks syntax is reserved for the \code{} environment,
+used for inline code. 
+
+* `print("abc")` renders \code{print("abc")}
+
+For highlighting programming languages and packages,
+instead use the more precise latex commands:
 
 * \proglang{Java}
 * \pkg{plyr}
-* \code{print("abc")}
 
 # R code
 
