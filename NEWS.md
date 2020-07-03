@@ -1,7 +1,7 @@
 rticles 0.15
 ---------------------------------------------------------------------
 
-- Added missing header-includes for the Biometrics template (thanks, @haozhu233, #296)
+- Added the missing support for `header-includes` to the Biometrics template (thanks, @haozhu233, #296).
 
 rticles 0.14
 ---------------------------------------------------------------------
