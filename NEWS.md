@@ -1,6 +1,7 @@
 rticles 0.15
 ---------------------------------------------------------------------
 
+- Added article template for journal *Bioinformatics*.
 - Added the missing support for `header-includes` to the Biometrics template (thanks, @haozhu233, #296).
 
 rticles 0.14
