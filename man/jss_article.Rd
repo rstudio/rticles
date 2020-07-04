@@ -12,7 +12,9 @@ jss_article(..., keep_tex = TRUE, citation_package = "natbib")
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 
 \item{citation_package}{The LaTeX package to process citations, \code{natbib}
-or \code{biblatex}. Use \code{none} if neither package is to be used.}
+or \code{biblatex}. Use \code{default} if neither package is to be used,
+which means citations will be processed via the command
+\command{pandoc-citeproc}.}
 }
 \description{
 Format for creating a Journal of Statistical Software (JSS) articles. Adapted

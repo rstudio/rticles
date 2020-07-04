@@ -20,7 +20,9 @@ copernicus_journal_abbreviations(journal_name = "*")
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 
 \item{citation_package}{The LaTeX package to process citations, \code{natbib}
-or \code{biblatex}. Use \code{none} if neither package is to be used.}
+or \code{biblatex}. Use \code{default} if neither package is to be used,
+which means citations will be processed via the command
+\command{pandoc-citeproc}.}
 
 \item{md_extensions}{Markdown extensions to be added or removed from the
 default definition or R Markdown. See the \code{\link[rmarkdown]{rmarkdown_format}} for
