@@ -24,7 +24,7 @@ Tempore et aliquid occaecati et sed non optio. In sit et laboriosam doloremque e
 
 Dolorem dignissimos itaque saepe earum. Officia consequuntur adipisci enim. Molestiae iusto provident ullam labore consequatur ipsam perferendis.
 
-```{r}
+```{r, echo=FALSE}
 plot(cars)
 ```
 
