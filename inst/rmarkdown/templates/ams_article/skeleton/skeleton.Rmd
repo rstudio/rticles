@@ -17,6 +17,7 @@ exauthors:
 abstract: |
   Enter the text of your abstract here.  This is a sample American Meteorological Society (AMS) \LaTeX\ template.  This document provides authors with instructions on the use of the AMS \LaTeX\ template.  Authors should refer to the file amspaper.tex to review the actual \LaTeX\ code used to create this document. The template.tex file should be modified by authors for their own manuscript.
 bibliography: amstest.bib
+csl: american-meteorological-society.csl
 output: rticles::ams_article
 ---
 

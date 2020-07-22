@@ -5,6 +5,7 @@
 %% For further assistance please contact Copernicus Publications at: production@copernicus.org
 %% https://publications.copernicus.org/for_authors/manuscript_preparation.html
 
+%% copernicus_rticles_template (flag for rticles template detection - do not remove!)
 
 %% Please use the following documentclass and journal abbreviations for discussion papers and final revised papers.
 
@@ -27,12 +28,14 @@
 % Atmospheric Measurement Techniques (amt)
 % Biogeosciences (bg)
 % Climate of the Past (cp)
+% DEUQUA Special Publications (deuquasp)
 % Drinking Water Engineering and Science (dwes)
 % Earth Surface Dynamics (esurf)
 % Earth System Dynamics (esd)
 % Earth System Science Data (essd)
 % E&G Quaternary Science Journal (egqsj)
 % Fossil Record (fr)
+% Geochronology (gchron)
 % Geographica Helvetica (gh)
 % Geoscience Communication (gc)
 % Geoscientific Instrumentation, Methods and Data Systems (gi)
@@ -67,6 +70,15 @@
 %\usepackage{float}
 %\usepackage{subfig}
 %\usepackage{rotating}
+
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+$endif$
 
 % The "Technical instructions for LaTex" by Copernicus require _not_ to insert any additional packages.
 %$for(header-includes)$
@@ -104,12 +116,17 @@ $endfor$
 
 \runningauthor{$running.author$}
 
+$if(correspongdingauthors)$
+\correspondence{$correspongdingauthors$}
+$else$
+
 $for(author)$
 $if(author.corresponding)$
 \correspondence{$author.given_name$\ $author.surname$\ ($author.email$)}
 $endif$
 $endfor$
 
+$endif$
 
 
 \received{}
@@ -153,6 +170,13 @@ $if(availability.codedata)$
 \codedataavailability{$availability.codedata$} %% use this section when having data sets and software code available
 $endif$
 
+$if(availability.sample)$
+\sampleavailability{$availability.sample$} %% use this section when having geoscientific samples available
+$endif$
+
+$if(videosupplement)$
+\videosupplement{$videosupplement$} %% use this section when having geoscientific samples available
+$endif$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% optional

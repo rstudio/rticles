@@ -1,0 +1,462 @@
+\documentclass[12pt,halfline,a4paper]{ouparticle}
+
+\begin{document}
+
+\title{Sample Article for\break {Oxford University Press~Journals}}
+
+\author{%
+\name{First Author}
+\address{Institute or Organization, Department, City, State,\\
+Zip Code, Country}
+\email{e-mail address}
+\and
+\name{Second Author}
+\address{Institute or Organization, Department, City, State,\\
+Zip Code, Country}
+\email{e-mail address}}
+
+\abstract{This sample is a guideline for preparing technical papers using \LaTeX\
+for manuscript submission. It contains the documentation for your \LaTeX\
+Class file, which implements the layout for your manuscript for all Journals of OUP.
+This sample article uses a class file named \texttt{ouparticle.cls} that all authors
+need to use for their manuscript preparation. It is similar in use to the \texttt{article}
+class file of \LaTeX, but has some extra fields in the preamble and some extended commands for
+other parts of the article.}
+
+\date{\today}
+
+\keywords{word1; word2; word3; and word4}
+
+\maketitle
+
+
+\section{Introduction}
+\label{sec1}
+
+It is assumed that the author is familiar with either plain
+\TeX, \AmS-\TeX{} or a standard \LaTeX\ setup and, hence,
+only the essential points are described in this document.
+Nevertheless, we hope that this document is generally sufficient
+for describing the requirements for preparation of
+manuscripts. For more details, please see the \textit{\LaTeX{} User's Guide} or
+\textit{The not so short introduction to \LaTeXe}.
+
+
+\section{Installation}
+\label{sec2}
+
+Provided with \verb+ouparticle.cls+ are the files
+\verb+sample.tex+ (this document explains the various
+features of \verb+ouparticle.cls+) and \verb+sample.pdf+
+(how the output using \verb+sample.tex+ should be). Your
+paper can be compiled with standard \LaTeX,
+preferably with the current \LaTeXe\ version. It will probably work
+with older versions of \LaTeXe; however, this has not been
+tested. The file \verb+ouparticle.cls+ needs to be copied
+into a directory where \TeX\ looks for input files. The other files
+need to be kept as a reference while preparing
+your manuscript. Please use the predefined commands from \verb+sample.tex+ for title,
+authors, abstract, body, etc.
+
+
+\section{Preparing your manuscript}
+\label{sec3}
+
+\subsection{General guidelines}
+\label{sec3.1}
+
+\begin{enumerate}
+\item
+\LaTeX\ and \AmS-\LaTeX\ provide a rich set of commands for all common, important
+features of your paper. Use them; avoid definitions and use of custom commands.
+
+\item
+There is no need to redefine any \TeX, \LaTeX\ or \AmS-\LaTeX\ commands.
+
+\item
+Avoid direct formatting for headings cleanly set as section headings.
+
+\item
+Use \LaTeX\ commands for font changes. For example: use \verb+\textbf{phrase}+,
+not \verb+{\bf phrase}+; use \verb+\mathcal{C}+, not \verb+{\cal C}+; etc.
+\end{enumerate}
+
+
+\subsection{How to start with \texttt{ouparticle.cls}}
+\label{sec3.2}
+
+Before you type anything that actually appears in the paper, you need to
+include a \verb+\documentclass{ouparticle}+ command at the very beginning,
+and then the two commands that have to be part of any \LaTeX\ document,
+\verb+\begin{document}+ at the start and \verb+\end{document}+ at the
+end of your paper.
+
+
+\subsection{Document structure}
+\label{sec3.3}
+
+The main structure of your paper is as follows:
+
+\begin{verbatim}
+\documentclass[12pt,...]{ouparticle}
+\usepackage[...]{packages}
+
+\title{...}
+\author{
+    \name{...}
+    \address{...}
+    \email{...}
+        \and
+    \name{...}
+    \address{...}
+    \email{...}
+        \and
+    \name{...}
+    \address{...}
+    \email{...}
+}
+\abstract{...}
+\keywords{...}
+
+\maketitle
+
+\begin{document}
+
+\section{....}
+...
+\subsection{....}
+....
+\end{document}
+\end{verbatim}
+
+
+\subsection{Options}
+\label{sec3.4}
+
+By default, all of the options within \verb+article.cls+ are available
+with this class file. This class file provides the following additional options.
+
+\begin{description}
+\item \textbf{oneline:}
+This option will set your entire manuscript in one line spacing.
+It will not affect the footnote, figure and table environments.
+
+\item \textbf{halfline:}
+This is to set your entire manuscript in half line spacing.
+
+\item \textbf{endnotes:}
+To make all footnotes to endnotes. You may follow the same
+coding \verb+\footnote{text}+ for both footnotes and endnotes. Once you use this option
+you have to use the \verb+\theendnotes+ command at the place where all the endnotes
+have to be set in your paper.
+
+\item \textbf{numbib:}
+This is the default option that numbers the bibliography items;
+this option does nothing with natbib and other packages.
+
+\item \textbf{nonumbib:} For unnumbered bibliography.
+\end{description}
+
+
+\subsection{Front matter}
+\label{sec3.5}
+
+The title of the manuscript is simply specified by using the \verb+\title{text}+ command in
+the same manner as in this sample. Author's information consists of the name of the author
+and the corresponding institutions with addresses, as given in this example. Include an
+electronic mail address if available, inserting it into the \verb+\email{text}+ commands.
+You may follow the same coding if there are more than one author; separate authors with
+\verb+\and+. Please identify the corresponding author with his/her electronic
+mail address by \verb+\thanks{text}+. An abstract for your paper is specified by using
+\verb+\abstract{text}+. A \verb+\keywords{text}+ macro may also be used to indicate keywords for the
+article. Use \verb+\maketitle+ after the abstract and keywords to make the header of your article.
+
+\subsection{Sections and subsections}
+\label{sec3.6}
+
+To begin a new section, give the heading of that section in the \verb+\section{text}+ command.
+A section number is supplied automatically. Use the starred form (\verb+\section*{text}+) of the
+command to suppress the automatic numbering. If you want to be able to make reference to that section,
+then you need to \texttt{label} it (see Section \ref{sec3.14}). You can have sections up to
+five levels. The sectioning commands are \verb|\section|, \verb|\subsection|, \verb|\subsubsection|,
+\verb|\paragraph| and \verb|\subparagraph|.
+
+\subsection{Ordinary text}
+\label{sec3.7}
+
+The ends of words and sentences are marked by spaces. It does not matter how many
+spaces you type. The end of a line counts as a space. One
+or more blank lines denote the end of a paragraph.
+
+There are a number of things for which you need to follow different
+methods. As you know, quotation marks, quotes within quotes,
+dashes, ellipsis, etc. should be as per the \LaTeX\ standard input. \LaTeX\ interprets some
+common characters as commands, and therefore you must instead type those common characters as
+specific \LaTeX\ commands to generate them. Those characters are \$, \&, \%, \#, \{, and \}.
+
+\subsection{Formatting}
+\label{sec3.8}
+
+One should always use \LaTeX\ macros rather than the lower-level
+\TeX\ macros like \verb+\it+, \verb+\bf+ and \verb+\tt+. The
+\LaTeX\ macros offer much improved features. The following table summarizes the font
+selection commands in \LaTeX.
+
+
+\subsubsection*{\LaTeX\ text formatting commands}
+\begin{tabular}{ll@{\hskip60pt}ll}
+\verb+\textit+  & Italics      &\verb+\textsf+  & Sans Serif\\
+\verb+\textbf+  & Boldface     &\verb+\textsc+  & Small Caps\\
+\verb+\texttt+  & Typewriter   &\verb+\textmd+  & Medium Series\\
+\verb+\textrm+  & Roman        &\verb+\textnormal+ & Normal Series\\
+\verb+\textsl+  & Slanted      &\verb+\textup+  & Upright Series
+\end{tabular}
+
+
+\subsubsection*{\LaTeX\ math formatting commands}
+\begin{tabular}{ll@{\qquad}ll}
+\verb+\mathit+     & Math Italics            &\verb+\mathfrak+   & Fraktur\\
+\verb+\mathbf+     & Math Boldface       &\verb+\mathbb+     & Blackboard Bold\\
+\verb+\mathtt+     & Math Typewriter     &\verb+\mathnormal+ & Math Normal\\
+\verb+\mathsf+     & Math Sans Serif     &\verb+\boldsymbol+ & Bold math for Greek letters\\
+\verb+\mathcal+    & Calligraphic        &                   & and other symbols
+\end{tabular}
+
+
+\subsection{Figures and tables}
+\label{sec3.9}
+
+Use normal \LaTeX\ coding for figures and tables.
+Figure and table environments should be inserted after (not in) the paragraph in which
+the figure is first mentioned or grouped all
+together at the end of the file. They will be numbered automatically.
+The following is an example of typesetting a table.
+
+\begin{verbatim}
+\begin{table}
+\caption{Table caption text.}
+\label{key}
+The table matter goes here.
+\end{table}
+\end{verbatim}
+
+As always with \LaTeX, the \verb+\label+ must be after the
+\verb+\caption+, and inside the figure or table environment. The reference for
+figures and tables inside text can be made using the \verb|\ref{key}| command.
+
+
+\subsection{Equations}\label{sec3.10}
+
+Equations are used in the same way as described in the \LaTeX\ manual.
+Do not start a paragraph with a displayed equation. Equations are numbered consecutively, with equation numbers
+in parentheses flush right.
+ For example, if you type
+\begin{verbatim}
+\begin{equation}\label{eq1}
+\int^{r_2}_0 F(r,\varphi){\rm d}r\,{\rm d}\varphi = [\sigma r_2/(2\mu_0)]
+\int^{\infty}_0\exp(-\lambda|z_j-z_i|)\lambda^{-1}J_1 (\lambda r_2)J_0
+(\lambda r_i\,\lambda {\rm d}\lambda)
+\end{equation}
+\end{verbatim}
+then you will get the following output:
+\begin{equation}\label{eq1}
+\int^{r_2}_0 F(r,\varphi){\rm d}r\,{\rm d}\varphi = [\sigma r_2/(2\mu_0)]\int^{\infty}_0
+\exp(-\lambda|z_j-z_i|)\lambda^{-1}J_1 (\lambda r_2)J_0 (\lambda r_i\,\lambda {\rm d}\lambda)
+\end{equation}
+It inserts space both above and below the equation. \AmS-\LaTeX{} has several environments that
+make it easier to typeset complicated multiline displayed equations. These are explained in the
+\AmS-\LaTeX{} User Guide. A \verb+subequation+ environment is available to create equations with
+sub-numbering of the equation counter. It takes one (optional)
+argument to specify the way that the sub-counter should appear.
+
+
+\subsection{Displayed text}
+\label{sec3.11}
+
+Text is displayed by indenting it from the left and right margins.
+Quotations are commonly displayed. There are short
+quotations:
+\begin{quote}
+   This is a short quotation.  It consists of a
+   single paragraph of text.  See how it is formatted.
+\end{quote}
+and longer ones:
+\begin{quotation}
+   This is a longer quotation.  It consists of two
+   paragraphs of text, neither of which are
+   particularly interesting.
+
+   This is the second paragraph of the quotation.  It
+   is just as dull as the first paragraph.
+\end{quotation}
+You can even display poetry.
+\begin{verse}
+   There is an environment
+    for verse \\             % The \\ command separates lines
+   Whose features some poets % within a stanza.
+   will curse.
+
+                             % One or more blank lines separate stanzas.
+
+   For instead of making\\
+   Them do \emph{all} line breaking, \\
+   It allows them to put too many words on a line when they'd rather be
+   forced to be terse.
+\end{verse}
+
+
+\subsection{Listings}
+\label{sec3.12}
+
+Another frequently displayed structure is a list. The
+following is an example of an \emph{itemized} list.
+\begin{itemize}
+   \item This is the first item of an itemized list.
+         Each item in the list is marked with a
+         `$\bullet$'.
+
+   \item This is the second item of the list. It
+         contains another list nested inside it. The
+         inner list is an \emph{enumerated} list.
+         \begin{enumerate}
+            \item This is the first item of an enumerated
+                  list that is nested within the
+                  itemized list.
+
+            \item This is the second item of the inner list.
+                  \LaTeX\ allows you to nest lists
+                  deeper than you really should.
+         \end{enumerate}
+         This is the rest of the second item of the
+         outer list. It is no more interesting than
+         any other part of the item.
+   \item This is the third item of the list.
+\end{itemize}
+
+
+\subsection{Displayed sentences: theorems and such}
+\label{sec3.13}
+
+These environments have to be defined with the help of \LaTeX's \verb+\newtheorem+ command, and
+also with the \AmS-\LaTeX\ package for theorems that is already with your class file.
+For example, \verb+\newtheorem{thm}{Theorem}+. Predefined theorem styles can be used in your article
+to differentiate the theorem-like environments. You can have an extra command, \verb+\newproof+,
+that can be used for displayed text. The following is an example of using the above-defined
+\verb+thm+ environment.
+\begin{verbatim}
+\begin{thm}
+This is body matter for this environment.
+\end{thm}
+\end{verbatim}
+
+\subsection{Cross-referencing}
+\label{sec3.14}
+
+\LaTeX\ possesses features for labelling and cross-referencing
+section headings, equations, tables, figures and theorems.
+Their proper usage in the context of section headings, equations,
+tables and figures are discussed in the appropriate sections.
+
+Cross-referencing depends upon the use of `keys' that are defined by the user.
+The \verb+\label{key}+ command is used to identify the links. Keys are strings of
+characters that serve to label section headings, equations, tables and figures
+that replace explicit, by-hand numbering. The \verb+\ref{key}+ command is used for
+cross-referencing.
+
+Files that use cross-referencing (and almost all manuscripts do)
+need to be processed through \LaTeX\ at least twice to
+ensure that the keys have been properly linked to the appropriate numbers.
+
+\subsection{Footnotes and endnotes}
+\label{sec3.15}
+
+The footnote text can either appear at the bottom of a page or at the end of your paper.
+The \verb+\footnote+ macro \emph{should not} be used in the front matter to provide additional
+information about authors (such as corresponding addresses); instead, use \verb+\thanks{text}+ commands.
+The document option `\texttt{endnotes}' is used to make endnotes. The command \verb+\theendnotes+ should
+be used to place the endnotes at the required location in the text. They will be put in a separate
+`Notes' section.
+
+
+\subsection{Appendix}
+\label{sec3.16}
+
+The \verb+\appendix+ command signals that all following sections are
+appendices, and therefore the headings after \verb+\appendix+ will be set
+as appendix headings. For a single appendix, use \verb+\appendix*+ followed by the \verb+\section{text}+
+command to suppress the appendix letter in the section heading.
+
+
+\subsection{Special sections for notes and acknowledgements}
+\label{sec3.17}
+
+If you wish to include a `Notes' or `Acknowledgements' section in your paper,
+use the \verb+\begin{notes}...\end{notes}+ macro. We use the same environment for both
+`Notes' and `Acknowledgements'. The following examples show to how to use this macro.
+\begin{verbatim}
+\begin{notes}
+Please note that this class file is provided as it is, and
+copyright by Oxford University Press. You are free to use this
+class file, provided that you do not make changes in this class file.
+If you do make changes, you are requested to rename the class file.
+\end{notes}
+
+\begin{notes}[Acknowledgements]
+The authors would like to thank...
+\end{notes}
+
+\end{verbatim}
+
+
+\subsection{References}
+\label{sec3.18}
+
+The reference entries can be \LaTeX\ typed bibliographies or generated through a BIB\TeX\ database.
+BIB\TeX\ is an adjunct to \LaTeX\ that aids in the preparation of bibliographies. BIB\TeX\
+allows authors to build up a database or collection of bibliography entries that may be used for many
+manuscripts. They also save us the trouble of having to specify formatting. More details can be found
+in the \textit{BIB\TeX\ Guide}. For \LaTeX\ reference entries use the
+\verb+\begin{thebibliography}....\end{thebibliography}+ environment (see below) to make references in your paper.
+We have provided the class file option to distinguish two styles of references. Those options are \verb+numbib+ and \verb+nonumbib+.
+You can select one of these options with the \verb+\documentclass+ command. By default the class file will take the
+\verb+numbib+ option. The following is an example of \LaTeX\ bibliography.
+
+\begin{verbatim}
+\begin{thebibliography}{0}
+\bibitem{bib1}
+Goossens, M., F. Mittelbach, and A. Samarin: {\em The {\LaTeX} Companion}.
+Addison-Wesley, Reading, MA, USA, 1994.
+\bibitem{bib2}
+Knuth, D.E: {\em The {\TeX}book}. Addison-Wesley, Reading, MA, USA, 1984.
+\bibitem{bib3}
+Lamport, L.: {\em {\LaTeX} -- A Document Preparation System -- User's
+Guide and Reference Manual}. Addison-Wesley, Reading, MA, USA, 1985.
+\bibitem{bib4}
+Smith, I.N., R.S. Johnes, and W.P. Hines: 1992, `Title of the Article',
+\textit{Journal Title in Italics} \textbf{Vol. no. X}, pp. 00--00
+\end{thebibliography}
+\end{verbatim}
+
+
+\section{Macro packages}
+\label{sec4}
+
+The following packages are compulsorily needed by the class file:
+\begin{verbatim}
+amsmath         graphicx
+amssymb         endnotes
+amsfonts        setspace
+verbatim        geometry
+\end{verbatim}
+
+The commonly used packages already used by this class file that authors can use whenever required are:
+\begin{verbatim}
+xspace          latexsym        url
+amscd           multicol        algorithm
+rotating        array           subfigure
+\end{verbatim}
+
+Additionally, you can use other packages and these should be loaded
+using the \verb+\usepackage+ command.
+
+\end{document}

@@ -4,10 +4,10 @@
 %% This file is copyright by SPi Technologies Ltd. All rights reserved.
 %%
 %% Author:       SPi, LaTeX Development Team, Chennai (India)
-%% Created On: 
+%% Created On:
 %% Last Modified By:
 %% Last Modified On:
-%% Description:  Class file to support authoring template in LaTeX typesetting 
+%% Description:  Class file to support authoring template in LaTeX typesetting
 %%               for Wiley Journals
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -27,8 +27,8 @@
 \newif\if@hyperrefon  \@hyperrefonfalse%
 \newif\ifbibunnumbered\global\bibunnumberedtrue%
 \newif\ifproof\global\prooffalse%
-\newif\ifEqnSpan\global\EqnSpantrue% 
-\newif\if@dblspace\global\@dblspacefalse% 
+\newif\ifEqnSpan\global\EqnSpantrue%
+\newif\if@dblspace\global\@dblspacefalse%
 
 \newif\if@font@stix\global\@font@stixfalse%
 \newif\if@large@design\global\@large@designtrue%
@@ -40,6 +40,7 @@
 \newif\if@AMArefstyle\global\@AMArefstylefalse%
 \newif\if@Vancouverrefstyle\global\@Vancouverrefstylefalse%
 \newif\if@Chemistryrefstyle\global\@Chemistryrefstylefalse%
+\newif\if@Harvardstyle\global\@Harvardstylefalse%
 
 \newif\if@STIXLargeOneCol\global\@STIXLargeOneColfalse%
 \newif\if@STIXSmall\global\@STIXSmallfalse%
@@ -65,6 +66,8 @@
 \DeclareOption{AMA}{\global\@AMArefstyletrue}
 \DeclareOption{VANCOUVER}{\global\@Vancouverrefstyletrue}
 
+\DeclareOption{HARVARD}{\global\@Harvardstyletrue}
+
 \DeclareOption{doublespace}{\global\@dblspacetrue}
 
 \DeclareOption{draftrules}{\global\@draftrulesontrue}
@@ -74,6 +77,10 @@
 \DeclareOption{number}{\xdef\@biboptions{numbers}}
 \DeclareOption{numbers}{\xdef\@biboptions{numbers}}
 \DeclareOption{EqnSpan}{\global\EqnSpantrue}%%
+
+\DeclareRobustCommand{\foo}[1]{%
+  R\number\numexpr#1-1\relax% Print R<counter-1>
+}
 
 \DeclareOption{proof}{%
 \global\prooftrue%
@@ -237,8 +244,8 @@
 \ProcessOptions
 \LoadClass[twoside,fleqn,onecolumn]{article}%
 
-%\usepackage{etex}%
-%\reserveinserts{28}% included etex package and \reserveinserts{...} to avoid no room for \newinserts, \newcounts or \newskips etc.
+\usepackage{etex}%
+\reserveinserts{28}% included etex package and \reserveinserts{...} to avoid no room for \newinserts, \newcounts or \newskips etc.
 \RequirePackage{graphicx,multicol}%
 \RequirePackage{multirow}%
 \RequirePackage{cuted}%
@@ -253,7 +260,7 @@
 \rotfloatpagestyle{headings}%modified from plain to headings to get header and footer for sidewaystable%
 \RequirePackage{dblfloatfix}%
 \RequirePackage[figuresright]{rotating}%
-\RequirePackage{longtable}%
+%\RequirePackage{longtable}%
 %%\RequirePackage{threeparttable}%
 \RequirePackage{ulem}%
 \RequirePackage{enumerate}%
@@ -477,7 +484,7 @@ false setoverprint}}
 %% include array.sty again in Wileyarticle.cls anywhere;     %%
 %% ========================================================= %%
 \RequirePackage{varwidth}%
-\RequirePackage{dcolumn}% 
+\RequirePackage{dcolumn}%
 %
 %% Fonts Used
 %
@@ -525,11 +532,11 @@ false setoverprint}}
 
 %\RequirePackage[not1,notextcomp,lcgreekalpha]{stix}%
 
-\captionsetup[figure]{labelformat=simple, labelsep=none, skip=10pt, labelfont=bf}
-\captionsetup[table]{labelformat=simple, labelsep=none, skip=10pt, labelfont=bf}
-\renewcommand{\thefigure}{\arabic{figure}\enspace }
+\captionsetup[figure]{labelformat=simple, labelsep=space, skip=10pt, labelfont=bf}
+\captionsetup[table]{labelformat=simple, labelsep=space, skip=10pt, labelfont=bf}
+\renewcommand{\thefigure}{\arabic{figure}}
 
-\renewcommand{\thetable}{\arabic{table}\enspace }
+\renewcommand{\thetable}{\arabic{table}}
 
 \renewcommand\figurename{\textbf{FIGURE}}%%
 \renewcommand\tablename{\textbf{TABLE}} %%
@@ -965,7 +972,6 @@ false setoverprint}}
 %
 %%\renewcommand\thefootnote{\@fnsymbol\c@footnote}%
 
-
 %
 
 
@@ -1067,8 +1073,8 @@ false setoverprint}}
 \setlength\dblfloatsep{24\p@ \@plus 2.875\p@ \@minus 1.4375\p@}%
 \setlength\dbltextfloatsep{24\p@ \@plus 2.875\p@ \@minus 1.4375\p@}%
 
-\hyphenation{Figure Figures Table Tables Equation Equations Section Sections Appendix Theorem Lemma Proposition Corollary}% 
-\hyphenation{Claim Conjecture Property Remark Problem Example Definition Algorithm Assumption Axiom Case Hypotheses Note Proof}% 
+\hyphenation{Figure Figures Table Tables Equation Equations Section Sections Appendix Theorem Lemma Proposition Corollary}%
+\hyphenation{Claim Conjecture Property Remark Problem Example Definition Algorithm Assumption Axiom Case Hypotheses Note Proof}%
 
 %%% miscellaneous macros %%%
 \def\zz#1{\vphantom{#1}}%
@@ -1411,9 +1417,9 @@ false setoverprint}}
 %
 \gdef\@stix@font@defn{%
   %
-  \def\infoboxfont{\fontfamily{tim}\fontsize{8}{8}\selectfont}%
+%  \def\infoboxfont{\fontfamily{tim}\fontsize{8}{8}\selectfont}%
   %
-  \def\watermarkfont{\reset@font\fontfamily{\ffdefault}\fontsize{45}{45}\bfseries\selectfont}
+%  \def\watermarkfont{\reset@font\fontfamily{\ffdefault}\fontsize{45}{45}\bfseries\selectfont}
   %
   \def\pagenumfont{\rmfamily\fontsize{7}{9}\bfseries\selectfont}%
   \def\cnmpagenumfont{\rmfamily\fontsize{7}{9}\selectfont\bfseries}%
@@ -1426,7 +1432,7 @@ false setoverprint}}
   \def\pubheadfont{\reset@font\rmfamily\fontsize{7}{9}\fontseries{b}\selectfont}%
   \def\arttypefont{\rmfamily\fontsize{9}{9}\fontseries{b}\selectfont}%
   \def\SParttypefont{\rmfamily\fontsize{9}{12}\fontseries{b}\selectfont}%
-  \def\titlefont{\rmfamily\fontsize{18}{23}\bfseries\selectfont\leftskip\z@\rightskip\z@ plus1fil\let\mathbcal\titmathbcal}%
+  \def\titlefont{\rmfamily\fontsize{18}{23}\bfseries\selectfont\leftskip\z@\rightskip\z@ plus1fil}%
   \def\subtitlefont{\rmfamily\fontsize{16}{21}\bfseries\selectfont\leftskip\z@\rightskip\z@ plus1fil}%
   \def\Authorfont{\rmfamily\fontsize{12}{18}\selectfont\leftskip\z@\rightskip\z@ plus1fil}%
   \def\absheadfont{\hsize\abs@colii@hsize\rmfamily\fontsize{10}{10}\fontseries{b}\selectfont\bfseries\leftskip7\p@\rightskip\leftskip}% LN20FEB2016
@@ -1481,9 +1487,9 @@ false setoverprint}}
 }%
 \gdef\@lato@font@defn{%
   %
-  \def\infoboxfont{\fontfamily{tim}\fontsize{8}{8}\selectfont}%
+%  \def\infoboxfont{\fontfamily{tim}\fontsize{8}{8}\selectfont}%
   %
-  \def\watermarkfont{\reset@font\fontfamily{\ffdefault}\fontsize{45}{45}\bfseries\selectfont}
+%  \def\watermarkfont{\reset@font\fontfamily{\ffdefault}\fontsize{45}{45}\bfseries\selectfont}
   %
   \def\pagenumfont{\rmfamily\fontsize{7}{9}\bfseries\selectfont}%
   \def\cnmpagenumfont{\rmfamily\fontsize{7}{9}\selectfont\bfseries}%
@@ -1577,7 +1583,7 @@ false setoverprint}}
 \fi%
 %
 \def\listfont{\reset@font\fontfamily{\rmdefault}\normalsize}%
-\def\tablistfont{\tablebodyfont}% 
+\def\tablistfont{\tablebodyfont}%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% article front matter elements %%
@@ -1589,14 +1595,14 @@ false setoverprint}}
 \@pubname\par%
 \@jname\par%
 Volume\ \@jvol, Article ID\ \@artid, \thepage~pages\par%
-%%\if@hyperrefon\urlstyle{same}\burlalt{https://doi.org/\@doi}{https://doi.org/\@doi}\else{https://doi.org/\@doi}\fi% this line is not required in the output
+%%\if@hyperrefon\urlstyle{same}\burlalt{http://dx.doi.org/\@doi}{http://dx.doi.org/\@doi}\else{http://dx.doi.org/\@doi}\fi% this line is not required in the output
 }}
 
 \def\nullartoprunningheaders{\vbox{\OPRHfont\raggedright%
 \phantom{\@pubname}\par%
 \phantom{\@jname}\par%
 \phantom{Volume\ \@jvol, Article ID\ \@artid, \thepage pages}\par%
-%%\if@hyperrefon\urlstyle{same}\burlalt{https://doi.org/\@doi}{https://doi.org/\@doi}\else{https://doi.org/\@doi}\fi%
+%%\if@hyperrefon\urlstyle{same}\burlalt{http://dx.doi.org/\@doi}{http://dx.doi.org/\@doi}\else{http://dx.doi.org/\@doi}\fi%
 }}
 
 %% article category %%
@@ -1712,7 +1718,7 @@ Volume\ \@jvol, Article ID\ \@artid, \thepage~pages\par%
         {\expandafter\protected@xdef\csname Xname@\@@affmark\endcsname%
              {\csname Xname@\@@affmark\endcsname,\ \filtername#2\@nil}}%
      \unskip\sep\ifnum\addcount=1\else\affnum\fi\let\sep=,}}}\unhbox\authmarkbox}\fi%
-    \gdef\authorsep{\enspace|\enspace}%%% 
+    \gdef\authorsep{\enspace|\enspace}%%%
     \global\let\sep\@empty\global\let\@corref\@empty%
 }}%
 
@@ -1775,10 +1781,10 @@ Volume\ \@jvol, Article ID\ \@artid, \thepage~pages\par%
 \def\presentaddress#1{\gdef\@presentaddress{\hsize=\textwidth\corresfont\baselineskip11pt\textbf{Present Address}\par #1}}%
 
 %
-\def\received#1{\gdef\@received{Received #1;}}\gdef\@received{}%
-\def\revised#1{\gdef\@revised{Revised #1;}}\gdef\@revised{}%
-\def\accepted#1{\gdef\@accepted{Accepted #1}}\gdef\@accepted{}%
-\def\published#1{\gdef\@published{Published #1}}\gdef\@published{}%
+\def\received#1{\gdef\@received{Received #1;}}\gdef\@received{Added at production}%
+\def\revised#1{\gdef\@revised{Revised #1;}}\gdef\@revised{Added at production}%
+\def\accepted#1{\gdef\@accepted{Accepted #1}}\gdef\@accepted{Added at production}%
+\def\published#1{\gdef\@published{Published #1}}\gdef\@published{Added at production}%
    \def\xmlreceived{\gdef\@received{\ifnum\artActypcnt=1\relax Received:\ref{MSSreceiveddate}\ReceivedMONTH\nobreakspace{}\kern.5pt\ReceivedYEAR,\else Received:\ref{MSSreceiveddate}\nobreakspace{}\kern.5pt\ReceivedDATE\nobreakspace{}\kern.5pt\ReceivedMONTH\nobreakspace{}\kern.5pt\ReceivedYEAR\fi}}\gdef\@received{}%
    \def\xmlrevised{\gdef\@revised{Revised:\ref{MSSrevised}\nobreakspace{}\kern.5pt\RevisedDATE\nobreakspace{}\kern.5pt\RevisedMONTH\nobreakspace{}\kern.5pt\RevisedYEAR}}\gdef\@revised{}%
    \def\xmlaccepted{\gdef\@accepted{\ifnum\artActypcnt=1\relax in final form\ref{ACCdate}\AccMONTH\nobreakspace{}\kern.5pt\AccYEAR\else Accepted:\ref{ACCdate}\nobreakspace{}\kern.5pt\AccDATE\nobreakspace{}\kern.5pt\AccMONTH\nobreakspace{}\kern.5pt\AccYEAR\fi}}\gdef\@accepted{}%
@@ -1799,15 +1805,15 @@ Volume\ \@jvol, Article ID\ \@artid, \thepage~pages\par%
 \def\headfootrule#1{\gdef\@headfootrule{#1}}\headfootrule{{\rule{\textwidth}{.5\p@}}}%
 
 \def\historykern#1{\gdef\history@kern{#1}}\historykern{\nobreakspace{}\kern.5pt}
-\def\@dummy@received{\textcolor{red}{Received:\history@kern{}00\history@kern{}Month\history@kern{}0000}}%
-\def\@dummy@revised{\textcolor{red}{Revised:\history@kern{}00\history@kern{}Month\history@kern{}0000}}%
-\def\@dummy@accepted{\textcolor{red}{Accepted:\history@kern{}00\history@kern{}Month\history@kern{}0000}}%
-\def\@dummy@pubdate{\textcolor{red}{Published\history@kern{}on:\history@kern{}00\history@kern{}Month\history@kern{}0000}}%
+\def\@dummy@received{\textcolor{red}{Received:\history@kern{}\history@kern{}Added at production}}%
+\def\@dummy@revised{\textcolor{red}{Revised:\history@kern{}\history@kern{}Added at production}}%
+\def\@dummy@accepted{\textcolor{red}{Accepted:\history@kern{}\history@kern{}Added at production}}%
+\def\@dummy@pubdate{\textcolor{red}{Published\history@kern{}on:\history@kern{}\history@kern{}Added at production}}%
 \def\historydates#1{\gdef\@history@dates{#1}}%
 \historydates{{\titlepageheadfont%
-  \ifx\@received\@empty\@dummy@received\else\@received\fi\historydatesvertbar%
-  \ifx\@revised\@empty\@dummy@revised\else\@revised\fi\historydatesvertbar%
-  \ifx\@accepted\@empty\@dummy@accepted\else\@accepted\fi%\historydatesvertbar%
+  \ifx\@received\@empty\@dummy@received\else\@dummy@received\fi\historydatesvertbar%
+  \ifx\@revised\@empty\@dummy@revised\else\@dummy@revised\fi\historydatesvertbar%
+  \ifx\@accepted\@empty\@dummy@accepted\else\@dummy@accepted\fi%\historydatesvertbar%
 %  \ifx\@pubdate\@empty\@dummy@pubdate\else\@pubdate\fi%
 }}%
 %
@@ -2320,9 +2326,9 @@ Volume\ \@jvol, Article ID\ \@artid, \thepage~pages\par%
 
 \def\keywords#1{\def\@keywords{{\keywordsheadfont\textbf{KEYWORDS:}\par\removelastskip\nointerlineskip\vskip6pt \keywordsfont#1\par}}}\def\@keywords{}%
 
-\def\@fnsymbol#1{\ifcase#1\or \dagger\or \ddagger\or
+\def\@fnsymbol#1{\ensuremath{\ifcase#1\or \dagger\or \ddagger\or
    \S\or \P\or \#\or \|\or **\or \dagger\dagger
-   \or \ddagger\ddagger\or \S\S\or \P\P\or \#\#\or \|\|\else\@ctrerr\fi\relax}
+   \or \ddagger\ddagger\or \S\S\or \P\P\or \#\#\or \|\|\else\@ctrerr\fi\relax}}
 
 \renewcommand{\maketitle}{\par%
   \@afterindentfalse%
@@ -2623,7 +2629,7 @@ Volume\ \@jvol, Article ID\ \@artid, \thepage~pages\par%
 %% Regular pagestyle %%
 %
 
-\def\@authormark{}% 
+\def\@authormark{}%
 \def\authormark#1{%
 \markboth{{{#1}}}{{{#1}}}\gdef\@authormark{\def\etal{\textit{ET AL.}}\let\AQ\AHAQ#1}\gdef\@authormarkforcite{\undefined\def\etal{\textit{et al.}}#1}}%
 \def\etal{\textit{et al.}}%
@@ -2661,7 +2667,7 @@ Volume\ \@jvol, Article ID\ \@artid, \thepage~pages\par%
 
 %% Macros for Section headings %%
 
-\setcounter{secnumdepth}{3}% 
+\setcounter{secnumdepth}{3}%
 %
 
 \newif\if@FTSection%
@@ -2682,13 +2688,13 @@ Volume\ \@jvol, Article ID\ \@artid, \thepage~pages\par%
    \IfFileExists{NJDnatbib.sty}{\usepackage[numbers,super,sort&compress]{NJDnatbib}}{\usepackage[numbers,super,sort&compress]{natbib}}%
    \bibliographystyle{WileyNJD-VANCOUVER}%
    \bibpunct{}{}{, }{s}{}{}%
-\renewcommand\@biblabel[1]{#1.} 
+\renewcommand\@biblabel[1]{#1.}
 %   \renewcommand{\bibfont}{\reset@font\fontfamily{\rmdefault}\fontsize{8bp}{10}\selectfont\baselineskip=10\p@}%
 \else%
 \if@AMArefstyle%
    \IfFileExists{NJDnatbib.sty}{\usepackage[numbers,super]{NJDnatbib}}{\usepackage[numbers,super]{natbib}}%
    \bibliographystyle{WileyNJD-AMA}%
-\renewcommand\@biblabel[1]{#1.} 
+\renewcommand\@biblabel[1]{#1.}
 %   \bibpunct{(}{)}{,}{n}{}{}%
 %   \renewcommand{\bibfont}{\reset@font\fontfamily{\rmdefault}\fontsize{8bp}{10}\selectfont\baselineskip=10\p@}%
 \else%
@@ -2704,6 +2710,13 @@ Volume\ \@jvol, Article ID\ \@artid, \thepage~pages\par%
    \bibliographystyle{WileyNJD-AMS}%
    \bibpunct{(}{)}{,}{}{}{}%
 \setcitestyle{numbers,square}
+ %  \renewcommand{\bibfont}{\reset@font\fontfamily{\rmdefault}\fontsize{8bp}{10}\selectfont\baselineskip=10\p@}%
+\else%
+\if@Harvardstyle%
+   \usepackage[authoryear]{natbib}%
+   \bibliographystyle{WileyNJD-Harvard}%
+   \bibpunct{(}{)}{,}{}{}{}%
+%\setcitestyle{numbers,square}
  %  \renewcommand{\bibfont}{\reset@font\fontfamily{\rmdefault}\fontsize{8bp}{10}\selectfont\baselineskip=10\p@}%
 \else%
 \if@APArefstyle
@@ -2738,7 +2751,7 @@ Volume\ \@jvol, Article ID\ \@artid, \thepage~pages\par%
        \unskip, {#4}%      pages
      \fi}
    %%
-\fi\fi\fi\fi\fi%
+\fi\fi\fi\fi\fi\fi%
 
 
 %
@@ -2800,7 +2813,7 @@ Volume\ \@jvol, Article ID\ \@artid, \thepage~pages\par%
 \RequirePackage{booktabs}%
 
 %%%%table notes%%%%
-\newenvironment{tablenotes}{\list{}{\setlength{\labelsep}{0pt}% 
+\newenvironment{tablenotes}{\list{}{\setlength{\labelsep}{0pt}%
 \setlength{\labelwidth}{0pt}%
 \setlength{\leftmargin}{0pt}%
 \setlength{\rightmargin}{0pt}%
@@ -2827,11 +2840,11 @@ Volume\ \@jvol, Article ID\ \@artid, \thepage~pages\par%
 
 %% Macros for Quote %%
 
-\renewenvironment{quote}{\list{}{\setlength{\labelsep}{0pt}% 
+\renewenvironment{quote}{\list{}{\setlength{\labelsep}{0pt}%
 \setlength{\labelwidth}{0pt}%
 \setlength{\leftmargin}{\parindentvalue}%
 \setlength{\rightmargin}{\parindentvalue}%
-\setlength{\topsep}{12.5pt \@plus2pt \@minus1pt}% 
+\setlength{\topsep}{12.5pt \@plus2pt \@minus1pt}%
 \setlength{\itemsep}{0pt}%
 \setlength{\partopsep}{0pt}%
 \setlength{\listparindent}{0em}%
@@ -2938,7 +2951,7 @@ Volume\ \@jvol, Article ID\ \@artid, \thepage~pages\par%
   {.} % Punctuation after theorem head
   {5\p@} % Space after theorem head
   {\thmname{#1}\thmnumber{ #2}\thmnote{. #3}} % Theorem head spec (can be left empty, meaning `normal')
-  
+
 \newtheoremstyle{WBstylethree}
   {6\p@} % Space above
   {6\p@} % Space below
@@ -3246,8 +3259,8 @@ Volume\ \@jvol, Article ID\ \@artid, \thepage~pages\par%
         \csname the##1\endcsname\quad}
     \fi
   \fi%
-  \renewcommand\thefigure{\@Alph\c@section\arabic{figure}\enspace }%
-  \renewcommand\thetable{\@Alph\c@section\arabic{table}\enspace }%
+  \renewcommand\thefigure{\@Alph\c@section\arabic{figure}}%
+  \renewcommand\thetable{\@Alph\c@section\arabic{table}}%
   \renewcommand\theequation{\@Alph\c@section\arabic{equation}}%
 }{%
   \@ppsaveapp\@pprestoresec}
@@ -3454,5 +3467,3 @@ Volume\ \@jvol, Article ID\ \@artid, \thepage~pages\par%
 
 
 \endinput
-
-

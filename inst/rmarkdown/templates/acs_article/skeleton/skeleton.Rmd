@@ -31,6 +31,7 @@ abstract: |
   This is an abstract for the \textsf{achemso} document class demonstration document.  An abstract is only allowed for certain manuscript types.  The selection of \texttt{journal} and \texttt{manuscript} will determine if an abstract is valid.  If not, the class will issue an appropriate error.This is the abstract.
 
 bibliography: acstest.bib
+csl: american-chemical-society.csl
 output: rticles::acs_article
 ---
 

@@ -335,7 +335,7 @@ $if(natbib)$
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $endif$
 $if(biblatex)$
-\usepackage[backend=bibtex,citestyle=ieee,style=numeric]{biblatex}
+\usepackage[backend=bibtex,citestyle=ieee,style=numeric$if(citation_sorting)$,sorting=$citation_sorting$$endif$]{biblatex}
 $if(bibliography)$
 $for(bibliography)$
 \addbibresource{$bibliography$}
@@ -394,6 +394,15 @@ $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
 
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+$endif$
+
 % Pandoc header
 $for(header-includes)$
 $header-includes$
@@ -427,6 +436,20 @@ $if(affiliation)$
 %% ---- classic IEEETrans wide authors' list ----------------
 $if(affiliation.wide)$
 \IEEEauthorblockN{
+$if(affiliation.author)$
+$for(affiliation.author)$
+$affiliation.author.name$\IEEEauthorrefmark{$affiliation.author.mark$}$sep$,
+$endfor$
+$else$
+$if(affiliation.author_multiline)$
+$for(affiliation.author_multiline)$
+$for(affiliation.author_multiline.line)$
+$affiliation.author_multiline.line.name$\IEEEauthorrefmark{$affiliation.author_multiline.line.mark$}
+$sep$,
+$endfor$
+$sep$}\IEEEauthorblockN{
+$endfor$
+$else$
 $for(affiliation.institution)$ %% -- beg for/affiliation.institution
 $for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
 $affiliation.institution.author.name$\IEEEauthorrefmark{$affiliation.institution.mark$}
@@ -434,6 +457,8 @@ $sep$,
 $endfor$ %% -- end for/affiliation.institution.author
 $sep$,
 $endfor$ %% -- end for/affiliation.institution
+$endif$
+$endif$
 }
 
 $for(affiliation.institution)$ %% -- beg for/affiliation.institution
@@ -461,10 +486,10 @@ $for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.aut
 $affiliation.institution.author.name$$sep$,
 $endfor$ %% -- end for/affiliation.institution.author
 }
-\IEEEauthorblockA{$affiliation.institution.name$\\
-$if(affiliation.institution.department)$
+\IEEEauthorblockA{$if(affiliation.institution.department)$
 $affiliation.institution.department$\\
 $endif$
+$affiliation.institution.name$\\
 $affiliation.institution.location$
 $if(affiliation.institution.email)$
 \\$affiliation.institution.email$
@@ -557,7 +582,12 @@ $endif$
 $abstract$
 \end{abstract}
 
-% no keywords
+% keywords
+$if(keywords)$
+\begin{IEEEkeywords}
+$for(keywords)$$keywords$$sep$; $endfor$
+\end{IEEEkeywords}
+$endif$
 
 % use for special paper notices
 

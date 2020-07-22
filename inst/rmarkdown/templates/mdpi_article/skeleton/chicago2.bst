@@ -155,6 +155,7 @@ ENTRY
     chapter
     edition
     editor
+    doi
     howpublished
     institution
     journal
@@ -1008,6 +1009,22 @@ FUNCTION {output.bibitem}
   before.all 'output.state :=
 }
 
+%% For printing DOI numbers (it is a hyperlink but printed in black)
+FUNCTION {format.doi}
+{ doi empty$
+  { ""  }
+  {"\href{https://doi.org/" doi * "}" * }
+  if$
+}
+
+FUNCTION {formatfull.doi}
+{ doi empty$
+  { ""  }
+  {"doi:{\changeurlcolor{black}\href{https://doi.org/" doi * "}{\detokenize{" * doi * "}}}" * }
+  if$
+}
+
+
 FUNCTION {article}
 { output.bibitem
   format.authors
@@ -1027,6 +1044,7 @@ FUNCTION {article}
   if$
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -1061,6 +1079,7 @@ FUNCTION {book}
   if$
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -1077,6 +1096,7 @@ FUNCTION {booklet}
   address output
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -1115,6 +1135,7 @@ FUNCTION {inbook}
   if$
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -1146,6 +1167,7 @@ FUNCTION {incollection}
   if$
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -1176,6 +1198,7 @@ FUNCTION {inproceedings}
   if$
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -1205,6 +1228,7 @@ FUNCTION {manual}
 %  organization output
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -1223,6 +1247,7 @@ FUNCTION {mastersthesis}
   address output
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -1237,6 +1262,7 @@ FUNCTION {misc}
   howpublished output
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -1255,6 +1281,7 @@ FUNCTION {phdthesis}
   address output
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -1279,6 +1306,7 @@ FUNCTION {proceedings}
   publisher output.colon
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 
@@ -1298,6 +1326,7 @@ FUNCTION {techreport}
   address output
   new.block
   note output
+  formatfull.doi output
   fin.entry
 }
 

@@ -14,20 +14,7 @@ jss_article(..., keep_tex = TRUE, citation_package = "natbib")
 \item{citation_package}{The LaTeX package to process citations, \code{natbib}
 or \code{biblatex}. Use \code{none} if neither package is to be used.}
 }
-\value{
-R Markdown output format to pass to
-  \code{\link[rmarkdown:render]{render}}
-}
 \description{
 Format for creating a Journal of Statistical Software (JSS) articles. Adapted
-from
-\href{http://www.jstatsoft.org/about/submissions}{http://www.jstatsoft.org/about/submissions}.
-}
-\examples{
-
-\dontrun{
-library(rmarkdown)
-draft("MyArticle.Rmd", template = "jss_article", package = "rticles")
-}
-
+from \url{http://www.jstatsoft.org/about/submissions}.
 }

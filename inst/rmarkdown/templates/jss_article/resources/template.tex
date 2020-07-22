@@ -1,4 +1,9 @@
-\documentclass[$if(documentclass)$$documentclass$$else$article$endif$$if(classoption)$,$classoption$$endif$]{jss}
+\documentclass[
+$for(classoption)$
+  $classoption$$sep$,
+$endfor$
+]{$documentclass$}
+
 \usepackage[utf8]{inputenc}
 
 \providecommand{\tightlist}{%
@@ -47,6 +52,15 @@ $for(author)$
   $endif$
 $endfor$
 }
+
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+$endif$
 
 % Pandoc header
 $for(header-includes)$

@@ -3,21 +3,16 @@
 #' Format for creating submissions to Copernicus journals.
 #'
 #' @inheritParams rmarkdown::pdf_document
-#' @param ... Additional arguments to \code{base_format}
-#' @param base_format The function to use for the base format of the article.
-#'   By default, this is \code{rmarkdown::pdf_document}, but to use bookdown's
-#'   cross-referencing feature, this can be set to \code{bookdown::pdf_document2}
+#' @param ... Additional arguments to \code{rmarkdown::pdf_document()}.
 #' @param journal_name A regular expression to filter the by the journal name, see \code{pattern} in \code{\link[base]{grep}}; defaults to \code{*}.
 #'
-#' @return R Markdown output format to pass to
-#'   \code{\link[rmarkdown:render]{render}}
-#'
+#' @return An R Markdown output format.
 #' @details This was adapted from
-#' \href{https://publications.copernicus.org/for_authors/manuscript_preparation.html}{https://publications.copernicus.org/for_authors/manuscript_preparation.html}.
+#' \url{https://publications.copernicus.org/for_authors/manuscript_preparation.html}.
 #'
 #' An number of required and optional manuscript sections, e.g. \code{acknowledgements}, \code{competinginterests}, or \code{authorcontribution}, must be declared using the respective properties of the R Markdown header - see skeleton file.
 #'
-#' \strong{Version:} Based on copernicus_package.zip in the version 5.0, 21 March 2018, using \code{copernicus.cls} in version 8.67, 30 January 2018
+#' \strong{Version:} Based on copernicus_package.zip in the version 5.3, 18 February 2019, using \code{copernicus.cls} in version 8.82.
 #'
 #' \strong{Copernicus journal abbreviations:} You can use the function \code{copernicus_journal_abbreviations()} to get the journal abbreviation for all journals supported by the copernicus article template.
 #'
@@ -51,30 +46,21 @@
 #' draft("MyArticle.Rmd", template = "copernicus_article", package = "rticles")
 #' render("MyArticle/MyArticle.Rmd")
 #' }
-#'
 #' @export
-copernicus_article <- function(...,
-                         keep_tex         = TRUE,
-                         citation_package = "natbib",
-                         base_format = rmarkdown::pdf_document,
-                         md_extensions = c(
-                           "-autolink_bare_uris", # disables automatic links, needed for plain email in \correspondence
-                           "-auto_identifiers"    # disables \hypertarget commands
-                           )) {
-  if (is.character(base_format)) {
-    FMT <- eval(parse(text = base_format))
-  } else {
-    FMT <- match.fun(base_format)
-  }
-  FMT(...,
-      citation_package = citation_package,
-      keep_tex = keep_tex,
-      md_extensions = md_extensions,
-      template = find_resource("copernicus_article", "template.tex"))
+copernicus_article <- function(
+  ..., keep_tex = TRUE, citation_package = "natbib", md_extensions = c(
+    "-autolink_bare_uris", # disables automatic links, needed for plain email in \correspondence
+    "-auto_identifiers"    # disables \hypertarget commands
+  )
+) {
+  pdf_document_format(
+    "copernicus_article", citation_package = citation_package,
+    keep_tex = keep_tex, md_extensions = md_extensions, ...
+  )
 }
 
 # quick dev shortcut for Ubuntu: click "Install and restart" then run:
-# unlink("MyArticle/", recursive = TRUE); draft("MyArticle.Rmd", template = "copernicus_article", package = "rticles", edit = FALSE); render("MyArticle/MyArticle.Rmd"); system(paste0("gnome-open ", here::here("MyArticle", "MyArticle.pdf")))
+# unlink("MyArticle/", recursive = TRUE); rmarkdown::draft("MyArticle.Rmd", template = "copernicus_article", package = "rticles", edit = FALSE); rmarkdown::render("MyArticle/MyArticle.Rmd"); system(paste0("gnome-open ", here::here("MyArticle", "MyArticle.pdf")))
 
 copernicus_journals <- list(
   "Advances in Geosciences" = "adgeo",
@@ -88,12 +74,14 @@ copernicus_journals <- list(
   "Atmospheric Measurement Techniques" = "amt",
   "Biogeosciences" = "bg",
   "Climate of the Past" = "cp",
+  "DEUQUA Special Publications" = "deuquasp",
   "Drinking Water Engineering and Science" = "dwes",
   "Earth Surface Dynamics" = "esurf",
   "Earth System Dynamics" = "esd",
   "Earth System Science Data" = "essd",
   "E&G Quaternary Science Journal" = "egqsj",
   "Fossil Record" = "fr",
+  "Geochronology" = "gchron",
   "Geographica Helvetica" = "gh",
   "Geoscience Communication" = "gc",
   "Geoscientific Instrumentation, Methods and Data Systems" = "gi",
@@ -119,6 +107,7 @@ copernicus_journals <- list(
 #' @rdname copernicus_article
 #' @export
 copernicus_journal_abbreviations <- function(journal_name = "*") {
-  journal <- copernicus_journals[grepl(pattern = journal_name, x = names(copernicus_journals), ignore.case = TRUE)]
-  return(unlist(journal))
+  unlist(copernicus_journals[grep(
+    journal_name, names(copernicus_journals), ignore.case = TRUE
+  )])
 }
