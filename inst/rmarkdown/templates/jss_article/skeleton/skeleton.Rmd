@@ -33,11 +33,12 @@ This template demonstrates some of the basic latex you'll need to know to create
 
 ## Code formatting
 
-Don't use markdown, instead use the more precise latex commands:
+In general, don't use Markdown, but use the more precise LaTeX commands instead:
 
 * \proglang{Java}
 * \pkg{plyr}
-* \code{print("abc")}
+
+One exception is inline code, which can be written inside a pair of backticks (i.e., using the Markdown syntax).
 
 # R code
 

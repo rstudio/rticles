@@ -1,0 +1,4 @@
+name: arXiv Preprint
+description: >
+ Template for arXiv preprints
+create_dir: true

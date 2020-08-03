@@ -62,6 +62,10 @@ $endif$
 \author{$for(author)$ $author.name$ \email{$author.email$} \\ $author.affiliation$ $sep$ \and
 		$endfor$
 	   }
+	   
+$for(header-includes)$
+$header-includes$
+$endfor$
 
 \begin{document}
 
