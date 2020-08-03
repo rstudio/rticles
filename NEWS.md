@@ -1,6 +1,8 @@
 rticles 0.15
 ---------------------------------------------------------------------
 
+- Update Copernicus Publications template to version 5.8 (thanks, @nuest, #274).
+
 - Fixed issue with multi-line authors on JSS template when using `\AND`, which was firstly implemented in b740b19b90cd6f7afe2cd7d66456c9efa0bb4cdf (thanks, @aldomann, #292).
 
 - Added the missing support for `header-includes` to the Biometrics template (thanks, @haozhu233, #296).
