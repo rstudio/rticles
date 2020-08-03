@@ -104,6 +104,17 @@ asa_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
   )
 }
 
+#' @section \code{arxiv_article}: Adapted from the George Kour's format for
+#'   arXiv and bio-arXiv preprints. So far as I'm aware, entirely
+#'   unofficial but still a staple.
+#' @export
+#' @rdname article
+arxiv_article <- function(..., keep_tex = TRUE) {
+  pdf_document_format(
+    "arxiv_article", keep_tex = keep_tex, ...
+  )
+}
+
 #' @section \code{biometrics_article}: This format was adapted from the
 #'   Biometrics journal.
 #' @export
@@ -175,11 +186,11 @@ mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
 #' @export
 #' @rdname article
 oup_article <- function(
-  ..., citation_package = 'natbib', keep_tex = TRUE,
+  ..., keep_tex = TRUE,
   md_extensions = c("-autolink_bare_uris")
 ) {
   pdf_document_format(
-    "oup_article", citation_package = citation_package,
+    "oup_article",
     keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
 }
