@@ -29,7 +29,7 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [AMS](https://www.ametsoc.org/) articles
 
-- [arXiv](https://arxiv.org/) pre-prints (George Kour's template)
+- [arXiv](https://arxiv.org/) pre-prints based on George Kour's template (contributed by @alexpghayes via #236)
 
 - [Biometrics](http://www.biometrics.tibs.org/) articles
 
