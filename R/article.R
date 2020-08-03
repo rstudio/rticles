@@ -186,11 +186,11 @@ mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
 #' @export
 #' @rdname article
 oup_article <- function(
-  ..., citation_package = 'natbib', keep_tex = TRUE,
+  ..., keep_tex = TRUE,
   md_extensions = c("-autolink_bare_uris")
 ) {
   pdf_document_format(
-    "oup_article", citation_package = citation_package,
+    "oup_article",
     keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
 }
