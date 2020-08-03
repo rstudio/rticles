@@ -76,7 +76,6 @@ mnras_article(..., keep_tex = TRUE, fig_caption = TRUE)
 
 oup_article(
   ...,
-  citation_package = "natbib",
   keep_tex = TRUE,
   md_extensions = c("-autolink_bare_uris")
 )
