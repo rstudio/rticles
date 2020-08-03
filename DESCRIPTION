@@ -1,7 +1,7 @@
 Package: rticles
 Type: Package
 Title: Article Formats for R Markdown
-Version: 0.8.1
+Version: 0.14.1
 Authors@R: c(
   person("JJ", "Allaire", role = "aut", email = "jj@rstudio.com"),
   person("Yihui", "Xie", role = c("aut", "cre"), email = "xie@yihui.name", comment = c(ORCID = "0000-0003-0645-5666")),
@@ -34,15 +34,21 @@ Authors@R: c(
   person("Petter", "Uvesten", role = c("aut", "cph"), email = "petter.uvesten.7362@student.lu.se"),
   person("Elio", "Campitelli", role = c("aut", "cph"), email = "elio.campitelli@cima.fcen.uba.ar", comment = c(ORCID = "0000-0002-7742-9230")),
   person("John", "Muschelli", role = c("aut", "cph"), email = "muschellij2@gmail.com", comment = c(ORCID = "0000-0001-6469-1750")),
-  person("Alex", "Hayes", role = "aut", email = "alexpghayes@gmail.com", comment = c(ORCID = "0000-0002-4985-5160"))
+  person("Alex", "Hayes", role = "aut", email = "alexpghayes@gmail.com", comment = c(ORCID = "0000-0002-4985-5160")),
+  person("Zhian N.", "Kamvar", role = c("aut", "cph"), email = "zkamvar@gmail.com", comment = c(ORCID = "0000-0003-1458-7108")),
+  person("Noam", "Ross", role = c("aut", "cph"), email = "noam.ross@gmail.com", comment = c(ORCID = "0000-0002-2136-0000")),
+  person("Robrecht", "Cannoodt", role = c("aut", "cph"), email = "rcannood@gmail.com", comment = c(ORCID = "0000-0003-3641-729X", github = "rcannood")),
+  person("Duncan", "Luguern", role = c("aut"), email = "duncan.luguern@gmail.com"),
+  person("David M.", "Kaplan", role = c("aut", "ctb"), email = "dmkaplan2000@gmail.com", comment = c(ORCID = "0000-0001-6087-359X", github = "dmkaplan2000")),
+  person("Alfredo", "Hernández", role = c("ctb"), email = "aldomann.designs@gmail.com", comment = c(ORCID = "0000-0002-2660-4545"))
   )
 Description: A suite of custom R Markdown formats and templates for
   authoring journal articles and conference submissions.
 License: GPL-3
-Imports: utils, rmarkdown, knitr, yaml, tinytex, xfun
+Imports: utils, rmarkdown, knitr, yaml, tinytex (>= 0.19), xfun
 SystemRequirements: GNU make
 URL: https://github.com/rstudio/rticles
 BugReports: https://github.com/rstudio/rticles/issues
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 Suggests: testit, bookdown, xtable
 Encoding: UTF-8

@@ -4,15 +4,28 @@ author:
   - name: Alice Anonymous
     email: alice@example.com
     affiliation: Some Institute of Technology
-    footnote: Corresponding Author
+    footnote: 1
   - name: Bob Security
     email: bob@example.com
     affiliation: Another University
+  - name: Cat Memes
+    email: cat@example.com
+    affiliation: Another University
+    footnote: 2
+  - name: Derek Zoolander
+    email: derek@example.com
+    affiliation: Some Institute of Technology
+    footnote: 2
 address:
   - code: Some Institute of Technology
     address: Department, Street, City, State, Zip
   - code: Another University
     address: Department, Street, City, State, Zip
+footnote:
+  - code: 1
+    text: "Corresponding Author"
+  - code: 2
+    text: "Equal contribution"
 abstract: |
   This is the abstract.
 

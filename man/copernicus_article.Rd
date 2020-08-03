@@ -5,8 +5,12 @@
 \alias{copernicus_journal_abbreviations}
 \title{Copernicus journals format.}
 \usage{
-copernicus_article(..., keep_tex = TRUE, citation_package = "natbib",
-  md_extensions = c("-autolink_bare_uris", "-auto_identifiers"))
+copernicus_article(
+  ...,
+  keep_tex = TRUE,
+  citation_package = "natbib",
+  md_extensions = c("-autolink_bare_uris", "-auto_identifiers")
+)
 
 copernicus_journal_abbreviations(journal_name = "*")
 }
@@ -19,7 +23,7 @@ copernicus_journal_abbreviations(journal_name = "*")
 or \code{biblatex}. Use \code{none} if neither package is to be used.}
 
 \item{md_extensions}{Markdown extensions to be added or removed from the
-default definition or R Markdown. See the \code{\link{rmarkdown_format}} for
+default definition or R Markdown. See the \code{\link[rmarkdown]{rmarkdown_format}} for
 additional details.}
 
 \item{journal_name}{A regular expression to filter the by the journal name, see \code{pattern} in \code{\link[base]{grep}}; defaults to \code{*}.}

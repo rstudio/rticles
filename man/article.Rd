@@ -15,6 +15,7 @@
 \alias{frontiers_article}
 \alias{mdpi_article}
 \alias{mnras_article}
+\alias{oup_article}
 \alias{peerj_article}
 \alias{plos_article}
 \alias{pnas_article}
@@ -26,21 +27,32 @@
 \usage{
 acm_article(...)
 
-acs_article(..., keep_tex = TRUE,
-  md_extensions = c("-autolink_bare_uris"), fig_caption = TRUE)
+acs_article(
+  ...,
+  keep_tex = TRUE,
+  md_extensions = c("-autolink_bare_uris"),
+  fig_caption = TRUE
+)
 
-aea_article(..., keep_tex = TRUE,
-  md_extensions = c("-autolink_bare_uris"))
+aea_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
-agu_article(..., keep_tex = TRUE, citation_package = "natbib",
-  highlight = NULL, md_extensions = c("-autolink_bare_uris",
-  "-auto_identifiers"))
+agu_article(
+  ...,
+  keep_tex = TRUE,
+  citation_package = "natbib",
+  highlight = NULL,
+  md_extensions = c("-autolink_bare_uris", "-auto_identifiers")
+)
 
-amq_article(..., latex_engine = "xelatex", keep_tex = TRUE,
-  fig_caption = TRUE, md_extensions = c("-autolink_bare_uris"))
+amq_article(
+  ...,
+  latex_engine = "xelatex",
+  keep_tex = TRUE,
+  fig_caption = TRUE,
+  md_extensions = c("-autolink_bare_uris")
+)
 
-ams_article(..., keep_tex = TRUE,
-  md_extensions = c("-autolink_bare_uris"))
+ams_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
 asa_article(..., keep_tex = TRUE, citation_package = "natbib")
 
@@ -50,8 +62,11 @@ biometrics_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 ctex(..., latex_engine = "xelatex")
 
-elsevier_article(..., keep_tex = TRUE,
-  md_extensions = c("-autolink_bare_uris"))
+elsevier_article(
+  ...,
+  keep_tex = TRUE,
+  md_extensions = c("-autolink_bare_uris")
+)
 
 frontiers_article(..., keep_tex = TRUE)
 
@@ -59,10 +74,16 @@ mdpi_article(..., keep_tex = TRUE)
 
 mnras_article(..., keep_tex = TRUE, fig_caption = TRUE)
 
+oup_article(
+  ...,
+  citation_package = "natbib",
+  keep_tex = TRUE,
+  md_extensions = c("-autolink_bare_uris")
+)
+
 peerj_article(..., keep_tex = TRUE)
 
-plos_article(..., keep_tex = TRUE,
-  md_extensions = c("-autolink_bare_uris"))
+plos_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
 pnas_article(..., keep_tex = TRUE)
 
@@ -171,6 +192,13 @@ custom Pandoc LaTeX template and different default values for other arguments
   \url{https://www.ras.org.uk/news-and-press/2641-new-version-of-the-mnras-latex-package}.
 }
 
+\section{\code{oup_article}}{
+ Format for creating submissions to many Oxford University Press
+  journals. Adapted from
+  \url{https://academic.oup.com/journals/pages/authors/preparing_your_manuscript}
+  and \url{https://academic.oup.com/icesjms/pages/General_Instructions}.
+}
+
 \section{\code{peerj_article}}{
  Format for creating submissions to The PeerJ
   Journal. This was adapted from the
@@ -202,7 +230,7 @@ Possible arguments for the YAML header are:
   \item \code{corrauth} corresponding author name and address
   \item \code{email} correspondence email
   \item \code{abstract} abstract, limited to 200 words
-  \item \code{keywords} keywords for the artucle
+  \item \code{keywords} keywords for the article
   \item \code{bibliography} BibTeX \code{.bib} file name
   \item \code{classoption} options of the \code{sagej} class
  \item \code{header-includes}: custom additions to the header, before the \code{\\begin\{document\}} statement
@@ -239,7 +267,7 @@ Possible arguments for the YAML header are:
 
 \section{\code{tf_article}}{
  Format for creating submissions to a Taylor & Francis journal. Adapted from
-\url{http://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
+\url{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
 }
 
 \examples{

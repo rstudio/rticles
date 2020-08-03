@@ -24,7 +24,22 @@ $endif$
 \usepackage{longtable}
 
 
+% Pandoc syntax highlighting
+% See https://github.com/rstudio/rticles/issues/182
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
 
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+$endif$
+
+% Pandoc Header
 $for(header-includes)$
 $header-includes$
 $endfor$

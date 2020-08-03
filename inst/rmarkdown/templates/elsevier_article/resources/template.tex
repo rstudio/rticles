@@ -135,6 +135,16 @@ $if(numbersections)$
 $else$
 \setcounter{secnumdepth}{0}
 $endif$
+
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+$endif$
+
 % Pandoc header
 $for(header-includes)$
 $header-includes$
@@ -147,12 +157,14 @@ $preamble$
 
   \title{$title$}
   $for(author)$
-  \author[$author.affiliation$]{$author.name$$if(author.footnote)$\corref{c1}$endif$}
+  \author[$author.affiliation$]{$author.name$$if(author.footnote)$\corref{$author.footnote$}$endif$}
   $if(author.email)$ \ead{$author.email$} $endif$
-  $if(author.footnote)$ \cortext[c1]{$author.footnote$}$endif$
   $endfor$
   $for(address)$
   \address[$address.code$]{$address.address$}
+  $endfor$
+  $for(footnote)$
+  \cortext[$footnote.code$]{$footnote.text$}
   $endfor$
 
   \begin{abstract}

@@ -28,22 +28,24 @@ keywords:
     
 MSC:
 - MSC code 1
-- MSC code 2    
+- MSC code 2
 
 abstract: |
   The text of your abstract.  150 -- 250 words.
 
 bibliography: bibliography.bib
+bibstyle: spphys
+# bibstyle options spbasic(default), spphys, spmpsci
 output: rticles::springer_article
 ---
 
 # Introduction {#intro}
 
-Your text comes here. Separate text sections with
+Your text comes here. Separate text sections with \cite{Mislevy06Cog}.
 
 # Section title {#sec:1}
 
-Text with citations by @Galyardt14mmm, [@Mislevy06Cog].
+Text with citations by \cite{Galyardt14mmm}.
 
 ## Subsection title {#sec:2}
 
@@ -59,7 +61,3 @@ a^2+b^2=c^2
 \end{align}
 
 
-
-
-
-# References

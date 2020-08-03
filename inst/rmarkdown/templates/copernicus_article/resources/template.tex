@@ -5,6 +5,7 @@
 %% For further assistance please contact Copernicus Publications at: production@copernicus.org
 %% https://publications.copernicus.org/for_authors/manuscript_preparation.html
 
+%% copernicus_rticles_template (flag for rticles template detection - do not remove!)
 
 %% Please use the following documentclass and journal abbreviations for discussion papers and final revised papers.
 
@@ -69,6 +70,15 @@
 %\usepackage{float}
 %\usepackage{subfig}
 %\usepackage{rotating}
+
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+$endif$
 
 % The "Technical instructions for LaTex" by Copernicus require _not_ to insert any additional packages.
 %$for(header-includes)$

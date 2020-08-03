@@ -179,6 +179,22 @@ mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
   )
 }
 
+#' @section \code{oup_article}: Format for creating submissions to many Oxford University Press
+#'   journals. Adapted from
+#'   \url{https://academic.oup.com/journals/pages/authors/preparing_your_manuscript}
+#'   and \url{https://academic.oup.com/icesjms/pages/General_Instructions}.
+#' @export
+#' @rdname article
+oup_article <- function(
+  ..., citation_package = 'natbib', keep_tex = TRUE,
+  md_extensions = c("-autolink_bare_uris")
+) {
+  pdf_document_format(
+    "oup_article", citation_package = citation_package,
+    keep_tex = keep_tex, md_extensions = md_extensions, ...
+  )
+}
+
 #' @section \code{peerj_article}: Format for creating submissions to The PeerJ
 #'   Journal. This was adapted from the
 #'   \href{https://www.overleaf.com/latex/templates/latex-template-for-peerj-journal-and-pre-print-submissions/ptdwfrqxqzbn}{PeerJ
@@ -222,7 +238,7 @@ pnas_article <- function(..., keep_tex = TRUE) {
 #'   \item \code{corrauth} corresponding author name and address
 #'   \item \code{email} correspondence email
 #'   \item \code{abstract} abstract, limited to 200 words
-#'   \item \code{keywords} keywords for the artucle
+#'   \item \code{keywords} keywords for the article
 #'   \item \code{bibliography} BibTeX \code{.bib} file name
 #'   \item \code{classoption} options of the \code{sagej} class
 #'  \item \code{header-includes}: custom additions to the header, before the \code{\\begin\{document\}} statement
@@ -274,7 +290,7 @@ springer_article <- function(..., keep_tex = TRUE, citation_package = 'none'){
 }
 
 #' @section \code{tf_article}: Format for creating submissions to a Taylor & Francis journal. Adapted from
-#' \url{http://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
+#' \url{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
 #' @export
 #' @rdname article
 tf_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {

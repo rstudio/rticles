@@ -15,27 +15,23 @@ author:
     email:  author2@work
 abstract: >
   An abstract of less than 150 words.
-output:
-  rticles::rjournal_article:
-    includes:
-      in_header: preamble.tex
+preamble: |
+  % Any extra LaTeX you need in the preamble
+output: rticles::rjournal_article
 ---
 
 ## Introduction
 
 Introductory section which may include references in parentheses
-\citep{R}, or cite a reference such as \citet{R} in the text.
+[@R], or cite a reference such as @R in the text.
 
 ## Section title in sentence case
 
-This section may contain a figure such as Figure \ref{figure:rlogo}.
+This section may contain a figure such as Figure \ref{fig:Rlogo}.
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics{Rlogo}
-  \caption{The logo of R.}
-  \label{figure:rlogo}
-\end{figure}
+```{r, Rlogo, echo=FALSE, fig.cap='The logo of R.', out.width='2in', fig.align='center', fig.pos='htbp'}
+knitr::include_graphics('Rlogo.pdf')
+```
 
 ## Another section
 
@@ -49,4 +45,5 @@ x
 ## Summary
 
 This file is only a basic article template. For full details of _The R Journal_ style and information on how to prepare your article for submission, see the [Instructions for Authors](https://journal.r-project.org/share/author-guide.pdf).
+
 \bibliography{RJreferences}

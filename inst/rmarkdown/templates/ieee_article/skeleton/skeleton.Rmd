@@ -6,6 +6,33 @@ affiliation:
   institution-columnar: true  ## one column per institution (multiple autors eventually)
   # wide: true                  ## one column wide author/affiliation fields
 
+  #author:   ## A custom author ordering field that breaks institution grouping.
+  #  - name: Eldon Tyrell
+  #    mark: 4
+  #    email: eldon@starfleet-academy.star
+  #  - name: Michael Shell
+  #    mark: 1
+  #  - name: Roy Batty
+  #    mark: 4
+  #    email: roy@replicant.offworld
+  ## Authors cited in institution field are ignored when author field exists
+
+  #author_multiline: ## Put authors in a given order, with multiline possibility. Authors cited in institution are ignored if exists
+  #  - line:         ## Create a new author line
+  #    - name: Michael Shell
+  #      mark: 1
+  #    - name: Homer Simpson
+  #      mark: 2
+  #      email: homer@thesimsons.com
+  #    - name: Roy Batty
+  #      mark: 4
+  #      email: roy@replicant.offworld
+  #  - line:         ## Create a second author line
+  #    - name: Montgomery Scott
+  #      mark: 3
+  #    - name: Eldon Tyrell
+  #      mark: 4
+
   institution:
     - name: Georgia Institute of Technology
       department: School of Electrical and Computer Engineering
@@ -41,6 +68,7 @@ abstract: |
 
 bibliography: mybibfile.bib
 output: rticles::ieee_article
+#citation_sorting: none   ## used as sorting option of the biblatex package (if selected)
 ---
 
 Introduction

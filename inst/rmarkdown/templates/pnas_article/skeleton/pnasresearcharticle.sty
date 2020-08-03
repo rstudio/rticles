@@ -1,7 +1,7 @@
 %%% PNAS two column research article  style file
 %%% For use with pnas-new.cls
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{pnasresearcharticle}[2016/02/28 v1.2 PNAS two column research article style]
+\ProvidesPackage{pnasresearcharticle}[2018/05/06 v1.3 PNAS two column research article style]
 
 %% Set whether the abstract is set into the first column
 \setboolean{shortarticle}{true} 
@@ -35,16 +35,6 @@
 \vskip5pt%
 \@ifundefined{@correspondingauthor}{}{\@correspondingauthor}
 \end{sigstatement}}
-}
-
-%% Break at end of article (before references)
-% The blank line before the strip command ensures there is nothing placed
-% directly before the break (which can cause formatting issues).
-\newcommand{\pnasbreak}{
-
-\begin{strip}
-\vskip-11pt
-\end{strip}
 }
 
 \endinput
