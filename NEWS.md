@@ -5,6 +5,8 @@ rticles 0.15
 
 - Added the missing support for `header-includes` to the Biometrics template (thanks, @haozhu233, #296).
 
+- Added support for George Kour's arXiv preprint format (thanks, @alexpghayes, #236).
+
 rticles 0.14
 ---------------------------------------------------------------------
 
@@ -55,7 +57,7 @@ rticles 0.9
 
 - Update Copernicus Publications template to version 5.3 (@nuest, #228).
 
-- Use csl file for citations in output format `elsevier_article()` (@nuest, #233)
+- Use csl file for citations in output format `elsevier_article()` (@nuest, #233).
 
 rticles 0.8
 ---------------------------------------------------------------------
