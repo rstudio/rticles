@@ -1,8 +1,9 @@
 rticles 0.15
 ---------------------------------------------------------------------
 
-- Fixed issue with multi-line authors on JSS template when using `\AND` (firstly implemented in https://github.com/rstudio/rticles/commit/b740b19b90cd6f7afe2cd7d66456c9efa0bb4cdf).
+- Fixed issue with multi-line authors on JSS template when using `\AND`, which was firstly implemented in b740b19b90cd6f7afe2cd7d66456c9efa0bb4cdf (thanks, @aldomann, #292).
 
+- Added the missing support for `header-includes` to the Biometrics template (thanks, @haozhu233, #296).
 
 rticles 0.14
 ---------------------------------------------------------------------

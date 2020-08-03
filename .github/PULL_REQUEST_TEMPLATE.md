@@ -10,7 +10,7 @@ To contribute a new article template to this package, please make sure you have 
 
 - [ ] Add a description of the template `inst/rmarkdown/templates/journalname_article/template.yaml`.
 
-- [ ] Please include the document class file (`*.cls`) if needed, but please do not include standard LaTeX packages (`*.sty`) that can be downloaded from CTAN. Please keep the number of new files absolutely minimal, and also make examples minimal (e.g., if you need a `.bib` example, try to only leave one or two bibliography entries in it, and don't include one hundred items in it without using all of them).
+- [ ] Please include the document class file (`*.cls`) if needed, but please do not include standard LaTeX packages (`*.sty`) that can be downloaded from CTAN. If you are using TinyTeX or TeX Live, you can verify if a package is available on CTAN via `tinytex::parse_packages(files = "FILENAME"")` (e.g., when `FILENAME` is `plain.bst`, it should return `"bibtex"`, which means this file is from a standard CTAN package). Please keep the number of new files absolutely minimal (e.g., do not include PDF output files), and also make examples minimal (e.g., if you need a `.bib` example, try to only leave one or two bibliography entries in it, and don't include too many items in it without using all of them).
 
 - [ ] Update Rd and namespace (could be done by `devtools::document()`).
 

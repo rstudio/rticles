@@ -45,7 +45,7 @@ jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
   }
   hook_input <- function(x, options) {
     if (options$prompt && length(x)) {
-      x <- gsub("\\n", paste0("\n", "R+ "), x)
+      x <- gsub("\\n", paste0("\n", "+ "), x)
       x <- paste0("R> ", x)
     }
     paste0(c('\n\\begin{CodeInput}', x, '\\end{CodeInput}', ''),
