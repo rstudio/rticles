@@ -43,9 +43,9 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [Elsevier](https://www.elsevier.com) journal submissions
 
-- [IEEE Transaction](http://www.ieee.org/publications_standards/publications/authors/author_templates.html) journal submissions
 - [Frontiers](https://www.frontiersin.org/) articles (contributed by @zkamvar)
 
+- [IEEE Transaction](http://www.ieee.org/publications_standards/publications/authors/author_templates.html) journal submissions (contributed by @Emaasit, @coatless, @espinielli, @nathanweeks , @DunLug)
 
 - [JOSS: Journal of Open Source Software](http://joss.theoj.org/) and [JOSE: Journal of Open Source Education](https://jose.theoj.org/) articles (contributed by @noamross via #229)
 
