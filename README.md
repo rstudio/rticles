@@ -27,7 +27,7 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [AGU](https://sites.agu.org/) journal submissions (contributed by @eliocamp via #199)
 
-- [AMS](https://www.ametsoc.org/) articles
+- [AMS](https://www.ametsoc.org/) articles (contributed by @yufree)
 
 - [arXiv](https://arxiv.org/) pre-prints based on George Kour's template (contributed by @alexpghayes via #236)
 
