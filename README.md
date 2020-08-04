@@ -53,6 +53,8 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [PeerJ](https://peerj.com) articles (contributed by @zkamvar)
 
+- [PLOS](http://journals.plos.org) journal submissions (contributed by @sjmgarnier)
+
 - [Royal Society Open Science](http://rsos.royalsocietypublishing.org/) journal submissions
 
 - [Sage](https://uk.sagepub.com/en-gb/eur/manuscript-submission-guidelines) journal submissions
