@@ -13,6 +13,8 @@ rticles 0.15
 
 - Update to OUP format to use `pandoc-citeproc` by default for citations (thanks, @dmkaplan2000, #289).
 
+- Added OpenMind template (@mikabr)
+
 rticles 0.14
 ---------------------------------------------------------------------
 

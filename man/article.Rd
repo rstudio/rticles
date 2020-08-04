@@ -15,6 +15,7 @@
 \alias{frontiers_article}
 \alias{mdpi_article}
 \alias{mnras_article}
+\alias{opmi_article}
 \alias{oup_article}
 \alias{peerj_article}
 \alias{plos_article}
@@ -74,11 +75,9 @@ mdpi_article(..., keep_tex = TRUE)
 
 mnras_article(..., keep_tex = TRUE, fig_caption = TRUE)
 
-oup_article(
-  ...,
-  keep_tex = TRUE,
-  md_extensions = c("-autolink_bare_uris")
-)
+opmi_article(..., keep_tex = TRUE)
+
+oup_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
 peerj_article(..., keep_tex = TRUE)
 
@@ -189,6 +188,11 @@ custom Pandoc LaTeX template and different default values for other arguments
  Format for creating an Monthly Notices of
   Royal Astronomical Society (MNRAS) Journal articles. Adapted from
   \url{https://www.ras.org.uk/news-and-press/2641-new-version-of-the-mnras-latex-package}.
+}
+
+\section{\code{opmi_article}}{
+ Format for creating Open Mind articles. Adapted from
+  \url{https://www.mitpressjournals.org/journals/opmi/sub}.
 }
 
 \section{\code{oup_article}}{

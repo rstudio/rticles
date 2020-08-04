@@ -55,6 +55,8 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [MNRAS: Monthly Notices of the Royal Astronomical Society](https://academic.oup.com/mnras) articles (contributed by @oleskiewicz via #175) - `mnras_article()`
 
+- [Open Mind](https://www.mitpressjournals.org/loi/opmi) articles (contributed by @mikabr) - `opmi_article()`
+
 - [OUP: Oxford University Press](https://academic.oup.com/journals/pages/authors/preparing_your_manuscript) articles (contributed by @dmkaplan2000 via #271, #284) - `oup_article()`
 
 - [PeerJ: Journal of Life and Environmental Sciences](https://peerj.com) articles (contributed by @zkamvar) - `peerj_article()`
