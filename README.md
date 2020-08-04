@@ -51,7 +51,7 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [OUP](https://academic.oup.com/journals/pages/authors/preparing_your_manuscript) articles (contributed by @dmkaplan2000 via #271, #284)
 
-- [PeerJ](https://peerj.com) articles
+- [PeerJ](https://peerj.com) articles (contributed by @zkamvar)
 
 - [Royal Society Open Science](http://rsos.royalsocietypublishing.org/) journal submissions
 
