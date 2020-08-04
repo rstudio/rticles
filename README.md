@@ -49,7 +49,7 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [Monthly Notices of the Royal Astronomical Society (MNRAS)](https://academic.oup.com/mnras) articles (contributed by @oleskiewicz via #175)
 
-- [OUP](https://academic.oup.com/journals/pages/authors/preparing_your_manuscript) articles
+- [OUP](https://academic.oup.com/journals/pages/authors/preparing_your_manuscript) articles (contributed by @dmkaplan2000 via #271, #284)
 
 - [PeerJ](https://peerj.com) articles
 
