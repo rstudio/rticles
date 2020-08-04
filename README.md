@@ -41,9 +41,9 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [IEEE Transaction](http://www.ieee.org/publications_standards/publications/authors/author_templates.html) journal submissions
 
-- [JOSE](https://jose.theoj.org/) articles
+- [JOSE](https://jose.theoj.org/) articles (contributed by @noamross via #229)
 
-- [JOSS](http://joss.theoj.org/) articles
+- [JOSS](http://joss.theoj.org/) articles (contributed by @noamross via #229)
 
 - [JSS](http://www.jstatsoft.org/) articles
 
