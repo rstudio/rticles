@@ -70,7 +70,7 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [Springer](https://www.springer.com/gp/livingreviews/latex-templates) journal submissions (contributed by @strakaps via #164)
 
-- [Statistics in Medicine](http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm) journal submissions (contributed by @ellessenne via #231)
+- [Statistics in Medicine](https://onlinelibrary.wiley.com/journal/10970258) journal submissions (contributed by @ellessenne via #231)
 
 - [Taylor & Francis](https://www.tandfonline.com/) articles (contributed by @dleutnant via #218)
 
