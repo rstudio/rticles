@@ -19,7 +19,7 @@ remotes::install_github("rstudio/rticles")
 
 The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown.rstudio.com) LaTeX formats and templates for various formats, including:
 
-- [ACM : Association for Computing Machinery](https://www.acm.org/publications/about-publications) articles - `acm_article()`
+- [ACM: Association for Computing Machinery](https://www.acm.org/publications/about-publications) articles - `acm_article()`
 
 - [ACS](http://pubs.acs.org/) articles (contributed by @yufree) - `acs_article()`
 
