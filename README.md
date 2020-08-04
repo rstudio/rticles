@@ -63,7 +63,7 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [Springer](https://www.springer.com/gp/livingreviews/latex-templates) journal submissions
 
-- [Statistics in Medicine](http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm) journal submissions
+- [Statistics in Medicine](http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm) journal submissions (contributed by @ellessenne via #231)
 
 - [Copernicus Publications](https://publications.copernicus.org) journal submissions
 
