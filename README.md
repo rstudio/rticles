@@ -45,7 +45,7 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [JSS](http://www.jstatsoft.org/) articles
 
-- [MDPI](http://www.mdpi.com) journal submissions
+- [MDPI](http://www.mdpi.com) journal submissions (contributed by @dleutnant via #147)
 
 - [Monthly Notices of the Royal Astronomical Society](https://academic.oup.com/mnras) articles
 
