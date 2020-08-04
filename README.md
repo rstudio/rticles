@@ -42,6 +42,7 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 - [Elsevier](https://www.elsevier.com) journal submissions
 
 - [IEEE Transaction](http://www.ieee.org/publications_standards/publications/authors/author_templates.html) journal submissions
+- [Frontiers](https://www.frontiersin.org/) articles (contributed by @zkamvar)
 
 - [JOSS](http://joss.theoj.org/) and [JOSE](https://jose.theoj.org/) articles (contributed by @noamross via #229)
 
@@ -70,8 +71,6 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 - [Taylor & Francis](https://www.tandfonline.com/) articles (contributed by @dleutnant via #218)
 
 - [The R Journal](https://journal.r-project.org/) articles
-
-- [Frontiers](https://www.frontiersin.org/) articles
 
 Under the hood, LaTeX templates are used to ensure that documents conform precisely to submission standards. At the same time, composition and formatting can be done using lightweight [markdown](https://rmarkdown.rstudio.com/authoring_basics.html) syntax, and R code and its output can be seamlessly included using [knitr](https://yihui.name/knitr/).
 
