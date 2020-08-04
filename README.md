@@ -33,7 +33,7 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [Biometrics](http://www.biometrics.tibs.org/) articles (contributed by @daltonhance via #170)
 
-- [Bulletin de l'AMQ](https://www.amq.math.ca/bulletin/) journal submissions
+- [Bulletin de l'AMQ](https://www.amq.math.ca/bulletin/) journal submissions (contributed by @desautm via #145)
 
 - [CTeX](https://ctan.org/pkg/ctex) documents
 
