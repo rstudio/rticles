@@ -23,7 +23,7 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [ACS](http://pubs.acs.org/) articles
 
-- [AEA](https://www.aeaweb.org/journals/policies/templates) journal submissions
+- [AEA](https://www.aeaweb.org/journals/policies/templates) journal submissions (contributed by @sboysel)
 
 - [AGU](https://sites.agu.org/) journal submissions
 
