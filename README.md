@@ -47,7 +47,7 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [MDPI](http://www.mdpi.com) journal submissions (contributed by @dleutnant via #147)
 
-- [Monthly Notices of the Royal Astronomical Society](https://academic.oup.com/mnras) articles
+- [Monthly Notices of the Royal Astronomical Society (MNRAS)](https://academic.oup.com/mnras) articles (contributed by @oleskiewicz via #175)
 
 - [NNRAS](https://www.ras.org.uk/news-and-press/2641-new-version-of-the-mnras-latex-package) journal submissions
 
