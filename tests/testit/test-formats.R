@@ -25,6 +25,10 @@ test_format <- function(name, os_skip = NULL) {
   })
 }
 
+#--- NOTE to contributors ------------------------------------------------------
+# Please order these tests by formats alphabetically.
+#-------------------------------------------------------------------------------
+
 test_format("acm_article")
 test_format("acs_article")
 test_format("aea_article")
