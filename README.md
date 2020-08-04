@@ -19,57 +19,63 @@ remotes::install_github("rstudio/rticles")
 
 The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown.rstudio.com) LaTeX formats and templates for various formats, including:
 
-- [ACM](http://www.acm.org/) articles
+- [ACM: Association for Computing Machinery](https://www.acm.org/publications/about-publications) articles - `acm_article()`
 
-- [ACS](http://pubs.acs.org/) articles
+- [ACS](http://pubs.acs.org/) articles (contributed by @yufree) - `acs_article()`
 
-- [AEA](https://www.aeaweb.org/journals/policies/templates) journal submissions
+- [AEA: American Economic Association](https://www.aeaweb.org/journals/policies/templates) journal submissions (contributed by @sboysel) - `aea_articles()`
 
-- [AGU](https://sites.agu.org/) journal submissions
+- [AGU](https://agupubs.onlinelibrary.wiley.com/) journal submissions (contributed by @eliocamp via #199) - `agu_article()`
 
-- [AMS](https://www.ametsoc.org/) articles
+- [AMS: American Meteorological Society](https://www.ametsoc.org/) articles (contributed by @yufree) - `ams_article()`
 
-- [arXiv](https://arxiv.org/) pre-prints based on George Kour's template (contributed by @alexpghayes via #236)
+- [ASA: American Statistical Association](https://www.amstat.org/) journal submissions - `asa_article()`
 
-- [Biometrics](http://www.biometrics.tibs.org/) articles
+- [arXiv](https://arxiv.org/) pre-prints based on George Kour's template (contributed by @alexpghayes via #236) - `arxiv_article()`
 
-- [Bulletin de l'AMQ](https://www.amq.math.ca/bulletin/) journal submissions
+- [Biometrics](http://www.biometrics.tibs.org/) articles (contributed by @daltonhance via #170) - `biometrics_article()`
 
-- [CTeX](https://ctan.org/pkg/ctex) documents
+- [Bulletin de l'AMQ](https://www.amq.math.ca/bulletin/) journal submissions (contributed by @desautm via #145) - `amq_article()`
 
-- [Elsevier](https://www.elsevier.com) journal submissions
+- [Copernicus Publications](https://publications.copernicus.org) journal submissions (contributed by @nuest via #172) - `copernicus_article()`
 
-- [IEEE Transaction](http://www.ieee.org/publications_standards/publications/authors/author_templates.html) journal submissions
+- [CTeX](https://ctan.org/pkg/ctex) documents - `ctex()`
 
-- [JSS](http://www.jstatsoft.org/) articles
+- [Elsevier](https://www.elsevier.com) journal submissions - `elsevier_article()`
 
-- [JOSS](http://joss.theoj.org/) and [JOSE](https://jose.theoj.org/) articles
+- [Frontiers](https://www.frontiersin.org/) articles (contributed by @zkamvar) - `frontiers_article()`
 
-- [MDPI](http://www.mdpi.com) journal submissions
+- [IEEE Transaction](http://www.ieee.org/publications_standards/publications/authors/author_templates.html) journal submissions (contributed by @Emaasit, @coatless, @espinielli, @nathanweeks , @DunLug) - `ieee_article()`
 
-- [Monthly Notices of the Royal Astronomical Society](https://academic.oup.com/mnras) articles
+- [JOSS: Journal of Open Source Software](http://joss.theoj.org/) and [JOSE: Journal of Open Source Education](https://jose.theoj.org/) articles (contributed by @noamross via #229) - `joss_article()`
 
-- [NNRAS](https://www.ras.org.uk/news-and-press/2641-new-version-of-the-mnras-latex-package) journal submissions
+- [JSS: Journal of Statistical Software](http://www.jstatsoft.org/) articles - `jss_article()`
 
-- [OUP](https://academic.oup.com/journals/pages/authors/preparing_your_manuscript) articles
+- [MDPI](http://www.mdpi.com) journal submissions (contributed by @dleutnant via #147) - `mdpi_article()`
 
-- [PeerJ](https://peerj.com) articles
+- [MNRAS: Monthly Notices of the Royal Astronomical Society](https://academic.oup.com/mnras) articles (contributed by @oleskiewicz via #175) - `mnras_article()`
 
-- [Royal Society Open Science](http://rsos.royalsocietypublishing.org/) journal submissions
+- [OUP: Oxford University Press](https://academic.oup.com/journals/pages/authors/preparing_your_manuscript) articles (contributed by @dmkaplan2000 via #271, #284) - `oup_article()`
 
-- [Sage](https://uk.sagepub.com/en-gb/eur/manuscript-submission-guidelines) journal submissions
+- [PeerJ: Journal of Life and Environmental Sciences](https://peerj.com) articles (contributed by @zkamvar) - `peerj_article()`
 
-- [Springer](https://www.springer.com/gp/livingreviews/latex-templates) journal submissions
+- [PLOS](http://journals.plos.org) journal submissions (contributed by @sjmgarnier) - `plos_article()`
 
-- [Statistics in Medicine](http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm) journal submissions
+- [PNAS: Proceedings of the National Academy of Sciences](https://www.pnas.org/) journal submissions (contributed by @cboettig) - `pnas_article()`
 
-- [Copernicus Publications](https://publications.copernicus.org) journal submissions
+- [RSOS: Royal Society Open Science](http://rsos.royalsocietypublishing.org/) journal submissions (contributed by @ThierryO) - `rsos_article()`
 
-- [The R Journal](https://journal.r-project.org/) articles
+- [RSS: Royal Statistical Society](https://rss.org.uk/) journal submissions (contributed by @carlganz) - `rss_article()`
 
-- [Frontiers](https://www.frontiersin.org/) articles
+- [Sage](https://uk.sagepub.com/en-gb/eur/manuscript-submission-guidelines) journal submissions (contributed by @oguzhanogreden via #181) - `sage_article()`
 
-- [Taylor & Francis](http://www.tandf.co.uk/) articles
+- [Springer](https://www.springer.com/gp/livingreviews/latex-templates) journal submissions (contributed by @strakaps via #164) - `springer_article()`
+
+- [SIM: Statistics in Medicine](https://onlinelibrary.wiley.com/journal/10970258) journal submissions (contributed by @ellessenne via #231) - `sim_article()`
+
+- [Taylor & Francis](https://www.tandfonline.com/) articles (contributed by @dleutnant via #218) - `tf_article()`
+
+- [The R Journal](https://journal.r-project.org/) articles - `rjournal_article()`
 
 Under the hood, LaTeX templates are used to ensure that documents conform precisely to submission standards. At the same time, composition and formatting can be done using lightweight [markdown](https://rmarkdown.rstudio.com/authoring_basics.html) syntax, and R code and its output can be seamlessly included using [knitr](https://yihui.name/knitr/).
 
