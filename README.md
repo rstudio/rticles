@@ -31,6 +31,8 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [Bioinformatics](https://academic.oup.com/bioinformatics) articles
 
+- [arXiv](https://arxiv.org/) pre-prints based on George Kour's template (contributed by @alexpghayes via #236)
+
 - [Biometrics](http://www.biometrics.tibs.org/) articles
 
 - [Bulletin de l'AMQ](https://www.amq.math.ca/bulletin/) journal submissions
