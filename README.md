@@ -60,6 +60,8 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [PLOS](http://journals.plos.org) journal submissions (contributed by @sjmgarnier)
 
+- [PNAS](https://www.pnas.org/) journal submissions (contributed by @cboettig)
+
 - [Royal Society Open Science](http://rsos.royalsocietypublishing.org/) journal submissions (contributed by @ThierryO)
 
 - [Royal Statistical Society](https://rss.org.uk/) journal submissions (contributed by @carlganz)
