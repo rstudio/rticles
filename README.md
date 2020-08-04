@@ -19,17 +19,17 @@ remotes::install_github("rstudio/rticles")
 
 The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown.rstudio.com) LaTeX formats and templates for various formats, including:
 
-- [ACM](http://www.acm.org/) articles
+- [ACM : Association for Computing Machinery](https://www.acm.org/publications/about-publications) articles
 
 - [ACS](http://pubs.acs.org/) articles (contributed by @yufree)
 
-- [AEA](https://www.aeaweb.org/journals/policies/templates) journal submissions (contributed by @sboysel)
+- [AEA: American Economic Association](https://www.aeaweb.org/journals/policies/templates) journal submissions (contributed by @sboysel)
 
-- [AGU](https://sites.agu.org/) journal submissions (contributed by @eliocamp via #199)
+- [AGU](https://agupubs.onlinelibrary.wiley.com/) journal submissions (contributed by @eliocamp via #199)
 
-- [AMS](https://www.ametsoc.org/) articles (contributed by @yufree)
+- [AMS: American Meteorological Society](https://www.ametsoc.org/) articles (contributed by @yufree)
 
-- [ASA](https://www.amstat.org/) journal submissions
+- [ASA: American Statistical Association](https://www.amstat.org/) journal submissions
 
 - [arXiv](https://arxiv.org/) pre-prints based on George Kour's template (contributed by @alexpghayes via #236)
 
@@ -46,31 +46,32 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 - [IEEE Transaction](http://www.ieee.org/publications_standards/publications/authors/author_templates.html) journal submissions
 - [Frontiers](https://www.frontiersin.org/) articles (contributed by @zkamvar)
 
-- [JOSS](http://joss.theoj.org/) and [JOSE](https://jose.theoj.org/) articles (contributed by @noamross via #229)
 
-- [JSS](http://www.jstatsoft.org/) articles
+- [JOSS: Journal of Open Source Software](http://joss.theoj.org/) and [JOSE: Journal of Open Source Education](https://jose.theoj.org/) articles (contributed by @noamross via #229)
+
+- [JSS: Journal of Statistical Software](http://www.jstatsoft.org/) articles
 
 - [MDPI](http://www.mdpi.com) journal submissions (contributed by @dleutnant via #147)
 
-- [Monthly Notices of the Royal Astronomical Society (MNRAS)](https://academic.oup.com/mnras) articles (contributed by @oleskiewicz via #175)
+- [MNRAS: Monthly Notices of the Royal Astronomical Society](https://academic.oup.com/mnras) articles (contributed by @oleskiewicz via #175)
 
-- [OUP](https://academic.oup.com/journals/pages/authors/preparing_your_manuscript) articles (contributed by @dmkaplan2000 via #271, #284)
+- [OUP: Oxford University Press](https://academic.oup.com/journals/pages/authors/preparing_your_manuscript) articles (contributed by @dmkaplan2000 via #271, #284)
 
-- [PeerJ](https://peerj.com) articles (contributed by @zkamvar)
+- [PeerJ: Journal of Life and Environmental Sciences](https://peerj.com) articles (contributed by @zkamvar)
 
 - [PLOS](http://journals.plos.org) journal submissions (contributed by @sjmgarnier)
 
-- [PNAS](https://www.pnas.org/) journal submissions (contributed by @cboettig)
+- [PNAS: Proceedings of the National Academy of Sciences](https://www.pnas.org/) journal submissions (contributed by @cboettig)
 
-- [Royal Society Open Science](http://rsos.royalsocietypublishing.org/) journal submissions (contributed by @ThierryO)
+- [RSOS: Royal Society Open Science](http://rsos.royalsocietypublishing.org/) journal submissions (contributed by @ThierryO)
 
-- [Royal Statistical Society](https://rss.org.uk/) journal submissions (contributed by @carlganz)
+- [RSS: Royal Statistical Society](https://rss.org.uk/) journal submissions (contributed by @carlganz)
 
 - [Sage](https://uk.sagepub.com/en-gb/eur/manuscript-submission-guidelines) journal submissions (contributed by @oguzhanogreden via #181)
 
 - [Springer](https://www.springer.com/gp/livingreviews/latex-templates) journal submissions (contributed by @strakaps via #164)
 
-- [Statistics in Medicine](https://onlinelibrary.wiley.com/journal/10970258) journal submissions (contributed by @ellessenne via #231)
+- [SIM: Statistics in Medicine](https://onlinelibrary.wiley.com/journal/10970258) journal submissions (contributed by @ellessenne via #231)
 
 - [Taylor & Francis](https://www.tandfonline.com/) articles (contributed by @dleutnant via #218)
 
