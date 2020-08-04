@@ -21,7 +21,7 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 
 - [ACM](http://www.acm.org/) articles
 
-- [ACS](http://pubs.acs.org/) articles
+- [ACS](http://pubs.acs.org/) articles (contributed by @yufree)
 
 - [AEA](https://www.aeaweb.org/journals/policies/templates) journal submissions (contributed by @sboysel)
 
