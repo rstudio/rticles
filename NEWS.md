@@ -2,7 +2,7 @@ rticles 0.15
 ---------------------------------------------------------------------
 
 
-- Added article template for journal *Bioinformatics*.
+- Added article template for journal *Bioinformatics*. (thanks, @ShixiangWang, #297)
 
 - Update Copernicus Publications template to version 5.8 (thanks, @nuest, #274).
 
