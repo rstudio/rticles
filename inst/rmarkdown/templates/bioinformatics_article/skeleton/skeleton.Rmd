@@ -43,7 +43,6 @@ output:
     citation_package: natbib
     
 bibliography: bibliography.bib
-# biblio-style: natbib
 ---
 
 Introduction
