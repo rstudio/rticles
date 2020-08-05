@@ -44,7 +44,6 @@ output:
     
 bibliography: bibliography.bib
 # biblio-style: natbib
-# csl: bioinformatics.csl 
 ---
 
 Introduction
