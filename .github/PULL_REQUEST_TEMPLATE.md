@@ -16,9 +16,9 @@ To contribute a new article template to this package, please make sure you have 
 
 - [ ] Update NEWS.
 
-- [ ] Update README with a link to the newly supported journal.
+- [ ] Update README with a link to the newly supported journal. Please add your Github username and the full name of the journal (follow other examples in the list). 
 
-- [ ] Add a test to `tests/testit/test-formats.R`.
+- [ ] Add a test to `tests/testit/test-formats.R`. We try to keep them in alphabetical order.
 
 - [ ] Add your name to the list of authors `Authors@R` in DESCRIPTION. You don't need to bump the package version in DESCRIPTION.
 
