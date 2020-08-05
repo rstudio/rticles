@@ -9,6 +9,7 @@
 \alias{ams_article}
 \alias{asa_article}
 \alias{arxiv_article}
+\alias{bioinformatics_article}
 \alias{biometrics_article}
 \alias{ctex}
 \alias{elsevier_article}
@@ -23,7 +24,6 @@
 \alias{sim_article}
 \alias{springer_article}
 \alias{tf_article}
-\alias{bioinformatics_article}
 \title{R Markdown output formats for (journal) articles}
 \usage{
 acm_article(...)
@@ -59,6 +59,8 @@ asa_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 arxiv_article(..., keep_tex = TRUE)
 
+bioinformatics_article(..., keep_tex = TRUE, citation_package = "natbib")
+
 biometrics_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 ctex(..., latex_engine = "xelatex")
@@ -90,8 +92,6 @@ sim_article(..., highlight = NULL, citation_package = "natbib")
 springer_article(..., keep_tex = TRUE, citation_package = "none")
 
 tf_article(..., keep_tex = TRUE, citation_package = "natbib")
-
-bioinformatics_article(..., keep_tex = TRUE, citation_package = "natbib")
 }
 \arguments{
 \item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions}{Arguments passed to \code{rmarkdown::\link{pdf_document}()}.}
@@ -152,6 +152,11 @@ custom Pandoc LaTeX template and different default values for other arguments
  Adapted from the George Kour's format for
   arXiv and bio-arXiv preprints. So far as I'm aware, entirely
   unofficial but still a staple.
+}
+
+\section{\code{bioinformatics_article}}{
+ Format for creating submissions to a Bioinformatics journal. Adapted from
+\url{https://academic.oup.com/bioinformatics/pages/submission_online}.
 }
 
 \section{\code{biometrics_article}}{
@@ -266,11 +271,6 @@ Possible arguments for the YAML header are:
 \section{\code{tf_article}}{
  Format for creating submissions to a Taylor & Francis journal. Adapted from
 \url{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
-}
-
-\section{\code{bioinformatics_article}}{
- Format for creating submissions to a Bioinformatics journal. Adapted from
-\url{https://academic.oup.com/bioinformatics/pages/submission_online}.
 }
 
 \examples{
