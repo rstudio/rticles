@@ -75,11 +75,7 @@ mdpi_article(..., keep_tex = TRUE)
 
 mnras_article(..., keep_tex = TRUE, fig_caption = TRUE)
 
-oup_article(
-  ...,
-  keep_tex = TRUE,
-  md_extensions = c("-autolink_bare_uris")
-)
+oup_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
 peerj_article(..., keep_tex = TRUE)
 
