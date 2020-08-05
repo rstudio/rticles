@@ -27,6 +27,7 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 | [AMS: American Meteorological Society](https://www.ametsoc.org/) | [@yufree](https://github.com/yufree) | [#96](https://github.com/rstudio/rticles/pull/96) | `ams_article()` |
 | [ASA: American Statistical Association](https://www.amstat.org/) |  | [#111](https://github.com/rstudio/rticles/pull/111) | `asa_article()` |
 | [arXiv](https://arxiv.org/) pre-prints based on George Kour's template | [@alexpghayes](https://github.com) | [#236](https://github.com/rstudio/rticles/pull/236) | `arxiv_article()` |
+| [Bioinformatics](https://academic.oup.com/bioinformatics) | [@ShixiangWang](https://github.com/ShixiangWang) | [#297](https://github.com/rstudio/rticles/pull/297) | `bioinformatics_article()` |
 | [Biometrics](http://www.biometrics.tibs.org/) | [@daltonhance](https://github.com/daltonhance) | [#170](https://github.com/rstudio/rticles/pull/170) | `biometrics_article()` |
 | [Bulletin de l'AMQ](https://www.amq.math.ca/bulletin/) | [@desautm](https://github.com/desautm) | [#145](https://github.com/rstudio/rticles/pull/145) | `amq_article()` |
 | [Copernicus Publications](https://publications.copernicus.org) | [@nuest](https://github.com/nuest) | [#172](https://github.com/rstudio/rticles/pull/172) | `copernicus_article()` |

@@ -1,0 +1,68 @@
+\documentclass{bioinfo}
+\copyrightyear{2016} \pubyear{2016}
+
+%% Some pieces required from the pandoc template
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+$if(tables)$
+\usepackage{longtable}
+$endif$
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+% hyperref makes the margins screwy.
+% https://groups.google.com/forum/#!topic/latexusersgroup/4W_SwGk6zx4
+% http://ansuz.sooke.bc.ca/software/latex-tricks.php
+% \usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\access{Advance Access Publication Date: $access_date.day$ $access_date.month$ $access_date.year$}
+\appnotes{Manuscript Category}
+
+\begin{document}
+\firstpage{1}
+
+\subtitle{$subject_section$}
+
+\title[$title_short$]{$title_full$}
+
+\author[FirstAuthorLastName \textit{et~al}.]{
+$for(author)$
+$author.name$\,\textsuperscript{$author.affiliation$},
+$endfor$
+}
+
+\address{
+$for(address)$
+\textsuperscript{$address.code$}$address.address$\\
+$endfor$
+}
+
+\corresp{$corresponding_author_text$}
+
+\history{Received on XXX; revised on XXX; accepted on XXX}
+
+\editor{Associate Editor: XXX}
+
+\abstract{
+\textbf{Motivation:} $motivation$\\
+\textbf{Results:} $results$\\
+\textbf{Availability:} $availability$\\
+\textbf{Contact:}$corresponding_author_email$\\
+\textbf{Supplementary information:} $supplementary_info$}
+
+\maketitle
+
+$body$
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+% Bibliography
+\bibliographystyle{natbib}
+\bibliography{$bibliography$}
+
+\end{document}

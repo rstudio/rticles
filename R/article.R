@@ -115,6 +115,17 @@ arxiv_article <- function(..., keep_tex = TRUE) {
   )
 }
 
+#' @section \code{bioinformatics_article}: Format for creating submissions to a Bioinformatics journal. Adapted from
+#' \url{https://academic.oup.com/bioinformatics/pages/submission_online}.
+#' @export
+#' @rdname article
+bioinformatics_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
+  pdf_document_format(
+    "bioinformatics_article", keep_tex = keep_tex, citation_package = citation_package,
+    md_extensions = "-auto_identifiers",...
+  )
+}
+
 #' @section \code{biometrics_article}: This format was adapted from the
 #'   Biometrics journal.
 #' @export

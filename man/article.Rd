@@ -9,6 +9,7 @@
 \alias{ams_article}
 \alias{asa_article}
 \alias{arxiv_article}
+\alias{bioinformatics_article}
 \alias{biometrics_article}
 \alias{ctex}
 \alias{elsevier_article}
@@ -58,6 +59,8 @@ asa_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 arxiv_article(..., keep_tex = TRUE)
 
+bioinformatics_article(..., keep_tex = TRUE, citation_package = "natbib")
+
 biometrics_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 ctex(..., latex_engine = "xelatex")
@@ -74,11 +77,7 @@ mdpi_article(..., keep_tex = TRUE)
 
 mnras_article(..., keep_tex = TRUE, fig_caption = TRUE)
 
-oup_article(
-  ...,
-  keep_tex = TRUE,
-  md_extensions = c("-autolink_bare_uris")
-)
+oup_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
 peerj_article(..., keep_tex = TRUE)
 
@@ -153,6 +152,11 @@ custom Pandoc LaTeX template and different default values for other arguments
  Adapted from the George Kour's format for
   arXiv and bio-arXiv preprints. So far as I'm aware, entirely
   unofficial but still a staple.
+}
+
+\section{\code{bioinformatics_article}}{
+ Format for creating submissions to a Bioinformatics journal. Adapted from
+\url{https://academic.oup.com/bioinformatics/pages/submission_online}.
 }
 
 \section{\code{biometrics_article}}{
