@@ -9,6 +9,9 @@ author:
     email: \email{name@company.com}
     url: http://rstudio.com
   - name: Second Author
+    affiliation: 'Affiliation \AND'
+    # To add another line, use \AND at the end of the previous one as above
+  - name: Third Author
     affiliation: Affiliation
 title:
   formatted: "A Capitalized Title: Something about a Package \\pkg{foo}"
