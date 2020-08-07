@@ -1,7 +1,6 @@
 rticles 0.15
 ---------------------------------------------------------------------
 
-
 - Added article template for journal *Bioinformatics*. (thanks, @ShixiangWang, #297)
 
 - Update Copernicus Publications template to version 5.8 (thanks, @nuest, #274).
@@ -15,6 +14,8 @@ rticles 0.15
 - Update to OUP format for `knitr::kable` table generation and optionally placing floats at end of document (thanks, @dmkaplan2000, #279).
 
 - Update to OUP format to use `pandoc-citeproc` by default for citations (thanks, @dmkaplan2000, #289).
+
+- Deleted the LaTeX template of the `rticles::ctex` format. This format will use Pandoc's built-in template instead, which works well with the LaTeX package **ctex** (thanks, @XiangyunHuang, #307).
 
 rticles 0.14
 ---------------------------------------------------------------------
