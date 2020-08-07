@@ -17,6 +17,6 @@ which means citations will be processed via the command
 \command{pandoc-citeproc}.}
 }
 \description{
-Format for creating articles for Royal Statistical Society Adapted from
-\url{https://www.rss.org.uk/RSS/Publications/Journals/Journals_get_involved/RSS/Publications/Journals_sub/Get_Involved.aspx}.
+Format for creating articles for Royal Statistical Society adapted from
+\url{https://rss.org.uk/news-publication/publications/journals/submit-paper/}.
 }

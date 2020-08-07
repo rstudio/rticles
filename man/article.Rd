@@ -166,9 +166,9 @@ custom Pandoc LaTeX template and different default values for other arguments
 
 \section{\code{ctex}}{
  A wrapper function for \code{rmarkdown::pdf_document()}
-  and changed the default values of two arguments \code{template} and
-  \code{latex_engine} so it works better for typesetting Chinese documents
-  with the \pkg{ctex} LaTeX package.
+  and the default value of \code{latex_engine} is changed to
+  \command{xelatex}, so it works better for typesetting Chinese documents
+  with the LaTeX package \pkg{ctex}.
 }
 
 \section{\code{elsevier_article}}{
