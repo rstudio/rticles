@@ -137,9 +137,9 @@ biometrics_article <- function(..., keep_tex = TRUE, citation_package = 'natbib'
 }
 
 #' @section \code{ctex}: A wrapper function for \code{rmarkdown::pdf_document()}
-#'   and changed the default values of two arguments \code{template} and
-#'   \code{latex_engine} so it works better for typesetting Chinese documents
-#'   with the \pkg{ctex} LaTeX package.
+#'   and the default value of \code{latex_engine} is changed to
+#'   \command{xelatex}, so it works better for typesetting Chinese documents
+#'   with the LaTeX package \pkg{ctex}.
 #' @export
 #' @rdname article
 ctex <- function(..., latex_engine = 'xelatex') {
