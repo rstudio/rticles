@@ -9,6 +9,7 @@ output:
   rticles::ctex:
     fig_caption: yes
     number_sections: yes
+    template: null
     toc: yes
 ---
 
