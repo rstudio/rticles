@@ -1,6 +1,8 @@
 rticles 0.15
 ---------------------------------------------------------------------
 
+- Fixed `pnas_journal()` skeleton to show how correctly add `corresponding_author` and `equal_author` (Thanks, @EddieItelman, #299)
+
 - Added article template for journal *Bioinformatics*. (thanks, @ShixiangWang, #297)
 
 - Update Copernicus Publications template to version 5.8 (thanks, @nuest, #274).
