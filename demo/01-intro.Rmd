@@ -1,0 +1,3 @@
+# Introduction {#intro}
+
+This is the intro... with a reference to GCC [@gcc].

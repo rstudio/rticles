@@ -1,0 +1,30 @@
+name: 'test'
+on: [push, pull_request]
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - name: Build Docker image
+      run: docker build -t bookdown - < .github/Dockerfile
+
+    - name: Build site, PDF, and EPUB
+      run: |
+        docker run --rm -v $(pwd):/src -w /src/demo bookdown Rscript \
+          -e 'bookdown::render_book("00-index.Rmd", "bookdown::gitbook")' \
+          -e 'bookdown::render_book("00-index.Rmd", "bookdown::pdf_book")' \
+          -e 'bookdown::render_book("00-index.Rmd", "bookdown::epub_book")'
+
+        mkdir -p artifacts
+        sudo mv demo/_book artifacts
+
+    - run: docker run --rm -v $(pwd):/src bookdown Rscript -e 'getNamespaceExports("rticles")'
+
+    - name: Test rticles
+      run: docker run --rm -v $(pwd):/src bookdown .github/test.sh
+
+    - uses: actions/upload-artifact@v2
+      with:
+        path: artifacts/*
