@@ -1,8 +1,29 @@
-#' R Journal format.
+#' @title R Journal format.
 #'
-#' Format for creating R Journal articles. Adapted from
+#' @description Format for creating R Journal articles. Adapted from
 #' \url{https://journal.r-project.org/submissions.html}.
+#'
+#' @details
+#'
+#' **The `author` field in the YAML-header**
+#'
+#' \tabular{lll}{
+#' FIELD \tab TYPE \tab DESCRIPTION\cr
+#' `name` \tab *required* \tab name and surname of the author\cr
+#' `affiliation` \tab *required* \tab name of the author's affiliation\cr
+#' `address` \tab *required* \tab at least one address line for the affiliation\cr
+#' `url` \tab *optional* \tab an additional url for the author or the main affiliation\cr
+#' `orcid` \tab *optional* \tab the authors ORCID if available\cr
+#' `email` \tab *required* \tab the author's e-mail address\cr
+#' `affiliation2` \tab *optional* \tab name of the author's 2nd affiliation\cr
+#' `address2` \tab *optional* \tab address lines belonging to the author's 2nd affiliation
+#' }
+#'
+#' *Please note: Only one `url`, `orcid` and `email` can be provided per author.*
+#'
 #' @param ...,citation_package Arguments to \code{rmarkdown::pdf_document}.
+#'
+#' @md
 #' @export
 rjournal_article <- function(..., citation_package = 'natbib') {
 

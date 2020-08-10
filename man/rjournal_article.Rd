@@ -13,3 +13,20 @@ rjournal_article(..., citation_package = "natbib")
 Format for creating R Journal articles. Adapted from
 \url{https://journal.r-project.org/submissions.html}.
 }
+\details{
+\strong{The \code{author} field in the YAML-header}
+
+\tabular{lll}{
+FIELD \tab TYPE \tab DESCRIPTION\cr
+\code{name} \tab \emph{required} \tab name and surname of the author\cr
+\code{affiliation} \tab \emph{required} \tab name of the author's affiliation\cr
+\code{address} \tab \emph{required} \tab at least one address line for the affiliation\cr
+\code{url} \tab \emph{optional} \tab an additional url for the author or the main affiliation\cr
+\code{orcid} \tab \emph{optional} \tab the authors ORCID if available\cr
+\code{email} \tab \emph{required} \tab the author's e-mail address\cr
+\code{affiliation2} \tab \emph{optional} \tab name of the author's 2nd affiliation\cr
+\code{address2} \tab \emph{optional} \tab address lines belonging to the author's 2nd affiliation
+}
+
+\emph{Please note: Only one \code{url}, \code{orcid} and \code{email} can be provided per author.}
+}
