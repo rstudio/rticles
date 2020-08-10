@@ -39,6 +39,16 @@ jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
     )
   }
 
+  pre <- base$pre_processor
+  base$pre_processor <- function(metadata, input_file, runtime,
+                                 knit_meta, files_dir, output_dir) {
+    if (is.function(pre))
+      output = pre(metadata, input_file, runtime, knit_meta, files_dir, output_dir)
+
+    # add the lua filter
+    c("--lua-filter", system.file("rmd", "lua", "short-title.lua", package = "rticles"))
+  }
+
   hook_chunk <- function(x, options) {
     if (output_asis(x, options)) return(x)
     paste0('```{=latex}\n\\begin{CodeChunk}\n', x, '\\end{CodeChunk}\n```')
