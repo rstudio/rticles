@@ -1,11 +1,13 @@
 #' @title R Journal format.
 #'
 #' @description Format for creating R Journal articles. Adapted from
-#' \url{https://journal.r-project.org/submissions.html}.
+#' \url{https://journal.r-project.org/submissions.html}. In order to ease the
+#' manuscript preparation, the output is collected in a separate output directory,
+#' which can be used for the submission. If needed file names are renamed automatically.
 #'
 #' @details
 #'
-#' **The `author` field in the YAML-header**
+#' **The `author` field in the YAML header**
 #'
 #' \tabular{lll}{
 #' FIELD \tab TYPE \tab DESCRIPTION\cr
@@ -21,35 +23,19 @@
 #'
 #' *Please note: Only one `url`, `orcid` and `email` can be provided per author.*
 #'
+#' **Other YAML fields**
+#'
+#' \tabular{lll}{
+#' FIELD \tab TYPE \tab DESCRIPTION\cr
+#' `bibliography` \tab *with default* \tab the BibTeX file with the reference entries\cr
+#' `output_dir` \tab *with default* \tab output directory where all the files are stored ready for submission
+#' }
+#'
 #' @param ...,citation_package Arguments to \code{rmarkdown::pdf_document}.
 #'
 #' @md
 #' @export
 rjournal_article <- function(..., citation_package = 'natbib') {
-
-  ## make sure that all files are correctly named according to the R journal
-  ## requirements https://journal.r-project.org/submissions.html
-
-  ## get name of Bib-file and Rmd-file
-  Rmd_file_name <- list.files(
-    path = ".", pattern = ".Rmd", include.dirs = FALSE)[1]
-  bib_file_name <- list.files(
-    path = ".", pattern = ".bib", include.dirs = FALSE)[1]
-
-  ## correct bibliography entry in Rmd-file
-  Rmd_file_text <- readLines(Rmd_file_name)
-  pat <- regexpr("(?<=\\\\bibliography{).+[^}]", Rmd_file_text, perl = TRUE)
-  regmatches(Rmd_file_text, pat) <- xfun::sans_ext(Rmd_file_name)
-  writeLines(text = Rmd_file_text, con =  Rmd_file_name)
-
-  ## correct bib-filename to match the name of the Rmd-file
-  file.rename(from = bib_file_name, to = paste0(xfun::sans_ext(Rmd_file_name), ".bib"))
-
-  ## create R file with executable R code as requested
-  knitr::purl(Rmd_file_name, documentation = 1)
-
-  ##remove objects
-  suppressWarnings(rm(Rmd_file_name, Rmd_file_text, bib_file_name))
 
   rmarkdown::pandoc_available('2.2', TRUE)
 
@@ -62,11 +48,16 @@ rjournal_article <- function(..., citation_package = 'natbib') {
   base$pandoc$to <- "latex"
   base$pandoc$ext <- ".tex"
 
-  base$post_processor <- function(metadata, utf8_input, output_file, clean, verbose) {
-    filename <- basename(output_file)
-    # underscores in the filename will be problematic in \input{filename};
-    # pandoc will escape underscores but it should not, i.e., should be
-    # \input{foo_bar} instead of \input{foo\_bar}
+  base$post_processor <-
+    function(metadata,
+             utf8_input,
+             output_file,
+             clean,
+             verbose) {
+      filename <- basename(output_file)
+      # underscores in the filename will be problematic in \input{filename};
+      # pandoc will escape underscores but it should not, i.e., should be
+      # \input{foo_bar} instead of \input{foo\_bar}
     if (filename != (filename2 <- gsub('_', '-', filename))) {
       file.rename(filename, filename2); filename <- filename2
     }
@@ -80,7 +71,76 @@ rjournal_article <- function(..., citation_package = 'natbib') {
     t <- find_resource("rjournal_article", "RJwrapper.tex")
     template_pandoc(m, t, "RJwrapper.tex", h, verbose)
 
-    tinytex::latexmk("RJwrapper.tex", base$pandoc$latex_engine, clean = clean)
+    ##compile TEX and return the output file path on exit
+    file <- tinytex::latexmk("RJwrapper.tex", base$pandoc$latex_engine, clean = clean)
+    on.exit(return(file))
+
+    ## below: additional treatment to meet the journal requirement; everything
+    ## is collected within a folder defined by output_dir in the YAML-header
+
+    ##first we have to make sure that we do not break old code
+    ##check whether the new field exist, if not the user do not expect this
+    ##new folder and the writing on the hard drive and consequently full stop
+    if(is.null(metadata$output_dir))
+      try(stop(), silent = TRUE)
+
+    ##check also bibliography
+    if(is.null(metadata$bibliography))
+      metadata$bibliography <- "RJreferences.bib"
+
+    ##get file path and set new output directory
+    output_path <- dirname(normalizePath(output_file))
+    output_dir <- paste(c(output_path, metadata$output_dir), collapse = "/")
+
+      ##create subdirectory
+      dir.create(output_dir, showWarnings = FALSE)
+
+    ##create additional R-code file
+    knitr::purl(
+      input = normalizePath(output_file),
+      output = paste0(output_dir,"/",xfun::sans_ext(output_file),".R"),
+      documentation = 1)
+
+    ##copy files from working directory to user-defined output folder
+    file.copy(from = c(
+      output_file,
+      metadata$bibliography,
+      "RJwrapper.tex",
+      "RJwrapper.pdf"
+    ), to = output_dir, overwrite = TRUE)
+
+    ##correct bib-filename to match the name of the TEX-file
+    file.rename(from = paste0(output_dir,"/",metadata$bibliography),
+                to = paste0(output_dir,"/",xfun::sans_ext(output_file), ".bib"))
+
+    ##correct BIB-file  ans TEX-file
+    temp_tex <- readLines(paste0(output_dir,"/", output_file))
+
+      ## correct bibliography
+      pat <- regexpr("(?<=\\\\bibliography{).+[^}]", temp_tex, perl = TRUE)
+      regmatches(temp_tex, pat) <- paste0(xfun::sans_ext(output_file), ".bib")
+
+
+      ##correct authors field to have pattern Author 1, Author 2 and Author 3
+      authors <-
+        knitr::combine_words(
+          unlist(
+            strsplit(
+              x = temp_tex[grepl(pattern = "\\author{", x = temp_tex, fixed = TRUE)],
+              ",")))
+
+      temp_tex[grepl(pattern = "\\author{", x = temp_tex, fixed = TRUE)] <- authors
+
+    ##write TEX back to hard drive
+    writeLines(text = temp_tex, con = paste0(output_dir,"/", output_file))
+
+    ## copy and paste figures to output_dir. The LaTeX format make it a little bit
+    ## difficult, however, the R Journal allows only PDF or PNG figures
+    figures <- regmatches(temp_tex, regexec("(?<=\\\\includegraphics)(.*?){(.*?)}", temp_tex, perl = TRUE))
+    figures <- as.character(stats::na.exclude(sapply(figures, function(x) x[3])))
+    figures_files <- paste0(rep(figures, each = 2), c(".pdf", ".png"))
+    suppressWarnings(file.copy(from = figures_files, to = output_dir, overwrite = TRUE, recursive = FALSE))
+
   }
 
   # Mostly copied from knitr::render_sweave
@@ -107,5 +167,7 @@ rjournal_article <- function(..., citation_package = 'natbib') {
 
   base
 }
+
+
 
 

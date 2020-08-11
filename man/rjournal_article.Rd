@@ -11,10 +11,12 @@ rjournal_article(..., citation_package = "natbib")
 }
 \description{
 Format for creating R Journal articles. Adapted from
-\url{https://journal.r-project.org/submissions.html}.
+\url{https://journal.r-project.org/submissions.html}. In order to ease the
+manuscript preparation, the output is collected in a separate output directory,
+which can be used for the submission. If needed file names are renamed automatically.
 }
 \details{
-\strong{The \code{author} field in the YAML-header}
+\strong{The \code{author} field in the YAML header}
 
 \tabular{lll}{
 FIELD \tab TYPE \tab DESCRIPTION\cr
@@ -29,4 +31,12 @@ FIELD \tab TYPE \tab DESCRIPTION\cr
 }
 
 \emph{Please note: Only one \code{url}, \code{orcid} and \code{email} can be provided per author.}
+
+\strong{Other YAML fields}
+
+\tabular{lll}{
+FIELD \tab TYPE \tab DESCRIPTION\cr
+\code{bibliography} \tab \emph{with default} \tab the BibTeX file with the reference entries\cr
+\code{output_dir} \tab \emph{with default} \tab output directory where all the files are stored ready for submission
+}
 }

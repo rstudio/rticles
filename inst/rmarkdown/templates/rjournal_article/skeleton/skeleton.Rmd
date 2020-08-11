@@ -26,8 +26,17 @@ abstract: >
 preamble: |
   % Any extra LaTeX you need in the preamble
 bibliography: RJreferences.bib
+output_dir: submission
 output: rticles::rjournal_article
 ---
+
+```{r global_options, include=FALSE}
+## these ensures that figures created within the R session 
+## materialise as files (otherwise they are only included in the final PDF)
+## Note: If you change the output path, the files are not copied automatically
+## to the directory defined via output_dir
+knitr::opts_chunk$set(fig.path = "./")
+```
 
 ## Introduction
 
@@ -48,7 +57,7 @@ There will likely be several sections, perhaps including code snippets, such as:
 
 ```{r}
 x <- 1:10
-x
+plot(x)
 ```
 
 ## Summary
