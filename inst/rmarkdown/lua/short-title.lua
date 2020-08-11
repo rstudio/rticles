@@ -1,3 +1,8 @@
+--[[
+     A Pandoc 2 lua filter that allow to add short title to Latex section. 
+     It takes information for Header in the AST and create Raw Tex content in place.
+     Author: Christophe Dervieux
+--]]
 function Header(el)
   local options = el.attributes['short-title']
   if options == nil then return nil end
