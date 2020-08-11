@@ -15,11 +15,11 @@ function Header(el)
   end
 
   -- which latex command for the header
-  local HeaderLevel = { 'chapter', 'section', 'subsection', 'subsubsection', 'paragraph', 'subparagraph'}
+  local HeaderLevel = { 'section', 'subsection', 'subsubsection', 'paragraph', 'subparagraph'}
   -- write raw Latex
   table.insert(
       el.content, 1,
-      pandoc.RawInline('tex', '\\' .. HeaderLevel[el.level + 1] .. '['.. options .. ']{')
+      pandoc.RawInline('tex', '\\' .. HeaderLevel[el.level] .. '['.. options .. ']{')
   )
   table.insert(
       el.content,
