@@ -6,6 +6,14 @@
 function Header(el)
   local options = el.attributes['short-title']
   if options == nil then return nil end
+
+  -- only use for latex output
+  -- (but as part of rticles, it should not be used with another output format)
+  if FORMAT ~= 'latex' then
+    el.attributes['short-title'] = nil
+    return el
+  end
+
   -- which latex command for the header
   local HeaderLevel = { 'chapter', 'section', 'subsection', 'subsubsection', 'paragraph', 'subparagraph'}
   -- write raw Latex
