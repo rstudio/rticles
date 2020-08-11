@@ -66,6 +66,15 @@ abstract: |
   The abstract goes here.
   On multiple lines eventually.
 
+# use some specific Tex packages if needed. 
+# with_ifpdf: true
+# with_cite: true
+# amsmath need to be true to use with bookdown for referencing equations.
+# with_amsmath: true
+# with_algorithmic: true
+# with_array: true
+# with_dblfloatfix: true
+
 bibliography: mybibfile.bib
 output: rticles::ieee_article
 #citation_sorting: none   ## used as sorting option of the biblatex package (if selected)
