@@ -3,9 +3,9 @@ documentclass: jss
 author:
   - name: FirstName LastName
     affiliation: University/Company
-    address: >
-      First line
-      Second line
+    address: |
+      | First line
+      | Second line
     email: \email{name@company.com}
     url: http://rstudio.com
   - name: Second Author
