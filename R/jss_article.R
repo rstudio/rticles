@@ -5,12 +5,17 @@
 #' @inheritParams rmarkdown::pdf_document
 #' @param ... Arguments to \code{rmarkdown::pdf_document}
 #' @export
-jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
+jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib',
+                        pandoc_args = NULL) {
 
   rmarkdown::pandoc_available('2.2', TRUE)
 
+  lua_filter <- c(pandoc_args,
+                  c("--lua-filter", pkg_file("rmarkdown", "lua", "short-title.lua")))
+
   base <- pdf_document_format(
-    "jss_article", keep_tex = keep_tex, citation_package = citation_package, ...
+    "jss_article", keep_tex = keep_tex, citation_package = citation_package,
+    pandoc_args = lua_filter, ...
   )
 
   # Mostly copied from knitr::render_sweave
@@ -37,16 +42,6 @@ jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
       f, base$pandoc$latex_engine,
       if ('--biblatex' %in% base$pandoc$args) 'biber' else 'bibtex'
     )
-  }
-
-  pre <- base$pre_processor
-  base$pre_processor <- function(metadata, input_file, runtime,
-                                 knit_meta, files_dir, output_dir) {
-    if (is.function(pre))
-      output = pre(metadata, input_file, runtime, knit_meta, files_dir, output_dir)
-
-    # add the lua filter
-    c("--lua-filter", system.file("rmd", "lua", "short-title.lua", package = "rticles"))
   }
 
   hook_chunk <- function(x, options) {
