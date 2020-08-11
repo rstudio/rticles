@@ -12,6 +12,10 @@ function Header(el)
       el.content,
       pandoc.RawInline('tex', '}')
   )
+  table.insert(
+    el.content,
+    pandoc.RawInline('tex', '\\label{'.. el.identifier .. '}')
+  )
   -- transform the header to param
   return pandoc.Para(el.content)
 end
