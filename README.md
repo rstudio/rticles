@@ -102,4 +102,13 @@ To contribute a new format, you need to open a new pull request (PR). When openi
 Even if you are just starting or you are not finished, you share your work by creating a [draft PR](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests#draft-pull-requests). It is a great way to let us know that you are still working on it (like [these opened ones](https://github.com/rstudio/rticles/pulls?q=is%3Apr+draft%3Atrue+)), and it is also a great way to ask for help from the community.  
 When you are ready, you can submit the PR for review, and we will iterate until it is merged.
 
+#### Technical resources to contribute a template
+
 The best way to get started is to look at the previous examples of submitted PR. You'll find links to them in the table [above](#overview).
+
+All the `rticles` format are build similarly by providing a new pandoc tex template to replace the default one. You'll learn more about pandoc templates in these places:
+
+* [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/latex-template.html)
+* [The Pandoc manual](https://pandoc.org/MANUAL.html#templates)
+
+You can study [existing formats](inst/rmarkdown/templates) to see how all this works.
