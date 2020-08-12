@@ -17,7 +17,10 @@ remotes::install_github("rstudio/rticles")
 
 ## Overview
 
-The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown.rstudio.com) LaTeX formats and templates for various formats, including:
+The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown.rstudio.com) LaTeX formats and templates for various formats. Most of the templates are provided and maintained by the community, and anyone can contribute a new template. See [How to contribute](#how-to-contribute-)
+
+Including templates and contributors are:
+
 | Journal | Contributors | Pull request | Output format |
 |-|-|-|-|
 | [ACM: Association for Computing Machinery](https://www.acm.org/publications/about-publications) | [@ramnathv](https://github.com/ramnathv) | [#8](https://github.com/rstudio/rticles/pull/8) | `acm_article()` |
@@ -80,3 +83,32 @@ To use **rticles** from RStudio:
     rmarkdown::draft("MyJSSArticle.Rmd", template = "jss_article", package = "rticles")
     rmarkdown::draft("MyRJournalArticle", template = "rjournal_article", package = "rticles")
     ```
+
+## How to contribute ? 
+
+Most of the templates are contributed directly by the users in the community. 
+If you want `rticles` to offer a new journal format, you can contribute by the following way.
+
+### Suggest an idea for new format opening an issue.
+
+You may not feel confident enough or may not have time to contribute a new format. By opening a new issue, you can share the idea for this format, and see if someone in the community can help on it.  
+This is not the best way to quickly get your format included but at least it is a great way to see if others are insterested too.
+
+To see the existing suggested formats, just filter issues with the [help wanted](https://github.com/rstudio/rticles/labels/help%20wanted) label. You can then add a :+1: or help to add the template :wink:.
+
+### Contribute a new template format opening a pull request.
+
+To contribute a new format, you need to open a new pull request (PR). When opening the PR, you'll see the [PR template](.github/PULL_REQUEST_TEMPLATE.md) explaining how to proceed and what is important to check. Please follow it.  
+Even if you are just starting or you are not finished, you share your work by creating a [draft PR](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests#draft-pull-requests). It is a great way to let us know that you are still working on it (like [these opened ones](https://github.com/rstudio/rticles/pulls?q=is%3Apr+draft%3Atrue+)), and it is also a great way to ask for help from the community.  
+When you are ready, you can submit the PR for review, and we will iterate until it is merged.
+
+#### Technical resources to contribute a template
+
+The best way to get started is to look at the previous examples of submitted PR. You'll find links to them in the table [above](#overview).
+
+All the `rticles` format are build similarly by providing a new pandoc tex template to replace the default one. You'll learn more about pandoc templates in these places:
+
+* [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/latex-template.html)
+* [The Pandoc manual](https://pandoc.org/MANUAL.html#templates)
+
+You can study [existing formats](inst/rmarkdown/templates) to see how all this works.
