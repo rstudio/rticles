@@ -1,7 +1,7 @@
 rticles 0.15
 ---------------------------------------------------------------------
 
-- Improve `jss_article()` format: Short titles can now be provided to headers to escape code/math in section titles, continuation prompt as the correct formatting and skeleton has been updated accordingly (thanks, @statibk, #254, @Freguglia, #294) 
+- Improved the `jss_article()` format: Short titles can now be provided to headers to escape code/math in section titles, the continuation prompt has been corrected (from `R+` to `+`), and the skeleton document has been updated accordingly (thanks, @statibk #254, @Freguglia #294).
 
 - Fixed `elsevier_article()` template so that chunk option `out.width` can be set. (thanks, @EddieItelman, #300)
 
