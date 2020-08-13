@@ -43,9 +43,9 @@ In general, don't use Markdown, but use the more precise LaTeX commands instead:
 
 One exception is inline code, which can be written inside a pair of backticks (i.e., using the Markdown syntax).
 
-If you want to use LaTex commands in headers, you need to provide a `short-title`
+If you want to use LaTeX commands in headers, you need to provide a `short-title`
 attribute. You can also provide a custom identifier if necessary.
-See the example of the header \ref{r-code}
+See the header of Section \ref{r-code} for example.
 
 # \proglang{R} code {short-title="R code" #r-code}
 
