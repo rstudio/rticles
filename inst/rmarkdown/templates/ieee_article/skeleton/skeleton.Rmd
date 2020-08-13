@@ -70,7 +70,7 @@ abstract: |
 # with_ifpdf: true
 # with_cite: true
 # amsmath need to be true to use with bookdown for referencing equations.
-# with_amsmath: true
+with_amsmath: true
 # with_algorithmic: true
 # with_array: true
 # with_dblfloatfix: true
