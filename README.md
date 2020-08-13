@@ -17,9 +17,9 @@ remotes::install_github("rstudio/rticles")
 
 ## Overview
 
-The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown.rstudio.com) LaTeX formats and templates for various formats. Most of the templates are provided and maintained by the community, and anyone can contribute a new template. See [How to contribute](#how-to-contribute-)
+The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown.rstudio.com) LaTeX formats and templates for various formats. Most of the templates are provided and maintained by the community, and anyone can contribute a new template. See [How to contribute](#how-to-contribute) below.
 
-Including templates and contributors are:
+Currently included templates and their contributors are the following:
 
 | Journal | Contributors | Pull request | Output format |
 |-|-|-|-|
@@ -84,10 +84,9 @@ To use **rticles** from RStudio:
     rmarkdown::draft("MyRJournalArticle", template = "rjournal_article", package = "rticles")
     ```
 
-## How to contribute ? 
+## How to contribute? 
 
-Most of the templates are contributed directly by the users in the community. 
-If you want `rticles` to offer a new journal format, you can contribute by the following way.
+Most of the templates are contributed directly by the users in the community. If you want **rticles** to offer a new journal format, you can contribute by the following way.
 
 ### Suggest an idea for new format opening an issue.
 
