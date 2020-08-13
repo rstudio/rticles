@@ -5,8 +5,10 @@
 #' @inheritParams rmarkdown::pdf_document
 #' @param ... Arguments to \code{rmarkdown::pdf_document}
 #' @export
-jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib',
-                        pandoc_args = NULL) {
+jss_article <- function(
+  ..., keep_tex = TRUE, citation_package = 'natbib',
+  pandoc_args = NULL
+) {
 
   rmarkdown::pandoc_available('2.2', TRUE)
 
@@ -71,4 +73,3 @@ jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib',
 
   base
 }
-
