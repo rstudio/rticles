@@ -64,6 +64,4 @@ get_list_element <- function(x, names) {
   x[[names[n]]]
 }
 
-pkg_file <- function(...) {
-  system.file(..., package = "rticles")
-}
+pkg_file <- function(...) system.file(..., package = "rticles")
