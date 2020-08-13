@@ -5,12 +5,21 @@
 #' @inheritParams rmarkdown::pdf_document
 #' @param ... Arguments to \code{rmarkdown::pdf_document}
 #' @export
-jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
+jss_article <- function(
+  ..., keep_tex = TRUE, citation_package = 'natbib',
+  pandoc_args = NULL
+) {
 
   rmarkdown::pandoc_available('2.2', TRUE)
 
+  pandoc_args <- c(
+    pandoc_args,
+    "--lua-filter", pkg_file("rmarkdown", "lua", "short-title.lua")
+  )
+
   base <- pdf_document_format(
-    "jss_article", keep_tex = keep_tex, citation_package = citation_package, ...
+    "jss_article", keep_tex = keep_tex, citation_package = citation_package,
+    pandoc_args = pandoc_args, ...
   )
 
   # Mostly copied from knitr::render_sweave
@@ -66,4 +75,3 @@ jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
 
   base
 }
-

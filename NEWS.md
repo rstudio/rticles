@@ -1,6 +1,8 @@
 rticles 0.15
 ---------------------------------------------------------------------
 
+- Improved the `jss_article()` format: Short titles can now be provided to headers to escape code/math in section titles, the continuation prompt has been corrected (from `R+` to `+`), and the skeleton document has been updated accordingly (thanks, @statibk #254, @Freguglia #294).
+
 - Fixed `elsevier_article()` template so that chunk option `out.width` can be set. (thanks, @EddieItelman, #300)
 
 - Fixed `pnas_journal()` skeleton to show how correctly add `corresponding_author` and `equal_author` (Thanks, @EddieItelman, #299)
