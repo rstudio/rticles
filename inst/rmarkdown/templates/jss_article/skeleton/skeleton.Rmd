@@ -59,4 +59,4 @@ x
 ## Features specific to \pkg{rticles} {short-title="Features specific to rticles"}
 
 * Adding short titles to section headers is a feature specific to \pkg{rticles} (implemented via a Pandoc Lua filter). This feature is currently not supported by Pandoc and we will update this template if [it is officially supported in the future](https://github.com/jgm/pandoc/issues/4409).
-* Using `\AND` syntax in author field to add author in a new line. This is a specific `jss_article` format.
+* Using the `\AND` syntax in the `author` field to add authors on a new line. This is a specific to the `rticles::jss_article` format.
