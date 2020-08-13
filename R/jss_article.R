@@ -12,12 +12,12 @@ jss_article <- function(
 
   rmarkdown::pandoc_available('2.2', TRUE)
 
-  lua_filter <- c(pandoc_args,
+  pandoc_args <- c(pandoc_args,
                   c("--lua-filter", pkg_file("rmarkdown", "lua", "short-title.lua")))
 
   base <- pdf_document_format(
     "jss_article", keep_tex = keep_tex, citation_package = citation_package,
-    pandoc_args = lua_filter, ...
+    pandoc_args = pandoc_args, ...
   )
 
   # Mostly copied from knitr::render_sweave
