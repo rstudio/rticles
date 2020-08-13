@@ -1,7 +1,5 @@
 find_resource <- function(template, file = 'template.tex') {
-  res <- pkg_file(
-    "rmarkdown", "templates", template, "resources", file
-  )
+  res <- pkg_file("rmarkdown", "templates", template, "resources", file)
   if (res == "") stop(
     "Couldn't find template file ", template, "/resources/", file, call. = FALSE
   )
