@@ -11,9 +11,27 @@ rjournal_article(..., keep_tex = TRUE, citation_package = "natbib")
 }
 \description{
 Format for creating R Journal articles. Adapted from
-\url{https://journal.r-project.org/submissions.html}. In order to ease the
-manuscript preparation, the output is collected in a separate output directory,
-which can be used for the submission. If needed file names are renamed automatically.
+\url{https://journal.r-project.org/submissions.html}.
+}
+\details{
+This file is only a basic article template. For full details of \emph{The R
+Journal} style and information on how to prepare your article for submission,
+see the \href{https://journal.r-project.org/share/author-guide.pdf}{Instructions for Authors}
+\subsection{About this format and the R Journal requirements}{
+
+\code{rticles::rjournal_article} will help you build the correct files requirements:
+\itemize{
+\item A R file will be generated automatically using \code{knitr::purl} - see
+https://bookdown.org/yihui/rmarkdown-cookbook/purl.html for more information.
+\item A tex file will be generated from this Rmd file and correctly included in
+\code{RJwapper.tex} as expected to build \code{RJwrapper.pdf}.
+\item All figure files will be kept in the default rmarkdown \verb{*_files} folder. This
+happens because \code{keep_tex = TRUE} by default in \code{rticles::rjournal_article}
+\item Only the bib filename is to modifed. An example bib file is included in the
+template (\code{RJreferences.bib}) and you will have to name your bib file as the
+tex, R, and pdf files.
+}
+}
 }
 \section{About YAML header fields}{
 This section documents some of the YAML fields that can be used with this
