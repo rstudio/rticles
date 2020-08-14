@@ -8,6 +8,8 @@
 \alias{amq_article}
 \alias{ams_article}
 \alias{asa_article}
+\alias{arxiv_article}
+\alias{bioinformatics_article}
 \alias{biometrics_article}
 \alias{ctex}
 \alias{elsevier_article}
@@ -55,6 +57,10 @@ ams_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
 asa_article(..., keep_tex = TRUE, citation_package = "natbib")
 
+arxiv_article(..., keep_tex = TRUE)
+
+bioinformatics_article(..., keep_tex = TRUE, citation_package = "natbib")
+
 biometrics_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 ctex(..., latex_engine = "xelatex")
@@ -71,12 +77,7 @@ mdpi_article(..., keep_tex = TRUE)
 
 mnras_article(..., keep_tex = TRUE, fig_caption = TRUE)
 
-oup_article(
-  ...,
-  citation_package = "natbib",
-  keep_tex = TRUE,
-  md_extensions = c("-autolink_bare_uris")
-)
+oup_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
 peerj_article(..., keep_tex = TRUE)
 
@@ -147,6 +148,17 @@ custom Pandoc LaTeX template and different default values for other arguments
   American Statistical Association (ASA) journals.
 }
 
+\section{\code{arxiv_article}}{
+ Adapted from the George Kour's format for
+  arXiv and bio-arXiv preprints. So far as I'm aware, entirely
+  unofficial but still a staple.
+}
+
+\section{\code{bioinformatics_article}}{
+ Format for creating submissions to a Bioinformatics journal. Adapted from
+\url{https://academic.oup.com/bioinformatics/pages/submission_online}.
+}
+
 \section{\code{biometrics_article}}{
  This format was adapted from the
   Biometrics journal.
@@ -154,9 +166,9 @@ custom Pandoc LaTeX template and different default values for other arguments
 
 \section{\code{ctex}}{
  A wrapper function for \code{rmarkdown::pdf_document()}
-  and changed the default values of two arguments \code{template} and
-  \code{latex_engine} so it works better for typesetting Chinese documents
-  with the \pkg{ctex} LaTeX package.
+  and the default value of \code{latex_engine} is changed to
+  \command{xelatex}, so it works better for typesetting Chinese documents
+  with the LaTeX package \pkg{ctex}.
 }
 
 \section{\code{elsevier_article}}{

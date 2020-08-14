@@ -104,6 +104,28 @@ asa_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
   )
 }
 
+#' @section \code{arxiv_article}: Adapted from the George Kour's format for
+#'   arXiv and bio-arXiv preprints. So far as I'm aware, entirely
+#'   unofficial but still a staple.
+#' @export
+#' @rdname article
+arxiv_article <- function(..., keep_tex = TRUE) {
+  pdf_document_format(
+    "arxiv_article", keep_tex = keep_tex, ...
+  )
+}
+
+#' @section \code{bioinformatics_article}: Format for creating submissions to a Bioinformatics journal. Adapted from
+#' \url{https://academic.oup.com/bioinformatics/pages/submission_online}.
+#' @export
+#' @rdname article
+bioinformatics_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
+  pdf_document_format(
+    "bioinformatics_article", keep_tex = keep_tex, citation_package = citation_package,
+    md_extensions = "-auto_identifiers",...
+  )
+}
+
 #' @section \code{biometrics_article}: This format was adapted from the
 #'   Biometrics journal.
 #' @export
@@ -115,9 +137,9 @@ biometrics_article <- function(..., keep_tex = TRUE, citation_package = 'natbib'
 }
 
 #' @section \code{ctex}: A wrapper function for \code{rmarkdown::pdf_document()}
-#'   and changed the default values of two arguments \code{template} and
-#'   \code{latex_engine} so it works better for typesetting Chinese documents
-#'   with the \pkg{ctex} LaTeX package.
+#'   and the default value of \code{latex_engine} is changed to
+#'   \command{xelatex}, so it works better for typesetting Chinese documents
+#'   with the LaTeX package \pkg{ctex}.
 #' @export
 #' @rdname article
 ctex <- function(..., latex_engine = 'xelatex') {
@@ -175,11 +197,11 @@ mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
 #' @export
 #' @rdname article
 oup_article <- function(
-  ..., citation_package = 'natbib', keep_tex = TRUE,
+  ..., keep_tex = TRUE,
   md_extensions = c("-autolink_bare_uris")
 ) {
   pdf_document_format(
-    "oup_article", citation_package = citation_package,
+    "oup_article",
     keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
 }

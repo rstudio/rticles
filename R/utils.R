@@ -1,7 +1,5 @@
 find_resource <- function(template, file = 'template.tex') {
-  res <- system.file(
-    "rmarkdown", "templates", template, "resources", file, package = "rticles"
-  )
+  res <- pkg_file("rmarkdown", "templates", template, "resources", file)
   if (res == "") stop(
     "Couldn't find template file ", template, "/resources/", file, call. = FALSE
   )
@@ -65,6 +63,8 @@ get_list_element <- function(x, names) {
   for (i in names[seq_len(n - 1)]) if (!is.list(x <- x[[i]])) return()
   x[[names[n]]]
 }
+
+pkg_file <- function(...) system.file(..., package = "rticles")
 
 # utils for post processing tex files
 

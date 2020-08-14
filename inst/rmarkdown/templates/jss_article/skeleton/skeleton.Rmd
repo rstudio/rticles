@@ -3,12 +3,15 @@ documentclass: jss
 author:
   - name: FirstName LastName
     affiliation: University/Company
-    address: >
-      First line
-      Second line
+    address: |
+      | First line
+      | Second line
     email: \email{name@company.com}
     url: http://rstudio.com
   - name: Second Author
+    affiliation: 'Affiliation \AND'
+    # To add another line, use \AND at the end of the previous one as above
+  - name: Third Author
     affiliation: Affiliation
 title:
   formatted: "A Capitalized Title: Something about a Package \\pkg{foo}"
@@ -29,17 +32,20 @@ output: rticles::jss_article
 
 # Introduction
 
-This template demonstrates some of the basic latex you'll need to know to create a JSS article.
+This template demonstrates some of the basic LaTeX that you need to know to create a JSS article.
 
 ## Code formatting
 
-Don't use markdown, instead use the more precise latex commands:
+In general, don't use Markdown, but use the more precise LaTeX commands instead:
 
 * \proglang{Java}
 * \pkg{plyr}
-* \code{print("abc")}
 
-# R code
+One exception is inline code, which can be written inside a pair of backticks (i.e., using the Markdown syntax).
+
+If you want to use LaTeX commands in headers, you need to provide a `short-title` attribute. You can also provide a custom identifier if necessary. See the header of Section \ref{r-code} for example.
+
+# \proglang{R} code {short-title="R code" #r-code}
 
 Can be inserted in regular R markdown blocks.
 
@@ -47,3 +53,8 @@ Can be inserted in regular R markdown blocks.
 x <- 1:10
 x
 ```
+
+## Features specific to \pkg{rticles} {short-title="Features specific to rticles"}
+
+* Adding short titles to section headers is a feature specific to \pkg{rticles} (implemented via a Pandoc Lua filter). This feature is currently not supported by Pandoc and we will update this template if [it is officially supported in the future](https://github.com/jgm/pandoc/issues/4409).
+* Using the `\AND` syntax in the `author` field to add authors on a new line. This is a specific to the `rticles::jss_article` format.

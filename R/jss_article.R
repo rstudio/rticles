@@ -5,12 +5,21 @@
 #' @inheritParams rmarkdown::pdf_document
 #' @param ... Arguments to \code{rmarkdown::pdf_document}
 #' @export
-jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
+jss_article <- function(
+  ..., keep_tex = TRUE, citation_package = 'natbib',
+  pandoc_args = NULL
+) {
 
   rmarkdown::pandoc_available('2.2', TRUE)
 
+  pandoc_args <- c(
+    pandoc_args,
+    "--lua-filter", pkg_file("rmarkdown", "lua", "short-title.lua")
+  )
+
   base <- pdf_document_format(
-    "jss_article", keep_tex = keep_tex, citation_package = citation_package, ...
+    "jss_article", keep_tex = keep_tex, citation_package = citation_package,
+    pandoc_args = pandoc_args, ...
   )
 
   # Mostly copied from knitr::render_sweave
@@ -30,7 +39,7 @@ jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
     if (is.function(post)) output = post(metadata, input, output, clean, verbose)
     f <- xfun::with_ext(output, '.tex')
     x <- xfun::read_utf8(f)
-    x <- gsub('( \\\\AND )\\\\And ', '\\1', x)
+    x <- gsub('(\\\\AND )\\\\And ', '\\1', x)
     x <- gsub(' \\\\AND(\\\\\\\\)$', '\\1', x)
     xfun::write_utf8(x, f)
     tinytex::latexmk(
@@ -45,7 +54,7 @@ jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
   }
   hook_input <- function(x, options) {
     if (options$prompt && length(x)) {
-      x <- gsub("\\n", paste0("\n", "R+ "), x)
+      x <- gsub("\\n", paste0("\n", "+ "), x)
       x <- paste0("R> ", x)
     }
     paste0(c('\n\\begin{CodeInput}', x, '\\end{CodeInput}', ''),
@@ -66,4 +75,3 @@ jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
 
   base
 }
-

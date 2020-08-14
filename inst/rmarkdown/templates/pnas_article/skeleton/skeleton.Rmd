@@ -14,16 +14,16 @@ address:
     address: Another University Department, Street, City, State, Zip
 
 corresponding_author:
-  - code: 2
-    text: "To whom correspondence should be addressed. E-mail: bob@email.com"
+  code: 2
+  text: "To whom correspondence should be addressed. E-mail: bob@email.com"
 
 # For footer text
 lead_author_surname: Anonymous
 
 ## Remove this if not required    
 equal_authors:
-  - code: 1
-    text: "A.O.(Author One) and A.T. (Author Two) contributed equally to this work (remove if not applicable)."
+  code: 1
+  text: "A.O.(Author One) and A.T. (Author Two) contributed equally to this work (remove if not applicable)."
 
 
 author_contributions: |

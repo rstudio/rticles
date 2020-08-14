@@ -5,12 +5,15 @@ author:
   - 邱怡轩
   - 于淼
 documentclass: ctexart
+keywords:
+  - 中文
+  - R Markdown
+documentclass: ctexart
 output:
   rticles::ctex:
     fig_caption: yes
     number_sections: yes
     toc: yes
-classoption: "hyperref,"
 ---
 
 # 引言
@@ -76,9 +79,7 @@ abline(fit, col = 'red')
 
 # 源代码控
 
-这里提供的rticles模板可能由于种种原因不能满足客官的要求，LaTeX用户就是这样永无止境地调格式（唉，跟Word用户到底有啥区别呢）。若真是需要调整，你可以复制一份默认模板去改，如前面所说，本文档的模板是`rticles::ctex_template()`，它是一个文本文件。若熟悉LaTeX的话一看就明白，只不过里面有些Pandoc变量而已；若不熟悉LaTeX我们在这里说了也白说，花几天时间好好啃一啃LaTeX入门手册吧。
-
-本文档所用的模板是从Pandoc默认LaTeX模板基础上做了少许改动而来的：https://github.com/yihui/pandoc-templates/blob/ctex/default.latex 具体改动从GIT提交消息日志中可以看到，主要就是去掉了mathspec包和hyperref包。
+这里提供的rticles模板可能由于种种原因不能满足客官的要求，LaTeX用户就是这样永无止境地调格式（唉，跟Word用户到底有啥区别呢）。若真是需要调整，你可以复制一份默认模板去改。默认模板来自 Pandoc：https://github.com/jgm/pandoc/blob/master/data/templates/default.latex 它是一个文本文件。若熟悉LaTeX的话一看就明白，只不过里面有些Pandoc变量而已；若不熟悉LaTeX我们在这里说了也白说，花几天时间好好啃一啃LaTeX入门手册吧。
 
 # 小结
 

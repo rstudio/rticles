@@ -60,7 +60,7 @@ copernicus_article <- function(
 }
 
 # quick dev shortcut for Ubuntu: click "Install and restart" then run:
-# unlink("MyArticle/", recursive = TRUE); rmarkdown::draft("MyArticle.Rmd", template = "copernicus_article", package = "rticles", edit = FALSE); rmarkdown::render("MyArticle/MyArticle.Rmd"); system(paste0("gnome-open ", here::here("MyArticle", "MyArticle.pdf")))
+# unlink("MyArticle/", recursive = TRUE); rmarkdown::draft("MyArticle.Rmd", template = "copernicus_article", package = "rticles", edit = FALSE); rmarkdown::render("MyArticle/MyArticle.Rmd"); system(paste0("xdg-open ", here::here("MyArticle", "MyArticle.pdf")))
 
 copernicus_journals <- list(
   "Advances in Geosciences" = "adgeo",
@@ -76,6 +76,7 @@ copernicus_journals <- list(
   "Climate of the Past" = "cp",
   "DEUQUA Special Publications" = "deuquasp",
   "Drinking Water Engineering and Science" = "dwes",
+  "European Journal of Mineralogy" = "ejm",
   "Earth Surface Dynamics" = "esurf",
   "Earth System Dynamics" = "esd",
   "Earth System Science Data" = "essd",
@@ -90,6 +91,7 @@ copernicus_journals <- list(
   "Hydrology and Earth System Sciences" = "hess",
   "Journal of Micropalaeontology" = "jm",
   "Journal of Sensors and Sensor Systems" = "jsss",
+  "Magnetic Resonance" = "mr",
   "Mechanical Sciences" = "ms",
   "Natural Hazards and Earth System Sciences" = "nhess",
   "Nonlinear Processes in Geophysics" = "npg",
@@ -101,6 +103,7 @@ copernicus_journals <- list(
   "Solid Earth" = "se",
   "The Cryosphere" = "tc",
   "Web Ecology" = "we",
+  "Weather and Climate Dynamics" = "wcd",
   "Wind Energy Science" = "wes"
 )
 

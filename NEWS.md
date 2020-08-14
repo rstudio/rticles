@@ -1,7 +1,29 @@
 rticles 0.15
 ---------------------------------------------------------------------
-- Added multi-affiliation support to `rjournal_article()`.
-- Added for `rjournal_article()` (1) automated file renaming to better match the author's guidelines, (2) an R script file with for the reproduction of examples
+
+- Improved the `rjournal_article()` format : Tex, R and PDF files with correct names are generated to match the author's guidelines, two affiliations is now supported for authors, last author is separated by `and` when multiple authors are present, and the documentation has been improved in function's help page and the skeleton document (thanks, @RLumSK, #286)
+
+- Improved the `jss_article()` format: Short titles can now be provided to headers to escape code/math in section titles, the continuation prompt has been corrected (from `R+` to `+`), and the skeleton document has been updated accordingly (thanks, @statibk #254, @Freguglia #294).
+
+- Fixed `elsevier_article()` template so that chunk option `out.width` can be set. (thanks, @EddieItelman, #300)
+
+- Fixed `pnas_journal()` skeleton to show how correctly add `corresponding_author` and `equal_author` (Thanks, @EddieItelman, #299)
+
+- Added article template for journal *Bioinformatics*. (thanks, @ShixiangWang, #297)
+
+- Update Copernicus Publications template to version 5.8 (thanks, @nuest, #274).
+
+- Fixed issue with multi-line authors on JSS template when using `\AND`, which was firstly implemented in b740b19b90cd6f7afe2cd7d66456c9efa0bb4cdf (thanks, @aldomann, #292).
+
+- Added the missing support for `header-includes` to the Biometrics template (thanks, @haozhu233, #296).
+
+- Added support for George Kour's arXiv preprint format (thanks, @alexpghayes, #236).
+
+- Update to OUP format for `knitr::kable` table generation and optionally placing floats at end of document (thanks, @dmkaplan2000, #279).
+
+- Update to OUP format to use `pandoc-citeproc` by default for citations (thanks, @dmkaplan2000, #289).
+
+- Deleted the LaTeX template of the `rticles::ctex` format. This format will use Pandoc's built-in template instead, which works well with the LaTeX package **ctex** (thanks, @XiangyunHuang, #307).
 
 rticles 0.14
 ---------------------------------------------------------------------
@@ -53,7 +75,7 @@ rticles 0.9
 
 - Update Copernicus Publications template to version 5.3 (@nuest, #228).
 
-- Use csl file for citations in output format `elsevier_article()` (@nuest, #233)
+- Use csl file for citations in output format `elsevier_article()` (@nuest, #233).
 
 rticles 0.8
 ---------------------------------------------------------------------
