@@ -43,10 +43,29 @@ rjournal_article <- function(..., citation_package = 'natbib') {
     "rjournal_article", highlight = NULL, citation_package = citation_package, ...
   )
 
-  # Render will generate tex file, post-process hook generates appropriate
-  # RJwrapper.tex and use pandoc to build pdf from that
+  # Render will generate tex file, post-knit hook gerenates the R file,
+  # post-process hook generates appropriate RJwrapper.tex and
+  # use pandoc to build pdf from that
   base$pandoc$to <- "latex"
   base$pandoc$ext <- ".tex"
+
+  # Generates R file expected as R journal requirement
+  # we do that in the post-knit hook do access input file path
+  pk <- base$post_knit
+  output_R <- NULL
+  base$post_knit <- function(metadata, input_file, runtime, ...) {
+    # run post_knit it exists
+    if (is.function(pk)) pk(metadata, input_file, runtime, ...)
+
+    # purl the Rmd file to R code per requirement
+    temp_R <- tempfile(fileext = ".R")
+    output_R <<- knitr::purl(
+      input = input_file, output = temp_R,
+      documentation = 1, quiet = TRUE
+    )
+
+    NULL
+  }
 
   base$post_processor <- function(
     metadata, utf8_input, output_file, clean, verbose
@@ -67,6 +86,10 @@ rjournal_article <- function(..., citation_package = 'natbib') {
     })
     t <- find_resource("rjournal_article", "RJwrapper.tex")
     template_pandoc(m, t, "RJwrapper.tex", h, verbose)
+
+    # Copy purl-ed R file with the correct name
+    file.copy(output_R, xfun::with_ext(filename, "R"))
+    unlink(output_R)
 
     ##compile TEX and return the output file path on exit
     file <- tinytex::latexmk("RJwrapper.tex", base$pandoc$latex_engine, clean = clean)
@@ -91,12 +114,6 @@ rjournal_article <- function(..., citation_package = 'natbib') {
 
     ##create subdirectory
     dir.create(output_dir, showWarnings = FALSE)
-
-    ##create additional R-code file
-    knitr::purl(
-      input = normalizePath(output_file),
-      output = paste0(output_dir,"/",xfun::sans_ext(output_file),".R"),
-      documentation = 1)
 
     ##copy files from working directory to user-defined output folder
     file.copy(from = c(
