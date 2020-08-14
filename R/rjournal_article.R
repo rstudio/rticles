@@ -69,8 +69,8 @@ rjournal_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') 
   base$pandoc$to <- "latex"
   base$pandoc$ext <- ".tex"
 
-  # Generates R file expected as R journal requirement
-  # we do that in the post-knit hook do access input file path
+  # Generates R file expected by R journal requirement.
+  # We do that in the post-knit hook do access input file path.
   pk <- base$post_knit
   output_R <- NULL
   base$post_knit <- function(metadata, input_file, runtime, ...) {
