@@ -77,15 +77,6 @@ rjournal_article <- function(..., citation_package = 'natbib') {
     if (filename != (filename2 <- gsub('_', '-', filename))) {
       file.rename(filename, filename2); filename <- filename2
     }
-    m <- list(filename = xfun::sans_ext(filename))
-    h <- get_list_element(metadata, c('output', 'rticles::rjournal_article', 'includes', 'in_header'))
-    h <- c(h, if (length(preamble <- unlist(metadata[c('preamble', 'header-includes')]))) {
-      f <- tempfile(fileext = '.tex'); on.exit(unlink(f), add = TRUE)
-      xfun::write_utf8(preamble, f)
-      f
-    })
-    t <- find_resource("rjournal_article", "RJwrapper.tex")
-    template_pandoc(m, t, "RJwrapper.tex", h, verbose)
 
     # Copy purl-ed R file with the correct name
     file.copy(output_R, xfun::with_ext(filename, "R"))
@@ -95,10 +86,6 @@ rjournal_article <- function(..., citation_package = 'natbib') {
     temp_tex <- xfun::read_utf8(output_file)
     temp_tex <- post_process_authors(temp_tex)
     xfun::write_utf8(text = temp_tex, con = output_file)
-
-    ##compile TEX and return the output file path on exit
-    file <- tinytex::latexmk("RJwrapper.tex", base$pandoc$latex_engine, clean = clean)
-    on.exit(return(file))
 
     # check bibliography name
     bib_filename <- metadata$bibliography
@@ -113,6 +100,18 @@ rjournal_article <- function(..., citation_package = 'natbib') {
       warning(knitr::knit_expand(text = msg), call. = FALSE)
     }
 
+    # Create RJwrapper.tex per R Journal requirement
+    m <- list(filename = xfun::sans_ext(filename))
+    h <- get_list_element(metadata, c('output', 'rticles::rjournal_article', 'includes', 'in_header'))
+    h <- c(h, if (length(preamble <- unlist(metadata[c('preamble', 'header-includes')]))) {
+      f <- tempfile(fileext = '.tex'); on.exit(unlink(f), add = TRUE)
+      xfun::write_utf8(preamble, f)
+      f
+    })
+    t <- find_resource("rjournal_article", "RJwrapper.tex")
+    template_pandoc(m, t, "RJwrapper.tex", h, verbose)
+
+    tinytex::latexmk("RJwrapper.tex", base$pandoc$latex_engine, clean = clean)
   }
 
   # Mostly copied from knitr::render_sweave
