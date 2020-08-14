@@ -50,7 +50,8 @@
 #' | ----- | ---- | ----------- |
 #' | `bibliography` | *with default* | the BibTeX file with the reference entries |
 #'
-#' @param ...,citation_package Arguments to \code{rmarkdown::pdf_document}.
+#' @inheritParams rmarkdown::pdf_document
+#' @param ... Arguments to `rmarkdown::pdf_document.
 #'
 #' @md
 #' @export
