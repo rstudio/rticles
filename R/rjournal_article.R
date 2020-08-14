@@ -48,16 +48,13 @@ rjournal_article <- function(..., citation_package = 'natbib') {
   base$pandoc$to <- "latex"
   base$pandoc$ext <- ".tex"
 
-  base$post_processor <-
-    function(metadata,
-             utf8_input,
-             output_file,
-             clean,
-             verbose) {
-      filename <- basename(output_file)
-      # underscores in the filename will be problematic in \input{filename};
-      # pandoc will escape underscores but it should not, i.e., should be
-      # \input{foo_bar} instead of \input{foo\_bar}
+  base$post_processor <- function(
+    metadata, utf8_input, output_file, clean, verbose
+  ) {
+    filename <- basename(output_file)
+    # underscores in the filename will be problematic in \input{filename};
+    # pandoc will escape underscores but it should not, i.e., should be
+    # \input{foo_bar} instead of \input{foo\_bar}
     if (filename != (filename2 <- gsub('_', '-', filename))) {
       file.rename(filename, filename2); filename <- filename2
     }
@@ -92,8 +89,8 @@ rjournal_article <- function(..., citation_package = 'natbib') {
     output_path <- dirname(normalizePath(output_file))
     output_dir <- paste(c(output_path, metadata$output_dir), collapse = "/")
 
-      ##create subdirectory
-      dir.create(output_dir, showWarnings = FALSE)
+    ##create subdirectory
+    dir.create(output_dir, showWarnings = FALSE)
 
     ##create additional R-code file
     knitr::purl(
@@ -116,20 +113,20 @@ rjournal_article <- function(..., citation_package = 'natbib') {
     ##correct BIB-file  ans TEX-file
     temp_tex <- readLines(paste0(output_dir,"/", output_file))
 
-      ## correct bibliography
-      pat <- regexpr("(?<=\\\\bibliography{).+[^}]", temp_tex, perl = TRUE)
-      regmatches(temp_tex, pat) <- paste0(xfun::sans_ext(output_file), ".bib")
+    ## correct bibliography
+    pat <- regexpr("(?<=\\\\bibliography{).+[^}]", temp_tex, perl = TRUE)
+    regmatches(temp_tex, pat) <- paste0(xfun::sans_ext(output_file), ".bib")
 
 
-      ##correct authors field to have pattern Author 1, Author 2 and Author 3
-      authors <-
-        knitr::combine_words(
-          unlist(
-            strsplit(
-              x = temp_tex[grepl(pattern = "\\author{", x = temp_tex, fixed = TRUE)],
-              ",")))
+    ##correct authors field to have pattern Author 1, Author 2 and Author 3
+    authors <-
+      knitr::combine_words(
+        unlist(
+          strsplit(
+            x = temp_tex[grepl(pattern = "\\author{", x = temp_tex, fixed = TRUE)],
+            ",")))
 
-      temp_tex[grepl(pattern = "\\author{", x = temp_tex, fixed = TRUE)] <- authors
+    temp_tex[grepl(pattern = "\\author{", x = temp_tex, fixed = TRUE)] <- authors
 
     ##write TEX back to hard drive
     writeLines(text = temp_tex, con = paste0(output_dir,"/", output_file))
@@ -153,7 +150,7 @@ rjournal_article <- function(..., citation_package = 'natbib') {
   }
   hook_input <- function(x, options)
     paste(c('\\begin{Sinput}', hilight_source(x, 'sweave', options), '\\end{Sinput}', ''),
-      collapse = '\n')
+          collapse = '\n')
   hook_output <- function(x, options) paste('\\begin{Soutput}\n', x, '\\end{Soutput}\n', sep = '')
 
   base$knitr$knit_hooks <- merge_list(base$knitr$knit_hooks, list(
