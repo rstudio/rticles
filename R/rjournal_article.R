@@ -95,18 +95,18 @@ rjournal_article <- function(..., citation_package = 'natbib') {
     file <- tinytex::latexmk("RJwrapper.tex", base$pandoc$latex_engine, clean = clean)
     on.exit(return(file))
 
-    ## below: additional treatment to meet the journal requirement; everything
-    ## is collected within a folder defined by output_dir in the YAML-header
-
-    ##first we have to make sure that we do not break old code
-    ##check whether the new field exist, if not the user do not expect this
-    ##new folder and the writing on the hard drive and consequently full stop
-    if(is.null(metadata$output_dir))
-      try(stop(), silent = TRUE)
-
-    ##check also bibliography
-    if(is.null(metadata$bibliography))
-      metadata$bibliography <- "RJreferences.bib"
+    # check bibliography name
+    bib_filename <- metadata$bibliography
+    if(!is.null(metadata$bibliography) &&
+       xfun::sans_ext(bib_filename) != xfun::sans_ext(filename)) {
+      msg <- paste(
+        "Per R journal requirement, bibliography file and tex file should",
+        "have the same name.\nCurrently, you have a bib file {{bib_filename}} and",
+        "a tex file {{filename}}.\nDon't forget to rename and change ",
+        "the bibliography field in YAML header."
+      )
+      warning(knitr::knit_expand(text = msg), call. = FALSE)
+    }
 
     ##get file path and set new output directory
     output_path <- dirname(normalizePath(output_file))
