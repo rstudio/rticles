@@ -35,12 +35,13 @@
 #'
 #' @md
 #' @export
-rjournal_article <- function(..., citation_package = 'natbib') {
+rjournal_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
 
   rmarkdown::pandoc_available('2.2', TRUE)
 
   base <- pdf_document_format(
-    "rjournal_article", highlight = NULL, citation_package = citation_package, ...
+    "rjournal_article", highlight = NULL, citation_package = citation_package,
+    keep_tex = keep_tex,...
   )
 
   # Render will generate tex file, post-knit hook gerenates the R file,

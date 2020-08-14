@@ -37,17 +37,8 @@ preamble: |
 # tex file. Don't forget to rename the bib file and change this example value.
 bibliography: RJreferences.bib
 
-output_dir: submission
 output: rticles::rjournal_article
 ---
-
-```{r global_options, include=FALSE}
-## these ensures that figures created within the R session 
-## materialise as files (otherwise they are only included in the final PDF)
-## Note: If you change the output path, the files are not copied automatically
-## to the directory defined via output_dir
-knitr::opts_chunk$set(fig.path = "./")
-```
 
 ## Introduction
 
