@@ -4,7 +4,7 @@
 \alias{rjournal_article}
 \title{R Journal format.}
 \usage{
-rjournal_article(..., citation_package = "natbib")
+rjournal_article(..., keep_tex = TRUE, citation_package = "natbib")
 }
 \arguments{
 \item{..., citation_package}{Arguments to \code{rmarkdown::pdf_document}.}
@@ -15,28 +15,31 @@ Format for creating R Journal articles. Adapted from
 manuscript preparation, the output is collected in a separate output directory,
 which can be used for the submission. If needed file names are renamed automatically.
 }
-\details{
-\strong{The \code{author} field in the YAML header}
-
-\tabular{lll}{
-FIELD \tab TYPE \tab DESCRIPTION\cr
-\code{name} \tab \emph{required} \tab name and surname of the author\cr
-\code{affiliation} \tab \emph{required} \tab name of the author's affiliation\cr
-\code{address} \tab \emph{required} \tab at least one address line for the affiliation\cr
-\code{url} \tab \emph{optional} \tab an additional url for the author or the main affiliation\cr
-\code{orcid} \tab \emph{optional} \tab the authors ORCID if available\cr
-\code{email} \tab \emph{required} \tab the author's e-mail address\cr
-\code{affiliation2} \tab \emph{optional} \tab name of the author's 2nd affiliation\cr
-\code{address2} \tab \emph{optional} \tab address lines belonging to the author's 2nd affiliation
+\section{About YAML header fields}{
+This section documents some of the YAML fields that can be used with this
+formats.
+\subsection{The \code{author} field in the YAML header}{\tabular{lll}{
+   FIELD \tab TYPE \tab DESCRIPTION \cr
+   \code{name} \tab \emph{required} \tab name and surname of the author \cr
+   \code{affiliation} \tab \emph{required} \tab name of the author's affiliation \cr
+   \code{address} \tab \emph{required} \tab at least one address line for the affiliation \cr
+   \code{url} \tab \emph{optional} \tab an additional url for the author or the main affiliation \cr
+   \code{orcid} \tab \emph{optional} \tab the authors ORCID if available \cr
+   \code{email} \tab \emph{required} \tab the author's e-mail address \cr
+   \code{affiliation2} \tab \emph{optional} \tab name of the author's 2nd affiliation \cr
+   \code{address2} \tab \emph{optional} \tab address lines belonging to the author's 2nd affiliation \cr
 }
+
 
 \emph{Please note: Only one \code{url}, \code{orcid} and \code{email} can be provided per author.}
+}
 
-\strong{Other YAML fields}
+\subsection{Other YAML fields}{\tabular{lll}{
+   FIELD \tab TYPE \tab DESCRIPTION \cr
+   \code{bibliography} \tab \emph{with default} \tab the BibTeX file with the reference entries \cr
+   \code{output_dir} \tab \emph{with default} \tab output directory where all the files are stored ready for submission \cr
+}
 
-\tabular{lll}{
-FIELD \tab TYPE \tab DESCRIPTION\cr
-\code{bibliography} \tab \emph{with default} \tab the BibTeX file with the reference entries\cr
-\code{output_dir} \tab \emph{with default} \tab output directory where all the files are stored ready for submission
 }
 }
+

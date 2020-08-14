@@ -5,31 +5,34 @@
 #' manuscript preparation, the output is collected in a separate output directory,
 #' which can be used for the submission. If needed file names are renamed automatically.
 #'
-#' @details
+#' # About YAML header fields
 #'
-#' **The `author` field in the YAML header**
+#' This section documents some of the YAML fields that can be used with this
+#' formats.
 #'
-#' \tabular{lll}{
-#' FIELD \tab TYPE \tab DESCRIPTION\cr
-#' `name` \tab *required* \tab name and surname of the author\cr
-#' `affiliation` \tab *required* \tab name of the author's affiliation\cr
-#' `address` \tab *required* \tab at least one address line for the affiliation\cr
-#' `url` \tab *optional* \tab an additional url for the author or the main affiliation\cr
-#' `orcid` \tab *optional* \tab the authors ORCID if available\cr
-#' `email` \tab *required* \tab the author's e-mail address\cr
-#' `affiliation2` \tab *optional* \tab name of the author's 2nd affiliation\cr
-#' `address2` \tab *optional* \tab address lines belonging to the author's 2nd affiliation
-#' }
+#'
+#' ## The `author` field in the YAML header
+#'
+#' | FIELD  | TYPE | DESCRIPTION |
+#' | ------ | ---- | ----------- |
+#' | `name` | *required* | name and surname of the author |
+#' | `affiliation` | *required* | name of the author's affiliation |
+#' | `address` | *required* | at least one address line for the affiliation |
+#' | `url` | *optional* | an additional url for the author or the main affiliation |
+#' | `orcid` | *optional* | the authors ORCID if available |
+#' | `email` | *required* | the author's e-mail address |
+#' | `affiliation2` | *optional* | name of the author's 2nd affiliation |
+#' | `address2` | *optional* | address lines belonging to the author's 2nd affiliation |
 #'
 #' *Please note: Only one `url`, `orcid` and `email` can be provided per author.*
 #'
-#' **Other YAML fields**
+#' ## Other YAML fields
 #'
-#' \tabular{lll}{
-#' FIELD \tab TYPE \tab DESCRIPTION\cr
-#' `bibliography` \tab *with default* \tab the BibTeX file with the reference entries\cr
-#' `output_dir` \tab *with default* \tab output directory where all the files are stored ready for submission
-#' }
+#' | FIELD | TYPE | DESCRIPTION |
+#' | ----- | ---- | ----------- |
+#' | `bibliography` | *with default* | the BibTeX file with the reference entries |
+#' | `output_dir` | *with default* | output directory where all the files are stored ready for submission |
+#'
 #'
 #' @param ...,citation_package Arguments to \code{rmarkdown::pdf_document}.
 #'
