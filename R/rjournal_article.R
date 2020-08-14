@@ -103,9 +103,9 @@ rjournal_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') 
     unlink(output_R)
 
     # post process TEX file
-    temp_tex <- xfun::read_utf8(output_file)
+    temp_tex <- xfun::read_utf8(filename)
     temp_tex <- post_process_authors(temp_tex)
-    xfun::write_utf8(text = temp_tex, con = output_file)
+    xfun::write_utf8(text = temp_tex, con = filename)
 
     # check bibliography name
     bib_filename <- metadata$bibliography
