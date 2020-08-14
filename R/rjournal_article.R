@@ -60,7 +60,7 @@ rjournal_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') 
 
   base <- pdf_document_format(
     "rjournal_article", highlight = NULL, citation_package = citation_package,
-    keep_tex = keep_tex,...
+    keep_tex = keep_tex, ...
   )
 
   # Render will generate tex file, post-knit hook gerenates the R file,
