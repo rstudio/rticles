@@ -91,6 +91,20 @@ rjournal_article <- function(..., citation_package = 'natbib') {
     file.copy(output_R, xfun::with_ext(filename, "R"))
     unlink(output_R)
 
+    # post process TEX file
+    temp_tex <- xfun::read_utf8(output_file)
+
+    ##correct authors field to have pattern Author 1, Author 2 and Author 3
+    authors_line <- grepl(pattern = "\\author{", x = temp_tex, fixed = TRUE)
+    authors <- knitr::combine_words(
+      unlist(
+        strsplit(
+          x = temp_tex[authors_line],
+          ", ")))
+    temp_tex[authors_line] <- authors
+
+    xfun::write_utf8(text = temp_tex, con = output_file)
+
     ##compile TEX and return the output file path on exit
     file <- tinytex::latexmk("RJwrapper.tex", base$pandoc$latex_engine, clean = clean)
     on.exit(return(file))
@@ -107,22 +121,6 @@ rjournal_article <- function(..., citation_package = 'natbib') {
       )
       warning(knitr::knit_expand(text = msg), call. = FALSE)
     }
-
-    ##correct BIB-file  ans TEX-file
-    temp_tex <- xfun::read_utf8(output_file)
-
-    ##correct authors field to have pattern Author 1, Author 2 and Author 3
-    authors <-
-      knitr::combine_words(
-        unlist(
-          strsplit(
-            x = temp_tex[grepl(pattern = "\\author{", x = temp_tex, fixed = TRUE)],
-            ",")))
-
-    temp_tex[grepl(pattern = "\\author{", x = temp_tex, fixed = TRUE)] <- authors
-
-    ##write TEX back to hard drive
-    xfun::write_utf8(text = temp_tex, con = output_file)
 
   }
 
