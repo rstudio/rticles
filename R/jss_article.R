@@ -54,6 +54,8 @@ jss_article <- function(
   }
   hook_input <- function(x, options) {
     if (options$prompt && length(x)) {
+      if (xfun::isFALSE(options$eval))
+          x = vapply(highr:::group_src(x), knitr:::one_string, character(1))
       x <- gsub("\\n", paste0("\n", "+ "), x)
       x <- paste0("R> ", x)
     }
