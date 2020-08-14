@@ -21,6 +21,13 @@ author:
     address2:
     - line 1 affiliation 2
     - line 2 affiliation 2
+  - name: Author Three
+    url: https://journal.r-project.org
+    email: author3@work
+    affiliation: Affiliation
+    address:
+    - line 1 affiliation
+    - line 2 affiliation
 abstract: >
   An abstract of less than 150 words.
 preamble: |
