@@ -65,3 +65,17 @@ get_list_element <- function(x, names) {
   for (i in names[seq_len(n - 1)]) if (!is.list(x <- x[[i]])) return()
   x[[names[n]]]
 }
+
+# utils for post processing tex files
+
+post_process_authors <- function(text) {
+  # correct authors field to have pattern Author 1, Author 2 and Author 3
+  authors_line <- grep(pattern = "\\author{", x = text, fixed = TRUE)
+  if (length(authors_line) != 0) {
+    new_authors <- knitr::combine_words(
+      strsplit(text[authors_line], split = ", ")[[1]]
+    )
+    text[authors_line] <- new_authors
+  }
+  text
+}

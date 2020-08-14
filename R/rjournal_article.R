@@ -93,16 +93,7 @@ rjournal_article <- function(..., citation_package = 'natbib') {
 
     # post process TEX file
     temp_tex <- xfun::read_utf8(output_file)
-
-    ##correct authors field to have pattern Author 1, Author 2 and Author 3
-    authors_line <- grepl(pattern = "\\author{", x = temp_tex, fixed = TRUE)
-    authors <- knitr::combine_words(
-      unlist(
-        strsplit(
-          x = temp_tex[authors_line],
-          ", ")))
-    temp_tex[authors_line] <- authors
-
+    temp_tex <- post_process_authors(temp_tex)
     xfun::write_utf8(text = temp_tex, con = output_file)
 
     ##compile TEX and return the output file path on exit
