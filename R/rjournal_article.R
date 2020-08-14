@@ -108,32 +108,8 @@ rjournal_article <- function(..., citation_package = 'natbib') {
       warning(knitr::knit_expand(text = msg), call. = FALSE)
     }
 
-    ##get file path and set new output directory
-    output_path <- dirname(normalizePath(output_file))
-    output_dir <- paste(c(output_path, metadata$output_dir), collapse = "/")
-
-    ##create subdirectory
-    dir.create(output_dir, showWarnings = FALSE)
-
-    ##copy files from working directory to user-defined output folder
-    file.copy(from = c(
-      output_file,
-      metadata$bibliography,
-      "RJwrapper.tex",
-      "RJwrapper.pdf"
-    ), to = output_dir, overwrite = TRUE)
-
-    ##correct bib-filename to match the name of the TEX-file
-    file.rename(from = paste0(output_dir,"/",metadata$bibliography),
-                to = paste0(output_dir,"/",xfun::sans_ext(output_file), ".bib"))
-
     ##correct BIB-file  ans TEX-file
-    temp_tex <- readLines(paste0(output_dir,"/", output_file))
-
-    ## correct bibliography
-    pat <- regexpr("(?<=\\\\bibliography{).+[^}]", temp_tex, perl = TRUE)
-    regmatches(temp_tex, pat) <- paste0(xfun::sans_ext(output_file), ".bib")
-
+    temp_tex <- readLines(output_file)
 
     ##correct authors field to have pattern Author 1, Author 2 and Author 3
     authors <-
@@ -146,14 +122,7 @@ rjournal_article <- function(..., citation_package = 'natbib') {
     temp_tex[grepl(pattern = "\\author{", x = temp_tex, fixed = TRUE)] <- authors
 
     ##write TEX back to hard drive
-    writeLines(text = temp_tex, con = paste0(output_dir,"/", output_file))
-
-    ## copy and paste figures to output_dir. The LaTeX format make it a little bit
-    ## difficult, however, the R Journal allows only PDF or PNG figures
-    figures <- regmatches(temp_tex, regexec("(?<=\\\\includegraphics)(.*?){(.*?)}", temp_tex, perl = TRUE))
-    figures <- as.character(stats::na.exclude(sapply(figures, function(x) x[3])))
-    figures_files <- paste0(rep(figures, each = 2), c(".pdf", ".png"))
-    suppressWarnings(file.copy(from = figures_files, to = output_dir, overwrite = TRUE, recursive = FALSE))
+    writeLines(text = temp_tex, con = output_file)
 
   }
 
