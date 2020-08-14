@@ -109,7 +109,7 @@ rjournal_article <- function(..., citation_package = 'natbib') {
     }
 
     ##correct BIB-file  ans TEX-file
-    temp_tex <- readLines(output_file)
+    temp_tex <- xfun::read_utf8(output_file)
 
     ##correct authors field to have pattern Author 1, Author 2 and Author 3
     authors <-
@@ -122,7 +122,7 @@ rjournal_article <- function(..., citation_package = 'natbib') {
     temp_tex[grepl(pattern = "\\author{", x = temp_tex, fixed = TRUE)] <- authors
 
     ##write TEX back to hard drive
-    writeLines(text = temp_tex, con = output_file)
+    xfun::write_utf8(text = temp_tex, con = output_file)
 
   }
 
