@@ -49,8 +49,6 @@
 #' | FIELD | TYPE | DESCRIPTION |
 #' | ----- | ---- | ----------- |
 #' | `bibliography` | *with default* | the BibTeX file with the reference entries |
-#' | `output_dir` | *with default* | output directory where all the files are stored ready for submission |
-#'
 #'
 #' @param ...,citation_package Arguments to \code{rmarkdown::pdf_document}.
 #'

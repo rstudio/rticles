@@ -55,7 +55,6 @@ formats.
 \subsection{Other YAML fields}{\tabular{lll}{
    FIELD \tab TYPE \tab DESCRIPTION \cr
    \code{bibliography} \tab \emph{with default} \tab the BibTeX file with the reference entries \cr
-   \code{output_dir} \tab \emph{with default} \tab output directory where all the files are stored ready for submission \cr
 }
 
 }
