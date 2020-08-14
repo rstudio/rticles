@@ -65,3 +65,17 @@ plot(x)
 ## Summary
 
 This file is only a basic article template. For full details of _The R Journal_ style and information on how to prepare your article for submission, see the [Instructions for Authors](https://journal.r-project.org/share/author-guide.pdf).
+
+### About this format and the R Journal requirements
+
+`rticles::rjournal_article` will help you build the correct files requirements: 
+
+* A R file will be generated automatically using `knitr::purl` - see
+https://bookdown.org/yihui/rmarkdown-cookbook/purl.html for more information.
+* A tex file will be generated from this Rmd file and correctly included in
+`RJwapper.tex` as expected to build `RJwrapper.pdf`.
+* All figure files will be kept in the default rmarkdown `*_files` folder. This
+happens because `keep_tex = TRUE` by default in `rticles::rjournal_article`
+* Only the bib filename is to modifed. An example bib file is included in the
+template (`RJreferences.bib`) and you will have to name your bib file as the
+tex, R, and pdf files.
