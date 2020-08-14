@@ -1,6 +1,6 @@
-#' @title R Journal format.
+#' R Journal format.
 #'
-#' @description Format for creating R Journal articles. Adapted from
+#' Format for creating R Journal articles. Adapted from
 #' \url{https://journal.r-project.org/submissions.html}. In order to ease the
 #' manuscript preparation, the output is collected in a separate output directory,
 #' which can be used for the submission. If needed file names are renamed automatically.
