@@ -53,11 +53,10 @@ jss_article <- function(
     paste0('```{=latex}\n\\begin{CodeChunk}\n', x, '\\end{CodeChunk}\n```')
   }
   hook_input <- function(x, options) {
-    if (options$prompt && length(x)) {
-      if (xfun::isFALSE(options$eval))
-          x = vapply(highr:::group_src(x), knitr:::one_string, character(1))
-      x <- gsub("\\n", paste0("\n", "+ "), x)
-      x <- paste0("R> ", x)
+    if (length(x)) {
+      opts <- options(prompt = 'R> ', continue = '+ ')
+      on.exit(options(opts), add = TRUE)
+      x <- knitr:::hilight_source(x, 'sweave', options)
     }
     paste0(c('\n\\begin{CodeInput}', x, '\\end{CodeInput}', ''),
       collapse = '\n')
