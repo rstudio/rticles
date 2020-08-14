@@ -25,7 +25,11 @@ abstract: >
   An abstract of less than 150 words.
 preamble: |
   % Any extra LaTeX you need in the preamble
+  
+# per R journal requirement, the bib filename should be the same as the output 
+# tex file. Don't forget to rename the bib file and change this example value.
 bibliography: RJreferences.bib
+
 output_dir: submission
 output: rticles::rjournal_article
 ---
