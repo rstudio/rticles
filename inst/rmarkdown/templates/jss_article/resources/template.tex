@@ -45,7 +45,11 @@ $endif$
 $for(author)$
   $if(author.address)$
   $author.name$\\
+  $if(author.affiliation2)$
+  $author.affiliation2$\\
+  $else$
   $author.affiliation$\\
+  $endif$
   $author.address$\\
   $if(author.email)$E-mail: $author.email$\\$endif$
   $if(author.url)$URL: $author.url$\\~\\$endif$
