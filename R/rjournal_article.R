@@ -3,8 +3,6 @@
 #' Format for creating R Journal articles. Adapted from
 #' <https://journal.r-project.org/submissions.html>.
 #'
-#' @details
-#'
 #' This file is only a basic article template. For full details of _The R
 #' Journal_ style and information on how to prepare your article for submission,
 #' see the [Instructions for Authors](https://journal.r-project.org/share/author-guide.pdf)
@@ -28,7 +26,6 @@
 #' This section documents some of the YAML fields that can be used with this
 #' formats.
 #'
-#'
 #' ## The `author` field in the YAML header
 #'
 #' | FIELD  | TYPE | DESCRIPTION |
@@ -51,8 +48,7 @@
 #' | `bibliography` | *with default* | the BibTeX file with the reference entries |
 #'
 #' @inheritParams rmarkdown::pdf_document
-#' @param ... Arguments to `rmarkdown::pdf_document.
-#'
+#' @param ... Arguments to [`rmarkdown::pdf_document`].
 #' @md
 #' @export
 rjournal_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
