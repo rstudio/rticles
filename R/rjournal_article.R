@@ -101,7 +101,7 @@ rjournal_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') 
 
     # check bibliography name
     bib_filename <- metadata$bibliography
-    if(!is.null(metadata$bibliography) &&
+    if (length(bib_filename) == 1 &&
        xfun::sans_ext(bib_filename) != xfun::sans_ext(filename)) {
       msg <- paste(
         "Per R journal requirement, bibliography file and tex file should",
