@@ -76,17 +76,12 @@ rjournal_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') 
 
     # purl the Rmd file to R code per requirement
     temp_R <- tempfile(fileext = ".R")
-    output_R <<- knitr::purl(
-      input = input_file, output = temp_R,
-      documentation = 1, quiet = TRUE
-    )
+    output_R <<- knitr::purl(input_file, temp_R, documentation = 1, quiet = TRUE)
 
     NULL
   }
 
-  base$post_processor <- function(
-    metadata, utf8_input, output_file, clean, verbose
-  ) {
+  base$post_processor <- function(metadata, utf8_input, output_file, clean, verbose) {
     filename <- basename(output_file)
     # underscores in the filename will be problematic in \input{filename};
     # pandoc will escape underscores but it should not, i.e., should be
@@ -102,7 +97,7 @@ rjournal_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') 
     # post process TEX file
     temp_tex <- xfun::read_utf8(filename)
     temp_tex <- post_process_authors(temp_tex)
-    xfun::write_utf8(text = temp_tex, con = filename)
+    xfun::write_utf8(temp_tex, filename)
 
     # check bibliography name
     bib_filename <- metadata$bibliography
@@ -155,7 +150,3 @@ rjournal_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') 
 
   base
 }
-
-
-
-
