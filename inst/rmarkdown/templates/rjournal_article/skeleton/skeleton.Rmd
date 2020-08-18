@@ -1,6 +1,7 @@
 ---
 title: Capitalized Title Here
 author:
+  # see ?rjournal_article for more information
   - name: Author One
     affiliation: Affiliation
     address:
