@@ -65,3 +65,37 @@ get_list_element <- function(x, names) {
 }
 
 pkg_file <- function(...) system.file(..., package = "rticles")
+
+# utils for post processing tex files
+
+post_process_authors <- function(text) {
+
+  # ---
+  # correct authors field to have pattern Author 1, Author 2 and Author 3
+  # ---
+  authors_lines_start <- grep(pattern = "^\\\\author\\{", x = text)
+  # if no author line do nothing
+  if (length(authors_lines_start) == 0L) return(text)
+  # if multiple author line, do nothing and warn as it is unusual
+  if (length(authors_lines_start) > 1L) {
+    warning(
+      "There should be only one use of `\\author{}` in the tex file. ",
+      "Post processing `\\author{}` is cancelled.",
+      call. = FALSE)
+    return(text)
+  }
+  # find the authors lines range
+  authors_lines_end <- grep(
+    pattern = "\\}$", x = text[seq(authors_lines_start, length(text))]
+  )[1]
+  authors_lines_end <- authors_lines_end + (authors_lines_start - 1)
+  authors_lines_range <- seq(authors_lines_start, authors_lines_end)
+  # combine and write back
+  authors_lines <- paste0(text[authors_lines_range], collapse = "\n")
+  new_authors <- knitr::combine_words(
+    strsplit(authors_lines, split = ", ")[[1]]
+  )
+  text[authors_lines_range] <- xfun::split_lines(new_authors)
+  # return modified text
+  text
+}
