@@ -1,7 +1,7 @@
 rticles 0.15
 ---------------------------------------------------------------------
 
-- Improved the `rjournal_article()` format : Tex, R and PDF files with correct names are generated to match the author's guidelines, two affiliations is now supported for authors, last author is separated by `and` when multiple authors are present, and the documentation has been improved in function's help page and the skeleton document (thanks, @RLumSK, #286)
+- Improved the `rjournal_article()` format : `.tex`, `.R`, and PDF files with correct names are generated to match the author's guidelines, two affiliations is now supported for authors, the last author is separated by `and` when multiple authors are present, and the documentation has been improved on the help page `?rticles::rjournal_article` and in the skeleton document (thanks, @RLumSK, #286).
 
 - Added a `author.affiliation2` field in `jss_article()` template to provide another affiliation to be used in the adress field in place of `author.affiliation`. This allow differently formated affiliation for example. (thanks, @aldomann, #291) 
 
