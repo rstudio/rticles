@@ -103,13 +103,13 @@ rjournal_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') 
     bib_filename <- metadata$bibliography
     if (length(bib_filename) == 1 &&
        xfun::sans_ext(bib_filename) != xfun::sans_ext(filename)) {
-      msg <- paste(
+      msg <- paste0(
         "Per R journal requirement, bibliography file and tex file should",
-        "have the same name.\nCurrently, you have a bib file {{bib_filename}} and",
-        "a tex file {{filename}}.\nDon't forget to rename and change ",
-        "the bibliography field in YAML header."
+        " have the same name. Currently, you have a bib file ", bib_filename,
+        " and a tex file ", filename, ". Don't forget to rename and change",
+        " the bibliography field in the YAML header."
       )
-      warning(knitr::knit_expand(text = msg), call. = FALSE)
+      warning(msg, call. = FALSE)
     }
 
     # Create RJwrapper.tex per R Journal requirement
