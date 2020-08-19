@@ -56,7 +56,7 @@ rjournal_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') 
   rmarkdown::pandoc_available('2.2', TRUE)
 
   base <- pdf_document_format(
-    "rjournal_article", highlight = NULL, citation_package = citation_package,
+    "rjournal", highlight = NULL, citation_package = citation_package,
     keep_tex = keep_tex, ...
   )
 
@@ -120,7 +120,7 @@ rjournal_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') 
       xfun::write_utf8(preamble, f)
       f
     })
-    t <- find_resource("rjournal_article", "RJwrapper.tex")
+    t <- find_resource("rjournal", "RJwrapper.tex")
     template_pandoc(m, t, "RJwrapper.tex", h, verbose)
 
     tinytex::latexmk("RJwrapper.tex", base$pandoc$latex_engine, clean = clean)

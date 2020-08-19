@@ -7,7 +7,7 @@
 #' @export
 rss_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
   fmt <- pdf_document_format(
-    "rss_article", highlight = NULL, citation_package = citation_package,
+    "rss", highlight = NULL, citation_package = citation_package,
     keep_tex = keep_tex, ...
   )
   fmt$knitr$knit_hooks$source <- function(x, options) {

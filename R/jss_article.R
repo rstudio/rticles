@@ -18,7 +18,7 @@ jss_article <- function(
   )
 
   base <- pdf_document_format(
-    "jss_article", keep_tex = keep_tex, citation_package = citation_package,
+    "jss", keep_tex = keep_tex, citation_package = citation_package,
     pandoc_args = pandoc_args, ...
   )
 

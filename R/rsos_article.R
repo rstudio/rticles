@@ -15,7 +15,7 @@ rsos_article <- function(
 
   extra <- list(...)
 
-  template <- find_resource('rsos_article')
+  template <- find_resource('rsos')
   args <- c(
     "--template", template, pandoc_variable_arg("documentclass", "article"),
     pandoc_args, "--natbib", includes_to_pandoc_args(includes)

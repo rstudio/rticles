@@ -21,12 +21,12 @@ NULL
 #'   Arguments passed to \code{rmarkdown::\link{pdf_document}()}.
 #' @return An R Markdown output format.
 #' @examples \dontrun{
-#' rmarkdown::draft("MyArticle.Rmd", template = "acm_article", package = "rticles")
-#' rmarkdown::draft("MyArticle.Rmd", template = "asa_article", package = "rticles")}
+#' rmarkdown::draft("MyArticle.Rmd", template = "acm", package = "rticles")
+#' rmarkdown::draft("MyArticle.Rmd", template = "asa", package = "rticles")}
 #' @export
 #' @rdname article
 acm_article <- function(...) {
-  pdf_document_format("acm_article", ...)
+  pdf_document_format("acm", ...)
 }
 
 #' @section \code{acs_article}: Format for creating an American Chemical Society
@@ -38,7 +38,7 @@ acs_article <- function(
   ..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"), fig_caption = TRUE
 ) {
   pdf_document_format(
-    "acs_article", keep_tex = keep_tex, md_extensions = md_extensions,
+    "acs", keep_tex = keep_tex, md_extensions = md_extensions,
     fig_caption = fig_caption, ...
   )
 }
@@ -49,7 +49,7 @@ acs_article <- function(
 #' @rdname article
 aea_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris")) {
   pdf_document_format(
-    "aea_article", keep_tex = keep_tex, md_extensions = md_extensions, ...
+    "aea", keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
 }
 
@@ -63,7 +63,7 @@ agu_article <- function(
   highlight = NULL, md_extensions = c("-autolink_bare_uris", "-auto_identifiers")
 ) {
   pdf_document_format(
-    "agu_article", keep_tex = keep_tex, highlight = highlight,
+    "agu", keep_tex = keep_tex, highlight = highlight,
     citation_package = citation_package, md_extensions = md_extensions, ...
   )
 }
@@ -77,7 +77,7 @@ amq_article <- function(
   md_extensions = c("-autolink_bare_uris")
 ) {
   pdf_document_format(
-    "amq_article", latex_engine = latex_engine, highlight = NULL, keep_tex = keep_tex,
+    "amq", latex_engine = latex_engine, highlight = NULL, keep_tex = keep_tex,
     md_extensions = md_extensions, fig_caption = fig_caption, ...
   )
 }
@@ -89,7 +89,7 @@ amq_article <- function(
 #' @rdname article
 ams_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris")) {
   pdf_document_format(
-    "ams_article", keep_tex = keep_tex, md_extensions = md_extensions, ...
+    "ams", keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
 }
 
@@ -100,7 +100,7 @@ ams_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_
 #' @rdname article
 asa_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
   pdf_document_format(
-    "asa_article", keep_tex = keep_tex, citation_package = citation_package, ...
+    "asa", keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
 
@@ -111,7 +111,7 @@ asa_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
 #' @rdname article
 arxiv_article <- function(..., keep_tex = TRUE) {
   pdf_document_format(
-    "arxiv_article", keep_tex = keep_tex, ...
+    "arxiv", keep_tex = keep_tex, ...
   )
 }
 
@@ -121,7 +121,7 @@ arxiv_article <- function(..., keep_tex = TRUE) {
 #' @rdname article
 bioinformatics_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
   pdf_document_format(
-    "bioinformatics_article", keep_tex = keep_tex, citation_package = citation_package,
+    "bioinformatics", keep_tex = keep_tex, citation_package = citation_package,
     md_extensions = "-auto_identifiers",...
   )
 }
@@ -132,7 +132,7 @@ bioinformatics_article <- function(..., keep_tex = TRUE, citation_package = 'nat
 #' @rdname article
 biometrics_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
   pdf_document_format(
-    'biometrics_article', keep_tex = keep_tex, citation_package = citation_package, ...
+    'biometrics', keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
 
@@ -155,7 +155,7 @@ elsevier_article <- function(
   ..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris")
 ) {
   pdf_document_format(
-    "elsevier_article", keep_tex = keep_tex, md_extensions = md_extensions, ...
+    "elsevier", keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
 }
 
@@ -165,7 +165,7 @@ elsevier_article <- function(
 #' @export
 #' @rdname article
 frontiers_article <- function(..., keep_tex = TRUE) {
-  pdf_document_format("frontiers_article", keep_tex = keep_tex, ...)
+  pdf_document_format("frontiers", keep_tex = keep_tex, ...)
 }
 
 #' @section \code{mdpi_article}: Format for creating submissions to
@@ -175,7 +175,7 @@ frontiers_article <- function(..., keep_tex = TRUE) {
 #' @rdname article
 mdpi_article <- function(..., keep_tex = TRUE) {
   pdf_document_format(
-    "mdpi_article", keep_tex = keep_tex, citation_package = "natbib", ...
+    "mdpi", keep_tex = keep_tex, citation_package = "natbib", ...
   )
 }
 
@@ -186,7 +186,7 @@ mdpi_article <- function(..., keep_tex = TRUE) {
 #' @rdname article
 mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
   pdf_document_format(
-    "mnras_article", keep_tex = keep_tex, fig_caption = fig_caption, ...
+    "mnras", keep_tex = keep_tex, fig_caption = fig_caption, ...
   )
 }
 
@@ -201,7 +201,7 @@ oup_article <- function(
   md_extensions = c("-autolink_bare_uris")
 ) {
   pdf_document_format(
-    "oup_article",
+    "oup",
     keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
 }
@@ -213,7 +213,7 @@ oup_article <- function(
 #' @export
 #' @rdname article
 peerj_article <- function(..., keep_tex = TRUE) {
-  pdf_document_format("peerj_article",  keep_tex = keep_tex, ...)
+  pdf_document_format("peerj",  keep_tex = keep_tex, ...)
 }
 
 #' @section \code{plos_article}: Format for creating submissions to PLOS
@@ -224,7 +224,7 @@ plos_article <- function(
   ..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris")
 ) {
   pdf_document_format(
-    "plos_article", keep_tex = keep_tex, md_extensions = md_extensions, ...
+    "plos", keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
 }
 
@@ -233,7 +233,7 @@ plos_article <- function(
 #' @export
 #' @rdname article
 pnas_article <- function(..., keep_tex = TRUE) {
-  pdf_document_format("pnas_article", keep_tex = keep_tex, ...)
+  pdf_document_format("pnas", keep_tex = keep_tex, ...)
 }
 
 #' @section \code{sage_article}: Format for creating submissions to Sage
@@ -258,7 +258,7 @@ pnas_article <- function(..., keep_tex = TRUE) {
 #' @rdname article
 sage_article <- function(..., highlight = NULL, citation_package = "natbib") {
   pdf_document_format(
-    "sage_article", highlight = highlight, citation_package = citation_package, ...
+    "sage", highlight = highlight, citation_package = citation_package, ...
   )
 }
 
@@ -286,7 +286,7 @@ sage_article <- function(..., highlight = NULL, citation_package = "natbib") {
 #' @rdname article
 sim_article <- function(..., highlight = NULL, citation_package = "natbib") {
   pdf_document_format(
-    "sim_article", highlight = highlight, citation_package = citation_package, ...
+    "sim", highlight = highlight, citation_package = citation_package, ...
   )
 }
 
@@ -296,7 +296,7 @@ sim_article <- function(..., highlight = NULL, citation_package = "natbib") {
 #' @rdname article
 springer_article <- function(..., keep_tex = TRUE, citation_package = 'none'){
   pdf_document_format(
-    "springer_article", keep_tex = keep_tex, citation_package = citation_package, ...
+    "springer", keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
 
@@ -306,6 +306,6 @@ springer_article <- function(..., keep_tex = TRUE, citation_package = 'none'){
 #' @rdname article
 tf_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
   pdf_document_format(
-    "tf_article", keep_tex = keep_tex, citation_package = citation_package, ...
+    "tf", keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
