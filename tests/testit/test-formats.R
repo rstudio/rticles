@@ -12,7 +12,7 @@ test_format <- function(name, os_skip = NULL) {
   on.exit(setwd(oldwd), add = TRUE)
 
   # create a draft of the format
-  testdoc <- paste0(name, ".Rmd")
+  testdoc <- paste0(name,"_article",".Rmd")
   rmarkdown::draft(
     testdoc, pkg_file("rmarkdown", "templates", name),
     create_dir = FALSE, edit = FALSE
