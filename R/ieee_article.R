@@ -83,7 +83,7 @@ ieee_article <- function(
   pandoc_arg_list <- mapply(pandoc_arg_variable, names(args), args)
 
   pdf_document_format(
-    "ieee_article", pandoc_args = c(pandoc_arg_list, pandoc_args),
+    "ieee", pandoc_args = c(pandoc_arg_list, pandoc_args),
     keep_tex = keep_tex, md_extensions = md_extensions,
     ...
   )

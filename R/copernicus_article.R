@@ -43,7 +43,7 @@
 #' copernicus_journal_abbreviations(journal_name = "Science Data")
 #' \dontrun{
 #' library("rmarkdown")
-#' draft("MyArticle.Rmd", template = "copernicus_article", package = "rticles")
+#' draft("MyArticle.Rmd", template = "copernicus", package = "rticles")
 #' render("MyArticle/MyArticle.Rmd")
 #' }
 #' @export
@@ -54,13 +54,13 @@ copernicus_article <- function(
   )
 ) {
   pdf_document_format(
-    "copernicus_article", citation_package = citation_package,
+    "copernicus", citation_package = citation_package,
     keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
 }
 
 # quick dev shortcut for Ubuntu: click "Install and restart" then run:
-# unlink("MyArticle/", recursive = TRUE); rmarkdown::draft("MyArticle.Rmd", template = "copernicus_article", package = "rticles", edit = FALSE); rmarkdown::render("MyArticle/MyArticle.Rmd"); system(paste0("xdg-open ", here::here("MyArticle", "MyArticle.pdf")))
+# unlink("MyArticle/", recursive = TRUE); rmarkdown::draft("MyArticle.Rmd", template = "copernicus", package = "rticles", edit = FALSE); rmarkdown::render("MyArticle/MyArticle.Rmd"); system(paste0("xdg-open ", here::here("MyArticle", "MyArticle.pdf")))
 
 copernicus_journals <- list(
   "Advances in Geosciences" = "adgeo",

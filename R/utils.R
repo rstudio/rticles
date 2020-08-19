@@ -27,7 +27,7 @@ merge_list <- function(x, y) {
 #' @examples
 #' x <- rticles:::template_pandoc(
 #'   list(preamble = "%abc", filename = "wickham"),
-#'   rticles:::find_resource("rjournal_article", "RJwrapper.tex"),
+#'   rticles:::find_resource("rjournal", "RJwrapper.tex"),
 #'   tempfile()
 #' )
 #' if (interactive()) file.show(x)
