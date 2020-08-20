@@ -31,6 +31,8 @@ rticles 0.15
 
 - Deleted the LaTeX template of the `rticles::ctex` format. This format will use Pandoc's built-in template instead, which works well with the LaTeX package **ctex** (thanks, @XiangyunHuang, #307).
 
+- Added the output format `rticles::ctex_article` as an alias to `rticles::ctex`, to be consistent with the names of other `*_article` formats.
+
 rticles 0.14
 ---------------------------------------------------------------------
 

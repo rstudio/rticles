@@ -136,15 +136,20 @@ biometrics_article <- function(..., keep_tex = TRUE, citation_package = 'natbib'
   )
 }
 
-#' @section \code{ctex}: A wrapper function for \code{rmarkdown::pdf_document()}
-#'   and the default value of \code{latex_engine} is changed to
-#'   \command{xelatex}, so it works better for typesetting Chinese documents
-#'   with the LaTeX package \pkg{ctex}.
+#' @section \code{ctex_article}: A wrapper function for
+#'   \code{rmarkdown::pdf_document()} and the default value of
+#'   \code{latex_engine} is changed to \command{xelatex}, so it works better for
+#'   typesetting Chinese documents with the LaTeX package \pkg{ctex}. The
+#'   function \code{ctex} is an alias of \code{ctex_article}.
 #' @export
 #' @rdname article
-ctex <- function(..., latex_engine = 'xelatex') {
+ctex_article <- function(..., latex_engine = 'xelatex') {
   pdf_document_format('ctex', latex_engine = latex_engine, ...)
 }
+
+#' @export
+#' @rdname article
+ctex <- ctex_article
 
 #' @section \code{elsevier_article}: Format for creating submissions to Elsevier
 #'   journals. Adapted from

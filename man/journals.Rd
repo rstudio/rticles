@@ -16,7 +16,7 @@ List available journal names in this package.
 These names can be useful in two ways:
 \itemize{
 \item You can add \verb{_article} suffix to get the name of the output format (e.g.,
-\code{\link[=rjournal_article]{rjournal_article()}}). Only exception is for the \code{\link[=ctex]{ctex()}} format.
+\code{\link[=rjournal_article]{rjournal_article()}}).
 \item You can use the name directly in the \code{template} argument of
 \code{\link[rmarkdown:draft]{rmarkdown::draft()}}.
 }

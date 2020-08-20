@@ -11,6 +11,7 @@
 \alias{arxiv_article}
 \alias{bioinformatics_article}
 \alias{biometrics_article}
+\alias{ctex_article}
 \alias{ctex}
 \alias{elsevier_article}
 \alias{frontiers_article}
@@ -62,6 +63,8 @@ arxiv_article(..., keep_tex = TRUE)
 bioinformatics_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 biometrics_article(..., keep_tex = TRUE, citation_package = "natbib")
+
+ctex_article(..., latex_engine = "xelatex")
 
 ctex(..., latex_engine = "xelatex")
 
@@ -164,11 +167,12 @@ custom Pandoc LaTeX template and different default values for other arguments
   Biometrics journal.
 }
 
-\section{\code{ctex}}{
- A wrapper function for \code{rmarkdown::pdf_document()}
-  and the default value of \code{latex_engine} is changed to
-  \command{xelatex}, so it works better for typesetting Chinese documents
-  with the LaTeX package \pkg{ctex}.
+\section{\code{ctex_article}}{
+ A wrapper function for
+  \code{rmarkdown::pdf_document()} and the default value of
+  \code{latex_engine} is changed to \command{xelatex}, so it works better for
+  typesetting Chinese documents with the LaTeX package \pkg{ctex}. The
+  function \code{ctex} is an alias of \code{ctex_article}.
 }
 
 \section{\code{elsevier_article}}{
