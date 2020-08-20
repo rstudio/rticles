@@ -1,6 +1,8 @@
 rticles 0.15
 ---------------------------------------------------------------------
 
+- Add a new `journals()` function to list all available journal names.
+
 - Template directory in package's `rmarkdown/templates` directory has been renamed from _journalname_article_ to _journalname_. To create a new document using `rmarkdown::draft`, only the _journalname_  should be provided, i.e `rmarkdown::draft("MyArticle.Rmd", template = "rjournal", package = "rticles")`
 
 - Improved the `rjournal_article()` format : `.tex`, `.R`, and PDF files with correct names are generated to match the author's guidelines, two affiliations is now supported for authors, the last author is separated by `and` when multiple authors are present, and the documentation has been improved on the help page `?rticles::rjournal_article` and in the skeleton document (thanks, @RLumSK, #286).
