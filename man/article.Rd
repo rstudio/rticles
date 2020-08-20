@@ -275,6 +275,6 @@ Possible arguments for the YAML header are:
 
 \examples{
 \dontrun{
-rmarkdown::draft("MyArticle.Rmd", template = "acm_article", package = "rticles")
-rmarkdown::draft("MyArticle.Rmd", template = "asa_article", package = "rticles")}
+rmarkdown::draft("MyArticle.Rmd", template = "acm", package = "rticles")
+rmarkdown::draft("MyArticle.Rmd", template = "asa", package = "rticles")}
 }

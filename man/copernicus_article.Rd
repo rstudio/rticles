@@ -70,7 +70,7 @@ names(copernicus_journal_abbreviations())
 copernicus_journal_abbreviations(journal_name = "Science Data")
 \dontrun{
 library("rmarkdown")
-draft("MyArticle.Rmd", template = "copernicus_article", package = "rticles")
+draft("MyArticle.Rmd", template = "copernicus", package = "rticles")
 render("MyArticle/MyArticle.Rmd")
 }
 }
