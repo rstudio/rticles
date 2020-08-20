@@ -1,3 +1,21 @@
+#' List available journals
+#'
+#' The function [journals()] will list available journal names in the **rticles**
+#' package. These names can be useful in two ways :
+#' * You can add `_article` suffix to get the format (i.e [rjournal_article()]).
+#' Only exception is for the [ctex()] format.
+#' * You can use the name directly in the `template` argument of
+#' [rmarkdown::draft()].
+#'
+#' @return a vector with the journal names of format available in rticles
+#' @export
+#' @md
+#' @examples
+#' rticles::journals()
+journals <- function() {
+  sort(dir(pkg_file("rmarkdown", "templates")))
+}
+
 find_resource <- function(template, file = 'template.tex') {
   res <- pkg_file("rmarkdown", "templates", template, "resources", file)
   if (res == "") stop(
