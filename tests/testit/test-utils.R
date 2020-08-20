@@ -27,3 +27,9 @@ assert("last author is prepend with and ", {
   unmodified <- c("\\author{John, Bob}", "some text", "\\author{Mary, Dany}")
   (suppressWarnings(post_process_authors(unmodified)) %==% unmodified)
 })
+
+assert("all journals are listed and have a template folder", {
+  all <- grep("_article$|ctex", getNamespaceExports("rticles"), value = TRUE)
+  all <- gsub("_article$", "", all)
+  journals() %==% sort(all)
+})
