@@ -1,21 +1,21 @@
 rticles 0.15
 ---------------------------------------------------------------------
 
-- Add a new `journals()` function to list all available journal names.
+- Added a new `journals()` function to list all available journal names in this package (#318).
 
-- Template directory in package's `rmarkdown/templates` directory has been renamed from _journalname_article_ to _journalname_. To create a new document using `rmarkdown::draft`, only the _journalname_  should be provided, i.e `rmarkdown::draft("MyArticle.Rmd", template = "rjournal", package = "rticles")`
+- Template directory in package's `rmarkdown/templates` directory has been renamed from _journalname_article_ to _journalname_. To create a new document using `rmarkdown::draft`, only the _journalname_  should be provided, i.e., `rmarkdown::draft("MyArticle.Rmd", template = "rjournal", package = "rticles")` (#316).
 
 - Improved the `rjournal_article()` format : `.tex`, `.R`, and PDF files with correct names are generated to match the author's guidelines, two affiliations is now supported for authors, the last author is separated by `and` when multiple authors are present, and the documentation has been improved on the help page `?rticles::rjournal_article` and in the skeleton document (thanks, @RLumSK, #286).
 
-- Added a `author.affiliation2` field in `jss_article()` template to provide another affiliation to be used in the adress field in place of `author.affiliation`. This allow differently formated affiliation for example. (thanks, @aldomann, #291) 
+- Added a `author.affiliation2` field in `jss_article()` template to provide another affiliation to be used in the adress field in place of `author.affiliation`. This allow differently formatted affiliation for example (thanks, @aldomann, #291).
 
 - Improved the `jss_article()` format: Short titles can now be provided to headers to escape code/math in section titles, the continuation prompt has been corrected (from `R+` to `+`), and the skeleton document has been updated accordingly (thanks, @statibk #254, @Freguglia #294).
 
-- Fixed `elsevier_article()` template so that chunk option `out.width` can be set. (thanks, @EddieItelman, #300)
+- Fixed `elsevier_article()` template so that chunk option `out.width` can be set (thanks, @EddieItelman, #300).
 
-- Fixed `pnas_journal()` skeleton to show how correctly add `corresponding_author` and `equal_author` (Thanks, @EddieItelman, #299)
+- Fixed `pnas_journal()` skeleton to show how correctly add `corresponding_author` and `equal_author` (thanks, @EddieItelman, #299).
 
-- Added article template for journal *Bioinformatics*. (thanks, @ShixiangWang, #297)
+- Added article template for journal *Bioinformatics* (thanks, @ShixiangWang, #297).
 
 - Update Copernicus Publications template to version 5.8 (thanks, @nuest, #274).
 
