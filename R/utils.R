@@ -1,13 +1,15 @@
 #' List available journals
 #'
-#' The function [journals()] will list available journal names in the **rticles**
-#' package. These names can be useful in two ways :
-#' * You can add `_article` suffix to get the format (i.e [rjournal_article()]).
-#' Only exception is for the [ctex()] format.
+#' List available journal names in this package.
+#'
+#' These names can be useful in two ways:
+#'
+#' * You can add `_article` suffix to get the name of the output format (e.g.,
+#' [rjournal_article()]). Only exception is for the [ctex()] format.
+#'
 #' * You can use the name directly in the `template` argument of
 #' [rmarkdown::draft()].
-#'
-#' @return a vector with the journal names of format available in rticles
+#' @return A character vector of the journal names.
 #' @export
 #' @md
 #' @examples

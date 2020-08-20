@@ -7,14 +7,16 @@
 journals()
 }
 \value{
-a vector with the journal names of format available in rticles
+A character vector of the journal names.
 }
 \description{
-The function \code{\link[=journals]{journals()}} will list available journal names in the \strong{rticles}
-package. These names can be useful in two ways :
+List available journal names in this package.
+}
+\details{
+These names can be useful in two ways:
 \itemize{
-\item You can add \verb{_article} suffix to get the format (i.e \code{\link[=rjournal_article]{rjournal_article()}}).
-Only exception is for the \code{\link[=ctex]{ctex()}} format.
+\item You can add \verb{_article} suffix to get the name of the output format (e.g.,
+\code{\link[=rjournal_article]{rjournal_article()}}). Only exception is for the \code{\link[=ctex]{ctex()}} format.
 \item You can use the name directly in the \code{template} argument of
 \code{\link[rmarkdown:draft]{rmarkdown::draft()}}.
 }
