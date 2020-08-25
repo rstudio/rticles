@@ -15,7 +15,7 @@ NULL
 
 #' @section \code{acm_article}: Format for creating an Association for Computing
 #'   Machinery (ACM) articles. Adapted from
-#'   \url{http://www.acm.org/publications/article-templates/proceedings-template.html}.
+#'   \url{https://www.acm.org/publications/proceedings-template}.
 #' @param
 #'   ...,keep_tex,latex_engine,citation_package,highlight,fig_caption,md_extensions
 #'   Arguments passed to \code{rmarkdown::\link{pdf_document}()}.
@@ -31,7 +31,7 @@ acm_article <- function(...) {
 
 #' @section \code{acs_article}: Format for creating an American Chemical Society
 #'   (ACS) Journal articles. Adapted from
-#'   \url{http://pubs.acs.org/page/4authors/submission/tex.html}.
+#'   \url{https://pubs.acs.org/page/4authors/submission/tex.html}.
 #' @export
 #' @rdname article
 acs_article <- function(
@@ -55,7 +55,7 @@ aea_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_
 
 #' @section \code{agu_article}: Format for creating a American Geophysical Union
 #'   (AGU) article. Adapted from
-#'   \url{https://publications.agu.org/author-resource-center/checklists-and-templates/}.
+#'   \url{https://www.agu.org/Publish-with-AGU/Publish/#1}.
 #' @export
 #' @rdname article
 agu_article <- function(
@@ -166,7 +166,7 @@ elsevier_article <- function(
 
 #' @section \code{frontiers_article}: Format for creating Frontiers journal
 #'   articles. Adapted from
-#'   \url{http://home.frontiersin.org/about/author-guidelines}.
+#'   \url{https://www.frontiersin.org/about/author-guidelines}.
 #' @export
 #' @rdname article
 frontiers_article <- function(..., keep_tex = TRUE) {
@@ -175,7 +175,7 @@ frontiers_article <- function(..., keep_tex = TRUE) {
 
 #' @section \code{mdpi_article}: Format for creating submissions to
 #'   Multidisciplinary Digital Publishing Institute (MDPI) journals. Adapted
-#'   from \url{http://www.mdpi.com/authors/latex}.
+#'   from \url{https://www.mdpi.com/authors/latex}.
 #' @export
 #' @rdname article
 mdpi_article <- function(..., keep_tex = TRUE) {
@@ -186,7 +186,7 @@ mdpi_article <- function(..., keep_tex = TRUE) {
 
 #' @section \code{mnras_article}: Format for creating an Monthly Notices of
 #'   Royal Astronomical Society (MNRAS) Journal articles. Adapted from
-#'   \url{https://www.ras.org.uk/news-and-press/2641-new-version-of-the-mnras-latex-package}.
+#'   \url{https://ras.ac.uk}.
 #' @export
 #' @rdname article
 mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
@@ -222,7 +222,7 @@ peerj_article <- function(..., keep_tex = TRUE) {
 }
 
 #' @section \code{plos_article}: Format for creating submissions to PLOS
-#'   journals. Adapted from \url{http://journals.plos.org/ploscompbiol/s/latex}.
+#'   journals. Adapted from \url{https://journals.plos.org/ploscompbiol/s/latex}.
 #' @export
 #' @rdname article
 plos_article <- function(

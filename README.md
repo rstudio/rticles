@@ -17,36 +17,36 @@ remotes::install_github("rstudio/rticles")
 
 ## Overview
 
-The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown.rstudio.com) LaTeX formats and templates for various formats. Most of the templates are provided and maintained by the community, and anyone can contribute a new template. See [How to contribute](#how-to-contribute) below.
+The **rticles** package provides a suite of custom [R Markdown](https://rmarkdown.rstudio.com) LaTeX formats and templates for various formats. Most of the templates are provided and maintained by the community, and anyone can contribute a new template. See [How to contribute](#how-to-contribute) below.
 
 Currently included templates and their contributors are the following:
 
 | Journal | Contributors | Pull request | Output format |
 |-|-|-|-|
 | [ACM: Association for Computing Machinery](https://www.acm.org/publications/about-publications) | [@ramnathv](https://github.com/ramnathv) | [#8](https://github.com/rstudio/rticles/pull/8) | `acm_article()` |
-| [ACS](http://pubs.acs.org/) | [@yufree](https://github.com/yufree) | [#15](https://github.com/rstudio/rticles/pull/15) | `acs_article()` |
+| [ACS](https://pubs.acs.org) | [@yufree](https://github.com/yufree) | [#15](https://github.com/rstudio/rticles/pull/15) | `acs_article()` |
 | [AEA: American Economic Association](https://www.aeaweb.org/journals/policies/templates) | [@sboysel](https://github.com/sboysel) | [#86](https://github.com/rstudio/rticles/pull/86) | `aea_articles()` |
 | [AGU](https://agupubs.onlinelibrary.wiley.com/) | [@eliocamp](https://github.com/eliocamp) | [#199](https://github.com/rstudio/rticles/pull/99) | `agu_article()` |
 | [AMS: American Meteorological Society](https://www.ametsoc.org/) | [@yufree](https://github.com/yufree) | [#96](https://github.com/rstudio/rticles/pull/96) | `ams_article()` |
 | [ASA: American Statistical Association](https://www.amstat.org/) |  | [#111](https://github.com/rstudio/rticles/pull/111) | `asa_article()` |
 | [arXiv](https://arxiv.org/) pre-prints based on George Kour's template | [@alexpghayes](https://github.com) | [#236](https://github.com/rstudio/rticles/pull/236) | `arxiv_article()` |
 | [Bioinformatics](https://academic.oup.com/bioinformatics) | [@ShixiangWang](https://github.com/ShixiangWang) | [#297](https://github.com/rstudio/rticles/pull/297) | `bioinformatics_article()` |
-| [Biometrics](http://www.biometrics.tibs.org/) | [@daltonhance](https://github.com/daltonhance) | [#170](https://github.com/rstudio/rticles/pull/170) | `biometrics_article()` |
+| [Biometrics](https://biometrics.biometricsociety.org) | [@daltonhance](https://github.com/daltonhance) | [#170](https://github.com/rstudio/rticles/pull/170) | `biometrics_article()` |
 | [Bulletin de l'AMQ](https://www.amq.math.ca/bulletin/) | [@desautm](https://github.com/desautm) | [#145](https://github.com/rstudio/rticles/pull/145) | `amq_article()` |
 | [Copernicus Publications](https://publications.copernicus.org) | [@nuest](https://github.com/nuest) | [#172](https://github.com/rstudio/rticles/pull/172) | `copernicus_article()` |
 | [CTeX](https://ctan.org/pkg/ctex) |  |  | `ctex()` |
 | [Elsevier](https://www.elsevier.com) | [@cboettig](https://github.com/cboettig) | [#27](https://github.com/rstudio/rticles/pull/27) | `elsevier_article()` |
 | [Frontiers](https://www.frontiersin.org/) | [@muschellij2](https://github.com/muschellij2) | [#211](https://github.com/rstudio/rticles/pull/211) | `frontiers_article()` |
 | [IEEE Transaction](http://www.ieee.org/publications_standards/publications/authors/author_templates.html) | [@Emaasit](https://github.com/Emaasit), [@espinielli](https://github.com/espinielli),  [@nathanweeks](https://github.com/nathanweeks), [@DunLug](https://github.com/DunLug) | [#97](https://github.com/rstudio/rticles/pull/97), [#169](https://github.com/rstudio/rticles/pull/169), [#227](https://github.com/rstudio/rticles/pull/227), [#263](https://github.com/rstudio/rticles/pull/263), [#264](https://github.com/rstudio/rticles/pull/264), [#265](https://github.com/rstudio/rticles/pull/265) | `ieee_article()` |
-| [JOSS: Journal of Open Source Software](http://joss.theoj.org/) [JOSE: Journal of Open Source Education](https://jose.theoj.org/) | [@noamross](https://github.com/noamross) | [#229](https://github.com/rstudio/rticles/pull/229) | `joss_article()` |
-| [JSS: Journal of Statistical Software](http://www.jstatsoft.org/) |  |  | `jss_article()` |
-| [MDPI](http://www.mdpi.com) | [@dleutnant](https://github.com/dleutnant) | [#147](https://github.com/rstudio/rticles/pull/147) | `mdpi_article()` |
+| [JOSS: Journal of Open Source Software](https://joss.theoj.org/) [JOSE: Journal of Open Source Education](https://jose.theoj.org/) | [@noamross](https://github.com/noamross) | [#229](https://github.com/rstudio/rticles/pull/229) | `joss_article()` |
+| [JSS: Journal of Statistical Software](https://www.jstatsoft.org) |  |  | `jss_article()` |
+| [MDPI](https://www.mdpi.com) | [@dleutnant](https://github.com/dleutnant) | [#147](https://github.com/rstudio/rticles/pull/147) | `mdpi_article()` |
 | [MNRAS: Monthly Notices of the Royal Astronomical Society](https://academic.oup.com/mnras) | [@oleskiewicz](https://github.com/oleskiewicz) | [#175](https://github.com/rstudio/rticles/pull/175) | `mnras_article()` |
 | [OUP: Oxford University Press](https://academic.oup.com/journals/pages/authors/preparing_your_manuscript) | [@dmkaplan](https://github.com/dmkaplan) | [#284](https://github.com/rstudio/rticles/pull/284) | `oup_articles()` |
 | [PeerJ: Journal of Life and Environmental Sciences](https://peerj.com) | [@zkamvar](https://github.com/zkamvar) | [#127](https://github.com/rstudio/rticles/pull/127) | `peerj_article()` |
-| [PLOS](http://journals.plos.org) | [@sjmgarnier](https://github.com/sjmgarnier) | [#12](https://github.com/rstudio/rticles/pull/12) | `plos_article()` |
+| [PLOS](https://plos.org/#journals) | [@sjmgarnier](https://github.com/sjmgarnier) | [#12](https://github.com/rstudio/rticles/pull/12) | `plos_article()` |
 | [PNAS: Proceedings of the National Academy of Sciences](https://www.pnas.org/) | [@cboettig](https://github.com/cboettig) | [#72](https://github.com/rstudio/rticles/pull/72) | `pnas_article()` |
-| [RSOS: Royal Society Open Science](http://rsos.royalsocietypublishing.org/) | [@ThierryO](https://github.com/ThierryO) | [#135](https://github.com/rstudio/rticles/pull/135) | `rsos_article()` |
+| [RSOS: Royal Society Open Science](https://www.royalsocietypublishing.org/journal/rsos) | [@ThierryO](https://github.com/ThierryO) | [#135](https://github.com/rstudio/rticles/pull/135) | `rsos_article()` |
 | [RSS: Royal Statistical Society](https://rss.org.uk/) | [@carlganz](https://github.com/carlganz) | [#110](https://github.com/rstudio/rticles/pull/110) | `rss_article()` |
 | [Sage](https://uk.sagepub.com/en-gb/eur/manuscript-submission-guidelines) | [@oguzhanogreden](https://github.com/oguzhanogreden) | [#181](https://github.com/rstudio/rticles/pull/181) | `sage_article()` |
 | [Springer](https://www.springer.com/gp/livingreviews/latex-templates) | [@strakaps](https://github.com/strakaps) | [#164](https://github.com/rstudio/rticles/pull/164) | `springer_article()` |
@@ -57,7 +57,7 @@ Currently included templates and their contributors are the following:
 
 You can also get the list of available journal names with `rticles::journals()`. 
 
-Under the hood, LaTeX templates are used to ensure that documents conform precisely to submission standards. At the same time, composition and formatting can be done using lightweight [markdown](https://rmarkdown.rstudio.com/authoring_basics.html) syntax, and R code and its output can be seamlessly included using [knitr](https://yihui.name/knitr/).
+Under the hood, LaTeX templates are used to ensure that documents conform precisely to submission standards. At the same time, composition and formatting can be done using lightweight [markdown](https://rmarkdown.rstudio.com/authoring_basics.html) syntax, and R code and its output can be seamlessly included using [knitr](https://yihui.org/knitr/).
 
 Using **rticles** requires the prerequisites described below. You can get most of these automatically by installing the latest release of RStudio (instructions for using **rticles** without RStudio are also provided).
 
@@ -65,7 +65,7 @@ Using **rticles** requires the prerequisites described below. You can get most o
 
 To use **rticles** from RStudio:
 
-1. Install the latest [RStudio](http://www.rstudio.com/products/rstudio/download/).
+1. Install the latest [RStudio](https://rstudio.com/products/rstudio/download/).
 
 2. Install the **rticles** package. 
 
@@ -75,7 +75,7 @@ To use **rticles** from RStudio:
 
 ## Using rticles outside of RStudio
 
-1. Install [pandoc](http://pandoc.org) using the [instructions for your platform](https://rmarkdown.rstudio.com/docs/articles/pandoc.html).
+1. Install [Pandoc](https://pandoc.org) using the [instructions for your platform](https://rmarkdown.rstudio.com/docs/articles/pandoc.html).
 
 2. Install the **rticles** packages.
 
@@ -99,7 +99,7 @@ To see the existing suggested formats, just filter issues with the [help wanted]
 
 ### Contribute a new template format opening a pull request.
 
-To contribute a new format, you need to open a new pull request (PR). When opening the PR, you'll see the [PR template](.github/PULL_REQUEST_TEMPLATE.md) explaining how to proceed and what is important to check. Please follow it.  
+To contribute a new format, you need to open a new pull request (PR). When opening the PR, you'll see the [PR template](https://github.com/rstudio/rticles/blob/master/.github/PULL_REQUEST_TEMPLATE.md) explaining how to proceed and what is important to check. Please follow it.  
 Even if you are just starting or you are not finished, you share your work by creating a [draft PR](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests#draft-pull-requests). It is a great way to let us know that you are still working on it (like [these opened ones](https://github.com/rstudio/rticles/pulls?q=is%3Apr+draft%3Atrue+)), and it is also a great way to ask for help from the community.  
 When you are ready, you can submit the PR for review, and we will iterate until it is merged.
 

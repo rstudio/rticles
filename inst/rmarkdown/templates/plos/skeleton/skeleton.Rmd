@@ -26,7 +26,7 @@ output: rticles::plos_article
 csl: plos.csl
 ---
 
-_Text based on plos sample manuscript, see [http://journals.plos.org/ploscompbiol/s/latex](http://journals.plos.org/ploscompbiol/s/latex)_
+_Text based on plos sample manuscript, see <https://journals.plos.org/ploscompbiol/s/latex>_
 
 # Introduction
 

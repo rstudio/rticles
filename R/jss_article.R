@@ -1,7 +1,7 @@
 #' Journal of Statistical Software (JSS) format.
 #'
 #' Format for creating a Journal of Statistical Software (JSS) articles. Adapted
-#' from \url{http://www.jstatsoft.org/about/submissions}.
+#' from \url{https://www.jstatsoft.org/about/submissions}.
 #' @inheritParams rmarkdown::pdf_document
 #' @param ... Arguments to \code{rmarkdown::pdf_document}
 #' @export

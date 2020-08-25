@@ -25,5 +25,5 @@ which means citations will be processed via the command
 }
 \description{
 Format for creating a Journal of Statistical Software (JSS) articles. Adapted
-from \url{http://www.jstatsoft.org/about/submissions}.
+from \url{https://www.jstatsoft.org/about/submissions}.
 }
