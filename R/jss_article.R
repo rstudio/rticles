@@ -49,29 +49,14 @@ jss_article <- function(
     )
   }
 
-  hook_chunk <- function(x, options) {
-    if (output_asis(x, options)) return(x)
-    paste0('```{=latex}\n\\begin{CodeChunk}\n', x, '\\end{CodeChunk}\n```')
-  }
-  hook_input <- function(x, options) {
-    if (length(x)) {
-      x <- knitr:::hilight_source(x, 'sweave', options)
-    }
-    paste0(c('\n\\begin{CodeInput}', x, '\\end{CodeInput}', ''),
-      collapse = '\n')
-  }
-  hook_output <- function(x, options) {
-    paste0('\n\\begin{CodeOutput}\n', x, '\\end{CodeOutput}\n')
+  hooks <- knitr::hooks_sweave(c('CodeInput', 'CodeOutput', 'CodeChunk'))
+  hook_chunk <- hooks[['chunk']]
+  hooks[['chunk']] <- function(x, options) {
+    x2 <- hook_chunk(x, options)
+    if (identical(x, x2)) x else paste0('```{=latex}\n', x2, '\n```')
   }
 
-  base$knitr$knit_hooks <- merge_list(base$knitr$knit_hooks, list(
-    chunk   = hook_chunk,
-    source  = hook_input,
-    output  = hook_output,
-    message = hook_output,
-    warning = hook_output,
-    plot = knitr::hook_plot_tex
-  ))
+  base$knitr$knit_hooks <- merge_list(base$knitr$knit_hooks, hooks)
 
   base
 }
