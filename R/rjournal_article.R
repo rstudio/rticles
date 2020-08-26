@@ -129,9 +129,5 @@ rjournal_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') 
   # Mostly copied from knitr::render_sweave
   base$knitr$opts_chunk$comment <- "#>"
 
-  hooks <- knitr::hooks_sweave()
-  hooks[['chunk']] <- latex_block(x, options, hooks[['chunk']])
-  base$knitr$knit_hooks <- merge_list(base$knitr$knit_hooks, hooks)
-
-  base
+  set_sweave_hooks(base)
 }
