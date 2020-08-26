@@ -50,13 +50,17 @@ jss_article <- function(
   }
 
   hooks <- knitr::hooks_sweave(c('CodeInput', 'CodeOutput', 'CodeChunk'))
-  hook_chunk <- hooks[['chunk']]
-  hooks[['chunk']] <- function(x, options) {
-    x2 <- hook_chunk(x, options)
-    if (identical(x, x2)) x else paste0('```{=latex}\n', x2, '\n```')
-  }
-
+  hooks[['chunk']] <- latex_block(x, options, hooks[['chunk']])
   base$knitr$knit_hooks <- merge_list(base$knitr$knit_hooks, hooks)
 
   base
+}
+
+# wrap the content in a raw latex block
+latex_block <- function(x, options, hook) {
+  force(hook)
+  function(x, options) {
+    x2 <- hook(x, options)
+    if (identical(x, x2)) x else paste0('```{=latex}\n', x2, '\n```')
+  }
 }
