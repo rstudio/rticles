@@ -39,6 +39,10 @@ preamble: >
 output: rticles::jss_article
 ---
 
+```{r, setup, include=FALSE}
+options(prompt = 'R> ', continue = '+ ')
+```
+
 # Introduction
 
 This template demonstrates some of the basic LaTeX that you need to know to create a JSS article.

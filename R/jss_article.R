@@ -28,6 +28,7 @@ jss_article <- function(
   base$knitr$opts_chunk <- merge_list(base$knitr$opts_chunk, list(
     prompt = TRUE, comment = NA, highlight = FALSE, tidy = FALSE,
     dev.args = list(pointsize = 11), fig.align = "center",
+    R.options = list(prompt = 'R> ', continue = '+ '),
     fig.width = 4.9,  # 6.125" * 0.8, as in template
     fig.height = 3.675  # 4.9 * 3:4
   ))
@@ -54,8 +55,6 @@ jss_article <- function(
   }
   hook_input <- function(x, options) {
     if (length(x)) {
-      opts <- options(prompt = 'R> ', continue = '+ ')
-      on.exit(options(opts), add = TRUE)
       x <- knitr:::hilight_source(x, 'sweave', options)
     }
     paste0(c('\n\\begin{CodeInput}', x, '\\end{CodeInput}', ''),
