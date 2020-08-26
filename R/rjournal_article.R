@@ -129,24 +129,9 @@ rjournal_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') 
   # Mostly copied from knitr::render_sweave
   base$knitr$opts_chunk$comment <- "#>"
 
-  hilight_source <- knitr_fun('hilight_source')
-  hook_chunk = function(x, options) {
-    if (output_asis(x, options)) return(x)
-    paste0('```{=latex}\n\\begin{Schunk}\n', x, '\\end{Schunk}\n```')
-  }
-  hook_input <- function(x, options)
-    paste(c('\\begin{Sinput}', hilight_source(x, 'sweave', options), '\\end{Sinput}', ''),
-          collapse = '\n')
-  hook_output <- function(x, options) paste('\\begin{Soutput}\n', x, '\\end{Soutput}\n', sep = '')
-
-  base$knitr$knit_hooks <- merge_list(base$knitr$knit_hooks, list(
-    chunk   = hook_chunk,
-    source  = hook_input,
-    output  = hook_output,
-    message = hook_output,
-    warning = hook_output,
-    plot = knitr::hook_plot_tex
-  ))
+  hooks <- knitr::hooks_sweave()
+  hooks[['chunk']] <- latex_block(x, options, hooks[['chunk']])
+  base$knitr$knit_hooks <- merge_list(base$knitr$knit_hooks, hooks)
 
   base
 }
