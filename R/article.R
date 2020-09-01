@@ -144,7 +144,9 @@ biometrics_article <- function(..., keep_tex = TRUE, citation_package = 'natbib'
 #' @export
 #' @rdname article
 ctex_article <- function(..., latex_engine = 'xelatex') {
-  pdf_document_format('ctex', latex_engine = latex_engine, ...)
+  pdf_document_format(
+    'ctex', latex_engine = latex_engine, template = "default", ...
+  )
 }
 
 #' @export
