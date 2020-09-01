@@ -143,9 +143,9 @@ biometrics_article <- function(..., keep_tex = TRUE, citation_package = 'natbib'
 #'   function \code{ctex} is an alias of \code{ctex_article}.
 #' @export
 #' @rdname article
-ctex_article <- function(..., latex_engine = 'xelatex') {
+ctex_article <- function(..., template = 'default', latex_engine = 'xelatex') {
   pdf_document_format(
-    'ctex', latex_engine = latex_engine, template = "default", ...
+    'ctex', latex_engine = latex_engine, template = template, ...
   )
 }
 
