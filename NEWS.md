@@ -1,7 +1,7 @@
 rticles 0.16
 ---------------------------------------------------------------------
 
-- fix `ctex()` and `ctex_article()` to now correctly use the default Pandoc template as it was intended in version 0.15 (see #307 and #323).
+- Fixed `ctex()` and `ctex_article()` to now correctly use the default Pandoc template as it was intended in version 0.15 (see #307 and #323).
 
 rticles 0.15
 ---------------------------------------------------------------------
