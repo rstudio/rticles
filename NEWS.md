@@ -1,7 +1,7 @@
 rticles 0.16
 ---------------------------------------------------------------------
 
-
+- Fixed `ctex_article()` to correctly use the default Pandoc template as intended in the PR #307, which introduced the bug #322 (thanks, @baketbek @cderv #323).
 
 rticles 0.15
 ---------------------------------------------------------------------

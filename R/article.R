@@ -17,7 +17,7 @@ NULL
 #'   Machinery (ACM) articles. Adapted from
 #'   \url{https://www.acm.org/publications/proceedings-template}.
 #' @param
-#'   ...,keep_tex,latex_engine,citation_package,highlight,fig_caption,md_extensions
+#'   ...,keep_tex,latex_engine,citation_package,highlight,fig_caption,md_extensions,template
 #'   Arguments passed to \code{rmarkdown::\link{pdf_document}()}.
 #' @return An R Markdown output format.
 #' @examples \dontrun{
@@ -143,8 +143,10 @@ biometrics_article <- function(..., keep_tex = TRUE, citation_package = 'natbib'
 #'   function \code{ctex} is an alias of \code{ctex_article}.
 #' @export
 #' @rdname article
-ctex_article <- function(..., latex_engine = 'xelatex') {
-  pdf_document_format('ctex', latex_engine = latex_engine, ...)
+ctex_article <- function(..., template = 'default', latex_engine = 'xelatex') {
+  pdf_document_format(
+    'ctex', latex_engine = latex_engine, template = template, ...
+  )
 }
 
 #' @export

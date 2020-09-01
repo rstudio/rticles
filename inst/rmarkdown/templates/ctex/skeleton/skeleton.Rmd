@@ -8,7 +8,6 @@ documentclass: ctexart
 keywords:
   - 中文
   - R Markdown
-documentclass: ctexart
 output:
   rticles::ctex:
     fig_caption: yes

@@ -64,9 +64,9 @@ bioinformatics_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 biometrics_article(..., keep_tex = TRUE, citation_package = "natbib")
 
-ctex_article(..., latex_engine = "xelatex")
+ctex_article(..., template = "default", latex_engine = "xelatex")
 
-ctex(..., latex_engine = "xelatex")
+ctex(..., template = "default", latex_engine = "xelatex")
 
 elsevier_article(
   ...,
@@ -97,7 +97,7 @@ springer_article(..., keep_tex = TRUE, citation_package = "none")
 tf_article(..., keep_tex = TRUE, citation_package = "natbib")
 }
 \arguments{
-\item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions}{Arguments passed to \code{rmarkdown::\link{pdf_document}()}.}
+\item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template}{Arguments passed to \code{rmarkdown::\link{pdf_document}()}.}
 }
 \value{
 An R Markdown output format.
