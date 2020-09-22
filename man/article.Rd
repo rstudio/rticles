@@ -226,7 +226,7 @@ custom Pandoc LaTeX template and different default values for other arguments
 \section{\code{sage_article}}{
  Format for creating submissions to Sage
   Journals. Based on the official Sage Journals
-  \href{https://uk.sagepub.com/sites/default/files/sage_latex_template_4.zip}{class}.
+  \verb{https://uk.sagepub.com/sites/default/files/sage_latex_template_4.zip}{class}.
 
 Possible arguments for the YAML header are:
 \itemize{
