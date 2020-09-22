@@ -53,7 +53,7 @@ jss_article <- function(
 }
 
 # wrap the content in a raw latex block
-latex_block <- function(x, options, hook) {
+latex_block <- function(hook) {
   force(hook)
   function(x, options) {
     x2 <- hook(x, options)
@@ -64,7 +64,7 @@ latex_block <- function(x, options, hook) {
 # use knitr's sweave hooks, but wrap chunk output in raw latex blocks
 set_sweave_hooks <- function(base, ...) {
   hooks <- knitr::hooks_sweave(...)
-  hooks[['chunk']] <- latex_block(x, options, hooks[['chunk']])
+  hooks[['chunk']] <- latex_block(hooks[['chunk']])
   base$knitr$knit_hooks <- merge_list(base$knitr$knit_hooks, hooks)
   base
 }
