@@ -3,6 +3,8 @@ rticles 0.16
 
 - Fixed `ctex_article()` to correctly use the default Pandoc template as intended in the PR #307, which introduced the bug #322 (thanks, @baketbek @cderv #323).
 
+- The minimal version of **knitr** required is 1.30 now.
+
 rticles 0.15
 ---------------------------------------------------------------------
 
