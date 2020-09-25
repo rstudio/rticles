@@ -80,7 +80,9 @@ abbreviations:
     long: Three letter acronym
   - short: LD 
     long: linear dichroism
-output: rticles::mdpi_article
+output:
+  bookdown::pdf_book: 
+    base_format: rticles::mdpi_article
 ---
 
 # Version
