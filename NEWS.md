@@ -1,6 +1,6 @@
 rticles 0.17
 ---------------------------------------------------------------------
-
+- Added cross-references to `mdpi_article` template. (#326)
 
 
 rticles 0.16
