@@ -1,8 +1,10 @@
 rticles 0.17
 ---------------------------------------------------------------------
+
 - Update Copernicus Publications template to version 6.0 (#331) and sanitize 
 and issue that caused `pdftex` from hanging.
 
+- Add `CSLReferences` environment to support new Pandoc 2.11 citation processing (#335).
 
 rticles 0.16
 ---------------------------------------------------------------------
