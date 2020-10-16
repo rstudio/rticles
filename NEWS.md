@@ -1,6 +1,7 @@
 rticles 0.17
 ---------------------------------------------------------------------
-
+- Update Copernicus Publications template to version 6.0 (#331) and sanitize 
+and issue that caused `pdftex` from hanging.
 
 
 rticles 0.16
