@@ -2,8 +2,6 @@ dist: bionic
 language: r
 cache:
   packages: true
-  directories:
-    - $HOME/.TinyTeX
 latex: false
 pandoc_version: 2.8.0.1
 
@@ -17,7 +15,7 @@ addons:
     - ghostscript
 
 before_install:
-  - wget -qO- https://github.com/yihui/tinytex/raw/master/tools/download-travis-linux.sh | sh
+  - TINYTEX_VERSION=2020.09.19 TINYTEX_INSTALLER=TinyTeX wget -qO- "https://yihui.org/tinytex/install-bin-unix.sh" | sh
   - tlmgr --version
 
 jobs:
