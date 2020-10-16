@@ -89,6 +89,7 @@ copernicus_journals <- list(
   "Geoscientific Model Development" = "gmd",
   "History of Geo- and Space Sciences" = "hgss",
   "Hydrology and Earth System Sciences" = "hess",
+  "Journal of Bone and Joint Infection" = "jbji",
   "Journal of Micropalaeontology" = "jm",
   "Journal of Sensors and Sensor Systems" = "jsss",
   "Magnetic Resonance" = "mr",
