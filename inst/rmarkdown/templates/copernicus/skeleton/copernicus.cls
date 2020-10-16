@@ -5,18 +5,18 @@
 %% The original source files were:
 %%
 %% copernicus.dtx  (with options: `class')
-%%
+%% 
 %% -----------------------------------------------------------------
 %% Author:     copernicus.org and le-tex publishing services
-%%
+%% 
 %% This file is part of the copernicus package for papers
 %% published by Copernicus Publications (Copernicus GmbH).
-%%
+%% 
 %%       Copyright (C) 2020 by Copernicus Publications
 %% -----------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{copernicus}
-    [2020/01/31 9.08 Copernicus papers]
+    [2020/06/24 9.11 Copernicus papers]
 \frenchspacing
 \clubpenalty10000
 \widowpenalty10000
@@ -290,10 +290,13 @@
   \@journalnameabbreviation
   \ifcopyediting\else\if@noref,\space\@msnumber\else,\space\@pvol, \@fpage\if@nolastpage\else{--\@lpage}\fi\fi, \@pyear\fi}
 \def\@journalurlInfo{%
+  %% URL raus, DOI rein; 2020-05-15
   \if@preface
-    \@journalurl\ifcopyediting\else/\preface@abbrev.pdf\fi
+    %\@journalurl\ifcopyediting\else/\preface@abbrev.pdf\fi
+    https://doi.org/10.5194/\preface@abbrev.pdf
   \else
-    \@journalurl\ifcopyediting\else/\if@noref\@msnumber\else\@pvol/\@fpage/\@pyear\fi/\fi
+    https://doi.org/10.5194/\if@noref\@msnumber\else\@journalnameshortlower-\@pvol-\@fpage-\@pyear\fi
+    %\@journalurl\ifcopyediting\else/\if@noref\@msnumber\else\@pvol/\@fpage/\@pyear\fi/\fi
   \fi}
 \def\runningheaderfont{%
   \if@stage@final%spec. obsolete ?
@@ -1166,8 +1169,10 @@
 \RequirePackage[normalem]{ulem}%
 \RequirePackage[T1]{fontenc}
 \RequirePackage{textcomp}
-\RequirePackage{fontawesome5}
-\RequirePackage{fontawesome}
+\if@cop@home
+  \RequirePackage{fontawesome5}
+  \RequirePackage{fontawesome}
+\fi
 \ifx\xmltexversion\@undefined
   \RequirePackage[utf8]{inputenc}
   \def\strip@x#1x#2\@nil{#1}%
@@ -1375,8 +1380,10 @@
       {\ifnewaffil\addtocounter{affil}{1}%
        \xdef\AB@thenote{\arabic{affil}}\fi
        \global\advance\c@authnum\@ne
-       \expandafter\ifx\csname deceased@\the\c@authnum\endcsname\true\relax\def\@@deceased{$^{,\text{\faCross}}$}\fi
-       \expandafter\ifx\csname econtrib@\the\c@authnum\endcsname\true\relax\def\@@econtrib{$^{,\text{\faStar}}$}\fi
+       \if@cop@home
+         \expandafter\ifx\csname deceased@\the\c@authnum\endcsname\true\relax\def\@@deceased{$^{,\text{\faCross}}$}\fi
+         \expandafter\ifx\csname econtrib@\the\c@authnum\endcsname\true\relax\def\@@econtrib{$^{,\text{\faStar}}$}\fi
+       \fi
        \def\@tempa{#1}\ifx\@tempa\@empty\def\AB@note{\AB@thenote}\else\def\AB@note{#1}%
         \setcounter{Maxaffil}{0}\fi
       \ifnum\value{authors}>1\relax
@@ -1450,6 +1457,7 @@
   \if!#2!\else\econtrib@sep#2\@nil\fi}
 
 \newcommand\deceased[2][]{\gdef\@deceasedtext{#1}\@deceased{#2}}
+\if@cop@home
 \def\@deceased#1{%
   \ifx\@deceasedtext\@empty\gdef\@deceasedNote{deceased}\else\gdef\@deceasedNote{deceased, \@deceasedtext}\fi
    \deceased@sep#1,\@nil
@@ -1464,7 +1472,10 @@
    \protected@xdef\AB@affillist{\the\@temptokena \AB@affilsep
      \AB@affilnote{\faStar}\protect\Affilfont\@econtribNote}%
  }
-
+\else
+  \let\equalcontrib\@gobble
+  \let\@deceased\@gobble
+\fi
 \def\Author{\@ifnextchar[\@Author{\@Author[]}}%]
 \def\@Author[#1]{%
   \def\@tempa{#1}%
@@ -1841,6 +1852,8 @@
     \DeclareSymbolFont{largesymbolsA}{U}{esint}{m}{n}%from esint.sty
     \DeclareMathSymbol{\oiintop}{\mathop}{largesymbolsA}{'015}%from esint.sty
     \def\oiint{\oiintop\nolimits}%from esint.sty
+    \DeclareMathSymbol{\fintop}{\mathop}{largesymbolsA}{'037}%from esint.sty
+    \def\fint{\fintop\nolimits}%from esint.sty
     \ifx\xmltexversion\@undefined\else{\catcode`\_=\active\global\let_\xmltexUndersc@re}\fi
     \if@sansserifface
       \DeclareMathVersion{sans}
