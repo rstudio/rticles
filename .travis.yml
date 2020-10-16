@@ -15,7 +15,7 @@ addons:
     - ghostscript
 
 before_install:
-  - TINYTEX_VERSION=2020.09.19 TINYTEX_INSTALLER=TinyTeX wget -qO- "https://yihui.org/tinytex/install-bin-unix.sh" | sh
+  - wget -qO- "https://yihui.org/tinytex/install-bin-unix.sh" | sh
   - tlmgr --version
 
 jobs:
