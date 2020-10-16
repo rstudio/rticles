@@ -33,7 +33,7 @@ Currently included templates and their contributors are the following:
 | [Bioinformatics](https://academic.oup.com/bioinformatics) | [@ShixiangWang](https://github.com/ShixiangWang) | [#297](https://github.com/rstudio/rticles/pull/297) | `bioinformatics_article()` |
 | [Biometrics](https://biometrics.biometricsociety.org) | [@daltonhance](https://github.com/daltonhance) | [#170](https://github.com/rstudio/rticles/pull/170) | `biometrics_article()` |
 | [Bulletin de l'AMQ](https://www.amq.math.ca/bulletin/) | [@desautm](https://github.com/desautm) | [#145](https://github.com/rstudio/rticles/pull/145) | `amq_article()` |
-| [Copernicus Publications](https://publications.copernicus.org) | [@nuest](https://github.com/nuest) | [#172](https://github.com/rstudio/rticles/pull/172) | `copernicus_article()` |
+| [Copernicus Publications](https://publications.copernicus.org) | [@nuest](https://github.com/nuest), [@RLumSK](https://github.com/RLumSK) | [#172](https://github.com/rstudio/rticles/pull/172), [336](https://github.com/rstudio/rticles/pull/336) | `copernicus_article()` |
 | [CTeX](https://ctan.org/pkg/ctex) |  |  | `ctex()` |
 | [Elsevier](https://www.elsevier.com) | [@cboettig](https://github.com/cboettig) | [#27](https://github.com/rstudio/rticles/pull/27) | `elsevier_article()` |
 | [Frontiers](https://www.frontiersin.org/) | [@muschellij2](https://github.com/muschellij2) | [#211](https://github.com/rstudio/rticles/pull/211) | `frontiers_article()` |
