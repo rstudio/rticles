@@ -1,3 +1,4 @@
+dist: bionic
 language: r
 cache:
   packages: true
@@ -17,3 +18,14 @@ addons:
 
 before_install:
   - wget -qO- https://github.com/yihui/tinytex/raw/master/tools/download-travis-linux.sh | sh
+  - tlmgr --version
+
+jobs:
+  include:
+    - r: release
+      name: R release / Pandoc devel
+      env: PATH=$HOME/bin:$PATH
+      before_script:
+        - wget -qO- https://github.com/rstudio/rmarkdown/raw/master/tools/install-pandoc.sh | sh
+    - r: release
+      name: R release / default Pandoc
