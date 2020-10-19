@@ -17,6 +17,8 @@ addons:
 before_install:
   - wget -qO- "https://yihui.org/tinytex/install-bin-unix.sh" | sh
   - tlmgr --version
+  - tlmgr install achemso adobemapping ae algorithmicx algorithms ametsoc amscls apacite arphic babel-english babel-french beamer biblatex bookmark caption carlisle changepage charter chemgreek cite cjk cjkpunct cns colortbl courier crop ctablestack ctex datetime dblfloatfix draftwatermark endfloat endnotes enumitem environ epsf epstopdf eso-pic esvect etex-pkg everyhook everypage extsizes fancyhdr fandol floatflt fmtcount fontaxes fonts-tlwg footmisc forarray fp fpl garuda-c90 grfext hyphen-french hyphenat ifmtarg jknapltx kastrup lastpage latex-base-dev lettrine lineno lipsum listings logreq luatexbase luatexja ly1 marginnote marvosym mathpazo mathspec mdframed mhchem microtype minifp mnras morefloats moreverb mptopdf multirow needspace newfloat newtx norasi-c90 oberdiek palatino parskip pdfsync pgf placeins platex platex-tools preprint psfrag psnfss ptex ptex-base ptex-fonts ragged2e rsfs seqsplit setspace sidecap soul soulutf8 stix sttools subfigure svn-prov symbol tabto-ltx tcolorbox tex-gyre textcase titlesec totcount translator trimspaces ttfutils ucs uhc ulem units uplatex upquote uptex uptex-base uptex-fonts varwidth vruler wadalab wrapfig xcjk2uni xecjk xifthen xpinyin xstring xypic zapfchan zhmetrics zhmetrics-uptex zhnumber zref
+  - tlmgr path add
 
 jobs:
   include:
