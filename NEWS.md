@@ -1,6 +1,8 @@
 rticles 0.17
 ---------------------------------------------------------------------
 
+- Fixes `ams_article()` template regarding authors insertion (thanks, #340, @ConorIA)
+
 - Update Copernicus Publications template to version 6.0 (#331) and sanitize 
 and issue that caused `pdftex` from hanging.
 
