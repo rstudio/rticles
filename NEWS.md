@@ -1,6 +1,8 @@
 rticles 0.17
 ---------------------------------------------------------------------
 
+- Fixes `arxiv_article()` template when adding graphics from code chunks (#332)
+
 - Fixes `ams_article()` template regarding authors insertion (thanks, #340, @ConorIA)
 
 - Update Copernicus Publications template to version 6.0 (#331) and sanitize 
