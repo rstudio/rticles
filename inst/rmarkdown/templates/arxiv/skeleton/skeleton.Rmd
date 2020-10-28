@@ -87,6 +87,11 @@ See Figure \ref{fig:fig1}. Here is how you add footnotes. [^Sample of the first 
   \label{fig:fig1}
 \end{figure}
 
+```{r}
+plot(mtcars$mpg)
+```
+
+
 ## Tables
 
 \lipsum[12]
