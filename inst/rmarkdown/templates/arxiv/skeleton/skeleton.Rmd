@@ -20,7 +20,9 @@ keywords:
   - bloo
   - these are optional and can be removed
 bibliography: references.bib
-output: rticles::arxiv_article
+output: 
+  rticles::arxiv_article:
+    keep_tex: true
 ---
 
 # Introduction
