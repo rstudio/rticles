@@ -7,7 +7,7 @@ rticles 0.17
 
 - Add `CSLReferences` environment to support new Pandoc 2.11 citation processing (#335).
 
-- Added article template for *Leibniz International Proceedings in Informatics* (LIPIcs) (thanks, @nuest, #288).
+- Add article template `lipics_article()` for *Leibniz International Proceedings in Informatics* (LIPIcs) (thanks, @nuest, #288).
 
 rticles 0.16
 ---------------------------------------------------------------------
