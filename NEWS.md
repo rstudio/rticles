@@ -1,11 +1,11 @@
 rticles 0.17
 ---------------------------------------------------------------------
 
-- Fixes `arxiv_article()` template when adding graphics from code chunks (thanks, @Athanasiamo,  #332).
+- Fixes `arxiv_article()` template when adding graphics from code chunks (thanks, @Athanasiamo, #332).
 
-- Fixes `ams_article()` template regarding authors insertion (thanks, #340, @ConorIA).
+- Fixes `ams_article()` template regarding authors insertion (thanks, @ConorIA, #340).
 
-- Update Copernicus Publications template to version 6.0 and sanitize and issue that caused `pdftex` from hanging (thanks, #331, @RLumSK).
+- Update Copernicus Publications template to version 6.0 and sanitize and issue that caused `pdftex` from hanging (thanks, @RLumSK, #331).
 
 - Add `CSLReferences` environment to support new Pandoc 2.11 citation processing (#335).
 
