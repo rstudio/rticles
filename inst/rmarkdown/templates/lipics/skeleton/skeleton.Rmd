@@ -172,10 +172,9 @@ appendix: |
   Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate,   velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
   :::
 output:
-  rticles::lipics_article
-  #bookdown::pdf_book:
-  #  base_format: rticles::lipics_article # for using bookdown features like \@ref()
-  #  extra_dependencies: plainurl.bst
+  rticles::lipics_article: default
+  bookdown::pdf_book:
+    base_format: rticles::lipics_article # for using bookdown features like \@ref()
 ---
 
 # Typesetting instructions -- Summary
