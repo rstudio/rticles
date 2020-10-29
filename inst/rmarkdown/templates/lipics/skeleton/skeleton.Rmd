@@ -190,7 +190,7 @@ Please comply with the following instructions when preparing your article for a 
 - Use pdflatex and an up-to-date \LaTeX{} system.
 - Use further \LaTeX{} packages and custom made macros carefully and only if required.
 - Use the provided sectioning macros: `\section` (`#` in Markdown), `\subsection` (`##` in Markdown), `\subsubsection` (`###` in Markdown), 
-  `\paragraph`, `\paragraph*`, and `\subparagraph*`.
+  `\paragraph` (`####` in Markdown), `\paragraph*` ((`#### header {.unnumbered}` in Markdown)), and `\subparagraph*` (`##### header {.unnumbered}` in Markdown).
 -  Provide suitable graphics of at least 300dpi (preferably in PDF format).
 -  Use BibTeX and keep the standard style (`plainurl`) for the bibliography.
 -  Please try to keep the warnings log as small as possible. Avoid overfull `\hboxes` and any kind of warnings/errors with the referenced BibTeX entries.
@@ -212,7 +212,8 @@ The `\author` macros and the `\Copyright` macro should contain full author names
 - `\relatedversion` (if there is a related version, typically the ``full version''); please make sure to provide a persistent URL, e.\,g., at arXiv.
 - `\begin{abstract}...\end{abstract}`.
 
-\paragraph*{Please do not \ldots} <!-- Do not override the \texttt{\seriesstyle}-defaults} -->
+#### Please do not \ldots {.unnumbered}
+<!-- Do not override the \texttt{\seriesstyle}-defaults} -->
 Generally speaking, please do not override the `lipics-v2019`-style defaults. To be more specific, a short checklist also used by Dagstuhl Publishing during the final typesetting is given below.
 In case of `non-compliance` with these rules Dagstuhl Publishing will remove the corresponding parts of \LaTeX{} code and *replace it with the `lipics-v2019` defaults*. In serious cases, we may reject the LaTeX-source and expect the corresponding author to revise the relevant parts.
 
