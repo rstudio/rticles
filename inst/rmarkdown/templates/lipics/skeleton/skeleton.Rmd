@@ -111,70 +111,68 @@ appendix: |
   
   List of different predefined enumeration styles:
   
-  ::: {.theorem data-latex="\label{testenv-theorem}"}
-  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate,   velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
-  :::
+  \begin{theorem}\label{testenv-theorem}
+  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+  \end{theorem}
   
-  ::: {.lemma data-latex="\label{testenv-lemma}"}
-  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate,   velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
-  :::
+  \begin{lemma}\label{testenv-lemma}
+  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+  \end{lemma}
   
-  ::: {.corollary data-latex="\label{testenv-corollary}"}
-  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate,   velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
-  :::
+  \begin{corollary}\label{testenv-corollary}
+  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+  \end{corollary}
   
-  ::: {.proposition data-latex="\label{testenv-proposition}"}
-  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate,   velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
-  :::
+  \begin{proposition}\label{testenv-proposition}
+  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+  \end{proposition}
   
-  ::: {.exercise data-latex="\label{testenv-exercise}"}
-  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate,   velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
-  :::
+  \begin{exercise}\label{testenv-exercise}
+  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+  \end{exercise}
   
-  ::: {.definition data-latex="\label{testenv-definition}"}
-  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate,   velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
-  :::
+  \begin{definition}\label{testenv-definition}
+  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+  \end{definition}
   
-  ::: {.example data-latex="\label{testenv-example}"}
-  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate,   velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
-  :::
+  \begin{example}\label{testenv-example}
+  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+  \end{example}
   
-  ::: {.note data-latex="\label{testenv-note}"}
-  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate,   velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
-  :::
+  \begin{note}\label{testenv-note}
+  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+  \end{note}
   
   \begin{note*}
-  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate,   velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
   \end{note*}
   
-  ::: {.remark data-latex="\label{testenv-remark}"}
-  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate,   velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
-  :::
+  \begin{remark}\label{testenv-remark}
+  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+  \end{remark}
   
   \begin{remark*}
-  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate,   velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
   \end{remark*}
   
-  ::: {.claim data-latex="\label{testenv-claim}"}
-  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate,   velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
-  :::
-  
+  \begin{claim}\label{testenv-claim}
+  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+  \end{claim}
   
   \begin{claim*}\label{testenv-claim2}
-  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate,   velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
   \end{claim*}
   
-  ::: {.proof data-latex=""}
-  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate,   velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
-  :::
+  \begin{proof}
+  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+  \end{proof}
   
-  ::: {.claimproof data-latex=""}
-  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate,   velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
-  :::
+  \begin{claimproof}
+  Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
+  \end{claimproof}
+  List of different predefined enumeration styles:
 output:
   rticles::lipics_article: default
-  bookdown::pdf_book:
-    base_format: rticles::lipics_article # for using bookdown features like \@ref()
 ---
 
 # Typesetting instructions -- Summary
@@ -237,30 +235,32 @@ This is only a summary containing the most relevant details. Please read the com
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit \cite{DBLP:journals/cacm/Knuth74}. Praesent convallis orci arcu, eu mollis dolor. Aliquam eleifend suscipit lacinia. Maecenas quam mi, porta ut lacinia sed, convallis ac dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Donec eget odio et magna ullamcorper vehicula ut vitae libero. Maecenas lectus nulla, auctor nec varius ac, ultricies et turpis. Pellentesque id ante erat. In hac habitasse platea dictumst. Curabitur a scelerisque odio. Pellentesque elit risus, posuere quis elementum at, pellentesque ut diam. Quisque aliquam libero id mi imperdiet quis convallis turpis eleifend.
 
-::: {.lemma data-latex="[Lorem ipsum] \label{lemma:lorem}"}
+\begin{lemma}[Lorem ipsum]
+\label{lemma:lorem}
 Vestibulum sodales dolor et dui cursus iaculis. Nullam ullamcorper purus vel turpis lobortis eu tempus lorem semper. Proin facilisis gravida rutrum. Etiam sed sollicitudin lorem. Proin pellentesque risus at elit hendrerit pharetra. Integer at turpis varius libero rhoncus fermentum vitae vitae metus.
-:::
+\end{lemma}
 
-::: {.proof data-latex=""}
+
+\begin{proof}
 Cras purus lorem, pulvinar et fermentum sagittis, suscipit quis magna.
 
-::: {.claim data-latex=""}
+\begin{claim}
 content...
-:::
-
-::: {.claimproof data-latex=""}
+\end{claim}
+\begin{claimproof}
 content...
-:::
+\end{claimproof}
 
-:::
+\end{proof}
 
-::: {.corollary data-latex="[Curabitur pulvinar, \cite{DBLP:books/mk/GrayR93}] \label{lemma:curabitur}"}
+\begin{corollary}[Curabitur pulvinar, \cite{DBLP:books/mk/GrayR93}]
+\label{lemma:curabitur}
 Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-:::
+\end{corollary}
 
-::: {.proposition data-latex="\label{prop1}"}
+\begin{proposition}\label{prop1}
 This is a proposition
-:::
+\end{proposition}
 
 \autoref{prop1} and \cref{prop1} \ldots
 
@@ -283,17 +283,17 @@ Proin ac fermentum augue. Nullam bibendum enim sollicitudin tellus egestas lacin
 - Integer lacus ante, pellentesque sed sollicitudin et, pulvinar adipiscing sem.
 - Maecenas facilisis, leo quis tincidunt egestas, magna ipsum condimentum orci, vitae facilisis nibh turpis et elit.
 
-::: {.remark data-latex=""}
+\begin{remark}
 content...
-:::
+\end{remark}
 
 # Pellentesque quis tortor
 
 Nec urna malesuada sollicitudin. Nulla facilisi. Vivamus aliquam tempus ligula eget ornare. Praesent eget magna ut turpis mattis cursus. Aliquam vel condimentum orci. Nunc congue, libero in gravida convallis \cite{DBLP:conf/focs/HopcroftPV75}, orci nibh sodales quam, id egestas felis mi nec nisi. Suspendisse tincidunt, est ac vestibulum posuere, justo odio bibendum urna, rutrum bibendum dolor sem nec tellus.
 
-::: {.lemma data-latex="[Quisque blandit tempus nunc]"}
+\begin{lemma} [Quisque blandit tempus nunc]
 Sed interdum nisl pretium non. Mauris sodales consequat risus vel consectetur. Aliquam erat volutpat. Nunc sed sapien ligula. Proin faucibus sapien luctus nisl feugiat convallis faucibus elit cursus. Nunc vestibulum nunc ac massa pretium pharetra. Nulla facilisis turpis id augue venenatis blandit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-:::
+\end{lemma}
 
 Fusce eu leo nisi. Cras eget orci neque, eleifend dapibus felis. Duis et leo dui. Nam vulputate, velit et laoreet porttitor, quam arcu facilisis dui, sed malesuada risus massa sit amet neque.
 
