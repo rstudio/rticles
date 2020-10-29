@@ -15,6 +15,7 @@
 \alias{ctex}
 \alias{elsevier_article}
 \alias{frontiers_article}
+\alias{lipics_article}
 \alias{mdpi_article}
 \alias{mnras_article}
 \alias{oup_article}
@@ -76,6 +77,14 @@ elsevier_article(
 
 frontiers_article(..., keep_tex = TRUE)
 
+lipics_article(
+  ...,
+  latex_engine = "xelatex",
+  keep_tex = TRUE,
+  citation_package = "natbib",
+  md_extensions = c("-autolink_bare_uris", "-auto_identifiers")
+)
+
 mdpi_article(..., keep_tex = TRUE)
 
 mnras_article(..., keep_tex = TRUE, fig_caption = TRUE)
@@ -92,7 +101,7 @@ sage_article(..., highlight = NULL, citation_package = "natbib")
 
 sim_article(..., highlight = NULL, citation_package = "natbib")
 
-springer_article(..., keep_tex = TRUE, citation_package = "none")
+springer_article(..., keep_tex = TRUE, citation_package = "default")
 
 tf_article(..., keep_tex = TRUE, citation_package = "natbib")
 }
@@ -185,6 +194,16 @@ custom Pandoc LaTeX template and different default values for other arguments
  Format for creating Frontiers journal
   articles. Adapted from
   \url{https://www.frontiersin.org/about/author-guidelines}.
+}
+
+\section{\code{lipics_article}}{
+ Format for creating submissions to
+  LIPIcs - Leibniz International Proceedings Informatics - articles.
+  Adapted from the official Instructions for Authors at
+  \url{https://submission.dagstuhl.de/documentation/authors} and the
+  template from the archive \code{authors-lipics-v2019.zip} downloaded
+  with version tag v2019.2. The template is provided under The LaTeX
+  Project Public License (LPPL), Version 1.3c.
 }
 
 \section{\code{mdpi_article}}{
