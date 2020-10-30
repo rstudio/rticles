@@ -1,4 +1,4 @@
-[![Travis-CI Build Status](https://travis-ci.org/rstudio/rticles.svg?branch=master)](https://travis-ci.org/rstudio/rticles)
+[![Build Status](https://travis-ci.com/rstudio/rticles.svg?branch=master)](https://travis-ci.com/rstudio/rticles)
 [![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/rticles)](https://cran.r-project.org/package=rticles)
 
 ## Installation
