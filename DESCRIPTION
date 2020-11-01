@@ -1,7 +1,7 @@
 Package: rticles
 Type: Package
 Title: Article Formats for R Markdown
-Version: 0.16.5
+Version: 0.17
 Authors@R: c(
   person("JJ", "Allaire", role = "aut", email = "jj@rstudio.com"),
   person("Yihui", "Xie", role = c("aut", "cre"), email = "xie@yihui.name", comment = c(ORCID = "0000-0003-0645-5666")),
@@ -49,12 +49,10 @@ Authors@R: c(
 Description: A suite of custom R Markdown formats and templates for
   authoring journal articles and conference submissions.
 License: GPL-3
-Imports: utils, rmarkdown (>= 2.5), knitr (>= 1.30), yaml, tinytex (>= 0.26.7), xfun
+Imports: utils, rmarkdown (>= 2.5), knitr (>= 1.30), yaml, tinytex (>= 0.27), xfun
 SystemRequirements: GNU make
 URL: https://github.com/rstudio/rticles
 BugReports: https://github.com/rstudio/rticles/issues
 RoxygenNote: 7.1.1
 Suggests: testit, bookdown, xtable
 Encoding: UTF-8
-Remotes: 
-  yihui/tinytex
