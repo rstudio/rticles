@@ -16,7 +16,7 @@
 %% -----------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{copernicus}
-    [2020/06/24 9.11 Copernicus papers]
+    [2020/10/29 9.21 Copernicus papers]
 \frenchspacing
 \clubpenalty10000
 \widowpenalty10000
@@ -737,18 +737,23 @@
                \ifx\specialp@perstring\@undefined
                  \if!\@recvd!
                  \else
+                   \setbox\z@\hbox\bgroup
                      \strut\hbox{Received:\nobreakspace\@recvd}%
-                   \def\datesep{ -- }%
-                   \if@twostagejnl\ifx\@pubdiscuss\@empty\else
-                     \datesep \hbox{Discussion started:\nobreakspace\@pubdiscuss}\def\datesep{\newline\def\datesep{ -- }}%
-                   \fi\fi
-                   \if!\@revsd!\else\datesep \hbox{Revised:\nobreakspace\@revsd}\fi
-                   \if!\@accptd!\else\datesep \hbox{Accepted:\nobreakspace\@accptd}\fi
-                   \ifx\@published\@undefined\else\datesep\fi
+                     \def\datesep{ -- }%
+                     \if@twostagejnl\ifx\@pubdiscuss\@empty\else
+                         \datesep \hbox{Discussion started:\nobreakspace\@pubdiscuss}\def\datesep{\newline\def\datesep{ -- }}%
+                       \fi
+                     \fi
+                     \if!\@revsd!\else\datesep \hbox{Revised:\nobreakspace\@revsd}\fi
+                     \if!\@accptd!\else\datesep \hbox{Accepted:\nobreakspace\@accptd}\fi
+                     \ifx\@published\@undefined\else\datesep\fi
+                   \egroup
+                   \unhcopy\z@
+                   \ifdim\wd\z@>100mm\strut\newline\strut\fi
                  \fi
                \fi
-               \ifx\@published\@undefined\else Published:\nobreakspace\@published\fi
-               \par\egroup
+               \ifx\@published\@undefined\else \hbox{Published:\nobreakspace\@published}\fi
+               \strut\par\egroup
                \ifx\@howtocite\@empty\else\item[{How to cite:}]\@howtocite\fi
                \ifx\abstractexists\@undefined
                \else
@@ -1123,6 +1128,12 @@
   \def\fnum@figure{\rmfamily\bfseries\figurename\nobreakspace\thefigure}
   \def\fnum@table{\rmfamily\bfseries\tablename\nobreakspace\thetable}
 \fi
+\def\mytextcircled#1{%
+  \textcircled{\ifx\in@caption\relax
+    \check@mathfonts\fontsize\ssf@size\z@\math@fontsfalse\selectfont\kern-1\p@
+  \else
+    \check@mathfonts\fontsize\sf@size\z@\math@fontsfalse\selectfont
+  \fi #1}}
 \long\def\@makecaption#1#2{%
   \def\@tempa{figure}\ifx\@captype\@tempa
     \if@stage@final
@@ -1131,7 +1142,7 @@
       \vskip\abovecaptionskip\goodbreak
     \fi
   \fi
-  {\reset@font\small{\bfseries#1.} #2\par}%
+  {\let\in@caption\relax\reset@font\small{\bfseries#1.} #2\par}%
   \if@cop@home\ifonline\ifnum\csname c@\@captype\endcsname=1 % for 1st fig or tab only
     \immediate\write\@auxout{\string\gdef\string\@num\@captype{}}%
     \hypertarget{\@captype}{}%
@@ -1186,6 +1197,7 @@
 \edef\@classoptionslist{english,\old@classoptionslist}
 \RequirePackage{babel}
 \let\@classoptionslist\old@classoptionslist
+\ifx\StandardLayout\@undefined\let\StandardLayout\relax\fi
 \def\@tempa{french}\ifx\bbl@main@language\@tempa
   \StandardLayout
   %% Switch to quotation marks with additional horizontal spacing
@@ -1728,13 +1740,14 @@
   {\CopernicusWarningNoLine{Cannot find subfloat.sty; proceeding without it}}
 \RequirePackage[authoryear,round]{natbib}
 \def\NAT@sort{0}\def\NAT@cmprs{0}
-\renewcommand\NAT@sep{;} \renewcommand\NAT@cmt{, }
-\renewcommand\NAT@aysep{,} \renewcommand\NAT@yrsep{, }
+\bibstyle{copernicus}
 \setlength\bibsep\z@
 \let\bibfont\small
-\NAT@numbersfalse
-\NAT@set@cites
-\let\NAT@set@cites\relax
+\renewcommand\bibitem{\@ifnextchar[{\@lbibitem}{\@lbibitem[??(????)]}}%]
+\ifx\xmltexversion\@undefined\else
+  \NAT@set@cites
+  \let\NAT@set@cites\relax
+\fi
 \AtBeginDocument{\let\@citex\NAT@citex}
 \newcommand\urlprefix{}
 \renewenvironment{thebibliography}[1]
@@ -1848,6 +1861,9 @@
     \provide@orig@symbol{Phi}
     \provide@orig@symbol{Psi}
     \provide@orig@symbol{Omega}
+    %% Fix fuer #6924, vgl https://tex.stackexchange.com/questions/561236/setmathalphabet-messes-with-rm
+    \usepackage{etoolbox}%
+    \patchcmd\document@select@group{#1{#4}}{\expandafter#1\ifx\math@bgroup\bgroup{#4}\else#4\fi}{}{\fail}%
     \RequirePackage[mtbold]{mathtime}
     \DeclareSymbolFont{largesymbolsA}{U}{esint}{m}{n}%from esint.sty
     \DeclareMathSymbol{\oiintop}{\mathop}{largesymbolsA}{'015}%from esint.sty
