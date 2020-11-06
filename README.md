@@ -15,6 +15,11 @@ If you wish to install the development version from GitHub (which often contains
 remotes::install_github("rstudio/rticles")
 ```
 
+If you want to install a locally modified version, clone this repo and do:
+```r
+remotes::install_local("path/to/local/repo")
+```
+
 ## Overview
 
 The **rticles** package provides a suite of custom [R Markdown](https://rmarkdown.rstudio.com) LaTeX formats and templates for various formats. Most of the templates are provided and maintained by the community, and anyone can contribute a new template. See [How to contribute](#how-to-contribute) below.
