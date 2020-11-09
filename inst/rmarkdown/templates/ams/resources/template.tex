@@ -1,66 +1,77 @@
-\documentclass[$layout$]{ametsoc}
-\usepackage{color}
-\usepackage{hyperref}
-\journal{$journal$}
-%  Please choose a journal abbreviation to use above from the following list:
+%% Version 5.0, 2 January 2020
 %
-%   jamc     (Journal of Applied Meteorology and Climatology)
-%   jtech     (Journal of Atmospheric and Oceanic Technology)
-%   jhm      (Journal of Hydrometeorology)
-%   jpo     (Journal of Physical Oceanography)
-%   jas      (Journal of Atmospheric Sciences)
-%   jcli      (Journal of Climate)
-%   mwr      (Monthly Weather Review)
-%   wcas      (Weather, Climate, and Society)
-%   waf       (Weather and Forecasting)
-%   bams (Bulletin of the American Meteorological Society)
-%   ei    (Earth Interactions)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TemplateV5.tex --  LaTeX-based template for submissions to the
+% American Meteorological Society
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PREAMBLE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Start with one of the following:
+% DOUBLE-SPACED VERSION FOR SUBMISSION TO THE AMS
+\documentclass[$if(twocol)$twocol$endif$]{ametsocV5}
+
+
+% TWO-COLUMN JOURNAL PAGE LAYOUT---FOR AUTHOR USE ONLY
+% \documentclass[twocol]{ametsocV5}
+
+
+% Enter packages here. If too many math alphabets are used,
+% remove unnecessary packages or define hmmax and bmmax as necessary.
+
+\newcommand{\hmmax}{0}
+\newcommand{\bmmax}{0}
+\usepackage{amsmath,amsfonts,amssymb,bm}
+\usepackage{mathptmx}%{times}
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+
+$for(header-includes)$
+$header-includes$
+$endfor$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Citations should be of the form ``author year''  not ``author, year''
-\bibpunct{(}{)}{;}{a}{}{,}
+
+%%% To be entered by author:
+
+%% May use \\ to break lines in title:
+
 \title{$title$}
 
+
 $if(author1)$
-\authors{$author1$
-$if(correspondingauthor)$
-\correspondingauthor{$author1$,$correspondingauthor$}
+\authors{$author1.name$
+$if(author1.email)$
+\correspondingauthor{$author1.name$,$author1.email$}
+$endif$
+$if(author1.affiliation)$
+\thanks{$author1.affiliation$}
 $endif$
 $if(author2)$
-and $author2$
-$if(currentaddress)$
-\thanks{$currentaddress$}
+and $author2.name$
+$if(author2.email)$
+\correspondingauthor{$author2.name$,$author2.email$}
+$endif$
+$if(author2.affiliation)$
+\thanks{$author2.affiliation$}
 $endif$
 $endif$
 }
 $endif$
+
 $if(affiliation)$
 \affiliation{$affiliation$}
 $endif$
-$if(extraauthor)$
-    \extraauthor{Extra Author}
-$endif$
-$if(exaffiliation)$
-    \extraaffil{$exaffiliation$}
-$endif$
 
-$if(email)$
-$email$
+$for(extra_authors)$
+\extraauthor{$extra_authors.name$
+$if(extra_authors.email)$
+\correspondingauthor{$extra_authors.name$,$extra_authors.email$}
 $endif$
-
-$for(exauthors)$
-\extraauthor{$exauthors.name$
-$if(exauthors.correspondingauthor)$
-\correspondingauthor{$exauthors.name$,$exauthors.correspondingauthor$}
-$endif$
-$if(exauthors.currentaddress)$
-\thanks{$exauthors.currentaddress$}
-$endif$}
-$if(exauthors.exaffiliation)$
-\extraaffil{$exauthors.exaffiliation$}
-$endif$
-$if(exauthors.email)$
-$exauthors.email$
+}
+$if(extra_authors.affiliation)$
+\extraaffil{$extra_authors.affiliation$}
 $endif$
 $endfor$
 
@@ -99,20 +110,50 @@ $if(csl-refs)$
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
 
-% pandoc header
-$for(header-includes)$
-$header-includes$
-$endfor$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ABSTRACT
+%
+% Enter your abstract here
+% Abstracts should not exceed 250 words in length!
+%
+
+
 \abstract{$abstract$}
+
 \begin{document}
+
+%% Necessary!
 \maketitle
+
+\bibliographystyle{ametsoc2014}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SIGNIFICANCE STATEMENT/CAPSULE SUMMARY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% If you are including an optional significance statement for a journal article or a required capsule summary for BAMS
+% (see www.ametsoc.org/ams/index.cfm/publications/authors/journal-and-bams-authors/formatting-and-manuscript-components for details),
+% please apply the necessary command as shown below:
+%
+$if(statement)$
+\statement
+$statement$
+$endif$
+
+$if(capsule)$
+\capsule
+$capsule$
+$endif$
+
 $for(include-before)$
 $include-before$
-
 $endfor$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MAIN BODY OF PAPER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+
 $body$
-$for(include-after)$
-$include-after$
 
-$endfor$
+
 \end{document}

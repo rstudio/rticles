@@ -83,17 +83,6 @@ amq_article <- function(
   )
 }
 
-#' @section `ams_article`: Format for creating an American Meteorological
-#'   Society (AMS) Journal articles. Adapted from
-#'   <https://www.ametsoc.org/ams/index.cfm/publications/authors/journal-and-bams-authors/author-resources/latex-author-info/>.
-#' @export
-#' @rdname article
-ams_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris")) {
-  pdf_document_format(
-    "ams", keep_tex = keep_tex, md_extensions = md_extensions, ...
-  )
-}
-
 #' @section `asa_article`: This format was adapted from The American
 #'   Statistican (TAS) format, but it should be fairly consistent across
 #'   American Statistical Association (ASA) journals.
