@@ -16,7 +16,7 @@ jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
 
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }}) [Pandoc {{matrix.config.pandoc}}]
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }}) [Pandoc ${{matrix.config.pandoc}}]
 
     strategy:
       fail-fast: false
