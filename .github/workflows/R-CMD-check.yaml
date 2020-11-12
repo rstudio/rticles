@@ -50,7 +50,7 @@ jobs:
       - name: Pandoc version
         run: pandoc --version
 
-      - uses: r-lib/actions/setup-tinytex
+      - uses: r-lib/actions/setup-tinytex@5f1c134
 
       - name: tlmgr version
         run: tlmgr --version
