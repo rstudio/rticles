@@ -75,7 +75,7 @@ jobs:
 
       - name: Install system dependencies
         if: runner.os == 'Linux'
-        run: apt-get install -y ghostscript
+        run: sudo apt-get install -y ghostscript
 
       - name: Install dependencies
         run: |
