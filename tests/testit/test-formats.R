@@ -40,7 +40,7 @@ test_format("asa")
 test_format("bioinformatics")
 test_format("biometrics")
 test_format("copernicus")
-test_format("ctex")
+if (xfun::is_linux()) test_format("ctex") # only on linux due to fonts requirements
 test_format("elsevier")
 test_format("frontiers")
 test_format("ieee")

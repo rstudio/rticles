@@ -1,5 +1,7 @@
-[![Build Status](https://travis-ci.com/rstudio/rticles.svg?branch=master)](https://travis-ci.com/rstudio/rticles)
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/rstudio/rticles/workflows/R-CMD-check/badge.svg)](https://github.com/rstudio/rticles/actions)
 [![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/rticles)](https://cran.r-project.org/package=rticles)
+<!-- badges: end -->
 
 ## Installation
 
