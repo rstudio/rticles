@@ -1,6 +1,8 @@
 rticles 0.18
 ---------------------------------------------------------------------
 
+- Options can now be passed to `hyperref` packages using `header-includes` and `\PassOptionsToPackage` in the AEA template (thanks, @nurfatimaj, #334)
+
 - Update Copernicus Publications template to version 6.1. This is includes a final 
 fix for the LaTeX problem sanitized with the last `rticles` update (thanks, @RLumSK, #331).
 

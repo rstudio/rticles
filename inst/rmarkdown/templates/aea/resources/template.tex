@@ -23,8 +23,6 @@
 % with 1.5 corresponding to "double" spacing.
 \draftSpacing{1.5}
 
-\usepackage{hyperref}
-
 % Pandoc citation processing
 $if(csl-refs)$
 \newlength{\csllabelwidth}
@@ -58,6 +56,9 @@ $endif$
 $for(header-includes)$
 $header-includes$
 $endfor$
+
+\usepackage{hyperref}
+
 \begin{document}
 
 \title{$title$}
