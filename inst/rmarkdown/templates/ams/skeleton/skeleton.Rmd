@@ -18,7 +18,10 @@ statement: |
 capsule: |
    A short (20-30 words maximum) capsule summary of your article (for BAMS only).
 bibliography: references.bib
-output: rticles::ams_article
+output: 
+  rticles::ams_article:
+    latex_engine: xelatex
+  
 ---
 
 ```{r setup, include=FALSE}
