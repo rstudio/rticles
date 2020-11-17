@@ -1,0 +1,5 @@
+name: Oxford University Press (OUP) Template
+description: >
+ Template for creating an article for submission to Oxford University Press Journals.
+create_dir: true
+

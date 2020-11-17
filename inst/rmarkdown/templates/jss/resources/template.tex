@@ -1,0 +1,122 @@
+% To remove when JSS.cls is fixed
+% https://github.com/rstudio/rticles/issues/329
+\RequirePackage[2020/02/02]{latexrelease}
+\documentclass[
+$for(classoption)$
+  $classoption$$sep$,
+$endfor$
+]{$documentclass$}
+
+\usepackage[utf8]{inputenc}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\author{
+$for(author)$$author.name$\\$author.affiliation$$sep$ \And $endfor$
+}
+\title{$title.formatted$}
+
+\Plainauthor{$for(author)$$author.name$$sep$, $endfor$}
+$if(title.plain)$
+\Plaintitle{$title.plain$}
+$endif$
+$if(title.short)$
+\Shorttitle{$title.short$}
+$endif$
+
+\Abstract{
+$abstract$
+}
+
+$if(keywords.formatted)$
+\Keywords{$for(keywords.formatted)$$keywords.formatted$$sep$, $endfor$}
+$endif$
+$if(keywords.plain)$
+\Plainkeywords{$for(keywords.plain)$$keywords.plain$$sep$, $endfor$}
+$endif$
+
+%% publication information
+%% \Volume{50}
+%% \Issue{9}
+%% \Month{June}
+%% \Year{2012}
+%% \Submitdate{$submitdate$}
+%% \Acceptdate{2012-06-04}
+
+\Address{
+$for(author)$
+  $if(author.address)$
+  $author.name$\\
+  $if(author.affiliation2)$
+  $author.affiliation2$\\
+  $else$
+  $author.affiliation$\\
+  $endif$
+  $author.address$\\
+  $if(author.email)$E-mail: $author.email$\\$endif$
+  $if(author.url)$URL: $author.url$\\~\\$endif$
+  $endif$
+$endfor$
+}
+
+% Pandoc citation processing
+$if(csl-refs)$
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[3] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc} % for calculating minipage widths
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+% Pandoc header
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+$preamble$
+
+\begin{document}
+
+$body$
+
+$if(natbib)$
+$if(bibliography)$
+$if(biblio-title)$
+$if(book-class)$
+\renewcommand\bibname{$biblio-title$}
+$else$
+\renewcommand\refname{$biblio-title$}
+$endif$
+$endif$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+$endif$
+
+$if(biblatex)$
+\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+$endif$
+
+\end{document}
+

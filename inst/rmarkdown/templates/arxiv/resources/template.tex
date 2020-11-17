@@ -1,0 +1,99 @@
+\documentclass{article}
+
+\usepackage{arxiv}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}
+\usepackage{graphicx}
+
+\title{$title$}
+
+\author{
+  $for(authors)$
+  $authors.name$
+  $if(authors.thanks)$
+  \thanks{$authors.thanks$}
+  $endif$ \\
+  $if(authors.department)$
+  $authors.department$ \\
+  $endif$
+  $authors.affiliation$ \\
+  $authors.location$ \\
+  \texttt{$authors.email$} \\
+  $sep$ \And
+  $endfor$
+}
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+% Pandoc citation processing
+$if(csl-refs)$
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[3] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc} % for calculating minipage widths
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+\begin{document}
+\maketitle
+
+\def\tightlist{}
+
+$for(include-before)$
+$include-before$
+$endfor$
+
+\begin{abstract}
+$abstract$
+\end{abstract}
+
+$if(keywords)$
+\keywords{
+  $for(keywords)$
+  $keywords$
+  $sep$ \and
+  $endfor$
+}
+$endif$
+
+$body$
+
+\bibliographystyle{unsrt}
+\bibliography{$bibliography$}
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+\end{document}

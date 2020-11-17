@@ -1,0 +1,40 @@
+%%% PNAS two column research article  style file
+%%% For use with pnas-new.cls
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pnasresearcharticle}[2018/05/06 v1.3 PNAS two column research article style]
+
+%% Set whether the abstract is set into the first column
+\setboolean{shortarticle}{true} 
+% true = set into first column
+% false = spans page width
+
+%% Set colors
+\definecolor{color2}{RGB}{130,0,0} % color
+
+%% Set up the first page footnote/fact box here
+\RequirePackage{float}
+\floatstyle{plain}
+\newfloat{sigstatement}{b!}{sst}
+
+\additionalelement{%
+\afterpage{\begin{sigstatement}
+\sffamily
+\mdfdefinestyle{pnassigstyle}{linewidth=0.7pt,backgroundcolor=pnasblueback,linecolor=pnasbluetext,fontcolor=pnasbluetext,innertopmargin=6pt,innerrightmargin=6pt,innerbottommargin=6pt,innerleftmargin=6pt}
+\@ifundefined{@significancestatement}{}{%	
+	\begin{mdframed}[style=pnassigstyle]%
+	\section*{Significance Statement}%
+	\@significancestatement
+	\end{mdframed}}
+%     \medskip
+\scriptsize
+\@ifundefined{@authorcontributions}{}{\@authorcontributions}
+\vskip5pt%
+\@ifundefined{@authordeclaration}{}{\@authordeclaration}
+\vskip5pt%
+\@ifundefined{@equalauthors}{}{\@equalauthors}
+\vskip5pt%
+\@ifundefined{@correspondingauthor}{}{\@correspondingauthor}
+\end{sigstatement}}
+}
+
+\endinput

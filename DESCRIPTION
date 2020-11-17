@@ -1,7 +1,7 @@
 Package: rticles
 Type: Package
 Title: Article Formats for R Markdown
-Version: 0.5.2
+Version: 0.17.1
 Authors@R: c(
   person("JJ", "Allaire", role = "aut", email = "jj@rstudio.com"),
   person("Yihui", "Xie", role = c("aut", "cre"), email = "xie@yihui.name", comment = c(ORCID = "0000-0003-0645-5666")),
@@ -23,21 +23,38 @@ Authors@R: c(
   person("Miao", "Yu", role = c("aut", "cph"), email = "yufreecas@gmail.com"),
   person("Daniel", "Emaasit", role = c("aut", "cph"), email = "daniel.emaasit@gmail.com"),
   person("Thierry", "Onkelinx", role = c("aut", "cph"), email = "thierry.onkelinx@inbo.be"),
-  person("Alessandro", "Gasparini", role = c("aut", "cph"), email = "ag475@leicester.ac.uk"),
+  person("Alessandro", "Gasparini", role = c("aut", "cph"), email = "ellessenne@gmail.com", comment = c(ORCID = "0000-0002-8319-7624")),
   person("Marc-Andre", "Desautels", role = c("aut", "cph"), email = "marc-andre.desautels@cstjean.qc.ca"),
-  person("Dominik", "Leutnant", role = c("aut", "cph"), email = "leutnant@fh-muenster.de"),
+  person("Dominik", "Leutnant", role = c("aut", "cph"), email = "leutnant@fh-muenster.de", comment = c(ORCID = "0000-0003-3293-2315")),
   person(family = "MDPI", role = c("aut", "cph")),
   person("Arthur", "Eschenlauer", role = c("aut", "cph"), email = "esch0041@umn.edu", comment = c(ORCID = "0000-0002-2882-0508")),
   person(family = "GigaScience", role = c("aut", "cph")),
-  person("Oğuzhan", "Öğreden", role = c("aut"), comment = c(ORCID = "0000-0002-9949-3348"))
+  person(family = "Taylor and Francis", role = c("aut", "cph")),
+  person("Oğuzhan", "Öğreden", role = c("aut"), comment = c(ORCID = "0000-0002-9949-3348")),
+  person("Dalton", "Hance", role = c("aut"), email = "dhance@usgs.gov"),
+  person("Daniel", "Nüst", role = c("aut", "cph"), email = "daniel.nuest@uni-muenster.de", comment = c(ORCID = "0000-0002-0024-5046")),
+  person("Petter", "Uvesten", role = c("aut", "cph"), email = "petter.uvesten.7362@student.lu.se"),
+  person("Elio", "Campitelli", role = c("aut", "cph"), email = "elio.campitelli@cima.fcen.uba.ar", comment = c(ORCID = "0000-0002-7742-9230")),
+  person("John", "Muschelli", role = c("aut", "cph"), email = "muschellij2@gmail.com", comment = c(ORCID = "0000-0001-6469-1750")),
+  person("Alex", "Hayes", role = "aut", email = "alexpghayes@gmail.com", comment = c(ORCID = "0000-0002-4985-5160")),
+  person("Zhian N.", "Kamvar", role = c("aut", "cph"), email = "zkamvar@gmail.com", comment = c(ORCID = "0000-0003-1458-7108")),
+  person("Noam", "Ross", role = c("aut", "cph"), email = "noam.ross@gmail.com", comment = c(ORCID = "0000-0002-2136-0000")),
+  person("Robrecht", "Cannoodt", role = c("aut", "cph"), email = "rcannood@gmail.com", comment = c(ORCID = "0000-0003-3641-729X", github = "rcannood")),
+  person("Duncan", "Luguern", role = c("aut"), email = "duncan.luguern@gmail.com"),
+  person("David M.", "Kaplan", role = c("aut", "ctb"), email = "dmkaplan2000@gmail.com", comment = c(ORCID = "0000-0001-6087-359X", github = "dmkaplan2000")),
+  person("Sebastian", "Kreutzer", role = c("aut"), email = "sebastian.kreutzer@aber.ac.uk", comment = c(ORCID = "0000-0002-0734-2199")),
+  person("Shixiang", "Wang", role = c("aut", "ctb"), email = "w_shixiang@163.com", comment = c(ORCID = "0000-0001-9855-7357")),
+  person('Jay', 'Hesselberth', role = c('aut', 'ctb'), email = 'jay.hesselberth@gmail.com', comment = c(ORCID = '0000-0002-6299-179X')),
+  person("Alfredo", "Hernández", role = c("ctb"), email = "aldomann.designs@gmail.com", comment = c(ORCID = "0000-0002-2660-4545")),
+  person("Christophe", "Dervieux", role = c("aut"), email = "cderv@rstudio.com", comment = c(ORCID = "0000-0003-4474-2498"))
   )
 Description: A suite of custom R Markdown formats and templates for
   authoring journal articles and conference submissions.
 License: GPL-3
-Imports: utils, rmarkdown, knitr, yaml, tinytex, xfun
+Imports: utils, rmarkdown (>= 2.5), knitr (>= 1.30), yaml, tinytex (>= 0.27), xfun
 SystemRequirements: GNU make
 URL: https://github.com/rstudio/rticles
 BugReports: https://github.com/rstudio/rticles/issues
-RoxygenNote: 6.0.1
+RoxygenNote: 7.1.1
 Suggests: testit, bookdown, xtable
 Encoding: UTF-8

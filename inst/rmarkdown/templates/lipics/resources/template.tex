@@ -1,0 +1,109 @@
+\documentclass[$format$ ,$hyphenation$ $if(authorcolumns)$ ,authorcolumns $endif$ $if(cleveref)$,cleveref$endif$ $if(autoref)$,autoref$endif$ $if(thm-restate)$,thm-restate$endif$ $if(anonymous)$,anonymous$endif$ $if(numberwithinsect)$,numberwithinsect$endif$ ]{lipics-v2019}
+%This is a template for producing LIPIcs articles.
+%See lipics-manual.pdf for further information.
+%for A4 paper format use option "a4paper", for US-letter use option "letterpaper"
+%for british hyphenation rules use option "UKenglish", for american hyphenation rules use option "USenglish"
+%for section-numbered lemmas etc., use "numberwithinsect"
+%for enabling cleveref support, use "cleveref"
+%for enabling autoref support, use "autoref"
+%for anonymousing the authors (e.g. for double-blind review), add "anonymous"
+%for enabling thm-restate support, use "thm-restate"
+
+$if(graphicspath)$
+\graphicspath{{$graphicspath$}}
+$endif$
+
+% globally disable tightlists, see https://pandoc.org/MANUAL.html#lists and https://tex.stackexchange.com/a/257464
+\def\tightlist{}
+
+
+\bibliographystyle{plainurl}% the mandatory bibstyle
+
+\title{$title$}
+
+\titlerunning{$titlerunning$}
+
+$for(author)$
+
+\author{$author.name$ $if(author.footnote)$\footnote{$author.footnote$} $endif$}{$author.affiliation$}{$author.email$}{$author.orcid$}{$if(author.funding)$ $author.funding$ $endif$}
+
+$endfor$
+
+\authorrunning{$authorrunning$}
+
+\Copyright{$copyright$}
+
+\ccsdesc[$ccdesc.concept_significance$]{$ccdesc.concept_desc$}
+
+\keywords{$keywords$}
+
+%optional, e.g. invited paper
+$if(category)$
+\category{$category$}
+$endif$
+
+%optional
+$if(relatedversion)$
+\relatedversion{$relatedversion$}
+$endif$
+
+%optional
+$if(supplement)$
+\supplement{$supplement$}
+$endif$
+
+%optional
+$if(funding)$
+\funding{$funding$}
+$endif$
+
+%optional
+$if(acknowledgements)$
+\acknowledgements{$acknowledgements$}
+$endif$
+
+$if(nolinenumbers)$
+\nolinenumbers
+$endif$
+
+$if(hideLIPIcs)$
+\hideLIPIcs
+$endif$
+
+%header-includes to be used sparingly
+$for(header-includes)$
+$header-includes$
+$endfor$
+%end of header-includes
+
+%Editor-only macros:: begin (do not touch as author)%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(volumemacros)$
+$volumemacros$
+$endif$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+
+%TODO mandatory: add short abstract of the document
+\begin{abstract}
+$abstract$
+\end{abstract}
+
+$body$
+
+%%
+%% Bibliography
+%%
+
+%% Please use bibtex,
+
+\bibliography{$bibliography$}
+
+$if(appendix)$
+\appendix
+$appendix$
+$endif$
+
+\end{document}

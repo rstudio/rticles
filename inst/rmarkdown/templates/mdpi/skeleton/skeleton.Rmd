@@ -1,0 +1,185 @@
+---
+title: Full title of the paper (Capitalized)
+author:
+  - name: Dominik Leutnant
+    affil: 1,2,\ddagger,*
+    orcid: 0000-0003-3293-2315
+  - name: John Doe
+    affil: 2, \dagger, \ddagger
+affiliation:
+  - num: 1
+    address: |
+      Muenster University of Applied Sciences - 
+      Institute for Infrastructure, Water, Resources, Environment
+      Correnstr. 25, 48149 Muenster, Germany
+    email: leutnant@fh-muenster.de
+  - num: 2
+    address: |
+      Your department
+      Street, City, Country
+    email: mail@mail.com
+# firstnote to eighthnote
+firstnote: |
+  Current address: Updated affiliation
+secondnote: |
+  These authors contributed equally to this work.
+correspondence: |
+  leutnant@fh-muenster.de; Tel.: +XX-000-00-0000.
+journal: water
+type: article
+status: submit
+bibliography: mybibfile.bib
+appendix: appendix.tex
+simplesummary: |
+  A Simple summary goes here.
+abstract: |
+  A single paragraph of about 200 words maximum. For research articles, 
+  abstracts should give a pertinent overview of the work. We strongly encourage
+  authors to use the following style of structured abstracts, but without 
+  headings: 1) Background: Place the question addressed in a broad context and
+  highlight the purpose of the study; 2) Methods: Describe briefly the main
+  methods or treatments applied; 3) Results: Summarize the article's main 
+  findings; and 4) Conclusion: Indicate the main conclusions or interpretations. 
+  The abstract should be an objective representation of the article, it must not 
+  contain results which are not presented and substantiated in the main text and 
+  should not exaggerate the main conclusions.
+keywords: |
+  keyword 1; keyword 2; keyword 3 (list three to ten pertinent keywords specific 
+  to the article, yet reasonably common within the subject discipline.).
+acknowledgement: |
+  All sources of funding of the study should be disclosed. Please clearly 
+  indicate grants that you have received in support of your research work. 
+  Clearly state if you received funds for covering the costs to publish in open 
+  access.
+authorcontributions: |
+  For research articles with several authors, a short paragraph specifying their 
+  individual contributions must be provided. The following statements should be 
+  used ``X.X. and Y.Y. conceive and designed the experiments; X.X. performed the 
+  experiments; X.X. and Y.Y. analyzed the data; W.W. contributed 
+  reagents/materials/analysis tools; Y.Y. wrote the paper.'' Authorship must be
+  limited to those who have contributed substantially to the work reported.
+conflictsofinterest: |
+  Declare conflicts of interest or state 'The authors declare no conflict of 
+  interest.' Authors must identify and declare any personal circumstances or
+  interest that may be perceived as inappropriately influencing the
+  representation or interpretation of reported research results. Any role of the
+  funding sponsors in the design of the study; in the collection, analyses or 
+  interpretation of data in the writing of the manuscript, or in the decision to 
+  publish the results must be declared in this section. If there is no role, 
+  please state 'The founding sponsors had no role in the design of the study; 
+  in the collection, analyses, or interpretation of data; in the writing of the 
+  manuscript, an in the decision to publish the results'.
+sampleavailability: |
+  Samples of the compounds ...... are available from the authors.
+abbreviations:
+  - short: MDPI
+    long: Multidisciplinary Digital Publishing Institute
+  - short: DOAJ
+    long: Directory of open access journals
+  - short: TLA
+    long: Three letter acronym
+  - short: LD 
+    long: linear dichroism
+output: rticles::mdpi_article
+---
+
+# Version
+
+This Rmd-skeleton uses the mdpi Latex template published 2019/02. 
+However, the official template gets more frequently updated than the 'rticles'
+package. Therefore, please make sure prior to paper submission, that you're 
+using the most recent .cls, .tex and .bst files 
+(available [here](http://www.mdpi.com/authors/latex)).
+
+# Introduction
+
+The introduction should briefly place the study in a broad context and highlight why it is important. It should define the purpose of the work and its significance. The current state of the research field should be reviewed carefully and key publications cited. Please highlight controversial and diverging hypotheses when necessary. Finally, briefly mention the main aim of the work and highlight the principal conclusions. As far as possible, please keep the introduction comprehensible to scientists outside your particular field of research. Citing a journal paper [@bertrand-krajewski_distribution_1998; @leutnant_stormwater_2016]. And now citing a book reference @gujer_systems_2008. Please use the command [@leutnant_stormwater_2016] for the following MDPI journals, which use author-date citation: Administrative Sciences, Arts, Econometrics, Economies, Genealogy, Humanities, IJFS, JRFM, Laws, Religions, Risks, Social Sciences.
+
+
+# Materials and Methods
+
+Materials and Methods should be described with sufficient details to allow others to replicate and build on published results. Please note that publication of your manuscript implicates that you must make all materials, data, computer code, and protocols associated with the publication available to readers. Please disclose at the submission stage any restrictions on the availability of materials or information. New methods and protocols should be described in detail while well-established methods can be briefly described and appropriately cited.
+
+Research manuscripts reporting large datasets that are deposited in a publicly available database should specify where the data have been deposited and provide the relevant accession numbers. If the accession numbers have not yet been obtained at the time of submission, please state that they will be provided during review. They must be provided prior to publication.
+
+Interventionary studies involving animals or humans, and other studies require ethical approval must list the authority that provided approval and the corresponding ethical approval code.
+
+# Results
+
+This section may be divided by subheadings. It should provide a concise and precise description of the experimental results, their interpretation as well as the experimental conclusions that can be drawn.
+
+## Subsection Heading Here
+
+Subsection text here.
+
+### Subsubsection Heading Here
+
+Bulleted lists look like this:
+
+* First bullet
+* Second bullet
+* Third bullet
+
+Numbered lists can be added as follows:
+
+1. First item
+2. Second item
+3. Third item
+
+The text continues here.
+
+All figures and tables should be cited in the main text as Figure 1, Table 1, etc.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=3 cm]{logo-mdpi}
+\caption{This is a figure, Schemes follow the same formatting. If there are multiple panels, they should be listed as: (\textbf{a}) Description of what is contained in the first panel. (\textbf{b}) Description of what is contained in the second panel. Figures should be placed in the main text near to the first time they are cited. A caption on a single line should be centered.}
+\end{figure}
+
+
+\begin{table}[H]
+\caption{This is a table caption. Tables should be placed in the main text near to the first time they are cited.}
+\centering
+%% \tablesize{} %% You can specify the fontsize here, e.g.  \tablesize{\footnotesize}. If commented out \small will be used.
+\begin{tabular}{ccc}
+\toprule
+\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}\\
+\midrule
+entry 1		& data			& data\\
+entry 2		& data			& data\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This is an example of an equation:
+
+\begin{equation}
+\mathbb{S}
+\end{equation}
+<!-- If the documentclass option "submit" is chosen, please insert a blank line before and after any math environment (equation and eqnarray environments). This ensures correct linenumbering. The blank line should be removed when the documentclass option is changed to "accept" because the text following an equation should not be a new paragraph. -->
+
+<!-- Please punctuate equations as regular text. Theorem-type environments (including propositions, lemmas, corollaries etc.) can be formatted as follows: -->
+Example of a theorem:
+\begin{Theorem}
+Example text of a theorem.
+\end{Theorem}
+
+The text continues here. Proofs must be formatted as follows:
+
+Example of a proof:
+\begin{proof}[Proof of Theorem 1]
+Text of the proof. Note that the phrase `of Theorem 1' is optional if it is clear which theorem is being referred to.
+\end{proof}
+The text continues here.
+
+# Discussion
+
+Authors should discuss the results and how they can be interpreted in perspective of previous studies and of the working hypotheses. The findings and their implications should be discussed in the broadest context possible. Future research directions may also be highlighted.
+
+# Conclusion
+
+This section is not mandatory, but can be added to the manuscript if the discussion is unusually long or complex.
+
+# Patents
+
+This section is not mandatory, but may be added if there are patents resulting from the work reported in this manuscript.
