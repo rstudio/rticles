@@ -1,5 +1,53 @@
+rticles 0.18
+---------------------------------------------------------------------
+
+- Options can now be passed to `hyperref` packages using `header-includes` and `\PassOptionsToPackage` in the AEA template (thanks, @nurfatimaj, #334)
+
+- Update Copernicus Publications template to version 6.1. This is includes a final 
+fix for the LaTeX problem sanitized with the last `rticles` update (thanks, @RLumSK, #331).
+
+- Update all templates regarding CSLReference environment following changes in Pandoc's default template.
+
+rticles 0.17
+---------------------------------------------------------------------
+
+- Fixes `arxiv_article()` template when adding graphics from code chunks (thanks, @Athanasiamo, #332).
+
+- Fixes `ams_article()` template regarding authors insertion (thanks, @ConorIA, #340).
+
+- Update Copernicus Publications template to version 6.0 and sanitize and issue that caused `pdftex` from hanging (thanks, @RLumSK, #331).
+
+- Add `CSLReferences` environment to support new Pandoc 2.11 citation processing (#335).
+
+- Add article template `lipics_article()` for *Leibniz International Proceedings in Informatics* (LIPIcs) (thanks, @nuest, #288).
+
+rticles 0.16
+---------------------------------------------------------------------
+
+- Fixed `ctex_article()` to correctly use the default Pandoc template as intended in the PR #307, which introduced the bug #322 (thanks, @baketbek @cderv #323).
+
+- The minimal version of **knitr** required is 1.30 now.
+
 rticles 0.15
 ---------------------------------------------------------------------
+
+- Added a new `journals()` function to list all available journal names in this package (#318).
+
+- Template directory in package's `rmarkdown/templates` directory has been renamed from _journalname_article_ to _journalname_. To create a new document using `rmarkdown::draft`, only the _journalname_  should be provided, i.e., `rmarkdown::draft("MyArticle.Rmd", template = "rjournal", package = "rticles")` (#316).
+
+- Improved the `rjournal_article()` format : `.tex`, `.R`, and PDF files with correct names are generated to match the author's guidelines, two affiliations is now supported for authors, the last author is separated by `and` when multiple authors are present, and the documentation has been improved on the help page `?rticles::rjournal_article` and in the skeleton document (thanks, @RLumSK, #286).
+
+- Added a `author.affiliation2` field in `jss_article()` template to provide another affiliation to be used in the adress field in place of `author.affiliation`. This allow differently formatted affiliation for example (thanks, @aldomann, #291).
+
+- Improved the `jss_article()` format: Short titles can now be provided to headers to escape code/math in section titles, the continuation prompt has been corrected (from `R+` to `+`), and the skeleton document has been updated accordingly (thanks, @statibk #254, @Freguglia #294).
+
+- Fixed `elsevier_article()` template so that chunk option `out.width` can be set (thanks, @EddieItelman, #300).
+
+- Fixed `pnas_journal()` skeleton to show how correctly add `corresponding_author` and `equal_author` (thanks, @EddieItelman, #299).
+
+- Added article template for journal *Bioinformatics* (thanks, @ShixiangWang, #297).
+
+- Update Copernicus Publications template to version 5.8 (thanks, @nuest, #274).
 
 - Fixed issue with multi-line authors on JSS template when using `\AND`, which was firstly implemented in b740b19b90cd6f7afe2cd7d66456c9efa0bb4cdf (thanks, @aldomann, #292).
 
@@ -10,6 +58,10 @@ rticles 0.15
 - Update to OUP format for `knitr::kable` table generation and optionally placing floats at end of document (thanks, @dmkaplan2000, #279).
 
 - Update to OUP format to use `pandoc-citeproc` by default for citations (thanks, @dmkaplan2000, #289).
+
+- Deleted the LaTeX template of the `rticles::ctex` format. This format will use Pandoc's built-in template instead, which works well with the LaTeX package **ctex** (thanks, @XiangyunHuang, #307).
+
+- Added the output format `rticles::ctex_article` as an alias to `rticles::ctex`, to be consistent with the names of other `*_article` formats.
 
 rticles 0.14
 ---------------------------------------------------------------------

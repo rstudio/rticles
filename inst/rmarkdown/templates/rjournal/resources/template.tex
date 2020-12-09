@@ -1,0 +1,33 @@
+% !TeX root = RJwrapper.tex
+\title{$title$}
+\author{by $for(author)$$author.name$$sep$, $endfor$}
+
+\maketitle
+
+$if(abstract)$
+\abstract{%
+$abstract$
+}
+$endif$
+
+$body$
+
+$if(bibliography)$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+
+$for(author)$
+\address{%
+$author.name$\\
+$author.affiliation$\\%
+$for(author.address)$$author.address$$sep$\\ $endfor$\\
+$if(author.affiliation2)$
+$author.affiliation2$\\%
+$for(author.address2)$$author.address2$$sep$\\ $endfor$\\
+$endif$%
+$if(author.url)$$author.url$$endif$%
+$if(author.orcid)$\\\textit{ORCiD: \href{https://orcid.org/$author.orcid$}{$author.orcid$}}$endif$%
+$if(author.email)$\\$author.email$$endif$
+}
+
+$endfor$

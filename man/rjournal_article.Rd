@@ -4,12 +4,66 @@
 \alias{rjournal_article}
 \title{R Journal format.}
 \usage{
-rjournal_article(..., citation_package = "natbib")
+rjournal_article(..., keep_tex = TRUE, citation_package = "natbib")
 }
 \arguments{
-\item{..., citation_package}{Arguments to \code{rmarkdown::pdf_document}.}
+\item{...}{Arguments to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document}}.}
+
+\item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
+
+\item{citation_package}{The LaTeX package to process citations, \code{natbib}
+or \code{biblatex}. Use \code{default} if neither package is to be used,
+which means citations will be processed via the command
+\command{pandoc-citeproc}.}
 }
 \description{
 Format for creating R Journal articles. Adapted from
 \url{https://journal.r-project.org/submissions.html}.
 }
+\details{
+This file is only a basic article template. For full details of \emph{The R
+Journal} style and information on how to prepare your article for submission,
+see the \href{https://journal.r-project.org/share/author-guide.pdf}{Instructions for Authors}
+\subsection{About this format and the R Journal requirements}{
+
+\code{rticles::rjournal_article} will help you build the correct files requirements:
+\itemize{
+\item A R file will be generated automatically using \code{knitr::purl} - see
+https://bookdown.org/yihui/rmarkdown-cookbook/purl.html for more information.
+\item A tex file will be generated from this Rmd file and correctly included in
+\code{RJwapper.tex} as expected to build \code{RJwrapper.pdf}.
+\item All figure files will be kept in the default rmarkdown \verb{*_files} folder. This
+happens because \code{keep_tex = TRUE} by default in \code{rticles::rjournal_article}
+\item Only the bib filename is to modifed. An example bib file is included in the
+template (\code{RJreferences.bib}) and you will have to name your bib file as the
+tex, R, and pdf files.
+}
+}
+}
+\section{About YAML header fields}{
+This section documents some of the YAML fields that can be used with this
+formats.
+\subsection{The \code{author} field in the YAML header}{\tabular{lll}{
+   FIELD \tab TYPE \tab DESCRIPTION \cr
+   \code{name} \tab \emph{required} \tab name and surname of the author \cr
+   \code{affiliation} \tab \emph{required} \tab name of the author's affiliation \cr
+   \code{address} \tab \emph{required} \tab at least one address line for the affiliation \cr
+   \code{url} \tab \emph{optional} \tab an additional url for the author or the main affiliation \cr
+   \code{orcid} \tab \emph{optional} \tab the authors ORCID if available \cr
+   \code{email} \tab \emph{required} \tab the author's e-mail address \cr
+   \code{affiliation2} \tab \emph{optional} \tab name of the author's 2nd affiliation \cr
+   \code{address2} \tab \emph{optional} \tab address lines belonging to the author's 2nd affiliation \cr
+}
+
+
+\emph{Please note: Only one \code{url}, \code{orcid} and \code{email} can be provided per author.}
+}
+
+\subsection{Other YAML fields}{\tabular{lll}{
+   FIELD \tab TYPE \tab DESCRIPTION \cr
+   \code{bibliography} \tab \emph{with default} \tab the BibTeX file with the reference entries \cr
+}
+
+}
+}
+

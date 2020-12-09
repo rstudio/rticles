@@ -9,10 +9,13 @@
 \alias{ams_article}
 \alias{asa_article}
 \alias{arxiv_article}
+\alias{bioinformatics_article}
 \alias{biometrics_article}
+\alias{ctex_article}
 \alias{ctex}
 \alias{elsevier_article}
 \alias{frontiers_article}
+\alias{lipics_article}
 \alias{mdpi_article}
 \alias{mnras_article}
 \alias{oup_article}
@@ -58,9 +61,13 @@ asa_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 arxiv_article(..., keep_tex = TRUE)
 
+bioinformatics_article(..., keep_tex = TRUE, citation_package = "natbib")
+
 biometrics_article(..., keep_tex = TRUE, citation_package = "natbib")
 
-ctex(..., latex_engine = "xelatex")
+ctex_article(..., template = "default", latex_engine = "xelatex")
+
+ctex(..., template = "default", latex_engine = "xelatex")
 
 elsevier_article(
   ...,
@@ -70,15 +77,19 @@ elsevier_article(
 
 frontiers_article(..., keep_tex = TRUE)
 
+lipics_article(
+  ...,
+  latex_engine = "xelatex",
+  keep_tex = TRUE,
+  citation_package = "natbib",
+  md_extensions = c("-autolink_bare_uris", "-auto_identifiers")
+)
+
 mdpi_article(..., keep_tex = TRUE)
 
 mnras_article(..., keep_tex = TRUE, fig_caption = TRUE)
 
-oup_article(
-  ...,
-  keep_tex = TRUE,
-  md_extensions = c("-autolink_bare_uris")
-)
+oup_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
 peerj_article(..., keep_tex = TRUE)
 
@@ -90,12 +101,12 @@ sage_article(..., highlight = NULL, citation_package = "natbib")
 
 sim_article(..., highlight = NULL, citation_package = "natbib")
 
-springer_article(..., keep_tex = TRUE, citation_package = "none")
+springer_article(..., keep_tex = TRUE, citation_package = "default")
 
 tf_article(..., keep_tex = TRUE, citation_package = "natbib")
 }
 \arguments{
-\item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions}{Arguments passed to \code{rmarkdown::\link{pdf_document}()}.}
+\item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template}{Arguments passed to \code{rmarkdown::\link{pdf_document}()}.}
 }
 \value{
 An R Markdown output format.
@@ -112,13 +123,13 @@ custom Pandoc LaTeX template and different default values for other arguments
 \section{\code{acm_article}}{
  Format for creating an Association for Computing
   Machinery (ACM) articles. Adapted from
-  \url{http://www.acm.org/publications/article-templates/proceedings-template.html}.
+  \url{https://www.acm.org/publications/proceedings-template}.
 }
 
 \section{\code{acs_article}}{
  Format for creating an American Chemical Society
   (ACS) Journal articles. Adapted from
-  \url{http://pubs.acs.org/page/4authors/submission/tex.html}.
+  \url{https://pubs.acs.org/page/4authors/submission/tex.html}.
 }
 
 \section{\code{aea_article}}{
@@ -129,7 +140,7 @@ custom Pandoc LaTeX template and different default values for other arguments
 \section{\code{agu_article}}{
  Format for creating a American Geophysical Union
   (AGU) article. Adapted from
-  \url{https://publications.agu.org/author-resource-center/checklists-and-templates/}.
+  \url{https://www.agu.org/Publish-with-AGU/Publish/#1}.
 }
 
 \section{\code{amq_article}}{
@@ -155,16 +166,22 @@ custom Pandoc LaTeX template and different default values for other arguments
   unofficial but still a staple.
 }
 
+\section{\code{bioinformatics_article}}{
+ Format for creating submissions to a Bioinformatics journal. Adapted from
+\url{https://academic.oup.com/bioinformatics/pages/submission_online}.
+}
+
 \section{\code{biometrics_article}}{
  This format was adapted from the
   Biometrics journal.
 }
 
-\section{\code{ctex}}{
- A wrapper function for \code{rmarkdown::pdf_document()}
-  and changed the default values of two arguments \code{template} and
-  \code{latex_engine} so it works better for typesetting Chinese documents
-  with the \pkg{ctex} LaTeX package.
+\section{\code{ctex_article}}{
+ A wrapper function for
+  \code{rmarkdown::pdf_document()} and the default value of
+  \code{latex_engine} is changed to \command{xelatex}, so it works better for
+  typesetting Chinese documents with the LaTeX package \pkg{ctex}. The
+  function \code{ctex} is an alias of \code{ctex_article}.
 }
 
 \section{\code{elsevier_article}}{
@@ -176,19 +193,29 @@ custom Pandoc LaTeX template and different default values for other arguments
 \section{\code{frontiers_article}}{
  Format for creating Frontiers journal
   articles. Adapted from
-  \url{http://home.frontiersin.org/about/author-guidelines}.
+  \url{https://www.frontiersin.org/about/author-guidelines}.
+}
+
+\section{\code{lipics_article}}{
+ Format for creating submissions to
+  LIPIcs - Leibniz International Proceedings Informatics - articles.
+  Adapted from the official Instructions for Authors at
+  \url{https://submission.dagstuhl.de/documentation/authors} and the
+  template from the archive \code{authors-lipics-v2019.zip} downloaded
+  with version tag v2019.2. The template is provided under The LaTeX
+  Project Public License (LPPL), Version 1.3c.
 }
 
 \section{\code{mdpi_article}}{
  Format for creating submissions to
   Multidisciplinary Digital Publishing Institute (MDPI) journals. Adapted
-  from \url{http://www.mdpi.com/authors/latex}.
+  from \url{https://www.mdpi.com/authors/latex}.
 }
 
 \section{\code{mnras_article}}{
  Format for creating an Monthly Notices of
   Royal Astronomical Society (MNRAS) Journal articles. Adapted from
-  \url{https://www.ras.org.uk/news-and-press/2641-new-version-of-the-mnras-latex-package}.
+  \url{https://ras.ac.uk}.
 }
 
 \section{\code{oup_article}}{
@@ -207,7 +234,7 @@ custom Pandoc LaTeX template and different default values for other arguments
 
 \section{\code{plos_article}}{
  Format for creating submissions to PLOS
-  journals. Adapted from \url{http://journals.plos.org/ploscompbiol/s/latex}.
+  journals. Adapted from \url{https://journals.plos.org/ploscompbiol/s/latex}.
 }
 
 \section{\code{pnas_article}}{
@@ -218,7 +245,7 @@ custom Pandoc LaTeX template and different default values for other arguments
 \section{\code{sage_article}}{
  Format for creating submissions to Sage
   Journals. Based on the official Sage Journals
-  \href{https://uk.sagepub.com/sites/default/files/sage_latex_template_4.zip}{class}.
+  \verb{https://uk.sagepub.com/sites/default/files/sage_latex_template_4.zip}{class}.
 
 Possible arguments for the YAML header are:
 \itemize{
@@ -271,6 +298,6 @@ Possible arguments for the YAML header are:
 
 \examples{
 \dontrun{
-rmarkdown::draft("MyArticle.Rmd", template = "acm_article", package = "rticles")
-rmarkdown::draft("MyArticle.Rmd", template = "asa_article", package = "rticles")}
+rmarkdown::draft("MyArticle.Rmd", template = "acm", package = "rticles")
+rmarkdown::draft("MyArticle.Rmd", template = "asa", package = "rticles")}
 }

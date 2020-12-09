@@ -1,7 +1,7 @@
 Package: rticles
 Type: Package
 Title: Article Formats for R Markdown
-Version: 0.14.1
+Version: 0.17.1
 Authors@R: c(
   person("JJ", "Allaire", role = "aut", email = "jj@rstudio.com"),
   person("Yihui", "Xie", role = c("aut", "cre"), email = "xie@yihui.name", comment = c(ORCID = "0000-0003-0645-5666")),
@@ -40,15 +40,19 @@ Authors@R: c(
   person("Robrecht", "Cannoodt", role = c("aut", "cph"), email = "rcannood@gmail.com", comment = c(ORCID = "0000-0003-3641-729X", github = "rcannood")),
   person("Duncan", "Luguern", role = c("aut"), email = "duncan.luguern@gmail.com"),
   person("David M.", "Kaplan", role = c("aut", "ctb"), email = "dmkaplan2000@gmail.com", comment = c(ORCID = "0000-0001-6087-359X", github = "dmkaplan2000")),
-  person("Alfredo", "Hernández", role = c("ctb"), email = "aldomann.designs@gmail.com", comment = c(ORCID = "0000-0002-2660-4545"))
+  person("Sebastian", "Kreutzer", role = c("aut"), email = "sebastian.kreutzer@aber.ac.uk", comment = c(ORCID = "0000-0002-0734-2199")),
+  person("Shixiang", "Wang", role = c("aut", "ctb"), email = "w_shixiang@163.com", comment = c(ORCID = "0000-0001-9855-7357")),
+  person('Jay', 'Hesselberth', role = c('aut', 'ctb'), email = 'jay.hesselberth@gmail.com', comment = c(ORCID = '0000-0002-6299-179X')),
+  person("Alfredo", "Hernández", role = c("ctb"), email = "aldomann.designs@gmail.com", comment = c(ORCID = "0000-0002-2660-4545")),
+  person("Christophe", "Dervieux", role = c("aut"), email = "cderv@rstudio.com", comment = c(ORCID = "0000-0003-4474-2498"))
   )
 Description: A suite of custom R Markdown formats and templates for
   authoring journal articles and conference submissions.
 License: GPL-3
-Imports: utils, rmarkdown, knitr, yaml, tinytex (>= 0.19), xfun
+Imports: utils, rmarkdown (>= 2.5), knitr (>= 1.30), yaml, tinytex (>= 0.27), xfun
 SystemRequirements: GNU make
 URL: https://github.com/rstudio/rticles
 BugReports: https://github.com/rstudio/rticles/issues
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
 Suggests: testit, bookdown, xtable
 Encoding: UTF-8

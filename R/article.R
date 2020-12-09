@@ -15,30 +15,30 @@ NULL
 
 #' @section \code{acm_article}: Format for creating an Association for Computing
 #'   Machinery (ACM) articles. Adapted from
-#'   \url{http://www.acm.org/publications/article-templates/proceedings-template.html}.
+#'   \url{https://www.acm.org/publications/proceedings-template}.
 #' @param
-#'   ...,keep_tex,latex_engine,citation_package,highlight,fig_caption,md_extensions
+#'   ...,keep_tex,latex_engine,citation_package,highlight,fig_caption,md_extensions,template
 #'   Arguments passed to \code{rmarkdown::\link{pdf_document}()}.
 #' @return An R Markdown output format.
 #' @examples \dontrun{
-#' rmarkdown::draft("MyArticle.Rmd", template = "acm_article", package = "rticles")
-#' rmarkdown::draft("MyArticle.Rmd", template = "asa_article", package = "rticles")}
+#' rmarkdown::draft("MyArticle.Rmd", template = "acm", package = "rticles")
+#' rmarkdown::draft("MyArticle.Rmd", template = "asa", package = "rticles")}
 #' @export
 #' @rdname article
 acm_article <- function(...) {
-  pdf_document_format("acm_article", ...)
+  pdf_document_format("acm", ...)
 }
 
 #' @section \code{acs_article}: Format for creating an American Chemical Society
 #'   (ACS) Journal articles. Adapted from
-#'   \url{http://pubs.acs.org/page/4authors/submission/tex.html}.
+#'   \url{https://pubs.acs.org/page/4authors/submission/tex.html}.
 #' @export
 #' @rdname article
 acs_article <- function(
   ..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"), fig_caption = TRUE
 ) {
   pdf_document_format(
-    "acs_article", keep_tex = keep_tex, md_extensions = md_extensions,
+    "acs", keep_tex = keep_tex, md_extensions = md_extensions,
     fig_caption = fig_caption, ...
   )
 }
@@ -49,13 +49,13 @@ acs_article <- function(
 #' @rdname article
 aea_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris")) {
   pdf_document_format(
-    "aea_article", keep_tex = keep_tex, md_extensions = md_extensions, ...
+    "aea", keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
 }
 
 #' @section \code{agu_article}: Format for creating a American Geophysical Union
 #'   (AGU) article. Adapted from
-#'   \url{https://publications.agu.org/author-resource-center/checklists-and-templates/}.
+#'   \url{https://www.agu.org/Publish-with-AGU/Publish/#1}.
 #' @export
 #' @rdname article
 agu_article <- function(
@@ -63,7 +63,7 @@ agu_article <- function(
   highlight = NULL, md_extensions = c("-autolink_bare_uris", "-auto_identifiers")
 ) {
   pdf_document_format(
-    "agu_article", keep_tex = keep_tex, highlight = highlight,
+    "agu", keep_tex = keep_tex, highlight = highlight,
     citation_package = citation_package, md_extensions = md_extensions, ...
   )
 }
@@ -77,7 +77,7 @@ amq_article <- function(
   md_extensions = c("-autolink_bare_uris")
 ) {
   pdf_document_format(
-    "amq_article", latex_engine = latex_engine, highlight = NULL, keep_tex = keep_tex,
+    "amq", latex_engine = latex_engine, highlight = NULL, keep_tex = keep_tex,
     md_extensions = md_extensions, fig_caption = fig_caption, ...
   )
 }
@@ -89,7 +89,7 @@ amq_article <- function(
 #' @rdname article
 ams_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris")) {
   pdf_document_format(
-    "ams_article", keep_tex = keep_tex, md_extensions = md_extensions, ...
+    "ams", keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
 }
 
@@ -100,7 +100,7 @@ ams_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_
 #' @rdname article
 asa_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
   pdf_document_format(
-    "asa_article", keep_tex = keep_tex, citation_package = citation_package, ...
+    "asa", keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
 
@@ -111,7 +111,18 @@ asa_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
 #' @rdname article
 arxiv_article <- function(..., keep_tex = TRUE) {
   pdf_document_format(
-    "arxiv_article", keep_tex = keep_tex, ...
+    "arxiv", keep_tex = keep_tex, ...
+  )
+}
+
+#' @section \code{bioinformatics_article}: Format for creating submissions to a Bioinformatics journal. Adapted from
+#' \url{https://academic.oup.com/bioinformatics/pages/submission_online}.
+#' @export
+#' @rdname article
+bioinformatics_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
+  pdf_document_format(
+    "bioinformatics", keep_tex = keep_tex, citation_package = citation_package,
+    md_extensions = "-auto_identifiers",...
   )
 }
 
@@ -121,19 +132,26 @@ arxiv_article <- function(..., keep_tex = TRUE) {
 #' @rdname article
 biometrics_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
   pdf_document_format(
-    'biometrics_article', keep_tex = keep_tex, citation_package = citation_package, ...
+    'biometrics', keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
 
-#' @section \code{ctex}: A wrapper function for \code{rmarkdown::pdf_document()}
-#'   and changed the default values of two arguments \code{template} and
-#'   \code{latex_engine} so it works better for typesetting Chinese documents
-#'   with the \pkg{ctex} LaTeX package.
+#' @section \code{ctex_article}: A wrapper function for
+#'   \code{rmarkdown::pdf_document()} and the default value of
+#'   \code{latex_engine} is changed to \command{xelatex}, so it works better for
+#'   typesetting Chinese documents with the LaTeX package \pkg{ctex}. The
+#'   function \code{ctex} is an alias of \code{ctex_article}.
 #' @export
 #' @rdname article
-ctex <- function(..., latex_engine = 'xelatex') {
-  pdf_document_format('ctex', latex_engine = latex_engine, ...)
+ctex_article <- function(..., template = 'default', latex_engine = 'xelatex') {
+  pdf_document_format(
+    'ctex', latex_engine = latex_engine, template = template, ...
+  )
 }
+
+#' @export
+#' @rdname article
+ctex <- ctex_article
 
 #' @section \code{elsevier_article}: Format for creating submissions to Elsevier
 #'   journals. Adapted from
@@ -144,38 +162,64 @@ elsevier_article <- function(
   ..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris")
 ) {
   pdf_document_format(
-    "elsevier_article", keep_tex = keep_tex, md_extensions = md_extensions, ...
+    "elsevier", keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
 }
 
 #' @section \code{frontiers_article}: Format for creating Frontiers journal
 #'   articles. Adapted from
-#'   \url{http://home.frontiersin.org/about/author-guidelines}.
+#'   \url{https://www.frontiersin.org/about/author-guidelines}.
 #' @export
 #' @rdname article
 frontiers_article <- function(..., keep_tex = TRUE) {
-  pdf_document_format("frontiers_article", keep_tex = keep_tex, ...)
+  pdf_document_format("frontiers", keep_tex = keep_tex, ...)
+}
+
+#' @section \code{lipics_article}: Format for creating submissions to
+#'   LIPIcs - Leibniz International Proceedings Informatics - articles.
+#'   Adapted from the official Instructions for Authors at
+#'   \url{https://submission.dagstuhl.de/documentation/authors} and the
+#'   template from the archive \code{authors-lipics-v2019.zip} downloaded
+#'   with version tag v2019.2. The template is provided under The LaTeX
+#'   Project Public License (LPPL), Version 1.3c.
+#' @export
+#' @rdname article
+lipics_article <- function(
+  ..., latex_engine = 'xelatex', # xelatex used for 'thin space' Unicode
+                                 # character, see YAML field 'authorrunning'
+  keep_tex = TRUE, citation_package = "natbib", md_extensions = c(
+    "-autolink_bare_uris", # disables automatic links
+    "-auto_identifiers"    # disables \hypertarget commands
+  )
+) {
+  # quick dev shortcut for Ubuntu: click "Install and restart" then run:
+  # unlink("MyArticle/", recursive = TRUE); rmarkdown::draft("MyArticle.Rmd", template = "lipics", package = "rticles", edit = FALSE); rmarkdown::render("MyArticle/MyArticle.Rmd"); system(paste0("xdg-open ", here::here("MyArticle", "MyArticle.pdf")))
+  pdf_document_format(
+    "lipics", latex_engine = latex_engine,
+    citation_package = citation_package, keep_tex = keep_tex,
+    md_extensions = md_extensions, ...
+  )
 }
 
 #' @section \code{mdpi_article}: Format for creating submissions to
 #'   Multidisciplinary Digital Publishing Institute (MDPI) journals. Adapted
-#'   from \url{http://www.mdpi.com/authors/latex}.
+#'   from \url{https://www.mdpi.com/authors/latex}.
 #' @export
 #' @rdname article
 mdpi_article <- function(..., keep_tex = TRUE) {
   pdf_document_format(
-    "mdpi_article", keep_tex = keep_tex, citation_package = "natbib", ...
+    "mdpi", keep_tex = keep_tex, citation_package = "natbib", ...
   )
 }
 
 #' @section \code{mnras_article}: Format for creating an Monthly Notices of
 #'   Royal Astronomical Society (MNRAS) Journal articles. Adapted from
-#'   \url{https://www.ras.org.uk/news-and-press/2641-new-version-of-the-mnras-latex-package}.
+#'   \url{https://ras.ac.uk}.
 #' @export
 #' @rdname article
 mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
   pdf_document_format(
-    "mnras_article", keep_tex = keep_tex, fig_caption = fig_caption, ...
+    "mnras", keep_tex = keep_tex, fig_caption = fig_caption, ...
   )
 }
 
@@ -190,7 +234,7 @@ oup_article <- function(
   md_extensions = c("-autolink_bare_uris")
 ) {
   pdf_document_format(
-    "oup_article",
+    "oup",
     keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
 }
@@ -202,18 +246,18 @@ oup_article <- function(
 #' @export
 #' @rdname article
 peerj_article <- function(..., keep_tex = TRUE) {
-  pdf_document_format("peerj_article",  keep_tex = keep_tex, ...)
+  pdf_document_format("peerj",  keep_tex = keep_tex, ...)
 }
 
 #' @section \code{plos_article}: Format for creating submissions to PLOS
-#'   journals. Adapted from \url{http://journals.plos.org/ploscompbiol/s/latex}.
+#'   journals. Adapted from \url{https://journals.plos.org/ploscompbiol/s/latex}.
 #' @export
 #' @rdname article
 plos_article <- function(
   ..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris")
 ) {
   pdf_document_format(
-    "plos_article", keep_tex = keep_tex, md_extensions = md_extensions, ...
+    "plos", keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
 }
 
@@ -222,12 +266,12 @@ plos_article <- function(
 #' @export
 #' @rdname article
 pnas_article <- function(..., keep_tex = TRUE) {
-  pdf_document_format("pnas_article", keep_tex = keep_tex, ...)
+  pdf_document_format("pnas", keep_tex = keep_tex, ...)
 }
 
 #' @section \code{sage_article}: Format for creating submissions to Sage
 #'   Journals. Based on the official Sage Journals
-#'   \href{https://uk.sagepub.com/sites/default/files/sage_latex_template_4.zip}{class}.
+#'   \verb{https://uk.sagepub.com/sites/default/files/sage_latex_template_4.zip}{class}.
 #'
 #' Possible arguments for the YAML header are:
 #' \itemize{
@@ -247,7 +291,7 @@ pnas_article <- function(..., keep_tex = TRUE) {
 #' @rdname article
 sage_article <- function(..., highlight = NULL, citation_package = "natbib") {
   pdf_document_format(
-    "sage_article", highlight = highlight, citation_package = citation_package, ...
+    "sage", highlight = highlight, citation_package = citation_package, ...
   )
 }
 
@@ -275,7 +319,7 @@ sage_article <- function(..., highlight = NULL, citation_package = "natbib") {
 #' @rdname article
 sim_article <- function(..., highlight = NULL, citation_package = "natbib") {
   pdf_document_format(
-    "sim_article", highlight = highlight, citation_package = citation_package, ...
+    "sim", highlight = highlight, citation_package = citation_package, ...
   )
 }
 
@@ -283,9 +327,9 @@ sim_article <- function(..., highlight = NULL, citation_package = "natbib") {
 #'   Macro package for Springer Journals.
 #' @export
 #' @rdname article
-springer_article <- function(..., keep_tex = TRUE, citation_package = 'none'){
+springer_article <- function(..., keep_tex = TRUE, citation_package = 'default'){
   pdf_document_format(
-    "springer_article", keep_tex = keep_tex, citation_package = citation_package, ...
+    "springer", keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
 
@@ -295,6 +339,6 @@ springer_article <- function(..., keep_tex = TRUE, citation_package = 'none'){
 #' @rdname article
 tf_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
   pdf_document_format(
-    "tf_article", keep_tex = keep_tex, citation_package = citation_package, ...
+    "tf", keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
