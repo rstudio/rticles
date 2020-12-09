@@ -8,6 +8,7 @@
 \alias{amq_article}
 \alias{ams_article}
 \alias{asa_article}
+\alias{arxiv_article}
 \alias{biometrics_article}
 \alias{ctex}
 \alias{elsevier_article}
@@ -55,6 +56,8 @@ ams_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
 asa_article(..., keep_tex = TRUE, citation_package = "natbib")
 
+arxiv_article(..., keep_tex = TRUE)
+
 biometrics_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 ctex(..., latex_engine = "xelatex")
@@ -73,7 +76,6 @@ mnras_article(..., keep_tex = TRUE, fig_caption = TRUE)
 
 oup_article(
   ...,
-  citation_package = "natbib",
   keep_tex = TRUE,
   md_extensions = c("-autolink_bare_uris")
 )
@@ -145,6 +147,12 @@ custom Pandoc LaTeX template and different default values for other arguments
  This format was adapted from The American
   Statistican (TAS) format, but it should be fairly consistent across
   American Statistical Association (ASA) journals.
+}
+
+\section{\code{arxiv_article}}{
+ Adapted from the George Kour's format for
+  arXiv and bio-arXiv preprints. So far as I'm aware, entirely
+  unofficial but still a staple.
 }
 
 \section{\code{biometrics_article}}{

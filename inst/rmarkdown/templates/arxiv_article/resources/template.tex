@@ -1,0 +1,73 @@
+\documentclass{article}
+
+\usepackage{arxiv}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}
+
+\title{$title$}
+
+\author{
+  $for(authors)$
+  $authors.name$
+  $if(authors.thanks)$
+  \thanks{$authors.thanks$}
+  $endif$ \\
+  $if(authors.department)$
+  $authors.department$ \\
+  $endif$
+  $authors.affiliation$ \\
+  $authors.location$ \\
+  \texttt{$authors.email$} \\
+  $sep$ \And
+  $endfor$
+}
+
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+$endif$
+
+\begin{document}
+\maketitle
+
+\def\tightlist{}
+
+$for(include-before)$
+$include-before$
+$endfor$
+
+\begin{abstract}
+$abstract$
+\end{abstract}
+
+$if(keywords)$
+\keywords{
+  $for(keywords)$
+  $keywords$
+  $sep$ \and
+  $endfor$
+}
+$endif$
+
+$body$
+
+\bibliographystyle{unsrt}
+\bibliography{$bibliography$}
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+\end{document}
