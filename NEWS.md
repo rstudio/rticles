@@ -30,6 +30,8 @@ rticles 0.16
 
 - The minimal version of **knitr** required is 1.30 now.
 
+- `arxiv_article()` now supports header-include and bibstyle. (thanks, @eliocamp)
+
 rticles 0.15
 ---------------------------------------------------------------------
 
