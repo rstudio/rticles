@@ -4,3 +4,4 @@
 ^\.travis\.yml$
 ^\.github$
 ^README\.md$
+^tools/

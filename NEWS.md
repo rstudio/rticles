@@ -1,6 +1,8 @@
 rticles 0.18
 ---------------------------------------------------------------------
 
+- Update jss.cls to version 3.2 (#329).
+
 - Options can now be passed to `hyperref` packages using `header-includes` and `\PassOptionsToPackage` in the AEA template (thanks, @nurfatimaj, #334)
 
 - Update Copernicus Publications template to version 6.1. This is includes a final 
