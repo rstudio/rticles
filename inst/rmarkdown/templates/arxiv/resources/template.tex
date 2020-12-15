@@ -94,7 +94,7 @@ $endif$
 
 $body$
 
-\bibliographystyle{unsrt}
+\bibliographystyle{$if(bibstyle)$$bibstyle$$else$unsrt$endif$}
 \bibliography{$bibliography$}
 
 $for(include-after)$
