@@ -132,7 +132,8 @@ $endif$
 
 $body$
 
-\bibliographystyle{$if(biblio-style)$$biblio-style$$else$spbasic$endif$}
+
+\bibliographystyle{$if(biblio-style)$$biblio-style$$elseif(bibstyle)$$bibstyle$$else$spbasic$endif$}
 \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 
 \end{document}
