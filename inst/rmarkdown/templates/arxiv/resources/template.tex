@@ -65,6 +65,11 @@ $if(csl-refs)$
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
 
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+
 \begin{document}
 \maketitle
 
@@ -89,7 +94,7 @@ $endif$
 
 $body$
 
-\bibliographystyle{unsrt}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$unsrt$endif$}
 \bibliography{$bibliography$}
 
 $for(include-after)$

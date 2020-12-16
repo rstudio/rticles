@@ -20,6 +20,7 @@ keywords:
   - bloo
   - these are optional and can be removed
 bibliography: references.bib
+biblio-style: unsrt
 output: 
   rticles::arxiv_article:
     keep_tex: true
