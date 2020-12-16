@@ -1,6 +1,9 @@
 rticles 0.18
 ---------------------------------------------------------------------
 
+- `springer_article()` now uses the yaml variable biblio-style to set bibliogrphy style
+instead of bibstyle. (@eliocamp, #358)
+
 - Update jss.cls to version 3.2 (#329).
 
 - Options can now be passed to `hyperref` packages using `header-includes` and `\PassOptionsToPackage` in the AEA template (thanks, @nurfatimaj, #334)
