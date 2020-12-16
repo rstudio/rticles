@@ -1,6 +1,8 @@
 rticles 0.18
 ---------------------------------------------------------------------
 
+- Fixes a bug when rendering `arxiv_article()` with recent version of TeX Live by adding `\usepackage{lmodern}` to the template. (#thanks, @slemonide, #343)
+
 - `arxiv_article()` now supports `header-includes` and `biblio-style` to use in the YAML header in order to customize its template. Default bibliography style is still _unsrt_ if not set as before. (thanks, @eliocamp, #356).
 
 - Update jss.cls to version 3.2 (#329).
