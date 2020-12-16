@@ -1,6 +1,8 @@
 rticles 0.18
 ---------------------------------------------------------------------
 
+- `arxiv_article()` now supports header-include and bibstyle. (thanks, @eliocamp)
+
 - Update jss.cls to version 3.2 (#329).
 
 - Options can now be passed to `hyperref` packages using `header-includes` and `\PassOptionsToPackage` in the AEA template (thanks, @nurfatimaj, #334)
@@ -29,8 +31,6 @@ rticles 0.16
 - Fixed `ctex_article()` to correctly use the default Pandoc template as intended in the PR #307, which introduced the bug #322 (thanks, @baketbek @cderv #323).
 
 - The minimal version of **knitr** required is 1.30 now.
-
-- `arxiv_article()` now supports header-include and bibstyle. (thanks, @eliocamp)
 
 rticles 0.15
 ---------------------------------------------------------------------
