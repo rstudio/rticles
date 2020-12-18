@@ -34,7 +34,7 @@ abstract: |
   The text of your abstract.  150 -- 250 words.
 
 bibliography: bibliography.bib
-bibstyle: spphys
+biblio-style: spphys
 # bibstyle options spbasic(default), spphys, spmpsci
 output: rticles::springer_article
 ---
