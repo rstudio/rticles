@@ -4,6 +4,7 @@
 
 \usepackage[utf8]{inputenc} % allow utf-8 input
 \usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{lmodern}        % https://github.com/rstudio/rticles/issues/343
 \usepackage{hyperref}       % hyperlinks
 \usepackage{url}            % simple URL typesetting
 \usepackage{booktabs}       % professional-quality tables
@@ -65,6 +66,11 @@ $if(csl-refs)$
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
 
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+
 \begin{document}
 \maketitle
 
@@ -89,7 +95,7 @@ $endif$
 
 $body$
 
-\bibliographystyle{unsrt}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$unsrt$endif$}
 \bibliography{$bibliography$}
 
 $for(include-after)$
