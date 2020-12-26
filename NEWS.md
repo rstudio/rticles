@@ -30,6 +30,8 @@ rticles 0.17
 
 - Add article template `lipics_article()` for *Leibniz International Proceedings in Informatics* (LIPIcs) (thanks, @nuest, #288).
 
+- Add article template `jasa_article()` for the *Journal of the Acoustical Society of America* (JASA).
+
 rticles 0.16
 ---------------------------------------------------------------------
 
