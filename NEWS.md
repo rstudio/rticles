@@ -17,6 +17,10 @@ fix for the LaTeX problem sanitized with the last `rticles` update (thanks, @RLu
 
 - Update all templates regarding CSLReference environment following changes in Pandoc's default template.
 
+- Add article template `jasa_article()` for the *Journal of the Acoustical Society of America* (JASA).
+
+- Add revtex4-1 in gh-workflow (although revtex4-1 is obsolete, it is needed by `JASA.cls` used in `jasa_article()`).
+
 rticles 0.17
 ---------------------------------------------------------------------
 
