@@ -20,6 +20,7 @@
 \alias{mnras_article}
 \alias{oup_article}
 \alias{peerj_article}
+\alias{pihph_article}
 \alias{plos_article}
 \alias{pnas_article}
 \alias{sage_article}
@@ -92,6 +93,8 @@ mnras_article(..., keep_tex = TRUE, fig_caption = TRUE)
 oup_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
 peerj_article(..., keep_tex = TRUE)
+
+pihph_article(..., keep_tex = TRUE, latex_engine = "xelatex")
 
 plos_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
@@ -230,6 +233,12 @@ custom Pandoc LaTeX template and different default values for other arguments
   Journal. This was adapted from the
   \href{https://www.overleaf.com/latex/templates/latex-template-for-peerj-journal-and-pre-print-submissions/ptdwfrqxqzbn}{PeerJ
    Overleaf Template}.
+}
+
+\section{\code{pihph_article}}{
+ Format for creating submissions to the
+  Papers in Historical Phonology. Adapted from
+  \url{https://github.com/pihph/templates}.
 }
 
 \section{\code{plos_article}}{
