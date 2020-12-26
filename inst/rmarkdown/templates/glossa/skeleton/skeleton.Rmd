@@ -1,0 +1,20 @@
+---
+title: This is a title and this is too
+shorttitle: A subtitle goes on another line
+shortauthors: Paul & Vanden Wyngaerd
+author:
+- name: Waltraud Paul
+  affiliation: CNRS, CRLAO
+  address: 105, Bd. Raspail, 75005 Paris waltraud.paul\@ehess.fr
+- name: Guido Vanden Wyngaerd
+  affiliation: KU Leuven
+output: rticles::glossa_article
+abstract: |
+  Your abstract
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Your article.
