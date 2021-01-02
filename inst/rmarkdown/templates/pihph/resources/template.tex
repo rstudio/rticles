@@ -150,11 +150,12 @@ $if(default-fonts)$
 \setmainfont{Cambria}
 \setlicensefont{Calibri}
 \setlogofont{Lekton}
-$elseif(alt-fonts)$
+$endif$
+$if(alt-fonts)$
 \setmainfont{Caladea}
 \setlicensefont{Carlito}
 \setlogofont{Lekton}
-$else$
+$endif$
 $if(main)$
 \setmainfont{$main$}
 $endif$
@@ -163,7 +164,6 @@ $if(licensefont)$
 $endif$
 $if(logofont)$
 \setlogofont{$logofont$}
-$endif$
 $endif$
 
 
