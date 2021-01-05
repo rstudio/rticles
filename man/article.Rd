@@ -187,7 +187,7 @@ custom Pandoc LaTeX template and different default values for other arguments
 \section{\code{elsevier_article}}{
  Format for creating submissions to Elsevier
   journals. Adapted from
-  \url{https://www.elsevier.com/authors/author-schemas/latex-instructions}.
+  \url{https://www.elsevier.com/authors/policies-and-guidelines/latex-instructions}.
 }
 
 \section{\code{frontiers_article}}{
