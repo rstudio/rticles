@@ -32,7 +32,12 @@ keywords:
 #classoptions:
 #  - endnotes
 bibliography: mybibfile.bib
+#csl: mycitationstyle.csl
+#link-citations: yes
 output: rticles::oup_article
+#urlcolor: orange
+#linkcolor: green
+#citecolor: red
 #header-includes:
 #  - \usepackage[nomarkers,tablesfirst]{endfloat} # For figures and tables at end
 #  - \usepackage{lineno} # For line numbering

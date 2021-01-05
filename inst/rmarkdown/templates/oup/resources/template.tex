@@ -1,12 +1,31 @@
+$if(colorlinks)$
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+$endif$
+
 \documentclass[$if(fontsize)$$fontsize$,$else$12pt,$endif$$if(spacing)$$spacing$,$else$halfline,$endif$$if(papersize)$$papersize$,$else$a4paper,$endif$$for(classoptions)$$classoptions$$sep$,$endfor$]{ouparticle}
 
 % Packages I think are necessary for basic Rmarkdown functionality
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{listings}
-\usepackage{color}
+\usepackage{xcolor}
 \usepackage{fancyvrb}
 \usepackage{framed}
+
+% Link coloring
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={$author-meta$},
+            pdftitle={$title-meta$}
+            $if(colorlinks)$
+            ,
+            colorlinks=true,
+            citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
+            urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
+            linkcolor=$if(linkcolor)$$linkcolor$$else$blue$endif$
+            $endif$
+}
+
 
 % For knitr::kable functionality
 \usepackage{booktabs}
