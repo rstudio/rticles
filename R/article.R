@@ -155,7 +155,7 @@ ctex <- ctex_article
 
 #' @section \code{elsevier_article}: Format for creating submissions to Elsevier
 #'   journals. Adapted from
-#'   \url{https://www.elsevier.com/authors/author-schemas/latex-instructions}.
+#'   \url{https://www.elsevier.com/authors/policies-and-guidelines/latex-instructions}.
 #' @export
 #' @rdname article
 elsevier_article <- function(
