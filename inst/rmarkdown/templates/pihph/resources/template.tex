@@ -151,6 +151,12 @@ $if(default-fonts)$
 \setlicensefont{Calibri}
 \setlogofont{Lekton}
 $endif$
+% If you do not have access to Cambria, you can use the metric-equivalent Caladea: https://fontlibrary.org/en/font/caladea
+% If you do not have access to Calibri, you can use the metric-equivalent Carlito: https://fontlibrary.org/en/font/carlito
+% Lekton available at https://www.fontsquirrel.com/fonts/lekton
+
+% If any of these fonts are not available on your system, feel free to
+% change them here, but of course the final layout will then differ
 $if(alt-fonts)$
 \setmainfont{Caladea}
 \setlicensefont{Carlito}
@@ -165,14 +171,6 @@ $endif$
 $if(logofont)$
 \setlogofont{$logofont$}
 $endif$
-
-
-% If you do not have access to Cambria, you can use the metric-equivalent Caladea: https://fontlibrary.org/en/font/caladea
-% If you do not have access to Calibri, you can use the metric-equivalent Carlito: https://fontlibrary.org/en/font/carlito
-% Lekton available at https://www.fontsquirrel.com/fonts/lekton
-
-% If any of these fonts are not available on your system, feel free to
-% change them here, but of course the final layout will then differ
 
 \usepackage{polyglossia}                   % or use babel if desired
 \setmainlanguage[variant=british]{english} % or use babel if desired
