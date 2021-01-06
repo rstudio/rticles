@@ -250,7 +250,7 @@ peerj_article <- function(..., keep_tex = TRUE) {
 }
 
 #' @section \code{pihph_article}: Format for creating submissions to the
-#'   Papers in Historical Phonology. Adapted from
+#'   Papers in Historical Phonology (\url{http://journals.ed.ac.uk/pihph/about/submissions}). Adapted from
 #'   \url{https://github.com/pihph/templates}.
 #' @export
 #' @rdname article
