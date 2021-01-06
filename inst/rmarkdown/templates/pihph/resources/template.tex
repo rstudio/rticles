@@ -287,18 +287,15 @@ $endif$
 \label{sec:auth-cont-deta}
 
 $for(author)$
-$if(author.email)$
 \noindent \textit{$author.name$}
 
-\noindent $author.affiliation$
+$if(author.affiliation)$\noindent $author.affiliation$$endif$
 
-$if(author.address)$
+$if(author.address)$\noindent $author.address$$endif$
 
-\noindent $author.address$
-$endif$
+$if(author.email)$
 \vspace*{5pt}
 \noindent \textit{$author.email$}
-
 $endif$
 $endfor$
 
