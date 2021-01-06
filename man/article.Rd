@@ -293,7 +293,7 @@ Possible arguments for the YAML header are:
 
 \section{\code{tf_article}}{
  Format for creating submissions to a Taylor & Francis journal. Adapted from
-\url{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
+\samp{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
 }
 
 \examples{
