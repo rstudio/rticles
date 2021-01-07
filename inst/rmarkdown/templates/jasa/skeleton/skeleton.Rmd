@@ -16,6 +16,8 @@ abstract: |
   ``novel'' in the abstract. An article usually includes an abstract, a
   concise summary of the work covered at length in the main body of the
   article.
+# The following prints the date (optional, set to false to remove).
+date: true
 ---
 
 ```{r setup, include=FALSE}
