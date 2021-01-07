@@ -45,12 +45,6 @@
 $if(natbib)$
 \usepackage{natbib}
 $endif$
-$if(biblatex)$
-\usepackage[$if(biblio-style)$style=$biblio-style$,$endif$$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
-$for(bibliography)$
-\addbibresource{$bibliography$}
-$endfor$
-$endif$
 
 $if(listings)$
 \usepackage{listings}
