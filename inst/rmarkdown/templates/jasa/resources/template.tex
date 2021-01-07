@@ -131,9 +131,11 @@ $endfor$
 $body$
 
 %% before appendix (optional) and bibliography:
-% \begin{acknowledgments}
-%This research was supported by  ...
-% \end{acknowledgments}
+$if(acknowledgements)$
+\begin{acknowledgments}
+$acknowledgements$
+\end{acknowledgments}
+$endif$
 
 % -------------------------------------------------------------------------------------------------------------------
 %   Appendix  (optional)
