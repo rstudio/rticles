@@ -39,10 +39,3 @@ Your article.
 plot(pressure)
 ```
 
-
-\begin{acknowledgments}
-Thanks to...
-\end{acknowledgments}
-
-\appendix
-\section{Optional appendix}
