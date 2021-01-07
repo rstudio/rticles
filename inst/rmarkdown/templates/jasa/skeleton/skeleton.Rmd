@@ -16,9 +16,6 @@ abstract: |
   ``novel'' in the abstract. An article usually includes an abstract, a
   concise summary of the work covered at length in the main body of the
   article.
-# You can add your acknowledgements here (optional).
-acknowledgements: |
-  This research was supported by  ...
 ---
 
 ```{r setup, include=FALSE}
@@ -38,4 +35,50 @@ Your article.
 ```{r Figure1, include=TRUE, fig.cap="Your caption."}
 plot(pressure)
 ```
+
+<!-- You can add your acknowledgements here (optional). -->
+::: {.acknowledgments data-latex=""}
+This research was supported by ...
+:::
+
+<!-- use \appendix* for only one appendix section -->
+\appendix 
+
+To start the appendix, use the `\appendix` command.
+This signals that all following section commands refer to appendixes
+instead of regular sections. Therefore, the `\appendix` command
+should be used only once---to set up the section commands to act as
+appendices. Thereafter normal section commands are used. The heading
+for a section can be left empty. For example,
+
+::: {.verbatim data-latex=""}
+\appendix
+\section{}
+:::
+
+will produce an appendix heading that says "APPENDIX A" and
+
+::: {.verbatim data-latex=""}
+\appendix
+\section{Background}
+:::
+
+will produce an appendix heading that says "APPENDIX A: BACKGROUND"
+(note that the colon is set automatically).
+
+If there is only one appendix, then the letter "A" should not
+appear. This is suppressed by using the star version of the appendix
+command (`\appendix*` in the place of `\appendix`).
+
+# A little more on appendices
+
+Observe that this appendix was started by using
+
+::: {.verbatim data-latex=""}
+# A little more on appendices
+:::
+
+Note the equation number in an appendix:
+
+$$E=mc^2$$
 
