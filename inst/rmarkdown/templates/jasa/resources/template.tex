@@ -10,7 +10,6 @@
 %%%%%%% For Preprint
 %% For manuscript, 12pt, one column style
 
-%% Comment this out if you'd rather use another style:
 \documentclass[$for(classoption)$$classoption$$sep$,$endfor$]{JASA}
 
 %%%%% Preprint Options %%%%%
@@ -42,25 +41,6 @@
 %% TurnOnLineNumbers
 %% Make lines be numbered in reprint style:
 % \documentclass[reprint,TurnOnLineNumbers]{JASA}
-
-\usepackage{fontspec}
-
-% $if(mainfont)$
-%     \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
-% $endif$
-% $if(sansfont)$
-%     \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
-% $endif$
-% $if(monofont)$
-%     \setmonofont[Mapping=tex-ansi$if(monofontoptions)$,$for(monofontoptions)$$monofontoptions$$sep$,$endfor$$endif$]{$monofont$}
-% $endif$
-% $if(mathfont)$
-%     \setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
-% $endif$
-% $if(CJKmainfont)$
-%     \usepackage{xeCJK}
-%     \setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
-% $endif$
 
 $if(natbib)$
 \usepackage{natbib}
