@@ -43,7 +43,7 @@ plot(pressure)
 This research was supported by ...
 :::
 
-<!-- use \appendix* for only one appendix section -->
+<!-- Use \appendix* for only one appendix section. -->
 \appendix 
 
 To start the appendix, use the `\appendix` command.
@@ -53,17 +53,17 @@ should be used only once---to set up the section commands to act as
 appendices. Thereafter normal section commands are used. The heading
 for a section can be left empty. For example,
 
-::: {.verbatim data-latex=""}
+```latex
 \appendix
 \section{}
-:::
+```
 
 will produce an appendix heading that says "APPENDIX A" and
 
-::: {.verbatim data-latex=""}
+```latex
 \appendix
 \section{Background}
-:::
+```
 
 will produce an appendix heading that says "APPENDIX A: BACKGROUND"
 (note that the colon is set automatically).
@@ -76,9 +76,9 @@ command (`\appendix*` in the place of `\appendix`).
 
 Observe that this appendix was started by using
 
-::: {.verbatim data-latex=""}
+```markdown
 # A little more on appendices
-:::
+```
 
 Note the equation number in an appendix:
 
