@@ -65,14 +65,16 @@ for a section can be left empty. For example,
 
 ```latex
 \appendix
-\section{}
+
+# 
 ```
 
 will produce an appendix heading that says "APPENDIX A" and
 
 ```latex
 \appendix
-\section{Background}
+
+# Background
 ```
 
 will produce an appendix heading that says "APPENDIX A: BACKGROUND"
