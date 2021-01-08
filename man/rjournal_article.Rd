@@ -34,7 +34,7 @@ https://bookdown.org/yihui/rmarkdown-cookbook/purl.html for more information.
 \code{RJwapper.tex} as expected to build \code{RJwrapper.pdf}.
 \item All figure files will be kept in the default rmarkdown \verb{*_files} folder. This
 happens because \code{keep_tex = TRUE} by default in \code{rticles::rjournal_article}
-\item Only the bib filename is to modifed. An example bib file is included in the
+\item Only the bib filename is to be modified. An example bib file is included in the
 template (\code{RJreferences.bib}) and you will have to name your bib file as the
 tex, R, and pdf files.
 }
