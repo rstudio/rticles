@@ -18,6 +18,16 @@ abstract: |
   article.
 # The following prints the date (optional, set to false to remove).
 date: true
+classoption:
+  - preprint # Set to reprint to use the reprint style.
+# The reprint style typesets the manuscript with two columns and 10pt font size.  
+#  - NumberedRefs # Uncomment to use numbered references rather than the default author-year style.
+#  - trackchanges # Uncomment to track changes in the manuscript. (Use with preprint option).
+#  - 12pt # Uncomment this to check if you exceeded the 12 page limit. (Use with reprint option).
+#  - TurnOnLineNumbers # Uncomment to add line numbers in reprint. (Use with reprint.)
+# If preprint_notice = true, add a notice in the form of "Author, JASA".
+# If there are multiple authors, only the first is printed.
+prerint_notice: true
 ---
 
 ```{r setup, include=FALSE}

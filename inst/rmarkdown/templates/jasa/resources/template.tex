@@ -95,7 +95,7 @@ $endfor$
 
 %% For preprint only,
 %  optional, if you want want this message to appear in upper left corner of title page
-% \preprint{}
+$if(prerint_notice)$\preprint{$for(author/first)$$author.name$$endfor$, JASA}$endif$
 
 %ie
 %\preprint{Author, JASA}
