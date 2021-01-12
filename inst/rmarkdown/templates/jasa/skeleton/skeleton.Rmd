@@ -27,6 +27,10 @@ classoption:
 prerint_notice: "Author-name, JASA"
 #  - 12pt # Uncomment this to check if you exceeded the 12 page limit. (Use with reprint option).
 #  - TurnOnLineNumbers # Uncomment to add line numbers in reprint. (Use with reprint.)
+bibliography: sampbib.bib
+# The Author-Year style is the default. If you want to use the numeric style,
+# use "jasanum2.bst" instead.
+biblio-style: jasaauthyear2.bst
 ---
 
 ```{r setup, include=FALSE}
@@ -46,6 +50,31 @@ Your article.
 ```{r Figure1, include=TRUE, fig.cap="Your caption."}
 plot(pressure)
 ```
+
+# Citations
+
+The code `[@key]` should usually be used for making
+citations surrounded by parentheses, where `key` is the BibTeX cite-key.
+If you need only the year in parentheses, you may use `@key`.
+
+Some examples:
+
+- Normal journal cite: [@joursamp1]
+
+- Volume number with issue number: [@joursamp3]
+
+- Journal article published online, not yet printed: [published
+online, @sampMisc2]
+
+- Book reference: [@booksamp1]
+
+- In press: [in press, @inpress2]
+
+- Website: [@websiteauthyear]
+
+- Inproceedings: [@sampinproceedings3].
+
+
 
 <!-- You can add your acknowledgements here (optional). -->
 ::: {.acknowledgments data-latex=""}

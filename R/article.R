@@ -184,7 +184,8 @@ jasa_article <- function(
   ..., keep_tex = TRUE, latex_engine = "xelatex"
 ) {
   pdf_document_format(
-    "jasa", keep_tex = keep_tex, latex_engine = latex_engine, ...
+    "jasa", keep_tex = keep_tex, latex_engine = latex_engine,
+    citation_package = "natbib", ...
   )
 }
 
