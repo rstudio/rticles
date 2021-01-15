@@ -39,17 +39,56 @@ biblio-style: jasaauthyear2.bst
 # "Figure1", "Figure2", etc... You will find the figure files in
 # `[...]_files/figure-latex/`.
 
-knitr::opts_chunk$set(echo = TRUE, fig.process = function(x) {
-  x2 = sub('-\\d+([.][a-z]+)$', '\\1', x)
-  if (file.rename(x, x2)) x2 else x
-})
+knitr::opts_chunk$set(
+  echo = TRUE,
+  out.width="\\reprintcolumnwidth",
+  fig.process = function(x) {
+    x2 = sub('-\\d+([.][a-z]+)$', '\\1', x)
+    if (file.rename(x, x2)) x2 else x
+  }
+)
 ```
 
-Your article.
+# Introduction
 
-```{r Figure1, include=TRUE, fig.cap="Your caption."}
-plot(pressure)
+This sample document demonstrates the use of JASA in manuscripts 
+prepared for submission to the Journal of the Acoustical Society of America. 
+
+# Figures {#figures}
+
+```{r Figure1, echo=FALSE, fig.cap="Caption."}
+knitr::include_graphics("figsamp.jpg")
 ```
+
+The only figure formats allowed for submission are the following: `.pdf`, `.ps`, `.eps`, or `.jpg`.
+Figure files must be named in this fashion:
+`Figure\#.xxx`, where `\#` is the figure number and `xxx` is the file format
+(`Figure1.eps`, `Figure2.jpg`, `Figure3a.ps`, `Figure3b.ps`, etc).
+
+```{r Figure2, echo=FALSE, fig.cap="A sine wave."}
+t <- seq(0, 10, 0.1)
+y <- sin(t)
+plot(t, y, type="l", xlab = "time", ylab = "Sine wave")
+```
+
+
+# Inline and display math samples
+
+You can also include inline math, like $\sum\nolimits_{i=1}^N a_i$.
+
+The following is a matrix.
+
+$$
+A_{m,n} = 
+ \begin{pmatrix}
+  a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+  a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+  \vdots  & \vdots  & \ddots & \vdots  \\
+  a_{m,1} & a_{m,2} & \cdots & a_{m,n} 
+ \end{pmatrix}
+$$
+
+
 
 # Citations
 
