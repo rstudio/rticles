@@ -173,7 +173,7 @@ $endif$
 
 % Use polyglossia by default since the engine is xelatex.
 \usepackage{polyglossia}
-\setmainlanguage[variant=british]{english}
+\setmainlanguage[$if(en-variant)$variant=$en-variant$$endif$]{english}
 \usepackage[autostyle$if(single-quotes)$,english=british$endif$]{csquotes} % remove the english=british option for double quotes
 $if(gloss)$
 \usepackage{$gloss$} % for examples, feel free to use anything else

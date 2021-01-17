@@ -34,9 +34,8 @@ alt-fonts: true # set to true if you want to use alternative fonts
 # Finally, if you'd rather use the default XeLaTeX fonts, just leave
 # both default-fonts and alt-fonts set to false and don't specify mainfont,
 # licensefont, nor logofont.
-#
-# To use double quotes, set single-quotes to false.
-single-quotes: true
+en-variant: british # Set to "american" for American English.
+single-quotes: true # To use double quotes, set single-quotes to false.
 # This format uses BibLaTeX by default, as recommended by the journal.
 bibliography: sample-bib.bib
 abstract: |
