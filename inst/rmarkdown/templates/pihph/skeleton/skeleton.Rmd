@@ -1,12 +1,16 @@
 ---
 title: This is a title and this is too
 subtitle: A subtitle goes on another line
+# Use the following to specify a shorter title for the header.
+title-header: A short title
 author:
 - name: Author's name
   affiliation: Author's affiliation
   email: e-mail@uni.edu
 - name: Second author's name (if there is one)
   affiliation: Second author's affiliation
+# Use the following to specify a short author name for the header.
+author-header: Authors
 output: rticles::pihph_article
 gloss: expex # feel free to use your preferred package for the examples
 # FONTS
