@@ -37,6 +37,8 @@ alt-fonts: true # set to true if you want to use alternative fonts
 #
 # To use double quotes, set single-quotes to false.
 single-quotes: true
+# This format uses BibLaTeX by default, as recommended by the journal.
+bibliography: sample-bib.bib
 abstract: |
  This is the template for \LaTeX{} users; we also have a Word template available, so feel free to use that if you're not into \LaTeX. All submissions to PiHPh should aim to follow the formatting set out in this template precisely, as there is no separate typesetting phase. Most styles in this template have been set up to insert the necessary white space where needed. You should use the styles that are provided in this template consistently to ensure that your submission is quickly processed. Do not change the margins or header/footer properties, including the material on this first page (such as volume, page numbers and DOI), which we will update when your submission is ready. Make sure to look at the user customization part of the preamble to this \texttt{.tex} source to change titles, running headers, bibliography etc. All the packages used here should be available in a recent version of \TeX Live. All articles should include an abstract in this position, of no more than 200 words.
 acknowledgements: Include any acknowledgements in an unnumbered section here, rather than in a footnote early in the paper.
@@ -55,7 +57,7 @@ All paragraphs other than the first in a section will be indented by 0.7cm. Make
 
 # Heading level 2
 
-Quotations of under 25 words should be included in the running text \enquote{as a wise person once said} (with an associated full reference, including page numbers). All references should follow the normal Author (date, page number) system.  Longer quotations should be set out as follows, which represents the words of Bloggs (1937, 23).
+Quotations of under 25 words should be included in the running text \enquote{as a wise person once said} (with an associated full reference, including page numbers). All references should follow the normal Author (date, page number) system.  Longer quotations should be set out as follows.
 
 
 > This is the format for a quotation of 25 words or more, with indentation of 0.7 cm throughout the quotation on both sides and a font size of 10 points (this is set up in the template) and a reference in the text above it, unless there is a good reason to give the reference elsewhere.
@@ -85,6 +87,15 @@ Captions for figures and tables should be set out below the figure or table. We 
   \caption{Caption}
   \label{fig:example}
 \end{figure}
+
+# Bibliography and citations
+
+By default, this template uses Bib\LaTeX. To learn about Bib\LaTeX, see https://www.overleaf.com/learn/latex/Articles/Getting_started_with_BibLaTeX
+# for a quick intro and the package documentation for detailed info. The `langsci-unified` style is used.
+
+To cite a reference, you can use the standard pandoc syntax `@blust2009` for a citation without parentheses, as in @blust2009, and `[@blust2009]` with parenthesis [@blust2009].
+
+These are other examples: @ramsammy2016 [p. 287], [but see @sen2016; @bermudez-otero2015]. Goldsmith is a relevant reference [-@goldsmith1990], although we should not forget @hyman1975.
 
 # Another section
 

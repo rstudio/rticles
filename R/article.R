@@ -255,7 +255,12 @@ peerj_article <- function(..., keep_tex = TRUE) {
 #' @export
 #' @rdname article
 pihph_article <- function(..., keep_tex = TRUE, latex_engine = "xelatex") {
-  pdf_document_format("pihph",  keep_tex = keep_tex, latex_engine = latex_engine, ...)
+  pdf_document_format(
+    "pihph",
+    keep_tex = keep_tex,
+    latex_engine = latex_engine,
+    citation_package = "biblatex",
+    ...)
 }
 
 #' @section \code{plos_article}: Format for creating submissions to PLOS

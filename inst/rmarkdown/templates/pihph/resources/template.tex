@@ -214,12 +214,12 @@ $endfor$
 % remember to run biber rather than bibtex if using this option
 \AtEveryCitekey{\ifciteseen{}{\defcounter{maxnames}{99}}}
 $endif$
-$if(natbib)$
+
 % BibTeX setup, deprecated
-\usepackage{natbib}
-\bibpunct[:]{(}{)}{;}{a}{}{,}
-\setlength\bibsep{0pt}
-$endif$
+% \usepackage{natbib}
+% \bibpunct[:]{(}{)}{;}{a}{}{,}
+% \setlength\bibsep{0pt}
+
 
 % Pandoc citation processing
 $if(csl-refs)$
@@ -304,12 +304,12 @@ $if(biblatex)$
 % BibLaTeX setup, recommended
 \printbibliography[title=References]
 $endif$
-$if(natbib)$
+
 % BibTeX setup, deprecated
-\bibliographystyle{unified} % unified.bst can be obtained at http://cexlj.org/downloads/unified.bst
-\renewcommand\bibsection{\section*{References}}
-\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
-$endif$
+% \bibliographystyle{unified} % unified.bst can be obtained at http://cexlj.org/downloads/unified.bst
+% \renewcommand\bibsection{\section*{References}}
+%\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+
 
 $for(include-after)$
 $include-after$
