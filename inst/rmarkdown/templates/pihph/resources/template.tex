@@ -171,8 +171,9 @@ $if(logofont)$
 \setlogofont{$logofont$}
 $endif$
 
-\usepackage{polyglossia}                   % or use babel if desired
-\setmainlanguage[variant=british]{english} % or use babel if desired
+% Use polyglossia by default since the engine is xelatex.
+\usepackage{polyglossia}
+\setmainlanguage[variant=british]{english}
 \usepackage[autostyle$if(single-quotes)$,english=british$endif$]{csquotes} % remove the english=british option for double quotes
 $if(gloss)$
 \usepackage{$gloss$} % for examples, feel free to use anything else
