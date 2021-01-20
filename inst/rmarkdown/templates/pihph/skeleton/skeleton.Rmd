@@ -1,8 +1,11 @@
 ---
+output: rticles::pihph_article
+
 title: This is a title and this is too
 subtitle: A subtitle goes on another line
 # Use the following to specify a shorter title for the header.
 title-header: A short title
+
 author:
 - name: Author's name
   affiliation: Author's affiliation
@@ -11,31 +14,22 @@ author:
   affiliation: Second author's affiliation
 # Use the following to specify a short author name for the header.
 author-header: Authors
-output: rticles::pihph_article
+
 gloss: expex # feel free to use your preferred package for the examples
-# FONTS
-# If default-fonts is true, alt-fonts should be set to false, and vice versa.
-default-fonts: false # set to true if you want to use the defaults fonts
-# The default fonts are: Cambria, Calibri, and Lekton
-# Lekton can be found at: https://www.fontsquirrel.com/fonts/lekton
-alt-fonts: true # set to true if you want to use alternative fonts
-# The alternative fonts are: Caladea, Carlito, and Lekton
-# Caladea can be found at: https://fontlibrary.org/en/font/caladea
-# Carlito can be found at: https://fontlibrary.org/en/font/carlito
-# Lekton can be found at: https://www.fontsquirrel.com/fonts/lekton
+
+# The journal uses Cambria, Calibri, and Lekton. If you don't have access to
+#  Cambria and Calibri, you can use the metrically equivalent Caladea and
+#  Carlito. Caladea, Carlito, and Lekton are available for download:
+#   - Caladea:   https://fontlibrary.org/en/font/caladea
+#   - Carlito:   https://fontlibrary.org/en/font/carlito
+#   - Lekton:    https://www.fontsquirrel.com/fonts/lekton
 #
-# If any of these fonts are not available on your system, feel free to
-# change them here, but of course the final layout will then differ.
-# Uncomment the following lines and set the chosen fonts:
-# mainfont: Charis SIL
-# licensefont: Arial
-# logofont: Arial
-#
-# Finally, if you'd rather use the default XeLaTeX fonts, just leave
-# both default-fonts and alt-fonts set to false and don't specify mainfont,
-# licensefont, nor logofont.
+# mainfont: Cambria # or Caladea
+# licensefont: Calibri # or Carlito
+# logofont: Lekton
 en-variant: british # Set to "american" for American English.
 single-quotes: true # To use double quotes, set single-quotes to false.
+
 # This format uses BibLaTeX by default, as recommended by the journal.
 bibliography: sample-bib.bib
 abstract: |
@@ -54,7 +48,7 @@ The first paragraph under all headings will not be indented.^[This is a footnote
 
 All paragraphs other than the first in a section will be indented by 0.7cm. Make sure that you use the shaftless arrow \enquote{>} for diachronic correspondences. The shafted arrow \enquote{→} (or `$\rightarrow$`) should be used for synchronic derivations. Use \enquote{smart quotation marks}, not \'straight quotation marks\' (we recommend the csquotes package, as in this template). Either British or American English spelling is fine, as long as you are consistent. It is crucial that you spellcheck and carefully proofread your piece before submission. Use a hyphen \enquote{-} only to join together two parts of a compound (as in \enquote{affrico-palatalisation}). For number ranges (as in \enquote{1999–2002}), use an en dash \enquote{--}. For all other purposes, use an em dash \enquote{---}.
 
-# Heading level 2
+## Heading level 2
 
 Quotations of under 25 words should be included in the running text \enquote{as a wise person once said} (with an associated full reference, including page numbers). All references should follow the normal Author (date, page number) system.  Longer quotations should be set out as follows.
 
@@ -89,24 +83,11 @@ Captions for figures and tables should be set out below the figure or table. We 
 
 # Bibliography and citations
 
-By default, this template uses Bib\LaTeX. To learn about Bib\LaTeX, see https://www.overleaf.com/learn/latex/Articles/Getting_started_with_BibLaTeX
-# for a quick intro and the package documentation for detailed info. The `langsci-unified` style is used.
+By default, this template uses Bib\LaTeX. To learn about Bib\LaTeX, see https://www.overleaf.com/learn/latex/Articles/Getting_started_with_BibLaTeX for a quick intro and the package documentation for detailed info. The `langsci-unified` style is used.
 
 To cite a reference, you can use the standard pandoc syntax `@blust2009` for a citation without parentheses, as in @blust2009, and `[@blust2009]` with parenthesis [@blust2009].
 
 These are other examples: @ramsammy2016 [p. 287], [but see @sen2016; @bermudez-otero2015]. Goldsmith is a relevant reference [-@goldsmith1990], although we should not forget @hyman1975.
-
-# Another section
-
-## And another subsection
-
-As previously, the first line in this paragraph, under a section heading, is not indented.
-
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-
-## And another level for headings
-
-Do not use more than three levels of structure. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
 
 # Conclusion
 

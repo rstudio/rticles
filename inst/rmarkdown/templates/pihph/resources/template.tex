@@ -146,22 +146,7 @@
 \authorheader{$if(author-header)$$author-header$$else$$for(author)$$author.name$$sep$, $endfor$$endif$}
 \titleheader{$if(title-header)$$title-header$$else$$title$$endif$}
 
-$if(default-fonts)$
-\setmainfont{Cambria}
-\setlicensefont{Calibri}
-\setlogofont{Lekton}
-$endif$
-% If you do not have access to Cambria, you can use the metric-equivalent Caladea: https://fontlibrary.org/en/font/caladea
-% If you do not have access to Calibri, you can use the metric-equivalent Carlito: https://fontlibrary.org/en/font/carlito
-% Lekton available at https://www.fontsquirrel.com/fonts/lekton
-$if(alt-fonts)$
-\setmainfont{Caladea}
-\setlicensefont{Carlito}
-\setlogofont{Lekton}
-$endif$
-% If any of these default fonts are not available on your system, feel free to
-% change them here, but of course the final layout will then differ
-$if(main)$
+$if(mainfont)$
 \setmainfont{$mainfont$}
 $endif$
 $if(licensefont)$
@@ -170,6 +155,9 @@ $endif$
 $if(logofont)$
 \setlogofont{$logofont$}
 $endif$
+% If you do not have access to Cambria, you can use the metric-equivalent Caladea: https://fontlibrary.org/en/font/caladea
+% If you do not have access to Calibri, you can use the metric-equivalent Carlito: https://fontlibrary.org/en/font/carlito
+% Lekton available at https://www.fontsquirrel.com/fonts/lekton
 
 % Use polyglossia by default since the engine is xelatex.
 \usepackage{polyglossia}
