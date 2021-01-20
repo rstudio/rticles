@@ -16,7 +16,7 @@
 %% -----------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{copernicus}
-    [2020/10/29 9.21 Copernicus papers]
+    [2021/01/12 9.25 Copernicus papers]
 \frenchspacing
 \clubpenalty10000
 \widowpenalty10000
@@ -752,7 +752,7 @@
                    \ifdim\wd\z@>100mm\strut\newline\strut\fi
                  \fi
                \fi
-               \ifx\@published\@undefined\else \hbox{Published:\nobreakspace\@published}\fi
+               \ifx\@published\@undefined\else \strut\hbox{Published:\nobreakspace\@published}\fi
                \strut\par\egroup
                \ifx\@howtocite\@empty\else\item[{How to cite:}]\@howtocite\fi
                \ifx\abstractexists\@undefined
@@ -1220,14 +1220,15 @@
 \fi
 \def\@tempa{%
   \def\introductionname{Introduction}%
+  \def\authorcontributionname{Author contributions}%
   \def\secabstractname{Kurzfassung}%
   \def\conclusionname{Conclusions}%
   \def\copyrightstatementname{Copyright statement}%
   \def\codeavailabilityname{Code availability}%
   \def\dataavailabilityname{Data availability}%
+  \def\ercavailabilityname{Executable research compendium (ERC)}%
   \def\codedataavailabilityname{Code and data availability}%
   \def\sampleavailabilityname{Sample availability}%
-  \def\authorcontributionname{Author contributions}%
   \def\competinginterestsname{Competing interests}%
   \def\videosupplementname{Video supplement}%
   \def\dosupplementname{Supplement}%
@@ -1256,6 +1257,7 @@
   \def\copyrightstatementname{Urheberrechtserklärung}%
   \def\codeavailabilityname{Codeverfügbarkeit}%
   \def\dataavailabilityname{Datenverfügbarkeit}%
+  \def\ercavailabilityname{Executable research compendium (ERC)}%
   \def\codedataavailabilityname{Code- und Datenverfügbarkeit}%
   \def\sampleavailabilityname{Probenverfügbarkeit}%
   \def\authorcontributionname{Autorenmitwirkung}%
@@ -1285,6 +1287,7 @@
   \def\copyrightstatementname{Affirmation du droit d'auteur}%
   \def\codeavailabilityname{Disponibilité du code}%
   \def\dataavailabilityname{Disponibilité des données}%
+  \def\ercavailabilityname{Executable research compendium (ERC)}%
   \def\sampleavailabilityname{Disponibilité des examples}%
   \def\codedataavailabilityname{Disponibilité du code et des données}%
   \def\authorcontributionname{Collaborateurs}%
@@ -1519,6 +1522,7 @@
   \setcounter{reaction}{0}%
   \def\theequation{\thesection\@arabic\c@equation}%
   \def\thereaction{\thesection R\@arabic\c@reaction}%
+  \let\c@org@lst\c@listings%
   \let\c@org@eq\c@equation%
   \let\org@theeq\theequation%
   \if@stage@final
@@ -1528,6 +1532,9 @@
     \@addtoreset{table}{section}%
     \setcounter{table}{0}%
     \def\thetable{\thesection\@arabic\c@table}%
+    \@addtoreset{listings}{section}%
+    \setcounter{listings}{0}%
+    \def\thelistings{\thesection\@arabic\c@listings}%
   \fi
   \global\let\old@sect\@sect
   \def\@sect##1##2##3##4##5##6[##7]##8{%
@@ -1591,6 +1598,7 @@
   \ifx\old@sect\@undefined\else\global\let\@sect\old@sect\fi
   \ifx\old@ssect\@undefined\else\global\let\@ssect\old@ssect\fi
   \def\thefigure{\@arabic\c@figure}%
+  \def\thelistings{\@arabic\c@listings}%
   \def\thetable{\@arabic\c@table}}
 \IfFileExists{url.sty}
   {\RequirePackage{url}\urlstyle{same}}%
@@ -1738,45 +1746,49 @@
    \g@addto@macro\subfiguresend{\global\let\theHfigure\thefigure@original}
    \g@addto@macro\subtablesend{\global\let\theHtable\thetable@original}}
   {\CopernicusWarningNoLine{Cannot find subfloat.sty; proceeding without it}}
-\RequirePackage[authoryear,round]{natbib}
-\def\NAT@sort{0}\def\NAT@cmprs{0}
-\bibstyle{copernicus}
-\setlength\bibsep\z@
-\let\bibfont\small
-\renewcommand\bibitem{\@ifnextchar[{\@lbibitem}{\@lbibitem[??(????)]}}%]
-\ifx\xmltexversion\@undefined\else
-  \NAT@set@cites
-  \let\NAT@set@cites\relax
-\fi
-\AtBeginDocument{\let\@citex\NAT@citex}
-\newcommand\urlprefix{}
-\renewenvironment{thebibliography}[1]
- {\bibsection
-  \if@secline\leavevmode\vspace*{-\baselineskip}\nobreak\fi
-  \parindent\z@
-  \bibpreamble
-  \bibfont
-  \list{\@biblabel{\arabic{NAT@ctr}}}{\@bibsetup{#1}%
-  \setcounter{NAT@ctr}{0}}%
-  \ifNAT@openbib
-    \renewcommand\newblock{\par}
-  \else
-    \renewcommand\newblock{\hskip .11em \@plus.33em \@minus.07em}%
-  \fi
-  \sloppy
-  %\clubpenalty4000\widowpenalty4000
-  \sfcode`\.=1000\relax
-  \let\citeN\cite \let\shortcite\cite
-  \let\citeasnoun\cite}
- {\def\@noitemerr{%
-  \PackageWarning{natbib}{Empty `thebibliography' environment}}%
-  \endlist\vskip-\lastskip}
-\def\bibsection{%
-  \if@stage@final
-    \if@manuscript\newpage\fi
-    \pdfbookmark[1]{\refname}{biblio}%
-  \fi
-  \noappendix\section*{\refname\if@cop@home\ifonline\hypertarget{references}{}\fi\fi}}
+
+\newif\ifNAT@openbib
+\IfFileExists{natbib.sty}
+  {\RequirePackage[authoryear,round]{natbib}
+   \bibpunct{(}{)}{;}{a}{,}{,~}
+   \def\NAT@sort{0}\def\NAT@cmprs{0}
+   \setlength\bibsep\z@
+   \let\bibfont\small
+   \renewcommand\bibitem{\@ifnextchar[{\@lbibitem}{\@lbibitem[??(????)]}}%]
+   \ifx\xmltexversion\@undefined\else
+     \NAT@set@cites
+     \let\NAT@set@cites\relax
+   \fi
+   \AtBeginDocument{\let\@citex\NAT@citex}
+   \newcommand\urlprefix{}
+   \renewenvironment{thebibliography}[1]
+   {\bibsection
+     \if@secline\leavevmode\vspace*{-\baselineskip}\nobreak\fi
+     \parindent\z@
+     \bibpreamble
+     \bibfont
+     \list{\@biblabel{\arabic{NAT@ctr}}}{\@bibsetup{##1}%
+       \setcounter{NAT@ctr}{0}}%
+     \ifNAT@openbib
+       \renewcommand\newblock{\par}
+     \else
+       \renewcommand\newblock{\hskip .11em \@plus.33em \@minus.07em}%
+     \fi
+     \sloppy
+     % \clubpenalty4000\widowpenalty4000
+     \sfcode`\.=1000\relax
+     \let\citeN\cite \let\shortcite\cite
+     \let\citeasnoun\cite}
+   {\def\@noitemerr{%
+       \PackageWarning{natbib}{Empty `thebibliography' environment}}%
+     \endlist\vskip-\lastskip}
+   \def\bibsection{%
+     \if@stage@final
+       \if@manuscript\newpage\fi
+       \pdfbookmark[1]{\refname}{biblio}%
+     \fi
+     \noappendix\section*{\refname\if@cop@home\ifonline\hypertarget{references}{}\fi\fi}}
+ }{\CopernicusWarningNoLine{Cannot find natbib.sty; proceeding without it}}
 \RequirePackage{rotating}
 \def\@rotxdblfloat#1[#2]{%
   \@float{#1}[#2]%
@@ -2429,10 +2441,12 @@
   \long\def\codeavailability#1{\ifx\thesection\theolds\else\noappendix\fi\section{\codeavailabilityname}#1}
   \long\def\dataavailability#1{\ifx\thesection\theolds\else\noappendix\fi\section{\dataavailabilityname}#1}
   \long\def\codedataavailability#1{\ifx\thesection\theolds\else\noappendix\fi\section{\codedataavailabilityname}#1}
+  \long\def\ercavailability#1{\ifx\thesection\theolds\else\noappendix\fi\section{\ercavailabilityname}#1}
 \else
   \generateCommand{codeavailability}    {\endlist\egroup}
   \generateCommand{dataavailability}    {\endlist\egroup}
   \generateCommand{codedataavailability}{\endlist\egroup}
+  \generateCommand{ercavailability}{\endlist\egroup}
 \fi
 \generateCommand{authorcontribution}{\endlist\egroup}
 \generateCommand{sampleavailability}{\endlist\egroup}
@@ -2442,8 +2456,16 @@
 \generateCommand{disclaimer}        {\endlist\egroup}
 \generateCommand{sistatement}       {\endlist\egroup}
 \generateCommand{dosupplement}      {\endlist\egroup}
-\generateCommand{financialsupport}   {\endlist\egroup}
+\generateCommand{financialsupport}  {\endlist\egroup}
 \generateCommand{reviewstatement}   {\endlist\egroup}
+\long\def\specialsection#1#2{%
+  \expandafter\def\csname specialsection-#1name\endcsname{#1}%
+  \expandafter\ifx\csname specialsection-#1name\endcsname\@empty
+    \PackageError{copernicus.cls}{\string\specialsection\space needs a heading.}{Make sure that \string\specialsection{}{}\space has two arguments and that the first argument contains a heading.}%
+  \else
+    \generateCommand{specialsection-#1}  {\endlist\egroup}%
+    \csname specialsection-#1\endcsname{#2}%
+  \fi}
 
 \generateCommand{acknowledgement}   {}        \def\endacknowledgement{\endlist\egroup}
 \generateCommand{acknowledgements}  {}        \def\endacknowledgements{\endlist\egroup}
