@@ -49,9 +49,9 @@ knitr::opts_chunk$set(
 )
 
 # The JASA LaTeX class depends on the LaTeX package "revtex4-1". If you are
-# using a full LaTeX distro, "revtex4-1" will already be installed. If you are
-# using TinyTeX, the following code will take care of installing the package for
-# you.
+# using a full LaTeX distro, you should make sure "revtex4-1" is installed, and
+# install it if not. If you are using TinyTeX, the following code will take care
+# of installing the package for you.
 
 if (tinytex:::is_tinytex() && !tinytex:::check_installed('revtex4-1')) {
   tinytex::tlmgr_install("revtex4-1")
