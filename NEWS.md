@@ -1,6 +1,6 @@
 rticles 0.19
 ---------------------------------------------------------------------
-- Update Copernicus Publications template to version 6.2 from 2021-01-15.
+- Update Copernicus Publications template to version 6.2 from 2021-01-15. (thanks, @RLumSK, #366)
 
 rticles 0.18
 ---------------------------------------------------------------------
