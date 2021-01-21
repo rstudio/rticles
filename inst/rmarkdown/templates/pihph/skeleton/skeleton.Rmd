@@ -74,12 +74,9 @@ If you need to include translations for examples, use single quotation marks. Do
 
 Captions for figures and tables should be set out below the figure or table. We recommend, but do not insist, that you avoid vertical rules in your tables (we recommend the booktabs package). Otherwise, the setting of figures and tables is also up to you. Everything should be placed in your article where you would like it to appear in the published PDF. Do not place anything at the end of an article unless it clearly belongs in an appendix (that is, it consists of material that a casual reader will not want to consult, but may be of interest to specialists). You will be able to host data sets, statistical data, scripts, and the like separately (within reason) if you would like to make them available in connection with an article. Contact us if you would like to discuss this (pihph@\hspace{0pt}mlist.is.ed.ac.uk).
 
-\begin{figure}[h]
-  \centering
-  \rule{.1pt}{2cm} \rule{2cm}{.1pt} \rule{.1pt}{2cm}
-  \caption{Caption}
-  \label{fig:example}
-\end{figure}
+```{r example, fig.cap="Caption", fig.align='center'}
+knitr::include_graphics("pihph-logo.png")
+```
 
 # Bibliography and citations
 
