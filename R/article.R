@@ -175,6 +175,20 @@ frontiers_article <- function(..., keep_tex = TRUE) {
   pdf_document_format("frontiers", keep_tex = keep_tex, ...)
 }
 
+#' @section \code{jasa_article}: Format for creating submissions to the
+#'   Journal of the Acoustical Society of America. Adapted from
+#'   \url{https://acousticalsociety.org/preparing-latex-manuscripts/}.
+#' @export
+#' @rdname article
+jasa_article <- function(
+  ..., keep_tex = TRUE, latex_engine = "xelatex", citation_package = "natbib"
+) {
+  pdf_document_format(
+    "jasa", keep_tex = keep_tex, latex_engine = latex_engine,
+    citation_package = citation_package, ...
+  )
+}
+
 #' @section \code{lipics_article}: Format for creating submissions to
 #'   LIPIcs - Leibniz International Proceedings Informatics - articles.
 #'   Adapted from the official Instructions for Authors at
