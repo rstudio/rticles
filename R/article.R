@@ -181,11 +181,11 @@ frontiers_article <- function(..., keep_tex = TRUE) {
 #' @export
 #' @rdname article
 jasa_article <- function(
-  ..., keep_tex = TRUE, latex_engine = "xelatex"
+  ..., keep_tex = TRUE, latex_engine = "xelatex", citation_package = "natbib"
 ) {
   pdf_document_format(
     "jasa", keep_tex = keep_tex, latex_engine = latex_engine,
-    citation_package = "natbib", ...
+    citation_package = citation_package, ...
   )
 }
 
