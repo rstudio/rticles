@@ -78,7 +78,12 @@ elsevier_article(
 
 frontiers_article(..., keep_tex = TRUE)
 
-jasa_article(..., keep_tex = TRUE, latex_engine = "xelatex")
+jasa_article(
+  ...,
+  keep_tex = TRUE,
+  latex_engine = "xelatex",
+  citation_package = "natbib"
+)
 
 lipics_article(
   ...,
