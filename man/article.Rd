@@ -15,6 +15,7 @@
 \alias{ctex}
 \alias{elsevier_article}
 \alias{frontiers_article}
+\alias{jasa_article}
 \alias{lipics_article}
 \alias{mdpi_article}
 \alias{mnras_article}
@@ -76,6 +77,13 @@ elsevier_article(
 )
 
 frontiers_article(..., keep_tex = TRUE)
+
+jasa_article(
+  ...,
+  keep_tex = TRUE,
+  latex_engine = "xelatex",
+  citation_package = "natbib"
+)
 
 lipics_article(
   ...,
@@ -194,6 +202,12 @@ custom Pandoc LaTeX template and different default values for other arguments
  Format for creating Frontiers journal
   articles. Adapted from
   \url{https://www.frontiersin.org/about/author-guidelines}.
+}
+
+\section{\code{jasa_article}}{
+ Format for creating submissions to the
+  Journal of the Acoustical Society of America. Adapted from
+  \url{https://acousticalsociety.org/preparing-latex-manuscripts/}.
 }
 
 \section{\code{lipics_article}}{
