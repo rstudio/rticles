@@ -80,7 +80,7 @@ Figure files must be named in this fashion:
 ```{r Figure2, echo=FALSE, fig.cap="A sine wave."}
 t <- seq(0, 10, 0.1)
 y <- sin(t)
-plot(t, y, type="l", xlab = "time", ylab = "Sine wave")
+plot(t, y, type = "l", xlab = "time", ylab = "Sine wave")
 ```
 
 
