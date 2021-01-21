@@ -56,7 +56,7 @@ knitr::opts_chunk$set(
 # install it if not. If you are using TinyTeX, the following code will take care
 # of installing the package for you.
 
-if (tinytex:::is_tinytex() && !tinytex:::check_installed('revtex4-1')) {
+if (tinytex::is_tinytex() && !tinytex::check_installed('revtex4-1')) {
   tinytex::tlmgr_install("revtex4-1")
 }
 ```
