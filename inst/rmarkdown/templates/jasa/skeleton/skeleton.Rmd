@@ -24,7 +24,7 @@ classoption:
 #  - NumberedRefs # Uncomment to use numbered references rather than the default author-year style.
 #  - trackchanges # Uncomment to track changes in the manuscript. (Use with preprint option).
 # When using the preprint style, use the following to add a notice on the first page (optional).
-prerint_notice: "Author-name, JASA"
+preprint_notice: "Author-name, JASA"
 #  - 12pt # Uncomment this to check if you exceeded the 12 page limit. (Use with reprint option).
 #  - TurnOnLineNumbers # Uncomment to add line numbers in reprint. (Use with reprint.)
 bibliography: sampbib.bib
