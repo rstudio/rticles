@@ -17,7 +17,7 @@ fix for the LaTeX problem sanitized with the last `rticles` update (thanks, @RLu
 
 - Update all templates regarding CSLReference environment following changes in Pandoc's default template.
 
-- Add article template `jasa_article()` for the *Journal of the Acoustical Society of America* (JASA).
+- Add article template `jasa_article()` for the *Journal of the Acoustical Society of America* (JASA) (thanks, @stefanocoretta, #364)
 
 rticles 0.17
 ---------------------------------------------------------------------
