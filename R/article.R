@@ -309,6 +309,17 @@ sage_article <- function(..., highlight = NULL, citation_package = "natbib") {
   )
 }
 
+#' R Markdown output formats for AAAS - Science articles
+#'
+#' Most article formats are based on \code{rmarkdown::pdf_document()}, with a
+#' custom Pandoc LaTeX template and different default values for other arguments
+#' (e.g., \code{keep_tex = TRUE}).
+#'
+#' @section Details: You can find more details about each output format below.
+#' @name science_article
+#' @rdname article
+science_article <- function(){}
+
 #' @section \code{sim_article}: Format for creating submissions to Statistics in
 #'   Medicine. Based on the official Statistics in Medicine
 #'   \href{http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm}{class}.
