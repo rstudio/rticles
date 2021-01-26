@@ -35,6 +35,14 @@ A list
 - Item 1
 - Item 2
 
+
+# Materials and Methods
+
+## Sub-heading 1
+
+## Sub-heading 2
+
+# Conclusions
 Here are two sample references: 
 
-# References {#references .unnumbered}
+# References {How does science want these? is there a custom csl file?}
