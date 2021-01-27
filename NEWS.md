@@ -1,7 +1,6 @@
 rticles 0.19
 ---------------------------------------------------------------------
 - Update Copernicus Publications template to version 6.2 from 2021-01-15 (thanks, @RLumSK, #366)
-- The Copernicus template did show the copyright statement in the correct section; corrected. 
 
 rticles 0.18
 ---------------------------------------------------------------------
