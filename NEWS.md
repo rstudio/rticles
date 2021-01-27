@@ -1,11 +1,11 @@
 rticles 0.19
 ---------------------------------------------------------------------
-- Update Copernicus Publications template to version 6.2 from 2021-01-15. (thanks, @RLumSK, #366)
+- Update Copernicus Publications template to version 6.2 from 2021-01-15 (thanks, @RLumSK, #366).
 
 rticles 0.18
 ---------------------------------------------------------------------
 
-- `springer_article()` now uses the yaml variable biblio-style to set bibliogrphy style
+- `springer_article()` now uses the yaml variable biblio-style to set bibliography style
 instead of bibstyle. (@eliocamp, #358)
 
 - Fixes a bug when rendering `arxiv_article()` with recent version of TeX Live by adding `\usepackage{lmodern}` to the template. (#thanks, @slemonide, #343)
