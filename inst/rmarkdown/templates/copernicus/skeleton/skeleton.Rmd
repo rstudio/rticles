@@ -48,11 +48,13 @@ competinginterests: |
   The authors declare no competing interests.
 # OPTIONAL:
 algorithms: true
-# See https://publications.copernicus.org/for_authors/licence_and_copyright.html, normally used for transferring the copyright, if needed.
+# See https://publications.copernicus.org/for_authors/licence_and_copyright.html, normally used for transferring the copyright, if needed. 
+# Note: additional copyright statements for affiliated software or data need to be placed in the data availability section. 
 copyrightstatement: |
-  The author's copyright for this publication is transferred to institution/company.
+  The author's copyright for this publication is transferred to institution/company. 
 ### The following commands are for the statements about the availability of data sets and/or software code corresponding to the manuscript.
 ### It is strongly recommended to make use of these sections in case data sets and/or software code have been part of your research the article is based on.
+### Note: unless stated otherwise, software and data affiliated with the manuscript are assumed to be published under the same licence as the article (currently Creative Commons 4.0)
 availability:
   #code: |
   #  use this to add a statement when having only software code available
