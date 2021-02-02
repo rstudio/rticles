@@ -4,6 +4,12 @@
 %
 % Originally written by Kurt Hornik and Friedrich Leisch with subsequent 
 % edits by the editorial board
+%
+% CAUTION:
+% Do not modify this style file. Any changes to this file will be reset when your
+% article is submitted.
+% If you must modify the style or add LaTeX packages to the article, these 
+% should be specified in RJwrapper.tex
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesPackage{RJournal}[2013/08/27 v0.13 RJournal package]
@@ -28,7 +34,7 @@
 \fancyhead[L]{\textsc{\RJ@sectionhead}}
 \fancyhead[R]{\thepage}
 \fancyfoot{}
-\fancyfoot[L]{The R Journal Vol. \RJ@volume/\RJ@number, \RJ@month}
+\fancyfoot[L]{The R Journal Vol. \RJ@volume/\RJ@number, \RJ@month~\RJ@year}
 \fancyfoot[R]{ISSN 2073-4859}
 \pagestyle{fancy}
 
@@ -201,7 +207,7 @@
   \noindent
   \begin{center}
     \fontsize{50pt}{50pt}\selectfont
-    The \raisebox{-8pt}{\includegraphics[height=77pt]{Rlogo}}\hspace{10pt}
+    The \raisebox{-8pt}{\includegraphics[height=77pt]{Rlogo-5}}\hspace{10pt}
     Journal
   
   \end{center}
@@ -263,10 +269,10 @@
 {{\normalfont\fontseries{b}\selectfont #1}}%
 {#1}}
 \let\pkg=\strong
-\newcommand{\CRANpkg}[1]{\href{http://CRAN.R-project.org/package=#1}{\pkg{#1}}}%
+\newcommand{\CRANpkg}[1]{\href{https://CRAN.R-project.org/package=#1}{\pkg{#1}}}%
 \let\cpkg=\CRANpkg
-\newcommand{\ctv}[1]{\href{http://CRAN.R-project.org/view=#1}{\emph{#1}}}
-\newcommand{\BIOpkg}[1]{\href{http://www.bioconductor.org/packages/release/bioc/html/#1.html}{\pkg{#1}}}
+\newcommand{\ctv}[1]{\href{https://CRAN.R-project.org/view=#1}{\emph{#1}}}
+\newcommand{\BIOpkg}[1]{\href{https://www.bioconductor.org/packages/release/bioc/html/#1.html}{\pkg{#1}}}
 
 % Example environments ---------------------------------------------------------
 \RequirePackage{fancyvrb}
@@ -279,11 +285,13 @@
 % These used to have fontshape=sl for Sinput/Scode/Sin, but pslatex
 % won't use a condensed font in that case.
 
-\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontsize=\small}
-\DefineVerbatimEnvironment{Soutput}{Verbatim}{fontsize=\small}
-\DefineVerbatimEnvironment{Scode}{Verbatim}{fontsize=\small}
-\DefineVerbatimEnvironment{Sin}{Verbatim}{fontsize=\small}
-\DefineVerbatimEnvironment{Sout}{Verbatim}{fontsize=\small}
+% Update (2015-05-28 by DS): remove fontsize=\small to match example environment
+
+\DefineVerbatimEnvironment{Sinput}{Verbatim}{}
+\DefineVerbatimEnvironment{Soutput}{Verbatim}{}
+\DefineVerbatimEnvironment{Scode}{Verbatim}{}
+\DefineVerbatimEnvironment{Sin}{Verbatim}{}
+\DefineVerbatimEnvironment{Sout}{Verbatim}{}
 \newenvironment{Schunk}{}{}
 
 % Mathematics ------------------------------------------------------------------
