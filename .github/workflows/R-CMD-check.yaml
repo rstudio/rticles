@@ -79,7 +79,7 @@ jobs:
 
       - name: Install system dependencies
         if: runner.os == 'Linux'
-        run: Rscript -e 'pak::local_system_requirements(execute = TRUE)'
+        run: sudo apt-get install -y ghostscript
 
 
       - name: Install dependencies
