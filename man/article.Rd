@@ -24,6 +24,7 @@
 \alias{plos_article}
 \alias{pnas_article}
 \alias{sage_article}
+\alias{science_article}
 \alias{sim_article}
 \alias{springer_article}
 \alias{tf_article}
@@ -107,6 +108,8 @@ pnas_article(..., keep_tex = TRUE)
 
 sage_article(..., highlight = NULL, citation_package = "natbib")
 
+science_article()
+
 sim_article(..., highlight = NULL, citation_package = "natbib")
 
 springer_article(..., keep_tex = TRUE, citation_package = "default")
@@ -123,8 +126,14 @@ An R Markdown output format.
 Most article formats are based on \code{rmarkdown::pdf_document()}, with a
 custom Pandoc LaTeX template and different default values for other arguments
 (e.g., \code{keep_tex = TRUE}).
+
+Most article formats are based on \code{rmarkdown::pdf_document()}, with a
+custom Pandoc LaTeX template and different default values for other arguments
+(e.g., \code{keep_tex = TRUE}).
 }
 \section{Details}{
+ You can find more details about each output format below.
+
  You can find more details about each output format below.
 }
 

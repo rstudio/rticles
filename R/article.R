@@ -317,9 +317,15 @@ sage_article <- function(..., highlight = NULL, citation_package = "natbib") {
 #'
 #' @section Details: You can find more details about each output format below.
 #' @name science_article
-#' @rdname article
-science_article <- function(){}
-
+#' @export
+#' @rdname science
+science_article <- function(
+  ..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris")
+) {
+  pdf_document_format(
+    "science", md_extensions = md_extensions, ...
+  )
+}
 #' @section \code{sim_article}: Format for creating submissions to Statistics in
 #'   Medicine. Based on the official Statistics in Medicine
 #'   \href{http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm}{class}.
