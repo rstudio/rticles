@@ -1,6 +1,7 @@
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/rstudio/rticles/workflows/R-CMD-check/badge.svg)](https://github.com/rstudio/rticles/actions)
 [![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/rticles)](https://cran.r-project.org/package=rticles)
+[![CRAN status](https://www.r-pkg.org/badges/version/rticles)](https://CRAN.R-project.org/package=rticles)
 <!-- badges: end -->
 
 ## Installation
