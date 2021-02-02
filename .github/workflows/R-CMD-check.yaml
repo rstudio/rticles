@@ -24,11 +24,11 @@ jobs:
         config:
           - {os: macOS-latest,   pandoc: '2.7.3',    r: 'release'}
           - {os: windows-latest, pandoc: '2.7.3',    r: 'release'}
-          - {os: ubuntu-20.04,   pandoc: '2.7.3',    r: 'devel', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest", http-user-agent: "R/4.0.0 (ubuntu-16.04) R (4.0.0 x86_64-pc-linux-gnu x86_64 linux-gnu) on GitHub Actions"}
+          - {os: ubuntu-20.04,   pandoc: '2.7.3',    r: 'devel',   rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest", http-user-agent: "R/4.0.0 (ubuntu-20.04) R (4.0.0 x86_64-pc-linux-gnu x86_64 linux-gnu) on GitHub Actions"}
           - {os: ubuntu-20.04,   pandoc: '2.7.3',    r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest", }
           - {os: ubuntu-20.04,   pandoc: '2.9.2.1',  r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   pandoc: '2.11.1.1', r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,    pandoc: '2.7.3',   r: 'oldrel',  rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   pandoc: '2.11.4',   r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   pandoc: '2.7.3',    r: 'oldrel',  rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
@@ -39,55 +39,63 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: r-lib/actions/setup-r@v1
+        id: install-r
         with:
           r-version: ${{ matrix.config.r }}
           http-user-agent: ${{ matrix.config.http-user-agent }}
+
+      - name: change temp dir
+        if: runner.os == 'Windows'
+        run: echo "TMPDIR=${{ runner.temp }}" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Add some R options for later steps
+        run: |
+          cat("\noptions(tinytex.verbose = TRUE)\n", file = "~/.Rprofile", append = TRUE)
+          cat(readLines("~/.Rprofile"), sep = "\n")
+        shell: Rscript {0}
 
       - uses: r-lib/actions/setup-pandoc@v1
         with:
           pandoc-version: ${{ matrix.config.pandoc }}
 
-      - name: Pandoc version
-        run: pandoc --version
-
-      - uses: r-lib/actions/setup-tinytex@5f1c134
-
-      - name: tlmgr version
-        run: tlmgr --version
+      - uses: r-lib/actions/setup-tinytex@v1
 
       - name: preinstall some CTAN packages
         run: tlmgr install achemso adobemapping ae algorithmicx algorithms ametsoc amscls apacite arphic babel-english babel-french beamer biblatex bookmark caption carlisle changepage charter chemgreek cite cjk cjkpunct cns colortbl courier crop ctablestack ctex datetime dblfloatfix draftwatermark endfloat endnotes enumitem environ epsf epstopdf eso-pic esvect etex-pkg everyhook everypage extsizes fancyhdr fandol floatflt fmtcount fontaxes fonts-tlwg footmisc forarray fp fpl garuda-c90 grfext hyphen-french hyphenat ifmtarg jknapltx kastrup lastpage latex-base-dev lettrine lineno lipsum listings logreq luatexbase luatexja ly1 marginnote marvosym mathpazo mathspec mdframed mhchem microtype minifp mnras morefloats moreverb mptopdf multirow needspace newfloat newtx norasi-c90 oberdiek palatino parskip pdfsync pgf placeins platex platex-tools preprint psfrag psnfss ptex ptex-base ptex-fonts ragged2e rsfs seqsplit setspace sidecap soul soulutf8 stix sttools subfigure svn-prov symbol tabto-ltx tcolorbox tex-gyre textcase titlesec totcount translator trimspaces ttfutils ucs uhc ulem units uplatex upquote uptex uptex-base uptex-fonts varwidth vruler wadalab wrapfig xcjk2uni xecjk xifthen xpinyin xstring xypic zapfchan zhmetrics zhmetrics-uptex zhnumber zref
 
-      - name: Query dependencies
+      - name: Install pak and query dependencies
         run: |
-          install.packages('remotes')
-          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
-          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
+          install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
+          saveRDS(pak::pkg_deps_tree("local::.", dependencies = TRUE), ".github/r-depends.rds")
         shell: Rscript {0}
 
       - name: Cache R packages
-        if: runner.os != 'Windows'
         uses: actions/cache@v2
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
+          key: ${{ runner.os }}-${{ steps.install-r.outputs.installed-r-version }}-1-${{ hashFiles('.github/r-depends.rds') }}
+          restore-keys: ${{ runner.os }}-${{ steps.install-r.outputs.installed-r-version }}-1-
 
       - name: Install system dependencies
         if: runner.os == 'Linux'
         run: sudo apt-get install -y ghostscript
 
+
       - name: Install dependencies
         run: |
-          remotes::install_deps(dependencies = TRUE)
-          remotes::install_cran("rcmdcheck")
+          pak::local_install_dev_deps(upgrade = TRUE)
+          pak::pkg_install("rcmdcheck")
         shell: Rscript {0}
 
       - name: Session info
         run: |
           options(width = 100)
-          pkgs <- installed.packages()[, "Package"]
+          pkgs <- .packages(TRUE)
           sessioninfo::session_info(pkgs, include_base = TRUE)
+          rmarkdown::find_pandoc()
+          tinytex::tlmgr("--version")
+          tinytex::tl_pkgs()
         shell: Rscript {0}
 
       - name: Check
