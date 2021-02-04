@@ -44,6 +44,7 @@ if (xfun::is_linux()) test_format("ctex") # only on linux due to fonts requireme
 test_format("elsevier")
 test_format("frontiers")
 test_format("ieee")
+test_format("ims")
 test_format("jasa")
 test_format("joss")
 test_format("jss")

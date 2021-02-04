@@ -15,6 +15,7 @@
 \alias{ctex}
 \alias{elsevier_article}
 \alias{frontiers_article}
+\alias{ims_article}
 \alias{jasa_article}
 \alias{lipics_article}
 \alias{mdpi_article}
@@ -77,6 +78,8 @@ elsevier_article(
 )
 
 frontiers_article(..., keep_tex = TRUE)
+
+ims_article(..., keep_tex = TRUE)
 
 jasa_article(
   ...,
@@ -202,6 +205,12 @@ custom Pandoc LaTeX template and different default values for other arguments
  Format for creating Frontiers journal
   articles. Adapted from
   \url{https://www.frontiersin.org/about/author-guidelines}.
+}
+
+\section{\code{ims_article}}{
+ Format for creating submissions to the Institute of Mathematical Statistics \href{https://imstat.org/}{IMS}
+journals and publications. It includes the Annals of Applied Statistics. Adapted from
+\url{https://github.com/vtex-soft/texsupport.ims-aoas}.
 }
 
 \section{\code{jasa_article}}{

@@ -2,6 +2,8 @@ rticles 0.19
 ---------------------------------------------------------------------
 - Update Copernicus Publications template to version 6.2 from 2021-01-15 (thanks, @RLumSK, #366).
 
+- Add article template `ims_article()` for the *Annals of Applied Statistics* (thanks, @auzaheta, #372)
+
 rticles 0.18
 ---------------------------------------------------------------------
 

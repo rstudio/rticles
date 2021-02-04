@@ -175,6 +175,17 @@ frontiers_article <- function(..., keep_tex = TRUE) {
   pdf_document_format("frontiers", keep_tex = keep_tex, ...)
 }
 
+#' @section \code{ims_article}: Format for creating submissions to the Institute of Mathematical Statistics \href{https://imstat.org/}{IMS}
+#' journals and publications. It includes the Annals of Applied Statistics. Adapted from
+#' \url{https://github.com/vtex-soft/texsupport.ims-aoas}.
+#' @export
+#' @rdname article
+ims_article <- function(..., keep_tex = TRUE) {
+  pdf_document_format(
+    "ims", keep_tex = keep_tex,...
+  )
+}
+
 #' @section \code{jasa_article}: Format for creating submissions to the
 #'   Journal of the Acoustical Society of America. Adapted from
 #'   \url{https://acousticalsociety.org/preparing-latex-manuscripts/}.
