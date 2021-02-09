@@ -102,7 +102,12 @@ oup_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
 peerj_article(..., keep_tex = TRUE)
 
-pihph_article(..., keep_tex = TRUE, latex_engine = "xelatex")
+pihph_article(
+  ...,
+  keep_tex = TRUE,
+  latex_engine = "xelatex",
+  citation_package = "biblatex"
+)
 
 plos_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
@@ -250,9 +255,14 @@ custom Pandoc LaTeX template and different default values for other arguments
 }
 
 \section{\code{pihph_article}}{
- Format for creating submissions to the
-  Papers in Historical Phonology (\url{http://journals.ed.ac.uk/pihph/about/submissions}). Adapted from
-  \url{https://github.com/pihph/templates}.
+ Format for creating submissions to the Papers
+  in Historical Phonology
+  (\url{http://journals.ed.ac.uk/pihph/about/submissions}). Adapted from
+  \url{https://github.com/pihph/templates}. This format works well with
+  \code{latex_engine = "xelatex"} and \code{citation_package="biblatex"},
+  which are the default. It may not work correctly if you change these value.
+  In that case, please open an issue and, a PR to contribute a change in the
+  template.
 }
 
 \section{\code{plos_article}}{
