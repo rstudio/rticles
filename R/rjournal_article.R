@@ -17,7 +17,7 @@
 #' `RJwapper.tex` as expected to build `RJwrapper.pdf`.
 #' - All figure files will be kept in the default rmarkdown `*_files` folder. This
 #' happens because `keep_tex = TRUE` by default in `rticles::rjournal_article`
-#' - Only the bib filename is to modifed. An example bib file is included in the
+#' - Only the bib filename is to be modified. An example bib file is included in the
 #' template (`RJreferences.bib`) and you will have to name your bib file as the
 #' tex, R, and pdf files.
 #'

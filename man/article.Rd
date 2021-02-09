@@ -15,6 +15,7 @@
 \alias{ctex}
 \alias{elsevier_article}
 \alias{frontiers_article}
+\alias{jasa_article}
 \alias{lipics_article}
 \alias{mdpi_article}
 \alias{mnras_article}
@@ -77,6 +78,13 @@ elsevier_article(
 )
 
 frontiers_article(..., keep_tex = TRUE)
+
+jasa_article(
+  ...,
+  keep_tex = TRUE,
+  latex_engine = "xelatex",
+  citation_package = "natbib"
+)
 
 lipics_article(
   ...,
@@ -190,13 +198,19 @@ custom Pandoc LaTeX template and different default values for other arguments
 \section{\code{elsevier_article}}{
  Format for creating submissions to Elsevier
   journals. Adapted from
-  \url{https://www.elsevier.com/authors/author-schemas/latex-instructions}.
+  \url{https://www.elsevier.com/authors/policies-and-guidelines/latex-instructions}.
 }
 
 \section{\code{frontiers_article}}{
  Format for creating Frontiers journal
   articles. Adapted from
   \url{https://www.frontiersin.org/about/author-guidelines}.
+}
+
+\section{\code{jasa_article}}{
+ Format for creating submissions to the
+  Journal of the Acoustical Society of America. Adapted from
+  \url{https://acousticalsociety.org/preparing-latex-manuscripts/}.
 }
 
 \section{\code{lipics_article}}{
@@ -302,7 +316,7 @@ Possible arguments for the YAML header are:
 
 \section{\code{tf_article}}{
  Format for creating submissions to a Taylor & Francis journal. Adapted from
-\url{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
+\samp{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
 }
 
 \examples{

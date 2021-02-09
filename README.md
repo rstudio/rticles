@@ -1,6 +1,7 @@
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/rstudio/rticles/workflows/R-CMD-check/badge.svg)](https://github.com/rstudio/rticles/actions)
 [![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/rticles)](https://cran.r-project.org/package=rticles)
+[![CRAN status](https://www.r-pkg.org/badges/version/rticles)](https://CRAN.R-project.org/package=rticles)
 <!-- badges: end -->
 
 ## Installation
@@ -40,6 +41,7 @@ Currently included templates and their contributors are the following:
 | [Elsevier](https://www.elsevier.com) | [@cboettig](https://github.com/cboettig) | [#27](https://github.com/rstudio/rticles/pull/27) | `elsevier_article()` |
 | [Frontiers](https://www.frontiersin.org/) | [@muschellij2](https://github.com/muschellij2) | [#211](https://github.com/rstudio/rticles/pull/211) | `frontiers_article()` |
 | [IEEE Transaction](http://www.ieee.org/publications_standards/publications/authors/author_templates.html) | [@Emaasit](https://github.com/Emaasit), [@espinielli](https://github.com/espinielli),  [@nathanweeks](https://github.com/nathanweeks), [@DunLug](https://github.com/DunLug) | [#97](https://github.com/rstudio/rticles/pull/97), [#169](https://github.com/rstudio/rticles/pull/169), [#227](https://github.com/rstudio/rticles/pull/227), [#263](https://github.com/rstudio/rticles/pull/263), [#264](https://github.com/rstudio/rticles/pull/264), [#265](https://github.com/rstudio/rticles/pull/265) | `ieee_article()` |
+| [JASA: Journal of the Acoustical Society of America](https://asa.scitation.org/journal/jas) | [@stefanocoretta](https://github.com/stefanocoretta) | [#364](https://github.com/rstudio/rticles/pull/364) | `jasa_article()` |
 | [JOSS: Journal of Open Source Software](https://joss.theoj.org/) [JOSE: Journal of Open Source Education](https://jose.theoj.org/) | [@noamross](https://github.com/noamross) | [#229](https://github.com/rstudio/rticles/pull/229) | `joss_article()` |
 | [JSS: Journal of Statistical Software](https://www.jstatsoft.org) |  |  | `jss_article()` |
 | [LIPIcs](https://www.dagstuhl.de/en/publications/lipics) | [@nuest](https://github.com/nuest) | [#288](https://github.com/rstudio/rticles/pull/288) | `lipics_article()` |

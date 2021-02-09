@@ -155,7 +155,7 @@ ctex <- ctex_article
 
 #' @section \code{elsevier_article}: Format for creating submissions to Elsevier
 #'   journals. Adapted from
-#'   \url{https://www.elsevier.com/authors/author-schemas/latex-instructions}.
+#'   \url{https://www.elsevier.com/authors/policies-and-guidelines/latex-instructions}.
 #' @export
 #' @rdname article
 elsevier_article <- function(
@@ -173,6 +173,20 @@ elsevier_article <- function(
 #' @rdname article
 frontiers_article <- function(..., keep_tex = TRUE) {
   pdf_document_format("frontiers", keep_tex = keep_tex, ...)
+}
+
+#' @section \code{jasa_article}: Format for creating submissions to the
+#'   Journal of the Acoustical Society of America. Adapted from
+#'   \url{https://acousticalsociety.org/preparing-latex-manuscripts/}.
+#' @export
+#' @rdname article
+jasa_article <- function(
+  ..., keep_tex = TRUE, latex_engine = "xelatex", citation_package = "natbib"
+) {
+  pdf_document_format(
+    "jasa", keep_tex = keep_tex, latex_engine = latex_engine,
+    citation_package = citation_package, ...
+  )
 }
 
 #' @section \code{lipics_article}: Format for creating submissions to
@@ -345,7 +359,7 @@ springer_article <- function(..., keep_tex = TRUE, citation_package = 'default')
 }
 
 #' @section \code{tf_article}: Format for creating submissions to a Taylor & Francis journal. Adapted from
-#' \url{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
+#' \samp{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
 #' @export
 #' @rdname article
 tf_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
