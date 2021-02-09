@@ -268,10 +268,13 @@ peerj_article <- function(..., keep_tex = TRUE) {
 #'   \url{https://github.com/pihph/templates}.
 #' @export
 #' @rdname article
-pihph_article <- function(..., keep_tex = TRUE, latex_engine = "xelatex") {
+pihph_article <- function(
+  ..., keep_tex = TRUE, latex_engine = "xelatex",
+  citation_package = "biblatex"
+) {
   pdf_document_format(
     "pihph", keep_tex = keep_tex, latex_engine = latex_engine,
-    citation_package = "biblatex", ...)
+    citation_package = citation_package, ...)
 }
 
 #' @section \code{plos_article}: Format for creating submissions to PLOS
