@@ -1,6 +1,4 @@
 ---
-output: rticles::pihph_article
-
 title: This is a title and this is too
 subtitle: A subtitle goes on another line
 # Use the following to specify a shorter title for the header.
@@ -36,6 +34,7 @@ abstract: |
  This is the template for \LaTeX{} users; we also have a Word template available, so feel free to use that if you're not into \LaTeX. All submissions to PiHPh should aim to follow the formatting set out in this template precisely, as there is no separate typesetting phase. Most styles in this template have been set up to insert the necessary white space where needed. You should use the styles that are provided in this template consistently to ensure that your submission is quickly processed. Do not change the margins or header/footer properties, including the material on this first page (such as volume, page numbers and DOI), which we will update when your submission is ready. Make sure to look at the user customization part of the preamble to this \texttt{.tex} source to change titles, running headers, bibliography etc. All the packages used here should be available in a recent version of \TeX Live. All articles should include an abstract in this position, of no more than 200 words.
 acknowledgements: Include any acknowledgements in an unnumbered section here, rather than in a footnote early in the paper.
 supplement: If you would like to post any data sets, statistical data, scripts or similar material that links to your article, you can include a description of it all at the end of the paper.
+output: rticles::pihph_article
 ---
 
 ```{r setup, include=FALSE}
