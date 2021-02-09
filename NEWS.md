@@ -2,6 +2,8 @@ rticles 0.19
 ---------------------------------------------------------------------
 - Update Copernicus Publications template to version 6.2 from 2021-01-15 (thanks, @RLumSK, #366).
 
+- Add article template `pihph_article()` for the *Papers in Historical Phonology* (PiHPh) (thanks, @stefanocoretta, #362).
+
 rticles 0.18
 ---------------------------------------------------------------------
 
