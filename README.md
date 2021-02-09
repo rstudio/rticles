@@ -49,6 +49,7 @@ Currently included templates and their contributors are the following:
 | [MNRAS: Monthly Notices of the Royal Astronomical Society](https://academic.oup.com/mnras) | [@oleskiewicz](https://github.com/oleskiewicz) | [#175](https://github.com/rstudio/rticles/pull/175) | `mnras_article()` |
 | [OUP: Oxford University Press](https://academic.oup.com/journals/pages/authors/preparing_your_manuscript) | [@dmkaplan](https://github.com/dmkaplan) | [#284](https://github.com/rstudio/rticles/pull/284) | `oup_articles()` |
 | [PeerJ: Journal of Life and Environmental Sciences](https://peerj.com) | [@zkamvar](https://github.com/zkamvar) | [#127](https://github.com/rstudio/rticles/pull/127) | `peerj_article()` |
+| [PiHPh: Papers in Historical Phonology](http://journals.ed.ac.uk/pihph/about/submissions) | [@stefanocoretta](https://github.com/stefanocoretta) | [#362](https://github.com/rstudio/rticles/pull/362) | `pihph_article()` |
 | [PLOS](https://plos.org/#journals) | [@sjmgarnier](https://github.com/sjmgarnier) | [#12](https://github.com/rstudio/rticles/pull/12) | `plos_article()` |
 | [PNAS: Proceedings of the National Academy of Sciences](https://www.pnas.org/) | [@cboettig](https://github.com/cboettig) | [#72](https://github.com/rstudio/rticles/pull/72) | `pnas_article()` |
 | [RSOS: Royal Society Open Science](https://www.royalsocietypublishing.org/journal/rsos) | [@ThierryO](https://github.com/ThierryO) | [#135](https://github.com/rstudio/rticles/pull/135) | `rsos_article()` |
