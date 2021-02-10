@@ -184,18 +184,19 @@ Text is displayed by indenting it from the left margin. There are short quotatio
 > indentation.
 
 and longer ones.
-\begin{quotation}
+
+::: {.quotation latex=1}
 This is a longer quotation.  It consists of two paragraphs
 of text.  The beginning of each paragraph is indicated
 by an extra indentation.
 
 This is the second paragraph of the quotation.  It is just
 as dull as the first paragraph.
-\end{quotation}
+:::
 
 # Environments
 
-\subsection{Examples for \emph{\texttt{plain}}-style environments}
+## Examples for *`plain`-style environments*
 \begin{axiom}\label{ax1}
 This is the body of Axiom \ref{ax1}.
 \end{axiom}
@@ -341,7 +342,7 @@ One long equation:
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 \begin{appendix}
-\section*{Title}\label{appn} %% if no title is needed, leave empty \section*{}.
+# Title {.unnumbered #appn}
 Appendices should be provided in \verb|{appendix}| environment,
 before Acknowledgements.
 
@@ -418,5 +419,4 @@ The second author was supported in part by NIH Grant ???????????.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 ## References
-
 
