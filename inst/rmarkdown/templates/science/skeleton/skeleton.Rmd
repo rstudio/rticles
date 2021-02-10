@@ -24,6 +24,8 @@ author_summary: |
 bibliography: mybibfile.bib
 output: rticles::science
 csl: <ADD CSL FILE here for science>
+type: REVIEW/ARTICLE
+figures: true / false [required to decide initial submission vs final draft]
 ---
 
 # Introduction
@@ -45,4 +47,5 @@ A list
 # Conclusions
 Here are two sample references: 
 
-# References {How does science want these? is there a custom csl file?}
+# References 
+{How does science want these? is there a custom csl file - There only appears to be Science.bst file?}
