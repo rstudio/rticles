@@ -48,4 +48,4 @@ A list
 Here are two sample references: 
 
 # References 
-{How does science want these? is there a custom csl file - There only appears to be Science.bst file?}
+
