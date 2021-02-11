@@ -80,7 +80,7 @@ elsevier_article(
 
 frontiers_article(..., keep_tex = TRUE)
 
-ims_article(..., keep_tex = TRUE)
+ims_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 jasa_article(
   ...,

@@ -143,10 +143,10 @@ around the periods requires a special command.
 
 ## Citation
 
-Simple author and year cite: \cite{billingsley2013convergence}.
-Multiple bibliography items cite: \cite{billingsley2013convergence,bourbaki1966general}.
+Simple author and year cite: @billingsley2013convergence.
+Multiple bibliography items cite: \cite{billingsley2013convergence,bourbaki1966general} or [@billingsley2013convergence; @bourbaki1966general].
 Author only cite: \citeauthor{ethier1985markov}.
-Year only cite: \citeyear{prokhorov1956convergence}.
+Year only cite: \citeyear{prokhorov1956convergence} or [-@prokhorov1956convergence].
 
 # Fonts
 

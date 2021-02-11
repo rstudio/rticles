@@ -180,9 +180,9 @@ frontiers_article <- function(..., keep_tex = TRUE) {
 #' \url{https://github.com/vtex-soft/texsupport.ims-aoas}.
 #' @export
 #' @rdname article
-ims_article <- function(..., keep_tex = TRUE) {
+ims_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
   pdf_document_format(
-    "ims", keep_tex = keep_tex, ...
+    "ims", keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
 
