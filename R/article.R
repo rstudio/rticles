@@ -274,6 +274,25 @@ peerj_article <- function(..., keep_tex = TRUE) {
   pdf_document_format("peerj",  keep_tex = keep_tex, ...)
 }
 
+#' @section \code{pihph_article}: Format for creating submissions to the Papers
+#'   in Historical Phonology
+#'   (\url{http://journals.ed.ac.uk/pihph/about/submissions}). Adapted from
+#'   \url{https://github.com/pihph/templates}. This format works well with
+#'   \code{latex_engine = "xelatex"} and \code{citation_package="biblatex"},
+#'   which are the default. It may not work correctly if you change these value.
+#'   In that case, please open an issue and, a PR to contribute a change in the
+#'   template.
+#' @export
+#' @rdname article
+pihph_article <- function(
+  ..., keep_tex = TRUE, latex_engine = "xelatex",
+  citation_package = "biblatex"
+) {
+  pdf_document_format(
+    "pihph", keep_tex = keep_tex, latex_engine = latex_engine,
+    citation_package = citation_package, ...)
+}
+
 #' @section \code{plos_article}: Format for creating submissions to PLOS
 #'   journals. Adapted from \url{https://journals.plos.org/ploscompbiol/s/latex}.
 #' @export
