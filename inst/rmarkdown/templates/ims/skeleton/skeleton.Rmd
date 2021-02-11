@@ -1,5 +1,5 @@
 ---
-journal: aoas 
+journal: aoas # aap, aop, aos, sts
 title: A sample article with some additional note
 thanks: # delete thanks field if not require, here notes for title
   - ref: T1 
@@ -42,15 +42,23 @@ abstract: |
   This is a sample input file.  Comparing it with the output it
   generates can show you how to produce a simple document of
   your own.
+keyword-subClass: |
+  <!-- \begin{keyword}[class=MSC2020] % Uncomment for aap, aop, aos journals -->
+  <!-- \kwd[Primary ]{00X00} -->
+  <!-- \kwd{00X00} -->
+  <!-- \kwd[; secondary ]{00X00} -->
+  <!-- \end{keyword} -->
 keywords: 
   - First keyword
   - Second keyword
-  
+
+predefined-theoremstyle: true # use in section Environments for Axiom, Theorem, etc
 bibliography: ims.bib
 biblio-style: imsart-nameyear # imsart-number
 citation_package: natbib
-output: rticles::ims_article
-toc: false # Please use for articles with 50 pages and more
+output:
+  rticles::ims_article:
+    toc: false # Please use for articles with 50 pages and more
 ---
 
 # Introduction
@@ -88,13 +96,10 @@ The following is an example of an *itemized* list, two levels deep.
   style determines what kind of tick mark is used.
 * This is the second item of the list.  It contains another
   list nested inside it.
-
   - This is the first item of an itemized list that
     is nested within the itemized list.
   - This is the second item of the inner list.  \LaTeX\
     allows you to nest lists deeper than you really should.
-
-  This is the rest of the second item of the outer list.
 - This is the third item of the list.
 
 The following is an example of an *enumerated* list of one level.
@@ -171,9 +176,10 @@ Note that \verb|\mathcal, \mathbb| belongs to capital letters-only font typeface
 # Notes
 
 Footnotes[^1]
-pose no problem.\footnote{Note that footnote number is after punctuation.}
+pose no problem.[^2]
 
 [^1]: This is an example of a footnote.
+[^2]: Note that footnote number is after punctuation.
 
 # Quotations
 
@@ -185,7 +191,16 @@ Text is displayed by indenting it from the left margin. There are short quotatio
 
 and longer ones.
 
-::: {.quotation latex=1}
+<!-- The following syntax works with Rmarkdown >= 2.7 -->
+<!-- ::: {.environment latex=true} -->
+<!--   code -->
+<!-- ::: -->
+<!-- It's equivalent to  -->
+<!-- \begin{environment} -->
+<!--   % code -->
+<!-- \end{environment} -->
+
+::: {.quotation latex=true}
 This is a longer quotation.  It consists of two paragraphs
 of text.  The beginning of each paragraph is indicated
 by an extra indentation.
@@ -197,82 +212,67 @@ as dull as the first paragraph.
 # Environments
 
 ## Examples for *`plain`-style environments*
-\begin{axiom}\label{ax1}
+
+::: {.axiom latex=true}
+\label{ax1}
 This is the body of Axiom \ref{ax1}.
-\end{axiom}
+:::
 
-\begin{proof}
+::: {.proof latex=true}
 This is the body of the proof of the axiom above.
-\end{proof}
+:::
 
-\begin{claim}\label{cl1}
+::: {.claim latex=true}
+\label{cl1}
 This is the body of Claim \ref{cl1}. Claim \ref{cl1} is numbered after
 Axiom \ref{ax1} because we used \verb|[axiom]| in \verb|\newtheorem|.
-\end{claim}
+:::
 
-\begin{theorem}\label{th1}
+::: {.theorem latex=true}
+\label{th1}
 This is the body of Theorem \ref{th1}. Theorem \ref{th1} numbering is
 dependent on section because we used \verb|[section]| after \verb|\newtheorem|.
-\end{theorem}
+:::
 
-\begin{theorem}[Title of the theorem]\label{th2}
+::: {.theorem latex="[Title of the theorem]"}
+\label{th2}
 This is the body of Theorem \ref{th2}. Theorem \ref{th2} has additional title.
-\end{theorem}
+:::
 
-\begin{lemma}\label{le1}
+::: {.lemma latex=true}
+\label{le1}
 This is the body of Lemma \ref{le1}. Lemma \ref{le1} is numbered after
 Theorem \ref{th2} because we used \verb|[theorem]| in \verb|\newtheorem|.
-\end{lemma}
+:::
 
-
-\begin{proof}[Proof of Lemma \ref{le1}]
+::: {.proof latex="[Proof of Lemma \ref{le1}]"}
 This is the body of the proof of Lemma \ref{le1}.
-\end{proof}
+:::
 
-\subsection{Examples for \emph{\texttt{remark}}-style environments}
-\begin{definition}\label{de1}
+## Examples for *`remark`*-style environments
+::: {.definition latex=true}
+\label{de1}
 This is the body of Definition \ref{de1}. Definition \ref{de1} is numbered after
 Lemma \ref{le1} because we used \verb|[theorem]| in \verb|\newtheorem|.
-\end{definition}
+:::
 
-\begin{example}
+::: {.example latex=true}
 This is the body of the example. Example is unnumbered because we used \verb|\newtheorem*|
 instead of \verb|\newtheorem|.
-\end{example}
+:::
 
-\begin{fact}
+::: {.fact latex=true}
 This is the body of the fact. Fact is unnumbered because we used \verb|\newtheorem*|
 instead of \verb|\newtheorem|.
-\end{fact}
+:::
 
 # Tables and figures
-Cross-references to labeled tables: As you can see in Table\ref{sphericcase}
+Cross-references to labeled tables: As you can see in Table\ref{tab:mtc}
 and also in Table\ref{parset}.
 
-\begin{table*}
-\caption{The spherical case ($I_1=0$, $I_2=0$)}
-\label{sphericcase}
-\begin{tabular}{@{}lrrrrc@{}}
-\hline
-Equil. \\
-points & \multicolumn{1}{c}{$x$}
-& \multicolumn{1}{c}{$y$} & \multicolumn{1}{c}{$z$}
-& \multicolumn{1}{c}{$C$} & S \\
-\hline
-$L_1$    & $-$2.485252241 & 0.000000000  & 0.017100631  & 8.230711648  & U \\
-$L_2$    & 0.000000000  & 0.000000000  & 3.068883732  & 0.000000000  & S \\
-$L_3$    & 0.009869059  & 0.000000000  & 4.756386544  & $-$0.000057922 & U \\
-$L_4$    & 0.210589855  & 0.000000000  & $-$0.007021459 & 9.440510897  & U \\
-$L_5$    & 0.455926604  & 0.000000000  & $-$0.212446624 & 7.586126667  & U \\
-$L_6$    & 0.667031314  & 0.000000000  & 0.529879957  & 3.497660052  & U \\
-$L_7$    & 2.164386674  & 0.000000000  & $-$0.169308438 & 6.866562449  & U \\
-$L_8$    & 0.560414471  & 0.421735658  & $-$0.093667445 & 9.241525367  & U \\
-$L_9$    & 0.560414471  & $-$0.421735658 & $-$0.093667445 & 9.241525367  & U \\
-$L_{10}$ & 1.472523232  & 1.393484549  & $-$0.083801333 & 6.733436505  & U \\
-$L_{11}$ & 1.472523232  & $-$1.393484549 & $-$0.083801333 & 6.733436505  & U \\
-\hline
-\end{tabular}
-\end{table*}
+```{r mtc, echo = FALSE}
+knitr::kable(mtcars, caption = "Table caption", format = "latex", vline = "", linesep = "")
+```
 
 \begin{table}
 \caption{Sample posterior estimates for each model}
@@ -341,35 +341,37 @@ One long equation:
 <!-- %% Example with single Appendix:            %% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-\begin{appendix}
+::: {.appendix latex=true}
 # Title {.unnumbered #appn}
+
 Appendices should be provided in \verb|{appendix}| environment,
 before Acknowledgements.
 
 If there is only one appendix,
 then please refer to it in text as \ldots\ in the \hyperref[appn]{Appendix}.
-\end{appendix}
+:::
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %% Example with multiple Appendixes:        %% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-\begin{appendix}
-\section{Title of the first appendix}\label{appA}
+::: {.appendix latex=true}
+# Title of the first appendix {#appA}
 If there are more than one appendix, then please refer to it
 as \ldots\ in Appendix \ref{appA}, Appendix \ref{appB}, etc.
 
-\section{Title of the second appendix}\label{appB}
-\subsection{First subsection of Appendix \protect\ref{appB}}
+# Title of the second appendix {#appB}
 
+## First subsection of Appendix \protect\ref{appB}
 Use the standard \LaTeX\ commands for headings in \verb|{appendix}|.
 Headings and other objects will be numbered automatically.
+
 \begin{equation}
 \mathcal{P}=(j_{k,1},j_{k,2},\dots,j_{k,m(k)}). \label{path}
 \end{equation}
 
 Sample of cross-reference to the formula (\ref{path}) in Appendix \ref{appB}.
-\end{appendix}
+:::
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %% Support information (funding), if any,   %% -->
@@ -377,7 +379,8 @@ Sample of cross-reference to the formula (\ref{path}) in Appendix \ref{appB}.
 <!-- %% Acknowledgements section.                %% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-\section*{Acknowledgements}
+## Acknowledgements {.unnumbered}
+
 The authors would like to thank the anonymous referees, an Associate
 Editor and the Editor for their constructive comments that improved the
 quality of this paper.
@@ -417,6 +420,3 @@ The second author was supported in part by NIH Grant ???????????.
 <!-- %%  Use \cite{...} to cite references in text.             %% -->
 <!-- %%                                                         %% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-## References
-

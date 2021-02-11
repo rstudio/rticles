@@ -182,7 +182,7 @@ frontiers_article <- function(..., keep_tex = TRUE) {
 #' @rdname article
 ims_article <- function(..., keep_tex = TRUE) {
   pdf_document_format(
-    "ims", keep_tex = keep_tex,...
+    "ims", keep_tex = keep_tex, ...
   )
 }
 
