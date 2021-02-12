@@ -103,6 +103,7 @@ $endif$
 \newcommand{\email}[1]{#1}
 
 
+$if(predefined-theoremstyle)$
 \startlocaldefs
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                          %%
@@ -110,7 +111,6 @@ $endif$
 % the type of equation numbering           %%
 %                                          %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-$if(predefined-theoremstyle)$
 \numberwithin{equation}{section}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                          %%
@@ -135,11 +135,11 @@ $if(predefined-theoremstyle)$
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem*{example}{Example}
 \newtheorem*{fact}{Fact}
-$endif$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Please put your definitions here:        %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \endlocaldefs
+$endif$
 
 % pandoc header
 $for(header-includes)$
