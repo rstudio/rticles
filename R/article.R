@@ -206,13 +206,8 @@ ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
     if (with_kwsc) c("with_kwsc" = with_kwsc)
     )
 
-  # pandoc_variable_arg not exported from rmarkdown, adapted from ieee_article()
-  pandoc_arg_variable <- function(var_name, value) {
-    c("-V", paste0(var_name, "=", value))
-  }
-
   # Convert to pandoc arguments
-  pandoc_arg_list <- mapply(pandoc_arg_variable, names(args), args)
+  pandoc_arg_list <- mapply(rmarkdown::pandoc_variable_arg, names(args), args)
 
   pdf_document_format(
     "ims", keep_tex = keep_tex, citation_package = citation_package,
