@@ -1,5 +1,4 @@
 ---
-journal: aoas # aap, aop, aos, sts
 title: A sample article with some additional note
 thanks: # delete thanks field if not require, here notes for title
   - ref: T1 
@@ -8,19 +7,19 @@ runtitle: A sample running head title
 author:
   - name: First 
     surname: Author
-    email: \email{first@somewhere.com}
+    email: first@somewhere.com
     label: e1
     addressLabel: A
     sepNext: "," # use "," or \and; the last author not need this field
   - name: Second
     surname: Author
-    email: \email{second@somewhere.com}
+    email: second@somewhere.com
     label: e2,mark
     addressLabel: B
     sepNext: \and
   - name: Third
     surname: Author
-    email: \email{third@somewhere.com}
+    email: third@somewhere.com
     label: e3,mark
     addressLabel: B
 affiliation:
@@ -42,22 +41,22 @@ abstract: |
   This is a sample input file.  Comparing it with the output it
   generates can show you how to produce a simple document of
   your own.
-# Uncomment below for aap, aop, aos journals
-# keyword-subClass: |
-#  \begin{keyword}[class=MSC2020]
-#  \kwd[Primary ]{00X00}
-#  \kwd{00X00}
-#  \kwd[; secondary ]{00X00}
-#  \end{keyword}
+keyword-subclass: | 
+ \begin{keyword}[class=MSC2020] % It must be define for aap, aop, aos journals. For aoas, sts is not used
+ \kwd[Primary ]{00X00}
+ \kwd{00X00}
+ \kwd[; secondary ]{00X00}
+ \end{keyword}
 keywords: 
   - First keyword
   - Second keyword
 
 predefined-theoremstyle: true # use in section Environments for Axiom, Theorem, etc
 bibliography: ims.bib
-biblio-style: imsart-nameyear # imsart-number
+biblio-style: imsart-nameyear # alternative: imsart-number
 output:
   rticles::ims_article:
+    journal: aoas # aap, aoas, aop, aos, sts. See documentation
     toc: false # Please use for articles with 50 pages and more
 ---
 
@@ -191,16 +190,9 @@ Text is displayed by indenting it from the left margin. There are short quotatio
 
 and longer ones.
 
-<!-- The following syntax works with Rmarkdown >= 2.7 -->
-<!-- ::: {.environment latex=true} -->
-<!--   code -->
-<!-- ::: -->
-<!-- It's equivalent to  -->
-<!-- \begin{environment} -->
-<!--   % code -->
-<!-- \end{environment} -->
+<!-- custom blocks syntax https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html -->
 
-::: {.quotation latex=true}
+::: {.quotation data-latex=""}
 This is a longer quotation.  It consists of two paragraphs
 of text.  The beginning of each paragraph is indicated
 by an extra indentation.
@@ -213,55 +205,55 @@ as dull as the first paragraph.
 
 ## Examples for *`plain`-style environments*
 
-::: {.axiom latex=true}
+::: {.axiom data-latex=""}
 \label{ax1}
 This is the body of Axiom \ref{ax1}.
 :::
 
-::: {.proof latex=true}
+::: {.proof data-latex=""}
 This is the body of the proof of the axiom above.
 :::
 
-::: {.claim latex=true}
+::: {.claim data-latex=""}
 \label{cl1}
 This is the body of Claim \ref{cl1}. Claim \ref{cl1} is numbered after
 Axiom \ref{ax1} because we used \verb|[axiom]| in \verb|\newtheorem|.
 :::
 
-::: {.theorem latex=true}
+::: {.theorem data-latex=""}
 \label{th1}
 This is the body of Theorem \ref{th1}. Theorem \ref{th1} numbering is
 dependent on section because we used \verb|[section]| after \verb|\newtheorem|.
 :::
 
-::: {.theorem latex="[Title of the theorem]"}
+::: {.theorem data-latex="[Title of the theorem]"}
 \label{th2}
 This is the body of Theorem \ref{th2}. Theorem \ref{th2} has additional title.
 :::
 
-::: {.lemma latex=true}
+::: {.lemma data-latex=""}
 \label{le1}
 This is the body of Lemma \ref{le1}. Lemma \ref{le1} is numbered after
 Theorem \ref{th2} because we used \verb|[theorem]| in \verb|\newtheorem|.
 :::
 
-::: {.proof latex="[Proof of Lemma \ref{le1}]"}
+::: {.proof data-latex="[Proof of Lemma \ref{le1}]"}
 This is the body of the proof of Lemma \ref{le1}.
 :::
 
 ## Examples for *`remark`*-style environments
-::: {.definition latex=true}
+::: {.definition data-latex=""}
 \label{de1}
 This is the body of Definition \ref{de1}. Definition \ref{de1} is numbered after
 Lemma \ref{le1} because we used \verb|[theorem]| in \verb|\newtheorem|.
 :::
 
-::: {.example latex=true}
+::: {.example data-latex=""}
 This is the body of the example. Example is unnumbered because we used \verb|\newtheorem*|
 instead of \verb|\newtheorem|.
 :::
 
-::: {.fact latex=true}
+::: {.fact data-latex=""}
 This is the body of the fact. Fact is unnumbered because we used \verb|\newtheorem*|
 instead of \verb|\newtheorem|.
 :::
@@ -341,7 +333,7 @@ One long equation:
 <!-- %% Example with single Appendix:            %% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-::: {.appendix latex=true}
+::: {.appendix data-latex=""}
 # Title {.unnumbered #appn}
 
 Appendices should be provided in \verb|{appendix}| environment,
@@ -355,7 +347,7 @@ then please refer to it in text as \ldots\ in the \hyperref[appn]{Appendix}.
 <!-- %% Example with multiple Appendixes:        %% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-::: {.appendix latex=true}
+::: {.appendix data-latex=""}
 # Title of the first appendix {#appA}
 If there are more than one appendix, then please refer to it
 as \ldots\ in Appendix \ref{appA}, Appendix \ref{appB}, etc.

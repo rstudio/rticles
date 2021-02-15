@@ -80,7 +80,13 @@ elsevier_article(
 
 frontiers_article(..., keep_tex = TRUE)
 
-ims_article(..., keep_tex = TRUE, citation_package = "natbib")
+ims_article(
+  journal = c("aoas", "aap", "aop", "aos", "sts"),
+  keep_tex = TRUE,
+  citation_package = "natbib",
+  md_extensions = c("-autolink_bare_uris"),
+  ...
+)
 
 jasa_article(
   ...,
@@ -216,9 +222,18 @@ custom Pandoc LaTeX template and different default values for other arguments
 }
 
 \section{\code{ims_article}}{
- Format for creating submissions to the Institute of Mathematical Statistics \href{https://imstat.org/}{IMS}
-journals and publications. It includes the Annals of Applied Statistics. Adapted from
+ Format for creating submissions to the Institute of Mathematical Statistics
+\href{https://imstat.org/}{IMS} journals and publications. Adapted from
 \url{https://github.com/vtex-soft/texsupport.ims-aoas}.
+
+The argument \code{journal} accepts the acronym of any of the
+\href{https://www.e-publications.org/ims/support/ims-instructions.html}{journals} in IMS:
+\itemize{
+  \item \code{aap}: The Annals of Applied Probability
+  \item \code{aoas}: The Annals of Applied Statistics
+  \item \code{aop}: The Annals of Probability
+  \item \code{aos}: The Annals of Statistics
+  \item \code{sts}: Statistical Science}
 }
 
 \section{\code{jasa_article}}{

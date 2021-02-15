@@ -99,10 +99,6 @@ $endif$
 }{\renewenvironment{Shaded}{\begin{kframe}}{\end{kframe}}}
 \makeatother
 
-% avoid conflict of pandoc parser and imsart package
-\newcommand{\email}[1]{#1}
-
-
 $if(predefined-theoremstyle)$
 \startlocaldefs
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -204,10 +200,11 @@ $endfor$
 $abstract$
 \end{abstract}
 
-
-$for(keyword-subClass)$
-$keyword-subClass$
+$if(with_kwsc)$
+$for(keyword-subclass)$
+$keyword-subclass$
 $endfor$
+$endif$
 
 \begin{keyword}
 $for(keywords)$

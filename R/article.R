@@ -175,14 +175,48 @@ frontiers_article <- function(..., keep_tex = TRUE) {
   pdf_document_format("frontiers", keep_tex = keep_tex, ...)
 }
 
-#' @section \code{ims_article}: Format for creating submissions to the Institute of Mathematical Statistics \href{https://imstat.org/}{IMS}
-#' journals and publications. It includes the Annals of Applied Statistics. Adapted from
+#' @section \code{ims_article}: Format for creating submissions to the Institute of Mathematical Statistics
+#' \href{https://imstat.org/}{IMS} journals and publications. Adapted from
 #' \url{https://github.com/vtex-soft/texsupport.ims-aoas}.
+#'
+#' The argument \code{journal} accepts the acronym of any of the
+#' \href{https://www.e-publications.org/ims/support/ims-instructions.html}{journals} in IMS:
+#' \itemize{
+#'   \item \code{aap}: The Annals of Applied Probability
+#'   \item \code{aoas}: The Annals of Applied Statistics
+#'   \item \code{aop}: The Annals of Probability
+#'   \item \code{aos}: The Annals of Statistics
+#'   \item \code{sts}: Statistical Science}
 #' @export
 #' @rdname article
-ims_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
+ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
+                        keep_tex = TRUE, citation_package = "natbib",
+                        md_extensions = c(
+                          "-autolink_bare_uris" # disables automatic links
+                        ), ...) {
+
+  journal <- match.arg(journal)
+  if (length(journal) > 1) stop("Please choose just one ", dQuote("journal"))
+
+  with_kwsc <- journal %in% c("aap", "aop", "aos") # with keyword_subclass
+
+  args <- c(
+    "journal" = journal,
+    if (with_kwsc) c("with_kwsc" = with_kwsc)
+    )
+
+  # pandoc_variable_arg not exported from rmarkdown, adapted from ieee_article()
+  pandoc_arg_variable <- function(var_name, value) {
+    c("-V", paste0(var_name, "=", value))
+  }
+
+  # Convert to pandoc arguments
+  pandoc_arg_list <- mapply(pandoc_arg_variable, names(args), args)
+
   pdf_document_format(
-    "ims", keep_tex = keep_tex, citation_package = citation_package, ...
+    "ims", keep_tex = keep_tex, citation_package = citation_package,
+    md_extensions = md_extensions, pandoc_args = pandoc_arg_list,
+    ...
   )
 }
 
