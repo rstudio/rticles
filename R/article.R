@@ -175,6 +175,7 @@ frontiers_article <- function(..., keep_tex = TRUE) {
   pdf_document_format("frontiers", keep_tex = keep_tex, ...)
 }
 
+#' @param journal one of \code{"aoas"}, \code{"aap"}, \code{"aop"}, \code{"aos"}, \code{"sts"} for \code{ims_article}
 #' @section \code{ims_article}: Format for creating submissions to the Institute of Mathematical Statistics
 #' \href{https://imstat.org/}{IMS} journals and publications. Adapted from
 #' \url{https://github.com/vtex-soft/texsupport.ims-aoas}.
