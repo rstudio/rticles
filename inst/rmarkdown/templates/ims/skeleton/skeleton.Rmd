@@ -42,12 +42,13 @@ abstract: |
   This is a sample input file.  Comparing it with the output it
   generates can show you how to produce a simple document of
   your own.
-keyword-subClass: |
-  <!-- \begin{keyword}[class=MSC2020] % Uncomment for aap, aop, aos journals -->
-  <!-- \kwd[Primary ]{00X00} -->
-  <!-- \kwd{00X00} -->
-  <!-- \kwd[; secondary ]{00X00} -->
-  <!-- \end{keyword} -->
+# Uncomment below for aap, aop, aos journals
+# keyword-subClass: |
+#  \begin{keyword}[class=MSC2020]
+#  \kwd[Primary ]{00X00}
+#  \kwd{00X00}
+#  \kwd[; secondary ]{00X00}
+#  \end{keyword}
 keywords: 
   - First keyword
   - Second keyword
@@ -55,7 +56,6 @@ keywords:
 predefined-theoremstyle: true # use in section Environments for Axiom, Theorem, etc
 bibliography: ims.bib
 biblio-style: imsart-nameyear # imsart-number
-citation_package: natbib
 output:
   rticles::ims_article:
     toc: false # Please use for articles with 50 pages and more
