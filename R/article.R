@@ -316,7 +316,6 @@ sage_article <- function(..., highlight = NULL, citation_package = "natbib") {
 #' custom Pandoc LaTeX template and different default values for other arguments
 #' (e.g., \code{keep_tex = TRUE}).
 #'
-#' @name science_article
 #' @export
 #' @rdname article
 science_article <- function(
