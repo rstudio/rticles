@@ -1,23 +1,40 @@
 ---
-title: Bare Demo of IEEEtran.cls for IEEE Conferences
-affiliation:
+title: Bare Demo of IEEEtran.cls for IEEE Conferences & Journals
+
+## Either conference OR journal should be set;
+# for `conference` the value makes no difference, for `journal` you should set the
+# title of the journal you're publishing with, as it will be used in running headers.
+conference: true
+# journal: IEEE Transactions on Learning Technology ## specify journal for page headers
+
+affiliation:  
   ## use one only of the following
   # author-columnar: true         ## one column per author
-  institution-columnar: true  ## one column per institution (multiple autors eventually)
-  # wide: true                  ## one column wide author/affiliation fields
+  institution-columnar: true      ## one column per institution (multiple autors eventually)
+  # wide: true                    ## one column wide author/affiliation fields
 
-  #author:   ## A custom author ordering field that breaks institution grouping.
-  #  - name: Eldon Tyrell
-  #    mark: 4
-  #    email: eldon@starfleet-academy.star
-  #  - name: Michael Shell
-  #    mark: 1
-  #  - name: Roy Batty
-  #    mark: 4
-  #    email: roy@replicant.offworld
-  ## Authors cited in institution field are ignored when author field exists
 
-  #author_multiline: ## Put authors in a given order, with multiline possibility. Authors cited in institution are ignored if exists
+  ## A custom author ordering field that breaks institution grouping. 
+  ## This is the only supported format for the journal layout.
+  author:                       
+    - name: Eldon Tyrell
+      member: Member, IEEE       ## only used for journal layout
+      mark: 4                    ## ignored for journal layout
+      email: eldon@starfleet-academy.star
+    - name: Michael Shell
+      member: Fellow, OSA        
+      mark: 1                    
+    - name: Roy Batty
+      member: Life Fellow, IEEE  
+      mark: 4                    
+      email: roy@replicant.offworld
+      last: true                 ## mark the last author so that we can insert `and` 
+                                 ## at the appropriate place.
+                                 
+
+  ## Put authors in a given order, with multiline possibility. 
+  ## Authors cited in institution are ignored if exists
+  #author_multiline: 
   #  - line:         ## Create a new author line
   #    - name: Michael Shell
   #      mark: 1
@@ -32,7 +49,8 @@ affiliation:
   #      mark: 3
   #    - name: Eldon Tyrell
   #      mark: 4
-
+  
+  ## all information listed here is ignored in journal mode
   institution:
     - name: Georgia Institute of Technology
       department: School of Electrical and Computer Engineering
@@ -61,6 +79,13 @@ affiliation:
           email: eldon@starfleet-academy.star
         - name: Roy Batty
           email: roy@replicant.offworld
+
+  # ## used for author affiliations and other acknowledgements in journal mode
+  thanks:
+    - "E. Tyrell and R. Batty are with Starfleet Academy."
+    - "M. Shell was with the Department of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta, GA, 30332 USA e-mail: (see http://www.michaelshell.org/contact.html)."
+    - "Manuscript received February 17, 2021; revised June 6, 2021."
+
 keywords: ["keyword 1", "keyword 2"]
 abstract: |
   The abstract goes here.
@@ -68,13 +93,14 @@ abstract: |
 
 # use some specific Tex packages if needed. 
 # with_ifpdf: true
-# with_cite: true
+# with_cite: true ## note that since pandoc doesn't use \cite, this does nothing.
 # amsmath need to be true to use with bookdown for referencing equations.
 with_amsmath: true
 # with_algorithmic: true
 # with_array: true
 # with_dblfloatfix: true
 
+natbib: true
 bibliography: mybibfile.bib
 output: rticles::ieee_article
 #citation_sorting: none   ## used as sorting option of the biblatex package (if selected)
@@ -83,7 +109,7 @@ output: rticles::ieee_article
 Introduction
 =============
 <!-- no \IEEEPARstart -->
-This demo file is intended to serve as a ``starter file''
+\IEEEPARstart{T}{his} demo file is intended to serve as a ``starter file''
 for IEEE conference papers produced under \LaTeX\ using
 IEEEtran.cls version 1.8b and later.
 <!-- You must have at least 2 lines in the paragraph with the drop letter

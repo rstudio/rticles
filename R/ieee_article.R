@@ -3,8 +3,9 @@
 #' Format for creating submissions to IEEE Transaction journals. Adapted from
 #' \url{http://www.ieee.org/publications_standards/publications/authors/author_templates.html}.
 #'
-#' Presently, only the \code{"conference"} paper mode offered by the
-#' \code{IEEEtran.cls} is supported.
+#' Presently, only the \code{"conference"} paper mode offered by
+#' \code{IEEEtran.cls} is fully supported, with experimental support for the
+#' \code{"journal"} mode.
 #'
 #' @inheritParams rmarkdown::pdf_document
 #' @param draftmode Specify the draft mode to control spacing and whether images
