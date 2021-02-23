@@ -194,7 +194,7 @@ ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
                         keep_tex = TRUE, citation_package = "natbib",
                         md_extensions = c(
                           "-autolink_bare_uris" # disables automatic links
-                        ), ...) {
+                        ), pandoc_args = NULL, ...) {
 
   journal <- match.arg(journal)
   if (length(journal) > 1) stop("Please choose just one ", dQuote("journal"))
@@ -213,7 +213,7 @@ ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
 
   pdf_document_format(
     "ims", keep_tex = keep_tex, citation_package = citation_package,
-    md_extensions = md_extensions, pandoc_args = pandoc_arg_list,
+    md_extensions = md_extensions, pandoc_args = c(pandoc_arg_list, pandoc_args),
     ...
   )
 }
