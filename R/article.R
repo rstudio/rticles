@@ -207,7 +207,9 @@ ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
     )
 
   # Convert to pandoc arguments
-  pandoc_arg_list <- mapply(rmarkdown::pandoc_variable_arg, names(args), args)
+  pandoc_arg_list <- mapply(rmarkdown::pandoc_variable_arg, names(args), args,
+                            SIMPLIFY = FALSE, USE.NAMES = FALSE)
+  pandoc_arg_list <- unlist(pandoc_arg_list)
 
   pdf_document_format(
     "ims", keep_tex = keep_tex, citation_package = citation_package,
