@@ -85,6 +85,7 @@ ims_article(
   keep_tex = TRUE,
   citation_package = "natbib",
   md_extensions = c("-autolink_bare_uris"),
+  pandoc_args = NULL,
   ...
 )
 
