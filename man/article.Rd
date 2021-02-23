@@ -15,6 +15,7 @@
 \alias{ctex}
 \alias{elsevier_article}
 \alias{frontiers_article}
+\alias{ims_article}
 \alias{jasa_article}
 \alias{lipics_article}
 \alias{mdpi_article}
@@ -79,6 +80,14 @@ elsevier_article(
 
 frontiers_article(..., keep_tex = TRUE)
 
+ims_article(
+  journal = c("aoas", "aap", "aop", "aos", "sts"),
+  keep_tex = TRUE,
+  citation_package = "natbib",
+  md_extensions = c("-autolink_bare_uris"),
+  ...
+)
+
 jasa_article(
   ...,
   keep_tex = TRUE,
@@ -123,6 +132,8 @@ tf_article(..., keep_tex = TRUE, citation_package = "natbib")
 }
 \arguments{
 \item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template}{Arguments passed to \code{rmarkdown::\link{pdf_document}()}.}
+
+\item{journal}{one of \code{"aoas"}, \code{"aap"}, \code{"aop"}, \code{"aos"}, \code{"sts"} for \code{ims_article}}
 }
 \value{
 An R Markdown output format.
@@ -210,6 +221,21 @@ custom Pandoc LaTeX template and different default values for other arguments
  Format for creating Frontiers journal
   articles. Adapted from
   \url{https://www.frontiersin.org/about/author-guidelines}.
+}
+
+\section{\code{ims_article}}{
+ Format for creating submissions to the Institute of Mathematical Statistics
+\href{https://imstat.org/}{IMS} journals and publications. Adapted from
+\url{https://github.com/vtex-soft/texsupport.ims-aoas}.
+
+The argument \code{journal} accepts the acronym of any of the
+\href{https://www.e-publications.org/ims/support/ims-instructions.html}{journals} in IMS:
+\itemize{
+  \item \code{aap}: The Annals of Applied Probability
+  \item \code{aoas}: The Annals of Applied Statistics
+  \item \code{aop}: The Annals of Probability
+  \item \code{aos}: The Annals of Statistics
+  \item \code{sts}: Statistical Science}
 }
 
 \section{\code{jasa_article}}{

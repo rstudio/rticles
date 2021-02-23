@@ -4,6 +4,8 @@ rticles 0.19
 
 - Add article template `pihph_article()` for the *Papers in Historical Phonology* (PiHPh) (thanks, @stefanocoretta, #362).
 
+- Add article template `ims_article()` for *Institute of Mathematical Statistics* Journals, e.g., *Annals of Applied Statistics* (thanks, @auzaheta, #372)
+
 rticles 0.18
 ---------------------------------------------------------------------
 

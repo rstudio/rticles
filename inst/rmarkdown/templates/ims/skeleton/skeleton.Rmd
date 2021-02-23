@@ -1,0 +1,414 @@
+---
+title: A sample article with some additional note
+thanks: # delete thanks field if not require, here notes for title
+  - ref: T1 
+    text: A sample additional note to the title.
+runtitle: A sample running head title
+author:
+  - name: First 
+    surname: Author
+    email: first@somewhere.com
+    label: e1
+    addressLabel: A
+    sepNext: "," # use "," or \and; the last author not need this field
+  - name: Second
+    surname: Author
+    email: second@somewhere.com
+    label: e2,mark
+    addressLabel: B
+    sepNext: \and
+  - name: Third
+    surname: Author
+    email: third@somewhere.com
+    label: e3,mark
+    addressLabel: B
+affiliation:
+  - label: A
+    name: Department, University or Company Name
+    authorsLabels: e1
+  - label: B
+    name: Department, University or Company Name
+    authorsLabels: e2,e3
+abstract: |
+  The abstract should summarize the contents of the paper.
+  It should be clear, descriptive, self-explanatory and not longer
+  than 200 words. It should also be suitable for publication in
+  abstracting services. Formulas should be used as sparingly as
+  possible within the abstract. The abstract should not make
+  reference to results, bibliography or formulas in the body
+  of the paper---it should be self-contained.
+
+  This is a sample input file.  Comparing it with the output it
+  generates can show you how to produce a simple document of
+  your own.
+keyword-subclass: | 
+ \begin{keyword}[class=MSC2020] % It must be define for aap, aop, aos journals. For aoas, sts is not used
+ \kwd[Primary ]{00X00}
+ \kwd{00X00}
+ \kwd[; secondary ]{00X00}
+ \end{keyword}
+keywords: 
+  - First keyword
+  - Second keyword
+
+predefined-theoremstyle: true # use in section Environments for Axiom, Theorem, etc
+bibliography: ims.bib
+biblio-style: imsart-nameyear # alternative: imsart-number
+output:
+  rticles::ims_article:
+    journal: aoas # aap, aoas, aop, aos, sts. See documentation
+    toc: false # Please use for articles with 50 pages and more
+---
+
+# Introduction
+This template helps you to create a properly formatted \LaTeXe\ manuscript.
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %% `\ ' is used here because TeX ignores    %% -->
+<!-- %% spaces after text commands.              %% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+Prepare your paper in the same style as used in this sample .pdf file.
+Try to avoid excessive use of italics and bold face.
+Please do not use any \LaTeXe\ or \TeX\ commands that affect the layout
+or formatting of your document (i.e., commands like \verb|\textheight|,
+\verb|\textwidth|, etc.).
+
+# Section headings
+
+Here are some sub-sections:
+
+## A sub-section
+
+Regular text.
+
+### A sub-sub-section
+
+Regular text.
+
+# Text
+
+## Lists
+
+The following is an example of an *itemized* list, two levels deep.
+ 
+* This is the first item of an itemized list.  Each item
+  in the list is marked with a "tick." The document
+  style determines what kind of tick mark is used.
+* This is the second item of the list.  It contains another
+  list nested inside it.
+  - This is the first item of an itemized list that
+    is nested within the itemized list.
+  - This is the second item of the inner list.  \LaTeX\
+    allows you to nest lists deeper than you really should.
+- This is the third item of the list.
+
+The following is an example of an *enumerated* list of one level.
+
+\begin{longlist}
+\item This is the first item of an enumerated list.
+\item This is the second item of an enumerated list.
+\end{longlist}
+
+The following is an example of an *enumerated* list, two levels deep.
+\begin{longlist}
+\item[1.]
+This is the first item of an enumerated list.  Each item
+in the list is marked with a ``tick.''.  The document
+style determines what kind of tick mark is used.
+\item[2.]
+This is the second item of the list.  It contains another
+list nested inside of it.
+\begin{longlist}
+\item
+This is the first item of an enumerated list that
+is nested within.  
+\item
+This is the second item of the inner list.  \LaTeX\
+allows you to nest lists deeper than you really should.
+\end{longlist}
+This is the rest of the second item of the outer list.
+\item[3.]
+This is the third item of the list.
+\end{longlist}
+
+## Punctuation
+
+Dashes come in three sizes: a hyphen, an intra-word dash like "$U$-statistics" or "the time-homogeneous model";
+a medium dash (also called an "en-dash") for number ranges or between two equal entities like "1--2" or "Cauchy--Schwarz inequality";
+and a punctuation dash (also called an "em-dash") in place of a comma, semicolon,
+colon or parentheses---like this.
+
+Generating an ellipsis \ldots\ with the right spacing
+around the periods requires a special command.
+
+## Citation
+
+Simple author and year cite: @billingsley2013convergence.
+Multiple bibliography items cite: \cite{billingsley2013convergence,bourbaki1966general} or [@billingsley2013convergence; @bourbaki1966general].
+Author only cite: \citeauthor{ethier1985markov}.
+Year only cite: \citeyear{prokhorov1956convergence} or [-@prokhorov1956convergence].
+
+# Fonts
+
+Please use text fonts in text mode, e.g.:
+\begin{itemize}
+\item[]\textrm{Roman}
+\item[]\textit{Italic}
+\item[]\textbf{Bold}
+\item[]\textsc{Small Caps}
+\item[]\textsf{Sans serif}
+\item[]\texttt{Typewriter}
+\end{itemize}
+Please use mathematical fonts in mathematical mode, e.g.:
+\begin{itemize}
+\item[] $\mathrm{ABCabc123}$
+\item[] $\mathit{ABCabc123}$
+\item[] $\mathbf{ABCabc123}$
+\item[] $\boldsymbol{ABCabc123\alpha\beta\gamma}$
+\item[] $\mathcal{ABC}$
+\item[] $\mathbb{ABC}$
+\item[] $\mathsf{ABCabc123}$
+\item[] $\mathtt{ABCabc123}$
+\item[] $\mathfrak{ABCabc123}$
+\end{itemize}
+Note that \verb|\mathcal, \mathbb| belongs to capital letters-only font typefaces.
+
+# Notes
+
+Footnotes[^1]
+pose no problem.[^2]
+
+[^1]: This is an example of a footnote.
+[^2]: Note that footnote number is after punctuation.
+
+# Quotations
+
+Text is displayed by indenting it from the left margin. There are short quotations
+
+> This is a short quotation.  It consists of a
+> single paragraph of text.  There is no paragraph
+> indentation.
+
+and longer ones.
+
+<!-- custom blocks syntax https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html -->
+
+::: {.quotation data-latex=""}
+This is a longer quotation.  It consists of two paragraphs
+of text.  The beginning of each paragraph is indicated
+by an extra indentation.
+
+This is the second paragraph of the quotation.  It is just
+as dull as the first paragraph.
+:::
+
+# Environments
+
+## Examples for *`plain`-style environments*
+
+::: {.axiom data-latex=""}
+\label{ax1}
+This is the body of Axiom \ref{ax1}.
+:::
+
+::: {.proof data-latex=""}
+This is the body of the proof of the axiom above.
+:::
+
+::: {.claim data-latex=""}
+\label{cl1}
+This is the body of Claim \ref{cl1}. Claim \ref{cl1} is numbered after
+Axiom \ref{ax1} because we used \verb|[axiom]| in \verb|\newtheorem|.
+:::
+
+::: {.theorem data-latex=""}
+\label{th1}
+This is the body of Theorem \ref{th1}. Theorem \ref{th1} numbering is
+dependent on section because we used \verb|[section]| after \verb|\newtheorem|.
+:::
+
+::: {.theorem data-latex="[Title of the theorem]"}
+\label{th2}
+This is the body of Theorem \ref{th2}. Theorem \ref{th2} has additional title.
+:::
+
+::: {.lemma data-latex=""}
+\label{le1}
+This is the body of Lemma \ref{le1}. Lemma \ref{le1} is numbered after
+Theorem \ref{th2} because we used \verb|[theorem]| in \verb|\newtheorem|.
+:::
+
+::: {.proof data-latex="[Proof of Lemma \ref{le1}]"}
+This is the body of the proof of Lemma \ref{le1}.
+:::
+
+## Examples for *`remark`*-style environments
+::: {.definition data-latex=""}
+\label{de1}
+This is the body of Definition \ref{de1}. Definition \ref{de1} is numbered after
+Lemma \ref{le1} because we used \verb|[theorem]| in \verb|\newtheorem|.
+:::
+
+::: {.example data-latex=""}
+This is the body of the example. Example is unnumbered because we used \verb|\newtheorem*|
+instead of \verb|\newtheorem|.
+:::
+
+::: {.fact data-latex=""}
+This is the body of the fact. Fact is unnumbered because we used \verb|\newtheorem*|
+instead of \verb|\newtheorem|.
+:::
+
+# Tables and figures
+Cross-references to labeled tables: As you can see in Table\ref{tab:mtc}
+and also in Table\ref{parset}.
+
+```{r mtc, echo = FALSE}
+knitr::kable(mtcars, caption = "Table caption", format = "latex", vline = "", linesep = "")
+```
+
+\begin{table}
+\caption{Sample posterior estimates for each model}
+\label{parset}
+%
+\begin{tabular}{@{}lcrcrrr@{}}
+\hline
+&& & &\multicolumn{3}{c}{Quantile} \\
+\cline{5-7}
+Model &Parameter &
+\multicolumn{1}{c}{Mean} &
+Std. dev.&
+\multicolumn{1}{c}{2.5\%} &
+\multicolumn{1}{c}{50\%}&
+\multicolumn{1}{c@{}}{97.5\%} \\
+\hline
+{Model 0} & $\beta_0$ & $-$12.29 & 2.29 & $-$18.04 & $-$11.99 & $-$8.56 \\
+          & $\beta_1$  & 0.10   & 0.07 & $-$0.05  & 0.10   & 0.26  \\
+          & $\beta_2$   & 0.01   & 0.09 & $-$0.22  & 0.02   & 0.16  \\[6pt]
+{Model 1} & $\beta_0$   & $-$4.58  & 3.04 & $-$11.00 & $-$4.44  & 1.06  \\
+          & $\beta_1$   & 0.79   & 0.21 & 0.38   & 0.78   & 1.20  \\
+          & $\beta_2$   & $-$0.28  & 0.10 & $-$0.48  & $-$0.28  & $-$0.07 \\[6pt]
+{Model 2} & $\beta_0$   & $-$11.85 & 2.24 & $-$17.34 & $-$11.60 & $-$7.85 \\
+          & $\beta_1$   & 0.73   & 0.21 & 0.32   & 0.73   & 1.16  \\
+          & $\beta_2$   & $-$0.60  & 0.14 & $-$0.88  & $-$0.60  & $-$0.34 \\
+          & $\beta_3$   & 0.22   & 0.17 & $-$0.10  & 0.22   & 0.55  \\
+\hline
+\end{tabular}
+%
+\end{table}
+
+
+```{r,echo=FALSE,fig.cap="Figure caption\\label{penG}"}
+plot(1:10)
+```
+
+Sample of cross-reference to figure.
+Figure\ref{penG} shows that it is not easy to get something on paper.
+
+# Equations and the like
+
+Two equations:
+\begin{equation}
+    C_{s}  =  K_{M} \frac{\mu/\mu_{x}}{1-\mu/\mu_{x}} \label{ccs}
+\end{equation}
+and
+\begin{equation}
+    G = \frac{P_{\mathrm{opt}} - P_{\mathrm{ref}}}{P_{\mathrm{ref}}}  100(\%).
+\end{equation}
+
+Equation arrays:
+\begin{eqnarray}
+  \frac{dS}{dt} & = & - \sigma X + s_{F} F,\\
+  \frac{dX}{dt} & = &   \mu    X,\\
+  \frac{dP}{dt} & = &   \pi    X - k_{h} P,\\
+  \frac{dV}{dt} & = &   F.
+\end{eqnarray}
+One long equation:
+\begin{eqnarray}
+ \mu_{\text{normal}} & = & \mu_{x} \frac{C_{s}}{K_{x}C_{x}+C_{s}}  \nonumber\\
+                     & = & \mu_{\text{normal}} - Y_{x/s}\bigl(1-H(C_{s})\bigr)(m_{s}+\pi /Y_{p/s})\\
+                     & = & \mu_{\text{normal}}/Y_{x/s}+ H(C_{s}) (m_{s}+ \pi /Y_{p/s}).\nonumber
+\end{eqnarray}
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %% Example with single Appendix:            %% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+::: {.appendix data-latex=""}
+# Title {.unnumbered #appn}
+
+Appendices should be provided in \verb|{appendix}| environment,
+before Acknowledgements.
+
+If there is only one appendix,
+then please refer to it in text as \ldots\ in the \hyperref[appn]{Appendix}.
+:::
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %% Example with multiple Appendixes:        %% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+::: {.appendix data-latex=""}
+# Title of the first appendix {#appA}
+If there are more than one appendix, then please refer to it
+as \ldots\ in Appendix \ref{appA}, Appendix \ref{appB}, etc.
+
+# Title of the second appendix {#appB}
+
+## First subsection of Appendix \protect\ref{appB}
+Use the standard \LaTeX\ commands for headings in \verb|{appendix}|.
+Headings and other objects will be numbered automatically.
+
+\begin{equation}
+\mathcal{P}=(j_{k,1},j_{k,2},\dots,j_{k,m(k)}). \label{path}
+\end{equation}
+
+Sample of cross-reference to the formula (\ref{path}) in Appendix \ref{appB}.
+:::
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %% Support information (funding), if any,   %% -->
+<!-- %% should be provided in the                %% -->
+<!-- %% Acknowledgements section.                %% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+## Acknowledgements {.unnumbered}
+
+The authors would like to thank the anonymous referees, an Associate
+Editor and the Editor for their constructive comments that improved the
+quality of this paper.
+
+The first author was supported by NSF Grant DMS-??-??????.
+
+The second author was supported in part by NIH Grant ???????????.
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %% Supplementary Material, if any, should   %% -->
+<!-- %% be provided in {supplement} environment  %% -->
+<!-- %% with title and short description.        %% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+\begin{supplement}
+\stitle{Title of Supplement A}
+\sdescription{Short description of Supplement A.}
+\end{supplement}
+\begin{supplement}
+\stitle{Title of Supplement B}
+\sdescription{Short description of Supplement B.}
+\end{supplement}
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%                  The Bibliography                       %% -->
+<!-- %%                                                         %% -->
+<!-- %%  imsart-nameyear.bst  will be used to                   %% -->
+<!-- %%  create a .BBL file for submission.                     %% -->
+<!-- %%                                                         %% -->
+<!-- %%  Note that the displayed Bibliography will not          %% -->
+<!-- %%  necessarily be rendered by Latex exactly as specified  %% -->
+<!-- %%  in the online Instructions for Authors.                %% -->
+<!-- %%                                                         %% -->
+<!-- %%  MR numbers will be added by VTeX.                      %% -->
+<!-- %%                                                         %% -->
+<!-- %%  Use \cite{...} to cite references in text.             %% -->
+<!-- %%                                                         %% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
