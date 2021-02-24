@@ -4,6 +4,7 @@ title: Bare Demo of IEEEtran.cls for IEEE Conferences & Journals
 ## Either conference OR journal should be set;
 ## for `conference` the value makes no difference, for `journal` you should set the
 ## title of the journal you're publishing with, as it will be used in running headers.
+## if neither are set, the document defaults to conference mode.
 # conference: true
 journal: IEEE Transactions on Learning Technology ## specify journal for page headers
 
@@ -13,13 +14,12 @@ affiliation:
   institution-columnar: true      ## one column per institution (multiple autors eventually)
   # wide: true                    ## one column wide author/affiliation fields
 
-
   ## A custom author ordering field that breaks institution grouping. 
-  ## This is the only supported format for the journal layout.
+  ## This is the only supported format for the journal mode.
   author:                       
     - name: Eldon Tyrell
-      member: Member, IEEE       ## only used for journal layout
-      mark: 4                    ## ignored for journal layout
+      member: Member, IEEE       ## only used for journal mode
+      mark: 4                    ## ignored for journal mode
       email: eldon@starfleet-academy.star
     - name: Michael Shell
       member: Fellow, OSA        
@@ -50,7 +50,7 @@ affiliation:
   #    - name: Eldon Tyrell
   #      mark: 4
   
-  ## all information listed here is ignored in journal mode
+  ## institution information is ignored in journal mode
   institution:
     - name: Georgia Institute of Technology
       department: School of Electrical and Computer Engineering
@@ -80,7 +80,7 @@ affiliation:
         - name: Roy Batty
           email: roy@replicant.offworld
 
-  # ## used for author affiliations and other acknowledgements in journal mode
+  # ## used only in journal mode for author affiliations and other acknowledgements
   thanks:
     - "E. Tyrell and R. Batty are with Starfleet Academy."
     - "M. Shell was with the Department of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta, GA, 30332 USA e-mail: (see http://www.michaelshell.org/contact.html)."
@@ -93,22 +93,30 @@ abstract: |
 
 # use some specific Tex packages if needed. 
 # with_ifpdf: true
-# with_cite: true ## note that since pandoc doesn't use \cite, this does nothing.
+# with_cite: true
 # amsmath need to be true to use with bookdown for referencing equations.
 with_amsmath: true
 # with_algorithmic: true
 # with_array: true
 # with_dblfloatfix: true
 
+
+## If you're using latex style \cite commands, choose the backend you want to use.
 # natbib: true
 # biblatex: true
-bibliography: mybibfile.bib
+# citation_sorting: none   ## used as sorting option of the biblatex package (if selected)
 
+## If you're using pandoc style @cite commands, these options set the correct
+## citation style, and add links to citations. 
+## Note that this bypasses latex packages that alter citations, e.g. hyperref.
 citation-style: ieee
 link-citations: true 
 
+## bibliography file(s)
+bibliography: mybibfile.bib
+
+
 output: rticles::ieee_article
-#citation_sorting: none   ## used as sorting option of the biblatex package (if selected)
 ---
 
 Introduction
