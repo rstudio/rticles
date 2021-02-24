@@ -1,3 +1,5 @@
+- `ieee_article()` now supports both conference papers and journal articles (thanks, @Karel-Kroeze). 
+
 rticles 0.19
 ---------------------------------------------------------------------
 - Update Copernicus Publications template to version 6.2 from 2021-01-15 (thanks, @RLumSK, #366).
