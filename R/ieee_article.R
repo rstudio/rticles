@@ -76,7 +76,7 @@ ieee_article <- function(
   args <- c(args, plist[plist])
 
   # Convert to pandoc arguments
-  pandoc_arg_list <- mapply(rmarkdown::pandoc_arg_variable, names(args), args,
+  pandoc_arg_list <- mapply(rmarkdown::pandoc_variable_arg, names(args), args,
                             USE.NAMES = FALSE, SIMPLIFY = FALSE)
   pandoc_arg_list <- unlist(pandoc_arg_list)
 
