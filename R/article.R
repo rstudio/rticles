@@ -8,6 +8,9 @@
 #' custom Pandoc LaTeX template and different default values for other arguments
 #' (e.g., \code{keep_tex = TRUE}).
 #'
+#' @param
+#' ...,keep_tex,latex_engine,citation_package,highlight,fig_caption,md_extensions,template,pandoc_args
+#' Arguments passed to \code{rmarkdown::\link{pdf_document}()}.
 #' @section Details: You can find more details about each output format below.
 #' @name acm_article
 #' @rdname article
@@ -16,9 +19,7 @@ NULL
 #' @section \code{acm_article}: Format for creating an Association for Computing
 #'   Machinery (ACM) articles. Adapted from
 #'   \url{https://www.acm.org/publications/proceedings-template}.
-#' @param
-#'   ...,keep_tex,latex_engine,citation_package,highlight,fig_caption,md_extensions,template
-#'   Arguments passed to \code{rmarkdown::\link{pdf_document}()}.
+
 #' @return An R Markdown output format.
 #' @examples \dontrun{
 #' rmarkdown::draft("MyArticle.Rmd", template = "acm", package = "rticles")
