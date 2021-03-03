@@ -89,9 +89,10 @@ To use **rticles** from RStudio:
 3. Use the `rmarkdown::draft()` function to create articles:
 
     ```r
-    rmarkdown::draft("MyJSSArticle.Rmd", template = "jss_article", package = "rticles")
-    rmarkdown::draft("MyRJournalArticle", template = "rjournal_article", package = "rticles")
+    rmarkdown::draft("MyJSSArticle.Rmd", template = "jss", package = "rticles")
+    rmarkdown::draft("MyRJournalArticle", template = "rjournal", package = "rticles")
     ```
+   This will create a folder containing a Rmd file using the corresponding output format and all the assets required by this format. 
 
 ## How to contribute? 
 
