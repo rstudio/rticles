@@ -266,8 +266,8 @@ FUNCTION {output.check.colon}
 FUNCTION {output.year.check}
 { year empty$
      { "empty year in " cite$ * warning$ }
-     { write$
-        ". " year * extra.label *
+     { add.period$ write$
+        " " year * extra.label *
        month empty$
           { }
           { ", " * month * }
@@ -775,7 +775,7 @@ FUNCTION {format.tr.number}
 
 FUNCTION {format.article.crossref}
 { "See"
-  "\citeN{" * crossref * "}" *
+  "\citep{" * crossref * "}" *
 }
 
 FUNCTION {format.crossref.editor}
@@ -821,12 +821,12 @@ FUNCTION {format.book.crossref}
     }
     { format.crossref.editor * }
   if$
-  " \citeN{" * crossref * "}" *
+  " \citep{" * crossref * "}" *
 }
 
 FUNCTION {format.incoll.inproc.crossref}
 { "See"
-  " \citeN{" * crossref * "}" *
+  " \citep{" * crossref * "}" *
 }
 
 % format.lab.names:
