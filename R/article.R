@@ -176,6 +176,7 @@ frontiers_article <- function(..., keep_tex = TRUE) {
   pdf_document_format("frontiers", keep_tex = keep_tex, ...)
 }
 
+
 #' @section \code{glossa_article}: Format for creating submissions to
 #'   Glossa: a journal of general linguistics. Adapted from
 #'   \url{https://github.com/guidovw/Glossalatex}.
@@ -241,6 +242,8 @@ jasa_article <- function(
   pdf_document_format(
     "jasa", keep_tex = keep_tex, latex_engine = latex_engine,
     citation_package = citation_package, ...
+  )
+}
 
 #' @section \code{lipics_article}: Format for creating submissions to
 #'   LIPIcs - Leibniz International Proceedings Informatics - articles.
