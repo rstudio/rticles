@@ -1,5 +1,4 @@
 %  LaTeX support: latex@mdpi.com
-%  LaTeX support: latex@mdpi.com
 %  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
 
 %=================================================================
@@ -7,7 +6,7 @@
 
 % For posting an early version of this manuscript as a preprint, you may use "preprints" as the journal and change "submit" to "accept". The document class line would be, e.g., \documentclass[preprints,article,accept,moreauthors,pdftex]{mdpi}. This is especially recommended for submission to arXiv, where line numbers should be removed before posting. For preprints.org, the editorial staff will make this change immediately prior to posting.
 
-%% Some pieces required from the pandoc template
+%% Some pieces required from the pandoc template [MR: from rticles]
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{4pt}}
 \setlist[itemize]{leftmargin=*,labelsep=5.8mm}
@@ -15,19 +14,10 @@
 
 \usepackage{longtable}
 
-%% https://tex.stackexchange.com/questions/161431/how-to-solve-longtable-is-not-in-1-column-mode-error
-\usepackage{xtab}
-
-\makeatletter
-\def\longtable{\@ifnextchar[\newlongtable@i \newlongtable@ii}
-\def\newlongtable@i[#1]{%
-\renewcommand{\endhead}{\ignorespaces}
-\xtabular[#1]}
-\def\newlongtable@ii{%
-\renewcommand{\endhead}{\ignorespaces}
-\xtabular}
-\def\endlongtable{\endxtabular}
-\makeatother
+% see https://stackoverflow.com/a/47122900
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
 
 %--------------------
 % Class Options:
@@ -175,14 +165,34 @@ $endif$
 %\entrylink{The Link to this entry published on the encyclopedia platform.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+% Pandoc citation processing [MR: from rticles]
 $if(csl-refs)$
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
+% for Pandoc 2.8 to 2.10.1
 \newenvironment{cslreferences}%
   {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
   \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
   {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[3] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc} % for calculating minipage widths
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
 
 $for(header-includes)$
