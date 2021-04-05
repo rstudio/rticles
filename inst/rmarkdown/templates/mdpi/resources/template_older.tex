@@ -1,11 +1,38 @@
 %  LaTeX support: latex@mdpi.com
-%  LaTeX support: latex@mdpi.com
 %  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
 
 %=================================================================
-\documentclass[$journal$,$type$,$status$,moreauthors,pdftex]{Definitions/mdpi}
+\documentclass[$journal$,$type$,$status$,moreauthors,pdftex]{mdpi}
 
 % For posting an early version of this manuscript as a preprint, you may use "preprints" as the journal and change "submit" to "accept". The document class line would be, e.g., \documentclass[preprints,article,accept,moreauthors,pdftex]{mdpi}. This is especially recommended for submission to arXiv, where line numbers should be removed before posting. For preprints.org, the editorial staff will make this change immediately prior to posting.
+
+%% Some pieces required from the pandoc template
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{4pt}}
+\setlist[itemize]{leftmargin=*,labelsep=5.8mm}
+\setlist[enumerate]{leftmargin=*,labelsep=4.9mm}
+
+\usepackage{longtable}
+
+%% https://tex.stackexchange.com/questions/161431/how-to-solve-longtable-is-not-in-1-column-mode-error
+\usepackage{xtab}
+
+\makeatletter
+\def\longtable{\@ifnextchar[\newlongtable@i \newlongtable@ii}
+\def\newlongtable@i[#1]{%
+\renewcommand{\endhead}{\ignorespaces}
+\xtabular[#1]}
+\def\newlongtable@ii{%
+\renewcommand{\endhead}{\ignorespaces}
+\xtabular}
+\def\endlongtable{\endxtabular}
+\makeatother
+
+
+% see https://stackoverflow.com/a/47122900
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
 
 %--------------------
 % Class Options:
@@ -79,6 +106,8 @@
 
 % MDPI internal command: Title for citation in the left column
 \TitleCitation{$title$}
+
+
 % Authors, for the paper (add full first names)
 \Author{$for(author)$$author.name$$$^{$author.affil$}$$$if(author.orcid)$\href{https://orcid.org/$author.orcid$}{\orcidicon}$endif$$sep$, $endfor$}
 
@@ -105,8 +134,7 @@ $if(seventhnote)$\seventhnote{$seventhnote$}$endif$
 $if(eighthnote)$\eighthnote{$eighthnote$}$endif$
 
 % The commands \thirdnote{} till \eighthnote{} are available for further notes
-
-% Simple summary TO DO
+% Simple summary
 $if(simplesummary)$
 \simplesumm{$simplesummary$}
 $endif$
@@ -121,7 +149,7 @@ $if(keywords)$
 \keyword{$keywords$}
 $endif$
 
-%\conference{} % An extended version of a conference paper TO DO
+%\conference{} % An extended version of a conference paper
 
 % The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
 %\PACS{J0101}
@@ -153,6 +181,8 @@ $endif$
 %\entrylink{The Link to this entry published on the encyclopedia platform.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%\setcounter{secnumdepth}{4}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 $if(csl-refs)$
 \newlength{\cslhangindent}
@@ -172,58 +202,33 @@ $endfor$
 
 $body$
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %% optional
+% \supplementary{The following are available online at www.mdpi.com/link, Figure S1: title, Table S1: title, Video S1: title.}
+%
+% % Only for the journal Methods and Protocols:
+% % If you wish to submit a video article, please do so with any other supplementary material.
+% % \supplementary{The following are available at www.mdpi.com/link: Figure S1: title, Table S1: title, Video S1: title. A supporting video article is available at doi: link.}
+
 \vspace{6pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% optional
-%\supplementary{The following are available online at \linksupplementary{s1}, Figure S1: title, Table S1: title, Video S1: title.}
-
-% Only for the journal Methods and Protocols:
-% If you wish to submit a video article, please do so with any other supplementary material.
-% \supplementary{The following are available at \linksupplementary{s1}, Figure S1: title, Table S1: title, Video S1: title. A supporting video article is available at doi: link.}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-$if(authorcontributions)$
-\authorcontributions{$authorcontributions$}
-$endif$
-
-$if(funding)$
-\authorcontributions{$funding$}
-$endif$
-
-$if(institutionalreview)$
-\authorcontributions{$institutionalreview$}
-$endif$
-
-$if(informedconsent)$
-\authorcontributions{$informedconsent$}
-$endif$
-
-$if(dataavailability)$
-\authorcontributions{$dataavailability$}
-$endif$
-
 $if(acknowledgement)$
 \acknowledgments{$acknowledgement$}
 $endif$
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(authorcontributions)$
+\authorcontributions{$authorcontributions$}
+$endif$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 $if(conflictsofinterest)$
-\authorcontributions{$conflictsofinterest$}
-$endif$
-
-%% Optional
-$if(sampleavailability)$
-\authorcontributions{$sampleavailability$}
+\conflictsofinterest{$conflictsofinterest$}
 $endif$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Only for journal Encyclopedia
-%\entrylink{The Link to this entry published on the encyclopedia platform.}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Optional
+%% optional
 $if(abbreviations)$
 \abbreviations{The following abbreviations are used in this manuscript:\\
 
@@ -235,20 +240,35 @@ $endfor$
 \end{tabular}}
 $endif$
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Optional
 $if(appendix)$
 \input{"$appendix$"}
 $endif$
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{paracol}
+\reftitle{References}
 
-% Please provide either the correct journal abbreviation (e.g. according to the “List of Title Word Abbreviations” http://www.issn.org/services/online-services/access-to-the-ltwa/) or the full name of the journal.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Citations and References in Supplementary files are permitted provided that they also appear in the reference list here.
 
 %=====================================
-% References, variant A: external bibliography
+% References, variant A: internal bibliography
+%=====================================
+%\reftitle{References}
+%\begin{thebibliography}{999}
+% Reference 1
+%\bibitem[Author1(year)]{ref-journal}
+%Author1, T. The title of the cited article. {\em Journal Abbreviation} {\bf 2008}, {\em 10}, 142--149.
+% Reference 2
+%\bibitem[Author2(year)]{ref-book}
+%Author2, L. The title of the cited contribution. In {\em The Book Title}; Editor1, F., Editor2, A., Eds.; Publishing House: City, Country, 2007; pp. 32--58.
+%\end{thebibliography}
+
+% The following MDPI journals use author-date citation: Arts, Econometrics, Economies, Genealogy, Humanities, IJFS, JRFM, Laws, Religions, Risks, Social Sciences. For those journals, please follow the formatting guidelines on http://www.mdpi.com/authors/references
+% To cite two works by the same author: \citeauthor{ref-journal-1a} (\citeyear{ref-journal-1a}, \citeyear{ref-journal-1b}). This produces: Whittaker (1967, 1975)
+% To cite two works by the same author with specific pages: \citeauthor{ref-journal-3a} (\citeyear{ref-journal-3a}, p. 328; \citeyear{ref-journal-3b}, p.475). This produces: Wong (1999, p. 328; 2000, p. 475)
+
+%=====================================
+% References, variant B: external bibliography
 %=====================================
 $if(bibliography)$
 \reftitle{References}
@@ -256,31 +276,20 @@ $if(bibliography)$
 \bibliography{$bibliography$}
 $endif$
 
-%=====================================
-% References, variant B: internal bibliography
-%=====================================
-
-% If authors have biography, please use the format below
-%\section*{Short Biography of Authors}
-%\bio
-%{\raisebox{-0.35cm}{\includegraphics[width=3.5cm,height=5.3cm,clip,keepaspectratio]{Definitions/author1.pdf}}}
-%{\textbf{Firstname Lastname} Biography of first author}
-%
-%\bio
-%{\raisebox{-0.35cm}{\includegraphics[width=3.5cm,height=5.3cm,clip,keepaspectratio]{Definitions/author2.jpg}}}
-%{\textbf{Firstname Lastname} Biography of second author}
-
-% The following MDPI journals use author-date citation: Arts, Econometrics, Economies, Genealogy, Humanities, IJFS, JRFM, Laws, Religions, Risks, Social Sciences. For those journals, please follow the formatting guidelines on http://www.mdpi.com/authors/references
-% To cite two works by the same author: \citeauthor{ref-journal-1a} (\citeyear{ref-journal-1a}, \citeyear{ref-journal-1b}). This produces: Whittaker (1967, 1975)
-% To cite two works by the same author with specific pages: \citeauthor{ref-journal-3a} (\citeyear{ref-journal-3a}, p. 328; \citeyear{ref-journal-3b}, p.475). This produces: Wong (1999, p. 328; 2000, p. 475)
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% optional
+$if(sampleavailability)$
+\sampleavailability{$sampleavailability$}
+$endif$
+
 %% for journal Sci
 %\reviewreports{\\
 %Reviewer 1 comments and authors’ response\\
 %Reviewer 2 comments and authors’ response\\
 %Reviewer 3 comments and authors’ response
 %}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
+
 

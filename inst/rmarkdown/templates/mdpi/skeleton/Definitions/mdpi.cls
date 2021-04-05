@@ -21,7 +21,7 @@
 
 %% IDENTIFICATION
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mdpi}[02/18/2021 MDPI paper class]
+\ProvidesClass{Definitions/mdpi}[03/24/2021 MDPI paper class]
 
  %% PRELIMINARY DECLARATIONS
 \LoadClass[10pt,a4paper]{article}
@@ -67,7 +67,7 @@
 
 %% To choose the journal
 % All journals (website name, full name, short name, DOI abbreviation, and ISSN + choice of continuous page numbers) are defined in an extra file. 
-\input{journalnames}
+\input{Definitions/journalnames}
 \DeclareOption{journal}{\ClassWarning{mdpi}{You used an invalid journal name or you have not specified the journal. The first option of the documentclass command specifies the journal. The word 'journal' should be replaced by one of the journal names specified in template.tex (in the comment 'Choose between the following MDPI journal').}} 
 
 %% To choose the type of manuscript
@@ -230,7 +230,6 @@
 		\OR \equal{\@journal}{econometrics}
 		\OR \equal{\@journal}{economies}
 		\OR \equal{\@journal}{genealogy}
-		\OR \equal{\@journal}{histories}
 		\OR \equal{\@journal}{humanities}
 		\OR \equal{\@journal}{ijfs}
 		\OR \equal{\@journal}{jintelligence}
@@ -245,10 +244,10 @@
 }
 
 \chicagostylejournals{%
-	\bibliographystyle{chicago2}
+	\bibliographystyle{Definitions/chicago2}
 	\bibpunct{(}{)}{;}{x}{}{}%
 	}{%
-	\bibliographystyle{mdpi}
+	\bibliographystyle{Definitions/mdpi}
 	\bibpunct{[}{]}{,}{n}{}{,}%
 	}%
 
@@ -390,7 +389,7 @@
 		\@TitleCitation. % Remove period if title ends with ? or ! or ...
 		\textit{\@journalshort} %
 		\textbf{\@pubyear}, %
-		\textit{\@pubvolume}, %
+		\textit{\@pubvolume},%
 		}
 	\ifthenelse{\equal{\@continuouspages}{\@empty}}{%
 		\@articlenumber.
@@ -529,7 +528,7 @@
 
 %% ORCID
 % Make Orcid icon
-\newcommand{\orcidicon}{\includegraphics[width=0.32cm]{logo-orcid.eps}}
+\newcommand{\orcidicon}{\includegraphics[width=0.32cm]{Definitions/logo-orcid.eps}}
 
 % Define link and button for each author
 \foreach \x in {A, ..., Z}{%
@@ -634,20 +633,20 @@
 			\OR \equal{\@arttype}{Book}}{}{%
 				\ifthenelse{\equal{\@status}{submit}}{%	
 					\hfill \href{https://www.mdpi.com}{%
-					\includegraphics[height=1cm]{logo-mdpi.eps}}%
+					\includegraphics[height=1cm]{Definitions/logo-mdpi.eps}}%
 					}{
 					\href{https://www.mdpi.com/journal/\@journal}{
-					\includegraphics[height=1.2cm]{\@journal-logo.eps}}%
+					\includegraphics[height=1.2cm]{Definitions/\@journal-logo.eps}}%
 					\hfill
 					\ifthenelse{\equal{\@journal}{proceedings}}{
 						\href{https://www.mdpi.com/journal/\@journal}{
-						\includegraphics[height=1.2cm]{logo-conference.eps}
+						\includegraphics[height=1.2cm]{Definitions/logo-conference.eps}
 						\hfill}
 						}{}
 					\ifthenelse{\equal{\@journal}{scipharm}}{%
-						\href{https://www.mdpi.com}{\includegraphics[height=1cm]{logo-mdpi-scipharm.eps}}%
+						\href{https://www.mdpi.com}{\includegraphics[height=1cm]{Definitions/logo-mdpi-scipharm.eps}}%
 						}{%
-						\href{https://www.mdpi.com}{\includegraphics[height=1cm]{logo-mdpi.eps}}%
+						\href{https://www.mdpi.com}{\includegraphics[height=1cm]{Definitions/logo-mdpi.eps}}%
 						}%
 					}%
 					\par
@@ -700,7 +699,7 @@
 		\fontsize{7}{7}\selectfont
 		\ifthenelse{\equal{\@status}{submit}}{%		
 			}{
-			\href{https://www.mdpi.com/\@ISSN/\@pubvolume/\@issuenum/\@articlenumber?type=check_update&version=1}{\includegraphics[height=.6cm]{logo-updates.pdf}}\par\vspace{3pt}
+			\href{https://www.mdpi.com/article/\@doinum?type=check_update&version=1}{\includegraphics[height=.6cm]{Definitions/logo-updates.pdf}}\par\vspace{3pt}
 				}
 			\textbf{Citation: }\papercitation
 			\par\vspace{12pt}
@@ -941,7 +940,7 @@
 	\fancyfoot[R]{
 		\footnotesize%
 		{\changeurlcolor{black}%
-		\href{http://www.mdpi.com/journal/\@journal}%
+		\href{https://www.mdpi.com/journal/\@journal}%
 		{www.mdpi.com/journal/\@journal}}%
 	}%
 	\renewcommand{\footrulewidth}{0.4pt}%
@@ -1000,8 +999,8 @@
 \newcommand{\reviewreports}[1]{%
 \vspace{6pt}\noindent{\fontsize{9}{11.2}\selectfont\textbf{Review Reports:} {#1}\par}}
 
-\newcommand{\abbreviations}[1]{%
-\vspace{12pt}\noindent{\selectfont\textbf{Abbreviations}\par\vspace{3pt}\noindent {\fontsize{9}{11.2}\selectfont #1}\par}}
+\newcommand{\abbreviations}[2]{\vspace{12pt}\noindent{\selectfont\textbf{#1}}{%
+\par\vspace{3pt}\noindent{\fontsize{9}{11.2}\selectfont #2}\par}}
 
 % Standby command for adding paragraph in back matter part
 \newcommand{\specialsection}[2]{%
@@ -1272,7 +1271,7 @@
 	}{}%
 
 %% Link to supplementary material: www.mdpi.com/ISSN-number/volume-number/issue-number/article-number	
-\newcommand{\linksupplementary}[1]{\url{https://www.mdpi.com/\@ISSN/\@pubvolume/\@issuenum/\@articlenumber/#1}}
+\newcommand{\linksupplementary}[1]{\url{https://www.mdpi.com/article/\@doinum/#1}}
 
 
 %%%% Header and footer (all pages except the first)
@@ -1384,9 +1383,9 @@
 			}{%
 			\href{https://creativecommons.org/}{%
 				\ifthenelse{\equal{\@journal}{ijtpp}}{%
-					\includegraphics[width=2 cm]{logo-ccby-nc-nd.eps}%
+					\includegraphics[width=2 cm]{Definitions/logo-ccby-nc-nd.eps}%
 					}{%
-					\includegraphics[width=2 cm]{logo-ccby.eps}
+					\includegraphics[width=2 cm]{Definitions/logo-ccby.eps}
 					}
 				}\\
 				{\textbf{Copyright:~}\copyright \ {\@copyrightyear} by the \@authornum. %

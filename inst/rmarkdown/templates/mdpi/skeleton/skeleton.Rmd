@@ -58,6 +58,38 @@ authorcontributions: |
   experiments; X.X. and Y.Y. analyzed the data; W.W. contributed 
   reagents/materials/analysis tools; Y.Y. wrote the paper.'' Authorship must be
   limited to those who have contributed substantially to the work reported.
+funding: |
+  Please add: ``This research received no external funding'' or ``This research
+  was funded by NAME OF FUNDER grant number XXX.'' and  and ``The APC was 
+  funded by XXX''. Check carefully that the details given are accurate and use 
+  the standard spelling of funding agency names 
+  at https://search.crossref.org/funding, 
+  any errors may affect your future funding.
+institutionalreview: |
+  In this section, please add the Institutional Review Board Statement and 
+  approval number for studies involving humans or   animals. Please note that 
+  the Editorial Office might ask you for further information. Please add 
+  ``The study was conducted according to the guidelines of the Declaration of 
+  Helsinki, and approved by the Institutional Review Board (or Ethics Committee) 
+  of NAME OF INSTITUTE (protocol code XXX and date of approval).'' OR ``Ethical 
+  review and approval were waived for this study, due to REASON (please provide 
+  a detailed justification).'' OR ``Not applicable'' for studies not involving 
+  humans or animals. You might also choose to exclude this statement if the 
+  study did not involve humans or animals.
+informedconsent: |
+  Any research article describing a study involving humans should contain this 
+  statement. Please add ``Informed consent was obtained from all subjects 
+  involved in the study.'' OR ``Patient consent was waived due to REASON 
+  (please provide a detailed justification).'' OR ``Not applicable'' for studies
+  not involving humans. You might also choose to exclude this statement if the 
+  study did not involve humans.
+dataavailability: |
+  In this section, please provide details regarding where data supporting 
+  reported results can be found, including links to publicly archived datasets 
+  analyzed or generated during the study. Please refer to suggested Data 
+  Availability Statements in section ``MDPI Research Data Policies'' 
+  at https://www.mdpi.com/ethics. You might choose to exclude this statement 
+  if the study did not report any data.
 conflictsofinterest: |
   Declare conflicts of interest or state 'The authors declare no conflict of 
   interest.' Authors must identify and declare any personal circumstances or
@@ -85,7 +117,7 @@ output: rticles::mdpi_article
 
 # Version
 
-This Rmd-skeleton uses the mdpi Latex template published 2019/02. 
+This Rmd-skeleton uses the mdpi Latex template published 2021/01. 
 However, the official template gets more frequently updated than the 'rticles'
 package. Therefore, please make sure prior to paper submission, that you're 
 using the most recent .cls, .tex and .bst files 
@@ -137,19 +169,26 @@ All figures and tables should be cited in the main text as Figure 1, Table 1, et
 \end{figure}
 
 
-\begin{table}[H]
-\caption{This is a table caption. Tables should be placed in the main text near to the first time they are cited.}
-\centering
-%% \tablesize{} %% You can specify the fontsize here, e.g.  \tablesize{\footnotesize}. If commented out \small will be used.
+The MDPI table float is called specialtable and can be specified in Latex as follows:
+
+\begin{specialtable}[H]
+\caption{This is a table caption. Tables should be placed in the main text near to the first time they are~cited.\label{tab1}}
+%%% \tablesize{} %% You can specify the fontsize here, e.g., \tablesize{\footnotesize}. If commented out \small will be used.
 \begin{tabular}{ccc}
 \toprule
 \textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}\\
 \midrule
-entry 1		& data			& data\\
-entry 2		& data			& data\\
+Entry 1		& Data			& Data\\
+Entry 2		& Data			& Data\\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{specialtable}
+
+Note that using default Markdown tables will put these in a normal table environment, you can use knitr::kable with the table.envir argument, for example:
+```{r}
+knitr::kable(mtcars[1:5, 1:3], table.envir = "specialtable")
+
+```
 
 This is an example of an equation:
 
