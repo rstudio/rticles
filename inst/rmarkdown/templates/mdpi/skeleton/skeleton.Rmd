@@ -160,6 +160,8 @@ Numbered lists can be added as follows:
 
 The text continues here.
 
+## Figures, Tables and Schemes
+
 All figures and tables should be cited in the main text as Figure 1, Table 1, etc.
 
 \begin{figure}[H]
@@ -193,6 +195,9 @@ knitr::kable(mtcars[1:5, 1:3], format = "latex", table.envir = "specialtable",
              align='ccc', centering = FALSE)
 ```
 
+Note also that longtable will not work in the two column format, see [here](https://tex.stackexchange.com/questions/161431/how-to-solve-longtable-is-not-in-1-column-mode-error) for some workarounds which you can pass to the preamble.tex (see [here](https://bookdown.org/yihui/rmarkdown-cookbook/latex-preamble.html) for more details. 
+
+## Formatting of Mathematical Components
   
 This is an example of an equation:
 
@@ -200,16 +205,39 @@ This is an example of an equation:
 \mathbb{S}
 \end{equation}
 <!-- If the documentclass option "submit" is chosen, please insert a blank line before and after any math environment (equation and eqnarray environments). This ensures correct linenumbering. The blank line should be removed when the documentclass option is changed to "accept" because the text following an equation should not be a new paragraph. -->
+the text following an equation need not be a new paragraph. Please punctuate equations as regular text.
 
-<!-- Please punctuate equations as regular text. Theorem-type environments (including propositions, lemmas, corollaries etc.) can be formatted as follows: -->
-Example of a theorem:
+This is the example 2 of equation:
+
+```{=latex}
+\end{paracol}
+\nointerlineskip
+\begin{equation}
+a = b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u + v + w + x + y + z
+\end{equation}
+```
+
+
+<!-- % Example of a figure that spans the whole page width (the commands \widefigure and \begin{paracol}{2}, \linenumbers, and\switchcolumn need to be present). The same concept works for tables, too. -->
+```{=latex}
+\begin{figure}[H]	
+\widefigure
+\includegraphics[width=15 cm]{Definitions/logo-mdpi}
+\caption{This is a wide figure.\label{fig2}}
+\end{figure}  
+\begin{paracol}{2}
+\linenumbers
+\switchcolumn
+```
+
+Theorem-type environments (including propositions, lemmas, corollaries etc.) can be formatted as follows:
+
 \begin{Theorem}
 Example text of a theorem.
 \end{Theorem}
 
 The text continues here. Proofs must be formatted as follows:
 
-Example of a proof:
 \begin{proof}[Proof of Theorem 1]
 Text of the proof. Note that the phrase `of Theorem 1' is optional if it is clear which theorem is being referred to.
 \end{proof}

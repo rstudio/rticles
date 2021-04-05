@@ -19,21 +19,6 @@ $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
 
-% [MR: fix for two column format, a better way?]
-% https://tex.stackexchange.com/questions/161431/how-to-solve-longtable-is-not-in-1-column-mode-error
-% \usepackage{xtab}
-%
-% \makeatletter
-% \def\longtable{\@ifnextchar[\newlongtable@i \newlongtable@ii}
-% \def\newlongtable@i[#1]{%
-% \renewcommand{\endhead}{\ignorespaces}
-% \xtabular[#1]}
-% \def\newlongtable@ii{%
-% \renewcommand{\endhead}{\ignorespaces}
-% \xtabular}
-% \def\endlongtable{\endxtabular}
-% \makeatother
-
 %--------------------
 % Class Options:
 %--------------------
