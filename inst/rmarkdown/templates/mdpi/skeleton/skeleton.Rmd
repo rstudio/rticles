@@ -54,14 +54,14 @@ acknowledgement: |
 authorcontributions: |
   For research articles with several authors, a short paragraph specifying their 
   individual contributions must be provided. The following statements should be 
-  used ``X.X. and Y.Y. conceive and designed the experiments; X.X. performed the 
+  used 'X.X. and Y.Y. conceive and designed the experiments; X.X. performed the 
   experiments; X.X. and Y.Y. analyzed the data; W.W. contributed 
-  reagents/materials/analysis tools; Y.Y. wrote the paper.'' Authorship must be
+  reagents/materials/analysis tools; Y.Y. wrote the paper.' Authorship must be
   limited to those who have contributed substantially to the work reported.
 funding: |
-  Please add: ``This research received no external funding'' or ``This research
-  was funded by NAME OF FUNDER grant number XXX.'' and  and ``The APC was 
-  funded by XXX''. Check carefully that the details given are accurate and use 
+  Please add: 'This research received no external funding' or 'This research
+  was funded by NAME OF FUNDER grant number XXX.' and  and 'The APC was 
+  funded by XXX'. Check carefully that the details given are accurate and use 
   the standard spelling of funding agency names 
   at https://search.crossref.org/funding, 
   any errors may affect your future funding.
@@ -69,25 +69,25 @@ institutionalreview: |
   In this section, please add the Institutional Review Board Statement and 
   approval number for studies involving humans or   animals. Please note that 
   the Editorial Office might ask you for further information. Please add 
-  ``The study was conducted according to the guidelines of the Declaration of 
+  'The study was conducted according to the guidelines of the Declaration of 
   Helsinki, and approved by the Institutional Review Board (or Ethics Committee) 
-  of NAME OF INSTITUTE (protocol code XXX and date of approval).'' OR ``Ethical 
+  of NAME OF INSTITUTE (protocol code XXX and date of approval).' OR 'Ethical 
   review and approval were waived for this study, due to REASON (please provide 
-  a detailed justification).'' OR ``Not applicable'' for studies not involving 
+  a detailed justification).' OR 'Not applicable' for studies not involving 
   humans or animals. You might also choose to exclude this statement if the 
   study did not involve humans or animals.
 informedconsent: |
   Any research article describing a study involving humans should contain this 
-  statement. Please add ``Informed consent was obtained from all subjects 
-  involved in the study.'' OR ``Patient consent was waived due to REASON 
-  (please provide a detailed justification).'' OR ``Not applicable'' for studies
+  statement. Please add 'Informed consent was obtained from all subjects 
+  involved in the study.' OR 'Patient consent was waived due to REASON 
+  (please provide a detailed justification).' OR 'Not applicable' for studies
   not involving humans. You might also choose to exclude this statement if the 
   study did not involve humans.
 dataavailability: |
   In this section, please provide details regarding where data supporting 
   reported results can be found, including links to publicly archived datasets 
   analyzed or generated during the study. Please refer to suggested Data 
-  Availability Statements in section ``MDPI Research Data Policies'' 
+  Availability Statements in section 'MDPI Research Data Policies' 
   at https://www.mdpi.com/ethics. You might choose to exclude this statement 
   if the study did not report any data.
 conflictsofinterest: |
@@ -164,7 +164,7 @@ All figures and tables should be cited in the main text as Figure 1, Table 1, et
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=3 cm]{logo-mdpi}
+\includegraphics[width=3 cm]{Definitions/logo-mdpi}
 \caption{This is a figure, Schemes follow the same formatting. If there are multiple panels, they should be listed as: (\textbf{a}) Description of what is contained in the first panel. (\textbf{b}) Description of what is contained in the second panel. Figures should be placed in the main text near to the first time they are cited. A caption on a single line should be centered.}
 \end{figure}
 
@@ -184,11 +184,7 @@ Entry 2		& Data			& Data\\
 \end{tabular}
 \end{specialtable}
 
-Note that using default Markdown tables will put these in a normal table environment, you can use knitr::kable with the table.envir argument, for example:
-```{r}
-knitr::kable(mtcars[1:5, 1:3], table.envir = "specialtable")
-
-```
+Note that using default Markdown tables will put these in a normal table environment.
 
 This is an example of an equation:
 
