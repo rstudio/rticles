@@ -195,17 +195,16 @@ knitr::kable(mtcars[1:5, 1:3], format = "latex", table.envir = "specialtable",
              align='ccc', centering = FALSE)
 ```
 
-Note also that longtable will not work in the two column format, see [here](https://tex.stackexchange.com/questions/161431/how-to-solve-longtable-is-not-in-1-column-mode-error) for some workarounds which you can pass to the preamble.tex (see [here](https://bookdown.org/yihui/rmarkdown-cookbook/latex-preamble.html) for more details. 
+Note also that longtable will not work in the two column format, see [here](https://tex.stackexchange.com/questions/161431/how-to-solve-longtable-is-not-in-1-column-mode-error) for some workarounds, which you can pass to the preamble.tex (see [here](https://bookdown.org/yihui/rmarkdown-cookbook/latex-preamble.html) for more details). 
 
 ## Formatting of Mathematical Components
   
-This is an example of an equation:
-
+This is the example 1 of equation:
 \begin{equation}
-\mathbb{S}
+a = 1,
 \end{equation}
-<!-- If the documentclass option "submit" is chosen, please insert a blank line before and after any math environment (equation and eqnarray environments). This ensures correct linenumbering. The blank line should be removed when the documentclass option is changed to "accept" because the text following an equation should not be a new paragraph. -->
 the text following an equation need not be a new paragraph. Please punctuate equations as regular text.
+<!-- If the documentclass option "submit" is chosen, please insert a blank line before and after any math environment (equation and eqnarray environments). This ensures correct linenumbering. The blank line should be removed when the documentclass option is changed to "accept" because the text following an equation should not be a new paragraph. -->
 
 This is the example 2 of equation:
 
