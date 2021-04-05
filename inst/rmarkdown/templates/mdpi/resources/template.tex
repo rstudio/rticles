@@ -7,6 +7,28 @@
 
 % For posting an early version of this manuscript as a preprint, you may use "preprints" as the journal and change "submit" to "accept". The document class line would be, e.g., \documentclass[preprints,article,accept,moreauthors,pdftex]{mdpi}. This is especially recommended for submission to arXiv, where line numbers should be removed before posting. For preprints.org, the editorial staff will make this change immediately prior to posting.
 
+%% Some pieces required from the pandoc template
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{4pt}}
+\setlist[itemize]{leftmargin=*,labelsep=5.8mm}
+\setlist[enumerate]{leftmargin=*,labelsep=4.9mm}
+
+\usepackage{longtable}
+
+%% https://tex.stackexchange.com/questions/161431/how-to-solve-longtable-is-not-in-1-column-mode-error
+\usepackage{xtab}
+
+\makeatletter
+\def\longtable{\@ifnextchar[\newlongtable@i \newlongtable@ii}
+\def\newlongtable@i[#1]{%
+\renewcommand{\endhead}{\ignorespaces}
+\xtabular[#1]}
+\def\newlongtable@ii{%
+\renewcommand{\endhead}{\ignorespaces}
+\xtabular}
+\def\endlongtable{\endxtabular}
+\makeatother
+
 %--------------------
 % Class Options:
 %--------------------
