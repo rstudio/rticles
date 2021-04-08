@@ -29,6 +29,7 @@
 \alias{sim_article}
 \alias{springer_article}
 \alias{tf_article}
+\alias{josis_article}
 \title{R Markdown output formats for (journal) articles}
 \usage{
 acm_article(...)
@@ -130,6 +131,8 @@ sim_article(..., highlight = NULL, citation_package = "natbib")
 springer_article(..., keep_tex = TRUE, citation_package = "default")
 
 tf_article(..., keep_tex = TRUE, citation_package = "natbib")
+
+josis_article(..., keep_tex = TRUE, citation_package = "natbib")
 }
 \arguments{
 \item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \code{rmarkdown::\link{pdf_document}()}.}
@@ -354,6 +357,12 @@ Possible arguments for the YAML header are:
 \section{\code{tf_article}}{
  Format for creating submissions to a Taylor & Francis journal. Adapted from
 \samp{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
+}
+
+\section{\code{josis_article}}{
+ Format for creating submissions to the
+Journal of Spatial Information Science. Adapted from
+\samp{https://www.overleaf.com/latex/templates/journal-of-spatial-information-science-template/bmdhbgxnhtqx}.
 }
 
 \examples{

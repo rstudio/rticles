@@ -1,0 +1,12 @@
+---
+# title: "Habits"
+output: rticles::josis_article
+---
+
+
+
+
+\section{Introduction}
+
+Zoning systems have long been used for practical purposes.
+They have been integral to land ownership, rents and urban policies for centuries, forming the basis of a range of social and economic practices.
