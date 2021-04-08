@@ -13,7 +13,7 @@
 
 %%% JOSIS checks in typesetting
 %%% * All titles and sections lower case *EXCEPT short title  [ ]
-%%% * Remove author postal addresses, only have geographic places and institutions [ ] 
+%%% * Remove author postal addresses, only have geographic places and institutions [ ]
 %%% * Consistent use of Section, Figure, Table (capitalized and in full) [ ]
 %%% * 10 keywords (and all lower case) [ ]
 %%% * Remove all avoidable footnotes [ ]
@@ -22,19 +22,19 @@
 %%% * E.g. and i.e. followed by comma [ ]
 %%% * cf. followed by tilde [ ]
 %%% * Itemize and enumerate correctly punctuated [e.g., "1. x, 2. y, and 3. x." ]
-%%% * And/or lists using American English punctuation (e.g., "x, y, and z") [ ] 
+%%% * And/or lists using American English punctuation (e.g., "x, y, and z") [ ]
 %%% * Bibliography (e.g., en-dashes for number ranges, consistent "Proc.~" for Proceedings of..., etc.) []
-%%% * Acknowledgment style use section* [ ] 
-%%% * et al. no italics, but with dot  [ ] 
-%%% * All captions end with full stop  [ ] 
+%%% * Acknowledgment style use section* [ ]
+%%% * et al. no italics, but with dot  [ ]
+%%% * All captions end with full stop  [ ]
 %%% * Table captions under, not over table  [ ]
-%%% * Adjust urls with burlalt [ ] 
+%%% * Adjust urls with burlalt [ ]
 %%% * Check correct use of hyphens, emdashes, endashes  [ ]
-%%% * Perform spell check  [ ] 
+%%% * Perform spell check  [ ]
 
-%%% JOSIS checks directly before publication 
+%%% JOSIS checks directly before publication
 %%% Check DOI, page numbers on article and web site. [ ]
-%%% Update web site with final title, abstract, keywords. [ ] 
+%%% Update web site with final title, abstract, keywords. [ ]
 %%% Build with distiller for DOI links. [ ]
 
 
@@ -56,7 +56,7 @@
 \usepackage[table]{xcolor}
 \usepackage{amssymb,amsmath}
 
-\renewcommand{\topfraction}{0.9} 
+\renewcommand{\topfraction}{0.9}
 \renewcommand{\textfraction}{0.1}
 
 % Page setup and overhangs
@@ -69,9 +69,9 @@
 % Omit year if article in press
 % Omit number if article under review
 \josisdetails{%
-   number=N, year=YYYY, firstpage=xx, lastpage=yy, 
+   number=N, year=YYYY, firstpage=xx, lastpage=yy,
   doi={10.5311/JOSIS.YYYY.II.NNN},
-   received={December 24, 2015}, 
+   received={December 24, 2015},
    returned={February 25, 2016},
    revised={July 13, 2016},
    accepted={September 5, 2016}, }
@@ -98,7 +98,7 @@ colorlinks=true,
 linkcolor=black,
 citecolor=black,
 urlcolor=black
-} 
+}
 
 % Add the running author and running title information
 \runningauthor{\begin{minipage}{.9\textwidth}\centering Author1, Author2\end{minipage}}
@@ -110,11 +110,15 @@ urlcolor=black
 
 
 % Insert your own title
-\title{Long Title for JOSIS Article}
+$if(title)$
+\title{$title$}
+$endif$
 
 % Insert your manuscipts authors, affiliations, and addresses
 \author{Nameof Author1}
 \author{Nameof Author1}\affil{Department, Institution, Country}
+
+
 
 \maketitle
 
@@ -123,7 +127,7 @@ urlcolor=black
 
 % Add a short abstract of 150-250 words
 \begin{abstract}
-Add your article abstract here, 150-250 words. 
+Add your article abstract here, 150-250 words.
 \end{abstract}
 
 $body$
