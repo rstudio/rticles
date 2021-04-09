@@ -17,9 +17,142 @@ bibliography: josisexample.bib
 
 # Introduction
 
-Zoning systems have long been used for practical purposes.
-They have been integral to land ownership, rents and urban policies for centuries, forming the basis of a range of social and economic practices.
+This template provides a guide to formatting articles for submission to the Journal of Spatial Information Science, JOSIS, \burl{http://josis.org}. When preparing an article for submission, please follow this template closely, referring to past JOSIS articles (open access on the JOSIS web site) for further examples. 
+
+# Author guidelines
+
+
+
+\subsection{Manuscript preparation}
+Manuscripts must be written in English in a clear, direct, and active style. All pages must be numbered sequentially. The manuscript should be submitted as a PDF file based on this \LaTeX template. 
+
+\subsection{Title}
+The title should be concise, and must not be more than 20 words. Authors should also provide a short ``running title.''
+
+\subsection{Authors and institutional affiliations}
+Authors are required to provide their full names and their institutional affiliations, omitting postal addresses.
+
+\subsection{Abstract}
+The abstract should summarize the essential features of the article, and must not exceed 250 words for full papers. Abbreviations should be avoided in the abstract, and references should not be cited in the abstract.
+
+\subsection{Keywords}
+Your submission must include between five and ten keywords for your article. Accepted manuscripts must additionally specify further index terms as appropriate.
+
+\subsection{Main Text}
+The main text should be divided into separate sections, and may be further subdivided according to the areas to be discussed. The manuscript style must be uniform throughout the text using 11pt Palatino font. The first appearance of any abbreviations in the text should be preceded by the full term, unless it is a standard abbreviation or unit of measurement. Reference numbers should be given in square brackets in the text. Common or assimilated words from Latin or other languages should not be italicized, including per se, et al.
+
+\subsection{Style}
+
+Many examples of the journal style can be seen in existing JOSIS published articles, \url{http://josis.org}. Please pay particular attention to the following style requirements:
+
+\begin{itemize}
+\item Spelling: Please use standard American English spelling throughout.
+\item Punctuation: JOSIS uses standard American English punctuation. In
+particular, please ensure: 
+\begin{itemize}
+\item all lists items are always separated by
+punctuation (e.g., ``a, b, and c'' but not ``a, b and c''); and 
+\item commas and periods always appear inside quotation marks (e.g., ``x, y, and z.'' but not ``x, y, and z''.).
+\end{itemize}
+\item Capitalization: JOSIS style is to only use capitals only for the
+beginning of sentences, proper nouns, names (e.g., Norman, ArcMap) and,
+where appropriate, acronyms (e.g., GIS). Please avoid capitalization of
+other words (e.g., ``geographic information systems (GIS)'' but not
+``Geographic Information Systems (GIS)'') and in titles, including section headings (e.g., ``Affordance-based individuation of junctions in Open Street Map" but not ``Affordance-Based Individuation of Junctions in Open Street Map'').
+\end{itemize}
+
+
+\subsection{Figures}
+Figures and Tables must be numbered consecutively with a concise explanatory caption, and must be referred to in the main text with capitalized reference (e.g., ``Figure \ref{fig:1}'' or ``Table \ref{tab:1}''). Figures and Tables must appear in the text close to where they are first referred to in the main text. Figure and table captions come below the figure or table. Do not collect figures or tables together at the end of the article. Authors of accepted articles will need to supply high quality versions of all figures as separate .eps (encapsulated postscript) files.  
+
+<!-- \begin{figure}[tbh] -->
+<!-- \centering -->
+<!-- \includegraphics[width=\textwidth]{Figure1} -->
+<!-- \caption{An illustrative figure, after \cite{huck15.JOSIS}.}\label{fig:1} -->
+<!-- \end{figure} -->
+
+```{r fig1, fig.cap="Illustrative figure."}
+plot(1:9, (1:9)^2)
+```
+
+
+\begin{table}
+\centering
+\begin{tabular}{lrr}
+\hline
+Text column & Numerical column 1 & Numerical column 2\\
+\hline
+First row& 10 & 0.003\\
+Second row& 52& 10.037\\
+Third row& 729 & 150.315\\
+...& ...& ...\\
+\hline
+\end{tabular}
+\caption{Example table with preferred line rules and alignment.}\label{tab:1}
+\end{table}
+
+\subsection{Algorithms}
+
+Algorithms should be formatted using standard algorithm packages where possible, as in Algorithm~\ref{alg:1}. 
+
+\begin{algorithm}[htb]
+\caption{Example algorithm formatting after \cite{zhong16.IJGIS}} \label{alg:1}
+\footnotesize
+\begin{algorithmic} [1]                   % enter the algorithmic environment
+\Require A finite set of two-dimensional points $P \subset \mathbb{R} \times \mathbb{R}$ and one parameter $\lambda \in \mathbb{R}$
+\State Construct the Delaunay triangulation $DT(P)$ of $P$
+\State $\Delta \gets DT(P)$
+\State Construct the list $B$ of exterior edges of $DT(P)$
+\State Sort the list $B$ in descending order of edge length
+\State Initialize the $v\!-\!boundary$ function
+\State Set the root ($r$) of $\mathbf{T}_{{\chi}}(P,\, \lambda)$ to be \{edge = $\emptyset$, oppositeVertex = $\emptyset$, length = $\emptyset$\} 
+\State Construct the list of parent nodes ($PN$) for the elements in $B$
+\State Set each element in $PN$ to be $r$
+\State $O(P,\, \lambda) \gets \emptyset$
+\While{$B$ is not empty} 
+	\State $e = \{d_1,\, d_2\} \gets$ pop($B$)
+	\State $p \gets$ pop($PN$)
+	\State $o \gets$ opposite vertex of $e$ in $\Delta$
+	\State $N \gets$ \{edge = $e$, oppositeVertex = $o$, length = $||e||$\}
+	\State Insert $N$ in $\mathbf{T}_{{\chi}}(P,\, \lambda)$ as a child of $p$
+	\State $node(d_1) \gets N$
+	\State $node(d_2) \gets N$
+	\State Append $N$ to $O(P,\, \lambda)$
+	\If{$||e|| > \lambda$ \textbf{and} $v\!-\!boundary(o) = false$}
+		\State Remove $e$ from $\Delta$
+		\State $v\!-\!boundary(o) = true$
+		\State Insert the arms of $e$ in $\Delta$ into $B$ in order of edge length
+		\State Insert $N$ into $PN$ at the corresponding position of the arms of $e$ in $B$ 
+	\EndIf
+\EndWhile
+\State \textbf{Return} $\chi(P,\, \lambda)$ formed by leaves of $\mathbf{T}_{{\chi}}(P,\, \lambda)$, $DT(P)$, $\mathbf{T}_{{\chi}}(P,\, \lambda)$ and $O(P,\, \lambda)$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Footnotes}
+Footnotes are strongly discouraged in text. Where footnotes must be used, they should be numbered consecutively. 
 
 # References
 
 References must be listed in the numerical system (ACM). Citations must be numbered sequentially [in square brackets] in the main text. Full numbered references must be listed in the reference section in alphabetical order. The reference numbers must be finalized and the bibliography must be fully formatted before submission. Examples of citation styles included in the bibliography for this document include journal articles \cite{overEtAl2010,arkin}, authored books \cite{bailey}, edited books \cite{miller09.BOOK}, articles in proceedings \cite{champion11}, articles in books or collections \cite{Grosso12}, theses \cite{ruas99}, technical reports \cite{blasertr}, and web resources \cite{web}. 
+
+
+\subsection{DOIs}
+
+All JOSIS articles must list the DOI of all references, where a DOI exists, see
+\url{http://josis.org/index.php/josis/about/submissions#authorGuidelines} for examples. Please check carefully to add the DOIs for cited references,
+adding DOIs to all references that have one. DOIs may be added in the ``doi'' field of the bibtex file.
+
+DOIs can be found via \url{http://www.crossref.org/guestquery/} as well as many
+other search engines and publisher pages (e.g., Scopus, SpringerLink).
+
+
+\section{About JOSIS}
+
+The Journal of Spatial Information Science (JOSIS) is an international, interdisciplinary, open-access journal dedicated to publishing high-quality, original research articles in spatial information science. The journal aims to publish research spanning the theoretical foundations of spatial and geographical information science, through computation with geospatial information, to technologies for geographical information use.
+
+JOSIS encourages submissions from topics including, but not limited to spatial and spatiotemporal information systems; computational geometry, geocomputation, spatial algorithms; geovisualization, cartography, and geographical user interfaces; computing with spatiotemporal information under uncertainty; spatial cognition and qualitative spatial reasoning; spatial data models and structures; conceptual models of space and geoontology; distributed and parallel spatial computing, web-based GIS, and interoperability; context- and location-aware computing; and applications to GIS, spatial databases, location-based services, geosensor networks, and geosensor web. The journal publishes full-length original research articles, as well as survey-style review papers. In addition, the journal publishes shorter articles in three sections: reports from community activities, letters to the editors, and book reviews.
+
+\section*{Acknowledgments}
+
+Acknowledgments appear in a separate unnumbered section before the bibliography. Please acknowledge anyone (individual/company/institution) who has contributed to the study, including substantial contributions to the conception, design, acquisition of data; analysis and interpretation of data; drafting the manuscript; or provided critical comments resulting in revisions to content. For each author, please list the source(s) of any funding or financial contributions related to the study.

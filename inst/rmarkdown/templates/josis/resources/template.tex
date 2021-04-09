@@ -65,6 +65,12 @@
 \clubpenalty=10000
 \hyphenpenalty=75
 
+% For figures and code when knitting from .Rmd:
+% https://stackoverflow.com/questions/41052687/
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
 % Article details for accepted manuscripts will be added by editorial staff
 % Omit year if article in press
 % Omit number if article under review
