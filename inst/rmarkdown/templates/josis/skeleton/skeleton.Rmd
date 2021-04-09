@@ -2,6 +2,10 @@
 title: "Long Title for JOSIS Article"
 runningtitle: "Short Title for JOSIS Article"
 output: rticles::josis_article
+# to use bookdown cross references
+# output:
+#   bookdown::pdf_book:
+#     base_format: rticles::josis_article
 author1: Nameof Author1
 affil1: Department, Institution, Country
 author2: Nameof Author2
@@ -18,6 +22,21 @@ bibliography: josisexample.bib
 # Introduction
 
 This template provides a guide to formatting articles for submission to the Journal of Spatial Information Science, JOSIS, \burl{http://josis.org}. When preparing an article for submission, please follow this template closely, referring to past JOSIS articles (open access on the JOSIS web site) for further examples. 
+
+# RMarkdown
+
+The template can handle bullet points:
+
+- a
+- b
+
+And tables (see Table \@ref(tab:t1)):
+
+```{r t1}
+knitr::kable(head(mtcars), caption = "Test", booktabs = TRUE)
+```
+
+You can use concise citation syntax, e.g. [@champion11].
 
 # Author guidelines
 
