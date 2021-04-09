@@ -425,7 +425,7 @@ tf_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
 #' \samp{https://www.overleaf.com/latex/templates/journal-of-spatial-information-science-template/bmdhbgxnhtqx}.
 #' @export
 #' @rdname article
-josis_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
+josis_article <- function(..., keep_tex = TRUE, citation_package = 'default') {
   pdf_document_format(
     "josis", keep_tex = keep_tex, citation_package = citation_package, ...
   )

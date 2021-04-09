@@ -102,7 +102,7 @@ urlcolor=black
 
 % Add the running author and running title information
 \runningauthor{\begin{minipage}{.9\textwidth}\centering Author1, Author2\end{minipage}}
-\runningtitle{Short Title for JOSIS Article}
+\runningtitle{$runningtitle$}
 
 % Document begins
 \begin{document}
@@ -115,21 +115,28 @@ $if(title)$
 $endif$
 
 % Insert your manuscipts authors, affiliations, and addresses
-\author{Nameof Author1}
-\author{Nameof Author1}\affil{Department, Institution, Country}
-
-
+$if(author1)$
+\author{$author1$}\affil{$affil1$}
+$endif$
+$if(author2)$
+\author{$author2$}\affil{$affil2$}
+$endif$
 
 \maketitle
 
 % Add 5-10 keywords for every submission
-\keywords{add, five, to, ten, comma, separated, keywords}
+\keywords{$keywords$}
 
 % Add a short abstract of 150-250 words
 \begin{abstract}
-Add your article abstract here, 150-250 words.
+$abstract$
 \end{abstract}
 
 $body$
+
+$if(bibliography)$
+\bibliographystyle{josisacm}
+\bibliography{$bibliography$}
+$endif$
 
 \end{document}

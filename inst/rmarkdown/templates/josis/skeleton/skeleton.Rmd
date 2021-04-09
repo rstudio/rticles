@@ -1,12 +1,22 @@
 ---
-# title: "Habits"
+title: "Long Title for JOSIS Article"
+runningtitle: "Short Title for JOSIS Article"
 output: rticles::josis_article
+author1: Nameof Author1
+affil1: Department, Institution, Country
+author2: Nameof Author2
+affil2: Department, Institution, Country
+keywords: "add, five, to, ten, comma, separated, keywords"
+abstract: "Add your article abstract here,
+  150-250 words."
+bibliography: josisexample.bib
 ---
 
-
-
-
-\section{Introduction}
+# Introduction
 
 Zoning systems have long been used for practical purposes.
 They have been integral to land ownership, rents and urban policies for centuries, forming the basis of a range of social and economic practices.
+
+# References
+
+References must be listed in the numerical system (ACM). Citations must be numbered sequentially [in square brackets] in the main text. Full numbered references must be listed in the reference section in alphabetical order. The reference numbers must be finalized and the bibliography must be fully formatted before submission. Examples of citation styles included in the bibliography for this document include journal articles \cite{overEtAl2010,arkin}, authored books \cite{bailey}, edited books \cite{miller09.BOOK}, articles in proceedings \cite{champion11}, articles in books or collections \cite{Grosso12}, theses \cite{ruas99}, technical reports \cite{blasertr}, and web resources \cite{web}. 
