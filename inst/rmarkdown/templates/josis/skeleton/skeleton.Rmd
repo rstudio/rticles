@@ -12,6 +12,9 @@ abstract: "Add your article abstract here,
 bibliography: josisexample.bib
 ---
 
+<!-- Created thanks to guidance at -->
+<!-- https://github.com/rstudio/rticles/blob/master/.github/PULL_REQUEST_TEMPLATE.md -->
+
 # Introduction
 
 Zoning systems have long been used for practical purposes.
