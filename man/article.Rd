@@ -132,7 +132,7 @@ springer_article(..., keep_tex = TRUE, citation_package = "default")
 
 tf_article(..., keep_tex = TRUE, citation_package = "natbib")
 
-josis_article(..., keep_tex = TRUE, citation_package = "natbib")
+josis_article(..., keep_tex = TRUE, citation_package = "default")
 }
 \arguments{
 \item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \code{rmarkdown::\link{pdf_document}()}.}
