@@ -1,6 +1,8 @@
 rticles 0.20
 ---------------------------------------------------------------------
 
+- New template `josis_article()` for the Journal of Spatial Information Science (#382)
+
 
 rticles 0.19
 ---------------------------------------------------------------------

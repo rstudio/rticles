@@ -233,6 +233,17 @@ jasa_article <- function(
   )
 }
 
+#' @section \code{josis_article}: Format for creating submissions to the
+#' Journal of Spatial Information Science. Adapted from
+#' \samp{https://www.overleaf.com/latex/templates/journal-of-spatial-information-science-template/bmdhbgxnhtqx}.
+#' @export
+#' @rdname article
+josis_article <- function(..., keep_tex = TRUE, citation_package = 'default') {
+  pdf_document_format(
+    "josis", keep_tex = keep_tex, citation_package = citation_package, ...
+  )
+}
+
 #' @section \code{lipics_article}: Format for creating submissions to
 #'   LIPIcs - Leibniz International Proceedings Informatics - articles.
 #'   Adapted from the official Instructions for Authors at
@@ -417,16 +428,5 @@ springer_article <- function(..., keep_tex = TRUE, citation_package = 'default')
 tf_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
   pdf_document_format(
     "tf", keep_tex = keep_tex, citation_package = citation_package, ...
-  )
-}
-
-#' @section \code{josis_article}: Format for creating submissions to the
-#' Journal of Spatial Information Science. Adapted from
-#' \samp{https://www.overleaf.com/latex/templates/journal-of-spatial-information-science-template/bmdhbgxnhtqx}.
-#' @export
-#' @rdname article
-josis_article <- function(..., keep_tex = TRUE, citation_package = 'default') {
-  pdf_document_format(
-    "josis", keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
