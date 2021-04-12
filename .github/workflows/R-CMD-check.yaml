@@ -31,8 +31,8 @@ jobs:
           # testing older pandoc versions
           - {os: ubuntu-20.04,   pandoc: '2.9.2.1', r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           - {os: ubuntu-20.04,   pandoc: '2.7.3',   r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   pandoc: '2.5',     r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   pandoc: '2.0.0.1', r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          # - {os: ubuntu-20.04,   pandoc: '2.5',     r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          # - {os: ubuntu-20.04,   pandoc: '2.0.0.1', r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           # testing other R versions
           - {os: ubuntu-20.04,   pandoc: '2.11.4',  r: 'oldrel',  rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           - {os: ubuntu-20.04,   pandoc: '2.11.4',  r: 'devel',   rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest", http-user-agent: "R/4.0.0 (ubuntu-20.04) R (4.0.0 x86_64-pc-linux-gnu x86_64 linux-gnu) on GitHub Actions" }
