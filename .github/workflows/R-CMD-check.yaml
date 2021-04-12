@@ -63,8 +63,12 @@ jobs:
         shell: Rscript {0}
 
       - uses: r-lib/actions/setup-pandoc@v1
+        if: matrix.config.pandoc != 'devel'
         with:
           pandoc-version: ${{ matrix.config.pandoc }}
+
+      - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
+        if: matrix.config.pandoc == 'devel'
 
       - uses: r-lib/actions/setup-tinytex@v1
 
