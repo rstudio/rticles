@@ -1,8 +1,11 @@
 rticles 0.20
 ---------------------------------------------------------------------
 
-- New template `josis_article()` for the Journal of Spatial Information Science (#382)
+- New template `josis_article()` for the Journal of Spatial Information Science (thanks, @Robinlovelace, #382)
 
+- remove warning in `joss_article()` about `citation_package` (thanks, @llrs, #389).
+
+- fix an issue with `rjournal_article()` template to insert newline in author's block only if a field exist (thanks, @huizezhang-sherry, #387)
 
 rticles 0.19
 ---------------------------------------------------------------------
