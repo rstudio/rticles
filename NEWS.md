@@ -1,6 +1,7 @@
 rticles 0.20
 ---------------------------------------------------------------------
 
+- fix an issue with `rjournal_article()` template to insert newline in author's block only if a field exist (thanks, @huizezhang-sherry, #387)
 
 rticles 0.19
 ---------------------------------------------------------------------
