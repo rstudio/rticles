@@ -1,6 +1,8 @@
 rticles 0.20
 ---------------------------------------------------------------------
 
+- Fix issue with Pandoc's citation processing by updating all templates with last relevant changes from Pandoc's default template (thanks, @BlackEdder, @dahrens, #390)
+
 - remove warning in `joss_article()` about `citation_package` (thanks, @llrs, #389).
 
 - fix an issue with `rjournal_article()` template to insert newline in author's block only if a field exist (thanks, @huizezhang-sherry, #387)
