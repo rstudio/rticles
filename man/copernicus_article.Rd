@@ -16,7 +16,8 @@ copernicus_article(
 copernicus_journal_abbreviations(journal_name = "*")
 }
 \arguments{
-\item{...}{Additional arguments to \code{rmarkdown::pdf_document()}.}
+\item{...}{Additional arguments to \code{rmarkdown::pdf_document()}. \bold{Note}: \code{extra_dependencies} are not
+allowed as Copernicus does not support additional packages included via \code{\\usepackage{}}.}
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 

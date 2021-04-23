@@ -3,7 +3,8 @@
 #' Format for creating submissions to Copernicus journals.
 #'
 #' @inheritParams rmarkdown::pdf_document
-#' @param ... Additional arguments to \code{rmarkdown::pdf_document()}.
+#' @param ... Additional arguments to \code{rmarkdown::pdf_document()}. \bold{Note}: \code{extra_dependencies} are not
+#' allowed as Copernicus does not support additional packages included via \code{\\usepackage{}}.
 #' @param journal_name A regular expression to filter the by the journal name, see \code{pattern} in \code{\link[base]{grep}}; defaults to \code{*}.
 #'
 #' @return An R Markdown output format.
@@ -55,6 +56,11 @@ copernicus_article <- function(
     "-auto_identifiers"    # disables \hypertarget commands
   )
 ) {
+  if("extra_dependencies" %in% names(list(...)))
+    stop("Copernicus does not support additional LaTeX packages and options!
+          >> Please remove 'extra_dependencies' from your YAML header!",
+         call. = FALSE)
+
   pdf_document_format(
     "copernicus", citation_package = citation_package,
     keep_tex = keep_tex, highlight = highlight, md_extensions = md_extensions, ...
