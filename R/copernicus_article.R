@@ -57,7 +57,7 @@ copernicus_article <- function(
   )
 ) {
   if("extra_dependencies" %in% names(list(...)))
-    stop("Copernicus does not support additional LaTeX packages and options!
+    warning("Copernicus does not support additional LaTeX packages and options!
           >> Please remove 'extra_dependencies' from your YAML header!",
          call. = FALSE)
 
