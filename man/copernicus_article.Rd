@@ -61,7 +61,9 @@ Therefore, please keep the following in mind:
   \item Please use only commands in which words, numbers, etc. are within braces (e.g. \code{\\textrm{TEXT}} instead of \code{{\\rm TEXT}}).
   \item For algorithms, please use the syntax given in template.tex or provide your algorithm as a figure.
   \item Please do not define new commands.
-  \item The most commonly used packages (\code{\\usepackage{}}) are integrated in the \code{copernicus.cls}. Some other packages often used by the community are defined in template.tex. Please do not insert additional ones in your *.tex file.
+  \item Supported packages (\code{\\usepackage{}}) are already integrated in the \code{copernicus.cls}.  Please do not insert additional ones in your \code{*.tex} file.
+  \item If you opt for syntax highlighting for your preprint or other reasons, please do not forget to use
+   \code{highlight = NULL} for your final file upload once your manuscript was accepted for publication.
   \item Spaces in labels (\code{\\label{}}) are not allowed; please make sure that no label name is assigned more than once.
   \item Please do not use \code{\\paragraph{}}; only \code{\\subsubsection{}} is allowed.
   \item It is not possible to add tables in colour.
