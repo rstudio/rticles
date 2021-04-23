@@ -8,6 +8,7 @@
 copernicus_article(
   ...,
   keep_tex = TRUE,
+  highlight = NULL,
   citation_package = "natbib",
   md_extensions = c("-autolink_bare_uris", "-auto_identifiers")
 )
@@ -18,6 +19,10 @@ copernicus_journal_abbreviations(journal_name = "*")
 \item{...}{Additional arguments to \code{rmarkdown::pdf_document()}.}
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
+
+\item{highlight}{Syntax highlighting style. Supported styles include
+"default", "tango", "pygments", "kate", "monochrome", "espresso",
+"zenburn", and "haddock". Pass \code{NULL} to prevent syntax highlighting.}
 
 \item{citation_package}{The LaTeX package to process citations, \code{natbib}
 or \code{biblatex}. Use \code{default} if neither package is to be used,
@@ -42,13 +47,13 @@ This was adapted from
 
 An number of required and optional manuscript sections, e.g. \code{acknowledgements}, \code{competinginterests}, or \code{authorcontribution}, must be declared using the respective properties of the R Markdown header - see skeleton file.
 
-\strong{Version:} Based on copernicus_package.zip in the version 5.3, 18 February 2019, using \code{copernicus.cls} in version 8.82.
+\strong{Version:} Based on Copernicus_package.zip in the version 6.2, 15 January 2021, using \code{copernicus.cls} in version 9.25.
 
-\strong{Copernicus journal abbreviations:} You can use the function \code{copernicus_journal_abbreviations()} to get the journal abbreviation for all journals supported by the copernicus article template.
+\strong{Copernicus journal abbreviations:} You can use the function \code{copernicus_journal_abbreviations()} to get the journal abbreviation for all journals supported by the Copernicus article template.
 
 \strong{Important note:} The online guidelines by Copernicus are the official resource.
 Copernicus is not responsible for the community contributions made to support the template in this package.
-Copenicus converts all typeset TeX files into XML, the expressions and markups have to be highly standardized.
+Copernicus converts all typeset TeX files into XML, the expressions and markups have to be highly standardized.
 Therefore, please keep the following in mind:
 
 \itemize{
@@ -56,7 +61,7 @@ Therefore, please keep the following in mind:
   \item Please use only commands in which words, numbers, etc. are within braces (e.g. \code{\\textrm{TEXT}} instead of \code{{\\rm TEXT}}).
   \item For algorithms, please use the syntax given in template.tex or provide your algorithm as a figure.
   \item Please do not define new commands.
-  \item The most commonly used packages (\code{\\usepackage{}}) are integrated in the copernicus.cls. Some other packages often used by the community are defined in template.tex. Please do not insert additional ones in your *.tex file.
+  \item The most commonly used packages (\code{\\usepackage{}}) are integrated in the \code{copernicus.cls}. Some other packages often used by the community are defined in template.tex. Please do not insert additional ones in your *.tex file.
   \item Spaces in labels (\code{\\label{}}) are not allowed; please make sure that no label name is assigned more than once.
   \item Please do not use \code{\\paragraph{}}; only \code{\\subsubsection{}} is allowed.
   \item It is not possible to add tables in colour.
