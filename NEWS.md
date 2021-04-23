@@ -1,5 +1,7 @@
 rticles 0.20
 ---------------------------------------------------------------------
+- Fixes a problem in the Copernicus Publications template that causes a manuscript to bounce back to the author during the typesetting step. This was triggered by the inclusion (unknown to the author) of non-supported LaTeX packages and commands if programming code was part of the manuscript using the standard 'rmarkdown' code support. Additionally, the template gained support for the `highlight` parameter of `rmarkdown::pdf_document` to enable or disable syntax 
+highlight (disabled by default, as required by Copernicus)
 
 
 rticles 0.19
