@@ -46,8 +46,6 @@ running:
 # This section is mandatory even if you declare that no competing interests are present.
 competinginterests: |
   The authors declare no competing interests.
-# OPTIONAL:
-algorithms: true
 # See https://publications.copernicus.org/for_authors/licence_and_copyright.html, normally used for transferring the copyright, if needed. 
 # Note: additional copyright statements for affiliated software or data need to be placed in the data availability section. 
 copyrightstatement: |
