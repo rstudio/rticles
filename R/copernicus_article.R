@@ -48,14 +48,14 @@
 #' }
 #' @export
 copernicus_article <- function(
-  ..., keep_tex = TRUE, citation_package = "natbib", md_extensions = c(
+  ..., keep_tex = TRUE, highlight = NULL, citation_package = "natbib", md_extensions = c(
     "-autolink_bare_uris", # disables automatic links, needed for plain email in \correspondence
     "-auto_identifiers"    # disables \hypertarget commands
   )
 ) {
   pdf_document_format(
     "copernicus", citation_package = citation_package,
-    keep_tex = keep_tex, md_extensions = md_extensions, ...
+    keep_tex = keep_tex, highlight = highlight, md_extensions = md_extensions, ...
   )
 }
 

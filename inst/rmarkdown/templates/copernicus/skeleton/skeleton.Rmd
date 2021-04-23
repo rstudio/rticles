@@ -85,7 +85,9 @@ appendix: |
   
   Please add `\clearpage` between each table and/or figure. Further guidelines on figures and tables can be found below.
 output:
-  rticles::copernicus_article: default
+  rticles::copernicus_article: 
+    highlight: NULL
+    keep_tex: true
   bookdown::pdf_book:
     base_format: rticles::copernicus_article # for using bookdown features like \@ref()
 ---
@@ -93,7 +95,7 @@ output:
 \introduction[Introduction]
 
 Introduction text goes here.
-You can change the name of the section if neccessary using `\introduction[modified heading]`.
+You can change the name of the section if necessary using `\introduction[modified heading]`.
 
 The following settings can or must be configured in the header of this file and are bespoke for Copernicus manuscripts:
 
@@ -288,10 +290,13 @@ x & y & z\\
 \end{matrix}
 $$
 
-## ALGORITHM
+## ALGORITHM/PROGRAMMING CODE
 
-If you want to use algorithms, you can either enable the required packages in the header (the default, see `algorithms: true`), or make sure yourself that the \LaTeX packages `algorithms` and `algorithmicx` are installed so that `algorithm.sty` respectively `algorithmic.sty` can be loaded by the Copernicus template.
-Copernicus staff will remove all undesirable packages from your LaTeX source code, so please stick to using the header option, which only adds the two acceptable packages.
+If you want to use algorithms or programming code, you can either use the default 'rmarkdown' functionality, which includes the
+code in \LaTeX{} using the `verbatim` environment or using the \LaTeX{} packages `algorithms` and `algorithmicx`. Both need 
+to be available through your preferred \LaTeX{} distribution. 
+
+**Please note:** Copernicus does not support additional \LaTeX{} packages or new \LaTeX{} commands. This extends to syntax highlighting of source code. Therefore this template sets the parameter `highlights` in the YAML header to `NULL`. However, it might be desirable to have syntax highlight available in preprints or for others reasons. Please see `?rmarkdown::pdf_document` for available options.
 
 \begin{algorithm}
 \caption{Algorithm Caption}
