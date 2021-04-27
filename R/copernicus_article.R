@@ -56,10 +56,12 @@ copernicus_article <- function(
     "-auto_identifiers"    # disables \hypertarget commands
   )
 ) {
-  if("extra_dependencies" %in% names(list(...)))
-    warning("Copernicus does not support additional LaTeX packages and options!
+  if ("extra_dependencies" %in% names(list(...)))
+    warning(
+      "Copernicus does not support additional LaTeX packages and options!
           >> Please remove 'extra_dependencies' from your YAML header!",
-         call. = FALSE)
+      call. = FALSE
+    )
 
   pdf_document_format(
     "copernicus", citation_package = citation_package,
