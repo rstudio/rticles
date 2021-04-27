@@ -119,8 +119,23 @@ The following settings can or must be configured in the header of this file and 
 
 See the defaults and examples from the skeleton and the official Copernicus documentation for details.
 
-**Important**: Always double-check with the official manuscript preparation guidelines at [https://publications.copernicus.org/for_authors/manuscript_preparation.html](https://publications.copernicus.org/for_authors/manuscript_preparation.html), especially the sections "Technical instructions for LaTeX" and "Manuscript composition".
-Please contact Daniel Nüst, `daniel.nuest@uni-muenster.de`, with any problems.
+**Please note:** Per [their
+guidelines](https://publications.copernicus.org/for_authors/manuscript_preparation.html),
+Copernicus does not support additional \LaTeX{} packages or new \LaTeX{}
+commands than those defined in their `.cls` file. This means that you cannot add any extra dependencies and a warning will be thrown if so.  
+This extends to syntax highlighting of source code. Therefore this template sets
+the parameter `highlight` in the YAML header to `NULL` to deactivate Pandoc
+syntax highlighter. This prevent addition of external packages for highlighting
+inserted by Pandoc. However, it might be desirable to have syntax highlight
+available in preprints or for others reasons. Please see
+`?rmarkdown::pdf_document` for available options to activate highlighting.
+
+**Important**: Always double-check with the official manuscript preparation
+guidelines at
+[https://publications.copernicus.org/for_authors/manuscript_preparation.html](https://publications.copernicus.org/for_authors/manuscript_preparation.html),
+especially the sections "Technical instructions for LaTeX" and "Manuscript
+composition". Please contact Daniel Nüst, `daniel.nuest@uni-muenster.de`, with
+any problems.
 
 # Content section one
 
@@ -295,8 +310,6 @@ $$
 If you want to use algorithms or programming code, you can either use the default 'rmarkdown' functionality, which includes the
 code in \LaTeX{} using the `verbatim` environment or using the \LaTeX{} packages `algorithms` and `algorithmicx`. Both need 
 to be available through your preferred \LaTeX{} distribution. 
-
-**Please note:** Copernicus does not support additional \LaTeX{} packages or new \LaTeX{} commands. This extends to syntax highlighting of source code. Therefore this template sets the parameter `highlights` in the YAML header to `NULL`. However, it might be desirable to have syntax highlight available in preprints or for others reasons. Please see `?rmarkdown::pdf_document` for available options.
 
 \begin{algorithm}
 \caption{Algorithm Caption}
