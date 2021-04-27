@@ -1,6 +1,8 @@
 rticles 0.20
 ---------------------------------------------------------------------
 
+- `lipics_article()` now works with `bookdown::pdf_book()` as their is no more conflict in theorem environment definition. This requires **bookdown** 0.23 or higher (#392).
+
 - Update Copernicus Publications template to comply with editor's guidelines following a manuscript bounce back during the typesetting step. Copernicus does not allow to add any `\usepackage` command as they all are included in `copernicus.cls` for supported LaTeX packages. **This is leading to breaking changes with existing template - please follow the advice below**.
   - `algorithms: true` cannot be used anymore and as no more effect. `\usepackage{algorithmic}` and `\usepackage{algorithm}` has been removed from the template as the command are already done in `copernicus.cls`. Please, make sure `algorithms` and `algorithmcx` are installed.  
   - Additionally, the template gained support for the `highlight` parameter of `rmarkdown::pdf_document` to enable or disable syntax highlighting with Pandoc. To comply with the above guideline by Copernicus, it is disabled by default (`highlight: NULL`) to prevent Pandoc adding any more packages required for its highlighting. Syntax highlighting can be reactivating by using `highlight: "default"` in the YAML header as this can be desirable before submitting for typesetting. (thanks, @RLumSK, @nuest, #391).
