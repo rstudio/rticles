@@ -62,8 +62,9 @@
 % Web Ecology (we)
 % Wind Energy Science (wes)
 
-
-%% \usepackage commands included in the copernicus.cls:
+%% Please DO NOT add additional packages or LaTeX commands to the template. They
+%% are not supported by Coperncius. LaTeX packages already
+%% included in the copernicus.cls are:
 %\usepackage[german, english]{babel}
 %\usepackage{tabularx}
 %\usepackage{cancel}
@@ -110,11 +111,6 @@ $endif$
 %$for(header-includes)$
 %$header-includes$
 %$endfor$
-
-$if(algorithms)$
-\usepackage{algorithmic}
-\usepackage{algorithm}
-$endif$
 
 $if(highlighting-macros)$
 $highlighting-macros$
