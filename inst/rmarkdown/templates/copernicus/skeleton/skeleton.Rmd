@@ -307,9 +307,13 @@ $$
 
 ## ALGORITHM/PROGRAMMING CODE
 
-If you want to use algorithms or programming code, you can either use the default 'rmarkdown' functionality, which includes the
-code in \LaTeX{} using the `verbatim` environment or using the \LaTeX{} packages `algorithms` and `algorithmicx`. Both need 
-to be available through your preferred \LaTeX{} distribution. 
+If you want to use algorithms, you need to make sure yourself that the \LaTeX packages `algorithms` and `algorithmicx` are installed so that `algorithm.sty` respectively `algorithmic.sty` can be loaded by the Copernicus template. Both need to be available through your preferred \LaTeX{} distribution. With TinyTeX (or TeX Live), you can do so by running `tinytex::tlmgr_install(c("algorithms", "algorithmicx"))`
+
+```{r, echo = FALSE, eval = tinytex::is_tinytex()}
+tinytex::tlmgr_install(c("algorithms", "algorithmicx"))
+```
+
+Copernicus staff will no accept any additional packages from your LaTeX source code, so please stick to these two acceptable packages. They are needed to use the example below
 
 \begin{algorithm}
 \caption{Algorithm Caption}
