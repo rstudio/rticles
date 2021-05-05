@@ -1,4 +1,4 @@
-%% Journal of Open Research Software Latex template -- Created By Stephen Bonner and John Brennan, Durham Universtiy, UK.
+%% Journal of Open Research Software Latex template -- Created By Stephen Bonner and John Brennan, Durham Universtiy, UK and modified by Greg Pilgrim
 
 \documentclass{jors}
 
@@ -7,139 +7,19 @@
 \definecolor{mygray}{gray}{0.6}
 \renewcommand\headrule{}
 \rhead{\footnotesize 3}
-\rhead{\textcolor{gray}{UP JORS software Latex paper template version 0.1}}
+\rhead{\textcolor{gray}{UP JORS software RMD paper template version 0.1}}
+
+%% definitions
+\def\tightlist{}
+\usepackage{graphicx}
+
+%% Body of article
 
 \begin{document}
 
-{\bf Software paper for submission to the Journal of Open Research Software} \\
+{\bf Software paper for submission to the Journal of Open Research Software}
 
-To complete this template, please replace the blue text with your own. The paper has three main sections: (1) Overview; (2) Availability; (3) Reuse potential. \\
-
-Please submit the completed paper to: editor.jors@ubiquitypress.com
-
-\rule{\textwidth}{1pt}
-
-\section*{(1) Overview}
-
-\vspace{0.5cm}
-
-\section*{Title}
-
-\textcolor{blue}{The title of the software paper should focus on the software, e.g. “Text mining software from the X project”. If the software is closely linked to a specific research paper, then “Software from Paper Title” is appropriate. The title should be factual, relating to the functionality of the software and the area it relates to rather than making claims about the software, e.g. “Easy-to-use”.}
-
-\section*{Paper Authors}
-
-\textcolor{blue}{1. Last name, first name; (Lead/corresponding author first) \\
-2. Last name, first name; etc.}
-
-\section*{Paper Author Roles and Affiliations}
-\textcolor{blue}{1. First author role and affiliation \\
-2. Second author role and affiliation etc.}
-
-\section*{Abstract}
-
-\textcolor{blue}{A short (ca. 100 word) summary of the software being described: what problem the software addresses, how it was implemented and architected, where it is stored, and its reuse potential.}
-
-\section*{Keywords}
-
-\textcolor{blue}{keyword 1; keyword 2; etc. \\
-Keywords should make it easy to identify who and what the software will be useful for.}
-
-\section*{Introduction}
-
-\textcolor{blue}{An overview of the software, how it was produced, and the research for which it has been used, including references to relevant research articles. A short comparison with software which implements similar functionality should be included in this section. }
-
-\section*{Implementation and architecture}
-
-\textcolor{blue}{How the software was implemented, with details of the architecture where relevant. Use of relevant diagrams is appropriate. Please also describe any variants and associated implementation differences.}
-
-
-\section*{Quality control}
-
-\textcolor{blue}{Detail the level of testing that has been carried out on the code (e.g. unit, functional, load etc.), and in which environments. If not already included in the software documentation, provide details of how a user could quickly understand if the software is working (e.g. providing examples of running the software with sample input and output data). }
-
-\section*{(2) Availability}
-\vspace{0.5cm}
-\section*{Operating system}
-
-\textcolor{blue}{Please include minimum version compatibility.}
-
-\section*{Programming language}
-
-\textcolor{blue}{Please include minimum version compatibility.}
-
-\section*{Additional system requirements}
-
-\textcolor{blue}{E.g. memory, disk space, processor, input devices, output devices.}
-
-\section*{Dependencies}
-
-\textcolor{blue}{E.g. libraries, frameworks, incl. minimum version compatibility.}
-
-\section*{List of contributors}
-
-\textcolor{blue}{Please list anyone who helped to create the software (who may also not be an author of this paper), including their roles and affiliations.}
-
-\section*{Software location:}
-
-{\bf Archive} \textcolor{blue}{(e.g. institutional repository, general repository) (required – please see instructions on journal website for depositing archive copy of software in a suitable repository)} 
-
-\begin{description}[noitemsep,topsep=0pt]
-	\item[Name:] \textcolor{blue}{The name of the archive.}
-	\item[Persistent identifier:] \textcolor{blue}{e.g. DOI, handle, PURL, etc.}
-	\item[Licence:] \textcolor{blue}{Open license under which the software is licensed.}
-	\item[Publisher:]  \textcolor{blue}{Name of the person who deposited the software.}
-	\item[Version published:] \textcolor{blue}{The version number of the software archived.}
-	\item[Date published:] \textcolor{blue}{dd/mm/yy}
-\end{description}
-
-
-
-{\bf Code repository} \textcolor{blue}{(e.g. SourceForge, GitHub etc.) (required)}
-
-\begin{description}[noitemsep,topsep=0pt]
-	\item[Name:] \textcolor{blue}{The name of the archive.}
-	\item[Persistent identifier:] \textcolor{blue}{e.g. DOI, handle, PURL, etc.}
-	\item[Licence:] \textcolor{blue}{Open license under which the software is licensed.}
-	\item[Date published:] \textcolor{blue}{dd/mm/yy}
-\end{description}
-
-{\bf Emulation environment} \textcolor{blue}{(if appropriate)}
-
-\begin{description}[noitemsep,topsep=0pt]
-	\item[Name:] \textcolor{blue}{The name of the archive.}
-	\item[Persistent identifier:] \textcolor{blue}{e.g. DOI, handle, PURL, etc.}
-	\item[Licence:] \textcolor{blue}{Open license under which the software is licensed.}
-	\item[Date published:] \textcolor{blue}{dd/mm/yy}
-\end{description}
-
-\section*{Language}
-
-\textcolor{blue}{Language of repository, software and supporting files.}
-
-\section*{(3) Reuse potential}
-
-\textcolor{blue}{Please describe in as much detail as possible the ways in which the software could be reused by other researchers both within and outside of your field. This should include the use cases for the software, and also details of how the software might be modified or extended (including how contributors should contact you) if appropriate. Also you must include details of what support mechanisms are in place for this software (even if there is no support).}
-
-\section*{Acknowledgements}
-
-\textcolor{blue}{Please add any relevant acknowledgements to anyone else who supported the project in which the software was created, but did not work directly on the software itself.}
-
-\section*{Funding statement}
-
-\textcolor{blue}{If the software resulted from funded research please give the funder and grant number.}
-
-\section*{Competing interests}
-
-\textcolor{blue}{If any of the authors have any competing interests then these must be declared. The authors’ initials should be used to denote differing competing interests. For example: “BH has minority shares in [company name], which part funded the research grant for this project. All other authors have no competing interests." \\
-If there are no competing interests, please add the statement:
-“The authors declare that they have no competing interests.” }
-
-\section*{References}
-
-\textcolor{blue}{Please enter references in the Harvard style and include a DOI where available, citing them in the text with a number in square brackets, e.g. \\ }
-
-\textcolor{blue}{[1] Piwowar, H A 2011 Who Shares? Who Doesn't? Factors Associated with Openly Archiving Raw Research Data. PLoS ONE 6(7): e18657. DOI: \\ http://dx.doi.org/10.1371/journal.pone.0018657.}
+$body$
 
 \vspace{2cm}
 
@@ -152,7 +32,6 @@ Authors retain copyright and grant the journal right of first publication with t
 
 Authors are able to enter into separate, additional contractual arrangements for the non-exclusive distribution of the journal's published version of the work (e.g., post it to an institutional repository or publish it in a book), with an acknowledgement of its initial publication in this journal. \\
 
-By submitting this paper you agree to the terms of this Copyright Notice, which will apply to this submission if and when it is published by this journal.
-
+By submitting this paper you agree to the terms of this Copyright Notice, which will apply to this submission if and when it is published by this journal
 
 \end{document}
