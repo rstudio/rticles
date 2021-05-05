@@ -1,6 +1,6 @@
 rticles 0.20
 ---------------------------------------------------------------------
-
+- Add article template `jors_article()` for *Journal of Open Research Software* (JORS)
 
 rticles 0.19
 ---------------------------------------------------------------------
