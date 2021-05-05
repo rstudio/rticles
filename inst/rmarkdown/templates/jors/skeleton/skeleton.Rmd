@@ -6,11 +6,10 @@ header-includes:
 - \fancyhead[R]{\textcolor{gray}{UP JORS software paper template version 0.1}}
 - \fancyhead[L]{}
 - \fancypagestyle{plain}{\pagestyle{fancy}}
-output: 
-    pdf_document
+output: rticles::jors_article
 bibliography: references.bib
 # to use with bibliography manangement software like Zotero
-# csl: elsevier-harvard.csl
+csl: elsevier-harvard.csl
 # requires an elsevier-harvard.csl file in the same directory as this .rmd file
 # elsevier-harvard.csl file is available from https://www.zotero.org/styles?q=elsevier
 
@@ -139,7 +138,6 @@ If there are no competing interests, please add the statement:
 
 \textcolor{blue}{Please enter references in the Harvard style and include a DOI where available, citing them in the text with a number in square brackets, e.g.}
 
-|    [1] Piwowar, H A 2011 Who Shares? Who Doesn't? Factors Associated with Openly Archiving Raw Research |        Data. PLoS ONE 6(7): e18657. DOI: http://dx.doi.org/10.1371/journal.pone.0018657.
 
 \rule{\textwidth}{1pt}
 
