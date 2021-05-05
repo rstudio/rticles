@@ -51,7 +51,7 @@ Please submit the completed paper to: [editor.jors\@ubiquitypress.com](mailto:ed
 ### Keywords
 
 
-\textcolor{blue}{keyword 1; keyword 2; etc.
+\textcolor{blue}{keyword 1; keyword 2; etc.}
 
 ## Introduction
 
