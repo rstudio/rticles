@@ -1,12 +1,12 @@
 %%
-%% This is file `jors_2.bst',
+%% This is file `jors.bst',
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
 %%
 %% merlin.mbs  (with options: `ay,nat,seq-no,nm-rv,jnrlst,keyxyr,blkyear,note-yr,atit-u,volp-sp,num-xser,jnm-x,bkpg-x,isbn,issn,doi,ppx,xedn,xand,nfss,')
 %% ----------------------------------------
-%% *** journal of open research software ***
+%% *** Journal of Open Research Software (JORS) ***
 %%
 %% Copyright 1994-2011 Patrick W Daly
  % ===============================================================
@@ -1549,4 +1549,4 @@ FUNCTION {end.bib}
 EXECUTE {end.bib}
 %% End of customized bst file
 %%
-%% End of file `jors_2.bst'.
+%% End of file `jors.bst'.

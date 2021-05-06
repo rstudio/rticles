@@ -1,7 +1,7 @@
 ---
 # Journal of Open Research Software R Markdown template -- Created By Gregory A. Pilgrim
 bibliography: references.bib
-csl: jors.csl
+# csl: jors.csl
 output: rticles::jors_article
 ---
 
