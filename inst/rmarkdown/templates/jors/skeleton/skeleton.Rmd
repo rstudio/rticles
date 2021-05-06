@@ -1,7 +1,7 @@
 ---
 # Journal of Open Research Software R Markdown template -- Created By Gregory A. Pilgrim
 bibliography: references.bib
-csl: elsevier-harvard.csl
+csl: jors.csl
 output: rticles::jors_article
 ---
 
@@ -26,6 +26,7 @@ output: rticles::jors_article
 \section*{Abstract}
 <!-- A short (ca. 100 word) summary of the software being described: what problem the software addresses, how it was implemented and architected, where it is stored, and its reuse potential. -->
 
+xyz [@piwowar2011]
 
 \section*{Keywords}
 <!-- keyword 1; keyword 2; etc. -->
