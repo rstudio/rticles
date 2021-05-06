@@ -11,13 +11,13 @@ output: rticles::jors_article
 
 \section{Overview}
 
-\section*{Demonstration of RMD Template}
+\section*{Title}
 <!-- replace with title of your article -->
 <!-- The title of the software paper should focus on the software, e.g. "Text mining software from the X project". If the software is closely linked to a specific research paper, then "Software from Paper Title" is appropriate. The title should be factual, relating to the functionality of the software and the area it relates to rather than making claims about the software, e.g. "Easy-to-use". -->
 
 \section*{Paper Authors}
-<!-- 1. Last name, first name; (Lead/corresponding author first) -->
-<!-- 2. Last name, first name; etc. -->
+<!-- 1. Last name, first name (Lead/corresponding author first) -->
+<!-- 2. Last name, first name etc. -->
 
 \section*{Paper Author Roles and Affiliations}
 <!-- 1. First author role and affiliation -->
@@ -25,8 +25,6 @@ output: rticles::jors_article
 
 \section*{Abstract}
 <!-- A short (ca. 100 word) summary of the software being described: what problem the software addresses, how it was implemented and architected, where it is stored, and its reuse potential. -->
-
-xyz [@piwowar2011]
 
 \section*{Keywords}
 <!-- keyword 1; keyword 2; etc. -->
@@ -110,8 +108,7 @@ xyz [@piwowar2011]
 If there are no competing interests, please add the statement:
 "The authors declare that they have no competing interests." -->
 
-\section*{References}
-
-<!-- Please enter references in the Harvard style and include a DOI where available, citing them in the text with a number in square brackets, e.g.
-Piwowar, H A 2011 Who Shares? Who Doesn't? Factors Associated with Openly Archiving Raw Research Data. PLoS ONE 6(7): e18657. DOI: http://dx.doi.org/10.1371/journal.pone.0018657. -->
+<!-- References -->
+<!-- Reference format will be handled automatically for all references included in references.bib.  Format is as follows -->
+<!-- Piwowar, H A 2011 Who Shares? Who Doesn't? Factors Associated with Openly Archiving Raw Research Data. PLoS ONE 6(7): e18657. DOI: http://dx.doi.org/10.1371/journal.pone.0018657. -->
 
