@@ -1,4 +1,4 @@
-%% Journal of Open Research Software Latex template -- Created By Stephen Bonner and John Brennan, Durham Universtiy, UK and modified by Greg Pilgrim
+%% Journal of Open Research Software RMD Latex template -- Created by Greg Pilgrim based on a previous template by Stephen Bonner and John Brennan, Durham Universtiy, UK
 
 \documentclass{jors}
 
@@ -8,18 +8,20 @@
 \renewcommand\headrule{}
 \rhead{\footnotesize 3}
 \rhead{\textcolor{gray}{UP JORS software RMD paper template version 0.1}}
+\setlength{\headheight}{14.5pt}
+\fancyhead[L, C]{} % this prevents natbib from adding "References" to the L header after references section.  Also blanks C header becuase nothing should be there.
 
 %% definitions
 \def\tightlist{}
+
+% bibliography package - want a numbered in-text citation
+\usepackage[numbers]{natbib} % bibliography package
+
+% Enable the 'Shaded' regions used in figures and code chunks
 \usepackage{graphicx}
-\usepackage[numbers]{natbib}
-\setlength{\headheight}{14.49998pt}
 $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
-
-
-
 
 %% Body of article
 
@@ -35,6 +37,7 @@ $body$
 
 \bibliographystyle{jors}
 \bibliography{$bibliography$}
+
 
 \vspace{2cm}
 
