@@ -58,6 +58,8 @@ $endif$
 $if(natbib)$
 \usepackage{natbib}
 \bibliographystyle{plainnat}
+$if(biblio-style)$
+\bibliographystyle{$biblio-style$
 $else$
 \bibliographystyle{elsarticle-harv}
 $endif$
