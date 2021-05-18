@@ -57,11 +57,7 @@ $if(geometry)$
 $endif$
 $if(natbib)$
 \usepackage{natbib}
-$if(biblio-style)$
-\bibliographystyle{$biblio-style$}
-$else$
-\bibliographystyle{plainnat}
-$endif$
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $else$
 \bibliographystyle{elsarticle-harv}
 $endif$
@@ -210,5 +206,4 @@ $include-after$
 
 $endfor$
 \end{document}
-
 
