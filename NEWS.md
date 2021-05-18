@@ -1,6 +1,8 @@
 rticles 0.20
 ---------------------------------------------------------------------
 
+- `elsevier_article()` now supports `biblio-style` Pandoc's variable to set the natbib bibliography style in YAML header (thanks, @gregmacfarlane, #402).
+
 - Fix an issue with `rjournal_article()`. The `.R` file in output is now correctly overwritten on a new render if it existed from a previous render (thanks, @apreshill, #394).
 
 - Update Copernicus Publications template to comply with editor's guidelines following a manuscript bounce back during the typesetting step. Copernicus does not allow to add any `\usepackage` command as they all are included in `copernicus.cls` for supported LaTeX packages. **This is leading to breaking changes with existing template - please follow the advice below**.
