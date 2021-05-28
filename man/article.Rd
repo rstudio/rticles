@@ -15,11 +15,14 @@
 \alias{ctex}
 \alias{elsevier_article}
 \alias{frontiers_article}
+\alias{ims_article}
+\alias{jasa_article}
 \alias{lipics_article}
 \alias{mdpi_article}
 \alias{mnras_article}
 \alias{oup_article}
 \alias{peerj_article}
+\alias{pihph_article}
 \alias{plos_article}
 \alias{pnas_article}
 \alias{sage_article}
@@ -77,6 +80,22 @@ elsevier_article(
 
 frontiers_article(..., keep_tex = TRUE)
 
+ims_article(
+  journal = c("aoas", "aap", "aop", "aos", "sts"),
+  keep_tex = TRUE,
+  citation_package = "natbib",
+  md_extensions = c("-autolink_bare_uris"),
+  pandoc_args = NULL,
+  ...
+)
+
+jasa_article(
+  ...,
+  keep_tex = TRUE,
+  latex_engine = "xelatex",
+  citation_package = "natbib"
+)
+
 lipics_article(
   ...,
   latex_engine = "xelatex",
@@ -93,6 +112,13 @@ oup_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
 peerj_article(..., keep_tex = TRUE)
 
+pihph_article(
+  ...,
+  keep_tex = TRUE,
+  latex_engine = "xelatex",
+  citation_package = "biblatex"
+)
+
 plos_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
 pnas_article(..., keep_tex = TRUE)
@@ -106,7 +132,9 @@ springer_article(..., keep_tex = TRUE, citation_package = "default")
 tf_article(..., keep_tex = TRUE, citation_package = "natbib")
 }
 \arguments{
-\item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template}{Arguments passed to \code{rmarkdown::\link{pdf_document}()}.}
+\item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \code{rmarkdown::\link{pdf_document}()}.}
+
+\item{journal}{one of \code{"aoas"}, \code{"aap"}, \code{"aop"}, \code{"aos"}, \code{"sts"} for \code{ims_article}}
 }
 \value{
 An R Markdown output format.
@@ -187,13 +215,34 @@ custom Pandoc LaTeX template and different default values for other arguments
 \section{\code{elsevier_article}}{
  Format for creating submissions to Elsevier
   journals. Adapted from
-  \url{https://www.elsevier.com/authors/author-schemas/latex-instructions}.
+  \url{https://www.elsevier.com/authors/policies-and-guidelines/latex-instructions}.
 }
 
 \section{\code{frontiers_article}}{
  Format for creating Frontiers journal
   articles. Adapted from
   \url{https://www.frontiersin.org/about/author-guidelines}.
+}
+
+\section{\code{ims_article}}{
+ Format for creating submissions to the Institute of Mathematical Statistics
+\href{https://imstat.org/}{IMS} journals and publications. Adapted from
+\url{https://github.com/vtex-soft/texsupport.ims-aoas}.
+
+The argument \code{journal} accepts the acronym of any of the
+\href{https://www.e-publications.org/ims/support/ims-instructions.html}{journals} in IMS:
+\itemize{
+  \item \code{aap}: The Annals of Applied Probability
+  \item \code{aoas}: The Annals of Applied Statistics
+  \item \code{aop}: The Annals of Probability
+  \item \code{aos}: The Annals of Statistics
+  \item \code{sts}: Statistical Science}
+}
+
+\section{\code{jasa_article}}{
+ Format for creating submissions to the
+  Journal of the Acoustical Society of America. Adapted from
+  \url{https://acousticalsociety.org/preparing-latex-manuscripts/}.
 }
 
 \section{\code{lipics_article}}{
@@ -230,6 +279,17 @@ custom Pandoc LaTeX template and different default values for other arguments
   Journal. This was adapted from the
   \href{https://www.overleaf.com/latex/templates/latex-template-for-peerj-journal-and-pre-print-submissions/ptdwfrqxqzbn}{PeerJ
    Overleaf Template}.
+}
+
+\section{\code{pihph_article}}{
+ Format for creating submissions to the Papers
+  in Historical Phonology
+  (\url{http://journals.ed.ac.uk/pihph/about/submissions}). Adapted from
+  \url{https://github.com/pihph/templates}. This format works well with
+  \code{latex_engine = "xelatex"} and \code{citation_package="biblatex"},
+  which are the default. It may not work correctly if you change these value.
+  In that case, please open an issue and, a PR to contribute a change in the
+  template.
 }
 
 \section{\code{plos_article}}{
@@ -293,7 +353,7 @@ Possible arguments for the YAML header are:
 
 \section{\code{tf_article}}{
  Format for creating submissions to a Taylor & Francis journal. Adapted from
-\url{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
+\samp{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
 }
 
 \examples{

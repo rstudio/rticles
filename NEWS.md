@@ -1,5 +1,40 @@
+rticles 0.20
+---------------------------------------------------------------------
+
+- `elsevier_article()` now supports `biblio-style` Pandoc's variable to set the natbib bibliography style in YAML header (thanks, @gregmacfarlane, #402).
+
+- Fix an issue with `rjournal_article()`. The `.R` file in output is now correctly overwritten on a new render if it existed from a previous render (thanks, @apreshill, #394).
+
+- Update Copernicus Publications template to comply with editor's guidelines following a manuscript bounce back during the typesetting step. Copernicus does not allow to add any `\usepackage` command as they all are included in `copernicus.cls` for supported LaTeX packages. **This is leading to breaking changes with existing template - please follow the advice below**.
+  - `algorithms: true` cannot be used anymore and as no more effect. `\usepackage{algorithmic}` and `\usepackage{algorithm}` has been removed from the template as the command are already done in `copernicus.cls`. Please, make sure `algorithms` and `algorithmcx` are installed.  
+  - Additionally, the template gained support for the `highlight` parameter of `rmarkdown::pdf_document` to enable or disable syntax highlighting with Pandoc. To comply with the above guideline by Copernicus, it is disabled by default (`highlight: NULL`) to prevent Pandoc adding any more packages required for its highlighting. Syntax highlighting can be reactivating by using `highlight: "default"` in the YAML header as this can be desirable before submitting for typesetting. (thanks, @RLumSK, @nuest, #391).
+
+- Fix issue with Pandoc's citation processing by updating all templates with last relevant changes from Pandoc's default template (thanks, @BlackEdder, @dahrens, #390)
+
+- remove warning in `joss_article()` about `citation_package` (thanks, @llrs, #389).
+
+- fix an issue with `rjournal_article()` template to insert newline in author's block only if a field exist (thanks, @huizezhang-sherry, #387)
+
+rticles 0.19
+---------------------------------------------------------------------
+
+- Update Copernicus Publications template to version 6.2 from 2021-01-15 (thanks, @RLumSK, #366).
+
+- Add article template `pihph_article()` for the *Papers in Historical Phonology* (PiHPh) (thanks, @stefanocoretta, #362).
+
+- Add article template `ims_article()` for *Institute of Mathematical Statistics* Journals, e.g., *Annals of Applied Statistics* (thanks, @auzaheta, #372)
+
 rticles 0.18
 ---------------------------------------------------------------------
+
+- `springer_article()` now uses the yaml variable biblio-style to set bibliography style
+instead of bibstyle. (@eliocamp, #358)
+
+- Fixes a bug when rendering `arxiv_article()` with recent version of TeX Live by adding `\usepackage{lmodern}` to the template. (#thanks, @slemonide, #343)
+
+- `arxiv_article()` now supports `header-includes` and `biblio-style` to use in the YAML header in order to customize its template. Default bibliography style is still _unsrt_ if not set as before. (thanks, @eliocamp, #356).
+
+- Update jss.cls to version 3.2 (#329).
 
 - Options can now be passed to `hyperref` packages using `header-includes` and `\PassOptionsToPackage` in the AEA template (thanks, @nurfatimaj, #334)
 
@@ -7,6 +42,8 @@ rticles 0.18
 fix for the LaTeX problem sanitized with the last `rticles` update (thanks, @RLumSK, #331).
 
 - Update all templates regarding CSLReference environment following changes in Pandoc's default template.
+
+- Add article template `jasa_article()` for the *Journal of the Acoustical Society of America* (JASA) (thanks, @stefanocoretta, #364)
 
 rticles 0.17
 ---------------------------------------------------------------------

@@ -8,6 +8,9 @@
 #' custom Pandoc LaTeX template and different default values for other arguments
 #' (e.g., \code{keep_tex = TRUE}).
 #'
+#' @param
+#' ...,keep_tex,latex_engine,citation_package,highlight,fig_caption,md_extensions,template,pandoc_args
+#' Arguments passed to \code{rmarkdown::\link{pdf_document}()}.
 #' @section Details: You can find more details about each output format below.
 #' @name acm_article
 #' @rdname article
@@ -16,9 +19,7 @@ NULL
 #' @section \code{acm_article}: Format for creating an Association for Computing
 #'   Machinery (ACM) articles. Adapted from
 #'   \url{https://www.acm.org/publications/proceedings-template}.
-#' @param
-#'   ...,keep_tex,latex_engine,citation_package,highlight,fig_caption,md_extensions,template
-#'   Arguments passed to \code{rmarkdown::\link{pdf_document}()}.
+
 #' @return An R Markdown output format.
 #' @examples \dontrun{
 #' rmarkdown::draft("MyArticle.Rmd", template = "acm", package = "rticles")
@@ -155,7 +156,7 @@ ctex <- ctex_article
 
 #' @section \code{elsevier_article}: Format for creating submissions to Elsevier
 #'   journals. Adapted from
-#'   \url{https://www.elsevier.com/authors/author-schemas/latex-instructions}.
+#'   \url{https://www.elsevier.com/authors/policies-and-guidelines/latex-instructions}.
 #' @export
 #' @rdname article
 elsevier_article <- function(
@@ -173,6 +174,63 @@ elsevier_article <- function(
 #' @rdname article
 frontiers_article <- function(..., keep_tex = TRUE) {
   pdf_document_format("frontiers", keep_tex = keep_tex, ...)
+}
+
+#' @param journal one of \code{"aoas"}, \code{"aap"}, \code{"aop"}, \code{"aos"}, \code{"sts"} for \code{ims_article}
+#' @section \code{ims_article}: Format for creating submissions to the Institute of Mathematical Statistics
+#' \href{https://imstat.org/}{IMS} journals and publications. Adapted from
+#' \url{https://github.com/vtex-soft/texsupport.ims-aoas}.
+#'
+#' The argument \code{journal} accepts the acronym of any of the
+#' \href{https://www.e-publications.org/ims/support/ims-instructions.html}{journals} in IMS:
+#' \itemize{
+#'   \item \code{aap}: The Annals of Applied Probability
+#'   \item \code{aoas}: The Annals of Applied Statistics
+#'   \item \code{aop}: The Annals of Probability
+#'   \item \code{aos}: The Annals of Statistics
+#'   \item \code{sts}: Statistical Science}
+#' @export
+#' @rdname article
+ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
+                        keep_tex = TRUE, citation_package = "natbib",
+                        md_extensions = c(
+                          "-autolink_bare_uris" # disables automatic links
+                        ), pandoc_args = NULL, ...) {
+
+  journal <- match.arg(journal)
+  if (length(journal) > 1) stop("Please choose just one ", dQuote("journal"))
+
+  with_kwsc <- journal %in% c("aap", "aop", "aos") # with keyword_subclass
+
+  args <- c(
+    "journal" = journal,
+    if (with_kwsc) c("with_kwsc" = with_kwsc)
+    )
+
+  # Convert to pandoc arguments
+  pandoc_arg_list <- mapply(rmarkdown::pandoc_variable_arg, names(args), args,
+                            SIMPLIFY = FALSE, USE.NAMES = FALSE)
+  pandoc_arg_list <- unlist(pandoc_arg_list)
+
+  pdf_document_format(
+    "ims", keep_tex = keep_tex, citation_package = citation_package,
+    md_extensions = md_extensions, pandoc_args = c(pandoc_arg_list, pandoc_args),
+    ...
+  )
+}
+
+#' @section \code{jasa_article}: Format for creating submissions to the
+#'   Journal of the Acoustical Society of America. Adapted from
+#'   \url{https://acousticalsociety.org/preparing-latex-manuscripts/}.
+#' @export
+#' @rdname article
+jasa_article <- function(
+  ..., keep_tex = TRUE, latex_engine = "xelatex", citation_package = "natbib"
+) {
+  pdf_document_format(
+    "jasa", keep_tex = keep_tex, latex_engine = latex_engine,
+    citation_package = citation_package, ...
+  )
 }
 
 #' @section \code{lipics_article}: Format for creating submissions to
@@ -247,6 +305,25 @@ oup_article <- function(
 #' @rdname article
 peerj_article <- function(..., keep_tex = TRUE) {
   pdf_document_format("peerj",  keep_tex = keep_tex, ...)
+}
+
+#' @section \code{pihph_article}: Format for creating submissions to the Papers
+#'   in Historical Phonology
+#'   (\url{http://journals.ed.ac.uk/pihph/about/submissions}). Adapted from
+#'   \url{https://github.com/pihph/templates}. This format works well with
+#'   \code{latex_engine = "xelatex"} and \code{citation_package="biblatex"},
+#'   which are the default. It may not work correctly if you change these value.
+#'   In that case, please open an issue and, a PR to contribute a change in the
+#'   template.
+#' @export
+#' @rdname article
+pihph_article <- function(
+  ..., keep_tex = TRUE, latex_engine = "xelatex",
+  citation_package = "biblatex"
+) {
+  pdf_document_format(
+    "pihph", keep_tex = keep_tex, latex_engine = latex_engine,
+    citation_package = citation_package, ...)
 }
 
 #' @section \code{plos_article}: Format for creating submissions to PLOS
@@ -334,7 +411,7 @@ springer_article <- function(..., keep_tex = TRUE, citation_package = 'default')
 }
 
 #' @section \code{tf_article}: Format for creating submissions to a Taylor & Francis journal. Adapted from
-#' \url{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
+#' \samp{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
 #' @export
 #' @rdname article
 tf_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {

@@ -1,5 +1,5 @@
 %%
-%% This is file `copernicus.bst', version 1.2 (September 2017),
+%% This is file `copernicus.bst', version 1.3 (January 2021),
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
@@ -668,9 +668,13 @@ FUNCTION {format.doi}
 }
 FUNCTION {format.note}
 {
-  url empty$
+  doi empty$
+    { url empty$
+	'skip$
+	{ "\urlprefix\url{" url * "}" * output }
+      if$
+    }
     'skip$
-    { "\urlprefix\url{" url * "}" * output }
   if$
  note empty$
     { "" }

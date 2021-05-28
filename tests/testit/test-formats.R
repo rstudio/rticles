@@ -1,4 +1,4 @@
-test_format <- function(name, os_skip = NULL) {
+test_format <- function(name, output_options = NULL, os_skip = NULL) {
 
   # don't run on CRAN due to complicated dependencies (Pandoc/LaTeX packages)
   if (!identical(Sys.getenv("NOT_CRAN"), "true")) return()
@@ -18,8 +18,9 @@ test_format <- function(name, os_skip = NULL) {
     create_dir = FALSE, edit = FALSE
   )
 
-  message('Rendering the ', name, ' format...')
-  output_file <- rmarkdown::render(testdoc, quiet = TRUE)
+  message('Rendering the ', name, ' format...',
+          if(!is.null(output_options)) " (with output options)")
+  output_file <- rmarkdown::render(testdoc, output_options = output_options, quiet = TRUE)
   assert(paste(name, "format works"), {
     file.exists(output_file)
   })
@@ -44,13 +45,18 @@ if (xfun::is_linux()) test_format("ctex") # only on linux due to fonts requireme
 test_format("elsevier")
 test_format("frontiers")
 test_format("ieee")
+test_format("ims")
+test_format("ims", output_options = list(journal = "aap"))
+test_format("jasa")
 test_format("joss")
+test_format("joss", output_options = list(journal = "JOSE"))
 test_format("jss")
 test_format("lipics")
 test_format("mdpi")
 test_format("mnras")
 test_format("oup")
 test_format("peerj")
+test_format("pihph")
 test_format("plos")
 test_format("pnas")
 test_format("rjournal")

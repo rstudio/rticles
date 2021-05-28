@@ -34,6 +34,7 @@
 #' Shell, Michael. "How to use the IEEEtran LATEX class." Journal of LATEX Class
 #'  Files 1.11 (2002): 10-20.
 #' \url{http://mirrors.rit.edu/CTAN/macros/latex/contrib/IEEEtran/IEEEtran_HOWTO.pdf}
+#' @importFrom rmarkdown pandoc_variable_arg
 #' @export
 ieee_article <- function(
   draftmode   = c("final", "draft", "draftcls", "draftclsnofoot"),
@@ -74,13 +75,10 @@ ieee_article <- function(
 
   args <- c(args, plist[plist])
 
-  # pandoc_variable_arg not exported from rmarkdown
-  pandoc_arg_variable <- function(var_name, value) {
-    c("-V", paste0(var_name, "=", value))
-  }
-
   # Convert to pandoc arguments
-  pandoc_arg_list <- mapply(pandoc_arg_variable, names(args), args)
+  pandoc_arg_list <- mapply(rmarkdown::pandoc_variable_arg, names(args), args,
+                            USE.NAMES = FALSE, SIMPLIFY = FALSE)
+  pandoc_arg_list <- unlist(pandoc_arg_list)
 
   pdf_document_format(
     "ieee", pandoc_args = c(pandoc_arg_list, pandoc_args),

@@ -46,13 +46,13 @@ running:
 # This section is mandatory even if you declare that no competing interests are present.
 competinginterests: |
   The authors declare no competing interests.
-# OPTIONAL:
-algorithms: true
-# See https://publications.copernicus.org/for_authors/licence_and_copyright.html, normally used for transferring the copyright, if needed.
+# See https://publications.copernicus.org/for_authors/licence_and_copyright.html, normally used for transferring the copyright, if needed. 
+# Note: additional copyright statements for affiliated software or data need to be placed in the data availability section. 
 copyrightstatement: |
-  The author's copyright for this publication is transferred to institution/company.
+  The author's copyright for this publication is transferred to institution/company. 
 ### The following commands are for the statements about the availability of data sets and/or software code corresponding to the manuscript.
 ### It is strongly recommended to make use of these sections in case data sets and/or software code have been part of your research the article is based on.
+### Note: unless stated otherwise, software and data affiliated with the manuscript are assumed to be published under the same licence as the article (currently Creative Commons 4.0)
 availability:
   #code: |
   #  use this to add a statement when having only software code available
@@ -85,7 +85,9 @@ appendix: |
   
   Please add `\clearpage` between each table and/or figure. Further guidelines on figures and tables can be found below.
 output:
-  rticles::copernicus_article: default
+  rticles::copernicus_article: 
+    highlight: NULL
+    keep_tex: true
   bookdown::pdf_book:
     base_format: rticles::copernicus_article # for using bookdown features like \@ref()
 ---
@@ -93,7 +95,7 @@ output:
 \introduction[Introduction]
 
 Introduction text goes here.
-You can change the name of the section if neccessary using `\introduction[modified heading]`.
+You can change the name of the section if necessary using `\introduction[modified heading]`.
 
 The following settings can or must be configured in the header of this file and are bespoke for Copernicus manuscripts:
 
@@ -117,8 +119,23 @@ The following settings can or must be configured in the header of this file and 
 
 See the defaults and examples from the skeleton and the official Copernicus documentation for details.
 
-**Important**: Always double-check with the official manuscript preparation guidelines at [https://publications.copernicus.org/for_authors/manuscript_preparation.html](https://publications.copernicus.org/for_authors/manuscript_preparation.html), especially the sections "Technical instructions for LaTeX" and "Manuscript composition".
-Please contact Daniel Nüst, `daniel.nuest@uni-muenster.de`, with any problems.
+**Please note:** Per [their
+guidelines](https://publications.copernicus.org/for_authors/manuscript_preparation.html),
+Copernicus does not support additional \LaTeX{} packages or new \LaTeX{}
+commands than those defined in their `.cls` file. This means that you cannot add any extra dependencies and a warning will be thrown if so.  
+This extends to syntax highlighting of source code. Therefore this template sets
+the parameter `highlight` in the YAML header to `NULL` to deactivate Pandoc
+syntax highlighter. This prevent addition of external packages for highlighting
+inserted by Pandoc. However, it might be desirable to have syntax highlight
+available in preprints or for others reasons. Please see
+`?rmarkdown::pdf_document` for available options to activate highlighting.
+
+**Important**: Always double-check with the official manuscript preparation
+guidelines at
+[https://publications.copernicus.org/for_authors/manuscript_preparation.html](https://publications.copernicus.org/for_authors/manuscript_preparation.html),
+especially the sections "Technical instructions for LaTeX" and "Manuscript
+composition". Please contact Daniel Nüst, `daniel.nuest@uni-muenster.de`, with
+any problems.
 
 # Content section one
 
@@ -288,10 +305,15 @@ x & y & z\\
 \end{matrix}
 $$
 
-## ALGORITHM
+## ALGORITHM/PROGRAMMING CODE
 
-If you want to use algorithms, you can either enable the required packages in the header (the default, see `algorithms: true`), or make sure yourself that the \LaTeX packages `algorithms` and `algorithmicx` are installed so that `algorithm.sty` respectively `algorithmic.sty` can be loaded by the Copernicus template.
-Copernicus staff will remove all undesirable packages from your LaTeX source code, so please stick to using the header option, which only adds the two acceptable packages.
+If you want to use algorithms, you need to make sure yourself that the \LaTeX packages `algorithms` and `algorithmicx` are installed so that `algorithm.sty` respectively `algorithmic.sty` can be loaded by the Copernicus template. Both need to be available through your preferred \LaTeX{} distribution. With TinyTeX (or TeX Live), you can do so by running `tinytex::tlmgr_install(c("algorithms", "algorithmicx"))`
+
+```{r, echo = FALSE, eval = tinytex::is_tinytex()}
+tinytex::tlmgr_install(c("algorithms", "algorithmicx"))
+```
+
+Copernicus staff will no accept any additional packages from your LaTeX source code, so please stick to these two acceptable packages. They are needed to use the example below
 
 \begin{algorithm}
 \caption{Algorithm Caption}

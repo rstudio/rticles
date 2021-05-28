@@ -51,6 +51,7 @@
 % Natural Hazards and Earth System Sciences (nhess)
 % Nonlinear Processes in Geophysics (npg)
 % Ocean Science (os)
+% Polarforschung - Journal of the German Society for Polar Research (polf)
 % Primate Biology (pb)
 % Proceedings of the International Association of Hydrological Sciences (piahs)
 % Scientific Drilling (sd)
@@ -61,8 +62,9 @@
 % Web Ecology (we)
 % Wind Energy Science (wes)
 
-
-%% \usepackage commands included in the copernicus.cls:
+%% Please DO NOT add additional packages or LaTeX commands to the template. They
+%% are not supported by Coperncius. LaTeX packages already
+%% included in the copernicus.cls are:
 %\usepackage[german, english]{babel}
 %\usepackage{tabularx}
 %\usepackage{cancel}
@@ -87,7 +89,7 @@ $if(csl-refs)$
   \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
   {\par}
 % For Pandoc 2.11+
-\newenvironment{CSLReferences}[3] % #1 hanging-ident, #2 entry spacing
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
  {% don't indent paragraphs
   \setlength{\parindent}{0pt}
   % turn on hanging indent if param 1 is 1
@@ -101,7 +103,7 @@ $if(csl-refs)$
 \usepackage{calc} % for calculating minipage widths
 \newcommand{\CSLBlock}[1]{#1\hfill\break}
 \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
 
@@ -109,11 +111,6 @@ $endif$
 %$for(header-includes)$
 %$header-includes$
 %$endfor$
-
-$if(algorithms)$
-\usepackage{algorithmic}
-\usepackage{algorithm}
-$endif$
 
 $if(highlighting-macros)$
 $highlighting-macros$
@@ -177,7 +174,6 @@ $endif$
 
 
 $body$
-
 
 $if(availability.code)$
 \codeavailability{$availability.code$} %% use this section when having only software code available

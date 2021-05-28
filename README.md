@@ -1,6 +1,7 @@
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/rstudio/rticles/workflows/R-CMD-check/badge.svg)](https://github.com/rstudio/rticles/actions)
 [![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/rticles)](https://cran.r-project.org/package=rticles)
+[![CRAN status](https://www.r-pkg.org/badges/version/rticles)](https://CRAN.R-project.org/package=rticles)
 <!-- badges: end -->
 
 ## Installation
@@ -40,6 +41,8 @@ Currently included templates and their contributors are the following:
 | [Elsevier](https://www.elsevier.com) | [@cboettig](https://github.com/cboettig) | [#27](https://github.com/rstudio/rticles/pull/27) | `elsevier_article()` |
 | [Frontiers](https://www.frontiersin.org/) | [@muschellij2](https://github.com/muschellij2) | [#211](https://github.com/rstudio/rticles/pull/211) | `frontiers_article()` |
 | [IEEE Transaction](http://www.ieee.org/publications_standards/publications/authors/author_templates.html) | [@Emaasit](https://github.com/Emaasit), [@espinielli](https://github.com/espinielli),  [@nathanweeks](https://github.com/nathanweeks), [@DunLug](https://github.com/DunLug) | [#97](https://github.com/rstudio/rticles/pull/97), [#169](https://github.com/rstudio/rticles/pull/169), [#227](https://github.com/rstudio/rticles/pull/227), [#263](https://github.com/rstudio/rticles/pull/263), [#264](https://github.com/rstudio/rticles/pull/264), [#265](https://github.com/rstudio/rticles/pull/265) | `ieee_article()` |
+| [IMS: Institute of Mathematical Statistics](https://imstat.org/) [AoAS: Annals of Applied Statistics](https://imstat.org/journals-and-publications/annals-of-applied-statistics/) | [@auzaheta](https://github.com/auzaheta) | [#372](https://github.com/rstudio/rticles/pull/372) | `ims_article()` |
+| [JASA: Journal of the Acoustical Society of America](https://asa.scitation.org/journal/jas) | [@stefanocoretta](https://github.com/stefanocoretta) | [#364](https://github.com/rstudio/rticles/pull/364) | `jasa_article()` |
 | [JOSS: Journal of Open Source Software](https://joss.theoj.org/) [JOSE: Journal of Open Source Education](https://jose.theoj.org/) | [@noamross](https://github.com/noamross) | [#229](https://github.com/rstudio/rticles/pull/229) | `joss_article()` |
 | [JSS: Journal of Statistical Software](https://www.jstatsoft.org) |  |  | `jss_article()` |
 | [LIPIcs](https://www.dagstuhl.de/en/publications/lipics) | [@nuest](https://github.com/nuest) | [#288](https://github.com/rstudio/rticles/pull/288) | `lipics_article()` |
@@ -47,6 +50,7 @@ Currently included templates and their contributors are the following:
 | [MNRAS: Monthly Notices of the Royal Astronomical Society](https://academic.oup.com/mnras) | [@oleskiewicz](https://github.com/oleskiewicz) | [#175](https://github.com/rstudio/rticles/pull/175) | `mnras_article()` |
 | [OUP: Oxford University Press](https://academic.oup.com/journals/pages/authors/preparing_your_manuscript) | [@dmkaplan](https://github.com/dmkaplan) | [#284](https://github.com/rstudio/rticles/pull/284) | `oup_articles()` |
 | [PeerJ: Journal of Life and Environmental Sciences](https://peerj.com) | [@zkamvar](https://github.com/zkamvar) | [#127](https://github.com/rstudio/rticles/pull/127) | `peerj_article()` |
+| [PiHPh: Papers in Historical Phonology](http://journals.ed.ac.uk/pihph/about/submissions) | [@stefanocoretta](https://github.com/stefanocoretta) | [#362](https://github.com/rstudio/rticles/pull/362) | `pihph_article()` |
 | [PLOS](https://plos.org/#journals) | [@sjmgarnier](https://github.com/sjmgarnier) | [#12](https://github.com/rstudio/rticles/pull/12) | `plos_article()` |
 | [PNAS: Proceedings of the National Academy of Sciences](https://www.pnas.org/) | [@cboettig](https://github.com/cboettig) | [#72](https://github.com/rstudio/rticles/pull/72) | `pnas_article()` |
 | [RSOS: Royal Society Open Science](https://www.royalsocietypublishing.org/journal/rsos) | [@ThierryO](https://github.com/ThierryO) | [#135](https://github.com/rstudio/rticles/pull/135) | `rsos_article()` |
@@ -85,9 +89,10 @@ To use **rticles** from RStudio:
 3. Use the `rmarkdown::draft()` function to create articles:
 
     ```r
-    rmarkdown::draft("MyJSSArticle.Rmd", template = "jss_article", package = "rticles")
-    rmarkdown::draft("MyRJournalArticle", template = "rjournal_article", package = "rticles")
+    rmarkdown::draft("MyJSSArticle.Rmd", template = "jss", package = "rticles")
+    rmarkdown::draft("MyRJournalArticle", template = "rjournal", package = "rticles")
     ```
+   This will create a folder containing a Rmd file using the corresponding output format and all the assets required by this format. 
 
 ## How to contribute? 
 
