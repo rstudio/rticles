@@ -1,6 +1,8 @@
 rticles 0.20
 ---------------------------------------------------------------------
 
+- `oup_article()` template now largely compatible to that of `elsevier_article()` (thanks, @dmkaplan2000, #403)
+
 - `elsevier_article()` now supports `biblio-style` Pandoc's variable to set the natbib bibliography style in YAML header (thanks, @gregmacfarlane, #402).
 
 - Fix an issue with `rjournal_article()`. The `.R` file in output is now correctly overwritten on a new render if it existed from a previous render (thanks, @apreshill, #394).
