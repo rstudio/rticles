@@ -1,4 +1,7 @@
 ---
+# This template is largely functionally equivalent to that for elsevier
+# The two fields that are not in the elsevier format are:
+#      `corresponding_author` and `acknowledgements`
 title: Template for Oxford University Press papers
 #date: "`r Sys.Date()`"
 author:
@@ -13,9 +16,11 @@ author:
     affiliation: DEF
     footnote: 1 # Footnote using reference
   - name: Cat Memes
-    email: cat@example.com
+    email: cat@anotheru.edu
     affiliation: Another University
-    thanks: "Current email address: \\href{mailto:cat@anotheru.edu}{cat@anotheru.edu}" # By hand footnote that can incorporate TeX
+    footnote:
+        - 1
+        - 2
 address:
   - code: ABC
     address: Address ABC
@@ -27,7 +32,7 @@ footnote:
   - code: 1
     text: "Equal contribution"
   - code: 2
-    text: "Another footnote"
+    text: "Current email address: \\href{mailto:cat@example.com}{cat@example.com}"
 abstract: |
   This is the abstract.
 

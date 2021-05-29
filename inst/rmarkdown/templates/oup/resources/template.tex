@@ -82,10 +82,9 @@ $endif$
 
 % Macros for dealing with affiliations, footnotes, etc.
 \makeatletter
-\def\Newlabel#1#2#3{\expandafter\xdef\csname #1@#2\endcsname{#3}}
+\def\Newlabel#1#2#3{\expandafter\gdef\csname #1@#2\endcsname{#3}}
 
-\def\Ref#1#2{\@ifundefined{#1@#2}{???}{\csname #1@#2\endcsname}%
-}
+\def\Ref#1#2{\@ifundefined{#1@#2}{???}{\csname #1@#2\endcsname}}
 
 \newcommand*\samethanks[1][\value{footnote}]{\footnotemark[#1]}
 
