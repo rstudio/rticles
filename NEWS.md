@@ -1,7 +1,13 @@
 rticles 0.20
 ---------------------------------------------------------------------
 
-- `lipics_article()` now works with `bookdown::pdf_book()` as their is no more conflict in theorem environment definition. This requires **bookdown** 0.23 or higher (#392).
+- `lipics_article()` skeleton now sets option `bookdown.theorem.preamble` to FALSE to work with `bookdown::pdf_book()` and avoid conflicst in theorem environment definition. This requires **bookdown** 0.23 or higher (#392).
+
+- `oup_article()` template now largely compatible to that of `elsevier_article()` (thanks, @dmkaplan2000, #403)
+
+- `elsevier_article()` now supports `biblio-style` Pandoc's variable to set the natbib bibliography style in YAML header (thanks, @gregmacfarlane, #402).
+
+- Fix an issue with `rjournal_article()`. The `.R` file in output is now correctly overwritten on a new render if it existed from a previous render (thanks, @apreshill, #394).
 
 - Update Copernicus Publications template to comply with editor's guidelines following a manuscript bounce back during the typesetting step. Copernicus does not allow to add any `\usepackage` command as they all are included in `copernicus.cls` for supported LaTeX packages. **This is leading to breaking changes with existing template - please follow the advice below**.
   - `algorithms: true` cannot be used anymore and as no more effect. `\usepackage{algorithmic}` and `\usepackage{algorithm}` has been removed from the template as the command are already done in `copernicus.cls`. Please, make sure `algorithms` and `algorithmcx` are installed.  
