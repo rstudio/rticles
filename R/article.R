@@ -252,23 +252,11 @@ lipics_article <- function(
 ) {
   # quick dev shortcut for Ubuntu: click "Install and restart" then run:
   # unlink("MyArticle/", recursive = TRUE); rmarkdown::draft("MyArticle.Rmd", template = "lipics", package = "rticles", edit = FALSE); rmarkdown::render("MyArticle/MyArticle.Rmd"); system(paste0("xdg-open ", here::here("MyArticle", "MyArticle.pdf")))
-  base <- pdf_document_format(
+  pdf_document_format(
     "lipics", latex_engine = latex_engine,
     citation_package = citation_package, keep_tex = keep_tex,
     md_extensions = md_extensions, ...
   )
-
-  # we deactivate bookdown addition of environment definitions in preamble
-  # to avoid conflict as lipics already defines some
-  opts <- options(bookdown.theorem.preamble = FALSE)
-  on_exit <- function() options(opts)
-
-  base_on_exit <- base$on_exit
-  base$on_exit <- function() {
-    if (is.function(base_on_exit)) base_on_exit()
-    on_exit()
-  }
-  base
 }
 
 #' @section \code{mdpi_article}: Format for creating submissions to
