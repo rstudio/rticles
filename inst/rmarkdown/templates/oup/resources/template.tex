@@ -103,26 +103,50 @@ $if(numberlines)$\usepackage{lineno}\linenumbers$endif$
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
+% Counters for addresses and footnotes
+\newcounter{correspcnt} % For author footnotes
+\renewcommand*{\thecorrespcnt}{\fnsymbol{correspcnt}}
+\newcounter{addrcnt} % For author addresses
+
 % Macros for dealing with affiliations, footnotes, etc.
 \makeatletter
-\def\Newlabel#1#2#3{\expandafter\gdef\csname #1@#2\endcsname{#3}}
 
-\def\Ref#1#2{\@ifundefined{#1@#2}{???}{\csname #1@#2\endcsname}}
+\def\MyNewLabel#1#2#3{\expandafter\gdef\csname #1@#2\endcsname{#3}}
+
+\def\MyRef#1#2{\@ifundefined{#1@#2}{???}{\csname #1@#2\endcsname}}
+
+\newcommand*\ifcounter[1]{%
+  \ifcsname c@#1\endcsname
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+}
+
+\newcommand*\addrlblbycode[1]{%
+  \ifcounter{ADDRLBL@#1}
+    {}
+    {\refstepcounter{addrcnt}\newcounter{ADDRLBL@#1}\setcounter{ADDRLBL@#1}{\value{addrcnt}}}%
+    \arabic{ADDRLBL@#1}%
+}
+
+\newcommand*\corresplblbycode[1]{%
+  \ifcounter{CORRESPLBL@#1}
+    {}
+    {\refstepcounter{correspcnt}\newcounter{CORRESPLBL@#1}\setcounter{CORRESPLBL@#1}{\value{corresp}}}%
+    \fnsymbol{CORRESPLBL@#1}%
+}
+
 \makeatother
-
-% Counters for addresses and footnotes
-\newcounter{ftntcnt} % For author footnotes
-\renewcommand*{\theftntcnt}{\fnsymbol{ftntcnt}}
-\newcounter{adrcnt} % For author addresses
 
 % Create labels for Addresses if the are given in Elsevier format
 $if(address)$
 $for(address)$
 $if(address.code)$
-\Newlabel{ADRTXT}{$address.code$}{$address.address$}
+\MyNewLabel{ADDRTXT}{$address.code$}{$address.address$}
 $endif$
 $if(address.id)$
-\Newlabel{ADRTXT}{$address.id$}{$address.address$}
+\MyNewLabel{ADDRTXT}{$address.id$}{$address.address$}
 $endif$
 $endfor$
 $endif$
@@ -131,26 +155,66 @@ $endif$
 $if(footnote)$
 $for(footnote)$
 $if(footnote.code)$
-\Newlabel{FNTXT}{$footnote.code$}{$footnote.text$}
+\MyNewLabel{FTNTXT}{$footnote.code$}{$footnote.text$}
 $endif$
 $endfor$
 $endif$
 
+% Part for setting citation format package: natbib
+$if(natbib)$
+\bibliographystyle{$if(namedate)$abbrvnat$else$plain$endif$}
+$endif$
+
+% Part for indenting CSL refs
+% Pandoc citation processing
+$if(csl-refs)$
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc} % for calculating minipage widths
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+% Pandoc header
+$for(header-includes)$
+$header-includes$
+$endfor$
 
 \begin{document}
 
-\journaltitle{Journal Title Here}
+\journaltitle{$if(journal)$$journal$$else$Journal Title Here$endif$}
 \DOI{DOI HERE}
-\copyrightyear{2019}
-\pubyear{2019}
+\copyrightyear{YYYY}
+\pubyear{YYYY}
 \access{Advance Access Publication Date: Day Month Year}
 \appnotes{Paper}
 
 \firstpage{1}
 
-%\subtitle{Subject Section}
+$if(subtitle)$\subtitle{$subtitle$}$endif$
 
-\title[Short Article Title]{Article Title}
+\title[$short_title$]{$title$}
 
 \author[Y,$\ast$,Z]{First Author}
 \author[2,Z]{Second Author}
@@ -158,7 +222,7 @@ $endif$
 \author[3]{Fourth Author}
 \author[4]{Fifth Author}
 
-\authormark{Author Name et al.}
+$for(author/first)$\authormark{$it.name$ et al.}$endfor$
 
 \address[1X]{A very specific address}
 %\address[1]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \postcode{Postcode}, \state{State}, \country{Country}}}
@@ -166,13 +230,7 @@ $endif$
 \address[3]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \postcode{Postcode}, \state{State}, \country{Country}}}
 \address[4]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \postcode{Postcode}, \state{State}, \country{Country}}}
 
-\newcounter{testcnt}
-\renewcommand*{\thetestcnt}{\fnsymbol{testcnt}}
-\refstepcounter{testcnt}
-\refstepcounter{testcnt}
-
-\corresp[\thetestcnt]{Corresponding author. \href{email:email-id.com}{email-id.com}}
-\footnote{Equal contributions}
+\corresp[$\ast$]{Corresponding author. \href{email:email-id.com}{email-id.com}}
 
 \received{Date}{0}{Year}
 \revised{Date}{0}{Year}
@@ -188,11 +246,9 @@ $endif$
 %\textbf{Supplementary information:} Supplementary data are available at \textit{Briefings in Bioinformatics}
 %online.}
 
-\abstract{Abstracts must be able to stand alone and so cannot contain citations to
-the paper's references, equations, etc. An abstract must consist of a single
-paragraph and be concise. Because of online formatting, abstracts must appear
-as plain as possible.}
-\keywords{keyword1, Keyword2, Keyword3, Keyword4}
+\abstract{$abstract$}
+
+\keywords{$for(keywords)$$keywords$$sep$; $endfor$}
 
 % \boxedtext{
 % \begin{itemize}
@@ -202,6 +258,12 @@ as plain as possible.}
 % \end{itemize}}
 
 \maketitle
+
+$for(include-before)$
+$include-before$
+$endfor$
+
+$body$
 
 
 \section{Introduction}
