@@ -139,26 +139,41 @@ $if(numberlines)$\usepackage{lineno}\linenumbers$endif$
 
 \makeatother
 
-% Create labels for Addresses if the are given in Elsevier format
-$if(address)$
-$for(address)$
-$if(address.code)$
-\MyNewLabel{ADDRTXT}{$address.code$}{$address.address$}
-$endif$
-$if(address.id)$
-\MyNewLabel{ADDRTXT}{$address.id$}{$address.address$}
-$endif$
-$endfor$
-$endif$
 
-% Create labels for Footnotes if the are given in Elsevier format
-$if(footnote)$
+% Create labels for Addresses if the are given in Elsevier format
+$for(address)$
+ $if(address.code)$
+  \MyNewLabel{ADDRTXT}{$address.code$}{%
+ $elseif(address.id)$
+  \MyNewLabel{ADDRTXT}{$address.id$}{%
+ $endif$
+ $if(address.address$$address.address$$else$%
+  $if(address.department)$\orgdiv{$address.department}, $endif$%
+  $if(address.organization)$\orgname{$address.organization}, $endif$%
+  $if(address.street)$\orgaddress{%
+   $elseif(address.postcode)$\orgaddress{%
+   $elseif(address.state)$\orgaddress{%
+   $elseif(address.country)$\orgaddress{%
+  $endif$%
+  $if(address.street)$\street{$address.street}, $endif$%
+  $if(address.postcode)$\orgdiv{$address.postcode}, $endif$%
+  $if(address.state)$\orgdiv{$address.state}, $endif$%
+  $if(address.country)$\orgdiv{$address.country}$endif$%
+  $if(address.street)$}%
+   $elseif(address.postcode)$}%
+   $elseif(address.state)$}%
+   $elseif(address.country)$}%
+  $endif$%
+ $endif$%
+ }
+$endfor$
+
+% Create labels for Footnotes if they are given in Elsevier format
 $for(footnote)$
 $if(footnote.code)$
 \MyNewLabel{FTNTXT}{$footnote.code$}{$footnote.text$}
 $endif$
 $endfor$
-$endif$
 
 % Part for setting citation format package: natbib
 $if(natbib)$
@@ -216,21 +231,47 @@ $if(subtitle)$\subtitle{$subtitle$}$endif$
 
 \title[$short_title$]{$title$}
 
-\author[Y,$\ast$,Z]{First Author}
-\author[2,Z]{Second Author}
-\author[3]{Third Author}
-\author[3]{Fourth Author}
-\author[4]{Fifth Author}
+\newcounter{thisauthcorresp} % For storage if author is corresponding author
+\newcounter{thisauththanks} % For storage if author has thanks
 
-$for(author/first)$\authormark{$it.name$ et al.}$endfor$
+$for(authors)$
 
-\address[1X]{A very specific address}
-%\address[1]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \postcode{Postcode}, \state{State}, \country{Country}}}
-\address[2]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \postcode{Postcode}, \state{State}, \country{Country}}}
-\address[3]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \postcode{Postcode}, \state{State}, \country{Country}}}
-\address[4]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \postcode{Postcode}, \state{State}, \country{Country}}}
+\author[%
+$if(authors.address)$\refstepcounter{addrcnt}\arabic{addrcnt}$endif$%
+$if(authors.corresponding_author)$$if(authors.address)$,$endif$\refstepcounter{correspcnt}\setcounter{thisauthcorresp}{\value{correspcnt}}\fnsymbol{thisauthcorresp}$endif$%
+$if(authors.thanks)$$if(authors.address)$,$elseif(authors.corresponding_author)$,$endif$\refstepcounter{correspcnt}\setcounter{thisauththanks}{\value{correspcnt}}\fnsymbol{thisauththanks}$endif$%
+]{$authors.name$}
 
-\corresp[$\ast$]{Corresponding author. \href{email:email-id.com}{email-id.com}}
+$if(authors.address)$\address[\arabic{addrcnt}]{$authors.address$}$endif$
+
+$if(authors.corresponding_author)$\corresp[\fnsymbol{thisauthcorresp}]{Corresponding author. \href{mailto:$authors.email$}{$authors.email$}}$endif$
+$if(authors.thanks)$\corresp[\fnsymbol{thisauththanks}]{$authors.thanks$}$endif$
+
+$endfor$
+
+$for(author)$
+
+\author[%
+$for(author.affiliation)$\addrlblbycode{$author.affiliation$}$sep$,$endfor$%
+$if(author.corresponding_author)$$if(author.affiliation)$,$endif$\refstepcounter{correspcnt}\setcounter{thisauthcorresp}{\value{correspcnt}}\fnsymbol{thisauthcorresp}$endif$%
+$if(author.thanks)$$if(author.affiliation)$,$elseif(author.corresponding_author)$,$endif$\refstepcounter{correspcnt}\setcounter{thisauththanks}{\value{correspcnt}}\fnsymbol{thisauththanks}$endif$%
+$if(author.footnote)$$if(author.affiliation)$,$elseif(author.corresponding_author)$,$elseif(author.thanks)$,$endif$$for(author.footnote)$\corresplblbycode{$author.footnote$}$sep$,$endfor$$endif$%
+]{$author.name$}
+
+$for(author.affiliation)$
+\address[\addrlblbycode{$author.affiliation$}]{\MyRef{ADDRTXT}{$author.affiliation$}}
+$endfor$
+
+$if(author.corresponding_author)$\corresp[\fnsymbol{thisauthcorresp}]{Corresponding author. \href{mailto:$author.email$}{$author.email$}}$endif$
+$if(author.thanks)$\corresp[\fnsymbol{thisauththanks}]{$author.thanks$}$endif$
+
+$for(author.footnote)$
+\corresp[\corresplblbycode{$author.footnote$}]{\MyRef{CORRESPTXT}{$author.footnote$}}
+$endfor$
+
+$endfor$
+
+\authormark{$for(author/first)$$it.name$$endfor$$if(author/rest/rest)$ et al.$else$$for(author/rest)$ \and $author.name$$endfor$$endif$}
 
 \received{Date}{0}{Year}
 \revised{Date}{0}{Year}
@@ -265,876 +306,55 @@ $endfor$
 
 $body$
 
-
-\section{Introduction}
-
-
-The introduction introduces the context and summarizes the manuscript. It is importantly to clearly state the contributions
-of this piece of work. The potential offered to policy makers by data-driven research is greater than it ever has been.
-Increasing volumes of data, faster technology, and evolving techniques and methodology enable us to process ever more data faster,
-providing the opportunity to focus and evaluate policies to deliver more effectively and economically at a time when efficient use
-of public money is paramount.
-
-More data can now be analyzed faster enabling researchers to explore more and more complex interactions. Data across a wide spectrum from open data\footnote{\url{https://data.gov.uk/}} that can be downloaded, through licensed data,\footnote{\url{https://www.ukdataservice.ac.uk/}} to sensitive personal data can now contribute to our understanding of health, social, and economic outcomes.
-
-The United Kingdom has a long tradition of safe data use by researchers. In the 50 years that the UK
-Data Archive has been making data available for social and economic research, there have been no
-damaging disclosures of personal information by academic researchers\footnote{That is not to say that there have been no breaches---researchers using data for a project they are not licensed for or passing data
-to unlicensed colleagues---however, this, as far as we are aware of, has never caused harm to individuals or entities in the data.}. While increasing use of detailed and sometimes sensitive
-data can contribute valuable insights for targeting policies, we cannot be
-complacent. In order to support our policy needs and continue to use data safely and effectively, we
-need a research infrastructure that protects data confidentiality while enabling researchers to undertake
-innovative research.
-
-\section{This is an example for first level head - section head}\label{sec2}
-
-Once data are disseminated, whatever contractual or other obligations are placed on those receiving the
-data, the data are effectively out of a data providers' control. Data providers must be certain that the data
-disseminated do not provide a risk of disclosure necessitating a reduction in the detail available.
-Data providers must be certain that the data disseminated do not provide a risk of disclosure necessitating
-a reduction in the detail available, or they are constrained to using a resource intensive auditing regime,
-and are likely to discover any data misuse only after it has happened (refer Section~\ref{sec5}).
-
-\subsection{This is an example for second level head - subsection head}\label{subsec1}
-
-Once data are disseminated, whatever contractual or other obligations are placed on those receiving the
-data, the data are effectively out of a data providers' control. Data providers must be certain that the data
-disseminated do not provide a risk of disclosure necessitating a reduction in the detail available, or they are
-constrained to using a resource intensive auditing regime, and are likely to discover any data misuse only
-after it has happened.
-
-\subsubsection{This is an example for third level head - subsubsection head}\label{subsubsec1}
-
-Once data are disseminated, whatever contractual or other obligations are placed on those receiving the
-data, the data are effectively out of a data providers' control. Data providers must be certain that the data
-disseminated do not provide a risk of disclosure necessitating a reduction in the detail available, or they are
-constrained to using a resource intensive auditing regime, and are likely to discover any data misuse only
-after it has happened.
-
-\paragraph{This is an example for fourth level head - paragraph head}
-
-Once data are disseminated, whatever contractual or other obligations are placed on those receiving the data, the data
-are effectively out of a data providers' control.  The United Kingdom has a long tradition of safe data use by researchers.
-The United Kingdom has a long tradition of safe data use by researchers.
-
-\section{This is an example for first level head}\label{sec3}
-
-\subsection{This is an example for second level head - subsection head}\label{subsec2}
-
-\subsubsection{This is an example for third level head - subsubsection head}\label{subsubsec2}
-
-In the 50 years that the UK Data Archive has been making data available for social and economic research, there have been no
-damaging disclosures of personal information by academic researchers. While increasing use of detailed and sometimes sensitive
-data can contribute valuable insights for targeting policies, we cannot be
-complacent. In order to support our policy needs and continue to use data safely and effectively, we
-need a research infrastructure that data confidentiality while enabling researchers to undertake
-innovative research.
-
-\paragraph{This is an example for fourth level head - paragraph head}
-
-A first step toward protecting sensitive data is to keep control of it, to disseminate access, not data. Data
-providers internationally are increasing, moving toward systems in which researchers remotely accessed.
-
-
-
-\section{Equations}\label{sec4}
-
-Equations in \LaTeX{} can either be inline or on-a-line by itself. For
-inline equations use the \verb+$...$+ commands. Eg: The equation
-$H\psi = E \psi$ is written via the command \verb+$H \psi = E \psi$+.
-
-For on-a-line by itself equations (with auto generated equation numbers)
-one can use the equation or eqnarray environments:
-\begin{equation}
-\|\tilde{X}(k)\|^2 \leq\frac{\sum\limits_{i=1}^{p}\left\|\tilde{Y}_i(k)\right\|^2+\sum\limits_{j=1}^{q}\left\|\tilde{Z}_j(k)\right\|^2 }{p+q}.\label{eq1}
-\end{equation}
-where,
-\begin{align}
-D_\mu &=  \partial_\mu - ig \frac{\lambda^a}{2} A^a_\mu \nonumber \\
-F^a_{\mu\nu} &= \partial_\mu A^a_\nu - \partial_\nu A^a_\mu + g f^{abc} A^b_\mu A^a_\nu\label{eq2}
-\end{align}
-Notice the use of \verb+\nonumber+ in the align environment at the end
-of each line, except the last, so as not to produce equation numbers on
-lines where no equation numbers are required. The \verb+\label{}+ command
-should only be used at the last line of an align environment where
-\verb+\nonumber+ is not used.
-\begin{equation}
-Y_\infty = \left( \frac{m}{\textrm{GeV}} \right)^{-3}
-    \left[ 1 + \frac{3 \ln(m/\textrm{GeV})}{15}
-    + \frac{\ln(c_2/5)}{15} \right]
-\end{equation}
-The class file also supports the use of \verb+\mathbb{}+, \verb+\mathscr{}+ and
-\verb+\mathcal{}+ commands. As such \verb+\mathbb{R}+, \verb+\mathscr{R}+
-and \verb+\mathcal{R}+ produces $\mathbb{R}$, $\mathscr{R}$ and $\mathcal{R}$
-respectively (refer Subsubsection~\ref{subsubsec3}).
-
-
-
-\section{Tables}\label{sec5}
-
-Tables can be inserted via the normal table and tabular environment. To put
-footnotes inside tables one has to 12pt use the additional ``tablenotes" environment
-enclosing the tabular environment. The footnote appears just below the table
-itself (refer Tables~\ref{tab1} and \ref{tab2}).
-
-
-\begin{verbatim}
-\begin{table}[t]
-\begin{center}
-\begin{minipage}{<width>}
-\caption{<table-caption>\label{<table-label>}}%
-\begin{tabular}{@{}llll@{}}
-\toprule
-column 1 & column 2 & column 3 & column 4\\
-\midrule
-row 1 & data 1 & data 2          & data 3 \\
-row 2 & data 4 & data 5$^{1}$ & data 6 \\
-row 3 & data 7 & data 8      & data 9$^{2}$\\
-\botrule
-\end{tabular}
-\begin{tablenotes}%
-\item Source: Example for source.
-\item[$^{1}$] Example for a 1st table footnote.
-\item[$^{2}$] Example for a 2nd table footnote.
-\end{tablenotes}
-\end{minipage}
-\end{center}
-\end{table}
-\end{verbatim}
-
-
-Lengthy tables which doesn't fit in textwidth should be set as rotated table. For this, we need to use \verb+\begin{sidewaystable}...+ \verb+\end{sidewaystable}+ instead of\break \verb+\begin{table}...+ \verb+\end{table}+ environment.
-
-
-\begin{table}[!t]
-\caption{Caption text\label{tab1}}%
-\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}llll@{\extracolsep\fill}}
-\toprule
-column 1 & column 2  & column 3 & column 4\\
-\midrule
-row 1    & data 1   & data 2  & data 3  \\
-row 2    & data 4   & data 5$^{1}$  & data 6  \\
-row 3    & data 7   & data 8  & data 9$^{2}$  \\
-\botrule
-\end{tabular*}
-\begin{tablenotes}%
-\item Source: This is an example of table footnote this is an example of table footnote this is an example of table footnote this is an example of~table footnote this is an example of table footnote
-\item[$^{1}$] Example for a first table footnote.
-\item[$^{2}$] Example for a second table footnote.
-\end{tablenotes}
-\end{table}
-
-\begin{table*}[h]
-\caption{Example of a lengthy table which is set to full textwidth.\label{tab2}}
-\tabcolsep=0pt%%
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccccc@{\extracolsep{\fill}}}
-\toprule%
-& \multicolumn{3}{@{}c@{}}{Element 1$^{1}$} & \multicolumn{3}{@{}c@{}}{Element 2$^{2}$} \\
-\cline{2-4}\cline{5-7}%
-Project & Energy & $\sigma_{calc}$ & $\sigma_{expt}$ & Energy & $\sigma_{calc}$ & $\sigma_{expt}$ \\
-\midrule
-Element 3  & 990 A & 1168 & $1547\pm12$ & 780 A & 1166 & $1239\pm100$\\
-Element 4  & 500 A & 961  & $922\pm10$  & 900 A & 1268 & $1092\pm40$\\
-\botrule
-\end{tabular*}
-\begin{tablenotes}%
-\item Note: This is an example of table footnote this is an example of table footnote this is an example of table footnote this is an example of~table footnote this is an example of table footnote
-\item[$^{1}$] Example for a first table footnote.
-\item[$^{2}$] Example for a second table footnote.\vspace*{6pt}
-\end{tablenotes}
-\end{table*}
-
-\begin{sidewaystable}%[!p]
-\caption{Tables which are too long to fit, should be written using the ``sidewaystable" environment as shown here\label{tab3}}
-\tabcolsep=0pt%
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccccc@{\extracolsep{\fill}}}
-\toprule%
-& \multicolumn{3}{@{}c@{}}{Element 1$^{1}$}& \multicolumn{3}{@{}c@{}}{Element$^{2}$} \\
-\cline{2-4}\cline{5-7}%
-Projectile & Energy     & $\sigma_{calc}$ & $\sigma_{expt}$ & Energy & $\sigma_{calc}$ & $\sigma_{expt}$ \\
-\midrule
-Element 3 & 990 A & 1168 & $1547\pm12$ & 780 A & 1166 & $1239\pm100$ \\
-Element 4 & 500 A & 961  & $922\pm10$  & 900 A & 1268 & $1092\pm40$ \\
-\botrule
-\end{tabular*}
-\begin{tablenotes}%
-\item Note: This is an example of table footnote this is an example of table footnote this is an example of table footnote this is an example of~table footnote this is an example of table footnote
-\item[$^{1}$] This is an example of table footnote
-\end{tablenotes}
-\end{sidewaystable}
-
-
-\section{Figures}\label{sec6}
-
-As per the \LaTeX\ standards one has to use eps images for \verb+latex+ compilation and \verb+pdf/jpg/png+ images for
-\verb+pdflatex+ compilation. This is one of the major difference between \verb+latex+
-and \verb+pdflatex+. The images should be single page documents. The command for inserting images
-for \verb+latex+ and \verb+pdflatex+ can be generalized. The package used to insert images in \verb+latex/pdflatex+ is the
-graphicx package. Figures can be inserted via the normal figure environment as shown in the below example:
-
-
-\begin{figure}[!t]%
-\centering
-{\color{black!20}\rule{213pt}{37pt}}
-\caption{This is a widefig. This is an example of long caption this is an example of long caption  this is an example of long caption this is an example of long caption}\label{fig1}
-\end{figure}
-
-\begin{figure*}[!t]%
-\centering
-{\color{black!20}\rule{438pt}{74pt}}
-\caption{This is a widefig. This is an example of long caption this is an example of long caption  this is an example of long caption this is an example of long caption}\label{fig2}
-\end{figure*}
-
-
-\begin{verbatim}
-\begin{figure}[t]
-        \centering\includegraphics{<eps-file>}
-        \caption{<figure-caption>}
-        \label{<figure-label>}
-\end{figure}
-\end{verbatim}
-
-Test text here.
-
-For sample purpose, we have included the width of images in the optional argument of \verb+\includegraphics+ tag. Please ignore this. Lengthy figures which doesn't fit in textwidth should be set as rotated mode. For rotated figures, we need to use \verb+\begin{sidewaysfigure}+ \verb+...+ \verb+\end{sidewaysfigure}+ instead of \verb+\begin{figure}+ \verb+...+ \verb+\end{figure}+ environment.
-
-\begin{sidewaysfigure}%
-\centering
-{\color{black!20}\rule{610pt}{102pt}}
-\caption{This is an example for sideways figure. This is an example of long caption this is an example of long caption  this is an example of long caption this is an example of long caption}\label{fig3}
-\end{sidewaysfigure}
-
-
-
-\section{Algorithms, Program codes and Listings}\label{sec7}
-
-Packages \verb+algorithm+, \verb+algorithmicx+ and \verb+algpseudocode+ are used for setting algorithms in latex.
-For this, one has to use the below format:
-
-
-\begin{verbatim}
-\begin{algorithm}
-\caption{<alg-caption>}\label{<alg-label>}
-\begin{algorithmic}[1]
-. . .
-\end{algorithmic}
-\end{algorithm}
-\end{verbatim}
-
-
-We need to refer above listed package documentations for more details before setting \verb+algorithm+ environment.
-To set program codes, one has to use \verb+program+, package. We need to use \verb+\begin{program}+ \verb+...+
-\verb+\end{program}+ environment to set program codes. A fast exponentiation procedure:
-
-\begin{algorithm}[!t]
-\caption{Calculate $y = x^n$}\label{algo1}
-\begin{algorithmic}[1]
-\Require $n \geq 0 \vee x \neq 0$
-\Ensure $y = x^n$
-\State $y \Leftarrow 1$
-\If{$n < 0$}
-        \State $X \Leftarrow 1 / x$
-        \State $N \Leftarrow -n$
-\Else
-        \State $X \Leftarrow x$
-        \State $N \Leftarrow n$
-\EndIf
-\While{$N \neq 0$}
-        \If{$N$ is even}
-            \State $X \Leftarrow X \times X$
-            \State $N \Leftarrow N / 2$
-        \Else[$N$ is odd]
-            \State $y \Leftarrow y \times X$
-            \State $N \Leftarrow N - 1$
-        \EndIf
-\EndWhile
-\end{algorithmic}
-\end{algorithm}
-
-Similarly, for \verb+listings+, one has to use \verb+listings+ package. \verb+\begin{lstlisting}+ \verb+...+ \verb+\end{lstlisting}+ environment is used to set environments similar to \verb+verbatim+ environment. Refer \verb+lstlisting+, package documentation for more details on this.
-
-
-\begin{minipage}{\hsize}%
-\lstset{language=Pascal}% Set your language (you can change the language for each code-block optionally)
-\begin{lstlisting}[frame=single,framexleftmargin=-1pt,framexrightmargin=-17pt,framesep=12pt,linewidth=0.98\textwidth]% Start your code-block
-for i:=maxint to 0 do
-begin
-{ do nothing }
-end;
-Write('Case insensitive ');
-Write('Pascal keywords.');
-\end{lstlisting}
-\end{minipage}
-
-
-\section{Cross referencing}\label{sec8}
-
-Environments such as figure, table, equation, align can have a label
-declared via the \verb+\label{#label}+ command. For figures and table
-environments one should use the \verb+\label{}+ command inside or just
-below the \verb+\caption{}+ command.  One can then use the
-\verb+\ref{#label}+ command to cross-reference them. As an example, consider
-the label declared for Figure \ref{fig1} which is
-\verb+\label{fig1}+. To cross-reference it, use the command
-\verb+ Figure \ref{fig1}+, for which it comes up as
-``Figure~\ref{fig1}".
-
-\subsection{Details on reference citations}\label{subsec3}
-
-With standard numerical .bst files, only numerical citations are possible.
-With an author-year .bst file, both numerical and author-year citations are possible.
-
-If author-year citations are selected, \verb+\bibitem+ must have one of the following forms:
-
-
-{\footnotesize%
-\begin{verbatim}
-\bibitem[Jones et al.(1990)]{key}...
-\bibitem[Jones et al.(1990)Jones,
-                Baker, and Williams]{key}...
-\bibitem[Jones et al., 1990]{key}...
-\bibitem[\protect\citeauthoryear{Jones,
-                Baker, and Williams}
-                {Jones et al.}{1990}]{key}...
-\bibitem[\protect\citeauthoryear{Jones et al.}
-                {1990}]{key}...
-\bibitem[\protect\astroncite{Jones et al.}
-                {1990}]{key}...
-\bibitem[\protect\citename{Jones et al., }
-                1990]{key}...
-\harvarditem[Jones et al.]{Jones, Baker, and
-                Williams}{1990}{key}...
-\end{verbatim}}
-
-
-This is either to be made up manually, or to be generated by an
-appropriate .bst file with BibTeX. Then,
-
-
-{%
-\begin{verbatim}
-                    Author-year mode
-                        || Numerical mode
-\citet{key} ==>>  Jones et al. (1990)
-                        || Jones et al. [21]
-\citep{key} ==>> (Jones et al., 1990) || [21]
-\end{verbatim}}
-
-
-\noindent
-Multiple citations as normal:
-
-
-{%
-\begin{verbatim}
-\citep{key1,key2} ==> (Jones et al., 1990;
-                         Smith, 1989)||[21,24]
-        or (Jones et al., 1990, 1991)||[21,24]
-        or (Jones et al., 1990a,b)   ||[21,24]
-\end{verbatim}}
-
-
-\noindent
-\verb+\cite{key}+ is the equivalent of \verb+\citet{key}+ in author-year mode
-and  of \verb+\citep{key}+ in numerical mode. Full author lists may be forced with
-\verb+\citet*+ or \verb+\citep*+, e.g.
-
-
-{%
-\begin{verbatim}
-\citep*{key} ==>> (Jones, Baker, and Mark, 1990)
-\end{verbatim}}
-
-
-\noindent
-Optional notes as:
-
-
-{%
-\begin{verbatim}
-\citep[chap. 2]{key}     ==>>
-        (Jones et al., 1990, chap. 2)
-\citep[e.g.,][]{key}     ==>>
-        (e.g., Jones et al., 1990)
-\citep[see][pg. 34]{key} ==>>
-        (see Jones et al., 1990, pg. 34)
-\end{verbatim}}
-
-
-\noindent
-(Note: in standard LaTeX, only one note is allowed, after the ref.
-Here, one note is like the standard, two make pre- and post-notes.)
-
-
-{%
-\begin{verbatim}
-\citealt{key}   ==>> Jones et al. 1990
-\citealt*{key}  ==>> Jones, Baker, and
-                        Williams 1990
-\citealp{key}   ==>> Jones et al., 1990
-\citealp*{key}  ==>> Jones, Baker, and
-                        Williams, 1990
-\end{verbatim}}
-
-
-\noindent
-Additional citation possibilities (both author-year and numerical modes)
-
-
-{%
-\begin{verbatim}
-\citeauthor{key}       ==>> Jones et al.
-\citeauthor*{key}      ==>> Jones, Baker, and
-                                Williams
-\citeyear{key}         ==>> 1990
-\citeyearpar{key}      ==>> (1990)
-\citetext{priv. comm.} ==>> (priv. comm.)
-\citenum{key}          ==>> 11 [non-superscripted]
-\end{verbatim}}
-
-
-\noindent
-Note: full author lists depends on whether the bib style supports them;
-if not, the abbreviated list is printed even when full requested.
-
-\noindent
-For names like della Robbia at the start of a sentence, use
-
-
-{%
-\begin{verbatim}
-\Citet{dRob98}      ==>> Della Robbia (1998)
-\Citep{dRob98}      ==>> (Della Robbia, 1998)
-\Citeauthor{dRob98} ==>> Della Robbia
-\end{verbatim}}
-
-
-\noindent
-The following is an example for \verb+\cite{...}+: \cite{rahman2019centroidb}. Another example for \verb+\citep{...}+: \citep{bahdanau2014neural,imboden2018cardiorespiratory,motiian2017unified,american2013acsm,murphy2012machine,ji20123d}.
-Sample cites here \cite{krizhevsky2012imagenet,horvath2018dna} and \cite{pyrkov2018quantitative}, \cite{wang2018face}, \cite{lecun2015deep,zhang2018fine,ravi2016deep}.
-
-
-\section{Lists}\label{sec9}
-
-List in \LaTeX{} can be of three types: numbered, bulleted and unnumbered. ``enumerate'' environment produces numbered list,
-``itemize'' environment produces bulleted list and ``unlist'' environment produces unnumbered list.
-In each environments, new entry is added via the \verb+\item+ command.
-\begin{enumerate}[1.]
-\item This is the 1st item
-
-\item Enumerate creates numbered lists, itemize creates bulleted lists and
-unnumerate creates unnumbered lists.
-\begin{enumerate}[(a)]
-\item Second level numbered list. Enumerate creates numbered lists, itemize creates bulleted lists and
-description creates unnumbered lists.
-
-\item Second level numbered list. Enumerate creates numbered lists, itemize creates bulleted lists and
-description creates unnumbered lists.
-\begin{enumerate}[(ii)]
-\item Third level numbered list. Enumerate creates numbered lists, itemize creates bulleted lists and
-description creates unnumbered lists.
-
-\item Third level numbered list. Enumerate creates numbered lists, itemize creates bulleted lists and
-description creates unnumbered lists.
-\end{enumerate}
-
-\item Second level numbered list. Enumerate creates numbered lists, itemize creates bulleted lists and
-description creates unnumbered lists.
-
-\item Second level numbered list. Enumerate creates numbered lists, itemize creates bulleted lists and
-description creates unnumbered lists.
-\end{enumerate}
-
-\item Enumerate creates numbered lists, itemize creates bulleted lists and
-description creates unnumbered lists.
-
-\item Numbered lists continue.
-\end{enumerate}
-List in \LaTeX{} can be of three types: enumerate, itemize and description.
-In each environments, new entry is added via the \verb+\item+ command.
-\begin{itemize}
-\item First level bulleted list. This is the 1st item
-
-\item First level bulleted list. Itemize creates bulleted lists and description creates unnumbered lists.
-\begin{itemize}
-\item Second level dashed list. Itemize creates bulleted lists and description creates unnumbered lists.
-
-\item Second level dashed list. Itemize creates bulleted lists and description creates unnumbered lists.
-
-\item Second level dashed list. Itemize creates bulleted lists and description creates unnumbered lists.
-\end{itemize}
-
-\item First level bulleted list. Itemize creates bulleted lists and description creates unnumbered lists.
-
-\item First level bulleted list. Bullet lists continue.
-\end{itemize}
-
-\noindent
-Example for unnumbered list items:
-
-\begin{unlist}
-\item Sample unnumberd list text. Sample unnumberd list text. Sample unnumberd list text. Sample unnumberd list text. Sample unnumberd list text.
-
-\item Sample unnumberd list text. Sample unnumberd list text. Sample unnumberd list text.
-
-\item sample unnumberd list text. Sample unnumberd list text. Sample unnumberd list text. Sample unnumberd list text. Sample unnumberd list text. Sample unnumberd list text. Sample unnumberd list text.
-\end{unlist}
-
-\section{Examples for theorem like environments}\label{sec10}
-
-For theorem like environments, we require \verb+amsthm+ package. There are three types of predefined theorem styles
-exists - \verb+thmstyleone+, \verb+thmstyletwo+ and \verb+thmstylethree+
-
-\medskip
-\noindent\begin{tabular}{|l|p{13pc}|}
-\hline
-\verb+thmstyleone+ & Numbered, theorem head in bold font and theorem text in italic style \\\hline
-\verb+thmstyletwo+ & Numbered, theorem head in roman font and theorem text in italic style \\\hline
-\verb+thmstylethree+ & Numbered, theorem head in bold font and theorem text in roman style \\\hline
-\end{tabular}
-
-
-\begin{theorem}[Theorem subhead]\label{thm1}
-Example theorem text. Example theorem text. Example theorem text. Example theorem text. Example theorem text.
-Example theorem text. Example theorem text. Example theorem text. Example theorem text. Example theorem text.
-Example theorem text.
-\end{theorem}
-
-Quisque ullamcorper placerat ipsum. Cras nibh. Morbi vel justo vitae lacus tincidunt ultrices. Lorem ipsum dolor sit
-amet, consectetuer adipiscing elit. In hac habitasse platea dictumst. Integer tempus convallis augue.
-
-\begin{proposition}
-Example proposition text. Example proposition text. Example proposition text. Example proposition text. Example proposition text.
-Example proposition text. Example proposition text. Example proposition text. Example proposition text. Example proposition text.
-\end{proposition}
-
-Nulla malesuada porttitor diam. Donec felis erat, congue non, volutpat at, tincidunt tristique, libero. Vivamus
-viverra fermentum felis. Donec nonummy pellentesque ante.
-
-\begin{example}
-Phasellus adipiscing semper elit. Proin fermentum massa
-ac quam. Sed diam turpis, molestie vitae, placerat a, molestie nec, leo. Maecenas lacinia. Nam ipsum ligula, eleifend
-at, accumsan nec, suscipit a, ipsum. Morbi blandit ligula feugiat magna. Nunc eleifend consequat lorem.
-\end{example}
-
-Nulla malesuada porttitor diam. Donec felis erat, congue non, volutpat at, tincidunt tristique, libero. Vivamus
-viverra fermentum felis. Donec nonummy pellentesque ante.
-
-\begin{remark}
-Phasellus adipiscing semper elit. Proin fermentum massa
-ac quam. Sed diam turpis, molestie vitae, placerat a, molestie nec, leo. Maecenas lacinia. Nam ipsum ligula, eleifend
-at, accumsan nec, suscipit a, ipsum. Morbi blandit ligula feugiat magna. Nunc eleifend consequat lorem.
-\end{remark}
-
-Quisque ullamcorper placerat ipsum. Cras nibh. Morbi vel justo vitae lacus tincidunt ultrices. Lorem ipsum dolor sit
-amet, consectetuer adipiscing elit. In hac habitasse platea dictumst.
-
-\begin{definition}[Definition sub head]
-Example definition text. Example definition text. Example definition text. Example definition text. Example definition text. Example definition text. Example definition text. Example definition text.
-\end{definition}
-
-Apart from the above styles, we have \verb+\begin{proof}+ \verb+...+ \verb+\end{proof}+ environment - with proof head in italic style and body text in roman font with an open square at the end of each proof environment.
-
-\begin{proof}Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text.
-\end{proof}
-
-Nam dui ligula, fringilla a, euismod sodales, sollicitudin vel, wisi. Morbi auctor lorem non justo. Nam lacus libero,
-pretium at, lobortis vitae, ultricies et, tellus. Donec aliquet, tortor sed accumsan bibendum, erat ligula aliquet magna,
-vitae ornare odio metus a mi.
-
-\begin{proof}[Proof of Theorem~{\upshape\ref{thm1}}]
-Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text.
-\end{proof}
-
-\noindent
-For quote environment, one has to use\newline \verb+\begin{quote}...\end{quote}+
-\begin{quote}
-Quoted text example. Aliquam porttitor quam a lacus. Praesent vel arcu ut tortor cursus volutpat. In vitae pede quis diam bibendum placerat. Fusce elementum
-convallis neque. Sed dolor orci, scelerisque ac, dapibus nec, ultricies ut, mi. Duis nec dui quis leo sagittis commodo.
-\end{quote}
-Donec congue. Maecenas urna mi, suscipit in, placerat ut, vestibulum ut, massa. Fusce ultrices nulla et nisl (refer Figure~\ref{fig3}). Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam ligula arcu,
-elementum a, venenatis quis, sollicitudin sed, metus. Donec nunc pede, tincidunt in, venenatis vitae, faucibus vel (refer Table~\ref{tab3}).
-
-\section{Conclusion}
-
-Some Conclusions here.
-
 %%%%%%%%%%%%%%
 
-\begin{appendices}
+%\begin{appendices}
+%\end{appendices}
 
-\section{Section title of first appendix}\label{sec11}
-
-Nam dui ligula, fringilla a, euismod sodales, sollicitudin vel, wisi. Morbi auctor lorem non justo. Nam lacus libero,
-pretium at, lobortis vitae, ultricies et, tellus. Donec aliquet, tortor sed accumsan bibendum, erat ligula aliquet magna,
-vitae ornare odio metus a mi. Morbi ac orci et nisl hendrerit mollis. Suspendisse ut massa. Cras nec ante. Pellentesque
-a nulla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam tincidunt
-urna. Nulla ullamcorper vestibulum turpis. Pellentesque cursus luctus mauris.
-
-\subsection{Subsection title of first appendix}\label{subsec4}
-
-Nam dui ligula, fringilla a, euismod sodales, sollicitudin vel, wisi. Morbi auctor lorem non justo. Nam lacus libero,
-pretium at, lobortis vitae, ultricies et, tellus. Donec aliquet, tortor sed accumsan bibendum, erat ligula aliquet magna,
-vitae ornare odio metus a mi. Morbi ac orci et nisl hendrerit mollis. Suspendisse ut massa. Cras nec ante. Pellentesque
-a nulla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam tincidunt
-urna. Nulla ullamcorper vestibulum turpis. Pellentesque cursus luctus mauris.
-
-\subsubsection{Subsubsection title of first appendix}\label{subsubsec3}
-
-Example for Unnumbered figure:
-
-\begin{figure}[!h]
-\centering
-{\color{black!20}\rule{85pt}{92pt}}
-\end{figure}
-
-Fusce mauris. Vestibulum luctus nibh at lectus. Sed bibendum, nulla a faucibus semper, leo velit ultricies tellus, ac
-venenatis arcu wisi vel nisl. Vestibulum diam. Aliquam pellentesque, augue quis sagittis posuere, turpis lacus congue
-quam, in hendrerit risus eros eget felis.
-
-\section{Section title of second appendix}\label{sec12}%
-
-Fusce mauris. Vestibulum luctus nibh at lectus. Sed bibendum, nulla a faucibus semper, leo velit ultricies tellus, ac
-venenatis arcu wisi vel nisl. Vestibulum diam. Aliquam pellentesque, augue quis sagittis posuere, turpis lacus congue
-quam, in hendrerit risus eros eget felis. Maecenas eget erat in sapien mattis porttitor. Vestibulum porttitor. Nulla
-facilisi. Sed a turpis eu lacus commodo facilisis. Morbi fringilla, wisi in dignissim interdum, justo lectus sagittis dui, et
-vehicula libero dui cursus dui. Mauris tempor ligula sed lacus. Duis cursus enim ut augue. Cras ac magna. Cras nulla.
-
-\begin{figure}[b]
-\centering
-{\color{black!20}\rule{217pt}{120pt}}
-\caption{This is an example for appendix figure\label{fig4}}
-\end{figure}
-
-\subsection{Subsection title of second appendix}\label{subsec5}
-
-Sed commodo posuere pede. Mauris ut est. Ut quis purus. Sed ac odio. Sed vehicula hendrerit sem. Duis non odio.
-Morbi ut dui. Sed accumsan risus eget odio. In hac habitasse platea dictumst. Pellentesque non elit. Fusce sed justo
-eu urna porta tincidunt. Mauris felis odio, sollicitudin sed, volutpat a, ornare ac, erat. Morbi quis dolor. Donec
-pellentesque, erat ac sagittis semper, nunc dui lobortis purus, quis congue purus metus ultricies tellus. Proin et quam.
-Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Praesent sapien turpis,
-fermentum vel, eleifend faucibus, vehicula eu, lacus.
-
-Sed commodo posuere pede. Mauris ut est. Ut quis purus. Sed ac odio. Sed vehicula hendrerit sem. Duis non odio.
-Morbi ut dui. Sed accumsan risus eget odio. In hac habitasse platea dictumst. Pellentesque non elit. Fusce sed justo
-eu urna porta tincidunt. Mauris felis odio, sollicitudin sed, volutpat a, ornare ac, erat. Morbi quis dolor. Donec
-pellentesque, erat ac sagittis semper, nunc dui lobortis purus, quis congue purus metus ultricies tellus. Proin et quam.
-Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Praesent sapien turpis,
-fermentum vel, eleifend faucibus, vehicula eu, lacus.
-
-\subsubsection{Subsubsection title of second appendix}\label{subsubsec4}
-
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae,
-felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec
-vehicula augue eu neque.
-
-\begin{table}[t]%
-\begin{center}
-\begin{minipage}{.52\columnwidth}
-\caption{This is an example of Appendix table showing food requirements of army, navy and airforce\label{tab4}}%
-\begin{tabular}{@{}lcc@{}}%
-\toprule
-col1 head & col2 head & col3 head \\
-\midrule
-col1 text & col2 text & col3 text \\
-col1 text & col2 text & col3 text \\
-col1 text & col2 text & col3 text \\
-\botrule
-\end{tabular}
-\end{minipage}
-\end{center}
-\end{table}
-
-Example for an equation inside appendix:
-\begin{align}
- p &= \frac{\gamma^{2} - (n_{C} -1)H}{(n_{C} - 1) + H - 2\gamma} \label{1eq:hybobo:pfromgH} \\
- \theta &= \frac{(\gamma - H)^{2}(\gamma - n_{C} -1)^{2}}{(n_{C} - 1 + H - 2\gamma)^{2}} \label{2eq:hybobo:tfromgH}\; .
-\end{align}
-
-\section{Example of another appendix section}\label{sec13}%
-
-Nam dui ligula, fringilla a, euismod sodales, sollicitudin vel, wisi. Morbi auctor lorem non justo. Nam lacus libero,
-pretium at, lobortis vitae, ultricies et, tellus. Donec aliquet, tortor sed accumsan bibendum, erat ligula aliquet magna,
-vitae ornare odio metus a mi. Morbi ac orci et nisl hendrerit mollis. Suspendisse ut massa. Cras nec ante. Pellentesque
-a nulla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam tincidunt
-urna. Nulla ullamcorper vestibulum turpis. Pellentesque cursus luctus mauris
-\begin{equation}
-\mathcal{L} = i \bar{\psi} \gamma^\mu D_\mu \psi
-    - \frac{1}{4} F_{\mu\nu}^a F^{a\mu\nu} - m \bar{\psi} \psi
-\label{eq26}
-\end{equation}
-
-Nulla malesuada porttitor diam. Donec felis erat, congue non, volutpat at, tincidunt tristique, libero. Vivamus
-viverra fermentum felis. Donec nonummy pellentesque ante. Phasellus adipiscing semper elit. Proin fermentum massa
-ac quam. Sed diam turpis, molestie vitae, placerat a, molestie nec, leo. Maecenas lacinia. Nam ipsum ligula, eleifend
-at, accumsan nec, suscipit a, ipsum. Morbi blandit ligula feugiat magna. Nunc eleifend consequat lorem. Sed lacinia
-nulla vitae enim. Pellentesque tincidunt purus vel magna. Integer non enim. Praesent euismod nunc eu purus. Donec
-bibendum quam in tellus. Nullam cursus pulvinar lectus. Donec et mi. Nam vulputate metus eu enim. Vestibulum
-pellentesque felis eu massa.
-
-Nulla malesuada porttitor diam. Donec felis erat, congue non, volutpat at, tincidunt tristique, libero. Vivamus
-viverra fermentum felis. Donec nonummy pellentesque ante. Phasellus adipiscing semper elit. Proin fermentum massa
-ac quam. Sed diam turpis, molestie vitae, placerat a, molestie nec, leo. Maecenas lacinia. Nam ipsum ligula, eleifend
-at, accumsan nec, suscipit a, ipsum. Morbi blandit ligula feugiat magna. Nunc eleifend consequat lorem. Sed lacinia
-nulla vitae enim. Pellentesque tincidunt purus vel magna. Integer non enim. Praesent euismod nunc eu purus. Donec
-bibendum quam in tellus. Nullam cursus pulvinar lectus. Donec et mi. Nam vulputate metus eu enim. Vestibulum
-pellentesque felis eu massa.
-
-Nulla malesuada porttitor diam. Donec felis erat, congue non, volutpat at, tincidunt tristique, libero. Vivamus
-viverra fermentum felis. Donec nonummy pellentesque ante. Phasellus adipiscing semper elit. Proin fermentum massa
-ac quam. Sed diam turpis, molestie vitae, placerat a, molestie nec, leo. Maecenas lacinia. Nam ipsum ligula, eleifend
-at, accumsan nec, suscipit a, ipsum. Morbi blandit ligula feugiat magna. Nunc eleifend consequat lorem. Sed lacinia
-nulla vitae enim. Pellentesque tincidunt purus vel magna. Integer non enim. Praesent euismod nunc eu purus. Donec
-bibendum quam in tellus. Nullam cursus pulvinar lectus. Donec et mi. Nam vulputate metus eu enim. Vestibulum
-pellentesque felis eu massa.
-
-Nulla malesuada porttitor diam. Donec felis erat, congue non, volutpat at, tincidunt tristique, libero. Vivamus
-viverra fermentum felis. Donec nonummy pellentesque ante. Phasellus adipiscing semper elit. Proin fermentum massa
-ac quam. Sed diam turpis, molestie vitae, placerat a, molestie nec, leo. Maecenas lacinia. Nam ipsum ligula, eleifend
-at, accumsan nec, suscipit a, ipsum. Morbi blandit ligula feugiat magna. Nunc eleifend consequat lorem. Sed lacinia
-nulla vitae enim. Pellentesque tincidunt purus vel magna. Integer non enim. Praesent euismod nunc eu purus. Donec
-bibendum quam in tellus. Nullam cursus pulvinar lectus. Donec et mi. Nam vulputate metus eu enim. Vestibulum
-pellentesque felis eu massa.
-
-%% Example for unnumbered table inside appendix
-\begin{table}
-\begin{center}
-\begin{minipage}{.52\columnwidth}
-\caption{}{%
-\begin{tabular}{lcc}%
-\toprule
-col1 head & col2 head & col3 head \\
-\midrule
-col1 text & col2 text & col3 text \\
-col1 text & col2 text & col3 text \\
-col1 text & col2 text & col3 text \\
-\botrule
-\end{tabular}}{}
-\end{minipage}
-\end{center}
-\end{table}
-
-\end{appendices}
-
+$if(competing_interests)$
 \section{Competing interests}
-There is NO Competing Interest.
 
+$competing_interests$
+$endif$
+
+$if(author_contributions)$
 \section{Author contributions statement}
 
-Must include all authors, identified by initials, for example:
-S.R. and D.A. conceived the experiment(s),  S.R. conducted the experiment(s), S.R. and D.A. analysed the results.  S.R. and D.A. wrote and reviewed the manuscript.
+$author_contributions$
+$endif$
 
+$if(acknowledgments)$
 \section{Acknowledgments}
-The authors thank the anonymous reviewers for their valuable suggestions. This work is supported in part by funds from the National Science Foundation (NSF: \# 1636933 and \# 1920920).
 
+$acknowledgments$
+$endif$
 
-%\bibliographystyle{plain}
-%\bibliography{references.bib}
+$if(natbib)$
+$if(bibliography)$
 
-%% \begin{thebibliography}{10}
+$if(biblio-title)$
+$if(book-class)$
+\renewcommand\bibname{$biblio-title$}
+$else$
+\renewcommand\refname{$biblio-title$}
+$endif$
+$endif$
 
-%% \bibitem{bahdanau2014neural}
-%% Dzmitry Bahdanau, Kyunghyun Cho, and Yoshua Bengio.
-%% \newblock Neural machine translation by jointly learning to align and
-%%   translate.
-%% \newblock {\em arXiv preprint arXiv:1409.0473}, 2014.
-
-%% \bibitem{horvath2018dna}
-%% Steve Horvath and Kenneth Raj.
-%% \newblock Dna methylation-based biomarkers and the epigenetic clock theory of
-%%   ageing.
-%% \newblock {\em Nature Reviews Genetics}, 19(6):371, 2018.
-
-%% \bibitem{imboden2018cardiorespiratory}
-%% Mary~T Imboden, Matthew~P Harber, Mitchell~H Whaley, W~Holmes Finch, Derron~L
-%%   Bishop, and Leonard~A Kaminsky.
-%% \newblock Cardiorespiratory fitness and mortality in healthy men and women.
-%% \newblock {\em Journal of the American College of Cardiology},
-%%   72(19):2283--2292, 2018.
-
-%% \bibitem{ji20123d}
-%% Shuiwang Ji, Wei Xu, Ming Yang, and Kai Yu.
-%% \newblock 3d convolutional neural networks for human action recognition.
-%% \newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
-%%   35(1):221--231, 2012.
-
-%% \bibitem{krizhevsky2012imagenet}
-%% Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E Hinton.
-%% \newblock Imagenet classification with deep convolutional neural networks.
-%% \newblock In {\em Advances in Neural Information Processing Systems}, pages
-%%   1097--1105, 2012.
-
-%% \bibitem{lecun2015deep}
-%% Yann LeCun, Yoshua Bengio, and Geoffrey Hinton.
-%% \newblock Deep learning.
-%% \newblock {\em Nature}, 521(7553):436, 2015.
-
-%% \bibitem{motiian2017unified}
-%% Saeid Motiian, Marco Piccirilli, Donald~A Adjeroh, and Gianfranco Doretto.
-%% \newblock Unified deep supervised domain adaptation and generalization.
-%% \newblock In {\em Proceedings of the IEEE International Conference on Computer
-%%   Vision}, pages 5715--5725, 2017.
-
-%% \bibitem{murphy2012machine}
-%% Kevin~P Murphy.
-%% \newblock {\em Machine learning: A probabilistic perspective}.
-%% \newblock MIT press, 2012.
-
-%% \bibitem{american2013acsm}
-%% American~College of~Sports~Medicine et~al.
-%% \newblock {\em ACSM's guidelines for exercise testing and prescription}.
-%% \newblock Lippincott Williams \& Wilkins, 2013.
-
-%% \bibitem{pyrkov2018quantitative}
-%% Timothy~V Pyrkov, Evgeny Getmantsev, Boris Zhurov, Konstantin Avchaciov,
-%%   Mikhail Pyatnitskiy, Leonid Menshikov, Kristina Khodova, Andrei~V Gudkov, and
-%%   Peter~O Fedichev.
-%% \newblock Quantitative characterization of biological age and frailty based on
-%%   locomotor activity records.
-%% \newblock {\em Aging (Albany NY)}, 10(10):2973, 2018.
-
-%% \bibitem{rahman2019centroidb}
-%% Syed~Ashiqur Rahman and Donald Adjeroh.
-%% \newblock Centroid of age neighborhoods: A generalized approach to estimate
-%%   biological age.
-%% \newblock In {\em 2019 IEEE EMBS International Conference on Biomedical \&
-%%   Health Informatics (BHI)}, pages 1--4. IEEE, 2019.
-
-%% \bibitem{ravi2016deep}
-%% Daniele Rav{\`\i}, Charence Wong, Fani Deligianni, Melissa Berthelot, Javier
-%%   Andreu-Perez, Benny Lo, and Guang-Zhong Yang.
-%% \newblock Deep learning for health informatics.
-%% \newblock {\em IEEE {J}ournal of {B}iomedical and {H}ealth {I}nformatics},
-%%   21(1):4--21, 2016.
-
-%% \bibitem{wang2018face}
-%% Zongwei Wang, Xu~Tang, Weixin Luo, and Shenghua Gao.
-%% \newblock Face aging with identity-preserved conditional generative adversarial
-%%   networks.
-%% \newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
-%%   Pattern Recognition}, pages 7939--7947, 2018.
-
-%% \bibitem{zhang2018fine}
-%% Ke~Zhang, Na~Liu, Xingfang Yuan, Xinyao Guo, Ce~Gao, and Zhenbing Zhao.
-%% \newblock Fine-grained age estimation in the wild with attention {LSTM}
-%%   networks.
-%% \newblock {\em arXiv preprint arXiv:1805.10445}, 2018.
-
-%% \end{thebibliography}
-
-
-%USE THE BELOW OPTIONS IN CASE YOU NEED AUTHOR YEAR FORMAT.
-\bibliographystyle{abbrvnat}
-\bibliography{references.bib}
-
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+$endif$
 
 
 %% sample for biography with author's image
-\begin{biography}{{\color{black!20}\rule{77pt}{77pt}}}{\author{Author Name.} This is sample author biography text. The values provided in the optional argument is meant for sample purpose. There is no need to include the width and height of an image in the optional argument for live articles. This is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text.}
-\end{biography}
+%\begin{biography}{{\color{black!20}\rule{77pt}{77pt}}}{\author{Author Name.} This is sample author biography text. The values provided in the optional argument is meant for sample purpose. There is no need to include the width and height of an image in the optional argument for live articles. This is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text.}
+%\end{biography}
 
 %% sample for biography without author's image
-\begin{biography}{}{\author{Author Name.} This is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text.}
-\end{biography}
+%\begin{biography}{}{\author{Author Name.} This is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text.}
+%\end{biography}
+
+$for(include-after)$
+$include-after$
+$endfor$
 
 \end{document}
