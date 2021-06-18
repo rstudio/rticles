@@ -130,11 +130,25 @@ $if(numberlines)$\usepackage{lineno}\linenumbers$endif$
     \arabic{ADDRLBL@#1}%
 }
 
+\newcommand*\addrbycode[1]{%
+  \ifcounter{ADDR@#1}
+    {}
+    {\newcounter{ADDR@#1}%
+     \address[\addrlblbycode{#1}]{\MyRef{ADDRTXT}{#1}}}%
+}
+
 \newcommand*\corresplblbycode[1]{%
   \ifcounter{CORRESPLBL@#1}
     {}
-    {\refstepcounter{correspcnt}\newcounter{CORRESPLBL@#1}\setcounter{CORRESPLBL@#1}{\value{corresp}}}%
+    {\refstepcounter{correspcnt}\newcounter{CORRESPLBL@#1}\setcounter{CORRESPLBL@#1}{\value{correspcnt}}}%
     \fnsymbol{CORRESPLBL@#1}%
+}
+
+\newcommand*\correspbycode[1]{%
+  \ifcounter{CORRESP@#1}
+    {}
+    {\newcounter{CORRESP@#1}%
+     \corresp[\corresplblbycode{#1}]{\MyRef{CORRESPTXT}{#1}}}%
 }
 
 \makeatother
@@ -147,18 +161,18 @@ $for(address)$
  $elseif(address.id)$
   \MyNewLabel{ADDRTXT}{$address.id$}{%
  $endif$
- $if(address.address$$address.address$$else$%
-  $if(address.department)$\orgdiv{$address.department}, $endif$%
-  $if(address.organization)$\orgname{$address.organization}, $endif$%
+ $if(address.address)$$address.address$$else$%
+  $if(address.department)$\orgdiv{$address.department$}, $endif$%
+  $if(address.organization)$\orgname{$address.organization$}, $endif$%
   $if(address.street)$\orgaddress{%
    $elseif(address.postcode)$\orgaddress{%
    $elseif(address.state)$\orgaddress{%
    $elseif(address.country)$\orgaddress{%
   $endif$%
-  $if(address.street)$\street{$address.street}, $endif$%
-  $if(address.postcode)$\orgdiv{$address.postcode}, $endif$%
-  $if(address.state)$\orgdiv{$address.state}, $endif$%
-  $if(address.country)$\orgdiv{$address.country}$endif$%
+  $if(address.street)$\street{$address.street$}, $endif$%
+  $if(address.postcode)$\orgdiv{$address.postcode$}, $endif$%
+  $if(address.state)$\orgdiv{$address.state$}, $endif$%
+  $if(address.country)$\orgdiv{$address.country$}$endif$%
   $if(address.street)$}%
    $elseif(address.postcode)$}%
    $elseif(address.state)$}%
@@ -171,7 +185,7 @@ $endfor$
 % Create labels for Footnotes if they are given in Elsevier format
 $for(footnote)$
 $if(footnote.code)$
-\MyNewLabel{FTNTXT}{$footnote.code$}{$footnote.text$}
+\MyNewLabel{CORRESPTXT}{$footnote.code$}{$footnote.text$}
 $endif$
 $endfor$
 
@@ -259,14 +273,14 @@ $if(author.footnote)$$if(author.affiliation)$,$elseif(author.corresponding_autho
 ]{$author.name$}
 
 $for(author.affiliation)$
-\address[\addrlblbycode{$author.affiliation$}]{\MyRef{ADDRTXT}{$author.affiliation$}}
+\addrbycode{$author.affiliation$}
 $endfor$
 
 $if(author.corresponding_author)$\corresp[\fnsymbol{thisauthcorresp}]{Corresponding author. \href{mailto:$author.email$}{$author.email$}}$endif$
 $if(author.thanks)$\corresp[\fnsymbol{thisauththanks}]{$author.thanks$}$endif$
 
 $for(author.footnote)$
-\corresp[\corresplblbycode{$author.footnote$}]{\MyRef{CORRESPTXT}{$author.footnote$}}
+\correspbycode{$author.footnote$}
 $endfor$
 
 $endfor$
