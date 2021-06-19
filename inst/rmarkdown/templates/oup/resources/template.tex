@@ -165,15 +165,18 @@ $for(address)$
   $if(address.department)$\orgdiv{$address.department$}, $endif$%
   $if(address.organization)$\orgname{$address.organization$}, $endif$%
   $if(address.street)$\orgaddress{%
+   %$elseif(address.city)$\orgaddress{%
    $elseif(address.postcode)$\orgaddress{%
    $elseif(address.state)$\orgaddress{%
    $elseif(address.country)$\orgaddress{%
   $endif$%
   $if(address.street)$\street{$address.street$}, $endif$%
-  $if(address.postcode)$\orgdiv{$address.postcode$}, $endif$%
-  $if(address.state)$\orgdiv{$address.state$}, $endif$%
-  $if(address.country)$\orgdiv{$address.country$}$endif$%
+  %$if(address.city)$\city{$address.city$}, $endif$%
+  $if(address.postcode)$\postcode{$address.postcode$}, $endif$%
+  $if(address.state)$\state{$address.state$}, $endif$%
+  $if(address.country)$\country{$address.country$}$endif$%
   $if(address.street)$}%
+   %$elseif(address.city)$}%
    $elseif(address.postcode)$}%
    $elseif(address.state)$}%
    $elseif(address.country)$}%
@@ -188,11 +191,6 @@ $if(footnote.code)$
 \MyNewLabel{CORRESPTXT}{$footnote.code$}{$footnote.text$}
 $endif$
 $endfor$
-
-% Part for setting citation format package: natbib
-$if(natbib)$
-\bibliographystyle{$if(namedate)$abbrvnat$else$plain$endif$}
-$endif$
 
 % Part for indenting CSL refs
 % Pandoc citation processing
@@ -354,6 +352,8 @@ $else$
 $endif$
 $endif$
 
+
+\bibliographystyle{$if(namedate)$abbrvnat$else$plain$endif$}
 \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 $endif$
 $endif$
