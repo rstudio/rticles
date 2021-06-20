@@ -22,8 +22,14 @@ author:
         - 1
         - 2
 address:
+address:
   - code: ABC
-    address: Address ABC
+    department: Department of Biology
+    organization: University of Idaho
+    street: 123 Main Street
+    postcode: Boise
+    state: Idaho 07458
+    country: United States
   - code: DEF
     address: Address DEF
   - code: Another University
@@ -34,9 +40,7 @@ footnote:
   - code: 2
     text: "Current email address: \\href{mailto:cat@example.com}{cat@example.com}"
 abstract: |
-  This is the abstract.
-
-  It consists of two paragraphs.
+  This is the abstract. I cannot figure out how to make it two paragraphs.
 acknowledgements: |
   This is an acknowledgement.
 
@@ -49,10 +53,16 @@ keywords:
 #spacing: halfline # could also be oneline
 #classoptions:
 #  - endnotes
+#onecolumn: TRUE
 bibliography: mybibfile.bib
+namedate: TRUE
 #csl: mycitationstyle.csl
-#link-citations: yes
-output: rticles::oup_article
+#link-citations: yes # Does not seem relevant any more
+output: 
+  rticles::oup_article:
+    keep_md: TRUE
+    keep_tex: TRUE
+    citation_package: natbib
 #urlcolor: orange
 #linkcolor: green
 #citecolor: red

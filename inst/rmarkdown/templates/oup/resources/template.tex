@@ -50,15 +50,14 @@ $if(numberlines)$\usepackage{lineno}\linenumbers$endif$
 }
 
 
-% For knitr::kable functionality
+% For knitr::kable and kableExtra functionality
 \usepackage{booktabs}
 \usepackage{longtable}
-
-%% To allow better options for figure placement
-%\usepackage{float}
-
-% % Packages that are supposedly required by OUP sty file
-% \usepackage{amssymb, amsmath, geometry, amsfonts, verbatim, endnotes, setspace}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
 
 % For code highlighting I think
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
