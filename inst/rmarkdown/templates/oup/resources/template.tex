@@ -282,7 +282,14 @@ $endfor$
 
 $endfor$
 
+% Add author mark
+$if(authormark)$
+\authormark{$authormark$}
+$elseif(author)$
 \authormark{$for(author/first)$$it.name$$endfor$$if(author/rest/rest)$ et al.$else$$for(author/rest)$ \and $author.name$$endfor$$endif$}
+$elseif(authors)$
+\authormark{$for(authors/first)$$it.name$$endfor$$if(authors/rest/rest)$ et al.$else$$for(authors/rest)$ \and $authors.name$$endfor$$endif$}
+$endif$
 
 \received{Date}{0}{Year}
 \revised{Date}{0}{Year}
@@ -351,20 +358,22 @@ $else$
 $endif$
 $endif$
 
-
 \bibliographystyle{$if(namedate)$abbrvnat$else$plain$endif$}
 \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 $endif$
 $endif$
 
-
-%% sample for biography with author's image
-%\begin{biography}{{\color{black!20}\rule{77pt}{77pt}}}{\author{Author Name.} This is sample author biography text. The values provided in the optional argument is meant for sample purpose. There is no need to include the width and height of an image in the optional argument for live articles. This is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text.}
-%\end{biography}
-
-%% sample for biography without author's image
-%\begin{biography}{}{\author{Author Name.} This is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text this is sample author biography text.}
-%\end{biography}
+%% Author bio-pics with images
+$for(author)$
+$if(author.biography)$
+\begin{biography}{%
+$if(author.biography_pic)$
+\includegraphics[$if(author.biography_pic_width)$width=$author.biography_pic_width$,$endif$$if(author.biography_pic_height)$height=$author.biography_pic_height$,$endif$]{$author.biography_pic$}%
+$endif$%
+}{\author{$author.name$} $author.biography$}
+\end{biography}
+$endif$
+$endfor$
 
 $for(include-after)$
 $include-after$

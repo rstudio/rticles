@@ -11,6 +11,10 @@ author:
     affiliation:
       - ABC
       - DEF
+    biography: |
+      A promising young researcher working on her thesis project.
+#    biography_pic: "/PATH/TO/image.png"
+#    biography_pic_width: "1in"
   - name: Bob Security
     email: bob@example.com
     affiliation: DEF
@@ -41,14 +45,18 @@ footnote:
     text: "Current email address: \\href{mailto:cat@example.com}{cat@example.com}"
 abstract: |
   This is the abstract. I cannot figure out how to make it two paragraphs.
-acknowledgements: |
-  This is an acknowledgement.
-
-  It consists of two paragraphs.
 keywords:
   - key
   - dictionary
   - word
+competing_interests: |
+  There are no competing interest.
+author_contributions: |
+  AA did all the work. The others are just freeloaders.
+acknowledgements: |
+  This is an acknowledgement.
+
+  It consists of two paragraphs.
 #fontsize: 12pt
 #spacing: halfline # could also be oneline
 #classoptions:
