@@ -1,0 +1,31 @@
+---
+title: "Learn rticles"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Learn 
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Overview
+
+If you are new to using rticles, we encourage you to ...
+
+# User Guide
+
+Written by ...
+
+# Going further with examples
+
+Learn from examples at ...
+
+# Cheatsheets
+
+You can access it at... 

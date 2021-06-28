@@ -121,3 +121,7 @@ All the `rticles` format are build similarly by providing a new pandoc tex templ
 * [The Pandoc manual](https://pandoc.org/MANUAL.html#templates)
 
 You can study [existing formats](inst/rmarkdown/templates) to see how all this works.
+
+## Code of Conduct
+
+Please note that the rticles project is released with a [Contributor Code of Conduct](https://pkgs.rstudio.com/rticles/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.

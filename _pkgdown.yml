@@ -1,0 +1,79 @@
+destination: reference
+
+# website will be referenced on https://pkgs.rstudio.com/
+# Open a PR in https://github.com/rstudio/pkgs.rstudio.com
+url: https://pkgs.rstudio.com/rticles/
+
+template:
+  package: quillt
+  opengraph:
+    image:
+      src: man/figures/logo.png
+      alt: "rticles package"
+    twitter:
+      creator: "@rstudio"
+      card: summary
+
+development:
+  version_tooltip: "Development version"
+
+home:
+  strip_header: false
+  links:
+  - text: Learn more
+    # if relevant, set url to another website i.e https://rmarkdown.rstudio.com
+    href: ""
+
+# structure of website themed with quillt
+navbar:
+  title: ~
+  type: default
+  structure:
+    left:  [intro, examples, articles]
+    right: [reference, news, github]
+  components:
+    home: ~
+    examples:
+      text: Examples
+      href: articles/articles/examples.html
+    articles:
+      text: Articles
+      menu:
+        - text: "No Article"
+    reference:
+      text: Reference
+      href: reference/index.html
+    github:
+      icon: fab fa-github fa-lg
+      href: https://github.com/rstudio/rticles
+    news:
+      text: News
+      menu:
+        - text: "Changelog"
+          href: news/index.html
+        - text: "------------------"
+        - text: "Blog posts"
+        # Add blog post where a released version is mentioned.
+        - text: "No blog post"
+        # - text: Version 0.2
+        #   href: <url>
+
+# structure example
+# reference:
+# - title: Output formats
+#   desc: >
+#     These output formats are for building ...
+#   contents:
+#
+# - title: Previewing and rendering books
+#   contents:
+#
+# - title: Publishing
+#   desc: >
+#     Publish...
+#
+#
+# - title: Helper functions
+#   desc: >
+#     These functions are utility functions when working with **rticles**.
+#   contents:

@@ -5,3 +5,7 @@
 ^\.github$
 ^README\.md$
 ^tools/
+^_pkgdown\.yml$
+^reference$
+^pkgdown$
+^vignettes/articles$

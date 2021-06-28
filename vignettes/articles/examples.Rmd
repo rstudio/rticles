@@ -1,0 +1,19 @@
+---
+title: "Example projects"
+resource_files:
+  - images/
+---
+
+```{r setup, include = FALSE}
+library(quillt)
+```
+
+
+The examples below illustrate the use of rticles with various packages and layouts. If you want to learn more about how the dashboards were created each example includes a link to its source code. 
+
+
+```{r, echo=FALSE}
+examples(yml = "examples.yml")
+```
+
+**blogdown** repo contains an example on how to dynamically generate the `example.yml` taking screenshot of the featured examples. See [`example.Rmd`](https://github.com/rstudio/blogdown/blob/master/vignettes/articles/examples.Rmd) in the repository.
