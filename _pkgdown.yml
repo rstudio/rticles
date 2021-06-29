@@ -29,17 +29,13 @@ navbar:
   title: ~
   type: default
   structure:
-    left:  [intro, examples, articles]
+    left:  [intro, examples]
     right: [reference, news, github]
   components:
     home: ~
     examples:
       text: Examples
       href: articles/articles/examples.html
-    articles:
-      text: Articles
-      menu:
-        - text: "No Article"
     reference:
       text: Reference
       href: reference/index.html
@@ -59,21 +55,12 @@ navbar:
         #   href: <url>
 
 # structure example
-# reference:
-# - title: Output formats
-#   desc: >
-#     These output formats are for building ...
-#   contents:
-#
-# - title: Previewing and rendering books
-#   contents:
-#
-# - title: Publishing
-#   desc: >
-#     Publish...
-#
-#
-# - title: Helper functions
-#   desc: >
-#     These functions are utility functions when working with **rticles**.
-#   contents:
+reference:
+  - title: List all available journal templates
+    contents:
+    - journals
+  - title: Journal templates
+    contents:
+    - ends_with("article")
+
+
