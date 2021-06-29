@@ -2,8 +2,22 @@
 title_full: Template for preparing a submission to Bioinformatics using RMarkdown
 title_short: Bioinformatics Rmd Template
 
-# one of `Original Paper`, `Discovery Note`, `Application Note`, `Review`, `Letter to the Editor`, `Conference Paper`    
-subject_section: Application Note
+# One of the following below. See https://academic.oup.com/bioinformatics/pages/instructions_for_authors#Types%20of%20Manuscript
+# one of `Original Paper`, `Discovery Note`, `Applications Note`, `Review`, `Letter to the Editor`, `Conference Paper`    
+manuscript_type: Application Note
+
+# One of the following below. See https://academic.oup.com/bioinformatics/pages/instructions_for_authors#Detailed%20Scope%20Guidelines
+# Genome analysis
+# Sequence analysis
+# Phylogenetics
+# Structural bioinformatics
+# Gene expression
+# Genetic and population analysis
+# Systems biology
+# Data and text mining
+# Databases and ontologies
+# Bioimage informatics
+subject_section:  Genome analysis
 
 access_date:
   - day: DD
