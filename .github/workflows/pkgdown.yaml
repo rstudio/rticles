@@ -3,6 +3,7 @@ on:
     branches:
      - main
      - master
+     - pkgdown
   pull_request:
     branches:
      - main
