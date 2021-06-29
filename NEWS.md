@@ -1,7 +1,7 @@
 rticles 0.21
 ---------------------------------------------------------------------
 
-- `bioinformatics_article()` has no more trailing comma after last author (#413).
+- `bioinformatics_article()` has no more trailing comma after last author (thanks, @stephenturner, #413).
 
 rticles 0.20
 ---------------------------------------------------------------------
