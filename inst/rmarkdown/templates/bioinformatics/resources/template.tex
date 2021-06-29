@@ -59,9 +59,7 @@ $endfor$
 \title[$title_short$]{$title_full$}
 
 \author[FirstAuthorLastName \textit{et~al}.]{
-$for(author)$
-$author.name$\,\textsuperscript{$author.affiliation$},
-$endfor$
+$for(author)$$author.name$\,\textsuperscript{$author.affiliation$}$sep$, $endfor$
 }
 
 \address{
