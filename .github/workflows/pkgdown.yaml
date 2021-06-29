@@ -3,7 +3,7 @@ on:
     branches:
      - main
      - master
-     - pkgdown
+     - pkgdown # rm this
   pull_request:
     branches:
      - main
@@ -71,7 +71,7 @@ jobs:
         uses: nwtgck/actions-netlify@v1.1
         with:
           publish-dir: 'reference'
-          production-branch: master
+          production-branch: pkgdown # change this back to master
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message:
             'Deploy from GHA: ${{ github.event.head_commit.message }} (${{ github.sha }})'
