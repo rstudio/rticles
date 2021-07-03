@@ -289,9 +289,14 @@ mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
 #' @rdname article
 oup_article <- function(
   ..., keep_tex = TRUE,
-  md_extensions = c("-autolink_bare_uris")
+  journal=NULL,pandoc_args=NULL,
+  citation_package=c("natbib","default"),
+  papersize=c("large","medium","small"),
+  document_style=c("contemporary","modern","traditional"),
+  namedate=FALSE,onecolumn=FALSE
 ) {
-  pdf_document_format(
+!!!!NOT DONE!!!!
+    pdf_document_format(
     "oup",
     keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
