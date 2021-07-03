@@ -1,9 +1,7 @@
 ---
 # This template is largely functionally equivalent to that for elsevier
-# The two fields that are not in the elsevier format are:
-#      `corresponding_author` and `acknowledgements`
+# allowing one to rapidly change between formats.
 title: Template for Oxford University Press papers
-#date: "`r Sys.Date()`"
 author:
   - name: Alice Anonymous
     email: alice@example.com
@@ -26,12 +24,12 @@ author:
         - 1
         - 2
 address:
-address:
   - code: ABC
     department: Department of Biology
     organization: University of Idaho
     street: 123 Main Street
-    postcode: Boise
+    #postcode: 
+    city: Boise
     state: Idaho 07458
     country: United States
   - code: DEF
@@ -57,20 +55,19 @@ acknowledgements: |
   This is an acknowledgement.
 
   It consists of two paragraphs.
-#fontsize: 12pt
-#spacing: halfline # could also be oneline
 #classoptions:
-#  - endnotes
-#onecolumn: TRUE
+#  - namedate # Could also be here...
 bibliography: mybibfile.bib
-namedate: TRUE
 #csl: mycitationstyle.csl
-#link-citations: yes # Does not seem relevant any more
 output: 
   rticles::oup_article:
-    keep_md: TRUE
     keep_tex: TRUE
-    citation_package: natbib
+    journal: "Journal Name"
+    #document_style: "contemporary" # Can be contemporary, modern, traditional; default contemporary
+    #papersize: "large" # Can be large, medium, small; default large
+    #citation_package: "default" # Uncomment if using a CSL biblio style; default natbib
+    #number_sections: FALSE # Uncomment to not number sections; default TRUE
+    #onecolumn: TRUE # Uncomment for one column format; default FALSE
 #urlcolor: orange
 #linkcolor: green
 #citecolor: red
@@ -82,7 +79,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE) # By default, hide code; set to TRUE to see code
-knitr::opts_chunk$set(fig.pos = 'p') # Places figures on pages separate from text
+knitr::opts_chunk$set(fig.pos = 'th') # Places figures on pages separate from text
 knitr::opts_chunk$set(out.width = '100%', dpi=300) # Figure resolution and size
 knitr::opts_chunk$set(fig.env="figure") # Latex figure environment
 ```

@@ -284,21 +284,58 @@ mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
 #' @section \code{oup_article}: Format for creating submissions to many Oxford University Press
 #'   journals. Adapted from
 #'   \url{https://academic.oup.com/journals/pages/authors/preparing_your_manuscript}
-#'   and \url{https://academic.oup.com/icesjms/pages/General_Instructions}.
+#'   and the \code{oup-authoring-template} available on CTAN at
+#'   \url{https://www.ctan.org/pkg/oup-authoring-template}.
 #' @export
 #' @rdname article
 oup_article <- function(
-  ..., keep_tex = TRUE,
+  ..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"),
   journal=NULL,pandoc_args=NULL,
+  number_sections=TRUE,
   citation_package=c("natbib","default"),
   papersize=c("large","medium","small"),
   document_style=c("contemporary","modern","traditional"),
   namedate=FALSE,onecolumn=FALSE
 ) {
-!!!!NOT DONE!!!!
-    pdf_document_format(
-    "oup",
-    keep_tex = keep_tex, md_extensions = md_extensions, ...
+  citation_package <- match.arg(citation_package)
+  if (length(citation_package) > 1) stop("Please choose just one ", dQuote("citation_package"))
+  papersize <- match.arg(papersize)
+  if (length(papersize) > 1) stop("Please choose just one ", dQuote("papersize"))
+  document_style <- match.arg(document_style)
+  if (length(document_style) > 1) stop("Please choose just one ", dQuote("document_style"))
+
+  args <- c(
+    journal = journal,
+    papersize = papersize,
+    document_style = document_style
+  )
+
+  # Convert to pandoc arguments
+  pandoc_arg_list <- mapply(rmarkdown::pandoc_variable_arg, names(args), args,
+                            SIMPLIFY = FALSE, USE.NAMES = FALSE)
+
+  # namedate
+  if (namedate)
+    pandoc_arg_list = c(pandoc_arg_list,
+                        rmarkdown::pandoc_variable_arg("namedate"))
+
+  # onecolumn
+  if (onecolumn)
+    pandoc_arg_list = c(pandoc_arg_list,
+                        rmarkdown::pandoc_variable_arg("onecolumn"))
+
+  # section numbering
+  if (!number_sections)
+    pandoc_arg_list = c(pandoc_arg_list,
+                        rmarkdown::pandoc_variable_arg("unnumsec"))
+
+  pandoc_arg_list <- unlist(pandoc_arg_list)
+
+  pdf_document_format(
+    "oup", keep_tex = keep_tex, md_extensions=md_extensions,
+    citation_package = citation_package,
+    pandoc_args = c(pandoc_arg_list, pandoc_args),number_sections=FALSE,
+    ...
   )
 }
 

@@ -4,7 +4,7 @@ $if(colorlinks)$
 $endif$
 
 % Set document class options
-\documentclass[webpdf$if(papersize)$,$papersize$$else$,large$endif$$if(document_style)$,$document_style$$else$,contemporary$endif$$if(numbersections)$$else$,unnumsec$endif$$if(namedate)$,namedate$endif$$if(classoptions)$,$for(classoptions)$$classoptions$$sep$,$endfor$$endif$]{oup-authoring-template}
+\documentclass[webpdf$if(papersize)$,$papersize$$else$,large$endif$$if(document_style)$,$document_style$$else$,contemporary$endif$$if(unnumsec)$,unnumsec$endif$$if(namedate)$,namedate$endif$$if(classoptions)$,$for(classoptions)$$classoptions$$sep$,$endfor$$endif$]{oup-authoring-template}
 
 % one column
 $if(onecolumn)$\onecolumn$endif$
@@ -172,8 +172,8 @@ $for(address)$
    $elseif(address.country)$\orgaddress{%
   $endif$%
   $if(address.street)$\street{$address.street$}, $endif$%
-  $if(address.city)$\city{$address.city$}, $endif$%
   $if(address.postcode)$\postcode{$address.postcode$}, $endif$%
+  $if(address.city)$\city{$address.city$}, $endif$%
   $if(address.state)$\state{$address.state$}, $endif$%
   $if(address.country)$\country{$address.country$}$endif$%
   $if(address.street)$}%
