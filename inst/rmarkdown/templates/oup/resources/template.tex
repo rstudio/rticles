@@ -1,12 +1,31 @@
+$if(colorlinks)$
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+$endif$
+
 \documentclass[$if(fontsize)$$fontsize$,$else$12pt,$endif$$if(spacing)$$spacing$,$else$halfline,$endif$$if(papersize)$$papersize$,$else$a4paper,$endif$$for(classoptions)$$classoptions$$sep$,$endfor$]{ouparticle}
 
 % Packages I think are necessary for basic Rmarkdown functionality
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{listings}
-\usepackage{color}
+\usepackage{xcolor}
 \usepackage{fancyvrb}
 \usepackage{framed}
+
+% Link coloring
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={$author-meta$},
+            pdftitle={$title-meta$}
+            $if(colorlinks)$
+            ,
+            colorlinks=true,
+            citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
+            urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
+            linkcolor=$if(linkcolor)$$linkcolor$$else$blue$endif$
+            $endif$
+}
+
 
 % For knitr::kable functionality
 \usepackage{booktabs}
@@ -54,9 +73,55 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+
 % For making Rmarkdown lists
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Macros for dealing with affiliations, footnotes, etc.
+\makeatletter
+\def\Newlabel#1#2#3{\expandafter\gdef\csname #1@#2\endcsname{#3}}
+
+\def\Ref#1#2{\@ifundefined{#1@#2}{???}{\csname #1@#2\endcsname}}
+
+\newcommand*\samethanks[1][\value{footnote}]{\footnotemark[#1]}
+
+\newcommand*\ifcounter[1]{%
+  \ifcsname c@#1\endcsname
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+}
+
+\newcommand*\thanksbycode[1]{%
+  \ifcounter{FNCT@#1}
+    {\samethanks[\value{FNCT@#1}]}
+    {\thanks{\Ref{FN}{#1}}\newcounter{FNCT@#1}\setcounter{FNCT@#1}{\value{footnote}}}
+}
+
+% Create labels for Addresses if the are given in Elsevier format
+$if(address)$
+$for(address)$
+$if(address.code)$
+\Newlabel{ADR}{$address.code$}{$address.address$}
+$endif$
+$if(address.id)$
+\Newlabel{ADR}{$address.id$}{$address.address$}
+$endif$
+$endfor$
+$endif$
+
+% Create labels for Footnotes if the are given in Elsevier format
+$if(footnote)$
+$for(footnote)$
+$if(footnote.code)$
+\Newlabel{FN}{$footnote.code$}{$footnote.text$}
+$endif$
+$endfor$
+$endif$
 
 % Part for setting citation format package: natbib
 $if(natbib)$
@@ -87,7 +152,7 @@ $if(csl-refs)$
   \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
   {\par}
 % For Pandoc 2.11+
-\newenvironment{CSLReferences}[3] % #1 hanging-ident, #2 entry spacing
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
  {% don't indent paragraphs
   \setlength{\parindent}{0pt}
   % turn on hanging indent if param 1 is 1
@@ -101,7 +166,7 @@ $if(csl-refs)$
 \usepackage{calc} % for calculating minipage widths
 \newcommand{\CSLBlock}[1]{#1\hfill\break}
 \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
 % Pandoc header
@@ -114,10 +179,35 @@ $endfor$
 \title{$title$}
 
 \author{%
+%
+% Code for old style authors field
 $for(authors)$
 \name{$authors.name$}$if(authors.address)$\address{$authors.address$}$endif$$if(authors.email)$\email{\href{mailto:$authors.email$}{$authors.email$}}$endif$$if(authors.thanks)$\thanks{$authors.thanks$}$else$$if(authors.corresponding_author)$\thanks{Corresponding author; Email: \href{mailto:$authors.email$}{$authors.email$}}$endif$$endif$
 $sep$\and
 $endfor$
+%
+% Add \and if both authors and author
+$if(authors)$$if(author)$\and$endif$$endif$%
+%
+% Code for new (elsevier) style author field
+$for(author)$
+\name{$author.name$}
+$if(author.affiliation)$
+$for(author.affiliation)$
+\address{\Ref{ADR}{$author.affiliation$}}
+$endfor$
+$endif$%
+$if(author.email)$\email{\href{mailto:$author.email$}{$author.email$}}$endif$%
+$if(author.corresponding_author)$\thanks{Corresponding author; Email: \href{mailto:$author.email$}{$author.email$}}$endif$%
+$if(author.thanks)$\thanks{$author.thanks$}$endif$%
+$if(author.footnote)$
+$for(author.footnote)$
+\thanksbycode{$author.footnote$}
+$endfor$
+$endif$%
+$sep$\and
+$endfor$
+%
 }
 
 \abstract{$abstract$}

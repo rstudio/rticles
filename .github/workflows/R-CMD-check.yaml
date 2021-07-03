@@ -22,13 +22,20 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: macOS-latest,   pandoc: '2.7.3',    r: 'release'}
-          - {os: windows-latest, pandoc: '2.7.3',    r: 'release'}
-          - {os: ubuntu-20.04,   pandoc: '2.7.3',    r: 'devel',   rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest", http-user-agent: "R/4.0.0 (ubuntu-20.04) R (4.0.0 x86_64-pc-linux-gnu x86_64 linux-gnu) on GitHub Actions"}
-          - {os: ubuntu-20.04,   pandoc: '2.7.3',    r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest", }
-          - {os: ubuntu-20.04,   pandoc: '2.9.2.1',  r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   pandoc: '2.11.4',   r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04,   pandoc: '2.7.3',    r: 'oldrel',  rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          # testing R release with last shipped pandoc version in RStudio IDE and new pandoc
+          # TODO: issue on windows with pandoc 2.11.4 - change when fixed
+          - {os: windows-latest, pandoc: '2.7.3',   r: 'release'}
+          - {os: macOS-latest,   pandoc: '2.11.4',  r: 'release'}
+          - {os: ubuntu-20.04,   pandoc: '2.11.4',  r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   pandoc: 'devel',   r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          # testing older pandoc versions
+          - {os: ubuntu-20.04,   pandoc: '2.9.2.1', r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   pandoc: '2.7.3',   r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          # - {os: ubuntu-20.04,   pandoc: '2.5',     r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          # - {os: ubuntu-20.04,   pandoc: '2.0.0.1', r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          # testing other R versions
+          - {os: ubuntu-20.04,   pandoc: '2.11.4',  r: 'oldrel',  rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04,   pandoc: '2.11.4',  r: 'devel',   rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest", http-user-agent: "R/4.0.0 (ubuntu-20.04) R (4.0.0 x86_64-pc-linux-gnu x86_64 linux-gnu) on GitHub Actions" }
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
@@ -56,8 +63,12 @@ jobs:
         shell: Rscript {0}
 
       - uses: r-lib/actions/setup-pandoc@v1
+        if: matrix.config.pandoc != 'devel'
         with:
           pandoc-version: ${{ matrix.config.pandoc }}
+
+      - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
+        if: matrix.config.pandoc == 'devel'
 
       - uses: r-lib/actions/setup-tinytex@v1
 
@@ -73,7 +84,9 @@ jobs:
       - name: Cache R packages
         uses: actions/cache@v2
         with:
-          path: ${{ env.R_LIBS_USER }}
+          path: |
+            ${{ env.R_LIBS_USER }}/*
+            !${{ env.R_LIBS_USER }}/pak
           key: ${{ runner.os }}-${{ steps.install-r.outputs.installed-r-version }}-1-${{ hashFiles('.github/r-depends.rds') }}
           restore-keys: ${{ runner.os }}-${{ steps.install-r.outputs.installed-r-version }}-1-
 

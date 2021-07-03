@@ -31,7 +31,7 @@ joss_article <- function(journal = "JOSS",
   pdf_document_format(
     "joss",
     latex_engine = latex_engine,
-    citation_package = "none",
+    citation_package = "default",
     keep_md = keep_md,
     pandoc_args = c(
       "-V", paste0("logo_path=", logo_path),

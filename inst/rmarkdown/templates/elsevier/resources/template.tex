@@ -57,7 +57,7 @@ $if(geometry)$
 $endif$
 $if(natbib)$
 \usepackage{natbib}
-\bibliographystyle{plainnat}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $else$
 \bibliographystyle{elsarticle-harv}
 $endif$
@@ -129,17 +129,17 @@ $endif$
 
 % Pandoc citation processing
 $if(csl-refs)$
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
 % for Pandoc 2.8 to 2.10.1
 \newenvironment{cslreferences}%
   {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
   \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
   {\par}
 % For Pandoc 2.11+
-\newenvironment{CSLReferences}[3] % #1 hanging-ident, #2 entry spacing
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
  {% don't indent paragraphs
   \setlength{\parindent}{0pt}
   % turn on hanging indent if param 1 is 1
@@ -150,10 +150,10 @@ $if(csl-refs)$
   \fi
  }%
  {}
-\usepackage{calc} % for calculating minipage widths
+\usepackage{calc}
 \newcommand{\CSLBlock}[1]{#1\hfill\break}
 \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
 
@@ -206,5 +206,4 @@ $include-after$
 
 $endfor$
 \end{document}
-
 

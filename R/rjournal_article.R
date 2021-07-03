@@ -91,7 +91,7 @@ rjournal_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') 
     }
 
     # Copy purl-ed R file with the correct name
-    file.copy(output_R, xfun::with_ext(filename, "R"))
+    file.copy(output_R, xfun::with_ext(filename, "R"), overwrite = TRUE)
     unlink(output_R)
 
     # post process TEX file

@@ -1,9 +1,33 @@
+rticles 0.21
+---------------------------------------------------------------------
+
+- `bioinformatics_article()` has no more trailing comma after last author (thanks, @stephenturner, #413).
+- `bioinformatics_article()` now separates `manuscript_type` (e.g., Applications note, Original article) and `subject_section` (e.g. Genome analysis, Phylogenetics) in template and skeleton (thanks, @stephenturner, #415)
+
 rticles 0.20
 ---------------------------------------------------------------------
 
+- `lipics_article()` skeleton now sets option `bookdown.theorem.preamble` to FALSE to work with `bookdown::pdf_book()` and avoid conflicst in theorem environment definition. This requires **bookdown** 0.23 or higher (#392).
+
+- `oup_article()` template now largely compatible to that of `elsevier_article()` (thanks, @dmkaplan2000, #403)
+
+- `elsevier_article()` now supports `biblio-style` Pandoc's variable to set the natbib bibliography style in YAML header (thanks, @gregmacfarlane, #402).
+
+- Fix an issue with `rjournal_article()`. The `.R` file in output is now correctly overwritten on a new render if it existed from a previous render (thanks, @apreshill, #394).
+
+- Update Copernicus Publications template to comply with editor's guidelines following a manuscript bounce back during the typesetting step. Copernicus does not allow to add any `\usepackage` command as they all are included in `copernicus.cls` for supported LaTeX packages. **This is leading to breaking changes with existing template - please follow the advice below**.
+  - `algorithms: true` cannot be used anymore and as no more effect. `\usepackage{algorithmic}` and `\usepackage{algorithm}` has been removed from the template as the command are already done in `copernicus.cls`. Please, make sure `algorithms` and `algorithmcx` are installed.  
+  - Additionally, the template gained support for the `highlight` parameter of `rmarkdown::pdf_document` to enable or disable syntax highlighting with Pandoc. To comply with the above guideline by Copernicus, it is disabled by default (`highlight: NULL`) to prevent Pandoc adding any more packages required for its highlighting. Syntax highlighting can be reactivating by using `highlight: "default"` in the YAML header as this can be desirable before submitting for typesetting. (thanks, @RLumSK, @nuest, #391).
+
+- Fix issue with Pandoc's citation processing by updating all templates with last relevant changes from Pandoc's default template (thanks, @BlackEdder, @dahrens, #390)
+
+- remove warning in `joss_article()` about `citation_package` (thanks, @llrs, #389).
+
+- fix an issue with `rjournal_article()` template to insert newline in author's block only if a field exist (thanks, @huizezhang-sherry, #387)
 
 rticles 0.19
 ---------------------------------------------------------------------
+
 - Update Copernicus Publications template to version 6.2 from 2021-01-15 (thanks, @RLumSK, #366).
 
 - Add article template `pihph_article()` for the *Papers in Historical Phonology* (PiHPh) (thanks, @stefanocoretta, #362).
