@@ -242,27 +242,35 @@ repeated, it gets a new number. Example sentences usually have normal
 capitalization at the beginning and normal punctuation. The gloss line
 has no capitalization and no punctuation.
 
-. . Ich kenne das Kind, dem du geholfen hast.\
-I.[nom]{.smallcaps} know the child.[acc]{.smallcaps}
-[dem.dat]{.smallcaps} you.[nom]{.smallcaps} helped have\
-'I know the child that you helped.' . Ich kenne das Kind, dem du nicht
-geholfen hast.\
-I.[nom]{.smallcaps} know the child.[acc]{.smallcaps}
-[dem.dat]{.smallcaps} you.[nom]{.smallcaps} [neg]{.smallcaps} helped
-have\
-'I know the child that you didn't help.'
+```{=latex}
+\ex. \ag. Ich   kenne das Kind, dem du geholfen hast.\\
+I.\textsc{nom} know the child.\textsc{acc} \textsc{dem.dat} you.\textsc{nom} helped have\\
+\glt `I know the child that you helped.'
+\bg. Ich kenne das Kind, dem du nicht geholfen hast. \\
+I.\textsc{nom} know  the child.\textsc{acc} \textsc{dem.dat} you.\textsc{nom} \textsc{neg} helped   have\\
+\glt `I know the child that you didn’t help.’
+```
 
 When the example is not a complete sentence, there is no capitalization
 and no full stop at the end. If the name of the language is added, the
 source of the example, or any extra information, this information must
 be added on an extra first line of the example (with the name of the
-language in italics).[^1]
+language in italics).\footnote{Examples in footnotes are numbered with lower case Roman numerals enclosed between brackets:
 
-. *German* [@coetsem:2000]\
-das Kind, dem du geholfen hast\
-the child.[nom]{.smallcaps} [dem.dat]{.smallcaps} you.[nom]{.smallcaps}
-helped have\
-'the child that you helped'
+\ex.
+\a. Colorless green ideas sleep furiously.
+\b. *The child seems sleeping.
+
+More text can follow the example.}
+
+```{=latex}
+% optional line for the name of the language (italics), source, etc. Note the absence of \exg., instead use \ex. (and \a. \b. for subdivisions) when this optional line is present. Use \exg. etc. if this line is absent (as in the previous example)
+\ex. \textit{German} \citep{coetsem:2000} \\
+% original foreign language example preceded by \gll
+\gll das Kind, dem du geholfen hast\\  
+the child.\textsc{nom} \textsc{dem.dat} you.\textsc{nom}  helped have\\ % gloss line
+\glt `the child that you helped' % translation, preceded by \glt
+```
 
 Ungrammatical examples can be given a parenthesized idiomatic
 translation. A literal translation may be given in parentheses after the
@@ -312,20 +320,16 @@ contains the comparative morphologically, as illustrated in table
 "following", "below" or "above", as the final placement of your table or
 figure may be different from where you placed them in your manuscript.
 
-::: {#tbl:table1}
-              [Pos]{.smallcaps}   [Cmpr]{.smallcaps}   [Sprl]{.smallcaps}
-  ----------- ------------------- -------------------- -------------------- ----------
-  Persian     kam                 kam-tar              kam-tar-in           'little'
-  Cimbrian    šüa                 šüan-ar              šüan-ar-ste          'pretty'
-  Czech       mlad-ý              mlad-ší              nej-mlad-ší          'young'
-  Hungarian   nagy                nagy-obb             leg-nagy-obb         'big'
-  Latvian     zil-ais             zil-âk-ais           vis-zil-âk-ais       'blue'
-  Ubykh       nüs^w^              ç'a-nüs^w^           a-ç'a-nüs^w^         'pretty'
+Table: {#tbl:table1} Morphological containment
 
-  : Morphological containment
-:::
-
-[\[tbl:table1\]]{#tbl:table1 label="tbl:table1"}
+            [Pos]{.smallcaps}   [Cmpr]{.smallcaps}   [Sprl]{.smallcaps}
+----------- ------------------- -------------------- -------------------- ----------
+Persian     kam                 kam-tar              kam-tar-in           'little'
+Cimbrian    šüa                 šüan-ar              šüan-ar-ste          'pretty'
+Czech       mlad-ý              mlad-ší              nej-mlad-ší          'young'
+Hungarian   nagy                nagy-obb             leg-nagy-obb         'big'
+Latvian     zil-ais             zil-âk-ais           vis-zil-âk-ais       'blue'
+Ubykh       nüs^w^              c'a-nüs^w^           a-c'a-nüs^w^         'pretty'
 
 Tables and figures are numbered consecutively. Each table and each
 figure has a caption. The caption is placed above figures and tables,
