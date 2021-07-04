@@ -1,5 +1,6 @@
 ---
 title: This is a title and this is too
+# Optional short title inside square brackets, for the running headers.
 shorttitle: A subtitle goes on another line
 shortauthors: Paul & Vanden Wyngaerd
 author:
@@ -9,8 +10,38 @@ author:
 - name: Guido Vanden Wyngaerd
   affiliation: KU Leuven
 output: rticles::glossa_article
+classoption: [times, linguex]
+#
+# Possible classoptions:
+# - [times] for Times font (default if no option is chosen)
+# - [cm] for Computer Modern font
+# - [lucida] for Lucida font (not freely available)
+# - [brill] open type font, freely downloadable for non-commercial use from
+#   http://www.brill.com/about/brill-fonts; requires xetex
+# - [charis] for CharisSIL font, freely downloadable from http://software.sil.org/charis/
+# - for the Brill an CharisSIL fonts, you have to use the XeLatex
+#   typesetting engine (not pdfLatex)
+# - for headings, tables, captions, etc., Fira Sans is
+#   used: https://www.fontsquirrel.com/fonts/fira-sans
+# - [biblatex] for using biblatex (the default is natbib, do not load the
+#   natbib package in this file, it is loaded automatically via the document
+#   class glossa.cls)
+# - [linguex] loads the linguex example package
+#
+# !!! A note on the use of linguex: in glossed examples, the third line of the
+# example (the translation) needs to be prefixed with \glt. This is to allow a
+# first line with the name of the language and the source of the example. See
+# example (2) in the text for an illustration.
+#
+# !!! A note on the use of bibtex: for PhD dissertations to typeset correctly
+# in the references list, the Address field needs to contain the city
+# (for US cities in the format "Santa Cruz, CA")
+#
 abstract: |
-  This document provides a full overview of the information relating to Glossa submissions. This information includes (i) the author guidelines, and (ii) the stylesheet. So as to provide instruction both by example and by rule, this document has been formatted in accordance with the stylesheet it contains.
+  This document provides a full overview of the information relating to Glossa 
+  submissions. This information includes (i) the author guidelines, and (ii)
+  the stylesheet. So as to provide instruction both by example and by rule,
+  this document has been formatted in accordance with the stylesheet it contains.
 ---
 
 ```{r setup, include=FALSE}
@@ -38,7 +69,7 @@ submission. A downloadable version of the style guide is available
 Text formatting in accordance with the stylesheet is required for the
 accepted version only.
 
-For LaTeX submissions, please download the Latex resources
+For LaTeX submissions, please download the Latex resources
 [`here`](https://github.com/guidovw/Glossalatex).
 
 All files must be anonymised during the initial submission (including
