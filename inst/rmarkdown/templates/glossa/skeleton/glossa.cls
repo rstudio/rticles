@@ -11,6 +11,7 @@
 % v7 27 Jan 2018 patches by Adam Liter for section headings
 % v8 16 May 2019 patches by GS for compatibility with xe/pdflatex
 % v- 19 Jun 2020 by mitcho to better match Glossa typesetting
+% v10 5 May 2021 changes to the stylesheet (no italics for subsections))
 
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
 \ProvidesClass{glossa}[2018/01/27 v.2.3 Class for Glossa]
@@ -214,7 +215,7 @@
 
 \RequirePackage[normalem]{ulem}
 \RequirePackage{enumitem}
-\RequirePackage[font=sf,labelfont=bf,labelsep=colon,justification=raggedright,singlelinecheck=off,textformat=period,justification=centering]{caption}
+\RequirePackage[font=sf,labelfont=bf,labelsep=colon,justification=raggedright,singlelinecheck=off,justification=centering]{caption}
 \RequirePackage{booktabs}
 
 %=====================================================================
@@ -504,7 +505,7 @@
 \renewcommand{\subsection}{\@startsection{subsection}{2}{0pt}%
   {-3.5ex plus -1ex minus -.2ex}%
   {1.8ex plus.2ex}%
-  {\noindent\normalfont\large\sffamily\bfseries\itshape}}
+  {\noindent\normalfont\large\sffamily\bfseries}}
 
 \renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0pt}%
   {-3.5ex plus -1ex minus -.2ex}%

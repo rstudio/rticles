@@ -371,7 +371,7 @@ FUNCTION {format.names}
     { namesleft #0 > }
     { s nameptr
       duplicate$ #1 >
-        { "{ff~}{vv~}{ll}{, jj}" }
+        { "{vv~}{ll}{, ff}{, jj}" }
         { "{vv~}{ll}{, ff}{, jj}" }
       if$
       format.name$
@@ -380,7 +380,9 @@ FUNCTION {format.names}
       nameptr #1 >
         {
           namesleft #1 >
-            { ", " * t * }
+            { 
+                  bbl.and
+                  space.word * t * }
             {
               s nameptr "{ll}" format.name$ duplicate$ "others" =
                 { 't := }
@@ -417,7 +419,7 @@ FUNCTION {format.names.ed}
   numnames 'namesleft :=
     { namesleft #0 > }
     { s nameptr
-      "{ff~}{vv~}{ll}{, jj}"
+      "{vv~}{ll}{, ff}{, jj}"
       format.name$
       bibinfo bibinfo.check
       't :=
@@ -522,7 +524,8 @@ FUNCTION {format.full.names}
       nameptr #1 >
         {
           namesleft #1 >
-            { ", " * t * }
+            { bbl.and
+                  space.word * t * }
             {
               s nameptr "{ll}" format.name$ duplicate$ "others" =
                 { 't := }

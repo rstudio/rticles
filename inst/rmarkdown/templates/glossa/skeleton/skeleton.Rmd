@@ -10,7 +10,9 @@ author:
 - name: Guido Vanden Wyngaerd
   affiliation: KU Leuven
 output: rticles::glossa_article
-classoption: [times, linguex]
+classoption: [cm, linguex, biblatex]
+bibliography: sample.bib
+bibliio-style: glossa.csl
 #
 # Possible classoptions:
 # - [times] for Times font (default if no option is chosen)
