@@ -72,6 +72,19 @@ $for(bibliography)$
 $endfor$
 $endif$
 
+$if(csl-refs)$
+ \newlength{\csllabelwidth}
+ \setlength{\csllabelwidth}{3em}
+ \newlength{\cslhangindent}
+ \setlength{\cslhangindent}{1.5em}
+ % for Pandoc 2.8 to 2.10.1
+ \newenvironment{cslreferences}%
+   {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+   \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+   {\par}
+ % For Pandoc 2.11+
+ \newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+
 $if(listings)$
 \usepackage{listings}
 $endif$
