@@ -339,9 +339,11 @@ the captions of table [1](#tbl:table1){reference-type="ref"
 reference="tbl:table1"} and figure
 [1](#fig:glossalogo){reference-type="ref" reference="fig:glossalogo"}.
 
-![The Glossa logo (design by Linnea Vanden
-Wyngaerd)](glossa "fig:"){#fig:glossalogo width="10cm"}
-[\[fig:glossalogo\]]{#fig:glossalogo label="fig:glossalogo"}
+
+```{r fig-glossa, fig.cap="The Glossa logo (design by Linnea Vanden Wyngaerd)", out.width="0.5\\textwidth", fig.align="center"}
+knitr::include_graphics("glossa.png")
+```
+
 
 Figures should be included in the main text for the purpose of peer
 review. Once the paper is accepted, all figures must be uploaded
@@ -755,10 +757,3 @@ present: "The author(s) has/have no competing interests to declare".
 Here you can provide a sentence or a short paragraph detailing the
 contribution of each author to the paper.
 
-[^1]: Examples in footnotes are numbered with lower case Roman numerals
-    enclosed between brackets:
-
-    . . Colorless green ideas sleep furiously. .̱ \*The child seems
-    sleeping.
-
-    More text can follow the example.
