@@ -23,6 +23,17 @@
 \let\T\relax
 \usepackage{xyling} %for trees; the use of xyling with the CharisSIL font produces poor results in the branches. This problem does not arise with the packages qtree or forest.
 \usepackage[linguistics]{forest} %for nice trees!
+\usepackage{longtable}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{CSLReferences}%
+{\setlength{\parindent}{0pt}%
+\everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+{\par}
 
 \title[$if(shorttitle)$$shorttitle$$endif$]{$title$}
 % Optional short title inside square brackets, for the running headers.
