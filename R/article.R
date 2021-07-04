@@ -281,6 +281,10 @@ mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
   )
 }
 
+#' @param document_style For \code{oup_article}, one of "contemporary", "modern", or "traditional" setting overall style of document. Defaults to "contemporary".
+#' @param papersize For \code{oup_article}, one of "large", "medium", or "small" setting output page size. Defaults to "large".
+#' @param namedate For \code{oup_article}, a logical variable indicating if natbib citations should be in name-date format. Defaults to \code{FALSE}.
+#' @param onecolumn For \code{oup_article}, a logical variable indicating if one column formatting should be used. Defaults to \code{FALSE}.
 #' @section \code{oup_article}: Format for creating submissions to many Oxford University Press
 #'   journals. Adapted from
 #'   \url{https://academic.oup.com/journals/pages/authors/preparing_your_manuscript}
@@ -289,7 +293,8 @@ mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
 #' @export
 #' @rdname article
 oup_article <- function(
-  ..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"),
+  ..., keep_tex = TRUE,
+  md_extensions = c("-autolink_bare_uris"),
   journal=NULL,pandoc_args=NULL,
   number_sections=TRUE,
   citation_package=c("natbib","default"),
@@ -332,7 +337,8 @@ oup_article <- function(
   pandoc_arg_list <- unlist(pandoc_arg_list)
 
   pdf_document_format(
-    "oup", keep_tex = keep_tex, md_extensions=md_extensions,
+    "oup", keep_tex = keep_tex,
+    md_extensions=md_extensions,
     citation_package = citation_package,
     pandoc_args = c(pandoc_arg_list, pandoc_args),number_sections=FALSE,
     ...

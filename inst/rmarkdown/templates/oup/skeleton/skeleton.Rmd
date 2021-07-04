@@ -1,11 +1,9 @@
 ---
-# This template is largely functionally equivalent to that for elsevier
-# allowing one to rapidly change between formats.
 title: Template for Oxford University Press papers
 author:
   - name: Alice Anonymous
     email: alice@example.com
-    corresponding_author: yes # Footnote using corresponding_author
+    corresponding_author: TRUE # Automatic footnote using corresponding_author
     affiliation:
       - ABC
       - DEF
@@ -30,23 +28,28 @@ address:
     street: 123 Main Street
     #postcode: 
     city: Boise
-    state: Idaho 07458
+    state: Idaho 07458 # Mix and match elements to get proper address
     country: United States
   - code: DEF
-    address: Address DEF
+    address: Address in one element deprecated, but works
   - code: Another University
     address: Address for Another University
 footnote:
   - code: 1
     text: "Equal contribution"
   - code: 2
-    text: "Current email address: \\href{mailto:cat@example.com}{cat@example.com}"
-abstract: |
-  This is the abstract. I cannot figure out how to make it two paragraphs.
+    text: "Current email address: [cat@example.com](mailto:cat@example.com)"
+abstract:
+  - "This is the first paragraph of the abstract. It has several sentences making it go over several lines. For this it needs to have a lot of text." 
+  - "This is the second paragraph."
+  - "**Motivation:** You can also have some paragraphs start with bold face."
 keywords:
-  - key
-  - dictionary
-  - word
+  - keyword1
+  - keyword2
+  - keyword3
+#boxedtext: # Not fully compatible with all document formats
+#  - First point
+#  - Second point
 competing_interests: |
   There are no competing interest.
 author_contributions: |
@@ -66,6 +69,7 @@ output:
     #document_style: "contemporary" # Can be contemporary, modern, traditional; default contemporary
     #papersize: "large" # Can be large, medium, small; default large
     #citation_package: "default" # Uncomment if using a CSL biblio style; default natbib
+    namedate: TRUE # Set FALSE to use numeric refs; Default FALSE
     #number_sections: FALSE # Uncomment to not number sections; default TRUE
     #onecolumn: TRUE # Uncomment for one column format; default FALSE
 #urlcolor: orange
@@ -79,28 +83,16 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE) # By default, hide code; set to TRUE to see code
-knitr::opts_chunk$set(fig.pos = 'th') # Places figures on pages separate from text
+knitr::opts_chunk$set(fig.pos = 'th') # Places figures at top or here
 knitr::opts_chunk$set(out.width = '100%', dpi=300) # Figure resolution and size
 knitr::opts_chunk$set(fig.env="figure") # Latex figure environment
+
+options(knitr.table.format="latex") # For kable tables to work without setting format option
 ```
 
 # Introduction
 
-This template is based on the generic OUP template available [here](https://academic.oup.com/icesjms/pages/General_Instructions). The original OUP sample tex document, providing more details on prefered formatting for LaTeX documents, is included with the template in the file `ouparticle_sample.tex`.
-
-Here are two sample references: @Feynman1963118 [@Dirac1953888]. Bibliography will appear at the end of the document.
-
-# Materials and methods
-
-An equation with a label for cross-referencing:
-
-\begin{equation}\label{eq:eq1}
-\int^{r_2}_0 F(r,\varphi){\rm d}r\,{\rm d}\varphi = [\sigma r_2/(2\mu_0)]
-\int^{\infty}_0\exp(-\lambda|z_j-z_i|)\lambda^{-1}J_1 (\lambda r_2)J_0
-(\lambda r_i\,\lambda {\rm d}\lambda)
-\end{equation}
-
-This equation can be referenced as follows: Eq. \ref{eq:eq1}
+This template is based on the generic OUP authoring template available on CTAN under [oup-authoring-template](https://www.ctan.org/pkg/oup-authoring-template). The CTAN template includes LaTeX documentation and a sample LaTeX document that provide far more details regarding the full functionality of the format. Here, only the basic functioning of the Rmarkdown adaptation of the format is demonstrated.
 
 ## A subsection
 
@@ -115,50 +107,121 @@ A bullet list:
 * First point
 * Second point
 
-# Results
+## Notes
 
-## Generate a figure.
+* Extra white space in document will tend to disappear as text is filled in.
+* Code blocks tend to generate lots of empty white space when `echo=TRUE` for some reason.
+
+# Literature citations
+
+By default, citations are handled by `natbib` using a numeric citation format. To use name-date citations, sets `namedate: TRUE` in the YAML header.
+
+Here are two sample references: 
+
+* @horvath2018dna showed some really cool things. Only seems to work properly if `namedate: TRUE`. 
+* This is a well known result [@ji20123d]. 
+
+The bibliography will appear at the end of the document.
+
+Though not normally available in the OUP LaTeX format, [CSL style files](https://www.zotero.org/styles) can also be used with the Rmarkdown adaptation by setting in the YAML header `citation_package: "default"` and defining the `csl` element to be the path towards the style file.
+
+# Equations
+
+An equation without a label for cross-referencing:
+
+$$
+E=mc^2
+$$
+
+An inline equation: $y=ax+b$
+
+An equation with a label for cross-referencing:
+
+\begin{equation}\label{eq:eq1}
+\int^{r_2}_0 F(r,\varphi){\rm d}r\,{\rm d}\varphi = 1
+\end{equation}
+
+This equation can be referenced as follows: Eq. \ref{eq:eq1}
+
+# Inserting R figures
+
+The code below creates a figure. It is included in the output because `echo=TRUE`.
 
 ```{r fig1, fig.cap="This is the first figure.",echo=TRUE}
-plot(1:10,main="Some data",xlab="Distance (cm)",ylab="Time (hours)")
+plot(1:10,main="Some data",xlab="Distance (cm)",
+     ylab="Time (hours)")
 ```
 
 You can reference this figure as follows: Fig. \ref{fig:fig1}.
 
-```{r fig2, fig.cap="This is the second figure.",echo=TRUE}
-plot(1:5,pch=19,main="Some data",xlab="Distance (cm)",ylab="Time (hours)")
+## Figures spanning two-columns
+
+Figures can span two columns be setting `fig.env="figure*"`.
+
+```{r fig2, fig.cap="This is a wide figure.",fig.env="figure*"}
+plot(1:5,pch=19,main="Some wide data",
+     xlab="Distance (cm)",ylab="Time (hours)")
 ```
 
 Reference to second figure: Fig. \ref{fig:fig2}
 
+# Tables
+
 ## Generate a table using `xtable`
 
-```{r tab1, results="asis", echo=TRUE}
+```{r xtabletable, results="asis", echo=TRUE}
 df = data.frame(ID=1:3,code=letters[1:3])
 
-# Creates tables that follow OUP guidelines using xtable
+# Creates tables that follow OUP guidelines 
+# using xtable
 library(xtable) 
-print(xtable(df,caption="This is the table caption",label="tab:tab1"),
-      comment=FALSE)
+print(xtable(df,caption="This is a xtable table.",
+             label="tab:tab1"),
+      comment=FALSE,caption.placement="top")
 ```
 
 You can reference this table as follows: Table \ref{tab:tab1}.
 
 ## Generate a table using `kable`
 
-```{r anothertable, echo=TRUE}
+```{r kabletable, echo=TRUE}
 df = data.frame(ID=1:3,code=letters[1:3])
 
 # kable can alse be used for creating tables
-knitr::kable(df,caption="This is the table caption",format="latex",
+knitr::kable(df,caption="This is a kable table.",
+             #format="latex",
              booktabs=TRUE,label="tab2")
 ```
 
 You can reference this table as follows: Table \ref{tab:tab2}.
 
-# Discussion
+## Table spanning two columns
 
-You can cross-reference sections and subsections as follows: Section \ref{materials-and-methods} and Section \ref{a-subsection}.
+Tables can span two columns be setting `table.envir = "table*"` in `knitr::kable`.
+
+```{r widetable, echo=TRUE}
+df = data.frame(ID=1:3,code1=letters[1:3],
+                code2=letters[4:6],
+                code3=letters[7:9],
+                code4=letters[10:12],
+                code5=letters[13:15])
+
+# kable can alse be used for creating tables
+knitr::kable(df,caption="This is a wide kable table.",
+             #format="latex",
+             table.envir="table*",
+             booktabs=TRUE,label="tab3")
+```
+
+# Cross-referencing sections
+
+You can cross-reference sections and subsections as follows: Section \ref{inserting-r-figures} and Section \ref{a-subsection}.
+
+***Note:*** the last section in the document will be used as the section title for the bibliography.
+
+# Cross-referencing sections
+
+You can cross-reference sections and subsections as follows: Section \ref{literature-citations} and Section \ref{a-subsection}.
 
 ***Note:*** the last section in the document will be used as the section title for the bibliography.
 

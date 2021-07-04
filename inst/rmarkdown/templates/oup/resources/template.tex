@@ -257,7 +257,7 @@ $if(authors.thanks)$$if(authors.address)$,$elseif(authors.corresponding_author)$
 
 $if(authors.address)$\address[\arabic{addrcnt}]{$authors.address$}$endif$
 
-$if(authors.corresponding_author)$\corresp[\fnsymbol{thisauthcorresp}]{Corresponding author. \href{mailto:$authors.email$}{$authors.email$}}$endif$
+$if(authors.corresponding_author)$\corresp[\fnsymbol{thisauthcorresp}]{Corresponding author. \href{mailto:$authors.email$}{\nolinkurl{$authors.email$}}}$endif$
 $if(authors.thanks)$\corresp[\fnsymbol{thisauththanks}]{$authors.thanks$}$endif$
 
 $endfor$
@@ -275,7 +275,7 @@ $for(author.affiliation)$
 \addrbycode{$author.affiliation$}
 $endfor$
 
-$if(author.corresponding_author)$\corresp[\fnsymbol{thisauthcorresp}]{Corresponding author. \href{mailto:$author.email$}{$author.email$}}$endif$
+$if(author.corresponding_author)$\corresp[\fnsymbol{thisauthcorresp}]{Corresponding author. \href{mailto:$author.email$}{\nolinkurl{$author.email$}}}$endif$
 $if(author.thanks)$\corresp[\fnsymbol{thisauththanks}]{$author.thanks$}$endif$
 
 $for(author.footnote)$
@@ -299,24 +299,20 @@ $endif$
 
 %\editor{Associate Editor: Name}
 
-%\abstract{
-%\textbf{Motivation:} .\\
-%\textbf{Results:} .\\
-%\textbf{Availability:} .\\
-%\textbf{Contact:} \href{name@bio.com}{name@bio.com}\\
-%\textbf{Supplementary information:} Supplementary data are available at \textit{Briefings in Bioinformatics}
-%online.}
-
-\abstract{$abstract$}
+\abstract{
+$for(abstract)$$abstract$$sep$\\
+$endfor$}
 
 \keywords{$for(keywords)$$keywords$$sep$; $endfor$}
 
-% \boxedtext{
-% \begin{itemize}
-% \item Key boxed text here.
-% \item Key boxed text here.
-% \item Key boxed text here.
-% \end{itemize}}
+$if(boxedtext)$
+\boxedtext{
+\begin{itemize}
+$for(boxedtext)$
+\item $boxedtext$
+$endfor$
+\end{itemize}}
+$endif$
 
 \maketitle
 

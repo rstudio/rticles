@@ -108,7 +108,19 @@ mdpi_article(..., keep_tex = TRUE)
 
 mnras_article(..., keep_tex = TRUE, fig_caption = TRUE)
 
-oup_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
+oup_article(
+  ...,
+  keep_tex = TRUE,
+  md_extensions = c("-autolink_bare_uris"),
+  journal = NULL,
+  pandoc_args = NULL,
+  number_sections = TRUE,
+  citation_package = c("natbib", "default"),
+  papersize = c("large", "medium", "small"),
+  document_style = c("contemporary", "modern", "traditional"),
+  namedate = FALSE,
+  onecolumn = FALSE
+)
 
 peerj_article(..., keep_tex = TRUE)
 
@@ -135,6 +147,14 @@ tf_article(..., keep_tex = TRUE, citation_package = "natbib")
 \item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \code{rmarkdown::\link{pdf_document}()}.}
 
 \item{journal}{one of \code{"aoas"}, \code{"aap"}, \code{"aop"}, \code{"aos"}, \code{"sts"} for \code{ims_article}}
+
+\item{papersize}{For \code{oup_article}, one of "large", "medium", or "small" setting output page size. Defaults to "large".}
+
+\item{document_style}{For \code{oup_article}, one of "contemporary", "modern", or "traditional" setting overall style of document. Defaults to "contemporary".}
+
+\item{namedate}{For \code{oup_article}, a logical variable indicating if natbib citations should be in name-date format. Defaults to \code{FALSE}.}
+
+\item{onecolumn}{For \code{oup_article}, a logical variable indicating if one column formatting should be used. Defaults to \code{FALSE}.}
 }
 \value{
 An R Markdown output format.
@@ -271,7 +291,8 @@ The argument \code{journal} accepts the acronym of any of the
  Format for creating submissions to many Oxford University Press
   journals. Adapted from
   \url{https://academic.oup.com/journals/pages/authors/preparing_your_manuscript}
-  and \url{https://academic.oup.com/icesjms/pages/General_Instructions}.
+  and the \code{oup-authoring-template} available on CTAN at
+  \url{https://www.ctan.org/pkg/oup-authoring-template}.
 }
 
 \section{\code{peerj_article}}{
