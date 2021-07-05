@@ -47,7 +47,7 @@ keywords:
   - keyword1
   - keyword2
   - keyword3
-#boxedtext: # Not fully compatible with all document formats
+#boxedlist: # Not fully compatible with all document formats
 #  - First point
 #  - Second point
 competing_interests: |
@@ -60,15 +60,15 @@ acknowledgements: |
   It consists of two paragraphs.
 #classoptions:
 #  - namedate # Could also be here...
-bibliography: mybibfile.bib
+bibliography: mybibfile.bib # Includes refs in OUP example template
 #csl: mycitationstyle.csl
-output: 
+output:
   rticles::oup_article:
     keep_tex: TRUE
     journal: "Journal Name"
-    #document_style: "contemporary" # Can be contemporary, modern, traditional; default contemporary
+    #document_style: "contemporary" # Can be contemporary, modern, traditional; default "contemporary"
     #papersize: "large" # Can be large, medium, small; default large
-    #citation_package: "default" # Uncomment if using a CSL biblio style; default natbib
+    #citation_package: "default" # Uncomment if using a CSL biblio style; default "natbib"
     namedate: TRUE # Set FALSE to use numeric refs; Default FALSE
     #number_sections: FALSE # Uncomment to not number sections; default TRUE
     #onecolumn: TRUE # Uncomment for one column format; default FALSE
@@ -77,8 +77,7 @@ output:
 #citecolor: red
 #header-includes:
 #  - \usepackage[nomarkers,tablesfirst]{endfloat} # For figures and tables at end
-#  - \usepackage{lineno} # For line numbering
-#  - \linenumbers # For line numbering
+#  - \usepackage{lineno}\linenumbers # For line numbering
 ---
 
 ```{r setup, include=FALSE}
@@ -118,8 +117,8 @@ By default, citations are handled by `natbib` using a numeric citation format. T
 
 Here are two sample references: 
 
-* @horvath2018dna showed some really cool things. Only seems to work properly if `namedate: TRUE`. 
-* This is a well known result [@ji20123d]. 
+* **author (year) example:** @horvath2018dna showed some really cool things. Only seems to work properly if `namedate: TRUE`. 
+* **(author year) example:** This is a well known result [@ji20123d]. 
 
 The bibliography will appear at the end of the document.
 
@@ -145,7 +144,7 @@ This equation can be referenced as follows: Eq. \ref{eq:eq1}
 
 # Inserting R figures
 
-The code below creates a figure. It is included in the output because `echo=TRUE`.
+The code below creates a figure. The code is included in the output because `echo=TRUE`.
 
 ```{r fig1, fig.cap="This is the first figure.",echo=TRUE}
 plot(1:10,main="Some data",xlab="Distance (cm)",
@@ -215,14 +214,10 @@ knitr::kable(df,caption="This is a wide kable table.",
 
 # Cross-referencing sections
 
-You can cross-reference sections and subsections as follows: Section \ref{inserting-r-figures} and Section \ref{a-subsection}.
-
-***Note:*** the last section in the document will be used as the section title for the bibliography.
-
-# Cross-referencing sections
-
 You can cross-reference sections and subsections as follows: Section \ref{literature-citations} and Section \ref{a-subsection}.
 
 ***Note:*** the last section in the document will be used as the section title for the bibliography.
+
+For more portable and flexible referencing of sections, equations, figures and tables, use [`bookdown::pdf_document2`](https://github.com/rstudio/bookdown) with YAML header option `base_format: rticles::oup_article`.
 
 # References
