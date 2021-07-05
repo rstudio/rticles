@@ -15,6 +15,7 @@
 \alias{ctex}
 \alias{elsevier_article}
 \alias{frontiers_article}
+\alias{icesjms_article}
 \alias{ims_article}
 \alias{jasa_article}
 \alias{lipics_article}
@@ -79,6 +80,8 @@ elsevier_article(
 )
 
 frontiers_article(..., keep_tex = TRUE)
+
+icesjms_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
 ims_article(
   journal = c("aoas", "aap", "aop", "aos", "sts"),
@@ -222,6 +225,12 @@ custom Pandoc LaTeX template and different default values for other arguments
  Format for creating Frontiers journal
   articles. Adapted from
   \url{https://www.frontiersin.org/about/author-guidelines}.
+}
+
+\section{\code{icesjms_article}}{
+ Format for creating submissions to ICES Journal of Marine Science.
+  Adapted from
+  \url{https://academic.oup.com/icesjms/pages/General_Instructions}.
 }
 
 \section{\code{ims_article}}{

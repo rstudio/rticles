@@ -19,7 +19,7 @@ rsos_article(
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 
 \item{latex_engine}{LaTeX engine for producing PDF output. Options are
-"pdflatex", "lualatex", and "xelatex".}
+"pdflatex", "lualatex", "xelatex" and "tectonic".}
 
 \item{pandoc_args}{Additional command line options to pass to pandoc}
 
