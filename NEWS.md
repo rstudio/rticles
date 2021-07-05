@@ -1,3 +1,8 @@
+rticles 0.21
+---------------------------------------------------------------------
+
+- `oup_article()` template has been updated to latest OUP authoring template now available on CTAN (thanks, @dmkaplan2000, #XXX)
+
 rticles 0.20
 ---------------------------------------------------------------------
 
