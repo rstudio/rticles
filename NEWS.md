@@ -1,3 +1,8 @@
+rticles 0.21
+---------------------------------------------------------------------
+
+- Added ICES Journal of Marine Science (ICESJMS) template (thanks, @dmkaplan2000, #XXX).
+
 rticles 0.20
 ---------------------------------------------------------------------
 

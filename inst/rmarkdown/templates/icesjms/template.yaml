@@ -1,0 +1,5 @@
+name: ICES Journal of Marine Science (ICESJMS) Template
+description: >
+ Template for creating an article for submission to ICES Journal of Marine Science.
+create_dir: true
+

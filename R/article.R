@@ -176,6 +176,21 @@ frontiers_article <- function(..., keep_tex = TRUE) {
   pdf_document_format("frontiers", keep_tex = keep_tex, ...)
 }
 
+#' @section \code{icesjms_article}: Format for creating submissions to ICES Journal of Marine Science.
+#'   Adapted from
+#'   \url{https://academic.oup.com/icesjms/pages/General_Instructions}.
+#' @export
+#' @rdname article
+icesjms_article <- function(
+  ..., keep_tex = TRUE,
+  md_extensions = c("-autolink_bare_uris")
+) {
+  pdf_document_format(
+    "icesjms",
+    keep_tex = keep_tex, md_extensions = md_extensions, ...
+  )
+}
+
 #' @param journal one of \code{"aoas"}, \code{"aap"}, \code{"aop"}, \code{"aos"}, \code{"sts"} for \code{ims_article}
 #' @section \code{ims_article}: Format for creating submissions to the Institute of Mathematical Statistics
 #' \href{https://imstat.org/}{IMS} journals and publications. Adapted from
