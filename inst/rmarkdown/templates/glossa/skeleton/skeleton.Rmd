@@ -11,8 +11,6 @@ author:
   affiliation: KU Leuven
 output: rticles::glossa_article
 classoption: [cm, linguex, biblatex]
-bibliography: sample.bib
-# The bibliography style is set automatically by glossa.cls
 #
 # Possible classoptions:
 # - [times] for Times font (default if no option is chosen)
@@ -25,7 +23,7 @@ bibliography: sample.bib
 #   typesetting engine (not pdfLatex)
 # - for headings, tables, captions, etc., Fira Sans is
 #   used: https://www.fontsquirrel.com/fonts/fira-sans
-# - [biblatex] for using biblatex (the default is natbib, do not load the
+# - [biblatex] for using biblatex (the default is natbib, DO NOT LOAD the
 #   natbib package in this file, it is loaded automatically via the document
 #   class glossa.cls)
 # - [linguex] loads the linguex example package
@@ -38,6 +36,11 @@ bibliography: sample.bib
 # !!! A note on the use of bibtex: for PhD dissertations to typeset correctly
 # in the references list, the Address field needs to contain the city
 # (for US cities in the format "Santa Cruz, CA")
+#
+bibliography: sample.bib
+# The bibliography style is set automatically by glossa.cls when using
+# either natbib or biblatex.
+# Pandoc's citeproc is not supported.
 #
 abstract: |
   This document provides a full overview of the information relating to Glossa 
