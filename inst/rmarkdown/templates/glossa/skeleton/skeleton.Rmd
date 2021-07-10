@@ -47,6 +47,8 @@ abstract: |
   submissions. This information includes (i) the author guidelines, and (ii)
   the stylesheet. So as to provide instruction both by example and by rule,
   this document has been formatted in accordance with the stylesheet it contains.
+# Specify keywords here:
+keywords: stylesheet, glossa, article
 # To add the word count, uncomment the following option and replace the number
 # with the document word count.
 # wordcount: 1000
