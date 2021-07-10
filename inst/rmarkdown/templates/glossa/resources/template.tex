@@ -28,7 +28,7 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-\title[$if(shorttitle)$$shorttitle$$endif$]{$title$}
+\title[$if(shorttitle)$$shorttitle$$endif$]{$title$$if(wordcount)$\\ \bigskip \large Word count: $wordcount$$endif$}
 % Optional short title inside square brackets, for the running headers.
 
 % \author[Paul \& Vanden Wyngaerd]% short form of the author names for the running header. If no short author is given, no authors print in the headers.
@@ -116,10 +116,6 @@ $endfor$
 
 \sffamily
 \maketitle
-
-$if(wordcount)$
-Word count: $wordcount$
-$endif$
 
 $if(abstract)$
 \begin{abstract}
