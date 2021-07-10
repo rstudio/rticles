@@ -114,6 +114,10 @@ $endfor$
 
 \begin{document}
 
+$for(include-before)$
+$include-before$
+$endfor$
+
 \sffamily
 \maketitle
 
@@ -128,10 +132,6 @@ $if(keywords)$
   $keywords$
 \end{keywords}
 $endif$
-
-$for(include-before)$
-$include-before$
-$endfor$
 
 \rmfamily
 
@@ -156,7 +156,6 @@ $endif$
 
 $for(include-after)$
 $include-after$
-
 $endfor$
 
 \end{document}
