@@ -11,4 +11,190 @@ science_article <- function(..., keep_tex = TRUE, number_sections = FALSE) {
   base <- pdf_document_format(
     "science", keep_tex = keep_tex, number_sections = number_sections,...
   )
+
+
+  # Build from the rjournal_article post processing
+  base$pandoc$to <- "latex"
+  base$pandoc$ext <- ".tex"
+
+  # Process authors & figures to the end
+  base$post_processor <- function(metadata, utf8_input, output_file, clean, verbose) {
+    filename <- basename(output_file)
+    # underscores in the filename will be problematic in \input{filename};
+    # pandoc will escape underscores but it should not, i.e., should be
+    # \input{foo_bar} instead of \input{foo\_bar}
+    if (filename != (filename2 <- gsub('_', '-', filename))) {
+      file.rename(filename, filename2); filename <- filename2
+    }
+
+    # post process TEX file
+    temp_tex <- xfun::read_utf8(filename)
+    temp_tex <- post_process_authors_and(temp_tex)
+    temp_tex <- relocate_figures(temp_tex)
+    xfun::write_utf8(temp_tex, filename)
+    cat(filename)
+
+    tinytex::latexmk(filename, base$pandoc$latex_engine, clean = clean)
+  }
+
+  base
+}
+
+# Science Specific Helpers:
+relocate_figures <- function(text) {
+  # locate where the figures are; check count
+  starts <- grep('\\\\begin\\{figure\\}', text)
+  ends <- grep('\\\\end\\{figure\\}', text)
+  if (length(starts) != length(ends)) {
+    warning("It appears that you have a figure that doesn't start properly or end properly",
+            "Moving figures to end is cancelled.", call. = FALSE)
+    return(text)
+  }
+
+  # exit if no figures to move
+  if (length(starts) == 0) {
+    return(text)
+  }
+
+  # check for appendix; subset; recheck count
+  appendix <- grep('\\\\appendix', text)
+  if (length(appendix) > 0){
+    starts <- starts[starts < appendix]
+    ends <- ends[ends < appendix]
+    if (length(starts) != length(ends)) {
+      warning("It appears there is a call to \\appendix within a figure environment.",
+              "Moving figures to end is cancelled.", call. = FALSE)
+      return(text)
+    }
+  }
+
+  # Add notes to where things go.
+  for (i in seq_along(starts)) {
+    fig_marker <- paste('(Figure', i, 'goes about here.)')
+    text <- append(text, values = fig_marker, after = starts[i] - 1)
+    starts[seq_along(starts) >= i] <- starts[seq_along(starts) >= i] + 1L
+  }
+
+  # update indices
+  starts <- grep('\\\\begin\\{figure\\}', text)
+  ends <- grep('\\\\end\\{figure\\}', text)
+  appendix <- c(grep('\\\\appendix', text), grep('\052\\{\\(APPENDIX\\) Appendix\\}\\\\', text))
+  if (length(appendix) > 0){
+    starts <- starts[starts < appendix]
+    ends <- ends[ends < appendix]
+  }
+
+  # extract figures from tex; add guide to start
+  fig_index <- lapply(1:length(starts), function(x){starts[x]:ends[x]})
+  fig_tex <- lapply(fig_index, function(x){text[x]})
+
+  # Add a blank line after to use for injecting:
+  fig_tex <- lapply(fig_tex, function(x){c(x, '')})
+
+  # subset
+  text <- text[-unlist(fig_index)]
+
+  # locate where the figures should go; check distance
+  start_enter <- grep('%%%begfigs---', text)
+  end_enter <- grep('%%%endfigs---', text)
+  if (end_enter - start_enter != 2) {
+    warning("Text may not contain `%%%begfigs---` or `%%%endfigs---`.",
+            "Moving figures to end is cancelled.", call. = FALSE)
+    return(text)
+  }
+
+  # template requires LaTeX placeins for this:
+  # ensures figures start on a new page and can't jump up in space
+  text <- append(text, '\\FloatBarrier', after = start_enter - 1)
+  text <- append(text, '\\newpage', after = start_enter)
+  start_enter <- start_enter + 2L
+
+  # inject
+  for (i in seq_along(fig_tex)) {
+    text <- append(text, fig_tex[[i]], after = start_enter)
+    start_enter <- start_enter + length(fig_tex[[i]])
+  }
+
+  ## if no appendix exit
+  #if (length(appendix == 0)) {
+  #  cat('No appendix.\n')
+  #  return(text)
+  #}
+
+  # now process appendix ----
+  main_enter <- grep('%%%begfigs---', text)
+  start_enter <- grep('%%%begappxfigs---', text)
+  end_enter <- grep('%%%endappxfigs---', text)
+  if (end_enter - start_enter != 2) {
+   warning("Text may not contain `%%%begappxfigs---` or `%%%endappxfigs---`.",
+           "Moving figures to end is cancelled.", call. = FALSE)
+   return(text)
+  }
+
+  starts <- grep('\\\\begin\\{figure\\}', text)
+  ends <- grep('\\\\end\\{figure\\}', text)
+
+  if (length(appendix) > 0){
+    starts <- starts[starts < main_enter]
+    ends <- ends[ends < main_enter]
+  }
+
+  # extract figures from tex; add guide to start
+  fig_index <- lapply(1:length(starts), function(x){starts[x]:ends[x]})
+  fig_tex <- lapply(fig_index, function(x){text[x]})
+
+  # Add a blank line after to use for injecting:
+  fig_tex <- lapply(fig_tex, function(x){c(x, '')})
+
+  # subset
+  text <- text[-unlist(fig_index)]
+
+  # ensures figures start on a new page and can't jump up in space
+  text <- append(text, '\\FloatBarrier', after = start_enter - 1)
+  text <- append(text, '\\newpage', after = start_enter)
+  start_enter <- start_enter + 2L
+
+  # inject
+  for (i in seq_along(fig_tex)) {
+    text <- append(text, fig_tex[[i]], after = start_enter)
+    start_enter <- start_enter + length(fig_tex[[i]])
+  }
+
+  text
+}
+
+post_process_authors_and <- function(text) {
+  i1 <- grep("^\\\\author\\{", text)
+  if (length(i1) == 0L)
+    return(text)
+  if (length(i1) > 1L) {
+    warning("There should be only one instance of '\\author{}' in the tex file. ",
+            "Post-processing \\author{} is cancelled.", call. = FALSE)
+    return(text)
+  }
+
+  i2 <- grep("\\\\\\\\$", text)
+  i2 <- i2[i2 >= i1][1]
+  i <- (i1+1):(i2-1)
+
+  # locate commas
+  text[i2 - 1] <- sub(pattern = ',', '',text[i2 - 1])
+
+  # if multiple authors, add and
+  if (length(i) > 1) {
+    text[i2 - 1] <- paste('and', text[i2 - 1])
+  }
+
+  # if 3 or less, no need to break lines
+  if (length(i) <= 3) {
+    return(text)
+  }
+
+  # otherwise need to clean up spacing
+  add_spaces <- i[seq(1, length(i), by = 3)[-1] - 1]
+  for (i in seq_along(add_spaces)) {
+    text[add_spaces[i]] <- paste0(text[add_spaces[i]], '\\\\')
+  }
+
+  text
 }

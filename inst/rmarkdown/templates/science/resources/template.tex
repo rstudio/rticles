@@ -1,5 +1,4 @@
 % Use only LaTeX2e, calling the article.cls class and 12-point type.
-
 \documentclass[12pt]{article}
 
 % Users of the {thebibliography} environment or BibTeX should use the
@@ -8,21 +7,13 @@
 % This package should properly format in-text
 % reference calls and reference-list numbers.
 
+% Science template required packages
 \usepackage{scicite}
-
-% Use times if you have the font installed; otherwise, comment out the
-% following line.
-
 \usepackage{times}
 
-% The preamble here sets up a lot of new/revised commands and
-% environments.  It's annoying, but please do *not* try to strip these
-% out into a separate .sty file (which could lead to the loss of some
-% information when we convert the file to other formats).  Instead, keep
-% them in the preamble of your main LaTeX source file.
 
-
-% CK stole from arxiv.sty
+% add-ons for rticles
+% based on arxiv.sty
 \usepackage[utf8]{inputenc} % allow utf-8 input
 \usepackage[T1]{fontenc}    % use 8-bit T1 fonts
 \usepackage{lmodern}        % https://github.com/rstudio/rticles/issues/343
@@ -35,7 +26,9 @@
 \usepackage{lipsum}
 \usepackage{graphicx}
 
-% rticles alignment
+% for figure adjustment
+\usepackage{placeins}
+
 % CUSTOM TEX addtions by Shiro
 \usepackage[format=plain,
             labelfont={bf,it},
@@ -44,11 +37,6 @@
 \usepackage{amsmath}
 \usepackage{tocloft}
 
-% HEADER EDITED by Cory
-\usepackage{fancyhdr}
-\fancyhf{}
-\pagestyle{fancy}
-
 % more CK edits:
 \usepackage{calc}
 \usepackage{subcaption}
@@ -56,7 +44,10 @@
 
 % end custom
 
-% Found in similar .tex files:
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
 % Pandoc citation processing
 $if(csl-refs)$
 \newlength{\csllabelwidth}
@@ -166,7 +157,10 @@ $endfor$
 
 
 \begin{document}
+$for(include-before)$
+$include-before$
 
+$endfor$
 % Double-space the manuscript.
 
 \baselineskip24pt
@@ -185,8 +179,10 @@ $abstract$
 
 $body$
 
+$if(bibliography)$
 \bibliography{$bibliography$}
 \bibliographystyle{Science}
+$endif$
 
 % Following is a new environment, {scilastnote}, that's defined in the
 % preamble and that allows authors to add a reference at the end of the
@@ -198,32 +194,36 @@ $body$
 \end{scilastnote}
 
 
+$for(include-after)$
+$include-after$
+
+$endfor$
+
+\renewcommand{\thetable}{\arabic{table}}
+\renewcommand{\thefigure}{\arabic{figure}}
+\setcounter{table}{0}
+\setcounter{figure}{0}
+
 %%%begfigs---
 
 %%%endfigs---
 
+%%%begtabs---
 
-% For your review copy (i.e., the file you initially send in for
-% evaluation), you can use the {figure} environment and the
-% \includegraphics command to stream your figures into the text, placing
-% all figures at the end.  For the final, revised manuscript for
-% acceptance and production, however, PostScript or other graphics
-% should not be streamed into your compliled file.  Instead, set
-% captions as simple paragraphs (with a \noindent tag), setting them
-% off from the rest of the text with a \clearpage as shown  below, and
-% submit figures as separate files according to the Art Department's
-% instructions.
+%%%endtabs---
 
-%
-% \clearpage
-%
-% \noindent {\bf Fig. 1.} Please do not use figure environments to set
-% up your figures in the final (post-peer-review) draft, do not include graphics in your
-% source code, and do not cite figures in the text using \LaTeX\
-% \verb+\ref+ commands.  Instead, simply refer to the figure numbers in
-% the text per {\it Science\/} style, and include the list of captions at
-% the end of the document, coded as ordinary paragraphs as shown in the
-% \texttt{scifile.tex} template file.  Your actual figure files should
-% be submitted separately.
+% Needs a bit of work on the \ref{} TODO  before uncommenting
+%\renewcommand{\thetable}{A\arabic{table}}
+%\renewcommand{\thefigure}{A\arabic{figure}}
+%\setcounter{table}{0}
+%\setcounter{figure}{0}
+
+%%%begappxfigs---
+
+%%%endappxfigs---
+
+%%%begappxtabs---
+
+%%%endappxtabs---
 
 \end{document}

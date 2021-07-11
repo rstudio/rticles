@@ -5,12 +5,20 @@ authors:
     affiliation: a
     corresponding_author: true
   - name: Sidney Verba
-    affiliation: a, b
+    affiliation: a,b
+  - name: Stat Istician
+    affiliation: c
+  - name: Robert Dahl
+    affiliation: d
 address:
   - code: a
     address: Harvard University, Department of Government, Cambridge, MA 02138
   - code: b
     address: Harvard University, Institute for Quantitative Social Science, Cambridge, MA 02138
+  - code: c
+    address: Harvard University, Department of Statistics, Cambridge, MA 02138
+  - code: d
+    address: Yale University, Department of Political Science, Yale, CT 06520
 corresponding_author: "To whom correspondence should be addressed; E-mail: key@harvard.edu."
 abstract: |
   Enter the text of your abstract here.
@@ -26,74 +34,33 @@ output:
 
 This is a basic implementation of the Science template. 
 
-What remains:
-1. Authors too long
-2. figure adjustment adjust
-3. Trimming text below this in skeleton to get just the bibtex bits
+# Uniform Distributions 
+
+Uniform distributions text with Figure.
+
+```{r once, echo=FALSE, fig.cap='test once'}
+plot(runif(10))
+```
+
+And post uniform distributions text...
+
+
+With a table.
+
+# Poisson Distributions
+
+Poisson distributions text...
+
+```{r twice, echo=FALSE, fig.cap='test twice'}
+plot(rpois(10,1))
+```
+
+And post Poisson distributions text...
+
+
+With a table for something.
 
 # Formatting Citations
-
-Citations can be handled in one of three ways.  The most
-straightforward (albeit labor-intensive) would be to hardwire your
-citations into your \LaTeX\ source, as you would if you were using an
-ordinary word processor.  Thus, your code might look something like
-this:
-
-
-\begin{quote}
-\begin{verbatim}
-However, this record of the solar nebula may have been
-partly erased by the complex history of the meteorite
-parent bodies, which includes collision-induced shock,
-thermal metamorphism, and aqueous alteration
-({\it 1, 2, 5--7\/}).
-\end{verbatim}
-\end{quote}
-
-
-\noindent Compiled, the last two lines of the code above, of course, would give notecalls in {\it Science\/} style:
-
-\begin{quote}
-\ldots thermal metamorphism, and aqueous alteration ({\it 1, 2, 5--7\/}).
-\end{quote}
-
-Under the same logic, the author could set up his or her reference list as a simple enumeration,
-
-\begin{quote}
-\begin{verbatim}
-{\bf References and Notes}
-
-\begin{enumerate}
-\item G. Gamow, {\it The Constitution of Atomic Nuclei
-and Radioactivity\/} (Oxford Univ. Press, New York, 1931).
-\item W. Heisenberg and W. Pauli, {\it Zeitschr.\ f.\ 
-Physik\/} {\bf 56}, 1 (1929).
-\end{enumerate}
-\end{verbatim}
-\end{quote}
-
-\noindent yielding
-
-\begin{quote}
-{\bf References and Notes}
-
-\begin{enumerate}
-\item G. Gamow, {\it The Constitution of Atomic Nuclei and
-Radioactivity\/} (Oxford Univ. Press, New York, 1931).
-\item W. Heisenberg and W. Pauli, {\it Zeitschr.\ f.\ Physik} {\bf 56},
-1 (1929).
-\end{enumerate}
-\end{quote}
-
-That's not a solution that's likely to appeal to everyone, however ---
-especially not to users of B{\small{IB}}\TeX\ \cite{inclme}.  If you
-are a B{\small{IB}}\TeX\ user, we suggest that you use the
-\texttt{Science.bst} bibliography style file and the
-\texttt{scicite.sty} package, both of which we are downloadable from our author help site
-(http://www.sciencemag.org/about/authors/prep/TeX_help/).  You can also
-generate your reference lists by using the list environment
-\texttt{\{thebibliography\}} at the end of your source document; here
-again, you may find the \texttt{scicite.sty} file useful.
 
 Whether you use B{\small{IB}}\TeX\ or \texttt{\{thebibliography\}}, be
 very careful about how you set up your in-text reference calls and
@@ -210,3 +177,27 @@ What you should send to {\it Science\/} will depend on the stage your manuscript
   mentioned in this document).
 \end{itemize}
 \end{itemize}
+
+# (APPENDIX) Appendix
+\appendix
+Appendix figures and tables will also need to be moved. A basic example is provided here so this feature is also tested.
+
+First we have a figure.
+
+```{r thrice, echo=FALSE, fig.cap='test thrice'}
+plot(rnorm(10))
+```
+
+And next we have a table
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{ll}
+appx & 1 \\
+appx & 2\\
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
