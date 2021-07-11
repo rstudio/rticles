@@ -17,7 +17,7 @@ science_article <- function(..., keep_tex = TRUE, number_sections = FALSE) {
   base$pandoc$to <- "latex"
   base$pandoc$ext <- ".tex"
 
-  # Process authors & figures to the end
+  # Process authors; move figures/tables to the end; Remove Section Numbers
   base$post_processor <- function(metadata, utf8_input, output_file, clean, verbose) {
     filename <- basename(output_file)
     # underscores in the filename will be problematic in \input{filename};
@@ -31,8 +31,13 @@ science_article <- function(..., keep_tex = TRUE, number_sections = FALSE) {
     temp_tex <- xfun::read_utf8(filename)
     temp_tex <- post_process_authors_and(temp_tex)
     temp_tex <- relocate_figures(temp_tex)
+    temp_tex <- relocate_tables(temp_tex)
+
+    if (!number_sections) {
+      temp_tex <- unnumber_sections(temp_tex)
+    }
+
     xfun::write_utf8(temp_tex, filename)
-    cat(filename)
 
     tinytex::latexmk(filename, base$pandoc$latex_engine, clean = clean)
   }
@@ -57,8 +62,9 @@ relocate_figures <- function(text) {
   }
 
   # check for appendix; subset; recheck count
-  appendix <- grep('\\\\appendix', text)
+  appendix <- c(grep('\\\\appendix', text), grep('\052\\{\\(APPENDIX\\) Appendix\\}\\\\', text))
   if (length(appendix) > 0){
+    appendix <- min(appendix)
     starts <- starts[starts < appendix]
     ends <- ends[ends < appendix]
     if (length(starts) != length(ends)) {
@@ -80,12 +86,13 @@ relocate_figures <- function(text) {
   ends <- grep('\\\\end\\{figure\\}', text)
   appendix <- c(grep('\\\\appendix', text), grep('\052\\{\\(APPENDIX\\) Appendix\\}\\\\', text))
   if (length(appendix) > 0){
+    appendix <- min(appendix)
     starts <- starts[starts < appendix]
     ends <- ends[ends < appendix]
   }
 
   # extract figures from tex; add guide to start
-  fig_index <- lapply(1:length(starts), function(x){starts[x]:ends[x]})
+  fig_index <- lapply(seq_along(starts), function(x){starts[x]:ends[x]})
   fig_tex <- lapply(fig_index, function(x){text[x]})
 
   # Add a blank line after to use for injecting:
@@ -115,12 +122,6 @@ relocate_figures <- function(text) {
     start_enter <- start_enter + length(fig_tex[[i]])
   }
 
-  ## if no appendix exit
-  #if (length(appendix == 0)) {
-  #  cat('No appendix.\n')
-  #  return(text)
-  #}
-
   # now process appendix ----
   main_enter <- grep('%%%begfigs---', text)
   start_enter <- grep('%%%begappxfigs---', text)
@@ -134,13 +135,13 @@ relocate_figures <- function(text) {
   starts <- grep('\\\\begin\\{figure\\}', text)
   ends <- grep('\\\\end\\{figure\\}', text)
 
-  if (length(appendix) > 0){
+  if (length(appendix) > 0) {
     starts <- starts[starts < main_enter]
     ends <- ends[ends < main_enter]
   }
 
   # extract figures from tex; add guide to start
-  fig_index <- lapply(1:length(starts), function(x){starts[x]:ends[x]})
+  fig_index <- lapply(seq_along(starts), function(x){starts[x]:ends[x]})
   fig_tex <- lapply(fig_index, function(x){text[x]})
 
   # Add a blank line after to use for injecting:
@@ -148,6 +149,9 @@ relocate_figures <- function(text) {
 
   # subset
   text <- text[-unlist(fig_index)]
+
+  # relocate reference
+  start_enter <- grep('%%%begappxfigs---', text)
 
   # ensures figures start on a new page and can't jump up in space
   text <- append(text, '\\FloatBarrier', after = start_enter - 1)
@@ -162,6 +166,128 @@ relocate_figures <- function(text) {
 
   text
 }
+
+relocate_tables <- function(text) {
+  # locate where the tables are; check count
+  starts <- grep('\\\\begin\\{table\\}', text)
+  ends <- grep('\\\\end\\{table\\}', text)
+  if (length(starts) != length(ends)) {
+    warning("It appears that you have a table that doesn't start properly or end properly",
+            "Moving tables to end is cancelled.", call. = FALSE)
+    return(text)
+  }
+
+  # exit if no tables to move
+  if (length(starts) == 0) {
+    return(text)
+  }
+
+  # check for appendix; subset; recheck count
+  appendix <- c(grep('\\\\appendix', text), grep('\052\\{\\(APPENDIX\\) Appendix\\}\\\\', text))
+  if (length(appendix) > 0){
+    appendix <- min(appendix)
+    starts <- starts[starts < appendix]
+    ends <- ends[ends < appendix]
+    if (length(starts) != length(ends)) {
+      warning("It appears there is a call to \\appendix within a table environment.",
+              "Moving tables to end is cancelled.", call. = FALSE)
+      return(text)
+    }
+  }
+
+  # Add notes to where things go.
+  for (i in seq_along(starts)) {
+    tab_marker <- paste('(Table', i, 'goes about here.)')
+    text <- append(text, values = tab_marker, after = starts[i] - 1)
+    starts[seq_along(starts) >= i] <- starts[seq_along(starts) >= i] + 1L
+  }
+
+  # update indices
+  starts <- grep('\\\\begin\\{table\\}', text)
+  ends <- grep('\\\\end\\{table\\}', text)
+  appendix <- c(grep('\\\\appendix', text), grep('\052\\{\\(APPENDIX\\) Appendix\\}\\\\', text))
+  if (length(appendix) > 0){
+    appendix <- min(appendix)
+    starts <- starts[starts < appendix]
+    ends <- ends[ends < appendix]
+  }
+
+  # extract tables from tex; add guide to start
+  tab_index <- lapply(seq_along(starts), function(x){starts[x]:ends[x]})
+  tab_tex <- lapply(tab_index, function(x){text[x]})
+
+  # Add a blank line after to use for injecting:
+  tab_tex <- lapply(tab_tex, function(x){c(x, '')})
+
+  # subset
+  text <- text[-unlist(tab_index)]
+
+  # locate where the tables should go; check distance
+  start_enter <- grep('%%%begtabs---', text)
+  end_enter <- grep('%%%endtabs---', text)
+  if (end_enter - start_enter != 2) {
+    warning("Text may not contain `%%%begtabs---` or `%%%endtabs---`.",
+            "Moving tables to end is cancelled.", call. = FALSE)
+    return(text)
+  }
+
+  # template requires LaTeX placeins for this:
+  # ensures tables start on a new page and can't jump up in space
+  text <- append(text, '\\FloatBarrier', after = start_enter - 1)
+  text <- append(text, '\\newpage', after = start_enter)
+  start_enter <- start_enter + 2L
+
+  # inject
+  for (i in seq_along(tab_tex)) {
+    text <- append(text, tab_tex[[i]], after = start_enter)
+    start_enter <- start_enter + length(tab_tex[[i]])
+  }
+
+  # now process appendix ----
+  main_enter <- grep('%%%begtabs---', text)
+  start_enter <- grep('%%%begappxtabs---', text)
+  end_enter <- grep('%%%endappxtabs---', text)
+  if (end_enter - start_enter != 2) {
+    warning("Text may not contain `%%%begappxtabs---` or `%%%endappxtabs---`.",
+            "Moving tables to end is cancelled.", call. = FALSE)
+    return(text)
+  }
+
+  starts <- grep('\\\\begin\\{table\\}', text)
+  ends <- grep('\\\\end\\{table\\}', text)
+
+  if (length(appendix) > 0) {
+    starts <- starts[starts < main_enter]
+    ends <- ends[ends < main_enter]
+  }
+
+  # extract tables from tex; add guide to start
+  tab_index <- lapply(seq_along(starts), function(x){starts[x]:ends[x]})
+  tab_tex <- lapply(tab_index, function(x){text[x]})
+
+  # Add a blank line after to use for injecting:
+  tab_tex <- lapply(tab_tex, function(x){c(x, '')})
+
+  # subset
+  text <- text[-unlist(tab_index)]
+
+  # relocate reference
+  start_enter <- grep('%%%begappxtabs---', text)
+
+  # ensures tables start on a new page and can't jump up in space
+  text <- append(text, '\\FloatBarrier', after = start_enter - 1)
+  text <- append(text, '\\newpage', after = start_enter)
+  start_enter <- start_enter + 2L
+
+  # inject
+  for (i in seq_along(tab_tex)) {
+    text <- append(text, tab_tex[[i]], after = start_enter)
+    start_enter <- start_enter + length(tab_tex[[i]])
+  }
+
+  text
+}
+
 
 post_process_authors_and <- function(text) {
   i1 <- grep("^\\\\author\\{", text)
@@ -196,5 +322,11 @@ post_process_authors_and <- function(text) {
     text[add_spaces[i]] <- paste0(text[add_spaces[i]], '\\\\')
   }
 
+  text
+}
+
+unnumber_sections <- function(text) {
+  i <- grep("^\\\\section\\{", text)
+  text[i] <- sub(text[i], pattern = 'section', replacement = 'section\052')
   text
 }

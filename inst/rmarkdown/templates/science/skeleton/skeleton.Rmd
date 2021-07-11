@@ -38,12 +38,20 @@ This is a basic implementation of the Science template.
 
 Uniform distributions text with Figure.
 
-```{r once, echo=FALSE, fig.cap='test once'}
+```{r once, echo=FALSE, fig.cap='test once', fig.align='center', out.width='50%'}
 plot(runif(10))
 ```
 
 And post uniform distributions text...
 
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{ll}
+once & 1 \\
+once & 2\\
+\end{tabular}
+\end{center}
+\end{table}
 
 With a table.
 
@@ -57,6 +65,14 @@ plot(rpois(10,1))
 
 And post Poisson distributions text...
 
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{ll}
+twice & 1 \\
+twice & 2\\
+\end{tabular}
+\end{center}
+\end{table}
 
 With a table for something.
 
@@ -178,7 +194,7 @@ What you should send to {\it Science\/} will depend on the stage your manuscript
 \end{itemize}
 \end{itemize}
 
-# (APPENDIX) Appendix
+# Appendix
 \appendix
 Appendix figures and tables will also need to be moved. A basic example is provided here so this feature is also tested.
 
@@ -193,8 +209,8 @@ And next we have a table
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{ll}
-appx & 1 \\
-appx & 2\\
+thrice & 1 \\
+thrice & 2\\
 \end{tabular}
 \end{center}
 \end{table}
