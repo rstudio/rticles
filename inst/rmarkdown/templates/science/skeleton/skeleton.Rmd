@@ -2,22 +2,22 @@
 title: Template for *Science* Articles
 authors:
   - name: V. O. Key
-    affiliation: a
+    affiliation: 1
     corresponding_author: true
   - name: Sidney Verba
-    affiliation: a,b
+    affiliation: "1,2" # (multiple affiliations shold be quoted and separated by a comma)
   - name: Marvin Zelen
-    affiliation: c
+    affiliation: 3
   - name: Robert Dahl
-    affiliation: d
+    affiliation: 4
 address:
   - code: 1
     address: Harvard University, Department of Government, Cambridge, MA 02138
-  - code: b
+  - code: 2
     address: Harvard University, Institute for Quantitative Social Science, Cambridge, MA 02138
-  - code: c
+  - code: 3
     address: Harvard University, Department of Biostatistics, Cambridge, MA 02138
-  - code: d
+  - code: 4
     address: Yale University, Department of Political Science, Yale, CT 06520
 corresponding_author: "To whom correspondence should be addressed; E-mail: key@harvard.edu."
 abstract: |
