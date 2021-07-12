@@ -6,17 +6,17 @@ authors:
     corresponding_author: true
   - name: Sidney Verba
     affiliation: a,b
-  - name: Stat Istician
+  - name: Marvin Zelen
     affiliation: c
   - name: Robert Dahl
     affiliation: d
 address:
-  - code: a
+  - code: 1
     address: Harvard University, Department of Government, Cambridge, MA 02138
   - code: b
     address: Harvard University, Institute for Quantitative Social Science, Cambridge, MA 02138
   - code: c
-    address: Harvard University, Department of Statistics, Cambridge, MA 02138
+    address: Harvard University, Department of Biostatistics, Cambridge, MA 02138
   - code: d
     address: Yale University, Department of Political Science, Yale, CT 06520
 corresponding_author: "To whom correspondence should be addressed; E-mail: key@harvard.edu."
@@ -26,8 +26,7 @@ acknowledgements: |
   Please include your acknowledgments here, set in a single paragraph.
 bibliography: scibib.bib
 output: 
-  rticles::science_article:
-    keep_tex: true
+  rticles::science_article
 ---
 
 # Introduction
@@ -78,15 +77,7 @@ With a table for something.
 
 # Formatting Citations
 
-Whether you use B{\small{IB}}\TeX\ or \texttt{\{thebibliography\}}, be
-very careful about how you set up your in-text reference calls and
-notecalls.  In particular, observe the following requirements:
-
 \begin{enumerate}
-\item Please follow the style for references outlined at our author
-  help site and embodied in recent issues of {\it Science}.  Each
-  citation number should refer to a single reference; please do not
-  concatenate several references under a single number.
 \item Please cite your references and notes in text {\it only\/} using
   the standard \LaTeX\ \verb+\cite+ command, not another command
   driven by outside macros.

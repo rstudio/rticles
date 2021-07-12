@@ -288,13 +288,12 @@ relocate_tables <- function(text) {
   text
 }
 
-
 post_process_authors_and <- function(text) {
   i1 <- grep("^\\\\author\\{", text)
   if (length(i1) == 0L)
     return(text)
   if (length(i1) > 1L) {
-    warning("There should be only one instance of '\\author{}' in the tex file. ",
+    warning("There should be only one instance of '\\author{}' in the tex file.",
             "Post-processing \\author{} is cancelled.", call. = FALSE)
     return(text)
   }
@@ -304,11 +303,11 @@ post_process_authors_and <- function(text) {
   i <- (i1+1):(i2-1)
 
   # locate commas
-  text[i2 - 1] <- sub(pattern = ',', '',text[i2 - 1])
+  text[i2 - 1] <- sub(pattern = ",", "",text[i2 - 1])
 
   # if multiple authors, add and
   if (length(i) > 1) {
-    text[i2 - 1] <- paste('and', text[i2 - 1])
+    text[i2 - 1] <- paste("and", text[i2 - 1])
   }
 
   # if 3 or less, no need to break lines
@@ -319,7 +318,7 @@ post_process_authors_and <- function(text) {
   # otherwise need to clean up spacing
   add_spaces <- i[seq(1, length(i), by = 3)[-1] - 1]
   for (i in seq_along(add_spaces)) {
-    text[add_spaces[i]] <- paste0(text[add_spaces[i]], '\\\\')
+    text[add_spaces[i]] <- paste0(text[add_spaces[i]], "\\\\")
   }
 
   text
@@ -327,6 +326,10 @@ post_process_authors_and <- function(text) {
 
 unnumber_sections <- function(text) {
   i <- grep("^\\\\section\\{", text)
-  text[i] <- sub(text[i], pattern = 'section', replacement = 'section\052')
+  text[i] <- sub(text[i], pattern = "section", replacement = "section\052")
+  i <- grep("^\\\\subsection\\{", text)
+  text[i] <- sub(text[i], pattern = "subsection", replacement = "subsection\052")
+  i <- grep("^\\\\subsubsection\\{", text)
+  text[i] <- sub(text[i], pattern = "subsubsection", replacement = "subsubsection\052")
   text
 }
