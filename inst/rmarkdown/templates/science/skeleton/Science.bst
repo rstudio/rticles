@@ -9,7 +9,7 @@
 %% merlin.mbs  (with options: `tail,,seq-no,nm-init,ed-au,nmlm,x5,m1,yr-par,xmth,jtit-x,thtit-a,trnum-it,vol-bf,vnum-x,volp-com,jpg-1,numser,jnm-x,pub-date,pre-pub,edby,edbyy,blk-com,blknt,in-x,pp,ed,abr,jabr,xand,etal-it,em-it,{}')
 %% ----------------------------------------
 %% *** Applicable to Science Journal references ***
-%% 
+%%
 %% Copyright 1994-1999 Patrick W Daly
  % ===============================================================
  % IMPORTANT NOTICE:
@@ -1034,6 +1034,27 @@ FUNCTION {format.organization.address}
 }
 
 FUNCTION {article}
+{ output.bibitem
+  format.authors "author" output.check
+  format.title "title" output.check
+  crossref missing$
+    { journal
+      emphasize
+      "journal" output.check
+      add.blank
+      format.vol.num.pages output
+      format.date "year" output.check
+    }
+    { format.article.crossref output.nonnull
+      format.pages output
+    }
+  if$
+  new.sentence
+  format.note output
+  fin.entry
+}
+
+FUNCTION {arxiv}
 { output.bibitem
   format.authors "author" output.check
   crossref missing$
