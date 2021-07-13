@@ -4,12 +4,22 @@
 \alias{science_article}
 \title{Science Journal Format}
 \usage{
-science_article(..., keep_tex = TRUE, number_sections = FALSE)
+science_article(
+  ...,
+  keep_tex = TRUE,
+  move_figures = TRUE,
+  move_tables = TRUE,
+  number_sections = FALSE
+)
 }
 \arguments{
 \item{...}{Additional arguments to \code{rmarkdown::pdf_document}}
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
+
+\item{move_figures}{set to \code{TRUE} to move figures to end. Default is \code{TRUE}.}
+
+\item{move_tables}{set to \code{TRUE} to move tables to end. Default is \code{TRUE}.}
 
 \item{number_sections}{\code{TRUE} to number section headings}
 }

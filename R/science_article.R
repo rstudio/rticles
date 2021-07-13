@@ -5,9 +5,12 @@
 #'
 #' @inheritParams rmarkdown::pdf_document
 #' @param ... Additional arguments to \code{rmarkdown::pdf_document}
+#' @param move_figures set to \code{TRUE} to move figures to end. Default is \code{TRUE}.
+#' @param move_tables set to \code{TRUE} to move tables to end. Default is \code{TRUE}.
 #' @md
 #' @export
-science_article <- function(..., keep_tex = TRUE, number_sections = FALSE) {
+science_article <- function(..., keep_tex = TRUE, move_figures = TRUE,
+                            move_tables = TRUE, number_sections = FALSE) {
   base <- pdf_document_format(
     "science", keep_tex = keep_tex, number_sections = number_sections,...
   )
@@ -30,9 +33,12 @@ science_article <- function(..., keep_tex = TRUE, number_sections = FALSE) {
     # post process TEX file
     temp_tex <- xfun::read_utf8(filename)
     temp_tex <- post_process_authors_and(temp_tex)
-    temp_tex <- relocate_figures(temp_tex)
-    temp_tex <- relocate_tables(temp_tex)
-
+    if (move_figures) {
+      temp_tex <- relocate_figures(temp_tex)
+    }
+    if (move_tables) {
+      temp_tex <- relocate_tables(temp_tex)
+    }
     if (!number_sections) {
       temp_tex <- unnumber_sections(temp_tex)
     }
