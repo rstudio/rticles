@@ -22,6 +22,7 @@ $if(title.short)$
 \Shorttitle{$title.short$}
 $endif$
 
+
 \Abstract{
 $abstract$
 }
@@ -91,6 +92,10 @@ $endif$
 $for(header-includes)$
 $header-includes$
 $endfor$
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
 
 $preamble$
 
