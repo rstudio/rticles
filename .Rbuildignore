@@ -9,3 +9,4 @@
 ^reference$
 ^pkgdown$
 ^vignettes/articles$
+^README\.Rmd$
