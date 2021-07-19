@@ -4,3 +4,4 @@
 .RData
 *.log
 reference
+inst/doc
