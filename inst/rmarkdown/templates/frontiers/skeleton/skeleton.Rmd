@@ -156,11 +156,10 @@ LaTeX folder
 
 # References
 
-A reference list should be automatically created here. However it won't. Pandoc 
-will place the list of references at the end of the document instead. There are 
-no convenient solution for now to force Pandoc to do otherwise. The easiest way 
-to get around this problem is to edit the LaTeX file created by Pandoc before 
-compiling it again using the traditional LaTeX commands.
+The below command places the reference list in this location, rather than adding them at the bottom of the article.
+
+::: {#refs}
+:::
 
 # Figures {-}
 
