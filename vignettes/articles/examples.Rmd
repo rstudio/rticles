@@ -5,9 +5,7 @@ resource_files:
   - cache
 ---
 
-**This is work in progress and any chunk below is shown for debug**
-
-```{r, message = TRUE, warning = TRUE, include = TRUE}
+```{r, message = TRUE, warning = TRUE, include = FALSE}
 # this is to generate the GIF and PDF for the gallery
 # This is done on GHA and there is a caching mechanism so that a new rendering
 # occurs only when needed
@@ -73,7 +71,7 @@ for (journal in journals) {
 }
 ```
 
-```{r, include = TRUE}
+```{r, include = FALSE}
 # We generate the YAML file on the fly to render the gallery
 
 # list of sites
@@ -96,8 +94,6 @@ articles <- Filter(length, articles)
 
 yaml::write_yaml(articles, "examples.yml")
 ```
-
----
 
 The examples below illustrate all the article's template included into this package. 
 
