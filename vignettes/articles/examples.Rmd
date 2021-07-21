@@ -5,7 +5,9 @@ resource_files:
   - cache
 ---
 
-```{r, message = FALSE, warning = FALSE, include = FALSE}
+**This is work in progress and any chunk below is shown for debug**
+
+```{r, message = TRUE, warning = TRUE, include = TRUE}
 # this is to generate the GIF and PDF for the gallery
 # This is done on GHA and there is a caching mechanism so that a new rendering
 # occurs only when needed
@@ -19,7 +21,10 @@ if (!dir.exists(hash_db_dir)) dir.create(hash_db_dir)
 out_dir <- "resources"
 if (!dir.exists(out_dir)) dir.create(out_dir)
 
-for (journal in journals()) {
+# exclude ctex for now
+journals <- setdiff(journals(), "ctex")
+
+for (journal in journals) {
   hash_db_file <- file.path(hash_db_dir, xfun::with_ext(journal, ".rds"))
   out_files <- file.path(out_dir, xfun::with_ext(paste0(journal, "_article"), c("gif", "pdf")))
   # clean cache if no more files
@@ -68,12 +73,11 @@ for (journal in journals()) {
 }
 ```
 
-```{r, include = FALSE}
+```{r, include = TRUE}
 # We generate the YAML file on the fly to render the gallery
 
 # list of sites
 articles <- lapply(journals(), function(journal) {
-  template_path <- rticles:::pkg_file_template(journal)
   name <- yaml::read_yaml(rticles:::pkg_file_template(journal, "template.yaml"))$name
   img = file.path("resources", paste0(journal, "_article.gif"))
   href = file.path("resources", paste0(journal, "_article.pdf"))
@@ -88,9 +92,12 @@ articles <- lapply(journals(), function(journal) {
   )
 })
 
+articles <- Filter(length, articles)
+
 yaml::write_yaml(articles, "examples.yml")
 ```
 
+---
 
 The examples below illustrate all the article's template included into this package. 
 
