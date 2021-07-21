@@ -156,7 +156,8 @@ LaTeX folder
 
 # References
 
-The below command places the reference list in this location, rather than adding them at the bottom of the article.
+A Frontier article expect the reference list to be included in this section.
+To make that happens, the below syntax can be used. This [feature is from Pandoc citeproc](https://pandoc.org/MANUAL.html#placement-of-the-bibliography) which is used with `frontier_article()` to handle the bibliography
 
 ::: {#refs}
 :::
