@@ -46,6 +46,7 @@ jobs:
         run: |
           pak::local_system_requirements(execute = TRUE)
           pak::pkg_system_requirements("pkgdown", execute = TRUE)
+          pak::pkg_system_requirements("magick", execute = TRUE)
         shell: Rscript {0}
 
       - name: Install package and dependencies
