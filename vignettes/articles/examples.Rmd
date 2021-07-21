@@ -1,7 +1,8 @@
 ---
 title: "Example projects"
 resource_files:
-  - resources/
+  - resources
+  - cache
 ---
 
 ```{r, message = FALSE, warning = FALSE, include = FALSE}
