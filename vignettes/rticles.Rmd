@@ -24,7 +24,7 @@ View the list of available journal names with `rticles::journals()`.
 
 ## Figure numbering & cross-references
 
-You may want to use features of the [**bookdown** package](https://pkgs.rstudio.com/bookdown/) like automatic numbering and cross-referencing of figures and tables in your article. To do this, you'll need to edit your YAML to:
+You may want to use features of the [**bookdown** package](https://pkgs.rstudio.com/bookdown/) like automatic numbering and cross-referencing of figures and tables in your article. To do this, you'll need to follow [**bookdown** documentation](https://bookdown.org/yihui/bookdown/a-single-document.html), i.e. to edit your YAML to:
 
 + Switch to the `bookdown::pdf_book` output format, and
 
