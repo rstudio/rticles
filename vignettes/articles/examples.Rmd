@@ -1,19 +1,68 @@
 ---
 title: "Example projects"
 resource_files:
-  - images/
+  - resources/
 ---
 
-```{r setup, include = FALSE}
-library(quillt)
+
+```{r, message = FALSE, warning = FALSE, include = FALSE}
+library(rticles)
+library(magick)
+
+# dir setup
+hash_db_dir <- "cache"
+if (!dir.exists(hash_db_dir)) dir.create(hash_db_dir)
+out_dir <- "resources"
+if (!dir.exists(out_dir)) dir.create(out_dir)
+
+for (journal in journals()) {
+  hash_db_file <- file.path(hash_db_dir, xfun::with_ext(journal, ".rds"))
+  out_files <- file.path(out_dir, xfun::with_ext(paste0(journal, "_article"), c("gif", "pdf")))
+  # clean cache if no more files
+  if (!all(file.exists(out_files))) unlink(hash_db_file)
+  # Should we render new resource ? 
+  resource_path <- rticles:::pkg_file("rmarkdown", "templates", journal)
+  template_files <- list.files(resource_path, recursive = TRUE)
+  template_files <- setNames(
+    file.path(resource_path, template_files), 
+    nm = template_files)
+  new_hash_db <- lapply(template_files, rlang::hash_file)
+  if (file.exists(hash_db_file)) {
+    old_hash_db <- readRDS(hash_db_file)
+    if (identical(old_hash_db, new_hash_db)) {
+      message("No changes in templates. Skipping ", 
+              journal, " format.")
+      next
+    }
+  }
+  message("Rendering to PDF...")
+  out_pdf <- xfun::try_silent(rticles:::render_draft(journal, quiet = TRUE))
+  if (inherits(out_pdf, "try-error")) {
+    warning("Error with rendering format ", journal, 
+            immediate. = TRUE)
+    next
+  }                        
+
+  message("Converting to GIF...")
+  pdf_content <- image_read_pdf(out_pdf)
+  out_gif <- image_write_gif(
+    image = pdf_content, 
+    path = xfun::with_ext(out_pdf, "gif"),
+    delay = 1)
+  message("Retrieving built files.")
+  # specific treatment for rjournal name
+  if (journal == "rjournal") {
+    file.rename(out_pdf, out_pdf <- file.path(dirname(out_pdf), "rjournal_article.pdf"))
+    file.rename(out_gif, out_gif <- file.path(dirname(out_gif), "rjournal_article.gif"))
+  }
+  file.copy(out_pdf, out_dir)
+  file.copy(out_gif, out_dir)
+  # clean temp dir
+  unlink(dirname(out_pdf), recursive = TRUE)
+  # saving the new hash
+  saveRDS(new_hash_db, hash_db_file)
+}
 ```
 
 
-The examples below illustrate the use of rticles with various packages and layouts. If you want to learn more about how the dashboards were created each example includes a link to its source code. 
 
-
-```{r, echo=FALSE}
-examples(yml = "examples.yml")
-```
-
-**blogdown** repo contains an example on how to dynamically generate the `example.yml` taking screenshot of the featured examples. See [`example.Rmd`](https://github.com/rstudio/blogdown/blob/master/vignettes/articles/examples.Rmd) in the repository.

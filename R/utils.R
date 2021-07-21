@@ -111,3 +111,22 @@ post_process_authors <- function(text) {
   # return modified text
   text
 }
+
+
+# render a skeleton in a temp directory
+render_draft <- function(journal, output_options = NULL, quiet = FALSE) {
+  dir <- tempfile()
+  dir.create(dir)
+  oldwd <- setwd(dir)
+  on.exit(setwd(oldwd), add = TRUE)
+  # create a draft of the format
+  doc <- paste0(journal,"_article",".Rmd")
+  rmarkdown::draft(doc, template = journal, package = "rticles", create_dir = FALSE, edit = FALSE)
+  # render the file in the temp dir
+  message('Rendering the ', journal, ' format...',
+          if (!is.null(output_options)) " (with output options)")
+  output_file <- xfun::Rscript_call(
+    fun = rmarkdown::render,
+    args = list(doc, output_options = output_options, quiet = quiet)
+  )
+}
