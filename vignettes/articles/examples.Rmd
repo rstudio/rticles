@@ -24,7 +24,7 @@ for (journal in journals()) {
   # clean cache if no more files
   if (!all(file.exists(out_files))) unlink(hash_db_file)
   # Should we render new resource ? 
-  resource_path <- rticles:::pkg_file("rmarkdown", "templates", journal)
+  resource_path <- rticles:::pkg_file_template(journal)
   template_files <- list.files(resource_path, recursive = TRUE)
   template_files <- setNames(
     file.path(resource_path, template_files), 

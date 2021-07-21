@@ -15,11 +15,11 @@
 #' @examples
 #' rticles::journals()
 journals <- function() {
-  sort(dir(pkg_file("rmarkdown", "templates")))
+  sort(dir(pkg_file_template()))
 }
 
 find_resource <- function(template, file = 'template.tex') {
-  res <- pkg_file("rmarkdown", "templates", template, "resources", file)
+  res <- pkg_file_template(template, "resources", file)
   if (res == "") stop(
     "Couldn't find template file ", template, "/resources/", file, call. = FALSE
   )
@@ -85,6 +85,8 @@ get_list_element <- function(x, names) {
 }
 
 pkg_file <- function(...) system.file(..., package = "rticles")
+
+pkg_file_template <- function(...) pkg_file("rmarkdown", "templates", ...)
 
 # utils for post processing tex files
 
