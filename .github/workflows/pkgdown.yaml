@@ -35,9 +35,11 @@ jobs:
       - name: Cache R packages
         uses: actions/cache@v2
         with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-${{ steps.install-r.outputs.installed-r-version }}-1-${{ hashFiles('.github/r-depends.rds') }}
-          restore-keys: ${{ runner.os }}-${{ steps.install-r.outputs.installed-r-version }}-1-
+          path: |
+            ${{ env.R_LIBS_USER }}/*
+            !${{ env.R_LIBS_USER }}/pak
+          key: ubuntu-18.04-${{ steps.install-r.outputs.installed-r-version }}-1-${{ hashFiles('.github/r-depends.rds') }}
+          restore-keys: ubuntu-18.04-${{ steps.install-r.outputs.installed-r-version }}-1-
 
       - name: Install system dependencies
         if: runner.os == 'Linux'
@@ -48,7 +50,7 @@ jobs:
 
       - name: Install package and dependencies
         run: |
-          pak::local_install_dev_deps(upgrade = TRUE)
+          pak::local_install_dev_deps(upgrade = TRUE, dependencies = c("all", "Config/Needs/website"))
           pak::pkg_install("r-lib/pkgdown")
           pak::pkg_install("rstudio/quillt")
         shell: Rscript {0}
@@ -59,7 +61,8 @@ jobs:
       - name: Cache some pkgdown assets
         uses: actions/cache@v2
         with:
-          path: 'vignettes/articles/images/*.png'
+          path:
+            - 'vignettes/articles/images/*.png'
           key: 1-${{ hashFiles('vignettes/articles/examples.yml') }}
 
       - name: Build pkgdown site
