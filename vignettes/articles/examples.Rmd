@@ -67,5 +67,32 @@ for (journal in journals()) {
 }
 ```
 
+```{r, include = FALSE, eval=FALSE}
+# We generate the YAML file on the fly to render the gallery
+
+# list of sites
+articles <- lapply(journals(), function(journal) {
+  template_path <- rticles:::pkg_file_template(journal)
+  name <- yaml::read_yaml(rticles:::pkg_file_template(journal, "template.yaml"))$name
+  img = file.path("resources", paste0(journal, "_article.gif"))
+  href = file.path("resources", paste0(journal, "_article.pdf"))
+  repo_url = "https://github.com/rstudio/rticles/tree/master/inst/rmarkdown/templates/"
+  if (!file.exists(img) || !file.exists(href)) return(list())
+  list(
+    title = sprintf("%s - %s", journal, name),
+    img = img, 
+    href = href,
+    source = paste0(repo_url, journal),
+    showcase = TRUE
+  )
+})
+
+yaml::write_yaml(articles, "examples.yml")
+```
 
 
+The examples below illustrate all the article's template included into this package. 
+
+```{r, echo=FALSE}
+quillt::examples(yml = "examples.yml")
+```
