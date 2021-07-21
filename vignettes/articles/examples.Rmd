@@ -4,8 +4,11 @@ resource_files:
   - resources/
 ---
 
-
 ```{r, message = FALSE, warning = FALSE, include = FALSE}
+# this is to generate the GIF and PDF for the gallery
+# This is done on GHA and there is a caching mechanism so that a new rendering
+# occurs only when needed
+
 library(rticles)
 library(magick)
 
@@ -26,11 +29,11 @@ for (journal in journals()) {
   template_files <- setNames(
     file.path(resource_path, template_files), 
     nm = template_files)
-  new_hash_db <- lapply(template_files, rlang::hash_file)
+  new_hash_db <- lapply(template_files, function(x) unname(tools::md5sum(x)))
   if (file.exists(hash_db_file)) {
     old_hash_db <- readRDS(hash_db_file)
     if (identical(old_hash_db, new_hash_db)) {
-      message("No changes in templates. Skipping ", 
+      message("No changes in templates. Skipping ",
               journal, " format.")
       next
     }
@@ -38,15 +41,15 @@ for (journal in journals()) {
   message("Rendering to PDF...")
   out_pdf <- xfun::try_silent(rticles:::render_draft(journal, quiet = TRUE))
   if (inherits(out_pdf, "try-error")) {
-    warning("Error with rendering format ", journal, 
+    warning("Error with rendering format ", journal,
             immediate. = TRUE)
     next
-  }                        
+  }
 
   message("Converting to GIF...")
   pdf_content <- image_read_pdf(out_pdf)
   out_gif <- image_write_gif(
-    image = pdf_content, 
+    image = pdf_content,
     path = xfun::with_ext(out_pdf, "gif"),
     delay = 1)
   message("Retrieving built files.")

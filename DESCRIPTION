@@ -59,4 +59,4 @@ RoxygenNote: 7.1.1
 Suggests: testit, bookdown, xtable
 Encoding: UTF-8
 VignetteBuilder: knitr
-Config/Needs/website: magick, rstudio/quillt, rlang
+Config/Needs/website: magick, rstudio/quillt
