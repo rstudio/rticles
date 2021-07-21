@@ -1,10 +1,5 @@
 ---
 title: "Get started"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Get started}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}
@@ -16,7 +11,7 @@ knitr::opts_chunk$set(
 
 ## Accessing templates
 
-```{r child="../man/fragments/usage.md"} 
+```{r child="usage.md"} 
 ```
 
 

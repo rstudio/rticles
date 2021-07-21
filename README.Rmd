@@ -34,7 +34,7 @@ remotes::install_github("rstudio/rticles")
 
 ## Using rticles
 
-```{r child="man/fragments/usage.md"}
+```{r child="vignettes/usage.md"}
 ```
 
 ## Templates
