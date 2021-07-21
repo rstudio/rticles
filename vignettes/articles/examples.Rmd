@@ -67,7 +67,7 @@ for (journal in journals()) {
 }
 ```
 
-```{r, include = FALSE, eval=FALSE}
+```{r, include = FALSE}
 # We generate the YAML file on the fly to render the gallery
 
 # list of sites
