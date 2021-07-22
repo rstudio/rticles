@@ -97,5 +97,5 @@ yaml::write_yaml(articles, "examples.yml")
 The examples below illustrate all the article's template included into this package. 
 
 ```{r, echo=FALSE}
-quillt::examples(yml = "examples.yml")
+quillt::examples(yml = "examples.yml", ncol = 2)
 ```
