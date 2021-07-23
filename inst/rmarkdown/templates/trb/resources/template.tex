@@ -54,12 +54,9 @@ $endif$
 $if(geometry)$
 \usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
 $endif$
-$if(natbib)$
 \usepackage{natbib}
-\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
-$else$
-\bibliographystyle{model5-names.bst}
-$endif$
+\bibliographystyle{unsrtnat}
+\setcitestyle{round}
 $if(listings)$
 \usepackage{listings}
 $endif$
