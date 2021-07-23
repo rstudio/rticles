@@ -23,7 +23,7 @@
 %%
 %% $Id: elsarticle.cls,v 1.18 2008-08-28 06:03:47 cvr Exp $
 %%
- \def\RCSfile{elsarticle}%
+ \def\RCSfile{trbarticle}%
  \def\RCSversion{1.0.1}%
  \def\RCSdate{2008/05/22}%
  \def\@shortjnl{\relax}
