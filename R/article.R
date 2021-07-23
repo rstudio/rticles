@@ -419,3 +419,13 @@ tf_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
     "tf", keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
+
+#' @section \code{trb_article}: Format for creating submissions to the Transportation
+#'   Research Board Annual Meeting. Addapted from \samp{https://www.overleaf.com/latex/templates/transportation-research-board-trb-latex-template/jkfndnnkkksw}
+#' @export
+#' @rdname article
+trb_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
+  pdf_document_format(
+    "trb", keep_tex = keep_tex, citation_package = citation_package, ...
+  )
+}
