@@ -32,13 +32,14 @@
 
 % TODO: add macros for easier formatting of \author.
 \author{%
-  \textbf{David Pritchard}\\
-  davidpritchard.org\\
-  \hfill\break% this is a way to add line numbering on empty line
-  \textbf{Gregory S. Macfarlane, Ph.D.}\\
-  \hfill\break%
-  \textbf{Chieh (Ross) Wang, Ph.D., Corresponding Author}\\
-  cwang@ornl.gov
+  $for(author)$
+  \textbf{$author.name$}\\
+  \textit{$if(author.note)$$author.note$\\$endif$}
+  $author.position$\\
+  $author.affiliation$\\
+  $author.email$\\
+  \hfill\break
+  $endfor$
 }
 
 % If necessary modify the number of words per table or figure default is set to
@@ -52,6 +53,8 @@
 
 \begin{document}
 \maketitle
+
+
 \section{Abstract}
 $abstract$
 \hfill\break%

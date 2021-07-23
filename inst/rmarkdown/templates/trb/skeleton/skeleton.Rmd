@@ -2,31 +2,19 @@
 title: An Rticles Template for the Transport Research Board Annual Meeting
 author:
   - name: Alice Anonymous
+    note: Corresponding Author
+    position: Graduate Student
     email: alice@example.com
     affiliation: Some Institute of Technology
-    footnote: 1
   - name: Bob Security
+    position: Assitant Professor
     email: bob@example.com
-    affiliation: Another University
-  - name: Cat Memes
-    email: cat@example.com
-    affiliation: Another University
-    footnote: 2
+    affiliation: State University
   - name: Derek Zoolander
-    email: derek@example.com
+    position: Professor
+    email: alice@example.com
     affiliation: Some Institute of Technology
-    footnote: 2
-address:
-  - code: Some Institute of Technology
-    address: Department, Street, City, State, Zip
-  - code: Another University
-    address: Department, Street, City, State, Zip
-footnote:
-  - code: 1
-    text: "Corresponding Author"
-  - code: 2
-    text: "Equal contribution"
-runningheader: "Anonymous, Security, Memes, and Zoolander"
+runningheader: "Anonymous, Security, and Zoolander"
 abstract: |
   The Transportation Research Board (TRB) has unique and seemingly arbitrary requirements for manuscripts submitted for review. These requirements make it difficult to write the manuscripts quickly, and no existing \LaTeX\ style comes close to fooling the guidelines. This represents an initial effort at creating a template to meet the requirements of TRB authors using \LaTeX, R, Sweave, and/or other literate programming software.
   
