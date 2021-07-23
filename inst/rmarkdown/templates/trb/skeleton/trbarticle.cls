@@ -1,698 +1,202 @@
-%%
-%% This is file `elsarticle.cls',
-%% generated with the docstrip utility.
-%%
-%% The original source files were:
-%%
-%% elsarticle.dtx  (with options: `class')
-%%
-%% Copyright 2007, 2008 Elsevier Ltd.
-%%
-%% This file is part of the 'Elsarticle Bundle'.
-%% -------------------------------------------
-%%
-%% It may be distributed under the conditions of the LaTeX Project Public
-%% License, either version 1.2 of this license or (at your option) any
-%% later version.  The latest version of this license is in
-%%    http://www.latex-project.org/lppl.txt
-%% and version 1.2 or later is part of all distributions of LaTeX
-%% version 1999/12/01 or later.
-%%
-%% The list of all files belonging to the 'Elsarticle Bundle' is
-%% given in the file `manifest.txt'.
-%%
-%% $Id: elsarticle.cls,v 1.18 2008-08-28 06:03:47 cvr Exp $
-%%
- \def\RCSfile{trbarticle}%
- \def\RCSversion{1.0.1}%
- \def\RCSdate{2008/05/22}%
- \def\@shortjnl{\relax}
- \def\@journal{Elsevier Science} \def\@company{Elsevier Science}
- \def\@issn{000-0000}
- \def\@shortjid{elsarticle}
-\NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{\@shortjid}[\RCSdate, \RCSversion: \@journal]
-\def\ABD{\AtBeginDocument}
-\newif\ifpreprint \preprintfalse
-\newif\iflongmktitle \longmktitlefalse
+% Transportation Research Board conference paper template
+% version 2.1.1
+%
+% David R. Pritchard, http://davidpritchard.org
+%   1.0   - Mar. 2009
+%   1.1   - Sep. 2011, fixes for captions
+%   2.0   - Mar. 2012, Reorganized title page incl. automatic counters
+%   2.1   - Jul. 2015, Automatic total word counter and more formattings
+%   2.1.1 - Jan. 2016, Minor modifications and first uploaded to Github
+%   2.1.1 - May. 2016, created a lite version for people to use directly on TeX without Sweave options
 
-\def\@blstr{1}
-\newdimen\@bls
-\@bls=\baselineskip
+% Official trb manual for authors:
+% http://onlinepubs.trb.org/onlinepubs/AM/InfoForAuthors.pdf
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{trbarticle}[2017/06/10 TRB latex template]
 
-\def\@finalWarning{%
-  *****************************************************\MessageBreak
-   This document is typeset in the CRC style which\MessageBreak
-   is not suitable for submission.\MessageBreak
-   \MessageBreak
-   Please typeset again using 'preprint' option\MessageBreak
-   for creating PDF suitable for submission.\MessageBreak
-  ******************************************************\MessageBreak
+\LoadClass[titlepage, oneside, 12pt]{article}
+
+\RequirePackage[tiny, rm, pagestyles]{titlesec}
+\RequirePackage{enumitem}
+\RequirePackage{ccaption}
+\RequirePackage[fleqn]{amsmath}
+\RequirePackage{mathptmx} % Times text series for text and math
+% Some pdf conversion tricks? Unsure.
+\RequirePackage[T1]{fontenc}
+\RequirePackage{textcomp}
+\RequirePackage[pagewise, mathlines]{lineno}
+\RequirePackage{geometry}
+
+\RequirePackage[sort&compress, numbers]{natbib}
+\RequirePackage{xparse}
+\RequirePackage{totcount}
+\DeclareOption{numbered}{%
+  \linenumbers%
+}
+\ProcessOptions\relax
+
+% Vars
+%------------------------------------------------------------------------------
+\def\@AuthorHeaders{Name1, Name2 and Name3}
+\newcommand{\AuthorHeaders}[1]{
+  \def\@AuthorHeaders{#1}
 }
 
-\DeclareOption{preprint}{\global\preprinttrue
-  \gdef\@blstr{1}\xdef\jtype{0}%
-   \AtBeginDocument{\@twosidefalse\@mparswitchfalse}}
-\DeclareOption{final}{\gdef\@blstr{1}\global\preprintfalse}
-\DeclareOption{review}{\global\preprinttrue\gdef\@blstr{1.5}}
-\DeclareOption{authoryear}{\xdef\@biboptions{authoryear}}
-\DeclareOption{number}{\xdef\@biboptions{square,numbers}}
-\DeclareOption{numbers}{\xdef\@biboptions{square,numbers}}
-\DeclareOption{longtitle}{\global\longmktitletrue}
-\DeclareOption{5p}{\xdef\jtype{5}\global\preprintfalse
-  \ExecuteOptions{twocolumn}}
-  \def\jtype{0}
-\DeclareOption{3p}{\xdef\jtype{3}\global\preprintfalse}
-\DeclareOption{1p}{\xdef\jtype{1}\global\preprintfalse
-  \AtBeginDocument{\@twocolumnfalse}}
-\DeclareOption{times}{\IfFileExists{txfonts.sty}%
-  {\AtEndOfClass{\RequirePackage{txfonts}%
-  \gdef\ttdefault{cmtt}%
-   \let\iint\relax
-  \let\iiint\relax
-  \let\iiiint\relax
-  \let\idotsint\relax
-  \let\openbox\relax}}{\RequirePackage{times}}}
-\ExecuteOptions{a4paper,10pt,oneside,onecolumn,number,preprint}
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
-\ProcessOptions
-\LoadClass{article}
-\RequirePackage{graphicx}
-\let\comma\@empty
-\let\tnotesep\@empty
-\def\title#1{\gdef\@title{#1}}
-\let\@title\@empty
+% Page layout
+%------------------------------------------------------------------------------
+\geometry{textwidth=6.5in, textheight=9.0in}
+\geometry{top=1in, left=1in}
+\geometry{headheight=0.3in, headsep=0.2in}
 
-\def\elsLabel#1{\@bsphack\protected@write\@auxout{}%
-         {\string\Newlabel{#1}{\@currentlabel}}\@esphack}
-\def\Newlabel#1#2{\expandafter\xdef\csname X@#1\endcsname{#2}}
+% Text formatting
+%------------------------------------------------------------------------------
+\setlength{\parindent}{0.5in}
 
-\def\Ref#1{\@ifundefined{X@#1}{0}{\csname X@#1\endcsname}%
+
+% Header
+%------------------------------------------------------------------------------
+\newpagestyle{main}{
+\sethead{\@AuthorHeaders}{}{\thepage}
+}
+\pagestyle{main}
+
+% HEADINGS
+%------------------------------------------------------------------------------
+% Line spacing: 12pt before section titles
+\renewcommand*{\refname}{\uppercase{References}}
+\titleformat{\section}{\bfseries}{}{0pt}{\uppercase}
+\titlespacing*{\section}{0pt}{12pt}{*0}
+\titleformat{\subsection}{\bfseries}{}{0pt}{}
+\titlespacing*{\subsection}{0pt}{12pt}{*0}
+\titleformat{\subsubsection}{\itshape}{}{0pt}{}
+\titlespacing*{\subsubsection}{0pt}{12pt}{*0}
+
+% EQUATIONS
+%------------------------------------------------------------------------------
+\setlength{\mathindent}{0in}
+% Set spacing before and after equation to be 0
+\g@addto@macro\normalsize{%
+  \setlength\abovedisplayskip{0pt}
+  \setlength\belowdisplayskip{0pt}
+  \setlength\abovedisplayshortskip{0pt}
+  \setlength\belowdisplayshortskip{0pt}
 }
 
-\def\tnotemark[#1]{\textsuperscript{\@for\@@tmark:=#1\do{%
-      \edef\tnotenum{\@ifundefined{X@\@@tmark}{1}{\Ref{\@@tmark}}}%
-      \ifcase\tnotenum\or\ding{73}\or,\ding{73}\ding{73}\fi}}%
-}
-\let\@tnotemark\@empty
+% LISTS
+%------------------------------------------------------------------------------
+% Adjust lists a little. Not quite perfectly fitting TRB style, but vaguely
+% close at least.
+\setlist[1]{labelindent=0.5in,leftmargin=*}
+\setlist[2]{labelindent=0in,leftmargin=*}
+\setlist{nosep} % eliminate extra verticle spacings between items
 
-\let\@tnotes\@empty
-\RequirePackage{pifont}
-\newcounter{tnote}
-\def\tnotetext[#1]#2{\g@addto@macro\@tnotes{%
-  \refstepcounter{tnote}\elsLabel{#1}%
-   \def\thefootnote{\ifcase\c@tnote\or\ding{73}\or\ding{73}\ding{73}\fi}%
-    \footnotetext{#2}}}
+% CAPTIONS
+%------------------------------------------------------------------------------
+% Get the captions right. Authors must still be careful to use "Title Case"
+% for table captions, and "Sentence case." for figure captions.
+\renewcommand{\fnum@figure}{\bfseries FIGURE~\thefigure}
+\renewcommand{\fnum@table}{\bfseries TABLE~\thetable}
+\captiontitlefont{\bfseries \boldmath}
+\captiondelim{\;}
+%\precaption{\boldmath}
 
-\newcounter{fnote}
-\def\fnmark[#1]{\let\comma\@empty
-    \def\@fnmark{\@for\@@fnmark:=#1\do{%
-    \edef\fnotenum{\@ifundefined{X@\@@fnmark}{1}{\Ref{\@@fnmark}}}%
-  \unskip\comma\fnotenum\let\comma,}}%
-}
 
-\let\@fnotes\@empty\let\@fnmark\@empty
-\def\fntext[#1]#2{\g@addto@macro\@fnotes{%
-     \refstepcounter{fnote}\elsLabel{#1}%
-   \def\thefootnote{\thefnote}%
-   \global\setcounter{footnote}{\thefnote}%
-   \footnotetext{#2}}}
+% CITATIONS
+%------------------------------------------
+% TRB uses an Author (num) citation style. I haven't found a way to make
+% LaTeX/Bibtex do this automatically using the standard \cite macro, but
+% this modified \trbcite macro does the trick.
+\renewcommand{\cite}[1]{(\textit{\citenum{#1}})}
+\renewcommand{\citep}[1]{\citeauthor{#1} (\textit{\citenum{#1}})}
+\setcitestyle{round}
 
-\def\cormark[#1]{\edef\cnotenum{\Ref{#1}}\unskip%
-   \textsuperscript{\sep\ifcase\cnotenum\or
-       $\ast$\or$\ast\ast$\fi\hspace{-1pt}}\let\sep=,}
+% Reduce spacing between bibliographic items
+\setlength{\bibsep}{0pt plus 0.3ex}
 
-\let\@cormark\@empty
-\let\@cornotes\@empty
-\newcounter{cnote}
-\def\cortext[#1]#2{\g@addto@macro\@cornotes{%
-    \refstepcounter{cnote}\elsLabel{#1}%
-    \def\thefootnote{\ifcase\thecnote\or$\ast$\or
-    $\ast\ast$\fi}%
-    \footnotetext{#2}}}
 
-\def\corref#1{\cormark[#1]}
-\def\fnref#1{\fnmark[#1]}
-\def\tnoteref#1{\tnotemark[#1]}
+% LINE NUMBERING
+%------------------------------------------------------------------------------
+% Adjust the fond of the line numbering
+\renewcommand\linenumberfont{\normalfont\small}
 
-\def\resetTitleCounters{\c@cnote=0
-   \c@fnote=0 \c@tnote=0 \c@footnote=0}
 
-\let\eadsep\@empty
-\let\@elseads\@empty
-\let\@elsuads\@empty
-\let\@cormark\@empty
-\def\ead{\@ifnextchar[{\@uad}{\@ead}}
-\gdef\@ead#1{\bgroup\def\_{\string\_}\def\{{\string\{}%
-   \def\}{\string\}}%
-   \edef\tmp{\the\@eadauthor}
-   \immediate\write\@auxout{\string\emailauthor
-     {#1}{\expandafter\strip@prefix\meaning\tmp}}%
-  \egroup
-}
-\newcounter{ead}
-\gdef\emailauthor#1#2{\stepcounter{ead}%
-     \g@addto@macro\@elseads{\raggedright%
-      \let\corref\@gobble
-      \eadsep\texttt{#1} (#2)\def\eadsep{\unskip,\space}}%
-}
-\gdef\@uad[#1]#2{\bgroup
-   \edef\tmp{\the\@eadauthor}
-   \immediate\write\@auxout{\string\urlauthor
-     {#2}{\expandafter\strip@prefix\meaning\tmp}}%
-  \egroup
-}
-\def\urlauthor#1#2{\g@addto@macro\@elsuads{\let\corref\@gobble%
-     \raggedright\eadsep\texttt{#1}\space(#2)%
-     \def\eadsep{\unskip,\space}}%
+% REFERENCES
+% Remove square brackets from the numbering and add indentation to bibliography
+% in the REFERENCES section
+\renewcommand\@biblabel[1]{#1.\hspace{0.25in}}
+
+% COUNTERS
+%------------------------------------------------------------------------------
+% TRB requires the total number of words, figures, and tables to be displayed
+% on the title page. This is possible under the totcount and the xparse
+% packages on CTAN.
+%
+% Note that a total word count is added in V 2.1 to print a single value that
+% is calculated as: numberofwords + numberoffigures*250 + numberoftable*250
+
+% Total world count solution from Tex.SX:
+% https://tex.stackexchange.com/q/255940
+% https://tex.stackexchange.com/q/448605
+
+\makeatletter
+\newread\somefile
+\newcounter{totalwordcounter}
+\newcounter{wordcounter}
+
+% default: 250 number of words per table
+\def\@WordsPerTable{250}
+\newcommand{\WordsPerTable}[1]{%
+	\def\@WordsPerTable{#1}
 }
 
-\def\elsauthors{}
-\def\pprinttitle{}
-\let\authorsep\@empty
-\let\sep\@empty
-\newcounter{author}
-\def\author{\@ifnextchar[{\@@author}{\@author}}
-
-\newtoks\@eadauthor
-\def\@@author[#1]#2{\g@addto@macro\elsauthors{%
-    \def\baselinestretch{1}%
-    \authorsep#2\unskip\textsuperscript{%#1%
-      \@for\@@affmark:=#1\do{%
-       \edef\affnum{\@ifundefined{X@\@@affmark}{1}{\Ref{\@@affmark}}}%
-     \unskip\sep\affnum\let\sep=,}%
-      \ifx\@fnmark\@empty\else\unskip\sep\@fnmark\let\sep=,\fi}%
-    \def\authorsep{\unskip,\space}%
-    \global\let\sep\@empty
-    \global\let\@fnmark\@empty}%
-    \@eadauthor={#2}
+% TODO: there must be a better way to define this to avoid using 0
+% Variable to control manual word counting
+\def\@TotalWords{0}
+\newcommand{\TotalWords}[1]{%
+	\def\@TotalWords{#1}
 }
 
-\def\@author#1{\g@addto@macro\elsauthors{\normalsize%
-    \def\baselinestretch{1}%
-    \upshape\authorsep#1\unskip\textsuperscript{%
-      \ifx\@fnmark\@empty\else\unskip\sep\@fnmark\let\sep=,\fi}%
-    \def\authorsep{\unskip,\space}%
-    \global\let\@fnmark\@empty
-    \global\let\sep\@empty}%
-    \@eadauthor={{#1}}
+% From totcount package
+\regtotcounter{table} 	%count tables
+\regtotcounter{figure} 	%count figures
+
+\newcommand{\quickwordcount}[1]{%
+	\immediate\write18{texcount -1 -sum -merge #1.tex > #1-words}%
+	\immediate\openin\somefile=#1-words%
+	\read\somefile to \@@localdummy%
+	\immediate\closein\somefile%
+	\setcounter{wordcounter}{\@@localdummy}%
+	\@@localdummy%
 }
 
-\def\elsaddress{}
-\def\addsep{\par\vskip6pt}
-\def\address{\@ifnextchar[{\@@address}{\@address}}
-
-\newcounter{affn}
-\renewcommand\theaffn{\alph{affn}}
-
-\long\def\@@address[#1]#2{\g@addto@macro\elsaddress{%
-    \def\baselinestretch{1}%
-     \refstepcounter{affn}\elsLabel{#1}%
-    \textsuperscript{\theaffn}#2\par}}
-
-\long\def\@address#1{\g@addto@macro\elsauthors{%
-    \def\baselinestretch{1}%
-    \addsep\footnotesize\itshape#1\def\addsep{\par\vskip6pt}%
-    \def\authorsep{\par\vskip8pt}}}
-
-\newbox\absbox
-\renewenvironment{abstract}{\global\setbox\absbox=\vbox\bgroup
-  \hsize=\textwidth\def\baselinestretch{1}%
-  \noindent\unskip\textbf{Abstract}
- \par\medskip\noindent\unskip\ignorespaces}
- {\egroup}
-
-\newbox\keybox
-\def\keyword{%
-  \def\sep{\unskip, }%
- \def\MSC{\@ifnextchar[{\@MSC}{\@MSC[2000]}}
-  \def\@MSC[##1]{\par\leavevmode\hbox {\it ##1~MSC:\space}}%
-  \def\PACS{\par\leavevmode\hbox {\it PACS:\space}}%
-  \def\JEL{\par\leavevmode\hbox {\it JEL:\space}}%
-  \global\setbox\keybox=\vbox\bgroup\hsize=\textwidth
-  \normalsize\normalfont\def\baselinestretch{1}
-  \parskip\z@
-  \noindent\textit{Key words: }
-  \raggedright                         % Keywords are not justified.
-  \ignorespaces}
-\def\endkeyword{\par \egroup}
-
-\newdimen\Columnwidth
-\Columnwidth=\columnwidth
-
-\def\printFirstPageNotes{%
-  \iflongmktitle
-   \let\columnwidth=\textwidth\fi
-  \ifx\@tnotes\@empty\else\@tnotes\fi
-  \ifx\@cornotes\@empty\else\@cornotes\fi
-  \ifx\@elseads\@empty\relax\else
-   \let\thefootnote\relax
-   \footnotetext{\ifnum\theead=1\relax
-      \textit{Email address:\space}\else
-      \textit{Email addresses:\space}\fi
-     \@elseads}\fi
-  \ifx\@elsuads\@empty\relax\else
-   \let\thefootnote\relax
-   \footnotetext{\textit{URL:\space}%
-     \@elsuads}\fi
-  \ifx\@fnotes\@empty\else\@fnotes\fi
-  \iflongmktitle\if@twocolumn
-   \let\columnwidth=\Columnwidth\fi\fi
+\newcommand{\totalwordcount}{%
+	\setcounter{totalwordcounter}{\value{wordcounter}}%
+	\addtocounter{totalwordcounter}{\numexpr\@WordsPerTable*\totvalue{table}}%
+	\number\value{totalwordcounter}% Output the number
+	\renewcommand{\totalwordcount}{\number\value{totalwordcounter}}
 }
 
-\long\def\pprintMaketitle{\clearpage
- \thispagestyle{pprintTitle}%
-  \iflongmktitle\if@twocolumn\let\columnwidth=\textwidth\fi\fi
-  \resetTitleCounters
-  \def\baselinestretch{1}%
-  \printFirstPageNotes
-   \def\baselinestretch{1}%
-    \Large\@title\par\vskip18pt
-    \normalsize\elsauthors\par\vskip10pt
-    \footnotesize\itshape\elsaddress\par\vskip36pt
-    \hrule\vskip12pt
-    \ifvoid\absbox\else\unvbox\absbox\par\vskip10pt\fi
-    \ifvoid\keybox\else\unvbox\keybox\par\vskip10pt\fi
-    \hrule\vskip12pt
-  \gdef\thefootnote{\arabic{footnote}}%
-  }
-
-\def\printWarning{%
-     \mbox{}\par\vfill\par\bgroup
-     \fboxsep12pt\fboxrule1pt
-     \hspace*{.18\textwidth}
-     \fcolorbox{gray50}{gray10}{\box\warnbox}
-     \egroup\par\vfill\thispagestyle{empty}
-     \setcounter{page}{0}
-     \clearpage}
-
-\long\def\finalMaketitle{%
-  \resetTitleCounters
-  \def\baselinestretch{1}%
-   \MaketitleBox
-  \gdef\thefootnote{\arabic{footnote}}%
-  }
-
-\long\def\MaketitleBox{%
-  \resetTitleCounters
-  \def\baselinestretch{1}%
-   \def\baselinestretch{1}%
-    \Large\@title\par\vskip18pt
-    \normalsize\elsauthors\par\vskip10pt
-    \footnotesize\itshape\elsaddress\par\vskip36pt
-    %\hrule\vskip12pt
-    \clearpage
-    \ifvoid\absbox\else\unvbox\absbox\par\vskip10pt\fi
-    \ifvoid\keybox\else\unvbox\keybox\par\vskip10pt\fi
-    %\hrule\vskip12pt
-    \clearpage
-  }
-
-\def\FNtext#1{\par\bgroup\footnotesize#1\egroup}
-\newdimen\space@left
-\def\alarm#1{\typeout{******************************}%
-             \typeout{#1}%
-             \typeout{******************************}%
+% TODO: find better way than multiple hfill and break to get numbered empty
+% lines. Is it really necessary to have empty lines numbered? Its just the way
+% users of word deal with that.
+\renewcommand{\maketitle}{%
+	\thispagestyle{empty}
+	\begin{flushleft}
+		{\MakeUppercase{\bfseries\@title}}\\
+		\hfill\break%
+		\hfill\break%
+		\hfill\break%
+		\@author\\
+		\hfill\break%
+		\hfill\break%
+		\hfill\break%
+		\hfill\break%
+		\hfill\break%
+		\hfill\break%
+		\hfill\break%
+		\hfill\break%
+		Submission Date: \today
+	\end{flushleft}
+	\newpage
 }
-\long\def\getSpaceLeft{%\global\@twocolumnfalse%
-   \global\setbox0=\vbox{\hsize=\textwidth\MaketitleBox}%
-   \global\setbox1=\vbox{\hsize=\textwidth
-    \let\footnotetext\FNtext
-    \printFirstPageNotes}%
-    \xdef\noteheight{\the\ht1}%
-    \xdef\titleheight{\the\ht0}%
-    \@tempdima=\vsize
-    \advance\@tempdima-\noteheight
-    \advance\@tempdima-1\baselineskip
-}
-
-  \skip\footins=24pt
-
-\newbox\els@boxa
-\newbox\els@boxb
-
-\ifpreprint
-  \def\maketitle{\pprintMaketitle}
-  \else
-   \ifnum\jtype=1
-    \def\maketitle{%
-       \thispagestyle{pprintTitle}%
-      \iflongmktitle\getSpaceLeft
-       \global\setbox\els@boxa=\vsplit0 to \@tempdima
-       \box\els@boxa\par\resetTitleCounters
-       \printFirstPageNotes
-       \box0%
-      \else
-       \finalMaketitle\printFirstPageNotes
-      \fi
-    \gdef\thefootnote{\arabic{footnote}}}%
-  \else
- \ifnum\jtype=5
-    \def\maketitle{%
-       \thispagestyle{pprintTitle}%
-      \iflongmktitle\getSpaceLeft
-       \global\setbox\els@boxa=\vsplit0 to \@tempdima
-       \box\els@boxa\par\resetTitleCounters
-       \printFirstPageNotes
-       \twocolumn[\box0]%\printFirstPageNotes
-      \else
-       \twocolumn[\finalMaketitle]\printFirstPageNotes
-     \fi
-     \gdef\thefootnote{\arabic{footnote}}}
-  \else
-  \if@twocolumn
-    \def\maketitle{%
-       \thispagestyle{pprintTitle}%
-      \iflongmktitle\getSpaceLeft
-       \global\setbox\els@boxa=\vsplit0 to \@tempdima
-       \box\els@boxa\par\resetTitleCounters
-       \printFirstPageNotes
-       \twocolumn[\box0]%
-      \else
-       \twocolumn[\finalMaketitle]\printFirstPageNotes
-      \fi
-     \gdef\thefootnote{\arabic{footnote}}}%
-   \else
-    \def\maketitle{%
-       \thispagestyle{pprintTitle}%
-      \iflongmktitle\getSpaceLeft
-       \global\setbox\els@boxa=\vsplit0 to \@tempdima
-       \box\els@boxa\par\resetTitleCounters
-       \printFirstPageNotes
-       \box0%
-     \else
-       \finalMaketitle\printFirstPageNotes
-      \fi
-    \gdef\thefootnote{\arabic{footnote}}}%
-   \fi
-  \fi
- \fi
-\fi
-\def\ps@pprintTitle{%
-     \let\@oddhead\@empty
-     \let\@evenhead\@empty
-     \def\@oddfoot{\footnotesize\itshape
-       Preprint submitted to \ifx\@journal\@empty Elsevier
-       \else\@journal\fi\hfill\today}%
-     \let\@evenfoot\@oddfoot}
-
-\def\@seccntDot{.}
-\def\@seccntformat#1{\csname the#1\endcsname\@seccntDot\hskip 0.5em}
-
-\renewcommand\section{\@startsection {section}{1}{\z@}%
-           {18\p@ \@plus 6\p@ \@minus 3\p@}%
-           {9\p@ \@plus 6\p@ \@minus 3\p@}%
-           {\normalsize\bfseries\boldmath}}
-\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-           {12\p@ \@plus 6\p@ \@minus 3\p@}%
-           {3\p@ \@plus 6\p@ \@minus 3\p@}%
-           {\normalfont\normalsize\itshape}}
-\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-           {12\p@ \@plus 6\p@ \@minus 3\p@}%
-           {\p@}%
-           {\normalfont\normalsize\itshape}}
-
-\def\paragraph{\secdef{\els@aparagraph}{\els@bparagraph}}
-\def\els@aparagraph[#1]#2{\elsparagraph[#1]{#2.}}
-\def\els@bparagraph#1{\elsparagraph*{#1.}}
-
-\newcommand\elsparagraph{\@startsection{paragraph}{4}{0\z@}%
-           {10\p@ \@plus 6\p@ \@minus 3\p@}%
-           {-6\p@}%
-           {\normalfont\itshape}}
-\newdimen\leftMargin
-\leftMargin=2em
-\newtoks\@enLab  %\newtoks\@enfont
-\def\@enQmark{?}
-\def\@enLabel#1#2{%
-  \edef\@enThe{\noexpand#1{\@enumctr}}%
-  \@enLab\expandafter{\the\@enLab\csname the\@enumctr\endcsname}%
-  \@enloop}
-\def\@enSpace{\afterassignment\@enSp@ce\let\@tempa= }
-\def\@enSp@ce{\@enLab\expandafter{\the\@enLab\space}\@enloop}
-\def\@enGroup#1{\@enLab\expandafter{\the\@enLab{#1}}\@enloop}
-\def\@enOther#1{\@enLab\expandafter{\the\@enLab#1}\@enloop}
-\def\@enloop{\futurelet\@entemp\@enloop@}
-\def\@enloop@{%
-  \ifx A\@entemp         \def\@tempa{\@enLabel\Alph  }\else
-  \ifx a\@entemp         \def\@tempa{\@enLabel\alph  }\else
-  \ifx i\@entemp         \def\@tempa{\@enLabel\roman }\else
-  \ifx I\@entemp         \def\@tempa{\@enLabel\Roman }\else
-  \ifx 1\@entemp         \def\@tempa{\@enLabel\arabic}\else
-  \ifx \@sptoken\@entemp \let\@tempa\@enSpace         \else
-  \ifx \bgroup\@entemp   \let\@tempa\@enGroup         \else
-  \ifx \@enum@\@entemp   \let\@tempa\@gobble          \else
-                         \let\@tempa\@enOther
-             \fi\fi\fi\fi\fi\fi\fi\fi
-  \@tempa}
-\newlength{\@sep} \newlength{\@@sep}
-\setlength{\@sep}{.5\baselineskip plus.2\baselineskip
-            minus.2\baselineskip}
-\setlength{\@@sep}{.1\baselineskip plus.01\baselineskip
-            minus.05\baselineskip}
-\providecommand{\sfbc}{\rmfamily\upshape}
-\providecommand{\sfn}{\rmfamily\upshape}
-\def\@enfont{\ifnum \@enumdepth >1\let\@nxt\sfn \else\let\@nxt\sfbc \fi\@nxt}
-\def\enumerate{%
-   \ifnum \@enumdepth >3 \@toodeep\else
-      \advance\@enumdepth \@ne
-      \edef\@enumctr{enum\romannumeral\the\@enumdepth}\fi
-   \@ifnextchar[{\@@enum@}{\@enum@}}
-\def\@@enum@[#1]{%
-  \@enLab{}\let\@enThe\@enQmark
-  \@enloop#1\@enum@
-  \ifx\@enThe\@enQmark\@warning{The counter will not be printed.%
-   ^^J\space\@spaces\@spaces\@spaces The label is: \the\@enLab}\fi
-  \expandafter\edef\csname label\@enumctr\endcsname{\the\@enLab}%
-  \expandafter\let\csname the\@enumctr\endcsname\@enThe
-  \csname c@\@enumctr\endcsname7
-  \expandafter\settowidth
-            \csname leftmargin\romannumeral\@enumdepth\endcsname
-            {\the\@enLab\hskip\labelsep}%
-  \@enum@}
-\def\@enum@{\list{{\@enfont\csname label\@enumctr\endcsname}}%
-           {\usecounter{\@enumctr}\def\makelabel##1{\hss\llap{##1}}%
-     \ifnum \@enumdepth>1\setlength{\topsep}{\@@sep}\else
-           \setlength{\topsep}{\@sep}\fi
-     \ifnum \@enumdepth>1\setlength{\itemsep}{0pt plus1pt minus1pt}%
-      \else \setlength{\itemsep}{\@@sep}\fi
-     %\setlength\leftmargin{\leftMargin}%%%{1.8em}
-     \setlength{\parsep}{0pt plus1pt minus1pt}%
-     \setlength{\parskip}{0pt plus1pt minus1pt}
-                   }}
-
-\def\endenumerate{\par\ifnum \@enumdepth >1\addvspace{\@@sep}\else
-           \addvspace{\@sep}\fi \endlist}
-
-\def\sitem{\@noitemargtrue\@item[\@itemlabel *]}
-
-\def\itemize{\@ifnextchar[{\@Itemize}{\@Itemize[]}}
-
-\def\@Itemize[#1]{\def\next{#1}%
-  \ifnum \@itemdepth >\thr@@\@toodeep\else
-   \advance\@itemdepth\@ne
-  \ifx\next\@empty\else\expandafter\def\csname
-   labelitem\romannumeral\the\@itemdepth\endcsname{#1}\fi%
-  \edef\@itemitem{labelitem\romannumeral\the\@itemdepth}%
-  \expandafter\list\csname\@itemitem\endcsname
-  {\def\makelabel##1{\hss\llap{##1}}}%
- \fi}
-\def\newdefinition#1{%
-  \@ifnextchar[{\@odfn{#1}}{\@ndfn{#1}}}%]
-\def\@ndfn#1#2{%
-  \@ifnextchar[{\@xndfn{#1}{#2}}{\@yndfn{#1}{#2}}}
-\def\@xndfn#1#2[#3]{%
-  \expandafter\@ifdefinable\csname #1\endcsname
-    {\@definecounter{#1}\@newctr{#1}[#3]%
-     \expandafter\xdef\csname the#1\endcsname{%
-       \expandafter\noexpand\csname the#3\endcsname \@dfncountersep
-          \@dfncounter{#1}}%
-     \global\@namedef{#1}{\@dfn{#1}{#2}}%
-     \global\@namedef{end#1}{\@enddefinition}}}
-\def\@yndfn#1#2{%
-  \expandafter\@ifdefinable\csname #1\endcsname
-    {\@definecounter{#1}%
-     \expandafter\xdef\csname the#1\endcsname{\@dfncounter{#1}}%
-     \global\@namedef{#1}{\@dfn{#1}{#2}}%
-     \global\@namedef{end#1}{\@enddefinition}}}
-\def\@odfn#1[#2]#3{%
-  \@ifundefined{c@#2}{\@nocounterr{#2}}%
-    {\expandafter\@ifdefinable\csname #1\endcsname
-    {\global\@namedef{the#1}{\@nameuse{the#2}}
-  \global\@namedef{#1}{\@dfn{#2}{#3}}%
-  \global\@namedef{end#1}{\@enddefinition}}}}
-\def\@dfn#1#2{%
-  \refstepcounter{#1}%
-  \@ifnextchar[{\@ydfn{#1}{#2}}{\@xdfn{#1}{#2}}}
-\def\@xdfn#1#2{%
-  \@begindefinition{#2}{\csname the#1\endcsname}\ignorespaces}
-\def\@ydfn#1#2[#3]{%
-  \@opargbegindefinition{#2}{\csname the#1\endcsname}{#3}\ignorespaces}
-\def\@dfncounter#1{\noexpand\arabic{#1}}
-\def\@dfncountersep{.}
-\def\@begindefinition#1#2{\trivlist
-   \item[\hskip\labelsep{\bfseries #1\ #2.}]\upshape}
-\def\@opargbegindefinition#1#2#3{\trivlist
-      \item[\hskip\labelsep{\bfseries #1\ #2\ (#3).}]\upshape}
-\def\@enddefinition{\endtrivlist}
-
-\def\@begintheorem#1#2{\trivlist
-  \let\baselinestretch\@blstr
-   \item[\hskip \labelsep{\bfseries #1\ #2.}]\itshape}
-\def\@opargbegintheorem#1#2#3{\trivlist
-  \let\baselinestretch\@blstr
-      \item[\hskip \labelsep{\bfseries #1\ #2\ (#3).}]\itshape}
-
-\def\newproof#1{%
-  \@ifnextchar[{\@oprf{#1}}{\@nprf{#1}}}
-\def\@nprf#1#2{%
-  \@ifnextchar[{\@xnprf{#1}{#2}}{\@ynprf{#1}{#2}}}
-\def\@xnprf#1#2[#3]{%
-  \expandafter\@ifdefinable\csname #1\endcsname
-    {\@definecounter{#1}\@newctr{#1}[#3]%
-     \expandafter\xdef\csname the#1\endcsname{%
-       \expandafter\noexpand\csname the#3\endcsname \@prfcountersep
-          \@prfcounter{#1}}%
-     \global\@namedef{#1}{\@prf{#1}{#2}}%
-     \global\@namedef{end#1}{\@endproof}}}
-\def\@ynprf#1#2{%
-  \expandafter\@ifdefinable\csname #1\endcsname
-    {\@definecounter{#1}%
-     \expandafter\xdef\csname the#1\endcsname{\@prfcounter{#1}}%
-     \global\@namedef{#1}{\@prf{#1}{#2}}%
-     \global\@namedef{end#1}{\@endproof}}}
-\def\@oprf#1[#2]#3{%
-  \@ifundefined{c@#2}{\@nocounterr{#2}}%
-    {\expandafter\@ifdefinable\csname #1\endcsname
-    {\global\@namedef{the#1}{\@nameuse{the#2}}%
-  \global\@namedef{#1}{\@prf{#2}{#3}}%
-  \global\@namedef{end#1}{\@endproof}}}}
-\def\@prf#1#2{%
-  \refstepcounter{#1}%
-  \@ifnextchar[{\@yprf{#1}{#2}}{\@xprf{#1}{#2}}}
-\def\@xprf#1#2{%
-  \@beginproof{#2}{\csname the#1\endcsname}\ignorespaces}
-\def\@yprf#1#2[#3]{%
-  \@opargbeginproof{#2}{\csname the#1\endcsname}{#3}\ignorespaces}
-\def\@prfcounter#1{\noexpand\arabic{#1}}
-\def\@prfcountersep{.}
-\def\@beginproof#1#2{\trivlist\let\baselinestretch\@blstr
-   \item[\hskip \labelsep{\scshape #1.}]\rmfamily}
-\def\@opargbeginproof#1#2#3{\trivlist\let\baselinestretch\@blstr
-      \item[\hskip \labelsep{\scshape #1\ (#3).}]\rmfamily}
-\def\@endproof{\endtrivlist}
-\newcommand*{\qed}{\hbox{}\hfill$\Box$}
-
-\@ifundefined{@biboptions}{\xdef\@biboptions{numbers}}{}
-\InputIfFileExists{\jobname.spl}{}{}
-\RequirePackage[\@biboptions]{natbib}
-
-\newwrite\splwrite
-\immediate\openout\splwrite=\jobname.spl
-\def\biboptions#1{\def\next{#1}\immediate\write\splwrite{%
-   \string\g@addto@macro\string\@biboptions{%
-    ,\expandafter\strip@prefix\meaning\next}}}
-
-\let\baselinestretch=\@blstr
-
-\ifnum\jtype=1
- \RequirePackage{geometry}
- \geometry{twoside,
-  paperwidth=210mm,
-  paperheight=297mm,
-  textheight=562pt,
-  textwidth=384pt,
-  centering,
-  headheight=50pt,
-  headsep=12pt,
-  footskip=12pt,
-  footnotesep=24pt plus 2pt minus 12pt,
- }
- \global\let\bibfont=\footnotesize
- \global\bibsep=0pt
- \if@twocolumn\global\@twocolumnfalse\fi
-\else\ifnum\jtype=3
- \RequirePackage{geometry}
- \geometry{twoside,
-  paperwidth=210mm,
-  paperheight=297mm,
-  textheight=622pt,
-  textwidth=468pt,
-  centering,
- headheight=50pt,
-  headsep=12pt,
-  footskip=12pt,
-  footnotesep=24pt plus 2pt minus 12pt,
-  columnsep=2pc
- }
- \global\let\bibfont=\footnotesize
- \global\bibsep=0pt
- \if@twocolumn\input{fleqn.clo}\fi
-\else\ifnum\jtype=5
- \RequirePackage{geometry}
- \geometry{twoside,
-  paperwidth=210mm,
-  paperheight=297mm,
-  textheight=682pt,
-  textwidth=522pt,
-  centering,
- headheight=50pt,
-  headsep=12pt,
-  footskip=18pt,
-  footnotesep=24pt plus 2pt minus 12pt,
-  columnsep=18pt
- }%
- \global\let\bibfont=\footnotesize
- \global\bibsep=0pt
- \input{fleqn.clo}
- \global\@twocolumntrue
-%%
-%% End of option '5p'
-%%
-\fi\fi\fi
-
-\def\journal#1{\gdef\@journal{#1}}
- \let\@journal\@empty
-\newenvironment{frontmatter}{}{\maketitle}
-
-\long\def\@makecaption#1#2{%
-  \vskip\abovecaptionskip\footnotesize
-  \sbox\@tempboxa{#1: #2}%
-  \ifdim \wd\@tempboxa >\hsize
-    #1: #2\par
-  \else
-    \global \@minipagefalse
-    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
-  \fi
-  \vskip\belowcaptionskip}
-
-\AtBeginDocument{\@ifpackageloaded{hyperref}
-  {\def\@linkcolor{blue}
-   \def\@anchorcolor{blue}
-   \def\@citecolor{blue}
-   \def\@filecolor{blue}
-   \def\@urlcolor{blue}
-   \def\@menucolor{blue}
-   \def\@pagecolor{blue}
-\begingroup
-  \@makeother\`%
-  \@makeother\=%
-  \edef\x{%
-    \edef\noexpand\x{%
-      \endgroup
-      \noexpand\toks@{%
-        \catcode 96=\noexpand\the\catcode`\noexpand\`\relax
-        \catcode 61=\noexpand\the\catcode`\noexpand\=\relax
-      }%
-    }%
-    \noexpand\x
-  }%
-\x
-\@makeother\`
-\@makeother\=
-}{}}
-%%
-
-\endinput
-%%
-%% End of file `elsarticle.cls'.
+\makeatother
