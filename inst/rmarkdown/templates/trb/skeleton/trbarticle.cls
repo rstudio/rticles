@@ -160,14 +160,6 @@
 \regtotcounter{table} 	%count tables
 \regtotcounter{figure} 	%count figures
 
-\newcommand{\quickwordcount}[1]{%
-	\immediate\write18{texcount -1 -sum -merge #1.tex > #1-words}%
-	\immediate\openin\somefile=#1-words%
-	\read\somefile to \@@localdummy%
-	\immediate\closein\somefile%
-	\setcounter{wordcounter}{\@@localdummy}%
-	\@@localdummy%
-}
 
 \newcommand{\totalwordcount}{%
 	\setcounter{totalwordcounter}{\value{wordcounter}}%
@@ -189,6 +181,7 @@
 		\@author\\
 		\hfill\break%
 		\hfill\break%
+		Word Count: \@TotalWords\ words $+$ \total{table} table(s) $\times$ \@WordsPerTable\ $=$ \the\numexpr\@TotalWords + \totvalue{table}*\@WordsPerTable~words\\
 		\hfill\break%
 		Submission Date: \today
 	\end{flushleft}

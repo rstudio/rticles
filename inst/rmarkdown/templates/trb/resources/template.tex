@@ -7,16 +7,10 @@
 % When numbered option is activated, lines are numbered.
 \documentclass[numbered]{trbarticle}
 \usepackage{graphicx}
-
+\usepackage{booktabs}
 
 \newread\somefile
 \usepackage{xparse}
-
-
-\setcounter{wordcounter}{1176}
-
-\setcounter{figure}{100}
-\setcounter{table}{10}
 
 \usepackage{natbib}
 \bibliographystyle{unsrtnat}
@@ -49,7 +43,7 @@
 % If words are counted manually, put that number here. This does not include
 % figures and tables. This can also be used to avoid problems with texcount
 % program i.e. if one does not have it installed.
-% \TotalWords{200}
+\TotalWords{$wordcount$}
 
 \begin{document}
 \maketitle

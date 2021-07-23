@@ -7,7 +7,7 @@ author:
     email: alice@example.com
     affiliation: Some Institute of Technology
   - name: Bob Security
-    position: Assitant Professor
+    position: Assistant Professor
     email: bob@example.com
     affiliation: State University
   - name: Derek Zoolander
@@ -25,9 +25,15 @@ linenumbers: true
 #numbersections: true
 output: rticles::trb_article
 wordcount: 1176
-tabcount: 3
-figcount: 2
 ---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(tidyverse)
+library(kableExtra)
+```
+
 
 Transportation Research Board Annual Meetings
 ==========================
@@ -37,18 +43,65 @@ template is no longer strictly required. However, there is a typical format
 that most people still use by default, and this template implements that change.
 
 The automatic word count is not yet engaged in the rticles version of the
-template. Set the word count using the yaml header.
+template. Set the word count using the yaml header. You can reference figures
+with \@ref(fig:figure-example).
+
+
+
+\subsection{History}
+David Pritchard posted the original versions of this template in 2009 and updated it in 2011, soon after TRB began allowing PDF submissions. Gregory Macfarlane made significant adaptations to it in March 2012, allowing for Sweave integration and automatic word and table counts. Ross Wang automated the total word count and made some formatting modifications in July 2015. Version 2.1.1 has been made available on GitHub in January, 2016.  Version 3.1 has been made available on Github (\url{https://github.com/chiehrosswang/TRB_LaTeX_rnw}) in June, 2017.  Versions 2.1.1 Lite and 3.1 Lite were made available on GitHub (\url{https://github.com/chiehrosswang/TRB_LaTeX_tex}) in June, 2017 for users who do not need R and Sweave functions provided in the original verions.  
+
+
+# Features
+The template has a number of features that enable quick and painless manuscript authoring.
+
+## Title Page
+The standard \LaTeX `\maketitle` command is not very versatile, so we have replaced it with a `verb1titlepage` environment. This means that the writers will be required to manually enter spacings based on the number of contributors, but the current settings (12pt between authors, 36pt before, and 60pt after them) seems to work well. 
+
+Near the bottom of the title page, TRB requires a count of the manuscript's words, figures, and tables. This template generates these counts automatically. The figure and table counts are simply pulled from the \LaTeX\ counters using the \verb1totcount1 package. The word count feature is not as straight-forward, as it utilizes a call to the system command \verb1texcount1. Thus to compile the document writers must enable \verb#\write18# in their \verb1pdflatex1 call.
+
+In the newest version of this template, we added the total count automatically. The total count basically adds not only the word count, but also the equivalent count (250 words) for each table.  Note that starting from 2018, Figures no longer count toward total word counts.  However, each paper can have only up to 6 figures in total.  The total word count is implemented using a customized command \verb1\totalwordcount1.  Please see the original code for more information.
+
+## Page Layout
+The document has 1 inch margins as required, with the author's names in the left heading and the page number in the right. The authors heading will need to be edited by the writers; automating this from the title page command is not currently possible. Paragraphs leading sections and subsections are not indented, while all subsequent paragraphs in that section are. Section types are defined as outlined by the \citep{TRBGuide}.
+
+The document is single-spaced in 12 point Times font. Times New Roman is a proprietary font and is therefore not available by installation in open-source software. While the differences between Times variants are negligible, Times New Roman itself can be used in Mac OSX by compiling under \verb1xelatex1.
+
+
+```{r figure-example, fig.cap="Generic plot."}
+# Generate some sample data, then compute mean and standard deviation
+# in each group
+df <- data.frame(
+  gp = factor(rep(letters[1:3], each = 10)),
+  y = rnorm(30)
+)
+ds <- do.call(rbind, lapply(split(df, df$gp), function(d) {
+  data.frame(mean = mean(d$y), sd = sd(d$y), gp = d$gp)
+}))
+
+# The summary data frame ds is used to plot larger red points on top
+# of the raw data. Note that we don't need to supply `data` or `mapping`
+# in each layer because the defaults from ggplot() are used.
+ggplot(df, aes(gp, y)) +
+  geom_point() +
+  geom_point(data = ds, aes(y = mean), colour = 'red', size = 3) +
+  theme_bw()
+```
+
+```{r table-example}
+dt <- mtcars[1:5, 1:6]
+
+dt %>%
+  kbl(caption = "Example Table", booktabs = TRUE) %>%
+  kable_styling()
+```
+
+
 
 Bibliography styles
 ===================
 
-There are various bibliography styles available. You can select the
-style of your choice in the preamble of this document. These styles are
-Elsevier styles based on standard styles like Harvard and Vancouver.
-Please use BibTeX to generate your bibliography and include DOIs
-whenever available.
-
-Here are two sample references: [@Feynman1963118; @Dirac1953888].
+TRB still wants numbered, unsorted citations. Here are two sample references: [@Feynman1963118; @Dirac1953888].
 You can also cite authors, like @Feynman1963118.
 
 References {#references }
