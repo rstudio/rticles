@@ -261,11 +261,11 @@
 }
 
 \long\def\pprintMaketitle{\clearpage
+ \thispagestyle{pprintTitle}%
   \iflongmktitle\if@twocolumn\let\columnwidth=\textwidth\fi\fi
   \resetTitleCounters
   \def\baselinestretch{1}%
   \printFirstPageNotes
- \thispagestyle{pprintTitle}%
    \def\baselinestretch{1}%
     \Large\@title\par\vskip18pt
     \normalsize\elsauthors\par\vskip10pt
@@ -290,7 +290,6 @@
   \resetTitleCounters
   \def\baselinestretch{1}%
    \MaketitleBox
-   \thispagestyle{pprintTitle}%
   \gdef\thefootnote{\arabic{footnote}}%
   }
 
@@ -337,10 +336,10 @@
   \else
    \ifnum\jtype=1
     \def\maketitle{%
+       \thispagestyle{pprintTitle}%
       \iflongmktitle\getSpaceLeft
        \global\setbox\els@boxa=\vsplit0 to \@tempdima
        \box\els@boxa\par\resetTitleCounters
-       \thispagestyle{pprintTitle}%
        \printFirstPageNotes
        \box0%
       \else
@@ -350,10 +349,10 @@
   \else
  \ifnum\jtype=5
     \def\maketitle{%
+       \thispagestyle{pprintTitle}%
       \iflongmktitle\getSpaceLeft
        \global\setbox\els@boxa=\vsplit0 to \@tempdima
        \box\els@boxa\par\resetTitleCounters
-       \thispagestyle{pprintTitle}%
        \printFirstPageNotes
        \twocolumn[\box0]%\printFirstPageNotes
       \else
@@ -363,10 +362,10 @@
   \else
   \if@twocolumn
     \def\maketitle{%
+       \thispagestyle{pprintTitle}%
       \iflongmktitle\getSpaceLeft
        \global\setbox\els@boxa=\vsplit0 to \@tempdima
        \box\els@boxa\par\resetTitleCounters
-       \thispagestyle{pprintTitle}%
        \printFirstPageNotes
        \twocolumn[\box0]%
       \else
@@ -375,10 +374,10 @@
      \gdef\thefootnote{\arabic{footnote}}}%
    \else
     \def\maketitle{%
+       \thispagestyle{pprintTitle}%
       \iflongmktitle\getSpaceLeft
        \global\setbox\els@boxa=\vsplit0 to \@tempdima
        \box\els@boxa\par\resetTitleCounters
-       \thispagestyle{pprintTitle}%
        \printFirstPageNotes
        \box0%
      \else
