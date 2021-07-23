@@ -302,9 +302,11 @@
     \normalsize\elsauthors\par\vskip10pt
     \footnotesize\itshape\elsaddress\par\vskip36pt
     %\hrule\vskip12pt
+    \clearpage
     \ifvoid\absbox\else\unvbox\absbox\par\vskip10pt\fi
     \ifvoid\keybox\else\unvbox\keybox\par\vskip10pt\fi
     %\hrule\vskip12pt
+    \clearpage
   }
 
 \def\FNtext#1{\par\bgroup\footnotesize#1\egroup}
