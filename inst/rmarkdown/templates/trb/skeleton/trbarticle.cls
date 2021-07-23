@@ -182,16 +182,11 @@
 \renewcommand{\maketitle}{%
 	\thispagestyle{empty}
 	\begin{flushleft}
-		{\MakeUppercase{\bfseries\@title}}\\
+		{\bfseries\@title}\\
 		\hfill\break%
 		\hfill\break%
 		\hfill\break%
 		\@author\\
-		\hfill\break%
-		\hfill\break%
-		\hfill\break%
-		\hfill\break%
-		\hfill\break%
 		\hfill\break%
 		\hfill\break%
 		\hfill\break%
