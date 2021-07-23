@@ -265,17 +265,15 @@
   \resetTitleCounters
   \def\baselinestretch{1}%
   \printFirstPageNotes
-  \begin{center}%
  \thispagestyle{pprintTitle}%
    \def\baselinestretch{1}%
     \Large\@title\par\vskip18pt
     \normalsize\elsauthors\par\vskip10pt
     \footnotesize\itshape\elsaddress\par\vskip36pt
-    %\hrule\vskip12pt
+    \hrule\vskip12pt
     \ifvoid\absbox\else\unvbox\absbox\par\vskip10pt\fi
     \ifvoid\keybox\else\unvbox\keybox\par\vskip10pt\fi
-    %\hrule\vskip12pt
-    \end{center}%
+    \hrule\vskip12pt
   \gdef\thefootnote{\arabic{footnote}}%
   }
 
@@ -299,7 +297,6 @@
 \long\def\MaketitleBox{%
   \resetTitleCounters
   \def\baselinestretch{1}%
-  \begin{center}%
    \def\baselinestretch{1}%
     \Large\@title\par\vskip18pt
     \normalsize\elsauthors\par\vskip10pt
@@ -308,7 +305,6 @@
     \ifvoid\absbox\else\unvbox\absbox\par\vskip10pt\fi
     \ifvoid\keybox\else\unvbox\keybox\par\vskip10pt\fi
     %\hrule\vskip12pt
-    \end{center}%
   }
 
 \def\FNtext#1{\par\bgroup\footnotesize#1\egroup}
