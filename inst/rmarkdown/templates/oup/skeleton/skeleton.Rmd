@@ -1,20 +1,38 @@
 ---
+# This template is largely functionally equivalent to that for elsevier
+# The two fields that are not in the elsevier format are:
+#      `corresponding_author` and `acknowledgements`
 title: Template for Oxford University Press papers
 #date: "`r Sys.Date()`"
-authors:
+author:
   - name: Alice Anonymous
     email: alice@example.com
-    address: Some Institute of Technology
+    corresponding_author: yes # Footnote using corresponding_author
+    affiliation:
+      - ABC
+      - DEF
   - name: Bob Security
     email: bob@example.com
-    address: Another University
-    corresponding_author: yes
+    affiliation: DEF
+    footnote: 1 # Footnote using reference
   - name: Cat Memes
-    email: cat@example.com
-    address: Another University
-  - name: Derek Zoolander
-    email: derek@example.com
-    address: Some Institute of Technology
+    email: cat@anotheru.edu
+    affiliation: Another University
+    footnote:
+        - 1
+        - 2
+address:
+  - code: ABC
+    address: Address ABC
+  - code: DEF
+    address: Address DEF
+  - code: Another University
+    address: Address for Another University
+footnote:
+  - code: 1
+    text: "Equal contribution"
+  - code: 2
+    text: "Current email address: \\href{mailto:cat@example.com}{cat@example.com}"
 abstract: |
   This is the abstract.
 
@@ -32,7 +50,12 @@ keywords:
 #classoptions:
 #  - endnotes
 bibliography: mybibfile.bib
+#csl: mycitationstyle.csl
+#link-citations: yes
 output: rticles::oup_article
+#urlcolor: orange
+#linkcolor: green
+#citecolor: red
 #header-includes:
 #  - \usepackage[nomarkers,tablesfirst]{endfloat} # For figures and tables at end
 #  - \usepackage{lineno} # For line numbering
