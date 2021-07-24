@@ -6,7 +6,7 @@ output: rticles::josis_article
 # output:
 #   bookdown::pdf_book:
 #     base_format: rticles::josis_article
- author: 
+author: 
    - name: Alice Anonymous 
      email: alice@example.com 
      affiliation: Some Institute of Technology 
