@@ -6,10 +6,15 @@ output: rticles::josis_article
 # output:
 #   bookdown::pdf_book:
 #     base_format: rticles::josis_article
-author1: Nameof Author1
-affil1: Department, Institution, Country
-author2: Nameof Author2
-affil2: Department, Institution, Country
+ author: 
+   - name: Alice Anonymous 
+     email: alice@example.com 
+     affiliation: Some Institute of Technology 
+   - name: Bob Security 
+     firstname: Bob 
+     surname: Security 
+     email: bob@example.com 
+     affiliation: Another University 
 keywords: "add, five, to, ten, comma, separated, keywords"
 abstract: "Add your article abstract here,
   150-250 words."

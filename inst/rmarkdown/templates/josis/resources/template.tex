@@ -146,12 +146,9 @@ $if(title)$
 $endif$
 
 % Insert your manuscipts authors, affiliations, and addresses
-$if(author1)$
-\author{$author1$}\affil{$affil1$}
-$endif$
-$if(author2)$
-\author{$author2$}\affil{$affil2$}
-$endif$
+$for(author)$
+  \author{$author.name$}\affil{$author.affiliation$}
+$endfor$
 
 \maketitle
 
