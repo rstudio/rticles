@@ -37,7 +37,7 @@ articles <- Filter(length, articles)
 
 The examples below illustrate all the article's template included into this package.
 
-```{r}
+```{r, include = FALSE}
 library(htmltools)
 thumbs <- function(ncol = 2, title, href, img, source, fun) {
   div(class = sprintf("col-sm-%s", 12/ncol), 
@@ -52,17 +52,10 @@ thumbs <- function(ncol = 2, title, href, img, source, fun) {
 }
 ```
 
-```{r}
+```{r, include = FALSE}
 quillt::thumbnails(lapply(articles, function(x) {
     thumbs(title = x$title, img = x$img, 
            href = x$href, ncol = 2, source = x$source, 
            fun = x$fun)
   }), ncol = 2)
 ```
-
-```{css}
-.dummy {
-  visibility: hidden;
-}
-```
-
