@@ -62,7 +62,7 @@ jobs:
             vignettes/articles/resources/*.gif
             vignettes/articles/resources/*.pdf
             vignettes/articles/cache/*.rds
-          key: 1-${{ hashFiles('vignettes/articles/examples.Rmd') }}
+          key: 1-${{ hashFiles('vignettes/articles/_child_examples.Rmd') }}
 
       - name: Build pkgdown site
         run: pkgdown::build_site(new_process = FALSE)
