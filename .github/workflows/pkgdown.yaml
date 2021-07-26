@@ -3,7 +3,7 @@ on:
     branches:
      - main
      - master
-     - pkgdown # rm this
+     - test-pkgdown # rm this
   pull_request:
     branches:
      - main
@@ -65,22 +65,5 @@ jobs:
           key: 1-${{ hashFiles('vignettes/articles/_child_examples.Rmd') }}
 
       - name: Build pkgdown site
-        run: pkgdown::build_site(new_process = FALSE)
+        run: pkgdown::deploy_to_branch()(new_process = FALSE)
         shell: Rscript {0}
-
-      - name: Deploy to Netlify
-        id: netlify-deploy
-        uses: nwtgck/actions-netlify@v1.1
-        with:
-          publish-dir: 'reference'
-          production-branch: pkgdown # change this back to master
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message:
-            'Deploy from GHA: ${{ github.event.head_commit.message }} (${{ github.sha }})'
-          enable-pull-request-comment: false
-          enable-commit-comment: false
-          enable-commit-status: true
-          alias: deploy-preview-${{ github.event.number }}
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
