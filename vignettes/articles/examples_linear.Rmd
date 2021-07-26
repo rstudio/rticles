@@ -4,11 +4,10 @@ resource_files:
   - resources
 ---
 
-# List of templates
-
 ```{r, setup, include = FALSE}
 library(rticles)
 ```
+
 
 ```{r, child = "_child_examples.Rmd"}
 ```
@@ -35,34 +34,33 @@ articles <- lapply(journals(), function(journal) {
 articles <- Filter(length, articles)
 ```
 
-The examples below illustrate all the article's template included into this package.
+The examples below illustrate all the article's template included into this package. 
 
-```{r}
-library(htmltools)
-thumbs <- function(ncol = 2, title, href, img, source, fun) {
-  div(class = sprintf("col-sm-%s", 12/ncol), 
-      h2(title),
-      pre(class = c("sourceCode", "yaml"), 
-                    code(class = c("sourceCode", "yaml"), 
-                         sprintf("output: %s", fun))),
-      a(class = "thumbnail", 
-        title = title, href = href, img(src = img)),
-      a(class = "source-repo", href = source, "Source of template")
-  )
-}
+```{r, include = FALSE}
+src <- lapply(articles, function(article) {
+  glue::glue_data(article, paste(
+    "## {title}",
+    "",
+    "```yaml",
+    "output: {fun}",
+    "```",
+    "",
+    "[![]({img})]({href})",
+    "",
+    "[Source]({source})",
+    "\n", sep = "\n"
+  ))
+})
+res <- knitr::knit_child(text = unlist(src), quiet = TRUE)
 ```
 
-```{r}
-quillt::thumbnails(lapply(articles, function(x) {
-    thumbs(title = x$title, img = x$img, 
-           href = x$href, ncol = 2, source = x$source, 
-           fun = x$fun)
-  }), ncol = 2)
-```
+`r res`
 
 ```{css}
-.dummy {
-  visibility: hidden;
+img {
+	border: unset;
+  border-style: solid;
+  border-color: #FEDB00;
 }
 ```
 
