@@ -52,7 +52,7 @@ thumbs <- function(ncol = 2, title, href, img, source, fun) {
 }
 ```
 
-```{r}
+```{r, eval = FALSE}
 quillt::thumbnails(lapply(articles, function(x) {
     thumbs(title = x$title, img = x$img, 
            href = x$href, ncol = 2, source = x$source, 
@@ -60,9 +60,11 @@ quillt::thumbnails(lapply(articles, function(x) {
   }), ncol = 2)
 ```
 
-```{css}
-.dummy {
-  visibility: hidden;
-}
+```{r}
+str(lapply(articles, function(x) {
+    thumbs(title = x$title, img = x$img, 
+           href = x$href, ncol = 2, source = x$source, 
+           fun = x$fun)}))
 ```
+
 
