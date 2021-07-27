@@ -62,10 +62,10 @@ jobs:
             vignettes/articles/resources/*.gif
             vignettes/articles/resources/*.pdf
             vignettes/articles/cache/*.rds
-          key: 1-${{ hashFiles('vignettes/articles/_child_examples.Rmd') }}-${{ github.sha }}
+          key: ${{ hashFiles('vignettes/articles/_child_examples.Rmd') }}-1-${{ github.sha }}
           restore-keys: |
-            1-${{ hashFiles('vignettes/articles/_child_examples.Rmd') }}-
-            1-
+            ${{ hashFiles('vignettes/articles/_child_examples.Rmd') }}-1-
+
 
       - name: Build pkgdown site
         run: pkgdown::build_site(new_process = FALSE)
