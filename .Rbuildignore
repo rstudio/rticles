@@ -4,4 +4,10 @@
 ^\.travis\.yml$
 ^\.github$
 ^README\.md$
+^README\.Rmd$
 ^tools/
+^_pkgdown\.yml$
+^reference$
+^pkgdown$
+^vignettes$
+
