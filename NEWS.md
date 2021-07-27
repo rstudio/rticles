@@ -218,8 +218,6 @@ fix for the LaTeX problem sanitized with the last `rticles` update (thanks, @RLu
 
 - Add Royal Society Open Science journal template
 
-# rticles 0.2.0.9000
-
 - Add Institute of Electrical and Electronics Engineers (IEEE) IEEEtrans
   template for Conferences
 
