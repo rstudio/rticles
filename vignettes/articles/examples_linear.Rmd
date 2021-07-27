@@ -39,24 +39,17 @@ The examples below illustrate all the article's template included into this pack
 ```{r, include = FALSE}
 src <- lapply(articles, function(article) {
   glue::glue_data(article, paste(
-    "## {{title}}",
+    "## {title}",
     "",
     "```yaml",
-    "output: {{fun}}",
+    "output: {fun}",
     "```",
     "",
-    "::: {.two-columns}",
-    "[![]({{img}})]({{href}})",
+    "[![]({img})]({href})",
     "",
-    "* Format function: `{{paste0(fun, '()')}}`",
-    "",
-    "* [Template Sources]({{source}})",
-    "",
-    "* [PDF example]({{href}})",
-    "",
-    ":::",
+    "[Source]({source})",
     "\n", sep = "\n"
-  ), .open = "{{", .close = "}}")
+  ))
 })
 res <- knitr::knit_child(text = unlist(src), quiet = TRUE)
 ```
@@ -68,15 +61,6 @@ img {
 	border: unset;
   border-style: solid;
   border-color: #FEDB00;
-}
-
-.two-columns {
-  -webkit-columns: 2 300px;
-  -moz-columns: 2 300px;
-  columns: 2 300px;
-  -webkit-column-gap: 2em;
-  -moz-column-gap: 2em;
-  column-gap: 2em;
 }
 ```
 
