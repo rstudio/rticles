@@ -106,9 +106,6 @@
 % TRB uses an Author (num) citation style. I haven't found a way to make
 % LaTeX/Bibtex do this automatically using the standard \cite macro, but
 % this modified \trbcite macro does the trick.
-\renewcommand{\cite}[1]{(\textit{\citenum{#1}})}
-\renewcommand{\citep}[1]{\citeauthor{#1} (\textit{\citenum{#1}})}
-\setcitestyle{round}
 
 % Reduce spacing between bibliographic items
 \setlength{\bibsep}{0pt plus 0.3ex}
