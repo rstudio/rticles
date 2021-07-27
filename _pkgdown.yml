@@ -57,6 +57,8 @@ navbar:
 authors:
   footer:
     roles: [cre, fnd]
+  sidebar:
+    roles: [cre, aut]
 
 # structure example
 reference:
