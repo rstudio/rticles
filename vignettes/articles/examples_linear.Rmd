@@ -40,6 +40,11 @@ The examples below illustrate all the article's template included into this pack
 src <- lapply(articles, function(article) {
   glue::glue_data(article, paste(
     "## {{title}}",
+    "",
+    "```yaml",
+    "output: {{fun}}",
+    "```",
+    "",
     "::: {.two-columns}",
     "[![]({{img}})]({{href}})",
     "",
@@ -48,11 +53,6 @@ src <- lapply(articles, function(article) {
     "* [Template Sources]({{source}})",
     "",
     "* [PDF example]({{href}})",
-    "",
-    "* YAML header:",
-    "  ```yaml",
-    "  output: {{fun}}",
-    "  ```",
     "",
     ":::",
     "\n", sep = "\n"
@@ -71,9 +71,9 @@ img {
 }
 
 .two-columns {
-  -webkit-columns: 2;
-  -moz-columns: 2;
-  columns: 2;
+  -webkit-columns: 2 300px;
+  -moz-columns: 2 300px;
+  columns: 2 300px;
   -webkit-column-gap: 2em;
   -moz-column-gap: 2em;
   column-gap: 2em;
