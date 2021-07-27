@@ -8,7 +8,7 @@ Authors@R: c(
   person(family = "R Foundation", role = c("aut", "cph")),
   person("Hadley", "Wickham", role = "aut", email = "hadley@rstudio.com"),
   person(family = "Journal of Statistical Software", role = c("aut", "cph")),
-  person(family = "RStudio", role = "cph"),
+  person(family = "RStudio", role = c("cph", "fnd")),
   person("Ramnath ", "Vaidyanathan", role = c("aut", "cph"), email = "ramnath.vaidya@gmail.com"),
   person(family = "Association for Computing Machinery", role = c("aut", "cph")),
   person("Carl", "Boettiger", role = c("aut", "cph"), email = "cboettig@gmail.com"),

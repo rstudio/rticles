@@ -49,7 +49,7 @@ jobs:
         run: |
           pak::local_install_dev_deps(upgrade = TRUE, dependencies = c("all", "Config/Needs/website"))
           pak::pkg_install("r-lib/pkgdown")
-          pak::pkg_install("rstudio/quillt")
+          pak::pkg_install("rstudio/quillt@support-authors-config")
         shell: Rscript {0}
 
       - name: Install package

@@ -54,6 +54,10 @@ navbar:
         # - text: Version 0.2
         #   href: <url>
 
+authors:
+  footer:
+    roles: [cre, fnd]
+
 # structure example
 reference:
   - title: List all available journal templates
