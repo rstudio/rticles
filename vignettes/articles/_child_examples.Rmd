@@ -48,7 +48,7 @@ for (journal in journals) {
   }
 
   message("Converting to GIF...")
-  pdf_content <- image_read_pdf(out_pdf)
+  pdf_content <- image_read_pdf(out_pdf, density = 72) %>% image_resize(geometry = "400x")
   out_gif <- image_write_gif(
     image = pdf_content,
     path = xfun::with_ext(out_pdf, "gif"),
