@@ -18,9 +18,9 @@ abstract: >
   It can also be on *multiple* lines.
 bibliography: sample.bib
 output:
+  rticles::peerj_article: default
   bookdown::pdf_book:
     base_format: rticles::peerj_article # for using bookdown features like \@ref()
-  rticles::peerj_article: default
 ---
 
 
