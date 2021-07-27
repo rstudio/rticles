@@ -19,10 +19,6 @@ development:
 
 home:
   strip_header: false
-  links:
-  - text: Learn more
-    # if relevant, set url to another website i.e https://rmarkdown.rstudio.com
-    href: ""
 
 # structure of website themed with quillt
 navbar:
