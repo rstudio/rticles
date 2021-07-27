@@ -10,7 +10,7 @@ output: github_document
 
 <!-- badges: end -->
 
-# rticles
+# rticles <img src='man/figures/logo.png' align="right" height="138.5" />
 
 The **rticles** package provides a suite of custom [R Markdown](https://rmarkdown.rstudio.com) LaTeX formats and templates for various formats. Most of the templates are provided and maintained by the community, and anyone can contribute a new template. See [How to contribute](#how-to-contribute) below.
 

@@ -10,7 +10,7 @@ status](https://www.r-pkg.org/badges/version/rticles)](https://CRAN.R-project.or
 
 <!-- badges: end -->
 
-# rticles
+# rticles <img src='man/figures/logo.png' align="right" height="138.5" />
 
 The **rticles** package provides a suite of custom [R
 Markdown](https://rmarkdown.rstudio.com) LaTeX formats and templates for
