@@ -297,7 +297,7 @@ oup_article <- function(
   md_extensions = c("-autolink_bare_uris"),
   journal=NULL,pandoc_args=NULL,
   number_sections=TRUE,
-  citation_package=c("natbib","default"),
+  citation_package="natbib",
   papersize=c("large","medium","small"),
   document_style=c("contemporary","modern","traditional"),
   namedate=FALSE,onecolumn=FALSE
@@ -326,18 +326,14 @@ oup_article <- function(
     pandoc_arg_list = c(pandoc_arg_list,
                         rmarkdown::pandoc_variable_arg("onecolumn"))
 
-  # section numbering
-  if (!number_sections)
-    pandoc_arg_list = c(pandoc_arg_list,
-                        rmarkdown::pandoc_variable_arg("unnumsec"))
-
   pandoc_arg_list <- unlist(pandoc_arg_list)
 
   pdf_document_format(
     "oup", keep_tex = keep_tex,
     md_extensions=md_extensions,
     citation_package = citation_package,
-    pandoc_args = c(pandoc_arg_list, pandoc_args),number_sections=FALSE,
+    pandoc_args = c(pandoc_arg_list, pandoc_args),
+    number_sections=number_sections,
     ...
   )
 }
