@@ -21,45 +21,53 @@ keywords:
   - these are optional and can be removed
 bibliography: references.bib
 biblio-style: unsrt
-output: 
-  rticles::arxiv_article:
-    keep_tex: true
+output: rticles::arxiv_article
 ---
 
 # Introduction
 
-\lipsum[2]
-\lipsum[3]
+Here goes an introduction text
 
 # Headings: first level
 \label{sec:headings}
 
-\lipsum[4] See Section \ref{sec:headings}.
+You can use directly LaTeX command or Markdown text. 
+
+LaTeX command can be used to reference other section. See Section \ref{sec:headings}.
+However, you can also use **bookdown** extensions mechanism for this.
 
 ## Headings: second level
-\lipsum[5]
+
+You can use equation in blocks
 
 $$
 \xi _{ij}(t)=P(x_{t}=i,x_{t+1}=j|y,v,w;\theta)= {\frac {\alpha _{i}(t)a^{w_t}_{ij}\beta _{j}(t+1)b^{v_{t+1}}_{j}(y_{t+1})}{\sum _{i=1}^{N} \sum _{j=1}^{N} \alpha _{i}(t)a^{w_t}_{ij}\beta _{j}(t+1)b^{v_{t+1}}_{j}(y_{t+1})}}
 $$
 
-### Headings: third level
-\lipsum[6]
+But also inline i.e $z=x+y$
 
-\paragraph{Paragraph}
-\lipsum[7]
+### Headings: third level
+
+Another paragraph. 
+
 
 # Examples of citations, figures, tables, references
 \label{sec:others}
 
-\lipsum[8] some text [@kour2014real; @kour2014fast] and see @hadash2018estimate.
+You can insert references. Here is some text [@kour2014real; @kour2014fast] and see @hadash2018estimate.
 
 The documentation for \verb+natbib+ may be found at
-\begin{center}
-  \url{http://mirrors.ctan.org/macros/latex/contrib/natbib/natnotes.pdf}
-\end{center}
+
+You can use custom blocks with LaTeX support from **rmarkdown** to create environment.
+
+::: {.center latex=true}
+  <http://mirrors.ctan.org/macros/latex/contrib/natbib/natnotes.pdf}>
+:::
+
 Of note is the command \verb+\citet+, which produces citations
-appropriate for use in inline text.  For example,
+appropriate for use in inline text.  
+
+You can insert LaTeX environment directly too.
 
 \begin{verbatim}
    \citet{hasselmo} investigated\dots
@@ -78,10 +86,9 @@ produces
 
 ## Figures
 
-\lipsum[10] 
-See Figure \ref{fig:fig1}. Here is how you add footnotes. [^Sample of the first footnote.]
+You can insert figure using LaTeX directly. 
 
-\lipsum[11] 
+See Figure \ref{fig:fig1}. Here is how you add footnotes. [^Sample of the first footnote.]
 
 \begin{figure}
   \centering
@@ -90,16 +97,20 @@ See Figure \ref{fig:fig1}. Here is how you add footnotes. [^Sample of the first 
   \label{fig:fig1}
 \end{figure}
 
-```{r}
+But you can also do that using R.
+
+```{r fig2, fig.cap = "Another sample figure"}
 plot(mtcars$mpg)
 ```
+
+You can use **bookdown** to allow references for Tables and Figures.
 
 
 ## Tables
 
-\lipsum[12]
+Below we can see how to use tables. 
 
-See awesome Table~\ref{tab:table}.
+See awesome Table~\ref{tab:table} which is written directly in LaTeX in source Rmd file.
 
 \begin{table}
  \caption{Sample table title}
@@ -118,8 +129,15 @@ See awesome Table~\ref{tab:table}.
   \label{tab:table}
 \end{table}
 
+You can also use R code for that.
+
+```{r}
+knitr::kable(head(mtcars), caption = "Head of mtcars table")
+```
+
+
 ## Lists
 
-- Lorem ipsum dolor sit amet
-- consectetur adipiscing elit. 
-- Aliquam dignissim blandit est, in dictum tortor gravida eget. In ac rutrum magna.
+- Item 1
+- Item 2 
+- Item 3

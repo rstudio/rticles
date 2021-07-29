@@ -15,11 +15,11 @@
 #' @examples
 #' rticles::journals()
 journals <- function() {
-  sort(dir(pkg_file("rmarkdown", "templates")))
+  sort(dir(pkg_file_template()))
 }
 
 find_resource <- function(template, file = 'template.tex') {
-  res <- pkg_file("rmarkdown", "templates", template, "resources", file)
+  res <- pkg_file_template(template, "resources", file)
   if (res == "") stop(
     "Couldn't find template file ", template, "/resources/", file, call. = FALSE
   )
@@ -86,6 +86,8 @@ get_list_element <- function(x, names) {
 
 pkg_file <- function(...) system.file(..., package = "rticles")
 
+pkg_file_template <- function(...) pkg_file("rmarkdown", "templates", ...)
+
 # utils for post processing tex files
 
 # correct authors field to the form "Author 1, Author 2, and Author 3"
@@ -110,4 +112,23 @@ post_process_authors <- function(text) {
   text[i] <- xfun::split_lines(x2)
   # return modified text
   text
+}
+
+
+# render a skeleton in a temp directory
+render_draft <- function(journal, output_options = NULL, quiet = FALSE) {
+  dir <- tempfile()
+  dir.create(dir)
+  oldwd <- setwd(dir)
+  on.exit(setwd(oldwd), add = TRUE)
+  # create a draft of the format
+  doc <- paste0(journal,"_article",".Rmd")
+  rmarkdown::draft(doc, template = journal, package = "rticles", create_dir = FALSE, edit = FALSE)
+  # render the file in the temp dir
+  message('Rendering the ', journal, ' format...',
+          if (!is.null(output_options)) " (with output options)")
+  output_file <- xfun::Rscript_call(
+    fun = rmarkdown::render,
+    args = list(doc, output_options = output_options, quiet = quiet)
+  )
 }
