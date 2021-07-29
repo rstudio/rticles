@@ -76,9 +76,10 @@ output:
 #urlcolor: orange
 #linkcolor: green
 #citecolor: red
+#numberlines: TRUE
+#numberlines-options: ["mathlines","switch"]
 header-includes:
-  - \usepackage[nomarkers,tablesfirst]{endfloat} # For figures and tables at end
-  - \usepackage{lineno}\linenumbers # For line numbering
+  #- \usepackage[nomarkers,tablesfirst]{endfloat} # For figures and tables at end
   - \theoremstyle{thmstyleone} # Theorem stuff from OUP template
   - \newtheorem{theorem}{Theorem} #  meant for continuous numbers. %%\newtheorem{theorem}{Theorem}[section] # meant for sectionwise numbers. optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
   - \newtheorem{proposition}[theorem]{Proposition} # %%\newtheorem{proposition}{Proposition}" # to get separate numbers for theorem and proposition etc.

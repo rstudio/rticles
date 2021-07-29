@@ -12,7 +12,10 @@ $if(onecolumn)$\onecolumn$endif$
 %\usepackage{showframe}
 
 % line numbers
-$if(numberlines)$\usepackage{lineno}\linenumbers$endif$
+$if(numberlines)$
+\usepackage$if(numberlines-options)$[$for(numberlines-options)$$numberlines-options$$sep$,$endfor$]$endif${lineno}
+\linenumbers
+$endif$
 
 % Packages I think are necessary for basic Rmarkdown functionality
 \usepackage{hyperref}
