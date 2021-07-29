@@ -64,6 +64,7 @@ bibliography: mybibfile.bib # Includes refs in OUP example template
 #csl: mycitationstyle.csl
 output:
   rticles::oup_article:
+    oup_version: 1 # 1 = 2020 CTAN OUP CLS package; 0 = 2009 OUP CLS package
     keep_tex: TRUE
     journal: "Journal Name"
     #document_style: "contemporary" # Can be contemporary, modern, traditional; default "contemporary"

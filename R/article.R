@@ -281,10 +281,11 @@ mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
   )
 }
 
-#' @param document_style For \code{oup_article}, one of "contemporary", "modern", or "traditional" setting overall style of document. Defaults to "contemporary".
-#' @param papersize For \code{oup_article}, one of "large", "medium", or "small" setting output page size. Defaults to "large".
-#' @param namedate For \code{oup_article}, a logical variable indicating if natbib citations should be in name-date format. Defaults to \code{FALSE}.
-#' @param onecolumn For \code{oup_article}, a logical variable indicating if one column formatting should be used. Defaults to \code{FALSE}.
+#' @param oup_version For \code{oup_article}, set to 0 to use the 2009 OUP CLS style for document formatting or set to 1 to use the newer 2020 OUP CLS style package available on CTAN. Defaults to 0.
+#' @param document_style For \code{oup_article}, \code{oup_version==1}, one of "contemporary", "modern", or "traditional" setting overall style of document. Defaults to "contemporary".
+#' @param papersize For \code{oup_article}, \code{oup_version==1}, one of "large", "medium", or "small" setting output page size. Defaults to "large".
+#' @param namedate For \code{oup_article}, \code{oup_version==1}, a logical variable indicating if natbib citations should be in name-date format. Defaults to \code{FALSE}.
+#' @param onecolumn For \code{oup_article}, \code{oup_version==1}, a logical variable indicating if one column formatting should be used. Defaults to \code{FALSE}.
 #' @section \code{oup_article}: Format for creating submissions to many Oxford University Press
 #'   journals. Adapted from
 #'   \url{https://academic.oup.com/journals/pages/authors/preparing_your_manuscript}
@@ -294,48 +295,59 @@ mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
 #' @rdname article
 oup_article <- function(
   ..., keep_tex = TRUE,
+  oup_version = 0, # Controls template to use. 1 for newer template.
   md_extensions = c("-autolink_bare_uris"),
   journal=NULL,pandoc_args=NULL,
   number_sections=TRUE,
-  citation_package="natbib",
+  citation_package=ifelse(oup_version==0,"default","natbib"),
   papersize=c("large","medium","small"),
   document_style=c("contemporary","modern","traditional"),
   namedate=FALSE,onecolumn=FALSE
 ) {
-  citation_package <- match.arg(citation_package)
-  papersize <- match.arg(papersize)
-  document_style <- match.arg(document_style)
+  switch(as.character(oup_version),
+         "0" = {
+           pdf_document_format(
+             "oup_v0",
+             keep_tex = keep_tex, md_extensions = md_extensions, ...
+           )
+         },
+         "1" = {
+           citation_package <- match.arg(citation_package,c("natbib","default"))
+           papersize <- match.arg(papersize)
+           document_style <- match.arg(document_style)
 
-  args <- c(
-    journal = journal,
-    papersize = papersize,
-    document_style = document_style
-  )
+           args <- c(
+             journal = journal,
+             papersize = papersize,
+             document_style = document_style
+           )
 
-  # Convert to pandoc arguments
-  pandoc_arg_list <- mapply(rmarkdown::pandoc_variable_arg, names(args), args,
-                            SIMPLIFY = FALSE, USE.NAMES = FALSE)
+           # Convert to pandoc arguments
+           pandoc_arg_list <- mapply(rmarkdown::pandoc_variable_arg,
+                                     names(args), args,
+                                     SIMPLIFY = FALSE, USE.NAMES = FALSE)
 
-  # namedate
-  if (namedate)
-    pandoc_arg_list = c(pandoc_arg_list,
-                        rmarkdown::pandoc_variable_arg("namedate"))
+           # namedate
+           if (namedate)
+             pandoc_arg_list = c(pandoc_arg_list,
+                                 rmarkdown::pandoc_variable_arg("namedate"))
 
-  # onecolumn
-  if (onecolumn)
-    pandoc_arg_list = c(pandoc_arg_list,
-                        rmarkdown::pandoc_variable_arg("onecolumn"))
+           # onecolumn
+           if (onecolumn)
+             pandoc_arg_list = c(pandoc_arg_list,
+                                 rmarkdown::pandoc_variable_arg("onecolumn"))
 
-  pandoc_arg_list <- unlist(pandoc_arg_list)
+           pandoc_arg_list <- unlist(pandoc_arg_list)
 
-  pdf_document_format(
-    "oup", keep_tex = keep_tex,
-    md_extensions=md_extensions,
-    citation_package = citation_package,
-    pandoc_args = c(pandoc_arg_list, pandoc_args),
-    number_sections=number_sections,
-    ...
-  )
+           pdf_document_format(
+             "oup_v1", keep_tex = keep_tex,
+             md_extensions=md_extensions,
+             citation_package = citation_package,
+             pandoc_args = c(pandoc_arg_list, pandoc_args),
+             number_sections=number_sections,
+             ...
+           )
+         })
 }
 
 #' @section \code{peerj_article}: Format for creating submissions to The PeerJ

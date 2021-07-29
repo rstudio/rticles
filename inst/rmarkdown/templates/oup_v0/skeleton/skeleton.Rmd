@@ -52,7 +52,9 @@ keywords:
 bibliography: mybibfile.bib
 #csl: mycitationstyle.csl
 #link-citations: yes
-output: rticles::oup_article
+output: 
+  rticles::oup_article:
+    oup_version: 0 # 1 = 2020 CTAN OUP CLS package; 0 = 2009 OUP CLS package
 #urlcolor: orange
 #linkcolor: green
 #citecolor: red

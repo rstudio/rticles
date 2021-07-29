@@ -1,6 +1,6 @@
 # rticles 0.21
 
-- `oup_article()` template has been updated to latest OUP authoring template now available on CTAN (thanks, @dmkaplan2000, #XXX)
+- `oup_article()` template has been updated to include the possibility of using the latest OUP authoring template now available on CTAN (thanks, @dmkaplan2000, #XXX)
 - Add the fenced div with id `#refs` in `frontiers_article()` skeleton to place the reference section in the correct expected place (thanks, @graysonwhite, #423).
 - `bioinformatics_article()` has no more trailing comma after last author (thanks, @stephenturner, #413).
 - `bioinformatics_article()` now separates `manuscript_type` (e.g., Applications note, Original article) and `subject_section` (e.g. Genome analysis, Phylogenetics) in template and skeleton (thanks, @stephenturner, #415)
