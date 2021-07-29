@@ -299,6 +299,7 @@ oup_article <- function(
   md_extensions = c("-autolink_bare_uris"),
   journal=NULL,pandoc_args=NULL,
   number_sections=TRUE,
+  number_lines=FALSE, number_lines_options=NULL,
   citation_package=ifelse(oup_version==0,"default","natbib"),
   papersize=c("large","medium","small"),
   document_style=c("contemporary","modern","traditional"),
@@ -336,6 +337,18 @@ oup_article <- function(
            if (onecolumn)
              pandoc_arg_list = c(pandoc_arg_list,
                                  rmarkdown::pandoc_variable_arg("onecolumn"))
+
+           # line numbers
+           if (number_lines) {
+             pandoc_arg_list = c(pandoc_arg_list,
+                                 rmarkdown::pandoc_variable_arg("numberlines"))
+
+             if (!is.null(number_lines_options))
+               pandoc_arg_list =
+                 c(pandoc_arg_list,
+                   rmarkdown::pandoc_variable_arg("numberlines-options",
+                                                  paste(number_lines_options,collapse=",")))
+           }
 
            pandoc_arg_list <- unlist(pandoc_arg_list)
 

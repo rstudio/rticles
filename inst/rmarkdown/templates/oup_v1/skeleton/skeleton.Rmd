@@ -72,12 +72,12 @@ output:
     #citation_package: "default" # Uncomment if using a CSL biblio style; default "natbib"
     namedate: TRUE # Set FALSE to use numeric refs; Default FALSE
     #number_sections: FALSE # Uncomment to not number sections; default TRUE
+    #number_lines: TRUE # Default FALSE
+    #number_lines_options: ["mathlines","switch"] # Default NULL
     #onecolumn: TRUE # Uncomment for one column format; default FALSE
 #urlcolor: orange
 #linkcolor: green
 #citecolor: red
-#numberlines: TRUE
-#numberlines-options: ["mathlines","switch"]
 header-includes:
   #- \usepackage[nomarkers,tablesfirst]{endfloat} # For figures and tables at end
   - \theoremstyle{thmstyleone} # Theorem stuff from OUP template
