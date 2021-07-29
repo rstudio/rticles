@@ -116,6 +116,8 @@ oup_article(
   journal = NULL,
   pandoc_args = NULL,
   number_sections = TRUE,
+  number_lines = FALSE,
+  number_lines_options = NULL,
   citation_package = ifelse(oup_version == 0, "default", "natbib"),
   papersize = c("large", "medium", "small"),
   document_style = c("contemporary", "modern", "traditional"),
@@ -151,13 +153,13 @@ tf_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 \item{oup_version}{For \code{oup_article}, set to 0 to use the 2009 OUP CLS style for document formatting or set to 1 to use the newer 2020 OUP CLS style package available on CTAN. Defaults to 0.}
 
-\item{papersize}{For \code{oup_article}, \code{oup_version==1}, one of "large", "medium", or "small" setting output page size. Defaults to "large".}
+\item{papersize}{For \code{oup_article}, \code{oup_version=1}, one of "large", "medium", or "small" setting output page size. Defaults to "large".}
 
-\item{document_style}{For \code{oup_article}, \code{oup_version==1}, one of "contemporary", "modern", or "traditional" setting overall style of document. Defaults to "contemporary".}
+\item{document_style}{For \code{oup_article}, \code{oup_version=1}, one of "contemporary", "modern", or "traditional" setting overall style of document. Defaults to "contemporary".}
 
-\item{namedate}{For \code{oup_article}, \code{oup_version==1}, a logical variable indicating if natbib citations should be in name-date format. Defaults to \code{FALSE}.}
+\item{namedate}{For \code{oup_article}, \code{oup_version=1}, a logical variable indicating if natbib citations should be in name-date format. Defaults to \code{FALSE}.}
 
-\item{onecolumn}{For \code{oup_article}, \code{oup_version==1}, a logical variable indicating if one column formatting should be used. Defaults to \code{FALSE}.}
+\item{onecolumn}{For \code{oup_article}, \code{oup_version=1}, a logical variable indicating if one column formatting should be used. Defaults to \code{FALSE}.}
 }
 \value{
 An R Markdown output format.
@@ -295,7 +297,7 @@ The argument \code{journal} accepts the acronym of any of the
   journals. Adapted from
   \url{https://academic.oup.com/journals/pages/authors/preparing_your_manuscript}
   and the \code{oup-authoring-template} available on CTAN at
-  \url{https://www.ctan.org/pkg/oup-authoring-template}.
+  \url{https://www.ctan.org/pkg/oup-authoring-template}. Note that for \code{oup_version=0}, \code{citation_package="default"} by default, whereas for \code{oup_version=1}, \code{citation_package="natbib"} by default and \code{citation_package="biblatex"} is not supported.
 }
 
 \section{\code{peerj_article}}{
