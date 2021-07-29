@@ -303,7 +303,6 @@ oup_article <- function(
   namedate=FALSE,onecolumn=FALSE
 ) {
   citation_package <- match.arg(citation_package)
-  if (length(citation_package) > 1) stop("Please choose just one ", dQuote("citation_package"))
   papersize <- match.arg(papersize)
   if (length(papersize) > 1) stop("Please choose just one ", dQuote("papersize"))
   document_style <- match.arg(document_style)
