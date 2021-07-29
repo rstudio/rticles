@@ -75,9 +75,17 @@ output:
 #urlcolor: orange
 #linkcolor: green
 #citecolor: red
-#header-includes:
-#  - \usepackage[nomarkers,tablesfirst]{endfloat} # For figures and tables at end
-#  - \usepackage{lineno}\linenumbers # For line numbering
+header-includes:
+  - \usepackage[nomarkers,tablesfirst]{endfloat} # For figures and tables at end
+  - \usepackage{lineno}\linenumbers # For line numbering
+  - \theoremstyle{thmstyleone} # Theorem stuff from OUP template
+  - \newtheorem{theorem}{Theorem} #  meant for continuous numbers. %%\newtheorem{theorem}{Theorem}[section] # meant for sectionwise numbers. optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
+  - \newtheorem{proposition}[theorem]{Proposition} # %%\newtheorem{proposition}{Proposition}" # to get separate numbers for theorem and proposition etc.
+  - \theoremstyle{thmstyletwo}
+  - \newtheorem{example}{Example}
+  - \newtheorem{remark}{Remark}
+  - \theoremstyle{thmstylethree}
+  - \newtheorem{definition}{Definition}
 ---
 
 ```{r setup, include=FALSE}
