@@ -196,7 +196,6 @@ df = data.frame(ID=1:3,code=letters[1:3])
 
 # kable can alse be used for creating tables
 knitr::kable(df,caption="This is a kable table.",
-             #format="latex",
              booktabs=TRUE,label="tab2")
 ```
 
@@ -227,5 +226,18 @@ You can cross-reference sections and subsections as follows: Section \ref{litera
 ***Note:*** the last section in the document will be used as the section title for the bibliography.
 
 For more portable and flexible referencing of sections, equations, figures and tables, use [`bookdown::pdf_document2`](https://github.com/rstudio/bookdown) with YAML header option `base_format: rticles::oup_article`.
+
+# Appendices {-}
+
+::: {.appendices latex=true}
+
+# Section title of first appendix
+
+blabla
+
+## Subsection title of first appendix
+
+and so on....
+:::
 
 # References
