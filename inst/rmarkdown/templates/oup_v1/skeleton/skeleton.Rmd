@@ -73,7 +73,7 @@ output:
     namedate: TRUE # Set FALSE to use numeric refs; Default FALSE
     #number_sections: FALSE # Uncomment to not number sections; default TRUE
     #number_lines: TRUE # Default FALSE
-    #number_lines_options: ["mathlines","switch"] # Default NULL
+    #number_lines_options: ["mathlines","switch"]  # Options for latex lineno package. Default NULL
     #onecolumn: TRUE # Uncomment for one column format; default FALSE
 #urlcolor: orange
 #linkcolor: green

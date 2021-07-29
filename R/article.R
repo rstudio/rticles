@@ -313,6 +313,10 @@ oup_article <- function(
            )
          },
          "1" = {
+           # Require minimum pandoc version
+           if (!rmarkdown::pandoc_available("2.10"))
+             stop("oup_article with oup_version>0 requires a minimum of pandoc 2.10.")
+
            citation_package <- match.arg(citation_package,c("natbib","default"))
            papersize <- match.arg(papersize)
            document_style <- match.arg(document_style)
