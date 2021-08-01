@@ -53,8 +53,10 @@ science_article <- function(..., keep_tex = TRUE, move_figures = TRUE,
       temp_tex <- separate_appendix(output_file, temp_tex, number_sections)
 
       # Build Supplement
-      tinytex::latexmk(paste0('supplement_', filename),
-                       base$pandoc$latex_engine, clean = clean)
+      if (file.exists(paste0('supplement_', output_file))){
+        tinytex::latexmk(paste0('supplement_', filename),
+                         base$pandoc$latex_engine, clean = clean)
+      }
     }
 
     if (!number_sections) {
@@ -321,6 +323,9 @@ separate_appendix <- function(output_file, text, number_sections) {
   appendix <- c(grep('\\\\appendix', text), grep('\052\\{\\(APPENDIX\\) Appendix\\}\\\\', text))
   end_doc <- grep('\\\\end\\{document\\}', text)
 
+  if (length(appendix) == 0) {
+    return(text)
+  }
   # separate
   main_text <- text[c(1:(appendix-2), biblio:end_doc)]
   appx_text <- text[c(1:(begin_doc), (appendix-1):(biblio - 1), end_doc)]
