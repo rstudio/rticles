@@ -56,7 +56,7 @@ science_article <- function(..., keep_tex = TRUE, move_figures = TRUE,
       tinytex::latexmk(paste0('supplement_', filename),
                        base$pandoc$latex_engine, clean = clean)
     }
-    saveRDS(temp_tex, 'temp_tex.Rds')
+
     if (!number_sections) {
       temp_tex <- unnumber_sections(temp_tex)
     }
@@ -329,7 +329,8 @@ separate_appendix <- function(output_file, text, number_sections) {
                       grep('\052\\{\\(APPENDIX\\) Appendix\\}\\\\', appx_text))
 
   appx_text[(fix_appx_title-1):(fix_appx_title+1)] <- c(
-    '\\maketitle', '\\section*{Supplmentary Text}', ''
+    '\\maketitle', '\\section*{Supplementary Text}',
+    '\\renewcommand{\\thesection}{S\\arabic{section}}\\setcounter{\\thesection}{0}'
     )
 
   appx_text <- remove_authors_affiliations(appx_text)
