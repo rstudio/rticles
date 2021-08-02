@@ -64,7 +64,9 @@ science_article <- function(..., keep_tex = TRUE, move_figures = TRUE,
     }
 
     if (!isTRUE(draft)) {
+      temp_tex <- resave_figs(temp_tex)
     }
+
     xfun::write_utf8(temp_tex, filename)
 
     tinytex::latexmk(filename, base$pandoc$latex_engine, clean = clean)
@@ -423,6 +425,7 @@ remove_authors_affiliations <- function(text) {
 }
 
 resave_figs <- function(text) {
+  return(text) #TODO fix bug where extracts wrong pieces
   # locate where the figures are; check count
   starts <- grep('\\\\begin\\{figure\\}', text)
   ends <- grep('\\\\end\\{figure\\}', text)
@@ -454,8 +457,8 @@ resave_figs <- function(text) {
   # subset
   text <- text[-unlist(fig_index)]
 
-  if (!dir.exists('figs')) {
-    dir.create('figs')
+  if (!dir.exists('figs_resave')) {
+    dir.create('figs_resave')
   }
 
   if (length(fig_tex) == 0) {
