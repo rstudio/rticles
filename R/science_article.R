@@ -335,7 +335,7 @@ separate_appendix <- function(output_file, text, number_sections) {
 
   appx_text[(fix_appx_title-1):(fix_appx_title+1)] <- c(
     '\\maketitle', '\\section*{Supplementary Text}',
-    '\\renewcommand{\\thesection}{S\\arabic{section}}\\setcounter{\\thesection}{0}'
+    '\\renewcommand{\\thesection}{S\\arabic{section}}'
     )
 
   appx_text <- remove_authors_affiliations(appx_text)
