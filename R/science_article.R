@@ -422,6 +422,52 @@ remove_authors_affiliations <- function(text) {
   text
 }
 
+resave_figs <- function(text) {
+  # locate where the figures are; check count
+  starts <- grep('\\\\begin\\{figure\\}', text)
+  ends <- grep('\\\\end\\{figure\\}', text)
+  if (length(starts) != length(ends)) {
+    warning("It appears that you have a figure that doesn't start and/or end properly",
+            "Moving figures to end is cancelled.", call. = FALSE)
+    return(text)
+  }
+
+  # exit if no figures to move
+  if (length(starts) == 0) {
+    return(text)
+  }
+
+  # Add notes to where things go.
+  for (i in seq_along(starts)) {
+    fig_marker <- paste('(Figure', i, 'goes about here.)')
+    text <- append(text, values = fig_marker, after = starts[i] - 1)
+    starts[seq_along(starts) >= i] <- starts[seq_along(starts) >= i] + 1L
+  }
+
+  # extract figures from tex; add guide to start
+  fig_index <- lapply(seq_along(starts), function(x){starts[x]:ends[x]})
+  fig_tex <- lapply(fig_index, function(x){text[x]})
+
+  # Add a blank line after to use for injecting:
+  fig_tex <- lapply(fig_tex, function(x){c(x, '')})
+
+  # subset
+  text <- text[-unlist(fig_index)]
+
+  if (!dir.exists('figs')) {
+    dir.create('figs')
+  }
+
+  if (length(fig_tex) == 0) {
+    return(text)
+  }
+
+  # TODO: Resave each figure in the 'figs/' dir
+  #saveRDS(text, 'fig_text.Rds')
+
+  text
+}
+
 unnumber_sections <- function(text) {
   i <- grep("^\\\\section\\{", text)
   text[i] <- sub(text[i], pattern = "section", replacement = "section\052")
