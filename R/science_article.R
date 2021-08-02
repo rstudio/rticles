@@ -411,6 +411,7 @@ remove_authors_affiliations <- function(text) {
 
   text[i1:(corr_aut[2] - 1)] <- ifelse(text[i1:(corr_aut[2] - 1)] == '\\\\', '',
                                        text[i1:(corr_aut[2] - 1)])
+  text[corr_aut[2]] <- paste0('\\\\', text[corr_aut[2]])
 
   # remove newly created empty lines
   empty_lines <- which(text == '')
