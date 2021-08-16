@@ -1,11 +1,10 @@
-rticles 0.21
----------------------------------------------------------------------
+# rticles 0.21
 
+- Add the fenced div with id `#refs` in `frontiers_article()` skeleton to place the reference section in the correct expected place (thanks, @graysonwhite, #423).
 - `bioinformatics_article()` has no more trailing comma after last author (thanks, @stephenturner, #413).
 - `bioinformatics_article()` now separates `manuscript_type` (e.g., Applications note, Original article) and `subject_section` (e.g. Genome analysis, Phylogenetics) in template and skeleton (thanks, @stephenturner, #415)
 
-rticles 0.20
----------------------------------------------------------------------
+# rticles 0.20
 
 - `lipics_article()` skeleton now sets option `bookdown.theorem.preamble` to FALSE to work with `bookdown::pdf_book()` and avoid conflicst in theorem environment definition. This requires **bookdown** 0.23 or higher (#392).
 
@@ -25,8 +24,7 @@ rticles 0.20
 
 - fix an issue with `rjournal_article()` template to insert newline in author's block only if a field exist (thanks, @huizezhang-sherry, #387)
 
-rticles 0.19
----------------------------------------------------------------------
+# rticles 0.19
 
 - Update Copernicus Publications template to version 6.2 from 2021-01-15 (thanks, @RLumSK, #366).
 
@@ -34,8 +32,7 @@ rticles 0.19
 
 - Add article template `ims_article()` for *Institute of Mathematical Statistics* Journals, e.g., *Annals of Applied Statistics* (thanks, @auzaheta, #372)
 
-rticles 0.18
----------------------------------------------------------------------
+# rticles 0.18
 
 - `springer_article()` now uses the yaml variable biblio-style to set bibliography style
 instead of bibstyle. (@eliocamp, #358)
@@ -55,8 +52,7 @@ fix for the LaTeX problem sanitized with the last `rticles` update (thanks, @RLu
 
 - Add article template `jasa_article()` for the *Journal of the Acoustical Society of America* (JASA) (thanks, @stefanocoretta, #364)
 
-rticles 0.17
----------------------------------------------------------------------
+# rticles 0.17
 
 - Fixes `arxiv_article()` template when adding graphics from code chunks (thanks, @Athanasiamo, #332).
 
@@ -68,15 +64,13 @@ rticles 0.17
 
 - Add article template `lipics_article()` for *Leibniz International Proceedings in Informatics* (LIPIcs) (thanks, @nuest, #288).
 
-rticles 0.16
----------------------------------------------------------------------
+# rticles 0.16
 
 - Fixed `ctex_article()` to correctly use the default Pandoc template as intended in the PR #307, which introduced the bug #322 (thanks, @baketbek @cderv #323).
 
 - The minimal version of **knitr** required is 1.30 now.
 
-rticles 0.15
----------------------------------------------------------------------
+# rticles 0.15
 
 - Added a new `journals()` function to list all available journal names in this package (#318).
 
@@ -110,8 +104,7 @@ rticles 0.15
 
 - Added the output format `rticles::ctex_article` as an alias to `rticles::ctex`, to be consistent with the names of other `*_article` formats.
 
-rticles 0.14
----------------------------------------------------------------------
+# rticles 0.14
 
 - Added custom author ordering for the IEEE template (thanks, @DunLug, #263).
 
@@ -123,8 +116,7 @@ rticles 0.14
 
 - Added Oxford University Press (OUP) template (thanks, @dmkaplan2000, #271).
 
-rticles 0.13
----------------------------------------------------------------------
+# rticles 0.13
 
 - Added the `cslreferences` environment to all templates (thanks, @bbauzile, #260).
 
@@ -134,25 +126,21 @@ rticles 0.13
 
 - Add support for bibliography styles on the Springer template (thanks, @swhaat, #262).
 
-rticles 0.12
----------------------------------------------------------------------
+# rticles 0.12
 
 - Updated the `pnas_article()` document class from the PNAS website https://www.pnas.org/page/authors/latex (#21).
 
-rticles 0.11
----------------------------------------------------------------------
+# rticles 0.11
 
 - Added the Journal of Open Source Software (and Education) template (@noamross, #229).
 
 - Tweaked the `tf_article` template to avoid using absolute full paths for figures in the "Figures" section (@jooyoungseo, #246).
 
-rticles 0.10
----------------------------------------------------------------------
+# rticles 0.10
 
 - Support syntax highlighting in the `peerj_article()` format (@zkamvar, #238).
 
-rticles 0.9
----------------------------------------------------------------------
+# rticles 0.9
 
 - Added support for Keywords in IEEE Trans template (@espinielli, #227).
 
@@ -162,8 +150,7 @@ rticles 0.9
 
 - Use csl file for citations in output format `elsevier_article()` (@nuest, #233).
 
-rticles 0.8
----------------------------------------------------------------------
+# rticles 0.8
 
 - Added the Taylor & Francis journal template (@dleutnant, #218).
 
@@ -173,8 +160,7 @@ rticles 0.8
 
 - Updated the template for MDPI to 02/2019 (@dleutnant, #203).
 
-rticles 0.7
----------------------------------------------------------------------
+# rticles 0.7
 
 - Added the template for the Frontiers Journals (@muschellij2, @zkamvar, #209).
 
@@ -192,8 +178,7 @@ rticles 0.7
 
 - The function `ctex_template()` was removed. If you need to use a custom LaTeX template for the `ctex` output format, just use the `template` option under `ctex`.
 
-rticles 0.6
----------------------------------------------------------------------
+# rticles 0.6
 
 - Added the template for the SAGE Journals (thanks, @oguzhanogreden, #181).
 
@@ -205,8 +190,7 @@ rticles 0.6
 
 - Disabled syntax highlighting for `rjournal_article()` (thanks, @eddelbuettel, #185).
 
-rticles 0.5
----------------------------------------------------------------------
+# rticles 0.5
 
 - Added the template for the IEEE Transaction Journals (thanks, @Emaasit, #97).
 
@@ -230,20 +214,14 @@ rticles 0.5
 
 - Supports breaking the JSS author list into multiple lines; see #100 for details.
 
-rticles 0.4.1
----------------------------------------------------------------------
+# rticles 0.4.1
 
 - Add Royal Society Open Science journal template
-
-rticles 0.2.0.9000
----------------------------------------------------------------------
 
 - Add Institute of Electrical and Electronics Engineers (IEEE) IEEEtrans
   template for Conferences
 
-
-rticles 0.2
----------------------------------------------------------------------
+# rticles 0.2
 
 - Add American Chemical Society (ACS) template
 
@@ -257,8 +235,6 @@ rticles 0.2
 
 - Fix preamble variable name in R Journal template
 
-
-rticles 0.1
----------------------------------------------------------------------
+# rticles 0.1
 
 - Initial release to CRAN
