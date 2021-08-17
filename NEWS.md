@@ -1,7 +1,11 @@
 # rticles 0.21
 
+- Template for `tf_article()` gains a `classoption` variable (thanks, @statzhero, #434).
+
 - Add the fenced div with id `#refs` in `frontiers_article()` skeleton to place the reference section in the correct expected place (thanks, @graysonwhite, #423).
+
 - `bioinformatics_article()` has no more trailing comma after last author (thanks, @stephenturner, #413).
+
 - `bioinformatics_article()` now separates `manuscript_type` (e.g., Applications note, Original article) and `subject_section` (e.g. Genome analysis, Phylogenetics) in template and skeleton (thanks, @stephenturner, #415)
 
 # rticles 0.20
