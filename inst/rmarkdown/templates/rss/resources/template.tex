@@ -36,6 +36,11 @@ $endif$
 \usepackage[authoryear]{natbib}
 \bibpunct{(}{)}{;}{a}{}{,}
 
+% For Pandoc highlighting needs
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
 % Pandoc citation processing
 $if(csl-refs)$
 \newlength{\csllabelwidth}
