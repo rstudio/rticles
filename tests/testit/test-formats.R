@@ -14,7 +14,7 @@ test_format <- function(name, output_options = NULL, os_skip = NULL) {
   # create a draft of the format
   testdoc <- paste0(name,"_article",".Rmd")
   rmarkdown::draft(
-    testdoc, pkg_file("rmarkdown", "templates", name),
+    testdoc, pkg_file_template(name),
     create_dir = FALSE, edit = FALSE
   )
 

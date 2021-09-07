@@ -210,7 +210,6 @@ ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
                         ), pandoc_args = NULL, ...) {
 
   journal <- match.arg(journal)
-  if (length(journal) > 1) stop("Please choose just one ", dQuote("journal"))
 
   with_kwsc <- journal %in% c("aap", "aop", "aos") # with keyword_subclass
 

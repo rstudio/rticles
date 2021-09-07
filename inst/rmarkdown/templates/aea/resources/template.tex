@@ -23,6 +23,11 @@
 % with 1.5 corresponding to "double" spacing.
 \draftSpacing{1.5}
 
+% For Pandoc highlighting needs
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
 % Pandoc citation processing
 $if(csl-refs)$
 \newlength{\csllabelwidth}
