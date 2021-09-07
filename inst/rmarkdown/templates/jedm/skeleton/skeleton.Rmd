@@ -72,7 +72,7 @@ Supplementary technical material (e.g., mathematical proofs or descriptions of e
 
 # Footnotes and acknowledgments
 
-Footnotes should be used sparingly and indicated by consecutive superscript numbers in the text. Material to be footnoted should appear at the bottom of the page on which it is referenced. Acknowledgments and grant numbers should be put into a separate `Acknowledgment' section right before the list of references.
+Footnotes should be used sparingly and indicated by consecutive superscript numbers in the text. Material to be footnoted should appear at the bottom of the page on which it is referenced. Acknowledgments and grant numbers should be put into a separate 'Acknowledgment' section right before the list of references.
 
 # References
 
