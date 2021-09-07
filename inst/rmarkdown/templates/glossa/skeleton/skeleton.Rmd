@@ -9,7 +9,7 @@ author:
   address: 105, Bd. Raspail, 75005 Paris waltraud.paul\@ehess.fr
 - name: Guido Vanden Wyngaerd
   affiliation: KU Leuven
-classoption: [cm, linguex, biblatex]
+classoption: [cm, linguex]
 #
 # Possible classoptions:
 # - [times] for Times font (default if no option is chosen)
@@ -51,7 +51,9 @@ keywords: stylesheet, glossa, article
 # To add the word count, uncomment the following option and replace the number
 # with the document word count.
 # wordcount: 1000
-output: rticles::glossa_article
+output: 
+  rticles::glossa_article:
+    citation_package: natbib
 ---
 
 ```{r setup, include=FALSE}
