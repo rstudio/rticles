@@ -1,0 +1,281 @@
+---
+title: Template for preparing your research report submission to PNAS using RMarkdown
+
+# Use letters for affiliations, numbers to show equal authorship (if applicable) and to indicate the corresponding author
+author:
+  - name: Alice Anonymous
+    affiliation: a,1,2
+  - name: Bob Security
+    affiliation: a,b
+address:
+  - code: a
+    address: Some Institute of Technology, Department, Street, City, State, Zip
+  - code: b
+    address: Another University Department, Street, City, State, Zip
+
+corresponding_author:
+  code: 2
+  text: "To whom correspondence should be addressed. E-mail: bob@email.com"
+
+# For footer text
+lead_author_surname: Anonymous
+
+## Remove this if not required    
+equal_authors:
+  code: 1
+  text: "A.O.(Author One) and A.T. (Author Two) contributed equally to this work (remove if not applicable)."
+
+
+author_contributions: |
+  Please provide details of author contributions here.
+
+## Remove this if not required
+conflict_of_interest: |
+  Please declare any conflict of interest here.
+
+abstract: |
+  Please provide an abstract of no more than 250 words in a single paragraph. Abstracts should explain to the general reader the major contributions of the article. References in the abstract must be cited in full within the abstract itself and cited in the text.
+
+
+significance: |
+  Authors must submit a 120-word maximum statement about the significance of their research paper written at a level understandable to an undergraduate educated scientist outside their field of speciality. The primary goal of the Significance Statement is to explain the relevance of the work in broad context to a broad readership. The Significance Statement appears in the paper itself and is required for all research papers.
+
+acknowledgements: |
+  Please include your acknowledgments here, set in a single paragraph. Please do not include any acknowledgments in the Supporting Information, or anywhere else in the manuscript.
+
+keywords:
+  - one
+  - two
+  - optional
+  - optional
+  - optional
+
+## must be one of: pnasresearcharticle (usual two-column layout), pnasmathematics (one column layout), or pnasinvited (invited submissions only)
+pnas_type: pnasresearcharticle
+
+bibliography: pnas-sample.bib
+csl: pnas.csl
+
+## change to true to add optional line numbering
+lineno: false
+
+output: rticles::pnas_article
+---
+
+
+This PNAS journal template is provided to help you write your work in the
+correct journal format. Instructions for use are provided below.
+
+Note: please start your introduction without including the word
+"Introduction" as a section heading (except for math articles in the
+Physical Sciences section); this heading is implied in the first
+paragraphs.
+
+Guide to using this template {.unnumbered}
+========================================
+
+Please note that whilst this template provides a preview of the typeset
+manuscript for submission, to help in this preparation, it will not
+necessarily be the final publication layout. For more detailed
+information please see the [PNAS Information for
+Authors](http://www.pnas.org/site/authors/format.xhtml).
+
+
+Author Affiliations {#author-affiliations .unnumbered}
+-------------------
+
+Include department, institution, and complete address, with the
+ZIP/postal code, for each author. Use lower case letters to match
+authors with institutions, as shown in the example. Authors with an
+ORCID ID may supply this information at submission.
+
+Submitting Manuscripts {#submitting-manuscripts .unnumbered}
+----------------------
+
+All authors must submit their articles at
+[PNAScentral](http://www.pnascentral.org/cgi-bin/main.plex). If you are
+using Overleaf to write your article, you can use the "Submit to PNAS"
+option in the top bar of the editor window.
+
+Format {#format .unnumbered}
+------
+
+Many authors find it useful to organize their manuscripts with the
+following order of sections; Title, Author Affiliation, Keywords,
+Abstract, Significance Statement, Results, Discussion, Materials and
+methods, Acknowledgments, and References. Other orders and headings are
+permitted.
+
+Manuscript Length {#manuscript-length .unnumbered}
+-----------------
+
+PNAS generally uses a two-column format averaging 67 characters,
+including spaces, per line. The maximum length of a Direct Submission
+research article is six pages and a PNAS PLUS research article is ten
+pages including all text, spaces, and the number of characters displaced
+by figures, tables, and equations. When submitting tables, figures,
+and/or equations in addition to text, keep the text for your manuscript
+under 39,000 characters (including spaces) for Direct Submissions and
+72,000 characters (including spaces) for PNAS PLUS.
+
+References {#references .unnumbered}
+----------
+
+References should be cited in numerical order as they appear in text;
+this will be done automatically via bibtex, e.g. @belkin2002using and
+@berard1994embedding [@coifman2005geometric]. All references, including
+for the SI, should be included in the main manuscript file. References
+appearing in both sections should not be duplicated. SI references
+included in tables should be included with the main reference section.
+
+Data Archival {#data-archival .unnumbered}
+-------------
+
+PNAS must be able to archive the data essential to a published article.
+Where such archiving is not possible, deposition of data in public
+databases, such as GenBank, ArrayExpress, Protein Data Bank, Unidata,
+and others outlined in the Information for Authors, is acceptable.
+
+
+
+Language-Editing Services {#language-editing-services .unnumbered}
+-------------------------
+
+Prior to submission, authors who believe their manuscripts would benefit
+from professional editing are encouraged to use a language-editing
+service (see list at www.pnas.org/site/authors/language-editing.xhtml).
+PNAS does not take responsibility for or endorse these services, and
+their use has no bearing on acceptance of a manuscript for publication.
+
+![Placeholder image of a frog with a long example caption to show
+justification setting.<span data-label="fig:frog"></span>](frog.png)
+
+Digital Figures {#sec:figures .unnumbered}
+---------------
+
+Only TIFF, EPS, and high-resolution PDF for Mac or PC are allowed for
+figures that will appear in the main text, and images must be final
+size. Authors may submit U3D or PRC files for 3D images; these must be
+accompanied by 2D representations in TIFF, EPS, or high-resolution PDF
+format. Color images must be in RGB (red, green, blue) mode. Include the
+font files for any text.
+
+Figures and Tables should be labelled and referenced in the standard way
+using the `\label{}` and `\ref{}` commands.
+
+Figure \[fig:frog\] shows an example of how to insert a column-wide
+figure. To insert a figure wider than one column, please use the
+`\begin{figure*}...\end{figure*}` environment. Figures wider than one
+column should be sized to 11.4 cm or 17.8 cm wide.
+
+Single column equations {#single-column-equations .unnumbered}
+-----------------------
+
+Authors may use 1- or 2-column equations in their article, according to
+their preference.
+
+To allow an equation to span both columns, options are to use the
+`\begin{figure*}...\end{figure*}` environment mentioned above for
+figures, or to use the `\begin{widetext}...\end{widetext}` environment
+as shown in equation \[eqn:example\] below.
+
+Please note that this option may run into problems with floats and
+footnotes, as mentioned in the [cuted package
+documentation](http://texdoc.net/pkg/cuted). In the case of problems
+with footnotes, it may be possible to correct the situation using
+commands `\footnotemark` and `\footnotetext`.
+
+$$\begin{aligned}
+(x+y)^3&=(x+y)(x+y)^2\\
+       &=(x+y)(x^2+2xy+y^2) \label{eqn:example} \\
+       &=x^3+3x^2y+3xy^3+x^3. 
+\end{aligned}$$
+
+
+
+<!-- pandoc writes all tables using longtable, which fails in 2-column mode
+
+  Species                    CBS     CV     G3
+  ----------------------- ------ ------ ------
+  1\. Acetaldehyde           0.0    0.0    0.0
+  2\. Vinyl alcohol          9.1    9.6   13.5
+  3\. Hydroxyethylidene     50.8   51.2   54.0
+
+  : Comparison of the fitted potential energy surfaces and ab initio
+  benchmark electronic energy calculations
+
+-->
+
+Supporting Information (SI) {#supporting-information-si .unnumbered}
+---------------------------
+
+
+The main text of the paper must stand on its own without the SI. Refer
+to SI in the manuscript at an appropriate point in the text. Number
+supporting figures and tables starting with S1, S2, etc. Authors are
+limited to no more than 10 SI files, not including movie files. Authors
+who place detailed materials and methods in SI must provide sufficient
+detail in the main text methods to enable a reader to follow the logic
+of the procedures and results and also must reference the online
+methods. If a paper is fundamentally a study of a new method or
+technique, then the methods must be described completely in the main
+text. Because PNAS edits SI and composes it into a single PDF, authors
+must provide the following file formats only.
+
+### SI Text {#si-text .unnumbered}
+
+Supply Word, RTF, or LaTeX files (LaTeX files must be accompanied by a
+PDF with the same file name for visual reference).
+
+### SI Figures {#si-figures .unnumbered}
+
+Provide a brief legend for each supporting figure after the supporting
+text. Provide figure images in TIFF, EPS, high-resolution PDF, JPEG, or
+GIF format; figures may not be embedded in manuscript text. When saving
+TIFF files, use only LZW compression; do not use JPEG compression. Do
+not save figure numbers, legends, or author names as part of the image.
+Composite figures must be pre-assembled.
+
+### 3D Figures {#d-figures .unnumbered}
+
+Supply a composable U3D or PRC file so that it may be edited and
+composed. Authors may submit a PDF file but please note it will be
+published in raw format and will not be edited or composed.
+
+### SI Tables {#si-tables .unnumbered}
+
+Supply Word, RTF, or LaTeX files (LaTeX files must be accompanied by a
+PDF with the same file name for visual reference); include only one
+table per file. Do not use tabs or spaces to separate columns in Word
+tables.
+
+### SI Datasets {#si-datasets .unnumbered}
+
+Supply Excel (.xls), RTF, or PDF files. This file type will be published
+in raw format and will not be edited or composed.
+
+### SI Movies {#si-movies .unnumbered}
+
+Supply Audio Video Interleave (avi), Quicktime (mov), Windows Media
+(wmv), animated GIF (gif), or MPEG files and submit a brief legend for
+each movie in a Word or RTF file. All movies should be submitted at the
+desired reproduction size and length. Movies should be no more than 10
+MB in size.
+
+### Still images {#still-images .unnumbered}
+
+Authors must provide a still image from each video file. Supply TIFF,
+EPS, high-resolution PDF, JPEG, or GIF files.
+
+### Appendices {#appendices .unnumbered}
+
+PNAS prefers that authors submit individual source files to ensure
+readability. If this is not possible, supply a single PDF file that
+contains all of the SI associated with the paper. This file type will be
+published in raw format and will not be edited or composed.
+
+
+<!-- Leave these lines as they are at the end of your .Rmd file to ensure placement of methods & acknowledgements sections before the references-->
+\showmatmethods
+\showacknow
+\pnasbreak

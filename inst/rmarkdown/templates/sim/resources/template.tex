@@ -1,0 +1,112 @@
+\documentclass[AMA,STIX1COL,$for(classoption)$$classoption$$sep$,$endfor$]{WileyNJD-v2}
+
+$if(longtable)$
+\usepackage{longtable}
+$endif$
+
+% For Pandoc highlighting needs
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+% Pandoc citation processing
+$if(csl-refs)$
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc} % for calculating minipage widths
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+$if(articletype)$
+\articletype{$articletype$}
+$endif$
+
+$if(received)$
+\received{$received$}
+$endif$
+
+$if(revised)$
+\revised{$revised$}
+$endif$
+
+$if(accepted)$
+\accepted{$accepted$}
+$endif$
+
+\raggedbottom
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\begin{document}
+
+\title{$title$}
+
+$for(author)$
+\author[$author.num$]{$author.name$}
+$endfor$
+
+$if(authormark)$
+\authormark{$authormark$}
+$endif$
+
+$for(address)$
+\address[$address.num$]{$address.org$}
+$endfor$
+
+$if(corres)$
+\corres{$corres$}
+$endif$
+
+$if(presentaddress)$
+\presentaddress{$presentaddress$}
+$endif$
+
+$if(abstract)$
+\abstract{$abstract$}
+$endif$
+
+$if(keywords)$
+\keywords{$keywords$}
+$endif$
+
+\maketitle
+
+$body$
+
+$if(bibliography)$
+\bibliography{$bibliography$}
+$endif$
+
+$for(include-after)$
+$include-after$
+
+$endfor$
+
+\end{document}

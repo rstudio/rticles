@@ -1,0 +1,152 @@
+%% Author_tex.tex
+%% V1.0
+%% 2012/13/12
+%% developed by Techset
+%%
+%% This file describes the coding for rsproca.cls
+
+\documentclass[]{rsos}%%%%where rsos is the template name
+
+$if(lineno)$
+\usepackage{lineno}
+\linenumbers
+$endif$
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% For Pandoc highlighting needs
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+% Pandoc citation processing
+$if(csl-refs)$
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc} % for calculating minipage widths
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+%%%% *** Do not adjust lengths that control margins, column widths, etc. ***
+
+%%%%%%%%%%% Defining Enunciations  %%%%%%%%%%%
+\newtheorem{theorem}{\bf Theorem}[section]
+\newtheorem{condition}{\bf Condition}[section]
+\newtheorem{corollary}{\bf Corollary}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%% Article title to be placed here
+\title{$title$}
+
+\author{
+$for(author)$
+$author.name$$$^{$author.affiliation$}$$$sep$,
+$endfor$
+}
+
+\address{
+$for(address)$
+  $$^{$address.code$}$$$address.address$$sep$\\
+$endfor$
+}
+%%%% Subject entries to be placed here %%%%
+\subject{
+$for(subject)$
+$subject$$sep$,
+$endfor$
+}
+
+%%%% Keyword entries to be placed here %%%%
+\keywords{
+$for(keywords)$
+$keywords$$sep$,
+$endfor$
+}
+
+%%%% Insert corresponding author and its email address}
+\corres{
+  $corresp_author_name$\\
+  e-mail: $corresp_author_email$
+}
+
+%%%% Abstract text to be placed here %%%%%%%%%%%%
+\begin{abstract}
+$abstract$
+\end{abstract}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Some pieces required from the pandoc template
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\providecommand{\EndFirstPage}{%
+}
+
+\maketitle
+
+$body$
+
+$if(ethics)$
+\ethics{$ethics$}
+$endif$
+
+$if(data_accessibility)$
+\dataccess{$data_accessibility$}
+$endif$
+
+\aucontribute{$author_contributions$}
+
+$if(conflict_of_interest)$
+\competing{$conflict_of_interest$}
+$endif$
+
+$if(funding)$
+\funding{$funding$}
+$endif$
+
+$if(disclaimer)$
+\disclaimer{$disclaimer$}
+$endif$
+
+$if(acknowledgements)$
+\ack{$acknowledgements$}
+$endif$
+
+$if(natbib)$
+\bibliographystyle{RS}
+\bibliography{$bibliography$}
+$endif$
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+\end{document}
