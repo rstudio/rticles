@@ -10,9 +10,11 @@
 
 - `bioinformatics_article()` now separates `manuscript_type` (e.g., Applications note, Original article) and `subject_section` (e.g. Genome analysis, Phylogenetics) in template and skeleton (thanks, @stephenturner, #415)
 
+- Update Copernicus Publications template to version 6.3 from 2021-07-08
+
 # rticles 0.20
 
-- `lipics_article()` skeleton now sets option `bookdown.theorem.preamble` to FALSE to work with `bookdown::pdf_book()` and avoid conflicst in theorem environment definition. This requires **bookdown** 0.23 or higher (#392).
+- `lipics_article()` skeleton now sets option `bookdown.theorem.preamble` to FALSE to work with `bookdown::pdf_book()` and avoid conflicts in theorem environment definition. This requires **bookdown** 0.23 or higher (#392).
 
 - `oup_article()` template now largely compatible to that of `elsevier_article()` (thanks, @dmkaplan2000, #403)
 
