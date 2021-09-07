@@ -108,7 +108,7 @@ lipics_article(
   md_extensions = c("-autolink_bare_uris", "-auto_identifiers")
 )
 
-jedm_article(..., keep_tex = TRUE)
+jedm_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 mdpi_article(..., keep_tex = TRUE)
 
@@ -269,7 +269,7 @@ The argument \code{journal} accepts the acronym of any of the
 }
 
 \section{\code{jedm_article}}{
- Format for creating Journal of Educational 
+ Format for creating Journal of Educational
   Data Mining (JEDM) articles. Adapted from
   \url{https://jedm.educationaldatamining.org/index.php/JEDM/information/authors}.
 }
