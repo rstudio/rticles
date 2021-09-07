@@ -68,13 +68,17 @@ $endfor$
 
 \maketitle
 
+$if(abstract)$
 \begin{abstract}
 $abstract$\\ %Keep \\ for spacing to keywords
 
+$if(keywords)$
 {\parindent0pt
 \textbf{Keywords:} $keywords$
 }
+$endif$
 \end{abstract}
+$endif$
 
 $body$
 
