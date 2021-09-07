@@ -228,9 +228,10 @@ custom Pandoc LaTeX template and different default values for other arguments
 }
 
 \section{\code{glossa_article}}{
- Format for creating submissions to
-  Glossa: a journal of general linguistics. Adapted from
-  \url{https://github.com/guidovw/Glossalatex}.
+ Format for creating submissions to Glossa: a
+  journal of general linguistics. Author Guidelines are available on
+  \href{https://www.glossa-journal.org/site/author-guidelines/}{www.glossa-journal.org}.
+   Template is adapted from \url{https://github.com/guidovw/Glossalatex}.
 }
 
 \section{\code{ims_article}}{

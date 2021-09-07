@@ -177,9 +177,10 @@ frontiers_article <- function(..., keep_tex = TRUE) {
 }
 
 
-#' @section \code{glossa_article}: Format for creating submissions to
-#'   Glossa: a journal of general linguistics. Adapted from
-#'   \url{https://github.com/guidovw/Glossalatex}.
+#' @section \code{glossa_article}: Format for creating submissions to Glossa: a
+#'   journal of general linguistics. Author Guidelines are available on
+#'   \href{https://www.glossa-journal.org/site/author-guidelines/}{www.glossa-journal.org}.
+#'    Template is adapted from \url{https://github.com/guidovw/Glossalatex}.
 #' @export
 #' @rdname article
 glossa_article <- function(..., keep_tex = TRUE, latex_engine = "xelatex") {
