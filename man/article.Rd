@@ -19,6 +19,7 @@
 \alias{ims_article}
 \alias{jasa_article}
 \alias{lipics_article}
+\alias{jedm_article}
 \alias{mdpi_article}
 \alias{mnras_article}
 \alias{oup_article}
@@ -106,6 +107,8 @@ lipics_article(
   citation_package = "natbib",
   md_extensions = c("-autolink_bare_uris", "-auto_identifiers")
 )
+
+jedm_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 mdpi_article(..., keep_tex = TRUE)
 
@@ -263,6 +266,12 @@ The argument \code{journal} accepts the acronym of any of the
   template from the archive \code{authors-lipics-v2019.zip} downloaded
   with version tag v2019.2. The template is provided under The LaTeX
   Project Public License (LPPL), Version 1.3c.
+}
+
+\section{\code{jedm_article}}{
+ Format for creating Journal of Educational
+  Data Mining (JEDM) articles. Adapted from
+  \url{https://jedm.educationaldatamining.org/index.php/JEDM/information/authors}.
 }
 
 \section{\code{mdpi_article}}{

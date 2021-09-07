@@ -271,6 +271,18 @@ lipics_article <- function(
   )
 }
 
+#' @section \code{jedm_article}: Format for creating Journal of Educational
+#'   Data Mining (JEDM) articles. Adapted from
+#'   \url{https://jedm.educationaldatamining.org/index.php/JEDM/information/authors}.
+#' @export
+#' @rdname article
+jedm_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
+  pdf_document_format("jedm",
+                      keep_tex = keep_tex,
+                      citation_package = citation_package,
+                      ...)
+}
+
 #' @section \code{mdpi_article}: Format for creating submissions to
 #'   Multidisciplinary Digital Publishing Institute (MDPI) journals. Adapted
 #'   from \url{https://www.mdpi.com/authors/latex}.
