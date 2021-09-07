@@ -1,6 +1,6 @@
 # rticles 0.21
 
-- New `jedm_article()` for the Journal of Educational Data Mining template.
+- New `jedm_article()` for the Journal of Educational Data Mining template (thanks, @jooyoungseo, #251).
 
 - New `glossa_article()` for articles of [Glossa: a journal of general linguistics](https://www.glossa-journal.org/) (thanks, @stefanocoretta, #361).
 
