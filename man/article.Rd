@@ -15,9 +15,11 @@
 \alias{ctex}
 \alias{elsevier_article}
 \alias{frontiers_article}
+\alias{glossa_article}
 \alias{ims_article}
 \alias{jasa_article}
 \alias{lipics_article}
+\alias{jedm_article}
 \alias{mdpi_article}
 \alias{mnras_article}
 \alias{oup_article}
@@ -80,6 +82,8 @@ elsevier_article(
 
 frontiers_article(..., keep_tex = TRUE)
 
+glossa_article(..., keep_tex = TRUE, latex_engine = "xelatex")
+
 ims_article(
   journal = c("aoas", "aap", "aop", "aos", "sts"),
   keep_tex = TRUE,
@@ -103,6 +107,8 @@ lipics_article(
   citation_package = "natbib",
   md_extensions = c("-autolink_bare_uris", "-auto_identifiers")
 )
+
+jedm_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 mdpi_article(..., keep_tex = TRUE)
 
@@ -224,6 +230,13 @@ custom Pandoc LaTeX template and different default values for other arguments
   \url{https://www.frontiersin.org/about/author-guidelines}.
 }
 
+\section{\code{glossa_article}}{
+ Format for creating submissions to Glossa: a
+  journal of general linguistics. Author Guidelines are available on
+  \href{https://www.glossa-journal.org/site/author-guidelines/}{www.glossa-journal.org}.
+   Template is adapted from \url{https://github.com/guidovw/Glossalatex}.
+}
+
 \section{\code{ims_article}}{
  Format for creating submissions to the Institute of Mathematical Statistics
 \href{https://imstat.org/}{IMS} journals and publications. Adapted from
@@ -253,6 +266,12 @@ The argument \code{journal} accepts the acronym of any of the
   template from the archive \code{authors-lipics-v2019.zip} downloaded
   with version tag v2019.2. The template is provided under The LaTeX
   Project Public License (LPPL), Version 1.3c.
+}
+
+\section{\code{jedm_article}}{
+ Format for creating Journal of Educational
+  Data Mining (JEDM) articles. Adapted from
+  \url{https://jedm.educationaldatamining.org/index.php/JEDM/information/authors}.
 }
 
 \section{\code{mdpi_article}}{
