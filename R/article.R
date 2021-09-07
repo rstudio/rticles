@@ -176,6 +176,19 @@ frontiers_article <- function(..., keep_tex = TRUE) {
   pdf_document_format("frontiers", keep_tex = keep_tex, ...)
 }
 
+
+#' @section \code{glossa_article}: Format for creating submissions to Glossa: a
+#'   journal of general linguistics. Author Guidelines are available on
+#'   \href{https://www.glossa-journal.org/site/author-guidelines/}{www.glossa-journal.org}.
+#'    Template is adapted from \url{https://github.com/guidovw/Glossalatex}.
+#' @export
+#' @rdname article
+glossa_article <- function(..., keep_tex = TRUE, latex_engine = "xelatex") {
+  pdf_document_format(
+    "glossa", keep_tex = keep_tex, latex_engine = latex_engine, ...
+  )
+}
+
 #' @param journal one of \code{"aoas"}, \code{"aap"}, \code{"aop"}, \code{"aos"}, \code{"sts"} for \code{ims_article}
 #' @section \code{ims_article}: Format for creating submissions to the Institute of Mathematical Statistics
 #' \href{https://imstat.org/}{IMS} journals and publications. Adapted from
