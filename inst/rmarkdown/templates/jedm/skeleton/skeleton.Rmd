@@ -9,23 +9,13 @@ author:
   email: sjysky@gmail.com
 abstract: |
   This document serves both as JEDM submission instruction and as a template file.  This is the abstract. It should contain from 100 to 250 words.
-
 keywords: submission, JEDM, abstract, instructions, style
 bibliography: ref.bib
 output: rticles::jedm_article
 ---
 
 ```{r setup, include = FALSE, echo = FALSE, purl = FALSE}
-# Load required R packages on your needs:
-#library(knitr)
-#library(rmarkdown)
-
-# Set global knitr options here:
-options(knitr.table.format = "latex")
-knitr::opts_chunk$set(echo=FALSE, cache=FALSE, cache.comments=FALSE, message=FALSE, warning=FALSE, tidy=TRUE)
-
-# Seed for random number generation:
-set.seed(7777)
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
 # Paper format
@@ -44,6 +34,7 @@ As JEDM is an electronic journal, authors are encouraged to use colours when it 
 
 Examples of a figure and a table are given in Figure~\ref{tab:fig1} and Table~\ref{tab:1}.
 
+```{=latex}
 \begin{figure}
   \centerline{\fbox{\parbox{.66\textwidth}{\centering \raisebox{0pt}[2cm][2cm]{%
         \begin{tabular}{c}
@@ -55,7 +46,9 @@ Examples of a figure and a table are given in Figure~\ref{tab:fig1} and Table~\r
   \caption{This is the figure's caption.  It should be a centered paragraph of width 193mm (7.6in). Font size should be 11pt.}
   \label{tab:fig1}
 \end{figure}
+```
 
+```{=latex}
 \begin{table}
   \caption{This is an example of a table that lists the margins of this template.  Captions should follow the same rules as a figure, except that they are put on top of the table.}\vspace*{1ex}
   \label{tab:1}
@@ -71,6 +64,7 @@ Examples of a figure and a table are given in Figure~\ref{tab:fig1} and Table~\r
     \hline
   \end{tabular}
 \end{table}
+```
 
 # Appendices
 
