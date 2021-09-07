@@ -276,8 +276,11 @@ lipics_article <- function(
 #'   \url{https://jedm.educationaldatamining.org/index.php/JEDM/information/authors}.
 #' @export
 #' @rdname article
-jedm_article <- function(..., keep_tex = TRUE) {
-  pdf_document_format("jedm", keep_tex = keep_tex, ...)
+jedm_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
+  pdf_document_format("jedm",
+                      keep_tex = keep_tex,
+                      citation_package = citation_package,
+                      ...)
 }
 
 #' @section \code{mdpi_article}: Format for creating submissions to

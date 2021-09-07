@@ -20,6 +20,11 @@
 %\pagenumbering{gobble}
 %-----------------------------------------------------------------------
 
+$if(natbib)$
+\usepackage[$natbiboptions$]{natbib}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$acmtrans$endif$}
+$endif$
+
 % Pandoc syntax highlighting
 $if(highlighting-macros)$
 $highlighting-macros$
@@ -82,12 +87,12 @@ $endif$
 
 $body$
 
+$if(natbib)$
 $if(bibliography)$
-\bibliographystyle{acmtrans}
 \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 $endif$
-
 $endif$
+
 $for(include-after)$
 $include-after$
 
