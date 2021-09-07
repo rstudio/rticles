@@ -2,8 +2,8 @@
 title: Submission Instructions
 author:
 - name: JooYoung Seo
-  institution: Learning, Design, and Technology, 301 Keller Building, University Park, PA 16802, USA
-  email: jooyoung@psu.edu
+  institution: School of Information Sciences, University of Illinois at Urbana-Champaign, 614 E. Daniel St., Champaign, IL 61820, USA
+  email: jseo1005@illinois.edu
 - name: Arang Seo
   institution: Department of Education, Guidedog University, Yongin-Si, Republic of Korea
   email: sjysky@gmail.com

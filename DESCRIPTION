@@ -47,7 +47,7 @@ Authors@R: c(
   person("Alfredo", "Hernández", role = c("ctb"), email = "aldomann.designs@gmail.com", comment = c(ORCID = "0000-0002-2660-4545")),
   person("Stefano", "Coretta", role = c("ctb"), email = "stefano.coretta@gmail.com", comment = c(ORCID = "0000-0001-9627-5532", github = "stefanocoretta")),
   person("Alvaro", "Uzaheta", role = c("ctb"), email = "alvaro.uzaheta@gess.ethz.ch", comment = c(github = "auzaheta")),
-  person("JooYoung", "Seo", role=c("ctb"), email="jooyoung@psu.edu", comment = c(ORCID = "0000-0002-4064-6012"))
+  person("JooYoung", "Seo", role=c("ctb"), email="jseo1005@illinois.edu", comment = c(ORCID = "0000-0002-4064-6012"))
   )
 Description: A suite of custom R Markdown formats and templates for
   authoring journal articles and conference submissions.
