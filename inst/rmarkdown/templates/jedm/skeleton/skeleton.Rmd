@@ -82,7 +82,7 @@ Footnotes should be used sparingly and indicated by consecutive superscript numb
 
 # References
 
-References should follow the ACM standard.  The example provided here uses the \texttt{jedm.cls} class file and \texttt{acmtrans.bst} bib style file.  For example, we could write that @JEDM:baker2009 published a review on EDM in this journal; other reviews were published later [for eg. @romero2010educational]. The provided ref.bib file contains examples of virtually every possible citation type.
+References should follow the ACM standard.  The example provided here uses the \texttt{jedm.cls} class file and \texttt{acmtrans.bst} bib style file.  For example, we could write that \citeN{JEDM:baker2009} published a review on EDM in this journal; other reviews were published later \cite[for eg.]{romero2010educational}. The provided ref.bib file contains examples of virtually every possible citation type.
 
 # Supporting materials
 
