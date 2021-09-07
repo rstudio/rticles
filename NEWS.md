@@ -1,5 +1,7 @@
 # rticles 0.21
 
+- New `glossa_article()` for articles of [Glossa: a journal of general linguistics](https://www.glossa-journal.org/) (thanks, @stefanocoretta, #361).
+
 - All templates have now the `$highlighting-macros$` variables required for Pandoc highlighting (#435).
 
 - Template for `tf_article()` gains a `classoption` variable (thanks, @statzhero, #434).
