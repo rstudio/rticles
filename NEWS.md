@@ -10,7 +10,7 @@
 
 - `bioinformatics_article()` now separates `manuscript_type` (e.g., Applications note, Original article) and `subject_section` (e.g. Genome analysis, Phylogenetics) in template and skeleton (thanks, @stephenturner, #415)
 
-- Update Copernicus Publications template to version 6.3 from 2021-07-08
+- Update Copernicus Publications template to version 6.3 from 2021-07-08 (thanks, @RLumSK, #432).
 
 # rticles 0.20
 
