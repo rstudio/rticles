@@ -69,7 +69,9 @@ $endfor$
 \title{$title$}
 \date{} %do not delete this, it suppresses insertion of the date
 
+$if(author)$
 \author{$for(author)${\large $author.name$}\\$author.institution$\\$author.email$$sep$ \and $endfor$}
+$endif$
 
 \maketitle
 
