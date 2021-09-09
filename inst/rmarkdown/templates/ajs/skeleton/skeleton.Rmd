@@ -33,8 +33,8 @@ keywords:
   # at least one keyword must be supplied
   formatted: [keywords, not capitalized, "\\proglang{Java}"]
   plain:     [keywords, not capitalized, Java]
-preamble: >
-  \usepackage{amsmath}
+header-includes:
+ - \usepackage{amsmath}
 output: rticles::ajs_article
 ---
 
@@ -65,7 +65,7 @@ The style file of the Austrian Journal of Statistics is based on the style file 
 The Austrian Journal of Statistics is freely available over the net. Free and open-source tools used for production of your manuscript are therefore also highly supported. Code to reproduce the figures and tables in manuscripts as well as methods implemented in software can be published as supplementary material. This increases usually the number of downloads of your article.
 
 
-\section{Writing your manuscript}
+# Writing your manuscript
 
 The Journal is produced on the basis of computer readable manuscripts provided by the authors. 
 
@@ -160,7 +160,7 @@ The Austrian Journal of Statistics is free of
 charge. Generally, we use the Creative Commons Attribution License (CC-BY).
 
 For copyright issues, publication ethics and malpractice statements, please have a look at 
-\href{www.ajs.or.at}{www.ajs.or.at}
+<www.ajs.or.at>
 
 
 
