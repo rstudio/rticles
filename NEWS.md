@@ -26,6 +26,8 @@
 
 - `bioinformatics_article()` has no more trailing comma after last author (thanks, @stephenturner, #413).
 
+- Fix an issue with `elsevier_article()` and table produced by RStudio Visual Editor. The template gains some packages for allowing grid table in Markdown (thanks, @ccamara, #421)
+
 # rticles 0.20
 
 - `lipics_article()` skeleton now sets option `bookdown.theorem.preamble` to FALSE to work with `bookdown::pdf_book()` and avoid conflicts in theorem environment definition. This requires **bookdown** 0.23 or higher (#392).
