@@ -1,10 +1,18 @@
 # rticles 0.21
 
+## NEW FORMATS
+
 - New `jedm_article()` for the Journal of Educational Data Mining template (thanks, @jooyoungseo, #251).
 
 - New `ajs_article()` for *Austrian Journal of Statistics* (thanks, @matthias-da, #437).
 
 - New `glossa_article()` for articles of [Glossa: a journal of general linguistics](https://www.glossa-journal.org/) (thanks, @stefanocoretta, #361).
+
+## MAJOR CHANGES
+
+- Update Copernicus Publications template to version 6.3 from 2021-07-08 (thanks, @RLumSK, #432).
+
+## MINOR CHANGES
 
 - All templates have now the `$highlighting-macros$` variables required for Pandoc highlighting (#435).
 
@@ -12,11 +20,11 @@
 
 - Add the fenced div with id `#refs` in `frontiers_article()` skeleton to place the reference section in the correct expected place (thanks, @graysonwhite, #423).
 
-- `bioinformatics_article()` has no more trailing comma after last author (thanks, @stephenturner, #413).
-
 - `bioinformatics_article()` now separates `manuscript_type` (e.g., Applications note, Original article) and `subject_section` (e.g. Genome analysis, Phylogenetics) in template and skeleton (thanks, @stephenturner, #415)
 
-- Update Copernicus Publications template to version 6.3 from 2021-07-08 (thanks, @RLumSK, #432).
+## BUG FIXES
+
+- `bioinformatics_article()` has no more trailing comma after last author (thanks, @stephenturner, #413).
 
 # rticles 0.20
 
