@@ -1,12 +1,12 @@
 ---
 title: Submission Instructions
 author:
-- name: JooYoung Seo
-  institution: School of Information Sciences, University of Illinois at Urbana-Champaign, 614 E. Daniel St., Champaign, IL 61820, USA
-  email: jseo1005@illinois.edu
-- name: Arang Seo
-  institution: Department of Education, Guidedog University, Yongin-Si, Republic of Korea
-  email: sjysky@gmail.com
+- name: First Author
+  institution: First author address
+  email: First author email
+- name: Second Author
+  institution: Second author address
+  email: Second author email
 abstract: |
   This document serves both as JEDM submission instruction and as a template file.  This is the abstract. It should contain from 100 to 250 words.
 keywords: submission, JEDM, abstract, instructions, style
