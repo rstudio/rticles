@@ -10,6 +10,8 @@
 
 ## MAJOR CHANGES
 
+- Since **rticles** 0.15, per requirement with R Journal, `rjournal_article()` uses `knitr::purl()` to produce a R file with the code from the Rmd file. Last version eagerly overwrites any existing R file with the same name as the purled file. From now on, if a `.R` already exists with the name of the output, it won't be overwritten anymore, and not purled file will be outputted. This prevent issue with users maintaining themselves their own R file to accompany the article. A warning is issued to remind of deleting the existing R file is one want to use the purled R file (thanks, @Enchufa2, #433).
+
 - Update Copernicus Publications template to version 6.3 from 2021-07-08 (thanks, @RLumSK, #432).
 
 ## MINOR CHANGES
