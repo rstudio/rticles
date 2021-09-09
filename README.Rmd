@@ -46,8 +46,8 @@ Currently included templates and their contributors are the following:
 | [ACM: Association for Computings Machinery](https://www.acm.org/publications/about-publications) | [\@ramnathv](https://github.com/ramnathv)| [\#8](https://github.com/rstudio/rticles/pull/8) | `acm_article()`|
 | [ACS](https://pubs.acs.org) | [\@yufree](https://github.com/yufree)| [\#15](https://github.com/rstudio/rticles/pull/15) | `acs_article()`|
 | [AEA: American Economic Association](https://www.aeaweb.org/journals/policies/templates)| [\@sboysel](https://github.com/sboysel)| [\#86](https://github.com/rstudio/rticles/pull/86) | `aea_articles()` |
-| [AGU](https://agupubs.onlinelibrary.wiley.com/) | [\@eliocamp](https://github.com/eliocamp)| [\#199](https://github.com/rstudio/rticles/pull/99)| `agu_article()`|
-| [AJS: Austrian Journal of Statistics](https://www.ajs.or.at ||| `ajs_article()`|
+| [AGU](https://agupubs.onlinelibrary.wiley.com/) | [\@eliocamp](https://github.com/eliocamp)| [\#199](https://github.com/rstudio/rticles/pull/199)| `agu_article()`|
+| [AJS: Austrian Journal of Statistics](https://www.ajs.or.at |[\@mathias-da](https://github.com/mathias-da)|[\#437](https://github.com/rstudio/rticles/pull/437)| `ajs_article()`|
 | [AMS: American Meteorological Society](https://www.ametsoc.org/)| [\@yufree](https://github.com/yufree)| [\#96](https://github.com/rstudio/rticles/pull/96) | `ams_article()`|
 | [ASA: American Statistical Association](https://www.amstat.org/)|| [\#111](https://github.com/rstudio/rticles/pull/111) | `asa_article()`|
 | [arXiv](https://arxiv.org/) pre-prints based on George Kour's template| [\@alexpghayes](https://github.com)| [\#236](https://github.com/rstudio/rticles/pull/236) | `arxiv_article()`|
