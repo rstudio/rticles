@@ -249,7 +249,7 @@ The argument \code{journal} accepts the acronym of any of the
 \item \code{aoas}: The Annals of Applied Statistics
 \item \code{aop}: The Annals of Probability
 \item \code{aos}: The Annals of Statistics
-\item \code{sts}: Statistical Science}
+\item \code{sts}: Statistical Science
 }
 }
 
@@ -338,8 +338,9 @@ Possible arguments for the YAML header are:
 \item \code{keywords} keywords for the article
 \item \code{bibliography} BibTeX \code{.bib} file name
 \item \code{classoption} options of the \code{sagej} class
-\item \code{header-includes}: custom additions to the header, before the \code{\\begin\{document\}} statement
-\item \code{include-after}: for including additional LaTeX code before the \code{\\end\{document\}} statement}
+\item \code{header-includes}: custom additions to the header, before the \verb{\\begin\{document\}} statement
+\item \code{include-after}: for including additional LaTeX code before the \verb{\\end\\\{document\}} statement
+}
 }
 
 \section{\code{sim_article}}{

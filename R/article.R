@@ -200,7 +200,7 @@ glossa_article <- function(..., keep_tex = TRUE, latex_engine = "xelatex") {
 #' * `aoas`: The Annals of Applied Statistics
 #' * `aop`: The Annals of Probability
 #' * `aos`: The Annals of Statistics
-#' * `sts`: Statistical Science}
+#' * `sts`: Statistical Science
 #' @export
 #' @rdname article
 ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
@@ -374,19 +374,18 @@ pnas_article <- function(..., keep_tex = TRUE) {
 #'   \verb{https://uk.sagepub.com/sites/default/files/sage_latex_template_4.zip}{class}.
 #'
 #' Possible arguments for the YAML header are:
-#' \itemize{
-#'   \item `title` title of the manuscript
-#'   \item `runninghead` short author list for header
-#'   \item `author` list of authors, containing `name` and `num`
-#'   \item `address` list containing `num` and `org` for defining `author` affiliations
-#'   \item `corrauth` corresponding author name and address
-#'   \item `email` correspondence email
-#'   \item `abstract` abstract, limited to 200 words
-#'   \item `keywords` keywords for the article
-#'   \item `bibliography` BibTeX `.bib` file name
-#'   \item `classoption` options of the `sagej` class
-#'  \item `header-includes`: custom additions to the header, before the \code{\\begin\{document\}} statement
-#'  \item `include-after`: for including additional LaTeX code before the \code{\\end\{document\}} statement}
+#' * `title` title of the manuscript
+#' * `runninghead` short author list for header
+#' * `author` list of authors, containing `name` and `num`
+#' * `address` list containing `num` and `org` for defining `author` affiliations
+#' * `corrauth` corresponding author name and address
+#' * `email` correspondence email
+#' * `abstract` abstract, limited to 200 words
+#' * `keywords` keywords for the article
+#' * `bibliography` BibTeX `.bib` file name
+#' * `classoption` options of the `sagej` class
+#' * `header-includes`: custom additions to the header, before the `\begin{document}` statement
+#' * `include-after`: for including additional LaTeX code before the `\end\{document}` statement
 #' @export
 #' @rdname article
 sage_article <- function(..., highlight = NULL, citation_package = "natbib") {
