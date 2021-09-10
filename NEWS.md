@@ -1,6 +1,6 @@
 # rticles 0.21
 
-## NEW FORMATS
+## NEW FEATURES
 
 - New `jedm_article()` for the Journal of Educational Data Mining template (thanks, @jooyoungseo, #251).
 
