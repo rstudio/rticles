@@ -1,9 +1,9 @@
 #' Journal of Statistical Software (JSS) format.
 #'
 #' Format for creating a Journal of Statistical Software (JSS) articles. Adapted
-#' from \url{https://www.jstatsoft.org/about/submissions}.
+#' from <https://www.jstatsoft.org/about/submissions>.
 #' @inheritParams rmarkdown::pdf_document
-#' @param ... Arguments to \code{rmarkdown::pdf_document}
+#' @param ... Arguments to [rmarkdown::pdf_document()]
 #' @export
 jss_article <- function(
   ..., keep_tex = TRUE, citation_package = 'natbib',
@@ -55,7 +55,7 @@ jss_article <- function(
 #' Austrian Journal of Statistics (AJS) format.
 #'
 #' Format for creating a Austrian Journal of Statistics (AJS) article. Adapted
-#' from \url{https://www.jstatsoft.org/about/submissions}.
+#' from <https://www.jstatsoft.org/about/submissions>.
 #' @inheritParams jss_article
 #' @importFrom rmarkdown pandoc_variable_arg
 #' @export

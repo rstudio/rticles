@@ -61,7 +61,7 @@ off (\code{FALSE}) the \code{dblfloatfix} LaTeX package.}
 default definition or R Markdown. See the \code{\link[rmarkdown]{rmarkdown_format}} for
 additional details.}
 
-\item{...}{Additional arguments to \code{rmarkdown::pdf_document}}
+\item{...}{Additional arguments to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}}
 }
 \description{
 Format for creating submissions to IEEE Transaction journals. Adapted from
@@ -73,6 +73,6 @@ Presently, only the \code{"conference"} paper mode offered by the
 }
 \references{
 Shell, Michael. "How to use the IEEEtran LATEX class." Journal of LATEX Class
- Files 1.11 (2002): 10-20.
+Files 1.11 (2002): 10-20.
 \url{http://mirrors.rit.edu/CTAN/macros/latex/contrib/IEEEtran/IEEEtran_HOWTO.pdf}
 }

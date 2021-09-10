@@ -48,8 +48,7 @@
 #' | `bibliography` | *with default* | the BibTeX file with the reference entries |
 #'
 #' @inheritParams rmarkdown::pdf_document
-#' @param ... Arguments to [`rmarkdown::pdf_document`].
-#' @md
+#' @param ... Arguments to [rmarkdown::pdf_document()].
 #' @export
 rjournal_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
 

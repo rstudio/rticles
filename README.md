@@ -160,7 +160,7 @@ You can then add a :+1: or help to add the template :wink:.
 
 To contribute a new format, you need to open a new pull request (PR).
 When opening the PR, you’ll see the [PR
-template](https://github.com/rstudio/rticles/blob/master/.github/PULL_REQUEST_TEMPLATE.md)
+template](https://pkgs.rstudio.com/rticles/PULL_REQUEST_TEMPLATE.html)
 explaining how to proceed and what is important to check. Please follow
 it.  
 Even if you are just starting or you are not finished, you share your

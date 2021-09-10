@@ -1,39 +1,39 @@
 #' IEEE Transactions journal format.
 #'
 #' Format for creating submissions to IEEE Transaction journals. Adapted from
-#' \url{http://www.ieee.org/publications_standards/publications/authors/author_templates.html}.
+#' <http://www.ieee.org/publications_standards/publications/authors/author_templates.html>.
 #'
-#' Presently, only the \code{"conference"} paper mode offered by the
-#' \code{IEEEtran.cls} is supported.
+#' Presently, only the `"conference"` paper mode offered by the
+#' `IEEEtran.cls` is supported.
 #'
 #' @inheritParams rmarkdown::pdf_document
 #' @param draftmode Specify the draft mode to control spacing and whether images
-#' should be rendered. Valid options are: \code{"final"} (default), \code{"draft"},
-#' \code{"draftcls"}, or \code{"draftclsnofoot"}.
-#' @param hyphenfixes A \code{character} value that provides the correct
+#' should be rendered. Valid options are: `"final"` (default), `"draft"`,
+#' `"draftcls"`, or `"draftclsnofoot"`.
+#' @param hyphenfixes A `character` value that provides the correct
 #' hyphenations for ambiguous words. Separate new words with spaces.
-#' @param IEEEspecialpaper  A \code{character} value containing the publication's
+#' @param IEEEspecialpaper  A `character` value containing the publication's
 #' special paper designation.
-#' @param with_ifpdf A \code{logical} value turning on (\code{TRUE}) or off
-#' (\code{FALSE}) the \code{ifpdf} LaTeX package.
-#' @param with_cite A \code{logical} value turning on (\code{TRUE}) or off
-#' (\code{FALSE}) the \code{cite} LaTeX package.
-#' @param with_amsmath A \code{logical} value turning on (\code{TRUE}) or off
-#'  (\code{FALSE}) the \code{amsmath} LaTeX package.
-#' @param with_algorithmic A \code{logical} value turning on (\code{TRUE}) or
-#'  off (\code{FALSE}) the \code{algorithmic} LaTeX package.
-#' @param with_subfig A \code{logical} value turning on (\code{TRUE}) or off
-#' (\code{FALSE}) the \code{subfig} LaTeX package.
-#' @param with_array A \code{logical} value turning on (\code{TRUE}) or off
-#' (\code{FALSE}) the \code{array} LaTeX package.
-#' @param with_dblfloatfix A \code{logical} value turning on (\code{TRUE}) or
-#' off (\code{FALSE}) the \code{dblfloatfix} LaTeX package.
-#' @param ... Additional arguments to \code{rmarkdown::pdf_document}
+#' @param with_ifpdf A `logical` value turning on (`TRUE`) or off
+#' (`FALSE`) the `ifpdf` LaTeX package.
+#' @param with_cite A `logical` value turning on (`TRUE`) or off
+#' (`FALSE`) the `cite` LaTeX package.
+#' @param with_amsmath A `logical` value turning on (`TRUE`) or off
+#'  (`FALSE`) the `amsmath` LaTeX package.
+#' @param with_algorithmic A `logical` value turning on (`TRUE`) or
+#'  off (`FALSE`) the `algorithmic` LaTeX package.
+#' @param with_subfig A `logical` value turning on (`TRUE`) or off
+#' (`FALSE`) the `subfig` LaTeX package.
+#' @param with_array A `logical` value turning on (`TRUE`) or off
+#' (`FALSE`) the `array` LaTeX package.
+#' @param with_dblfloatfix A `logical` value turning on (`TRUE`) or
+#' off (`FALSE`) the `dblfloatfix` LaTeX package.
+#' @param ... Additional arguments to [rmarkdown::pdf_document()]
 #'
 #' @references
 #' Shell, Michael. "How to use the IEEEtran LATEX class." Journal of LATEX Class
 #'  Files 1.11 (2002): 10-20.
-#' \url{http://mirrors.rit.edu/CTAN/macros/latex/contrib/IEEEtran/IEEEtran_HOWTO.pdf}
+#' <http://mirrors.rit.edu/CTAN/macros/latex/contrib/IEEEtran/IEEEtran_HOWTO.pdf>
 #' @importFrom rmarkdown pandoc_variable_arg
 #' @export
 ieee_article <- function(

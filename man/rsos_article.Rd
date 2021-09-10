@@ -14,7 +14,7 @@ rsos_article(
 )
 }
 \arguments{
-\item{...}{Additional arguments to \code{rmarkdown::pdf_document}}
+\item{...}{Additional arguments to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}}
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 
