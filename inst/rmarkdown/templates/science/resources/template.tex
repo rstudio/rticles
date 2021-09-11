@@ -174,16 +174,7 @@ $if(bibliography)$
 \bibliographystyle{Science}
 $endif$
 
-% Following is a new environment, {scilastnote}, that's defined in the
-% preamble and that allows authors to add a reference at the end of the
-% list that's not signaled in the text; such references are used in
-% *Science* for acknowledgments of funding, help, etc.
-
-\begin{scilastnote}
-\item $acknowledgements$
-\end{scilastnote}
-
-
+%% Anything after bibliography
 $for(include-after)$
 $include-after$
 
