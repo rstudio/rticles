@@ -15,9 +15,11 @@
 \alias{ctex}
 \alias{elsevier_article}
 \alias{frontiers_article}
+\alias{glossa_article}
 \alias{ims_article}
 \alias{jasa_article}
 \alias{lipics_article}
+\alias{jedm_article}
 \alias{mdpi_article}
 \alias{mnras_article}
 \alias{oup_article}
@@ -80,6 +82,8 @@ elsevier_article(
 
 frontiers_article(..., keep_tex = TRUE)
 
+glossa_article(..., keep_tex = TRUE, latex_engine = "xelatex")
+
 ims_article(
   journal = c("aoas", "aap", "aop", "aos", "sts"),
   keep_tex = TRUE,
@@ -103,6 +107,8 @@ lipics_article(
   citation_package = "natbib",
   md_extensions = c("-autolink_bare_uris", "-auto_identifiers")
 )
+
+jedm_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 mdpi_article(..., keep_tex = TRUE)
 
@@ -132,7 +138,7 @@ springer_article(..., keep_tex = TRUE, citation_package = "default")
 tf_article(..., keep_tex = TRUE, citation_package = "natbib")
 }
 \arguments{
-\item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \code{rmarkdown::\link{pdf_document}()}.}
+\item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \verb{rmarkdown::[pdf_document]()}.}
 
 \item{journal}{one of \code{"aoas"}, \code{"aap"}, \code{"aop"}, \code{"aos"}, \code{"sts"} for \code{ims_article}}
 }
@@ -140,7 +146,7 @@ tf_article(..., keep_tex = TRUE, citation_package = "natbib")
 An R Markdown output format.
 }
 \description{
-Most article formats are based on \code{rmarkdown::pdf_document()}, with a
+Most article formats are based on \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}, with a
 custom Pandoc LaTeX template and different default values for other arguments
 (e.g., \code{keep_tex = TRUE}).
 }
@@ -150,48 +156,48 @@ custom Pandoc LaTeX template and different default values for other arguments
 
 \section{\code{acm_article}}{
  Format for creating an Association for Computing
-  Machinery (ACM) articles. Adapted from
-  \url{https://www.acm.org/publications/proceedings-template}.
+Machinery (ACM) articles. Adapted from
+\url{https://www.acm.org/publications/proceedings-template}.
 }
 
 \section{\code{acs_article}}{
  Format for creating an American Chemical Society
-  (ACS) Journal articles. Adapted from
-  \url{https://pubs.acs.org/page/4authors/submission/tex.html}.
+(ACS) Journal articles. Adapted from
+\url{https://pubs.acs.org/page/4authors/submission/tex.html}.
 }
 
 \section{\code{aea_article}}{
  Format for creating submissions to the American
-  Economic Association (AER, AEJ, JEL, PP).
+Economic Association (AER, AEJ, JEL, PP).
 }
 
 \section{\code{agu_article}}{
  Format for creating a American Geophysical Union
-  (AGU) article. Adapted from
-  \url{https://www.agu.org/Publish-with-AGU/Publish/#1}.
+(AGU) article. Adapted from
+\url{https://www.agu.org/Publish-with-AGU/Publish/#1}.
 }
 
 \section{\code{amq_article}}{
  Ce format a été adapté du format du bulletin de
-  l'AMQ.
+l'AMQ.
 }
 
 \section{\code{ams_article}}{
  Format for creating an American Meteorological
-  Society (AMS) Journal articles. Adapted from
-  \url{https://www.ametsoc.org/ams/index.cfm/publications/authors/journal-and-bams-authors/author-resources/latex-author-info/}.
+Society (AMS) Journal articles. Adapted from
+\url{https://www.ametsoc.org/ams/index.cfm/publications/authors/journal-and-bams-authors/author-resources/latex-author-info/}.
 }
 
 \section{\code{asa_article}}{
  This format was adapted from The American
-  Statistican (TAS) format, but it should be fairly consistent across
-  American Statistical Association (ASA) journals.
+Statistican (TAS) format, but it should be fairly consistent across
+American Statistical Association (ASA) journals.
 }
 
 \section{\code{arxiv_article}}{
  Adapted from the George Kour's format for
-  arXiv and bio-arXiv preprints. So far as I'm aware, entirely
-  unofficial but still a staple.
+arXiv and bio-arXiv preprints. So far as I'm aware, entirely
+unofficial but still a staple.
 }
 
 \section{\code{bioinformatics_article}}{
@@ -201,27 +207,34 @@ custom Pandoc LaTeX template and different default values for other arguments
 
 \section{\code{biometrics_article}}{
  This format was adapted from the
-  Biometrics journal.
+Biometrics journal.
 }
 
 \section{\code{ctex_article}}{
  A wrapper function for
-  \code{rmarkdown::pdf_document()} and the default value of
-  \code{latex_engine} is changed to \command{xelatex}, so it works better for
-  typesetting Chinese documents with the LaTeX package \pkg{ctex}. The
-  function \code{ctex} is an alias of \code{ctex_article}.
+\code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}} and the default value of
+\code{latex_engine} is changed to \command{xelatex}, so it works better for
+typesetting Chinese documents with the LaTeX package \pkg{ctex}. The
+function \code{ctex} is an alias of \code{ctex_article}.
 }
 
 \section{\code{elsevier_article}}{
  Format for creating submissions to Elsevier
-  journals. Adapted from
-  \url{https://www.elsevier.com/authors/policies-and-guidelines/latex-instructions}.
+journals. Adapted from
+\url{https://www.elsevier.com/authors/policies-and-guidelines/latex-instructions}.
 }
 
 \section{\code{frontiers_article}}{
  Format for creating Frontiers journal
-  articles. Adapted from
-  \url{https://www.frontiersin.org/about/author-guidelines}.
+articles. Adapted from
+\url{https://www.frontiersin.org/about/author-guidelines}.
+}
+
+\section{\code{glossa_article}}{
+ Format for creating submissions to Glossa: a
+journal of general linguistics. Author Guidelines are available on
+\href{https://www.glossa-journal.org/site/author-guidelines/}{www.glossa-journal.org}.
+Template is adapted from \url{https://github.com/guidovw/Glossalatex}.
 }
 
 \section{\code{ims_article}}{
@@ -232,123 +245,131 @@ custom Pandoc LaTeX template and different default values for other arguments
 The argument \code{journal} accepts the acronym of any of the
 \href{https://www.e-publications.org/ims/support/ims-instructions.html}{journals} in IMS:
 \itemize{
-  \item \code{aap}: The Annals of Applied Probability
-  \item \code{aoas}: The Annals of Applied Statistics
-  \item \code{aop}: The Annals of Probability
-  \item \code{aos}: The Annals of Statistics
-  \item \code{sts}: Statistical Science}
+\item \code{aap}: The Annals of Applied Probability
+\item \code{aoas}: The Annals of Applied Statistics
+\item \code{aop}: The Annals of Probability
+\item \code{aos}: The Annals of Statistics
+\item \code{sts}: Statistical Science
+}
 }
 
 \section{\code{jasa_article}}{
  Format for creating submissions to the
-  Journal of the Acoustical Society of America. Adapted from
-  \url{https://acousticalsociety.org/preparing-latex-manuscripts/}.
+Journal of the Acoustical Society of America. Adapted from
+\url{https://acousticalsociety.org/preparing-latex-manuscripts/}.
 }
 
 \section{\code{lipics_article}}{
  Format for creating submissions to
-  LIPIcs - Leibniz International Proceedings Informatics - articles.
-  Adapted from the official Instructions for Authors at
-  \url{https://submission.dagstuhl.de/documentation/authors} and the
-  template from the archive \code{authors-lipics-v2019.zip} downloaded
-  with version tag v2019.2. The template is provided under The LaTeX
-  Project Public License (LPPL), Version 1.3c.
+LIPIcs - Leibniz International Proceedings Informatics - articles.
+Adapted from the official Instructions for Authors at
+\url{https://submission.dagstuhl.de/documentation/authors} and the
+template from the archive \code{authors-lipics-v2019.zip} downloaded
+with version tag v2019.2. The template is provided under The LaTeX
+Project Public License (LPPL), Version 1.3c.
+}
+
+\section{\code{jedm_article}}{
+ Format for creating Journal of Educational
+Data Mining (JEDM) articles. Adapted from
+\url{https://jedm.educationaldatamining.org/index.php/JEDM/information/authors}.
 }
 
 \section{\code{mdpi_article}}{
  Format for creating submissions to
-  Multidisciplinary Digital Publishing Institute (MDPI) journals. Adapted
-  from \url{https://www.mdpi.com/authors/latex}.
+Multidisciplinary Digital Publishing Institute (MDPI) journals. Adapted
+from \url{https://www.mdpi.com/authors/latex}.
 }
 
 \section{\code{mnras_article}}{
  Format for creating an Monthly Notices of
-  Royal Astronomical Society (MNRAS) Journal articles. Adapted from
-  \url{https://ras.ac.uk}.
+Royal Astronomical Society (MNRAS) Journal articles. Adapted from
+\url{https://ras.ac.uk}.
 }
 
 \section{\code{oup_article}}{
  Format for creating submissions to many Oxford University Press
-  journals. Adapted from
-  \url{https://academic.oup.com/journals/pages/authors/preparing_your_manuscript}
-  and \url{https://academic.oup.com/icesjms/pages/General_Instructions}.
+journals. Adapted from
+\url{https://academic.oup.com/journals/pages/authors/preparing_your_manuscript}
+and \url{https://academic.oup.com/icesjms/pages/General_Instructions}.
 }
 
 \section{\code{peerj_article}}{
  Format for creating submissions to The PeerJ
-  Journal. This was adapted from the
-  \href{https://www.overleaf.com/latex/templates/latex-template-for-peerj-journal-and-pre-print-submissions/ptdwfrqxqzbn}{PeerJ
-   Overleaf Template}.
+Journal. This was adapted from the
+\href{https://www.overleaf.com/latex/templates/latex-template-for-peerj-journal-and-pre-print-submissions/ptdwfrqxqzbn}{PeerJ Overleaf Template}.
 }
 
 \section{\code{pihph_article}}{
  Format for creating submissions to the Papers
-  in Historical Phonology
-  (\url{http://journals.ed.ac.uk/pihph/about/submissions}). Adapted from
-  \url{https://github.com/pihph/templates}. This format works well with
-  \code{latex_engine = "xelatex"} and \code{citation_package="biblatex"},
-  which are the default. It may not work correctly if you change these value.
-  In that case, please open an issue and, a PR to contribute a change in the
-  template.
+in Historical Phonology
+(\url{http://journals.ed.ac.uk/pihph/about/submissions}). Adapted from
+\url{https://github.com/pihph/templates}. This format works well with
+\code{latex_engine = "xelatex"} and \code{citation_package="biblatex"},
+which are the default. It may not work correctly if you change these value.
+In that case, please open an issue and, a PR to contribute a change in the
+template.
 }
 
 \section{\code{plos_article}}{
  Format for creating submissions to PLOS
-  journals. Adapted from \url{https://journals.plos.org/ploscompbiol/s/latex}.
+journals. Adapted from \url{https://journals.plos.org/ploscompbiol/s/latex}.
 }
 
 \section{\code{pnas_article}}{
  Format for creating submissions to PNAS
-  journals.
+journals.
 }
 
 \section{\code{sage_article}}{
  Format for creating submissions to Sage
-  Journals. Based on the official Sage Journals
-  \verb{https://uk.sagepub.com/sites/default/files/sage_latex_template_4.zip}{class}.
+Journals. Based on the official Sage Journals
+\verb{https://uk.sagepub.com/sites/default/files/sage_latex_template_4.zip}{class}.
 
 Possible arguments for the YAML header are:
 \itemize{
-  \item \code{title} title of the manuscript
-  \item \code{runninghead} short author list for header
-  \item \code{author} list of authors, containing \code{name} and \code{num}
-  \item \code{address} list containing \code{num} and \code{org} for defining \code{author} affiliations
-  \item \code{corrauth} corresponding author name and address
-  \item \code{email} correspondence email
-  \item \code{abstract} abstract, limited to 200 words
-  \item \code{keywords} keywords for the article
-  \item \code{bibliography} BibTeX \code{.bib} file name
-  \item \code{classoption} options of the \code{sagej} class
- \item \code{header-includes}: custom additions to the header, before the \code{\\begin\{document\}} statement
- \item \code{include-after}: for including additional LaTeX code before the \code{\\end\{document\}} statement}
+\item \code{title} title of the manuscript
+\item \code{runninghead} short author list for header
+\item \code{author} list of authors, containing \code{name} and \code{num}
+\item \code{address} list containing \code{num} and \code{org} for defining \code{author} affiliations
+\item \code{corrauth} corresponding author name and address
+\item \code{email} correspondence email
+\item \code{abstract} abstract, limited to 200 words
+\item \code{keywords} keywords for the article
+\item \code{bibliography} BibTeX \code{.bib} file name
+\item \code{classoption} options of the \code{sagej} class
+\item \code{header-includes}: custom additions to the header, before the \verb{\\begin\{document\}} statement
+\item \code{include-after}: for including additional LaTeX code before the \verb{\\end\\\{document\}} statement
+}
 }
 
 \section{\code{sim_article}}{
  Format for creating submissions to Statistics in
-  Medicine. Based on the official Statistics in Medicine
-  \href{http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm}{class}.
+Medicine. Based on the official Statistics in Medicine
+\href{http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm}{class}.
 
 Possible arguments for the YAML header are:
 \itemize{
-  \item \code{title} title of the manuscript
-  \item \code{author} list of authors, containing \code{name} and \code{num}
-  \item \code{address} list containing \code{num} and \code{org} for defining \code{author} affiliations
-  \item \code{presentaddress} not sure what they mean with this
-  \item \code{corres} author and address for correspondence
-  \item \code{authormark} short author list for header
-  \item \code{received}, \code{revised}, \code{accepted} dates of submission, revision, and acceptance of the manuscript
-  \item \code{abstract} abstract, limited to 250 words
-  \item \code{keywords} up to 6 keywords
-  \item \code{bibliography} BibTeX \code{.bib} file
-  \item \code{classoption} options of the \code{WileyNJD-v2} class
-  \item \code{longtable} set to \code{true} to include the \code{longtable} package, used by default from \code{pandoc} to convert markdown to LaTeX code
- \item \code{header-includes}: custom additions to the header, before the \code{\\begin\{document\}} statement
- \item \code{include-after}: for including additional LaTeX code before the \code{\\end\{document\}} statement}
+\item \code{title} title of the manuscript
+\item \code{author} list of authors, containing \code{name} and \code{num}
+\item \code{address} list containing \code{num} and \code{org} for defining \code{author} affiliations
+\item \code{presentaddress} not sure what they mean with this
+\item \code{corres} author and address for correspondence
+\item \code{authormark} short author list for header
+\item \code{received}, \code{revised}, \code{accepted} dates of submission, revision, and acceptance of the manuscript
+\item \code{abstract} abstract, limited to 250 words
+\item \code{keywords} up to 6 keywords
+\item \code{bibliography} BibTeX \code{.bib} file
+\item \code{classoption} options of the \code{WileyNJD-v2} class
+\item \code{longtable} set to \code{true} to include the \code{longtable} package, used by default from \code{pandoc} to convert markdown to LaTeX code
+\item \code{header-includes}: custom additions to the header, before the \verb{\\begin\{document\}} statement
+\item \code{include-after}: for including additional LaTeX code before the \verb{\\end\{document\}} statement
+}
 }
 
 \section{\code{springer_article}}{
  This format was adapted from the Springer
-  Macro package for Springer Journals.
+Macro package for Springer Journals.
 }
 
 \section{\code{tf_article}}{

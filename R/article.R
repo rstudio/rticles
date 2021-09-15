@@ -4,21 +4,21 @@
 
 #' R Markdown output formats for (journal) articles
 #'
-#' Most article formats are based on \code{rmarkdown::pdf_document()}, with a
+#' Most article formats are based on [rmarkdown::pdf_document()], with a
 #' custom Pandoc LaTeX template and different default values for other arguments
-#' (e.g., \code{keep_tex = TRUE}).
+#' (e.g., `keep_tex = TRUE`).
 #'
 #' @param
 #' ...,keep_tex,latex_engine,citation_package,highlight,fig_caption,md_extensions,template,pandoc_args
-#' Arguments passed to \code{rmarkdown::\link{pdf_document}()}.
+#' Arguments passed to `rmarkdown::[pdf_document]()`.
 #' @section Details: You can find more details about each output format below.
 #' @name acm_article
 #' @rdname article
 NULL
 
-#' @section \code{acm_article}: Format for creating an Association for Computing
+#' @section `acm_article`: Format for creating an Association for Computing
 #'   Machinery (ACM) articles. Adapted from
-#'   \url{https://www.acm.org/publications/proceedings-template}.
+#'   <https://www.acm.org/publications/proceedings-template>.
 
 #' @return An R Markdown output format.
 #' @examples \dontrun{
@@ -30,9 +30,9 @@ acm_article <- function(...) {
   pdf_document_format("acm", ...)
 }
 
-#' @section \code{acs_article}: Format for creating an American Chemical Society
+#' @section `acs_article`: Format for creating an American Chemical Society
 #'   (ACS) Journal articles. Adapted from
-#'   \url{https://pubs.acs.org/page/4authors/submission/tex.html}.
+#'   <https://pubs.acs.org/page/4authors/submission/tex.html>.
 #' @export
 #' @rdname article
 acs_article <- function(
@@ -44,7 +44,7 @@ acs_article <- function(
   )
 }
 
-#' @section \code{aea_article}: Format for creating submissions to the American
+#' @section `aea_article`: Format for creating submissions to the American
 #'   Economic Association (AER, AEJ, JEL, PP).
 #' @export
 #' @rdname article
@@ -54,9 +54,9 @@ aea_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_
   )
 }
 
-#' @section \code{agu_article}: Format for creating a American Geophysical Union
+#' @section `agu_article`: Format for creating a American Geophysical Union
 #'   (AGU) article. Adapted from
-#'   \url{https://www.agu.org/Publish-with-AGU/Publish/#1}.
+#'   <https://www.agu.org/Publish-with-AGU/Publish/#1>.
 #' @export
 #' @rdname article
 agu_article <- function(
@@ -69,7 +69,7 @@ agu_article <- function(
   )
 }
 
-#' @section \code{amq_article}: Ce format a été adapté du format du bulletin de
+#' @section `amq_article`: Ce format a été adapté du format du bulletin de
 #'   l'AMQ.
 #' @export
 #' @rdname article
@@ -83,9 +83,9 @@ amq_article <- function(
   )
 }
 
-#' @section \code{ams_article}: Format for creating an American Meteorological
+#' @section `ams_article`: Format for creating an American Meteorological
 #'   Society (AMS) Journal articles. Adapted from
-#'   \url{https://www.ametsoc.org/ams/index.cfm/publications/authors/journal-and-bams-authors/author-resources/latex-author-info/}.
+#'   <https://www.ametsoc.org/ams/index.cfm/publications/authors/journal-and-bams-authors/author-resources/latex-author-info/>.
 #' @export
 #' @rdname article
 ams_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris")) {
@@ -94,7 +94,7 @@ ams_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_
   )
 }
 
-#' @section \code{asa_article}: This format was adapted from The American
+#' @section `asa_article`: This format was adapted from The American
 #'   Statistican (TAS) format, but it should be fairly consistent across
 #'   American Statistical Association (ASA) journals.
 #' @export
@@ -105,7 +105,7 @@ asa_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
   )
 }
 
-#' @section \code{arxiv_article}: Adapted from the George Kour's format for
+#' @section `arxiv_article`: Adapted from the George Kour's format for
 #'   arXiv and bio-arXiv preprints. So far as I'm aware, entirely
 #'   unofficial but still a staple.
 #' @export
@@ -116,8 +116,8 @@ arxiv_article <- function(..., keep_tex = TRUE) {
   )
 }
 
-#' @section \code{bioinformatics_article}: Format for creating submissions to a Bioinformatics journal. Adapted from
-#' \url{https://academic.oup.com/bioinformatics/pages/submission_online}.
+#' @section `bioinformatics_article`: Format for creating submissions to a Bioinformatics journal. Adapted from
+#' <https://academic.oup.com/bioinformatics/pages/submission_online>.
 #' @export
 #' @rdname article
 bioinformatics_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
@@ -127,7 +127,7 @@ bioinformatics_article <- function(..., keep_tex = TRUE, citation_package = 'nat
   )
 }
 
-#' @section \code{biometrics_article}: This format was adapted from the
+#' @section `biometrics_article`: This format was adapted from the
 #'   Biometrics journal.
 #' @export
 #' @rdname article
@@ -137,11 +137,11 @@ biometrics_article <- function(..., keep_tex = TRUE, citation_package = 'natbib'
   )
 }
 
-#' @section \code{ctex_article}: A wrapper function for
-#'   \code{rmarkdown::pdf_document()} and the default value of
-#'   \code{latex_engine} is changed to \command{xelatex}, so it works better for
+#' @section `ctex_article`: A wrapper function for
+#'   [rmarkdown::pdf_document()] and the default value of
+#'   `latex_engine` is changed to \command{xelatex}, so it works better for
 #'   typesetting Chinese documents with the LaTeX package \pkg{ctex}. The
-#'   function \code{ctex} is an alias of \code{ctex_article}.
+#'   function `ctex` is an alias of `ctex_article`.
 #' @export
 #' @rdname article
 ctex_article <- function(..., template = 'default', latex_engine = 'xelatex') {
@@ -154,9 +154,9 @@ ctex_article <- function(..., template = 'default', latex_engine = 'xelatex') {
 #' @rdname article
 ctex <- ctex_article
 
-#' @section \code{elsevier_article}: Format for creating submissions to Elsevier
+#' @section `elsevier_article`: Format for creating submissions to Elsevier
 #'   journals. Adapted from
-#'   \url{https://www.elsevier.com/authors/policies-and-guidelines/latex-instructions}.
+#'   <https://www.elsevier.com/authors/policies-and-guidelines/latex-instructions>.
 #' @export
 #' @rdname article
 elsevier_article <- function(
@@ -167,28 +167,40 @@ elsevier_article <- function(
   )
 }
 
-#' @section \code{frontiers_article}: Format for creating Frontiers journal
+#' @section `frontiers_article`: Format for creating Frontiers journal
 #'   articles. Adapted from
-#'   \url{https://www.frontiersin.org/about/author-guidelines}.
+#'   <https://www.frontiersin.org/about/author-guidelines>.
 #' @export
 #' @rdname article
 frontiers_article <- function(..., keep_tex = TRUE) {
   pdf_document_format("frontiers", keep_tex = keep_tex, ...)
 }
 
-#' @param journal one of \code{"aoas"}, \code{"aap"}, \code{"aop"}, \code{"aos"}, \code{"sts"} for \code{ims_article}
-#' @section \code{ims_article}: Format for creating submissions to the Institute of Mathematical Statistics
-#' \href{https://imstat.org/}{IMS} journals and publications. Adapted from
-#' \url{https://github.com/vtex-soft/texsupport.ims-aoas}.
+
+#' @section `glossa_article`: Format for creating submissions to Glossa: a
+#'   journal of general linguistics. Author Guidelines are available on
+#'   [www.glossa-journal.org](https://www.glossa-journal.org/site/author-guidelines/).
+#'    Template is adapted from <https://github.com/guidovw/Glossalatex>.
+#' @export
+#' @rdname article
+glossa_article <- function(..., keep_tex = TRUE, latex_engine = "xelatex") {
+  pdf_document_format(
+    "glossa", keep_tex = keep_tex, latex_engine = latex_engine, ...
+  )
+}
+
+#' @param journal one of `"aoas"`, `"aap"`, `"aop"`, `"aos"`, `"sts"` for `ims_article`
+#' @section `ims_article`: Format for creating submissions to the Institute of Mathematical Statistics
+#' [IMS](https://imstat.org/) journals and publications. Adapted from
+#' <https://github.com/vtex-soft/texsupport.ims-aoas>.
 #'
-#' The argument \code{journal} accepts the acronym of any of the
-#' \href{https://www.e-publications.org/ims/support/ims-instructions.html}{journals} in IMS:
-#' \itemize{
-#'   \item \code{aap}: The Annals of Applied Probability
-#'   \item \code{aoas}: The Annals of Applied Statistics
-#'   \item \code{aop}: The Annals of Probability
-#'   \item \code{aos}: The Annals of Statistics
-#'   \item \code{sts}: Statistical Science}
+#' The argument `journal` accepts the acronym of any of the
+#' [journals](https://www.e-publications.org/ims/support/ims-instructions.html) in IMS:
+#' * `aap`: The Annals of Applied Probability
+#' * `aoas`: The Annals of Applied Statistics
+#' * `aop`: The Annals of Probability
+#' * `aos`: The Annals of Statistics
+#' * `sts`: Statistical Science
 #' @export
 #' @rdname article
 ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
@@ -198,7 +210,6 @@ ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
                         ), pandoc_args = NULL, ...) {
 
   journal <- match.arg(journal)
-  if (length(journal) > 1) stop("Please choose just one ", dQuote("journal"))
 
   with_kwsc <- journal %in% c("aap", "aop", "aos") # with keyword_subclass
 
@@ -219,9 +230,9 @@ ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
   )
 }
 
-#' @section \code{jasa_article}: Format for creating submissions to the
+#' @section `jasa_article`: Format for creating submissions to the
 #'   Journal of the Acoustical Society of America. Adapted from
-#'   \url{https://acousticalsociety.org/preparing-latex-manuscripts/}.
+#'   <https://acousticalsociety.org/preparing-latex-manuscripts/>.
 #' @export
 #' @rdname article
 jasa_article <- function(
@@ -233,11 +244,11 @@ jasa_article <- function(
   )
 }
 
-#' @section \code{lipics_article}: Format for creating submissions to
+#' @section `lipics_article`: Format for creating submissions to
 #'   LIPIcs - Leibniz International Proceedings Informatics - articles.
 #'   Adapted from the official Instructions for Authors at
-#'   \url{https://submission.dagstuhl.de/documentation/authors} and the
-#'   template from the archive \code{authors-lipics-v2019.zip} downloaded
+#'   <https://submission.dagstuhl.de/documentation/authors> and the
+#'   template from the archive `authors-lipics-v2019.zip` downloaded
 #'   with version tag v2019.2. The template is provided under The LaTeX
 #'   Project Public License (LPPL), Version 1.3c.
 #' @export
@@ -259,9 +270,21 @@ lipics_article <- function(
   )
 }
 
-#' @section \code{mdpi_article}: Format for creating submissions to
+#' @section `jedm_article`: Format for creating Journal of Educational
+#'   Data Mining (JEDM) articles. Adapted from
+#'   <https://jedm.educationaldatamining.org/index.php/JEDM/information/authors>.
+#' @export
+#' @rdname article
+jedm_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
+  pdf_document_format("jedm",
+                      keep_tex = keep_tex,
+                      citation_package = citation_package,
+                      ...)
+}
+
+#' @section `mdpi_article`: Format for creating submissions to
 #'   Multidisciplinary Digital Publishing Institute (MDPI) journals. Adapted
-#'   from \url{https://www.mdpi.com/authors/latex}.
+#'   from <https://www.mdpi.com/authors/latex>.
 #' @export
 #' @rdname article
 mdpi_article <- function(..., keep_tex = TRUE) {
@@ -270,9 +293,9 @@ mdpi_article <- function(..., keep_tex = TRUE) {
   )
 }
 
-#' @section \code{mnras_article}: Format for creating an Monthly Notices of
+#' @section `mnras_article`: Format for creating an Monthly Notices of
 #'   Royal Astronomical Society (MNRAS) Journal articles. Adapted from
-#'   \url{https://ras.ac.uk}.
+#'   <https://ras.ac.uk>.
 #' @export
 #' @rdname article
 mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
@@ -281,10 +304,10 @@ mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
   )
 }
 
-#' @section \code{oup_article}: Format for creating submissions to many Oxford University Press
+#' @section `oup_article`: Format for creating submissions to many Oxford University Press
 #'   journals. Adapted from
-#'   \url{https://academic.oup.com/journals/pages/authors/preparing_your_manuscript}
-#'   and \url{https://academic.oup.com/icesjms/pages/General_Instructions}.
+#'   <https://academic.oup.com/journals/pages/authors/preparing_your_manuscript>
+#'   and <https://academic.oup.com/icesjms/pages/General_Instructions>.
 #' @export
 #' @rdname article
 oup_article <- function(
@@ -297,21 +320,21 @@ oup_article <- function(
   )
 }
 
-#' @section \code{peerj_article}: Format for creating submissions to The PeerJ
+#' @section `peerj_article`: Format for creating submissions to The PeerJ
 #'   Journal. This was adapted from the
-#'   \href{https://www.overleaf.com/latex/templates/latex-template-for-peerj-journal-and-pre-print-submissions/ptdwfrqxqzbn}{PeerJ
-#'    Overleaf Template}.
+#'   [PeerJ
+#'    Overleaf Template](https://www.overleaf.com/latex/templates/latex-template-for-peerj-journal-and-pre-print-submissions/ptdwfrqxqzbn).
 #' @export
 #' @rdname article
 peerj_article <- function(..., keep_tex = TRUE) {
   pdf_document_format("peerj",  keep_tex = keep_tex, ...)
 }
 
-#' @section \code{pihph_article}: Format for creating submissions to the Papers
+#' @section `pihph_article`: Format for creating submissions to the Papers
 #'   in Historical Phonology
-#'   (\url{http://journals.ed.ac.uk/pihph/about/submissions}). Adapted from
-#'   \url{https://github.com/pihph/templates}. This format works well with
-#'   \code{latex_engine = "xelatex"} and \code{citation_package="biblatex"},
+#'   (<http://journals.ed.ac.uk/pihph/about/submissions>). Adapted from
+#'   <https://github.com/pihph/templates>. This format works well with
+#'   `latex_engine = "xelatex"` and `citation_package="biblatex"`,
 #'   which are the default. It may not work correctly if you change these value.
 #'   In that case, please open an issue and, a PR to contribute a change in the
 #'   template.
@@ -326,8 +349,8 @@ pihph_article <- function(
     citation_package = citation_package, ...)
 }
 
-#' @section \code{plos_article}: Format for creating submissions to PLOS
-#'   journals. Adapted from \url{https://journals.plos.org/ploscompbiol/s/latex}.
+#' @section `plos_article`: Format for creating submissions to PLOS
+#'   journals. Adapted from <https://journals.plos.org/ploscompbiol/s/latex>.
 #' @export
 #' @rdname article
 plos_article <- function(
@@ -338,7 +361,7 @@ plos_article <- function(
   )
 }
 
-#' @section \code{pnas_article}: Format for creating submissions to PNAS
+#' @section `pnas_article`: Format for creating submissions to PNAS
 #'   journals.
 #' @export
 #' @rdname article
@@ -346,24 +369,23 @@ pnas_article <- function(..., keep_tex = TRUE) {
   pdf_document_format("pnas", keep_tex = keep_tex, ...)
 }
 
-#' @section \code{sage_article}: Format for creating submissions to Sage
+#' @section `sage_article`: Format for creating submissions to Sage
 #'   Journals. Based on the official Sage Journals
 #'   \verb{https://uk.sagepub.com/sites/default/files/sage_latex_template_4.zip}{class}.
 #'
 #' Possible arguments for the YAML header are:
-#' \itemize{
-#'   \item \code{title} title of the manuscript
-#'   \item \code{runninghead} short author list for header
-#'   \item \code{author} list of authors, containing \code{name} and \code{num}
-#'   \item \code{address} list containing \code{num} and \code{org} for defining \code{author} affiliations
-#'   \item \code{corrauth} corresponding author name and address
-#'   \item \code{email} correspondence email
-#'   \item \code{abstract} abstract, limited to 200 words
-#'   \item \code{keywords} keywords for the article
-#'   \item \code{bibliography} BibTeX \code{.bib} file name
-#'   \item \code{classoption} options of the \code{sagej} class
-#'  \item \code{header-includes}: custom additions to the header, before the \code{\\begin\{document\}} statement
-#'  \item \code{include-after}: for including additional LaTeX code before the \code{\\end\{document\}} statement}
+#' * `title` title of the manuscript
+#' * `runninghead` short author list for header
+#' * `author` list of authors, containing `name` and `num`
+#' * `address` list containing `num` and `org` for defining `author` affiliations
+#' * `corrauth` corresponding author name and address
+#' * `email` correspondence email
+#' * `abstract` abstract, limited to 200 words
+#' * `keywords` keywords for the article
+#' * `bibliography` BibTeX `.bib` file name
+#' * `classoption` options of the `sagej` class
+#' * `header-includes`: custom additions to the header, before the `\begin{document}` statement
+#' * `include-after`: for including additional LaTeX code before the `\end\{document}` statement
 #' @export
 #' @rdname article
 sage_article <- function(..., highlight = NULL, citation_package = "natbib") {
@@ -372,26 +394,25 @@ sage_article <- function(..., highlight = NULL, citation_package = "natbib") {
   )
 }
 
-#' @section \code{sim_article}: Format for creating submissions to Statistics in
+#' @section `sim_article`: Format for creating submissions to Statistics in
 #'   Medicine. Based on the official Statistics in Medicine
-#'   \href{http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm}{class}.
+#'   [class](http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm).
 #'
 #' Possible arguments for the YAML header are:
-#' \itemize{
-#'   \item \code{title} title of the manuscript
-#'   \item \code{author} list of authors, containing \code{name} and \code{num}
-#'   \item \code{address} list containing \code{num} and \code{org} for defining \code{author} affiliations
-#'   \item \code{presentaddress} not sure what they mean with this
-#'   \item \code{corres} author and address for correspondence
-#'   \item \code{authormark} short author list for header
-#'   \item \code{received}, \code{revised}, \code{accepted} dates of submission, revision, and acceptance of the manuscript
-#'   \item \code{abstract} abstract, limited to 250 words
-#'   \item \code{keywords} up to 6 keywords
-#'   \item \code{bibliography} BibTeX \code{.bib} file
-#'   \item \code{classoption} options of the \code{WileyNJD-v2} class
-#'   \item \code{longtable} set to \code{true} to include the \code{longtable} package, used by default from \code{pandoc} to convert markdown to LaTeX code
-#'  \item \code{header-includes}: custom additions to the header, before the \code{\\begin\{document\}} statement
-#'  \item \code{include-after}: for including additional LaTeX code before the \code{\\end\{document\}} statement}
+#' * `title` title of the manuscript
+#' * `author` list of authors, containing `name` and `num`
+#' * `address` list containing `num` and `org` for defining `author` affiliations
+#' * `presentaddress` not sure what they mean with this
+#' * `corres` author and address for correspondence
+#' * `authormark` short author list for header
+#' * `received`, `revised`, `accepted` dates of submission, revision, and acceptance of the manuscript
+#' * `abstract` abstract, limited to 250 words
+#' * `keywords` up to 6 keywords
+#' * `bibliography` BibTeX `.bib` file
+#' * `classoption` options of the `WileyNJD-v2` class
+#' * `longtable` set to `true` to include the `longtable` package, used by default from `pandoc` to convert markdown to LaTeX code
+#' * `header-includes`: custom additions to the header, before the `\begin{document}` statement
+#' * `include-after`: for including additional LaTeX code before the `\end{document}` statement
 #' @export
 #' @rdname article
 sim_article <- function(..., highlight = NULL, citation_package = "natbib") {
@@ -400,7 +421,7 @@ sim_article <- function(..., highlight = NULL, citation_package = "natbib") {
   )
 }
 
-#' @section \code{springer_article}: This format was adapted from the Springer
+#' @section `springer_article`: This format was adapted from the Springer
 #'   Macro package for Springer Journals.
 #' @export
 #' @rdname article
@@ -410,7 +431,7 @@ springer_article <- function(..., keep_tex = TRUE, citation_package = 'default')
   )
 }
 
-#' @section \code{tf_article}: Format for creating submissions to a Taylor & Francis journal. Adapted from
+#' @section `tf_article`: Format for creating submissions to a Taylor & Francis journal. Adapted from
 #' \samp{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
 #' @export
 #' @rdname article

@@ -16,7 +16,7 @@ copernicus_article(
 copernicus_journal_abbreviations(journal_name = "*")
 }
 \arguments{
-\item{...}{Additional arguments to \code{rmarkdown::pdf_document()}. \bold{Note}: \code{extra_dependencies} are not
+\item{...}{Additional arguments to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}. \strong{Note}: \code{extra_dependencies} are not
 allowed as Copernicus does not support additional packages included via \code{\\usepackage{}}.}
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
@@ -34,7 +34,7 @@ which means citations will be processed via the command
 default definition or R Markdown. See the \code{\link[rmarkdown]{rmarkdown_format}} for
 additional details.}
 
-\item{journal_name}{A regular expression to filter the by the journal name, see \code{pattern} in \code{\link[base]{grep}}; defaults to \code{*}.}
+\item{journal_name}{A regular expression to filter the by the journal name, see \code{pattern} in \code{\link[base:grep]{base::grep()}}; defaults to \code{*}.}
 }
 \value{
 An R Markdown output format.
@@ -48,7 +48,7 @@ This was adapted from
 
 An number of required and optional manuscript sections, e.g. \code{acknowledgements}, \code{competinginterests}, or \code{authorcontribution}, must be declared using the respective properties of the R Markdown header - see skeleton file.
 
-\strong{Version:} Based on \code{copernicus_package.zip} in the version 6.2, 15 January 2021, using \code{copernicus.cls} in version 9.25.
+\strong{Version:} Based on \code{copernicus_package.zip} in the version 6.3, 8 July 2021, using \code{copernicus.cls} in version 9.32, 7 July 2021.
 
 \strong{Copernicus journal abbreviations:} You can use the function \code{copernicus_journal_abbreviations()} to get the journal abbreviation for all journals supported by the Copernicus article template.
 
@@ -56,22 +56,21 @@ An number of required and optional manuscript sections, e.g. \code{acknowledgeme
 Copernicus is not responsible for the community contributions made to support the template in this package.
 Copernicus converts all typeset TeX files into XML, the expressions and markups have to be highly standardized.
 Therefore, please keep the following in mind:
-
 \itemize{
-  \item Please provide only one figure file for figures with several panels, and please do not use \code{\\subfloat} or similar commands.
-  \item Please use only commands in which words, numbers, etc. are within braces (e.g. \code{\\textrm{TEXT}} instead of \code{{\\rm TEXT}}).
-  \item For algorithms, please use the syntax given in template.tex or provide your algorithm as a figure.
-  \item Please do not define new commands.
-  \item Supported packages (\code{\\usepackage{}}) are already integrated in the \code{copernicus.cls}.  Please do not insert additional ones in your \code{*.tex} file.
-  \item If you opt for syntax highlighting for your preprint or other reasons, please do not forget to use
-   \code{highlight = NULL} for your final file upload once your manuscript was accepted for publication.
-  \item Spaces in labels (\code{\\label{}}) are not allowed; please make sure that no label name is assigned more than once.
-  \item Please do not use \code{\\paragraph{}}; only \code{\\subsubsection{}} is allowed.
-  \item It is not possible to add tables in colour.
+\item Please provide only one figure file for figures with several panels, and please do not use \verb{\\subfloat} or similar commands.
+\item Please use only commands in which words, numbers, etc. are within braces (e.g. \verb{\\textrm\{TEXT\}} instead of \verb{\\rm TEXT}).
+\item For algorithms, please use the syntax given in template.tex or provide your algorithm as a figure.
+\item Please do not define new commands.
+\item Supported packages (\verb{\\usepackage\{\}}) are already integrated in the \code{copernicus.cls}.  Please do not insert additional ones in your \code{.tex} file.
+\item If you opt for syntax highlighting for your preprint or other reasons, please do not forget to use
+\code{highlight = NULL} for your final file upload once your manuscript was accepted for publication.
+\item Spaces in labels (\verb{\\label\{\}}) are not allowed; please make sure that no label name is assigned more than once.
+\item Please do not use \verb{\\paragraph\{\}}; only \verb{\\subsubsection\{\}} is allowed.
+\item It is not possible to add tables in colour.
 }
 }
 \note{
-If you use \code{rmarkdown::pdf_document()}, all internal references (i.e. tables and figures) must use \code{\\ref\{\}} whereas with \code{bookdown::pdf_document2()}, you can additionally use \code{\\@ref()}.
+If you use \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}, all internal references (i.e. tables and figures) must use \verb{\\ref\{\}} whereas with \code{\link[bookdown:html_document2]{bookdown::pdf_document2()}}, you can additionally use \verb{\\@ref()}.
 }
 \examples{
 names(copernicus_journal_abbreviations())

@@ -1,0 +1,35 @@
+---
+title: "Get started"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Accessing templates
+
+```{r child="usage.md"} 
+```
+
+
+View the list of available journal names with `rticles::journals()`.
+
+## Figure numbering & cross-references
+
+You may want to use features of the [**bookdown** package](https://pkgs.rstudio.com/bookdown/) like automatic numbering and cross-referencing of figures and tables in your article. To do this, you'll need to follow [**bookdown** documentation](https://bookdown.org/yihui/bookdown/a-single-document.html), i.e. to edit your YAML to:
+
++ Switch to the `bookdown::pdf_book` output format, and
+
++ Supply your **rticles** template of choice as the `base_format`.
+
+```{.yaml}
+output:
+  bookdown::pdf_book:
+    base_format: rticles::peerj_article
+```
+
+
+Read more about using the **rticles** package here: https://bookdown.org/yihui/rmarkdown/journals.html
