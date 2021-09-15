@@ -15,6 +15,11 @@ $if(tables)$
 \usepackage{longtable}
 $endif$
 
+% For Pandoc highlighting needs
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
 % Pandoc citation processing
 $if(csl-refs)$
 \newlength{\csllabelwidth}

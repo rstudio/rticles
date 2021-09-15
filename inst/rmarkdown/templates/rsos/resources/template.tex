@@ -15,6 +15,11 @@ $endif$
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
+% For Pandoc highlighting needs
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
 % Pandoc citation processing
 $if(csl-refs)$
 \newlength{\csllabelwidth}

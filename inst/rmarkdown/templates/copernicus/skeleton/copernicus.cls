@@ -16,7 +16,7 @@
 %% -----------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{copernicus}
-    [2021/01/12 9.25 Copernicus papers]
+    [2021/07/07 9.32 Copernicus papers]
 \frenchspacing
 \clubpenalty10000
 \widowpenalty10000
@@ -437,8 +437,9 @@
              \fi
              \ifx\specialp@perstring\@undefined\else-\def\1{Corrigendum}\ifx\specialp@perstring\1corrigendum\else editorial-note\fi\fi
              \\
-             \@journalcopyright\\[1mm]
-             \includegraphics[width=1.5cm]{CreativeCommons_Attribution_License.png}}%
+             \@journalcopyright
+             %\includegraphics[width=1.5cm]{CreativeCommons_Attribution_License.png}%
+           }%
           \hfill
           \setbox\z@\hbox{\@journallogo}%
           \@tempdima\ht\z@\advance\@tempdima-8\p@\lower\@tempdima\box\z@\\
@@ -1032,7 +1033,6 @@
     \fi
   \fi
 }
-
 \if@stage@final
   \ifnum\if@abstractcentered1\else\if@abstractindented1\else0\fi\fi=1\relax%modern oder indented
     \long\def\abstract{%
@@ -1184,6 +1184,30 @@
   \RequirePackage{fontawesome5}
   \RequirePackage{fontawesome}
 \fi
+\usepackage{upquote}%% #7510
+\usepackage{regexpatch}
+\def\active@text@prime{\ifin@texttt\textquotesingle\else'\fi}
+\def\active@math@prime{^\bgroup\prim@s}
+\newif\ifin@texttt
+\regexpatchcmd{\pr@m@s}{\'}{\cA\'}{}{}
+\xapptocmd{\ttfamily}{\in@texttttrue}{}{}
+\begingroup\lccode`\~=`\'
+\lowercase{\endgroup\protected\def~}{%
+  \ifmmode
+    \expandafter\active@math@prime
+  \else
+    \expandafter\active@text@prime
+  \fi}
+\AtBeginDocument{\catcode`\'=\active}
+\ifx\xmltexversion\@undefined
+\begingroup
+\obeylines\obeyspaces%
+\gdef\@resetactivechars{%
+\def^^M{\@activechar@info{EOL}\space}%
+\def {\@activechar@info{space}\space}%
+}%
+\endgroup
+\fi
 \ifx\xmltexversion\@undefined
   \RequirePackage[utf8]{inputenc}
   \def\strip@x#1x#2\@nil{#1}%
@@ -1201,6 +1225,7 @@
 \def\@tempa{french}\ifx\bbl@main@language\@tempa
   \StandardLayout
   %% Switch to quotation marks with additional horizontal spacing
+  \let\update@frenchlists\relax
   \bbl@frenchguillemets
   \global\let\flqq\og \global\let\frqq\fg
   \ifx\xmltexversion\@undefined\else
@@ -2200,7 +2225,7 @@
   \fi
 \fi
 %% some of the following commands are only active if \@cop@hometrue
-\def\texlicencestatement#1{\gdef\@texlicencestatement{#1}}%
+\def\texlicencestatement#1#2{\gdef\@texlicencestatement{#1}\gdef\@texlicencelogo{#2}}%
   \def\@texlicencestatement{\CopernicusError{Please add \string\texlicencestatement}{You must provide the licence statement before \string\maketitle"}}
 \def\received#1{\if@cop@home\def\@recvd{#1}\fi}        \def\@recvd{}%+1,+2,+d
 \def\pubdiscuss#1{\if@cop@home\def\@pubdiscuss{#1}\fi} \def\@pubdiscuss{}%+1,+2,-d -- twostagejnltrue
@@ -2584,6 +2609,7 @@
 \fi
 \def\iftwocol#1#2{\if@twocolumn#1\else #2\fi}
 \let\hack\@firstofone
+\let\notforhtml\@firstofone
 \newcommand\@journalname{Journalname}
 \newcommand\@journalnameabbreviation{J. Name}
 \newcommand\@journalnameshort{JN}
@@ -2591,11 +2617,16 @@
 \newcommand\@journalurl{www.jn.net}
 \newcommand\@journalpublisher{Copernicus Publications}
 \newcommand\@journalcopyright{%
-  \copyright\ Author(s)\ \@cyear. %
+  %\copyright\ Author(s)\ \@cyear. %
   \if!\@texlicencestatement!%
     \CopernicusError{\string\texlicencestatement{} must have content}{Say, e.g., "\string\texlicencestatement{CC Attribution 4.0 License.}"}%
   \else
     \@texlicencestatement
+    \if!\@texlicencelogo!\else
+      \def\@optarg{width=1.5cm}%
+      \\[1mm]
+      \expandafter\expandafter\expandafter\includegraphics\expandafter\expandafter\expandafter[\expandafter\@optarg\expandafter]\expandafter{\@texlicencelogo}
+    \fi
   \fi}
 \newcommand\@journalstartyear{2013}
 \newcommand\@journallogo{Journallogo}

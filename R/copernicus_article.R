@@ -3,43 +3,41 @@
 #' Format for creating submissions to Copernicus journals.
 #'
 #' @inheritParams rmarkdown::pdf_document
-#' @param ... Additional arguments to \code{rmarkdown::pdf_document()}. \bold{Note}: \code{extra_dependencies} are not
+#' @param ... Additional arguments to [rmarkdown::pdf_document()]. **Note**: `extra_dependencies` are not
 #' allowed as Copernicus does not support additional packages included via \code{\\usepackage{}}.
-#' @param journal_name A regular expression to filter the by the journal name, see \code{pattern} in \code{\link[base]{grep}}; defaults to \code{*}.
+#' @param journal_name A regular expression to filter the by the journal name, see `pattern` in [base::grep()]; defaults to `*`.
 #'
 #' @return An R Markdown output format.
 #' @details This was adapted from
-#' \url{https://publications.copernicus.org/for_authors/manuscript_preparation.html}.
+#' <https://publications.copernicus.org/for_authors/manuscript_preparation.html>.
 #'
-#' An number of required and optional manuscript sections, e.g. \code{acknowledgements}, \code{competinginterests}, or \code{authorcontribution}, must be declared using the respective properties of the R Markdown header - see skeleton file.
+#' An number of required and optional manuscript sections, e.g. `acknowledgements`, `competinginterests`, or `authorcontribution`, must be declared using the respective properties of the R Markdown header - see skeleton file.
 #'
-#' \strong{Version:} Based on \code{copernicus_package.zip} in the version 6.2, 15 January 2021, using \code{copernicus.cls} in version 9.25.
+#' **Version:** Based on `copernicus_package.zip` in the version 6.3, 8 July 2021, using `copernicus.cls` in version 9.32, 7 July 2021.
 #'
-#' \strong{Copernicus journal abbreviations:} You can use the function \code{copernicus_journal_abbreviations()} to get the journal abbreviation for all journals supported by the Copernicus article template.
+#' **Copernicus journal abbreviations:** You can use the function `copernicus_journal_abbreviations()` to get the journal abbreviation for all journals supported by the Copernicus article template.
 #'
-#' \strong{Important note:} The online guidelines by Copernicus are the official resource.
+#' **Important note:** The online guidelines by Copernicus are the official resource.
 #' Copernicus is not responsible for the community contributions made to support the template in this package.
 #' Copernicus converts all typeset TeX files into XML, the expressions and markups have to be highly standardized.
 #' Therefore, please keep the following in mind:
 #'
-#' \itemize{
-#'   \item Please provide only one figure file for figures with several panels, and please do not use \code{\\subfloat} or similar commands.
-#'   \item Please use only commands in which words, numbers, etc. are within braces (e.g. \code{\\textrm{TEXT}} instead of \code{{\\rm TEXT}}).
-#'   \item For algorithms, please use the syntax given in template.tex or provide your algorithm as a figure.
-#'   \item Please do not define new commands.
-#'   \item Supported packages (\code{\\usepackage{}}) are already integrated in the \code{copernicus.cls}.  Please do not insert additional ones in your \code{*.tex} file.
-#'   \item If you opt for syntax highlighting for your preprint or other reasons, please do not forget to use
-#'    \code{highlight = NULL} for your final file upload once your manuscript was accepted for publication.
-#'   \item Spaces in labels (\code{\\label{}}) are not allowed; please make sure that no label name is assigned more than once.
-#'   \item Please do not use \code{\\paragraph{}}; only \code{\\subsubsection{}} is allowed.
-#'   \item It is not possible to add tables in colour.
-#' }
+#' * Please provide only one figure file for figures with several panels, and please do not use `\subfloat` or similar commands.
+#' * Please use only commands in which words, numbers, etc. are within braces (e.g. `\textrm{TEXT}` instead of `\rm TEXT`).
+#' * For algorithms, please use the syntax given in template.tex or provide your algorithm as a figure.
+#' * Please do not define new commands.
+#' * Supported packages (`\usepackage{}`) are already integrated in the `copernicus.cls`.  Please do not insert additional ones in your `.tex` file.
+#' * If you opt for syntax highlighting for your preprint or other reasons, please do not forget to use
+#'   `highlight = NULL` for your final file upload once your manuscript was accepted for publication.
+#' * Spaces in labels (`\label{}`) are not allowed; please make sure that no label name is assigned more than once.
+#' * Please do not use `\paragraph{}`; only `\subsubsection{}` is allowed.
+#' * It is not possible to add tables in colour.
 #'
-#' @note If you use \code{rmarkdown::pdf_document()}, all internal references (i.e. tables and figures) must use \code{\\ref\{\}} whereas with \code{bookdown::pdf_document2()}, you can additionally use \code{\\@@ref()}.
+#' @note If you use [rmarkdown::pdf_document()], all internal references (i.e. tables and figures) must use `\ref{}` whereas with [bookdown::pdf_document2()], you can additionally use `\@ref()`.
 #'
 #' @references
 #' Manuscript preparation guidelines for authors.
-#' \url{https://publications.copernicus.org/for_authors/manuscript_preparation.html}
+#' <https://publications.copernicus.org/for_authors/manuscript_preparation.html>
 #'
 #' @examples
 #' names(copernicus_journal_abbreviations())
