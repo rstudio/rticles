@@ -18,4 +18,6 @@ You can contribute in many ways:
 
 3.  Submit the [pull request](https://help.github.com/articles/using-pull-requests). It is ok to submit as draft in your are still working on it but would like some feedback from us. It always good to share in the open that you are working on it.
 
+4. You will be asked to check that you're PR meets some requirements. See the [PR template](https://pkgs.rstudio.com/rticles/PULL_REQUEST_TEMPLATE.html).
+
 We'll try to be as responsive as possible in reviewing and accepting pull requests. Appreciate your contributions very much!
