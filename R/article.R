@@ -418,3 +418,13 @@ tf_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
     "tf", keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
+
+#' @section \code{wellcomeor_article}: Format for creating submissions to
+#' Wellcome Open Research. Adapted from \url{https://www.overleaf.com/project/6131911644b635ad3aaa4cb2}.
+#' @export
+#' @rdname article
+wellcomeor_article <- function(..., keep_tex = TRUE, citation_package = 'default') {
+  pdf_document_format(
+    "wellcomeor", keep_tex = keep_tex, citation_package = citation_package, ...
+  )
+}

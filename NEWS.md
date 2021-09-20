@@ -1,5 +1,6 @@
 # rticles 0.21
 
+- New `wellcomeor_article()` for Wellcome Open Research articles
 - All templates have now the `$highlighting-macros$` variables required for Pandoc highlighting (#435).
 
 - Template for `tf_article()` gains a `classoption` variable (thanks, @statzhero, #434).
