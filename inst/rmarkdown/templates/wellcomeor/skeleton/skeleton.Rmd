@@ -13,6 +13,25 @@ keywords: |
 
 date: "`r Sys.Date()`"
 bibliography: sample.bib
+biblio-style: "unsrtnat"
+link-citations: TRUE
+# You can download the csl file if preferred and use it locally with `csl: elsevier-vancouver.csl`
+csl: https://www.zotero.org/styles/elsevier-vancouver
+output: 
+  rticles::wellcomeor_article:
+    citation_package: natbib
+---
+
+*Text based on Wellcome Open Research [Overleaf Latex
+template](https://www.overleaf.com/project/6131911644b635ad3aaa4cb2)*
+
+\bigskip 
+
+Please list all authors that played a significant role in the research involved
+in the article. Please provide full affiliation information (including full
+institutional address, ZIP code and e-mail address) for all authors, and
+identify who is/are the corresponding author(s).
+
 # You can download the csl file if preferred and use it locally with `csl: elsevier-vancouver.csl`
 csl: https://www.zotero.org/styles/elsevier-vancouver
 output: rticles::wellcomeor_article
@@ -153,3 +172,15 @@ to acknowledge from all those mentioned in the Acknowledgements section.
 Please do not list grant funding in this section.
 
 # References
+
+References can be listed in any standard referencing style that uses a numbering
+system(i.e. not Harvard referencing style), and should be consistent between
+references within a given article.
+
+Reference management systems such as Zotero provide options for exporting
+bibliographies as Bib\TeX{} files. Bib\TeX{} is a bibliographic tool that is
+used with \LaTeX{} to help organize the user's references and create a
+bibliography. This template contains an example of such a file,
+\texttt{sample.bib}, which can be replaced with your own. You can \LaTeX{}
+command  \verb|\cite| to create in-text citationsor by using
+RMarkdown/Bookdown's citations [@Smith:2012qr], and [@Smith:2013jd]
