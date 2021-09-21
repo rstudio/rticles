@@ -18,8 +18,10 @@ link-citations: TRUE
 # You can download the csl file if preferred and use it locally with `csl: elsevier-vancouver.csl`
 csl: https://www.zotero.org/styles/elsevier-vancouver
 output: 
-  rticles::wellcomeor_article:
+  bookdown::pdf_book:
+    base_format: rticles::wellcomeor_article
     citation_package: natbib
+    number_sections: FALSE
 ---
 
 *Text based on Wellcome Open Research [Overleaf Latex
@@ -32,20 +34,12 @@ in the article. Please provide full affiliation information (including full
 institutional address, ZIP code and e-mail address) for all authors, and
 identify who is/are the corresponding author(s).
 
-# You can download the csl file if preferred and use it locally with `csl: elsevier-vancouver.csl`
-csl: https://www.zotero.org/styles/elsevier-vancouver
-output: rticles::wellcomeor_article
----
-
-_Text based on Wellcome Open Research [Overleaf Latex template](https://www.overleaf.com/project/6131911644b635ad3aaa4cb2)_
-
-
 # Introduction
 
 The format of the main body of the article is flexible: it should be concise and
 in the format most appropriate to displaying the content of the article.
 
-Some examples of commonly used \LaTeX{}  commands and features are listed below,
+Some examples of commonly used \LaTeX{} commands and features are listed below,
 to help you get started.
 
 ## Sections
@@ -57,8 +51,9 @@ cross-references.
 ## Tables
 
 Use the table and tabledata commands for basic tables --- see
-Table~\ref{tab:widgets}, for example.
+Table \@ref(tab:widgets), for example.
 
+```{=tex}
 \begin{table}[h!]
   \hrule \vspace{0.1cm}
   \caption{\label{tab:widgets}An example of a simple table with caption.}
@@ -69,12 +64,19 @@ Table~\ref{tab:widgets}, for example.
     \row Richard & Miles & $2$ \\
   \end{tabledata}
 \end{table}
+```
 
-## Figures 
+Similarly, you can insert an R chunk and reference with 
+[Bookdown referencing](https://bookdown.org/yihui/bookdown/tables.html), i.e.,
+`\@ref(tab:label)`.
+
+## Figures
 
 You can upload a figure (JPEG, PNG or PDF) using the files menu. To include it
-in your document, use the includegraphics command (see the example below in the
-source code).
+in your document, use the includegraphics \LaTeX{} command (see the example
+below in the source code), or insert using an R chunk and reference with
+[Bookdown referencing](https://bookdown.org/yihui/bookdown/figures.html), i.e.,
+`\@ref(fig:label)`.
 
 Please give figures appropriate filenames eg: figure1.pdf, figure2.png.
 
@@ -85,17 +87,19 @@ more than 15 words. The legend itself should be succinct, while still explaining
 all symbols and abbreviations. Avoid lengthy descriptions of methods.
 
 For any figures reproduced from another publication (as long as appropriate
-permission has been obtained from the copyright holder —see under the heading
+permission has been obtained from the copyright holder ---see under the heading
 'Submission'), please include a line in the legend to state that: 'This figure
 has been reproduced with kind permission from [include original publication
 citation]'.
 
+```{=tex}
 \begin{figure} 
   \centering 
   \includegraphics[width=0.4\textwidth]{frog.jpg}
   \caption{\label{fig:your-figure}Your figure legend goes here; it should be
   succinct, while still explaining all symbols and abbreviations. } 
 \end{figure}
+```
 
 ## Mathematics
 
@@ -103,71 +107,71 @@ citation]'.
 sequence of independent and identically distributed random variables with
 $\text{E}[X_i] = \mu$ and $\text{Var}[X_i] = \sigma^2 < \infty$, and let $$S_n =
 \frac{X_1 + X_2 + \cdots + X_n}{n} = \frac{1}{n}\sum_{i}^{n} X_i$$ denote their
-mean. Then as $n$ approaches infinity, the random variables $\sqrt{n}(S_n - \mu)$ 
-converge in distribution to a normal $\mathcal{N}(0, \sigma^2)$.
+mean. Then as $n$ approaches infinity, the random variables
+$\sqrt{n}(S_n - \mu)$ converge in distribution to a normal
+$\mathcal{N}(0, \sigma^2)$.
 
 ## Lists
 
 You can make lists with automatic numbering \dots
 
-1. Like this,
-2. and like this.
+1.  Like this,
+2.  and like this.
 
 \dots or bullet points \dots
 
-- Like this,
--  and like this.
+-   Like this,
+-   and like this.
 
-# Methods 
+# Methods
 
-Methods should include a brief discussion of allowances made (if any)
-for controlling bias or unwanted sources of variability, and the limitations of
-the datasets.
+Methods should include a brief discussion of allowances made (if any) for
+controlling bias or unwanted sources of variability, and the limitations of the
+datasets.
 
-# Results 
+# Results
 
 This section is not essential for Web Tool papers.
 
-# Discussion 
+# Discussion
 
-The discussion should include the implications of the article
-results in view of prior work in this field.
+The discussion should include the implications of the article results in view of
+prior work in this field.
 
-# Conclusions 
+# Conclusions
 
-Please state what you think are the main conclusions that can be
-realistically drawn from the findings in the paper, taking care not to make
-claims that cannot be supported.
+Please state what you think are the main conclusions that can be realistically
+drawn from the findings in the paper, taking care not to make claims that cannot
+be supported.
 
-## Author contributions 
+## Author contributions
 
-In order to give appropriate credit to each author of an
-article, the individual contributions of each author to the manuscript should be
-detailed in this section. We recommend using author initials and then stating
-briefly how they contributed.
+In order to give appropriate credit to each author of an article, the individual
+contributions of each author to the manuscript should be detailed in this
+section. We recommend using author initials and then stating briefly how they
+contributed.
 
-## Competing interests 
+## Competing interests
 
-All financial, personal, or professional competing
-interests for any of the authors that could be construed to unduly influence the
-content of the article must be disclosed and will be displayed alongside the
-article.
+All financial, personal, or professional competing interests for any of the
+authors that could be construed to unduly influence the content of the article
+must be disclosed and will be displayed alongside the article.
 
-## Grant information 
+## Grant information
 
-Please state who funded the work discussed in this article,
-whether it is your employer, a grant funder etc. Please do not list funding that
-you have that is not relevant to this specific piece of research. For each
-funder, please state the funder’s name, the grant number where applicable, and
-the individual to whom the grant was assigned.
+Please state who funded the work discussed in this article, whether it is your
+employer, a grant funder etc. Please do not list funding that you have that is
+not relevant to this specific piece of research. For each funder, please state
+the funder's name, the grant number where applicable, and the individual to whom
+the grant was assigned.
 
-## Acknowledgements 
+## Acknowledgements
 
-This section should acknowledge anyone who contributed to
-the research or the article but who does not qualify as an author based on the
-criteria provided earlier (e.g. someone or an organisation that provided writing
-assistance). Please state how they contributed; authors should obtain permission
-to acknowledge from all those mentioned in the Acknowledgements section.
+This section should acknowledge anyone who contributed to the research or the
+article but who does not qualify as an author based on the criteria provided
+earlier (e.g. someone or an organisation that provided writing assistance).
+Please state how they contributed; authors should obtain permission to
+acknowledge from all those mentioned in the Acknowledgements section.
 
 Please do not list grant funding in this section.
 
