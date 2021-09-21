@@ -12,6 +12,14 @@
 \documentclass[10pt,a4paper,twocolumn]{article}
 \usepackage{WellcomeOR_styles}
 
+% hyperref required
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+
+% Pandoc requirement for specific list requirement
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
 %% Default: numerical citations
 \usepackage[numbers]{natbib}
 
