@@ -15,10 +15,20 @@
 % hyperref required
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 
+% Link coloring
+\hypersetup{$if(colorlinks)$
+            ,
+            colorlinks=true,
+            citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
+            urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
+            linkcolor=$if(linkcolor)$$linkcolor$$else$blue$endif$
+            $endif$
+}
+
+
 % Pandoc requirement for specific list requirement
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-
 
 %% Default: numerical citations
 \usepackage[numbers]{natbib}
@@ -29,6 +39,12 @@
 %% Uncomment these lines for author-year citations instead
 % \usepackage[round]{natbib}
 % \let\cite\citep
+
+% Pandoc toggle for numbering sections (defaults to be off)
+$if(numbersections)$
+$else$
+\setcounter{secnumdepth}{0}
+$endif$
 
 % Pandoc syntax highlighting
 $if(highlighting-macros)$
@@ -62,6 +78,7 @@ $if(csl-refs)$
 \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
 $endif$
 $for(header-includes)$
 $header-includes$
@@ -74,12 +91,16 @@ $if(titlenote)$
 \titlenote{$titlenote$}
 $endif$
 
-\author{
-  $for(authors)$
-  $authors.name$
-  \affil{$authors.affil$}
-  $endfor$
-}
+
+$for(author)$
+  \author{$author.name$}
+$endfor$
+
+$for(address)$
+  \affil[$address.code$]{$address.address$}
+$endfor$
+
+
 
 \maketitle
 \thispagestyle{fancy}

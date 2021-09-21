@@ -3,9 +3,14 @@ title: Wellcome Open Research Article Template
 titlenote: The title should be detailed enough for someone to know whether the article would be of interest to them, but also concise. Please ensure the broadness and claims within the title are appropriate to the content of the article itself.
 author:
   - name: Author Name1
-    affil: Address1
+    affilliation: 1
   - name: Author Name2
-    affil: Address2
+    affilliation: 2
+address:
+  - code: 1
+    address: Address1
+  - code: 2
+    address: Address2
 abstract: |
   Abstracts should be up to 300 words and provide a succinct summary of the article. Although the abstract should explain why the article might be interesting, care should be taken not to inappropriately over-emphasise the importance of the work described in the article. Citations should not be used in the abstract, and the use of abbreviations should be minimized. If you are writing a Research or Systematic Review article, please structure your abstract into Background, Methods, Results, and Conclusions.
 keywords: |
@@ -15,6 +20,7 @@ date: "`r Sys.Date()`"
 bibliography: sample.bib
 biblio-style: "unsrtnat"
 link-citations: TRUE
+colorlinks: TRUE
 # You can download the csl file if preferred and use it locally with `csl: elsevier-vancouver.csl`
 csl: https://www.zotero.org/styles/elsevier-vancouver
 output: 
