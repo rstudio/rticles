@@ -43,7 +43,7 @@ $endif$
 % If words are counted manually, put that number here. This does not include
 % figures and tables. This can also be used to avoid problems with texcount
 % program i.e. if one does not have it installed.
-\TotalWords{$wordcount$}
+$if(wordcount)$\TotalWords{$wordcount$}$endif$
 
 \begin{document}
 \maketitle
