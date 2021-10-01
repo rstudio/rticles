@@ -13,7 +13,7 @@
 \usepackage{xparse}
 $if(natbib)$
 \usepackage{natbib}
-\bibliographystyle{unsrtnat}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$unsrtnat$endif$}
 \setcitestyle{round}
 $endif$
 % \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}
