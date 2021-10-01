@@ -21,7 +21,8 @@ abstract: |
 keywords: ["Transportation", "Travel Behavior"]
 bibliography: mybibfile.bib
 biblio-style: unsrtnat
-linenumbers: true
+classoption:
+  - numbered #  When numbered option is activated, lines are numbered.
 #numbersections: true
 output: rticles::trb_article
 wordcount: 1176
