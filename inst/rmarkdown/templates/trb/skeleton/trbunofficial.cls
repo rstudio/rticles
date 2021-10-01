@@ -12,7 +12,7 @@
 % Official trb manual for authors:
 % http://onlinepubs.trb.org/onlinepubs/AM/InfoForAuthors.pdf
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{trbarticle}[2017/06/10 TRB latex template]
+\ProvidesClass{trbunofficial}[2017/06/10 TRB latex template]
 
 \LoadClass[titlepage, oneside, 12pt]{article}
 
