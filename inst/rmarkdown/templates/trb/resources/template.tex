@@ -36,6 +36,9 @@ $endif$
   $endfor$
 }
 
+\providecommand{\tightlist}{%
+   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
 % If necessary modify the number of words per table or figure default is set to
 % 250 words per table
 % \WordsPerTable{250}
@@ -44,6 +47,16 @@ $endif$
 % figures and tables. This can also be used to avoid problems with texcount
 % program i.e. if one does not have it installed.
 $if(wordcount)$\TotalWords{$wordcount$}$endif$
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+$for(include-before)$
+$include-before$
+$endfor$
 
 \begin{document}
 \maketitle
