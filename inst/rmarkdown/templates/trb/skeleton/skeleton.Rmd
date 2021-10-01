@@ -12,7 +12,7 @@ author:
     affiliation: State University
   - name: Derek Zoolander
     position: Professor
-    email: alice@example.com
+    email: derek@example.com
     affiliation: Some Institute of Technology
 runningheader: "Anonymous, Security, and Zoolander"
 abstract: |
