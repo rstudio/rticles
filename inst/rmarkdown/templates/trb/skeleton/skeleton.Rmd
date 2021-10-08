@@ -71,7 +71,7 @@ defined as outlined by the old TRB Author's Guide.
 The document is single-spaced in 12 point Times font. Times New Roman is a proprietary font and is therefore not available by installation in open-source software. While the differences between Times variants are negligible, Times New Roman itself can be used in Mac OSX by compiling under \verb1xelatex1.
 
 
-```{r figure-example, fig.cap="Generic plot."}
+```{r figure-example, fig.cap="Generic plot.", echo = TRUE}
 # Generate some sample data, then compute mean and standard deviation
 # in each group
 Speed <- cars$speed
