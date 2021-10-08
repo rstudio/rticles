@@ -40,8 +40,8 @@ $endif$
    \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 % If necessary modify the number of words per table or figure default is set to
-% 250 words per table
-% \WordsPerTable{250}
+% 250 words per table (default defined in cls)
+$if(wordspertable)$\WordsPerTable{$wordspertable$}$endif$
 
 % If words are counted manually, put that number here. This does not include
 % figures and tables. This can also be used to avoid problems with texcount
