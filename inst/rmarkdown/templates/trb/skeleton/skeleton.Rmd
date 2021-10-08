@@ -46,7 +46,7 @@ with \@ref(fig:figure-example).
 
 
 ## History
-David Pritchard posted the original versions of this template in 2009 and updated it in 2011, soon after TRB began allowing PDF submissions. Gregory Macfarlane made significant adaptations to it in March 2012, allowing for Sweave integration and automatic word and table counts. Ross Wang automated the total word count and made some formatting modifications in July 2015. Version 2.1.1 has been made available on GitHub in January, 2016.  Version 3.1 has been made available on Github (\url{https://github.com/chiehrosswang/TRB_LaTeX_rnw}) in June, 2017.  Versions 2.1.1 Lite and 3.1 Lite were made available on GitHub (\url{https://github.com/chiehrosswang/TRB_LaTeX_tex}) in June, 2017 for users who do not need R and Sweave functions provided in the original verions.  
+David Pritchard posted the original versions of this template in 2009 and updated it in 2011, soon after TRB began allowing PDF submissions. Gregory Macfarlane made significant adaptations to it in March 2012, allowing for Sweave integration and automatic word and table counts. Ross Wang automated the total word count and made some formatting modifications in July 2015. Version 2.1.1 has been made available on GitHub in January, 2016.  Version 3.1 has been made available on Github (<https://github.com/chiehrosswang/TRB_LaTeX_rnw>) in June, 2017.  Versions 2.1.1 Lite and 3.1 Lite were made available on GitHub (<https://github.com/chiehrosswang/TRB_LaTeX_tex>) in June, 2017 for users who do not need R and Sweave functions provided in the original versions.  
 Gregory Macfarlane created the `rticles` template in 2021.
 
 # Features
