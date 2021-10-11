@@ -1,12 +1,9 @@
 on:
   push:
-    branches:
-     - main
-     - master
+    branches: [main, master]
+    tags: ['*']
   pull_request:
-    branches:
-     - main
-     - master
+    branches: [main, master]
 
 name: pkgdown
 
@@ -20,7 +17,6 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: r-lib/actions/setup-r@v1
-        id: install-r
 
       - uses: r-lib/actions/setup-pandoc@v1
 
@@ -29,27 +25,12 @@ jobs:
           # install full prebuilt version
           TINYTEX_INSTALLER: TinyTeX
 
-      - name: Install pak and query dependencies
-        run: |
-          install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
-          saveRDS(pak::pkg_deps(".", dependencies = TRUE), ".github/r-depends.rds")
-        shell: Rscript {0}
-
-      - name: Cache R packages
-        uses: actions/cache@v2
+      - uses: r-lib/actions/setup-r-dependencies@v1
         with:
-          path: |
-            ${{ env.R_LIBS_USER }}/*
-            !${{ env.R_LIBS_USER }}/pak
-          key: macos-latest-${{ steps.install-r.outputs.installed-r-version }}-1-${{ hashFiles('.github/r-depends.rds') }}
-          restore-keys: macos-latest-${{ steps.install-r.outputs.installed-r-version }}-1-
-
-      - name: Install package and dependencies
-        run: |
-          pak::local_install_dev_deps(upgrade = TRUE, dependencies = c("all", "Config/Needs/website"))
-          pak::pkg_install("r-lib/pkgdown")
-          pak::pkg_install("rstudio/quillt")
-        shell: Rscript {0}
+          extra-packages: |
+            r-lib/pkgdown
+            rstudio/quillt
+          needs: website
 
       - name: Install package
         run: R CMD INSTALL .
