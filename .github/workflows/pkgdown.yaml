@@ -38,18 +38,7 @@ jobs:
       - name: Cache R packages
         uses: actions/cache@v2
         with:
-          path: |
-            ${{ env.R_LIBS_USER }}/*
-            !${{ env.R_LIBS_USER }}/pak
-          key: macos-latest-${{ steps.install-r.outputs.installed-r-version }}-1-${{ hashFiles('.github/r-depends.rds') }}
-          restore-keys: macos-latest-${{ steps.install-r.outputs.installed-r-version }}-1-
-
-      - name: Install package and dependencies
-        run: |
-          pak::local_install_dev_deps(upgrade = TRUE, dependencies = c("all", "Config/Needs/website"))
-          pak::pkg_install("r-lib/pkgdown")
-          pak::pkg_install("rstudio/quillt")
-        shell: Rscript {0}
+          needs: website
 
       - name: Install package
         run: R CMD INSTALL .
