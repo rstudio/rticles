@@ -20,7 +20,7 @@ contribute](#how-to-contribute) below.
 
 ## Book
 
-<a href="https://bookdown.org/yihui/rmarkdown/journals.html"><img src="https://bookdown.org/yihui/rmarkdown/images/cover.png" alt="R Markdown: The Definitive Guide" height="400"/></a>
+<a href="https://bookdown.org/yihui/rmarkdown/journals.html"><img class="book" src="https://bookdown.org/yihui/rmarkdown/images/cover.png" alt="R Markdown: The Definitive Guide" height="400"/></a>
 
 ## Installation
 
