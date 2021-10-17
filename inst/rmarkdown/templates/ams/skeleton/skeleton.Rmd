@@ -1,5 +1,5 @@
 ---
-twocol: TRUE  #  Use FALSE for submission. 
+twocol: FALSE  #  Use FALSE for submission. 
 title: Title here
 authors:
   - {name: Author One, aff: a}
