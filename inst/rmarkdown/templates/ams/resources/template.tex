@@ -55,17 +55,30 @@ $endfor$
 %\aff{d}{Fourth Affiliation}
 %}
 
+% Credit to https://stackoverflow.com/a/67609365 for different last-author case.
 \authors{
-$for(authors)$
-$authors.name$$if(authors.current)$\thanks{$authors.current$}$endif$,\aff{$authors.aff$}$if(authors.email)$\correspondingauthor{$authors.name$,$authors.email$}$endif$
+$if(authors/allbutlast)$
+$for(authors/allbutlast)$
+$it.name$$if(it.current)$\thanks{$it.current$}$endif$,\aff{$it.aff$}$if(it.email)$\correspondingauthor{$it.name$, $it.email$}$endif$
 $endfor$
-} %% FIXME, template includes "and" before last author
+and~
+$endif$
+$for(authors/last)$
+$it.name$$if(it.current)$\thanks{$it.current$}$endif$\aff{$it.aff$}$if(it.email)$\correspondingauthor{$it.name$, $it.email$}$endif$
+$endfor$
+}
 
+% Credit to https://stackoverflow.com/a/67609365 for different last-affiliation case.
 \affiliation{
-$for(affiliations)$
-\aff{$affiliations.aff$}{$affiliations.name$}\\
+$if(affiliations/allbutlast)$
+$for(affiliations/allbutlast)$
+\aff{$it.aff$}{$it.name$}\\
 $endfor$
-} %% FIXME, does the extra newline after the last affiliation matter?
+$endif$
+$for(affiliations/last)$
+\aff{$it.aff$}{$it.name$}
+$endfor$
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ABSTRACT

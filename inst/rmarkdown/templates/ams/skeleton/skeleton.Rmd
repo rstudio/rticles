@@ -9,7 +9,7 @@ authors:
   - {name: Author Five, current: "Author Five's current affiliation: NCAR, Boulder, Colorado", aff: c} 
   - {name: Author Six, aff: d} 
   - {name: Author Seven, aff: d} 
-  - {name: Author Eight, aff: a,d}
+  - {name: Author Eight, aff: "a,d"}
 affiliations: # Match aff to aff in authors
   - {aff: a, name: First Affiliation}
   - {aff: b, name: Second Affiliation}
