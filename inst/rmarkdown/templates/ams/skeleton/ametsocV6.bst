@@ -1,6 +1,6 @@
-%%  Updated 7 May 2014
+%%  Updated 1 August 2021
 %%
-%% This is file `ametsoc_2014.bst',
+%% This is file `ametsocV6.bst',
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
@@ -10,7 +10,7 @@
 %% *** Bibliography style for all AMS Journals and BAMS ***
 %% 
 %% Copyright 1994-2005 Patrick W Daly
-%% Updated 2014 Nicole Rietmann
+%% Updated 2021 Nicole Rietmann
  % ===============================================================
  % IMPORTANT NOTICE:
  % This bibliographic style (bst) file has been generated from one or
@@ -1725,9 +1725,9 @@ FUNCTION {begin.bib}
   write$ newline$
   "\expandafter\ifx\csname urlstyle\endcsname\relax"
   write$ newline$
-  "  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else"
+  "  \providecommand{\doi}[1]{https://doi.org/\discretionary{}{}{}#1}\else"
   write$ newline$
-  "  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup \urlstyle{rm}\Url}\fi"
+  "  \providecommand{\doi}{https://doi.org/\discretionary{}{}{}\begingroup \urlstyle{rm}\Url}\fi"
   write$ newline$
   "\providecommand{\eprint}[2][]{\url{#2}}"
   write$ newline$

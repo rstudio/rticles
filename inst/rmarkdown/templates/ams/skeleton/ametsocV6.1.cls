@@ -1,10 +1,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Version 5.0, 2 January 2020
-% ametsoc.cls
+% Version 6.1, 1 September 2021
+% ametsocV6.1.cls
 % Article Class for >> AMS Journals <<
 % 
 %
-% Copyright 2020, American Meteorological Society
+% Copyright 2021, American Meteorological Society
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
@@ -16,7 +16,7 @@
 %
 % This work has the LPPL maintenance status `maintained'.
 % The Current Maintainer of this work is the American Meteorological Society.
-% This work consists of the files ametsocV5.cls, ametsoc2014.bst, amsdocs.pdf, and AMS_Refs.pdf.
+% This work consists of the files ametsocV6.1.cls, ametsocV6.bst, amsdocsV6.1.pdf, and AMS_RefsV6.pdf.
 %%%%%%%%%%%%%%%%%%%%%%%
 %% Options
 
@@ -24,8 +24,8 @@
 
 \newif\ifdraft
 \DeclareOption{draft}{\global\drafttrue
-\renewcommand\baselinestretch{2.25}
-\def\arraystretch{2.15}
+\renewcommand\baselinestretch{1.75}
+\def\arraystretch{1.5}
 \@twocolumnfalse
 \setlength\overfullrule{5pt}}
 
@@ -175,7 +175,7 @@
     \def\@oddhead{\vbox{\ifdraft\else\iffirstpage\global\firstpagefalse
 \vtop to0pt{\vss
 \rlap{\hbox to\textwidth{\hfill\color{gray}\small
-Generated using the official AMS \LaTeX\ template v5.0 two-column layout. This work has been submitted for publication. 
+Generated using the official AMS \LaTeX\ template v6.1 two-column layout. This work has been submitted for publication. 
 \\ Copyright in this work may be transferred without further notice, and this version may no longer be accessible.\hfill}}
 \vskip3pt
 \hrule width \textwidth
@@ -185,7 +185,7 @@ Generated using the official AMS \LaTeX\ template v5.0 two-column layout. This w
 \vtop to 0pt{\vss
 \rlap{\hbox to\textwidth{\footnotesize\sc\rlap{\currvolume}\hfill
 %%%
-\uppercase{AMS Journal Name}
+%\uppercase{AMS Journal Name}
 %%%
 \hfill
 \llap{\currdate}}}
@@ -203,7 +203,7 @@ Generated using the official AMS \LaTeX\ template v5.0 two-column layout. This w
     \let\@evenfoot\@oddfoot
     \def\@evenhead{{\ifdraft\hfill\else\normalsize\thepage
 \bigfootnotesize\sc\hfill 
-\uppercase{AMS Journal Name}
+%\uppercase{AMS Journal Name}
 \hfill \currvolume\fi}}%
     \def\@oddhead{{\ifdraft\hfill\else\bigfootnotesize\sc\currdate\hfill \therunningheadauthors\hfill \normalsize\thepage
 %\currvolume
@@ -217,7 +217,7 @@ Generated using the official AMS \LaTeX\ template v5.0 two-column layout. This w
 \newcommand\refname{References}
 \newcommand\figurename{{\sc Fig.}}
 \newcommand\tablename{{\sc Table}}
-\newcommand\appendixname{Appendix}
+%\newcommand\appendixname{Appendix}
 
 %%%%%%%%%%%%%%%
 %% margin notes positioning
@@ -530,7 +530,6 @@ Generated using the official AMS \LaTeX\ template v5.0 two-column layout. This w
 %% Width of ruled lines used by \fbox:
 \setlength\fboxrule{.4\p@}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Declaring counters
 
@@ -552,7 +551,7 @@ Generated using the official AMS \LaTeX\ template v5.0 two-column layout. This w
 %% Choices for figure float placement if [] hasn't been
 %% used for \begin{figure} 
 \def\fps@figure{tbp}
-\def\draftspace{\renewcommand\baselinestretch{2.25}}
+\def\draftspace{\renewcommand\baselinestretch{1.75}}
 \def\twocolspace{\renewcommand\baselinestretch{1}}
 %\renewcommand\baselinestretch{2.25}
 \ifdraft\draftspace\else\twocolspace\fi
@@ -573,8 +572,8 @@ Generated using the official AMS \LaTeX\ template v5.0 two-column layout. This w
 %% Tables
 \newcounter{table}
 
-%% Choices for figure float placement if [] hasn't been
-%% used for \begin{figure} 
+%% Choices for table float placement if [] hasn't been
+%% used for \begin{table} 
 \def\fps@table{tbp}
 
 %\renewcommand\baselinestretch{2.25}
@@ -662,6 +661,10 @@ Generated using the official AMS \LaTeX\ template v5.0 two-column layout. This w
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% All the usepackages included in this style %%%%%%%%%%%%%%%%%
 \usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amssymb,bm}
+\usepackage{mathptmx}%{times}
+\usepackage{newtxtext}
+\usepackage{newtxmath}
 \usepackage{epstopdf}
 \usepackage[scaled=.97]{helvet} %% to get bold helvetica
 \usepackage{fancyhdr}
@@ -673,11 +676,14 @@ Generated using the official AMS \LaTeX\ template v5.0 two-column layout. This w
 \usepackage{multicol}
 \usepackage{ifthen}
 \usepackage{rotating}
-%% Start line numbers immediately if in draft mode,
-%% use endfloat commands to put tables and figures at
-%% end of paper.
+\usepackage{appendix}
+%\usepackage{mdframed}
+%\usepackage{cuted}
+\usepackage{setspace}
+
+
+%% Start line numbers immediately if in draft mode
 \ifdraft
-\usepackage[nomarkers,tablesfirst]{endfloat}
 \usepackage{lineno}
 \linenumbers
 \fi
@@ -691,28 +697,29 @@ Generated using the official AMS \LaTeX\ template v5.0 two-column layout. This w
 \def\authors#1{\def\theauthors{#1}}
 \def\author#1{\def\theauthors{#1}}
 
-\newcounter{extraauth}
+%\newcounter{extraauth}
 \newcounter{loopnum}
 
-\def\extraauthor#1{\global\advance\c@extraauth by 1
-\expandafter\gdef\csname extraauthors\the\c@extraauth\endcsname{#1}}
-
-\let\extraauthors\extraauthor
-
-\def\extraaffil#1{\expandafter\gdef\csname extraaffil\the\c@extraauth\endcsname{#1}}
-
+%\def\extraauthor#1{\global\advance\c@extraauth by 1
+%\expandafter\gdef\csname extraauthors\the\c@extraauth\endcsname{#1}}
+%
+%\let\extraauthors\extraauthor
+%
+%\def\extraaffil#1{\expandafter\gdef\csname extraaffil\the\c@extraauth\endcsname{#1}}
+\newcommand\aff[1]{\textsuperscript{\rm#1}\,}
 \def\affiliation#1{\def\theaffiliation{#1}}
 
-\let\theextraaffil\relax
-\let\theextraauthor\relax
-\let\theextraauthors\relax
+%\let\theextraaffil\relax
+%\let\theextraauthor\relax
+%\let\theextraauthors\relax
 
 \def\abstract#1{\def\theabstract{%
 \centerline{\vtop{\ifdraft\normalsize\else \bigfootnotesize\fi\linewidth 5.25cm
 \ifdraft\internallinenumbers\fi
-\noindent\hskip8pt\relax #1\vskip1sp}}}}
+\noindent{ABSTRACT:}\;\;\relax #1\vskip1sp}}}}
 
 \let\dothanks\relax
+
 
 \def\correspondingauthor#1{%
 \thanks{\ifdraft\internallinenumbers\normalsize\fi
@@ -728,7 +735,55 @@ Generated using the official AMS \LaTeX\ template v5.0 two-column layout. This w
 %\gdef\xemail#1{\gdef\theemail{{\ifdraft\normalsize\else\footnotesize\fi E-mail: #1}}\egroup}
 %}
 
-\def\articledoi#1{\def\thedoi{{\ifdraft\normalsize\else\scriptsize\fi\sc DOI: #1}}}
+%\def\articledoi#1{\def\thedoi{{\ifdraft\normalsize\else\scriptsize\fi\sc DOI: #1}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Significance statement/Capsule
+
+
+%\newenvironment{sig}
+%{
+%%\begin{strip}
+%\begin{mdframed}[backgroundcolor=white, linecolor=white]
+%{SIGNIFICANCE STATEMENT:}\;}
+%{
+%\end{mdframed}
+%%\end{strip}
+%}
+%
+%\newenvironment{twocolsig}
+%{
+%\begin{strip}
+%\vspace*{-2cm}
+%\begin{mdframed}[backgroundcolor=white, linecolor=white]
+%{SIGNIFICANCE STATEMENT:}\;}
+%{
+%\end{mdframed}
+%\vspace*{-3mm}
+%\end{strip}
+%}
+%
+%\newenvironment{capsule}
+%{
+%%\begin{strip}
+%\begin{mdframed}[backgroundcolor=white, linecolor=white]
+%{CAPSULE:}\;}
+%{
+%\end{mdframed}
+%%\end{strip}
+%}
+%\newenvironment{twocolcapsule}
+%{
+%\begin{strip}
+%\vspace*{-2cm}
+%\begin{mdframed}[backgroundcolor=white, linecolor=white]
+%{CAPSULE:}\;}
+%{
+%\end{mdframed}
+%\vspace*{-3mm}
+%\end{strip}
+%}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% \maketitle, \@maketitle, for beginning of article
@@ -743,41 +798,41 @@ Generated using the official AMS \LaTeX\ template v5.0 two-column layout. This w
 \ifx\expandafter\csname thanks\the\thanksnum\endcsname\relax
 \else
 \vskip1sp
-\noindent\llap{$^{\@fnsymbol{\the\thanksnum}}$}\csname thanks\the\thanksnum\endcsname
+\noindent\llap{}\csname thanks\the\thanksnum\endcsname
 \global\advance\thanksnum by 1\fi
 \repeat
 \ifx\expandafter\csname thanks\the\thanksnum\endcsname\relax
 \else
 \vskip1sp
-\noindent\llap{$^{\@fnsymbol{\the\thanksnum}}$}\csname thanks\the\thanksnum\endcsname\ \vskip1sp\fi
+\noindent\llap{}\csname thanks\the\thanksnum\endcsname\ \vskip1sp\fi
 }
 
 
 %% allows multiple \extraauthor and \extraaffil
 
-\def\extraloop{\c@loopnum=\c@extraauth
-\c@extraauth=1\relax
-\loop
-\ifnum\c@extraauth<\c@loopnum
-\ifx\expandafter\csname extraauthors\the\c@extraauth\endcsname\relax
-\else
-\vskip12pt
-\ifdraft\rm\else\sc\fi
-\csname extraauthors\the\c@extraauth\endcsname
-\vskip3pt
-{\it
-\csname extraaffil\the\c@extraauth\endcsname}
-\global\advance\c@extraauth by 1\fi
-\repeat
-\ifx\expandafter\csname extraauthors\the\c@extraauth\endcsname\relax
-\else
-\vskip12pt
-\ifdraft\rm\else\sc\fi
-\csname extraauthors\the\c@extraauth\endcsname
-\vskip3pt
-{\it \csname extraaffil\the\c@extraauth\endcsname}
-\fi
-}
+%\def\extraloop{\c@loopnum=\c@extraauth
+%\c@extraauth=1\relax
+%\loop
+%\ifnum\c@extraauth<\c@loopnum
+%\ifx\expandafter\csname extraauthors\the\c@extraauth\endcsname\relax
+%\else
+%\vskip12pt
+%\ifdraft\rm\else\sc\fi
+%\csname extraauthors\the\c@extraauth\endcsname
+%\vskip3pt
+%{\it
+%\csname extraaffil\the\c@extraauth\endcsname}
+%\global\advance\c@extraauth by 1\fi
+%\repeat
+%\ifx\expandafter\csname extraauthors\the\c@extraauth\endcsname\relax
+%\else
+%\vskip12pt
+%\ifdraft\rm\else\sc\fi
+%\csname extraauthors\the\c@extraauth\endcsname
+%\vskip3pt
+%{\it \csname extraaffil\the\c@extraauth\endcsname}
+%\fi
+%}
 
 %% Makes title on first page of article, 
 %% allows switches for draft/twocol mode
@@ -785,8 +840,8 @@ Generated using the official AMS \LaTeX\ template v5.0 two-column layout. This w
 \newcommand\maketitle{\par
 \global\firstpagetrue
 \thispagestyle{fancy}
-\lhead{\color{gray}Generated using the official AMS \LaTeX\ template v5.0 two-column layout. This work has been submitted for publication. Copyright in this work may be transferred without further notice, and this version may no longer be accessible.}
-\ifdraft\lhead{\hfill\color{gray} Generated using the official AMS \LaTeX\ template v5.0 \hfill} \fi
+\lhead{\color{gray}Generated using the official AMS \LaTeX\ template v6.1 two-column layout. This work has been submitted for publication. Copyright in this work may be transferred without further notice, and this version may no longer be accessible.}
+\ifdraft\lhead{\hfill\color{gray} Generated using the official AMS \LaTeX\ template v6.1 \hfill} \fi
 \chead{}
 \rhead{}
 \lfoot{}
@@ -795,7 +850,7 @@ Generated using the official AMS \LaTeX\ template v5.0 two-column layout. This w
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
   \begingroup
-    \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
+    \renewcommand\thefootnote{}%
     \def\@makefnmark{\rlap{\@textsuperscript{\normalfont\@thefnmark}}}%
      \long\def\@makefntext##1{\parindent 1em\footnotesize\noindent
             \hb@xt@1.8em{%
@@ -833,7 +888,6 @@ Generated using the official AMS \LaTeX\ template v5.0 two-column layout. This w
   \begin{center}%
 \ifdraft
 \def\thanks##1{\global\advance\thanksnum by 1
-$^{\@fnsymbol{\the\thanksnum}}$%
 \expandafter\gdef\csname thanks\the\thanksnum\endcsname{##1}}
 \fi%
     {
@@ -848,9 +902,9 @@ $^{\@fnsymbol{\the\thanksnum}}$%
 \theaffiliation
 \ifdraft\normalsize\fi
 %%
-{\normalsize
-\extraloop
-}\vskip5pt
+%{\normalsize
+%\extraloop
+%}\vskip5pt
 %\fi
 %%
 \vskip14pt
@@ -866,8 +920,8 @@ $^{\@fnsymbol{\the\thanksnum}}$%
 \thanksloop
 \dothanks
 \eject\fi
-\centerline{\ifdraft\normalsize\else\bigfootnotesize\fi\sc ABSTRACT}
-\vskip7pt
+%\centerline{\ifdraft\normalsize\else\bigfootnotesize\fi\sc ABSTRACT}
+%\vskip7pt
 \theabstract
 \vskip17pt
 \ifdraft\newpage\fi
@@ -918,41 +972,42 @@ $^{\@fnsymbol{\the\thanksnum}}$%
 \def\listtablename{\uppercase{List of Tables}}
 
 %% needed for draft version
-\newcommand\listoffigures{%
-    \section*{\listfigurename
-      \@mkboth{\MakeUppercase\listfigurename}%
-              {\MakeUppercase\listfigurename}}%
-\baselineskip=18pt
-\normalsize
-    \@starttoc{lof}%
-    }
-
-\newcommand\listoftables{%
-    \section*{\listtablename
-      \@mkboth{\MakeUppercase\listtablename}%
-              {\MakeUppercase\listtablename}}%
-\baselineskip=18pt
-\normalsize
-    \@starttoc{lot}%
-    }
+%\newcommand\listoffigures{%
+%    \section*{\listfigurename
+%      \@mkboth{\MakeUppercase\listfigurename}%
+%              {\MakeUppercase\listfigurename}}%
+%\baselineskip=18pt
+%\normalsize
+%    \@starttoc{lof}%
+%    }
+%
+%\newcommand\listoftables{%
+%    \section*{\listtablename
+%      \@mkboth{\MakeUppercase\listtablename}%
+%              {\MakeUppercase\listtablename}}%
+%\baselineskip=18pt
+%\normalsize
+%    \@starttoc{lot}%
+%    }
 
 %% Handle table and figure captions somewhat differently; put
 %% in line numbers when in draft mode, change font size for draft mode.
 
-\def\appendcaption#1#2{\ifdraft
-\ifx\@captype\xtable 
-\@makecaption{Table #1}{#2}
-  \addcontentsline{\csname ext@table\endcsname}{table}%
-    {\protect\numberline{#1}{\ignorespaces #2}}%
-\else
-\@makecaption{Fig. #1}{#2}
-  \addcontentsline{\csname ext@figure\endcsname}{figure}%
-    {\protect\numberline{#1}{\ignorespaces #2}}%
-\fi
-\else
-\caption{#2}
-\fi
-}
+%\def\appendcaption#1#2{\ifdraft
+%\ifx\@captype\xtable 
+%\@makecaption{Table #1}{#2}
+%  \addcontentsline{\csname ext@table\endcsname}{table}%
+%    {\protect\numberline{#1}{\ignorespaces #2}}%
+%\else
+%\@makecaption{Fig. #1}{#2}
+%  \addcontentsline{\csname ext@figure\endcsname}{figure}%
+%    {\protect\numberline{#1}{\ignorespaces #2}}%
+%\fi
+%\else
+%\caption{#2}
+%\fi
+%}
+
 
 \def\xtable{table}
 \long\def\@makecaption#1#2{%
@@ -983,6 +1038,8 @@ $^{\@fnsymbol{\the\thanksnum}}$%
 \ifx\@captype\xtable 
   \vskip\belowcaptionskip\fi}
 
+
+
 %% make section heads end with a period.
 \def\@seccntformat#1{\csname the#1\endcsname}
 
@@ -991,8 +1048,8 @@ $^{\@fnsymbol{\the\thanksnum}}$%
 
 \def\datastatement{\paragraph*{Data availability statement.}}
 
-\def\capsule{\paragraph*{Capsule summary.}}
-\def\statement{\paragraph*{Significance statement.}}
+\def\capsule{\paragraph*{\rm CAPSULE:}}
+\def\statement{\paragraph*{\rm SIGNIFICANCE STATEMENT:}}
 
 %% tables, to make correct space around the horizontal lines at the
 %% top, underneath the column headers, and at the bottom of the table.
@@ -1019,6 +1076,7 @@ $^{\@fnsymbol{\the\thanksnum}}$%
 %%% figures and tables are sent to the end of the paper.
 %%% These terms help format the list of tables and list of figures nicely.
 
+
 \def\fignumberline#1#2{\bgroup
 \normaltextsize\parindent=0pt\leftskip=42pt\noindent\hskip-42pt\hbox to 42pt{\bf Fig.~#1.\hfill}%
 \advance\hsize -42pt
@@ -1039,7 +1097,7 @@ $^{\@fnsymbol{\the\thanksnum}}$%
 \def\currpage{#2}#1\vskip12pt}
 
 %% Make meaning different depending on whether in draft or twocol mode.
-\def\thanks#1{\footnotemark\,
+\def\thanks#1{
     \protected@xdef\@thanks{\@thanks
         \protect\footnotetext[\the\c@footnote]{%
 \ifdraft\noexpand\internallinenumbers\fi#1}}%
@@ -1090,12 +1148,12 @@ $^{\@fnsymbol{\the\thanksnum}}$%
 \ifthenelse{\equal{#1}{1}}%
 {\renewcommand\theequation{A\arabic{equation}}%
 \setcounter{equation}{0}% reset counter
-\ifdraft\else
+%\ifdraft\else
 \setcounter{figure}{0}% reset counter
 \setcounter{table}{0}% reset counter
 \renewcommand\thefigure{A\arabic{figure}}
 \renewcommand\thetable{A\arabic{table}}
-\fi
+%\fi
 \setcounter{section}{0}% reset counter
 \setcounter{subsection}{0}% reset counter
 \renewcommand\thesection{A\arabic{section}}
@@ -1106,15 +1164,18 @@ $^{\@fnsymbol{\the\thanksnum}}$%
 \setcounter{equation}{0}% reset counter
 \setcounter{section}{0}% reset counter
 \setcounter{subsection}{0}% reset counter
-\ifdraft\else
+\setcounter{figure}{0}% reset counter
+\setcounter{table}{0}% reset counter
+%\ifdraft\else
 \renewcommand\thefigure{#1\arabic{figure}}
 \renewcommand\thetable{#1\arabic{table}}
-\fi
+%\fi
 \renewcommand\thesection{#1\arabic{section}}
 \begin{center}%
 {\textnormal APPENDIX #1}%
 \end{center}}
 }%
+
 
 
 

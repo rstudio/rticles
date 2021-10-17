@@ -1,27 +1,28 @@
 ---
-twocol: FALSE  #  Use FALSE for submission. 
+twocol: TRUE  #  Use FALSE for submission. 
 title: Title here
-author1: 
-  name: Author One 
-  email: email adress
-author2: 
-  name: Author Two 
-  affiliation: "Current affiliation: NCAR, Boulder, Colorado."
-affiliation: "American Meteorological Society,Boston, Massachusetts"
-extra_authors: 
-  - name: Extra Author
-    affiliation: Affiliation, City, State/Province, Country 
+authors:
+  - {name: Author One, aff: a}
+  - {name: Author Two, aff: a} 
+  - {name: Author Three, aff: b}   
+  - {name: Author Four, aff: a} 
+  - {name: Author Five, current: "Author Five's current affiliation: NCAR, Boulder, Colorado", aff: c} 
+  - {name: Author Six, aff: d} 
+  - {name: Author Seven, aff: d} 
+  - {name: Author Eight, aff: a,d}
+affiliations: # Match aff to aff in authors
+  - {aff: a, name: First Affiliation}
+  - {aff: b, name: Second Affiliation}
+  - {aff: c, name: Third Affiliation}
+  - {aff: d, name: Fourth Affiliation}
 abstract: |
   Enter the text of your abstract here. This is a sample American Meteorological Society (AMS) \LaTeX\ template.  This document provides authors with instructions on the use of the AMS \LaTeX\ template.  Authors should refer to the file amspaper.tex to review the actual \LaTeX\ code used to create this document. The template.tex file should be modified by authors for their own manuscript.
 statement: |
-  An optional plain language summary suitable for wider readership that provides additional context for why the work is relevant to science and society. It should be concise (≤120 words) and authors should follow the guidelines for significance statements (\url{https://www.ametsoc.org/index.cfm/ams/publications/authors/journal-and-bams-authors/significance-statements/}) (currently MWR,WAF, and WCAS only).
+  Enter significance statement here, no more than 120 words. See \url{www.ametsoc.org/index.cfm/ams/publications/author-information/significance-statements/} for details.
 capsule: |
-   A short (20-30 words maximum) capsule summary of your article (for BAMS only).
+   Enter BAMS capsule here, no more than 30 words. See \url{www.ametsoc.org/index.cfm/ams/publications/author-information/formatting-and-manuscript-components/\#capsule} for details
 bibliography: references.bib
-output: 
-  rticles::ams_article:
-    latex_engine: xelatex
-  
+output: rticles::ams_article
 ---
 
 ```{r setup, include=FALSE}
@@ -30,173 +31,432 @@ knitr::opts_chunk$set(fig.path = "",     # AMS required
                       echo = FALSE)      # Don't show R code   
 ```
 
-
-# Introduction
-
-This document will provide authors with the basic American Meteorological Society (AMS) formatting guidelines. This document was created using \LaTeX\ and demonstrates how to use the \LaTeX\ template when submitting a manuscript to the AMS.  The following sections will outline the guidelines and formatting for text, math, figures, and tables while using \LaTeX\/ for a submission to the AMS. An attempt to compile amspaper.tex should be made before using the template. The files have been tested on Windows, Linux, and Mac OS using \TeX\ Live 2019 (available online at \url{http://www.tug.org/texlive/}). Feedback and questions should be sent to latex@ametsoc.org. Additional information is available on the AMS \LaTeX\ Submission Info web page (\url{http://www2.ametsoc.org/ams/index.cfm/publications/authors/journal-and-bams-authors/author-resources/latex-author-info/}).
-
-Authors should use the empty template.tex to begin their paper. A valuable source of \LaTeX\ information is the {TeX Frequently Asked Questions} page (available online at \url{faq.tug.org}).
-
-# Formatting text and sections
-
-The text should be divided into sections, each with a separate heading and consecutive numbering. Note, however, that single secondary, tertiary, andquaternary sections remain unnumbered. Each section heading should be placed on a separate line using the appropriate \LaTeX\ commands. 
-
-## Secondary heading {-}
-
-Secondary headings labeled with letters are formatted using `## Heading {-}` for a single subsection within a section or `## Heading` for multiple subsections within one section.
-
-### Tertiary headings {-}
-
-Tertiary headings are formatted using `### Heading {-}` for single a subsubsection within a subsection or `### Heading` for multiple subsubsections within a subsection. 
-
-#### Quaternary headings {-}
-
-Quaternary headings are formatted using `#### Heading {-}` for a single paragraph within a subsubsection or `#### Heading` for multiple paragraphs within a subsection.
-
-# Citations
-
-Citations to standard references in text should consist of the name of the author and the year of publication, for example, [@poe12] or @poe12 using `[@poe12]` or `@poe12`, respectively. A variety of citation formats can be used with the natbib package; however, the AMS prefers that authors use only these commands. References should be entered in the references.bib file. For a thorough discussion of how to enter references into the references.bib database file following AMS style, please refer to the \textbf{AMS\_RefsV5.pdf} document included in the sample documents available here: \url{https://www.ametsoc.org/ams/index.cfm/publications/authors/journal-and-bams-authors/latex-author-info/}
-
-
-# Formatting math
-
-The following sections will outline the basic formatting rules for mathematical symbols and units.  In addition, a review of the amspaper.tex file will show how this is done with the use of \LaTeX\ commands.  The AMS template provides the American Mathematical Society math, font, symbol, and boldface packages for use in math mode.
-
-
-## Mathematical symbols
-
-Symbols must be of the same font style both in text discussion and in displayed equations or terms (and figures should be prepared to match). Scalar single-character symbols are set italic, Greek, or script. Examples are $u$, $L$ [note that $\upsilon$ (Greek upsilon) is used instead of \textit{v} (italic ``vee'') to avoid confusion with $\nu$ (Greek nu) often used for viscosity; this is handled automatically when in \LaTeX\ math mode], $w$, $x$, $y$, $z$, $f$, $g$, $r$, indices such as $i$ or $j$, and constants such as $C_D$, $k$, or $K$. Multiple-character scalar variables, abbreviations, nondimensional numbers, and acronyms for variables are set regular nonitalic: $\mathrm{LWC}$, $\mathrm{Re}$, $\mathrm{Ro}$, $\mathrm{BT}$, $\mathrm{abs}$, $\mathrm{obs}$, $\mathrm{max}$, $\mathrm{min}$, $\mathrm{Re}$/$\mathrm{Im}$ (real/imaginary), etc. For vectors, use boldface nonitalic Times Roman as in $\mathbf{V}$, $\mathbf{v}$, or $\mathbf{x}$, and $\mathbf{i}$, $\mathbf{j}$, and $\mathbf{k}$ unit vectors. Do not use the \LaTeX\ $\backslash$vec command to denote vectors. For matrix notation, use nonitalic boldface Arial (or sans serif) font as in $\bm{\mathsf{A}}$, $\bm{\mathsf{B}}$, or $\bm{\mathsf{M}}$.  All mathematical operator abbreviations/acronyms are set lowercase regular Roman font, except $O$ (on the order of): $\sin$, $\cos$, $\tan$, $\tanh$, $\mathrm{cov}$, $\Pr$ (for probability; note same as Prandtl number), $\mathrm{const}$ (for constant), $\mathrm{c.c.}$ (complex conjugate).
-
-## Units
-
-Units are always set on a single line with a space separating the denominator, which is set with a superscript $-1$, $-2$, and so on, rather than using a slash for "per." Examples are g kg$^{-1}$, m$^2$ s$^{-1}$, W m$^{-2}$, g m$^{-3}$, and m s$^{-1}$ (note that ms$^{-1}$ is the unit for "per millisecond").
-
-## Equations
-
-Brief equations or terms set inline in text must be set as a single-line expression because page proofs are not double spaced, for example, $\rho^{-1}p/x$ or $(1/{\rho})p/x$ or $(a-b)/(c+d)$; that is, use a superscript $-1$ for the denominator. In case of a more complicated term or equation, it should be set as an unnumbered display equation, such as
-
-$$
-x=\frac{2b\pm\sqrt{b^{2}-4ac}}{2c}.
-$$
-
-Otherwise, numbered display equations can be entered using the appropriate equation command, such as 
-
-\begin{equation}
-x=\frac{2b\pm\sqrt{b^{2}-4ac}}{2c}. 
-\end{equation}
-
-Lists of equations are punctuated as written English, and commas, semicolons, and periods are placed where appropriate. Conjunctions such as "and," "while," "when," or "for" are also typically placed before the final element in a mathematical phrase, as befits the intended mathematical meaning.  
-
-
-
-# Figures and tables
-
-The AMS prefers that all figures and tables are placed **at the end of the document** prior to submission. A list of tables and a list of figures will appear near the end of the PDF file, before the actual tables and figures. These lists are necessary for submission.
-
-For appendix figures and tables, special commands are needed to manually  change the numbering to ensure that each appendix figure or table is numbered  as part of the respective appendix and not as a continuation of the main paper. Use the command `\appendcaption{}` instead of the usual `\caption{}` to adjust the numbering; for example, for Table A1, you would use the command `\appendcaption{A1}`.
-
-Note that the normal `\ref{}` command cannot be used to cite  appendix figures and tables as the numbering will be incorrect. Callouts for appendix figures  and tables in the text will need to be written out as plain text, for example, Fig. A1 and Table A1.
-
-## Figures
-
-The insertion of a sample figure (Fig. \ref{fig:f1}) and caption is given at the end of the document. Standard figure sizes are 19 (one column), 27, 33, and 39 (two columns) picas.
-
-
-## Tables
-
-Each table must be numbered, provided with a caption, and mentioned specifically in the text.  See at the end of the document for the formatting of a sample table (Table \ref{t1}).
-
-\acknowledgments
-Keep acknowledgments (note correct spelling: no "e" between the "g" and "m") as brief as possible. In general, acknowledge only direct help in writing or research. Financial support (e.g., grant numbers) for the work done, for an author, or for the laboratory where the work was performed is best acknowledged here rather than as footnotes to the title or to an author's name. Contribution numbers (if the work has been published by the author's institution or organization) should be included as footnotes on the title page, not in the acknowledgments.
-
-
-\datastatement
-The data availability statement is where authors should describe how the data underlying  the findings within the article can be accessed and reused. Authors should attempt to provide unrestricted access to all data and materials underlying reported findings. If data access is restricted, authors must mention this in the statement.
-
-
-\appendix[A] 
-
-\appendixtitle{Title of Appendix}
-
-## Appendix section {-}
-
-The AMS template allows authors to format an unlimited number of appendixes. To format a single appendix, use the `\appendix` command with no additional argument. Otherwise, add the appropriate one-letter argument to the `\appendix` command (e.g. `\appendix[A]`, `\appendix[B]' , `\appendix[C]`, etc.) corresponding to the appropriate appendix. 
-
-
-The title of the appendix can be formatted using the `\appendixtitle{}` command. `## Subsection`, `### Subsubection`, and `#### Paragraph` are used to create sections within the appendix. (Note that the appendix title takes the place of `# Section`  in the appendix, so the first section should begin with `##` instead of `#`.) Equations are automatically numbered appropriately for  each appendix. Here is an example of the first equation in appendix A, automatically labeled (\ref{eq:1}): 
-
-\begin{equation} \label{eq:1}
-x=\frac{2b\pm\sqrt{b^{2}-4ac}}{2c}.  
-\end{equation}
-
-For appendix figures and tables, special commands are needed to manually  change the numbering to ensure that each appendix figure or table is numbered as part of the appendix and not as a continuation of the main paper. Use the command `\appendcaption{}` instead of the usual `\caption{}` to adjust the  numbering; for example, for Table A1, you would use the command `\appendcaption{A1}`. In-text callouts for each appendix figure and table will need to be written as plain text; the usual `\ref{}` command cannot be used. 
-
-For figures, this .Rmd template adds a chunk to use the correct caption command. See below. 
-
-
-## Help for Authors
-
-Questions and feedback concerning the use of the AMS \LaTeX\ files should be directed to latex@ametsoc.org. Additional information is available on the AMS \LaTeX\ Submission Info web page (\url{http://www2.ametsoc.org/ams/index.cfm/publications/authors/journal-and-bams-authors/author-resources/latex-author-info/}).
-
-
-
-\appendix[C]
-\appendixtitle{Building a PDF and Submitting Your \LaTeX\ Manuscript Files to the AMS}
-
-## Submitting your files to the AMS for peer review
-
-The AMS uses the Editorial Manager system for all author submissions for peer review. Editorial Manager uses the freely available \TeX\ Live 2018 distribution. This system will automatically generate a PDF from your submitted \LaTeX\ files and figures.  
-
-You should not upload your own PDF into the system. If the system does not build the PDF from your files correctly, refer to the AMS \LaTeX\ FAQ page first for possible solutions. If your PDF still does not build correctly after trying the solutions on the FAQ page, email latex@ametsoc.org for help.
-
-## Other software
-
-As mentioned above, there is a variety of software that can be used to edit .tex files and build a PDF.  The AMS does not support \LaTeX\/-related WYSIWYG software, such as Scientific Workplace, or WYSIWYM software, such as LyX.  \TeX\ Live (available online at \\ \url{http://www.tug.org/texlive/}) is recommended for users needing an up-to-date \LaTeX\ distribution with software that includes an editor and the ability to automatically generate a PDF.
-
-
-\bibliography{references}
-
-
-\begin{table}[h]
-\caption{This is a sample table caption and table layout.}\label{t1}
-\begin{center}
-\begin{tabular}{ccccrrcrc}
-\topline
-$N$ & $X$ & $Y$ & $Z$\\
-\midline
- 0000 & 0000 & 0010 & 0000 \\
- 0005 & 0004 & 0012 & 0000 \\
- 0010 & 0009 & 0020 & 0000 \\
- 0015 & 0016 & 0036 & 0002 \\
- 0020 & 0030 & 0066 & 0007 \\
- 0025 & 0054 & 0115 & 0024 \\
-\botline
-\end{tabular}
-\end{center}
-\end{table}
+\section{Introduction}
+
+It has now become our basic
+knowledge that the extratropical
+atmosphere is driven strongly by the horizontal
+potential temperature gradient that arises from the
+differential solar heating (e.g., Lorenz 1955). The horizontal
+gradient in the potential temperature, often referred
+to as baroclinicity, is a measure of upper-level wind
+steering via thermal wind and a measure of baroclinic
+instability in the atmosphere. Baroclinicity in the lower
+atmosphere in classic theories of atmospheric stability is
+measured by a combination of the static stability and
+horizontal temperature gradient, the latter of which is
+equivalent to vertical shear in the horizontal wind through
+the thermal wind balance (Charney 1947; Eady 1949). In
+its original form, the Eady's maximum growth rate for
+baroclinic instability $B_{GRMax}$ is defined by $B_{GRMax} =
+0.31(|f|/N)(\partial U/\partial_z)$ in a zonally homogeneous steady
+mean state, where $U$ is the mean zonal flow, $f$ is the
+Coriolis parameter, and $N$ is the Brunt--V\"ais\"al\"a frequency.
+Charney's formula is slightly different from the Eady's,
+but still incorporates the same effects (Table \ref{t1}).
 
 
 \begin{table}
-\appendcaption{A1}{Here is the appendix table caption.}
-\centering
-\begin{tabular}{ccc}
+\begin{tabular*}{\hsize}{@{\extracolsep\fill}lcccccc@{}}
 \topline
-$1$ & $2$ & $3$ \\
+Month& EOF1& Split &EOF2& Split& EOF3& EOF4\\
 \midline
-a&b&c \\
-d&e&f \\
+\ Jan& 29& NG& 24& GD& 10& 5\\
+\ Feb& 39& GD& 20& GD& \phantom{1}7 &6\\
+\ Mar& 31& GD& 14& NG& 10& 6\\
+\ Apr& 23& GD& 14& NG& 10& 7\\
+\ May& 19& GD& 12& NG& 10& 7\\
+\ Jun& 19& GD& 12& NG& 10& 9\\
+\ Jul& 18& NG &13& NG& \phantom{1}9& 7\\
+\ Aug& 18& NG& 13& NG& 11& 9\\
+\ Sep &17& NG& 13& NG& 10& 8\\
+\ Oct &16& NG& 13& GD& \phantom{1}8& 7\\
+\ Nov &19 &NG& 16& NG& 11& 8\\
+\ Dec& 33& GD& 18& GD& 10& 6\\
 \botline
-\end{tabular}
+\end{tabular*}
+\caption{Percentage of variance explained by the first four
+EOFs for the North Pacific Bx. The degree of separation between
+EOF1 and EOF2 and EOF2 and EOF3, based on the North et al.
+(1982) criterion, is indicated by good (GD) and not good or marginal
+(NG).}\label{t1}
 \end{table}
 
+Lindzen and Farrell (1980) first applied the Eady's parameter
+to atmospheric data to successfully estimate the
+maximum growth rate of baroclinic instability in the troposphere.
+Hoskins and Valdes (1990) used its localized
+version (i.e., $U$, $N$, and $f$ are all local Eulerian mean values)
+as the central parameter in their study of the Northern
+Hemispheric storm tracks. This local version, or its simplified
+version, has been used successfully as an indicator
+of baroclinic wave generation in diagnostic studies of
+stormtracks in recent years as well (Nakamura and Sampe
+2002; Nakamura and Shimpo 2004; Nakamura et al. 2004).
+In our study, the North Atlantic part of which was reported
+in Nakamura and Yamane (2009, hereafter Part I), we
+define the near-surface baroclinic vector, $\mathbf{B}=B^x\mathbf{i} + 
+B^y\mathbf{j}$,
+where $B^x= -(g/\theta N)(\partial\theta/\partial y)$ 
+and $B^y = (g/\theta N)(\partial\theta/\partial x)$  with
+$\theta$ being the monthly-mean potential temperature at 2 m
+above the surface, and use it as the central quantity of the
+diagnoses. Unless stated otherwise, ``anomalies'' refer to
+deviations from the climatology hereafter. Though its meridional
+component does not appear in any classic theory of
+baroclinic instability, a theory that does incorporate the
+effect of $B^y$ shows its important role in enhancing baroclinic
+wave generation locally to the east of the mean trough
+(Niehaus 1980). In the North Atlantic storm track region,
+we indeed found that the substantial zonal gradient in the
+surface temperature in and around the Labrador Sea plays
+a major role in the large-scale atmospheric state.
 
-```{r f1, fig.cap="This is a sample figure with caption"}
-plot(pressure)
-```
+\section{The sea surface temperature}
+The sea surface temperature
+ (SST) is an important factor
+in determining $\mathbf{B}$ in the storm-track regions (e.g.,
+Hoskins and Valdes 1990; Nakamura et al. 2004; Part I).
+SST anomalies (SSTAs) around an oceanic front along the
+Gulf Stream (GS), Kuroshio Extension (KE), or Oyashio
+Extension (OE) can have a profound impact on $\mathbf{B}$ along
+the storm tracks. 
 
-```{r A1, fig.cap="Here is the apendix figure caption", appendix = TRUE}
-plot(pressure)
-```
+\subsection{A subtle point}
+A subtle but important point that has to
+be considered carefully in this regard is the spatial scale
+and the location of SSTAs with respect to the climatology,
+since it is the anomalous surface temperature
+gradient whose structure has a spatial scale of the atmospheric
+Rossby deformation radius that can exert significant
+influence on the large-scale atmospheric flow. 
+
+\subsubsection{Changes in the temperature}
+The
+high sensitivity of $\mathbf{B}$ to changes in the temperature contrast
+across the front and changes in the width of the front, and
+the uncertainty in the impact of SSTAs of small spatial
+scales on $\mathbf{B}$ make it difficult to assess the effective B
+anomalies that are attributable to the SSTAs from the
+available data. Moreover, it is uncertain exactly how the
+SSTAs in the presence or absence of the land surface
+temperature anomalies may or may not produce $\mathbf{B}$ anomalies
+that are significant to the atmosphere. 
+
+\paragraph{Complicating factor}The complicating
+factor introduced by the land surface must be taken
+into account when studying potential roles of extratropical
+SSTAs in the extratropical atmospheric anomalies.
+
+Lau (1988) investigated patterns of anomalous storm
+track activity and associated low-frequency flow anomalies
+by computing empirical orthogonal functions (EOFs)
+for high-frequency 500-hPa geopotential height for the
+Northern Hemisphere winters. He found that both North
+Atlantic and North Pacific storm tracks have a pattern of
+meridional shift and a pattern of increased or decreased
+eddy activity in the first two EOFs.He also found that these
+changes in the storm tracks have symbiotic relationships
+with the background flows and have substantial impacts on
+the mean flow. Part I approached the issue of the stormtrack
+and low-frequency flow variability in connection with
+SSTAs in the extratropics, focusing on $\mathbf{B}$ as the key parameter
+of diagnoses, and found similar patterns of variability
+in the eddy activity and low-frequency flow in the
+North Atlantic basin. Much of this variability was connected
+to SSTAs in the vicinity of the Gulf Stream in cold
+months (Part I). Since the winter North Pacific basin has a
+storm track andmean flow that appear to be related to the
+oceanic fronts, Kuroshio--Oyashio Extensions (KOE) in
+this case, in a manner essentially the same as those in the
+North Atlantic basin related to the GS,we have attempted
+to find similar results for the North Pacific basin. In this
+regard, we have chosen not to project our results onto the
+major mode of variability in the extratropical North Pacific
+basin, the North Pacific decadal variability (PDV), so
+that our presentation and discussion are mostly confined
+to the wave--mean flow dynamics of monthly time scale or
+shorter.
 
 
+Our approach to the search for a link between anomalies
+in the KOE and the overlying atmosphere is as follows:
+(i) identify dominant patterns in anomalous $\mathbf{B}$ in the
+storm track for each calendarmonth and identify years in
+which the anomaly fits the pattern well, (ii) composite
+anomalies in the monthly-mean circulation and highfrequency
+transients in the atmosphere to obtain a typical
+atmospheric state that accompanies the patterns of
+anomalous $\mathbf B$, (iii) composite SSTA to obtain a typical
+oceanic state that accompanies and precedes the patterns
+of anomalous $\mathbf B$, and (iv) composite anomalous net surface
+heat flux that accompanies and precedes the pattern of
+anomalous $\mathbf B$. With this approach, we obtain typical pictures
+of anomalous states in the atmosphere and oceans
+with anomalous $\mathbf{B}$ as their connecting interface.
+Section 2 describes the data and procedure to compute
+$\mathbf B$. Section 3 describes the climatology and variance of $\mathbf B$.
+Dominant patterns of $\mathbf B$ are shown in section 4, followed by
+composited anomalies in various atmospheric fields and
+SST in section 5. Finally, we present our discussion on the
+results, examining a potential cause--effect relationship
+between anomalies in the SST and atmosphere in section 6.
 
+\begin{figure*}[t]
+\centerline{\includegraphics[width=\textwidth]{FigOne.pdf}}
+
+\caption{Climatology of $Bx (10^{-6} s^{-1}$, color) and $U^{200}$(m s$^-1$,
+contours) for (a) February and (b) August; $\overline{V'\theta'}^{850}$
+(K m s$^-1$, color) and 
+$\overline{V'V'}^{200}$
+(m$^2$ s$^{-1}$, contours) for (c) February and (d) August; MR$^{z850}$ 
+(10$^{-3}$ m$^2$ s$-2$, color) and $U^{1000}$ (m s$^{-1}$, contours) 
+for (e) February and (f) August;
+and SST (K, color) and $F_h$ [10$^5$ J m$^{-2}$ (6 h)$^{-1}$] for (g)
+February and (h) August. Red rectangles indicate the domain of EOF
+calculations.} \label{fig1} 
+\end{figure*}
+
+Figure \ref{fig1} shows the climatology of $Bx$, $U^{200}$,
+$\overline{V'\theta'}^{850}$, $\overline{V'\theta'}^{200}$, 
+$MR^{z850}$, $U^{1000}$, SST, and $F_h$ for February and
+August as examples of the reference state in the winter
+and summer. The numeric superscript indicates the pressure
+level in hPa. The seasonal mean is visibly more
+diffused in structure, particularly for Bx, than those
+shown in Fig.~\ref{fig1}. There are no surprises in the overall
+picture of Bx. The regions of large land--sea temperature
+contrast and the oceanic fronts show very large Bx in cold
+months. The position of Bx maximum in the storm track
+region is found along theKOEregion throughout the year.
+The zonally elongated band of large Bx in the storm track
+is generally wider in cold months than in warm months.
+In fact, large Bx values that presumably accompany the
+Kuroshio and its extension in the cold months vanish in
+the summer (Figs. \ref{fig1}a,b). The seasonal variation in the Bx
+values in the storm track basically follows that of the
+north--south differential heating--largest in the winter and
+smallest in the summer. As reported by Nakamura et al.
+(2004), the $U^{200}$ maximum is displaced southward from the
+Bx maximum visibly in winter months (Fig. \ref{fig2}a), although
+U200 is generally large over the area of large Bx in the core
+of the storm track. The southward displacement of the
+U200 maximum from the Bx maximum in the storm track
+is less pronounced or even reversed in warmer months
+(Fig. \ref{fig2}b). We note that the structure of the climatological
+Bx generally reflects those of ($\partial{\theta^{2{\textrm m}}}/\partial{y}$) with some exceptions where
+the surface slope contributes significantly to Bx
+in isolated areas over the land, most notably around the
+Himalayas.
+
+\begin{figure*}[p]
+\centerline{\includegraphics{FigTwo.pdf}}
+\caption{As in Fig.~10, but for (a),(b) September EOF1; (c),(d) September EOF2; (e),(f) October EOF1; (g),(h) October EOF2; and
+(i),(j) December EOF2.}\label{fig2}
+\end{figure*}
+
+The position and structure of the storm track as indicated
+by $\overline{V'\theta'}^{850}$
+and $\overline{V'V'}^{200}$
+are, at least for the winter,
+essentially the same as those reported in earlier studies on
+the storm tracks (e.g., Chang et al. 2002). The maxima in
+$\overline{V'\theta'}^{850}$
+and $\overline{V'V'}^{200}$ are located in the band of large Bx.
+
+
+\section{Data and calculation procedures}
+The data used to calculate $\mathbf{B}$ are the monthly-mean
+temperature at 2 m above the surface ($T^{2m}$) and temperature
+at pressure levels available from the 40-yr European
+Centre for Medium-Range Weather Forecasts (ECMWF)
+Re-Analysis (ERA-40; Uppala et al.~2005). We chose
+the ERA-40 $T^{2m}$ data rather than the National Centers
+for Environmental Prediction--National Center for Atmospheric
+Research (NCEP--NCAR) reanalysis products
+for its explicit inclusion of the observed near-surface temperature
+in producing the $T^{2m}$ data. The monthly-mean
+surface pressure data from the NCEP--NCAR reanalyses
+(Kalnay et al. 1996) were used to determine the pressure
+levels to be used for $\mathbf B$ calculation, and to calculate $\theta$ 
+at 2 m
+above the surface from $T^{2m}$. We used the NCEP--NCAR
+surface pressure data for convenience, since we had already
+compiled the dataset for calculating transient eddy
+fluxes to be mentioned later and the ERA-40 surface
+pressure data are not readily available. We later compared
+the NCEP--NCAR monthly-mean sea level pressure with
+that of ERA-40, and found the difference between the two
+products to be immaterial for the purpose of the current
+study. We also used ERA-40 monthly-mean horizontal
+wind and geopotential height at pressure levels, net surface
+heat flux, Fh (the sum of latent heat flux, sensible heat flux,
+solar radiation, and the thermal radiation), and Hadley
+Centre sea surface temperature data (Rayner et al. 2003)
+to compile anomaly composites accompanying anomalous
+patterns in $\mathbf B$. In addition, we used 6-hourly temperature
+and wind data from the NCEP--NCAR reanalyses to
+compute various eddy fields. The accuracy of the Fh data
+used here is, as true for other reanalyses surface heat flux
+products, may not be so high to produce reliable anomaly
+composites.
+
+
+We computed $\mathbf{B}$ near the surface by calculating the
+horizontal gradient in $\theta^{2{\textrm m}}$, using the centered finite differencing,
+and calculating $N$ from the lowest three vertical
+pressure levels that are location dependent because of
+topography. Both $\nabla\theta^{2{\textrm m}}$ and $N$ were calculated locally as in
+Hoskins and Valdes (1990) and Nakamura and Shimpo
+(2004). The entire 45 yr from September 1957 to August
+2002 were used for the Northern Hemisphere. To resolve
+the dominant modes in $\mathbf{B}$ arising from the land--sea temperature
+contrast, one may need much higher horizontal
+resolution in the data. The relatively coarse horizontal
+resolution of the data may artificially suppress the significance
+of the variability associated with the land--sea temperature
+contrast.One should keep this limitation in mind.
+The 6-hourly bandpassed (period of 2--7 days) eddy
+fields and ultra-low-frequency (period of 30 days and longer)
+background fields were computed from the NCEP--
+NCAR reanalyses, using simple time filters (Lau and Lau
+1984) first. The filtered time series were then visually examined
+against the raw time series and, then, used to calculate
+the slowly evolving bandpassed meridional velocity
+variance ($\overline{V'V'}$), meridional temperature flux ($\overline{V'\theta'}$), and
+the three-dimensional transient wave activity flux defined
+on a zonally varying basic state by Plumb (1986). The wave
+activity flux consists of the zonal and meridional advective
+fluxes (MU and MV), the zonal and meridional
+radiative fluxes (MRx and MRy), and the radiative vertical
+flux (MRz). The flux is essentially the Eliassen--Palm
+flux (Eliassen and Palm 1961) in a zonally inhomogeneous
+mean flow (Plumb 1986). The wave activity flux was calculated
+from February 1948 to November 2004 only for
+the extratropics poleward of 208 latitude. Also, it was
+calculated only from 850 to 30 hPa because of the double
+differentiation with respect to pressure required for the
+calculation. The flux of particular interest in this study is
+the vertical component. Here MR$^z$ is defined by
+\[
+MR^z=
+\frac{
+pf \cos\phi}
+{p^0|\nabla h\bar q|(d\theta_0/dz)}
+\left(\frac{\partial\bar q}{\partial x}
+\overline{U'\theta'} +
+\frac{\partial\bar q}{\partial y}
+\overline{V'\theta'}\right), 
+\]
+where $q$ is quasigeostrophic potential vorticity, $p$ is the
+pressure, $p^0$ is the reference surface pressure set to
+1000 hPa here, $\theta_0$ is the area-weighted ultra-low-frequency
+hemispheric mean potential temperature at each height,
+u9 is the bandpassed potential temperature, and z is the
+geopotential height. An overbar denotes an ultra-low frequency
+component and a prime denotes bandpassed
+component. The 6-hourly time series of wave fluxes was
+computed by using the time series of ultra-low-frequency
+fields as the basic-state and high-frequency fields as eddies.
+In short, the time series was calculated by changing the
+meaning of an overbar from the time mean state to an
+ultra-low-frequency state, and changing the meaning of a
+prime from a departure from the mean to a high-frequency
+state. The 6-hourly eddy time series was averaged over each
+month to produce monthly-mean time series. This dataset
+allows us to examine anomalous eddy fields accompanying
+anomalous $\mathbf B$ in specific months. The climatology for
+the eddy fields was computed from 46 yr, January 1958 to
+December 2003. The calculation of the wave activity and
+its flux is described in detail by Nakamura et al. (2010).
+
+
+\section{Climatology and variance}
+The climatology and variance of $Bx$ and $By$ were computed
+for each calendar month and examined closely for
+their spatial and temporal structures. The monthly climatology,
+rather than the seasonal climatology, is used as the
+reference in our study, to avoid contamination of the diagnostic
+results arising from differences in the climatology
+between two successive months. Unlike in the North Atlantic
+basin reported in Part I, we found the impact of $By$
+variations on the large-scale atmospheric state in the
+North Pacific basin much weaker than that of Bx variations,
+presumably because of themore zonal orientation of
+the KOE in comparison to the Gulf Stream and North
+Atlantic Current. In the following, thus, we focus our
+presentation on the climatology and variations of $Bx$ and
+their impact on the large-scale atmospheric state.
+
+Sample citations: \citet{Becker+Schmitz2003}, \citet{Knutti2008},
+and \citep{MeixnerEA2002,Kuji_Nakajima2002,EmeryEA1986}.
+
+\acknowledgments
+We thank two anonymous reviewers for their comments, which helped
+to improve the manuscript.
+
+\datastatement
+Start data availability statement here.
+
+\appendix[A]
+\appendixtitle{Appendix Title}
+
+\subsection*{Appendix section head}
+
+Here is a sample appendix with an equation [see Eq. \eqref{eqA1}]. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+\begin{equation}
+\frac{
+pf \cos\phi}
+{p^0|\nabla h\bar q|(d\theta_0/dz)}\label{eqA1}
+\end{equation}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Here is an example appendix figure (see Fig. \ref{figA1}).
+\begin{figure}
+ \centerline{\includegraphics[width=19pc]{figure01.pdf}}
+\caption{Here is an appendix, single column figure caption.}\label{figA1}
+\end{figure}
+
+\appendix[B]
+\appendixtitle{Second Appendix Title}
+\subsection{Sample appendix section head}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat [see Eq. \eqref{eqB1}]]. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\begin{equation}\label{eqB1}
+\left(\frac{\partial\bar q}{\partial x}
+\overline{U'\theta'} +
+\frac{\partial\bar q}{\partial y}
+\overline{V'\theta'}\right) 
+\end{equation}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\subsection{Sample appendix section head}
+Second appendix example. Here an example appendix table (see Table \ref{tB1}).
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lc}
+\topline
+Month& Yr of positive phase\\
+\midline
+\ \ Jan& 1961, 1969, 1978, 1979, 1988, 1990, 1992, 1994\\
+\ \ Feb& 1964, 1977, 1978, 1980, 1983, 1986, 1988, 2000, 2001\\
+\ \ Mar& 1970, 1973, 1979, 1980, 1984, 1988, 2000\\
+\ \ Apr& 1959, 1961, 1962, 1963, 1968, 1972, 1983, 2002\\
+\ \ May& 1971, 1984, 1993, 1996, 2000\\
+\ \ Jun& 1981, 1983, 1984, 1993, 1998\\
+\ \ Jul& 1961, 1972, 1973, 1978, 1994, 2000\\
+\ \ Aug& 1967, 1970, 1973, 1978, 1994, 1999\\
+\ \ Sep& 1975, 1977, 1988, 1989, 1994, 1998, 1999\\
+\ \ Oct& 1962, 1977, 1998, 1999, 2001\\
+\ \ Nov& 1985, 1986, 1987, 1988, 1991, 1998\\
+\ \ Dec& 1957, 1968, 1972, 1978, 1979, 1990\\
+\botline
+\end{tabular}
+\caption{Years selected for anomaly composites for the positive
+phase of $B^x$ EOF1.}\label{tB1}
+\end{table}
+\pagebreak
+
+\bibliography{references}

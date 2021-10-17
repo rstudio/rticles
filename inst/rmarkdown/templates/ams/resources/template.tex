@@ -1,7 +1,7 @@
-%% Version 5.0, 2 January 2020
+%% Version 6.1, 1 September 2021
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TemplateV5.tex --  LaTeX-based template for submissions to the
+% TemplateV6.1.tex --  LaTeX-based blank template for submissions to the
 % American Meteorological Society
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -9,29 +9,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Start with one of the following:
-% DOUBLE-SPACED VERSION FOR SUBMISSION TO THE AMS
-\documentclass[$if(twocol)$twocol$endif$]{ametsocV5}
-
+% 1.5-SPACED VERSION FOR SUBMISSION TO THE AMS
+\documentclass[$if(twocol)$twocol$endif$]{ametsocV6.1}
 
 % TWO-COLUMN JOURNAL PAGE LAYOUT---FOR AUTHOR USE ONLY
-% \documentclass[twocol]{ametsocV5}
+% \documentclass[twocol]{ametsocV6.1}
 
-
-% Enter packages here. If too many math alphabets are used,
-% remove unnecessary packages or define hmmax and bmmax as necessary.
-
-\newcommand{\hmmax}{0}
-\newcommand{\bmmax}{0}
-\usepackage{amsmath,amsfonts,amssymb,bm}
-\usepackage{mathptmx}%{times}
-\usepackage{newtxtext}
-\usepackage{newtxmath}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 $for(header-includes)$
 $header-includes$
 $endfor$
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%% To be entered by author:
 
@@ -39,76 +27,45 @@ $endfor$
 
 \title{$title$}
 
+%% Enter authors' names and affiliations as you see in the examples below.
+%
+%% Use \correspondingauthor{} and \thanks{} (\thanks command to be used for affiliations footnotes,
+%% such as current affiliation, additional affiliation, deceased, co-first authors, etc.)
+%% immediately following the appropriate author.
+%
+%% Note that the \correspondingauthor{} command is NECESSARY.
+%% The \thanks{} commands are OPTIONAL.
+%
+%% Enter affiliations within the \affiliation{} field. Use \aff{#} to indicate the affiliation letter at both the
+%% affiliation and at each author's name. Use \\ to insert line breaks to place each affiliation on its own line.
 
-$if(author1)$
-\authors{$author1.name$
-$if(author1.email)$
-\correspondingauthor{$author1.name$,$author1.email$}
-$endif$
-$if(author1.affiliation)$
-\thanks{$author1.affiliation$}
-$endif$
-$if(author2)$
-and $author2.name$
-$if(author2.email)$
-\correspondingauthor{$author2.name$,$author2.email$}
-$endif$
-$if(author2.affiliation)$
-\thanks{$author2.affiliation$}
-$endif$
-$endif$
-}
-$endif$
+%\authors{Author One,\aff{a}\correspondingauthor{Author One, email@email.com}
+%Author Two,\aff{a}
+%Author Three,\aff{b}
+%Author Four,\aff{a}
+%Author Five\thanks{Author Five's current affiliation: NCAR, Boulder, Colorado},\aff{c}
+%Author Six,\aff{c}
+%Author Seven,\aff{d}
+% and Author Eight\aff{a,d}
+%}
+%
+%\affiliation{\aff{a}{First Affiliation}\\
+%\aff{b}{Second Affiliation}\\
+%\aff{c}{Third Affiliation}\\
+%\aff{d}{Fourth Affiliation}
+%}
 
-$if(affiliation)$
-\affiliation{$affiliation$}
-$endif$
-
-$for(extra_authors)$
-\extraauthor{$extra_authors.name$
-$if(extra_authors.email)$
-\correspondingauthor{$extra_authors.name$,$extra_authors.email$}
-$endif$
-}
-$if(extra_authors.affiliation)$
-\extraaffil{$extra_authors.affiliation$}
-$endif$
+\authors{
+$for(authors)$
+$authors.name$$if(authors.current)$\thanks{$authors.current$}$endif$,\aff{$authors.aff$}$if(authors.email)$\correspondingauthor{$authors.name$,$authors.email$}$endif$
 $endfor$
+} %% FIXME, template includes "and" before last author
 
-$if(highlighting-macros)$
-% For Pandoc highlighting needs
-$highlighting-macros$
-$endif$
-
-$if(csl-refs)$
-% Pandoc citation processing
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
-\newlength{\cslhangindent}
-\setlength{\cslhangindent}{1.5em}
-% for Pandoc 2.8 to 2.10.1
-\newenvironment{cslreferences}%
-  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
-  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
-  {\par}
-% For Pandoc 2.11+
-\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
- {% don't indent paragraphs
-  \setlength{\parindent}{0pt}
-  % turn on hanging indent if param 1 is 1
-  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
-  % set entry spacing
-  \ifnum #2 > 0
-  \setlength{\parskip}{#2\baselineskip}
-  \fi
- }%
- {}
-\usepackage{calc} % for calculating minipage widths
-\newcommand{\CSLBlock}[1]{#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
-\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
-$endif$
+\affiliation{
+$for(affiliations)$
+\aff{$affiliations.aff$}{$affiliations.name$}\\
+$endfor$
+} %% FIXME, does the extra newline after the last affiliation matter?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ABSTRACT
@@ -117,7 +74,6 @@ $endif$
 % Abstracts should not exceed 250 words in length!
 %
 
-
 \abstract{$abstract$}
 
 \begin{document}
@@ -125,7 +81,7 @@ $endif$
 %% Necessary!
 \maketitle
 
-\bibliographystyle{ametsoc2014}
+\bibliographystyle{ametsocV6}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SIGNIFICANCE STATEMENT/CAPSULE SUMMARY
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -134,18 +90,35 @@ $endif$
 % (see www.ametsoc.org/ams/index.cfm/publications/authors/journal-and-bams-authors/formatting-and-manuscript-components for details),
 % please apply the necessary command as shown below:
 %
+% Significance Statement (all journals except BAMS)
+%
+%\statement
+%	 Enter significance statement here, no more than 120 words. See \url{www.ametsoc.org/index.cfm/ams/publications/author-information/significance-statements/} for details.
+%
+
 $if(statement)$
-\statement
+%$if(twocol)$\twocolsig$else$\statement$endif$
 $statement$
-$endif$
+$endif$ % FIXME, AMS template says to use twocolsig instead of sig for twocol, but there is no sig, is two col twocolstatement or twocolsig?
+
+%% Capsule (BAMS only)
+%%
+%\capsule
+%       Enter BAMS capsule here, no more than 30 words. See \url{www.ametsoc.org/index.cfm/ams/publications/author-information/formatting-and-manuscript-components/#capsule} for details.
+%
 
 $if(capsule)$
-\capsule
+%$if(twocol)$\twocolcapsule$else$\capsule$endif$
 $capsule$
 $endif$
 
+%% * * If using twocol mode, you will need to use the commands "twocolsig" and "twocolcapsule" in place of "sig" and "capsule"
+%%      to ensure that the text box correctly spans across both columns.
+%
+
 $for(include-before)$
 $include-before$
+
 $endfor$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -155,5 +128,9 @@ $endfor$
 
 $body$
 
+$for(include-after)$
+$include-after$
+
+$endfor$
 
 \end{document}
