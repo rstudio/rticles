@@ -64,7 +64,7 @@ res <- knitr::knit_child(text = unlist(src), quiet = TRUE)
 `r res`
 
 ```{css, echo = FALSE}
-img {
+a > img {
 	border: unset;
   border-style: solid;
   border-color: #FEDB00;
