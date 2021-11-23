@@ -27,8 +27,9 @@ jobs:
           - {os: ubuntu-20.04,   pandoc: '2.14.2',  r: 'release'}
           - {os: ubuntu-20.04,   pandoc: '2.11.4',  r: 'release'}
           - {os: ubuntu-20.04,   pandoc: '2.7.3',   r: 'release'}
-          - {os: ubuntu-20.04,   pandoc: '2.5',     r: 'release'}
-          - {os: ubuntu-20.04,   pandoc: '2.0.0.1', r: 'release'}
+          # Does not shipped with pandoc-citeproc so can't test without installing it
+          # - {os: ubuntu-20.04,   pandoc: '2.5',     r: 'release'}
+          # - {os: ubuntu-20.04,   pandoc: '2.0.0.1', r: 'release'}
           # testing other R versions
           - {os: ubuntu-20.04,   pandoc: '2.11.4',  r: 'oldrel'}
           - {os: ubuntu-20.04,   pandoc: '2.11.4',  r: 'devel', http-user-agent: 'release'}
