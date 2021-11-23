@@ -19,16 +19,19 @@ jobs:
       matrix:
         config:
           # testing R release with last shipped pandoc version in RStudio IDE and new pandoc
-          # TODO: issue on windows with pandoc 2.11.4 - change when fixed
-          - {os: windows-latest, pandoc: '2.7.3',   r: 'release'}
-          - {os: macOS-latest,   pandoc: '2.11.4',  r: 'release'}
-          - {os: ubuntu-20.04,   pandoc: '2.11.4',  r: 'release'}
+          - {os: windows-latest, pandoc: '2.16.1',  r: 'release'}
+          - {os: macOS-latest,   pandoc: '2.16.1',  r: 'release'}
+          - {os: ubuntu-20.04,   pandoc: '2.16.1',  r: 'release'}
           - {os: ubuntu-20.04,   pandoc: 'devel',   r: 'release'}
           # testing older pandoc versions
-          - {os: ubuntu-20.04,   pandoc: '2.9.2.1', r: 'release'}
+          - {os: ubuntu-20.04,   pandoc: '2.14.2',  r: 'release'}
+          - {os: ubuntu-20.04,   pandoc: '2.11.4',  r: 'release'}
           - {os: ubuntu-20.04,   pandoc: '2.7.3',   r: 'release'}
-          # - {os: ubuntu-20.04,   pandoc: '2.5',     r: 'release'}
-          # - {os: ubuntu-20.04,   pandoc: '2.0.0.1', r: 'release'}
+          - {os: ubuntu-20.04,   pandoc: '2.5',     r: 'release'}
+          - {os: ubuntu-20.04,   pandoc: '2.0.0.1', r: 'release'}
+          # testing other R versions
+          - {os: ubuntu-20.04,   pandoc: '2.11.4',  r: 'oldrel'}
+          - {os: ubuntu-20.04,   pandoc: '2.11.4',  r: 'devel', http-user-agent: 'release'}
           # testing other R versions
           - {os: ubuntu-20.04,   pandoc: '2.11.4',  r: 'oldrel'}
           - {os: ubuntu-20.04,   pandoc: '2.11.4',  r: 'devel', http-user-agent: "release" }
