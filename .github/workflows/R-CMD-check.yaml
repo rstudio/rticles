@@ -73,7 +73,7 @@ jobs:
           TINYTEX_INSTALLER: TinyTeX
 
       - name: Special setup for non-linux
-        if: runner.os != "Linux"
+        if: ${{ runner.os != 'Linux' }}
         run: |
           tlmgr --repository http://www.texlive.info/tlgpg/ install tlgpg
 
