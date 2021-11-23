@@ -71,7 +71,7 @@ jobs:
         env:
           # install full prebuilt version
           TINYTEX_INSTALLER: TinyTeX
-          TINYTEX_VERSION: 'v2021.11'
+          TINYTEX_VERSION: '2021.11'
 
       - name: preinstall some CTAN packages
         run: |
