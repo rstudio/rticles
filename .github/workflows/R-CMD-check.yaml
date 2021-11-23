@@ -94,6 +94,7 @@ jobs:
           pkgs <- .packages(TRUE)
           sessioninfo::session_info(pkgs, include_base = TRUE)
           rmarkdown::find_pandoc()
+          rmarkdown:::pandoc_citeproc()
           tinytex::tlmgr("--version")
           tinytex::tl_pkgs()
         shell: Rscript {0}
