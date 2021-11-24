@@ -11,10 +11,6 @@ test_format <- function(name, output_options = NULL, os_skip = NULL) {
   oldwd <- setwd(dir)
   on.exit(setwd(oldwd), add = TRUE)
 
-  # clean up packages that were automatically installed during LaTeX compilation
-  pkgs <- tinytex::tl_pkgs()
-  on.exit(tinytex::tlmgr_remove(setdiff(tinytex::tl_pkgs(), pkgs)), add = TRUE)
-
   # create a draft of the format
   testdoc <- paste0(name,"_article",".Rmd")
   rmarkdown::draft(
@@ -49,7 +45,6 @@ test_format("copernicus")
 if (xfun::is_linux()) test_format("ctex") # only on linux due to fonts requirements
 test_format("elsevier")
 test_format("frontiers")
-test_format("glossa")
 test_format("ieee")
 test_format("ims")
 test_format("ims", output_options = list(journal = "aap"))
@@ -72,3 +67,7 @@ test_format("sage")
 test_format("sim")
 test_format("springer")
 test_format("tf")
+
+# special case: the glossa format doesn't work with the microtype package
+tinytex::tlmgr_remove("microtype")
+test_format("glossa")
