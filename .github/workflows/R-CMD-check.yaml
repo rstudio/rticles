@@ -98,10 +98,6 @@ jobs:
           tinytex::tl_pkgs()
         shell: Rscript {0}
 
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-        if: runner.os == 'macOS'
-
       - uses: r-lib/actions/check-r-package@v1
 
       - name: Upload check results
