@@ -11,6 +11,10 @@ test_format <- function(name, output_options = NULL, os_skip = NULL) {
   oldwd <- setwd(dir)
   on.exit(setwd(oldwd), add = TRUE)
 
+  # clean up packages that were automatically installed during LaTeX compilation
+  pkgs <- tinytex::tl_pkgs()
+  on.exit(tinytex::tlmgr_remove(setdiff(tinytex::tl_pkgs(), pkgs)), add = TRUE)
+
   # create a draft of the format
   testdoc <- paste0(name,"_article",".Rmd")
   rmarkdown::draft(
