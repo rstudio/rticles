@@ -18,7 +18,7 @@ $if(natbib)$
 $endif$
 % \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}
 % For TRB version hide links
-\usepackage[hidelinks]{hyperref}
+\usepackage[hidelinks$for(hyperrefoptions)$,$hyperrefoptions$$endfor$]{hyperref}
 
 % Put here what will go to headers as author
 \AuthorHeaders{$runningheader$}
