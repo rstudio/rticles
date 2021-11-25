@@ -1,6 +1,8 @@
 # rticles 0.22
 
 - Update Copernicus Publications template to version 6.4 from 2021-08-16 (thanks, @RLumSK, #446).
+
+- `sage_article()` now correctly set cite style in template to use comma to match the Sage Havard style per Journal's guideline (thanks, @MalteHueckstaedt, #447).
  
 # rticles 0.21
 
