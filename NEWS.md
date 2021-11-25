@@ -3,7 +3,9 @@
 - Update Copernicus Publications template to version 6.4 from 2021-08-16 (thanks, @RLumSK, #446).
 
 - `sage_article()` now correctly set cite style in template to use comma to match the Sage Havard style per Journal's guideline (thanks, @MalteHueckstaedt, #447).
- 
+
+- Add `trb_article()` for annual meeting submissions to the Transportation Research Board Annual Meeting (thanks, @gregmacfarlane, #427).
+
 # rticles 0.21
 
 ## NEW FEATURES

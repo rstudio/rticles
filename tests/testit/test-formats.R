@@ -67,6 +67,7 @@ test_format("sage")
 test_format("sim")
 test_format("springer")
 test_format("tf")
+test_format("trb")
 
 # special case: the glossa format doesn't work with the microtype package
 tinytex::tlmgr_remove("microtype")
