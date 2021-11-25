@@ -13,7 +13,7 @@
 #'
 #' An number of required and optional manuscript sections, e.g. `acknowledgements`, `competinginterests`, or `authorcontribution`, must be declared using the respective properties of the R Markdown header - see skeleton file.
 #'
-#' **Version:** Based on `copernicus_package.zip` in the version 6.3, 8 July 2021, using `copernicus.cls` in version 9.32, 7 July 2021.
+#' **Version:** Based on `copernicus_package.zip` in the version 6.4, 8th August 2021, using `copernicus.cls` in version 9.32, 7 July 2021.
 #'
 #' **Copernicus journal abbreviations:** You can use the function `copernicus_journal_abbreviations()` to get the journal abbreviation for all journals supported by the Copernicus article template.
 #'
@@ -77,18 +77,17 @@ copernicus_journals <- list(
   "Advances in Statistical Climatology, Meteorology and Oceanography" = "ascmo",
   "Annales Geophysicae" = "angeo",
   "Archives Animal Breeding" = "aab",
-  "ASTRA Proceedings" = "ap",
   "Atmospheric Chemistry and Physics" = "acp",
   "Atmospheric Measurement Techniques" = "amt",
   "Biogeosciences" = "bg",
   "Climate of the Past" = "cp",
   "DEUQUA Special Publications" = "deuquasp",
   "Drinking Water Engineering and Science" = "dwes",
-  "European Journal of Mineralogy" = "ejm",
   "Earth Surface Dynamics" = "esurf",
   "Earth System Dynamics" = "esd",
   "Earth System Science Data" = "essd",
   "E&G Quaternary Science Journal" = "egqsj",
+  "European Journal of Mineralogy" = "ejm",
   "Fossil Record" = "fr",
   "Geochronology" = "gchron",
   "Geographica Helvetica" = "gh",
@@ -107,12 +106,14 @@ copernicus_journals <- list(
   "Ocean Science" = "os",
   "Primate Biology" = "pb",
   "Proceedings of the International Association of Hydrological Sciences" = "piahs",
+  "Safety of Nuclear Waste Disposal" = "sand",
   "Scientific Drilling" = "sd",
   "SOIL" = "soil",
   "Solid Earth" = "se",
   "The Cryosphere" = "tc",
   "Web Ecology" = "we",
   "Weather and Climate Dynamics" = "wcd",
+  "Web Ecology" = "we",
   "Wind Energy Science" = "wes"
 )
 
