@@ -40,6 +40,7 @@ that most people still use by default, and this template implements that change.
 
 
 # Features
+
 The template has a number of features that enable quick and painless manuscript authoring.
 
 ## Mathematics
@@ -68,6 +69,7 @@ template. Authors can use the R Studio word count add-in available from
 <https://github.com/benmarwick/wordcountaddin>.
 
 ## Page Layout
+
 The document has 1 inch margins as required, with the author's names in the left
 heading and the page number in the right. The running header information is set
 with the `runningheader` YAML key. Paragraphs leading sections and subsections
@@ -134,6 +136,7 @@ preparation: A. Anonymous. All authors reviewed the results and approved
 the final version of the manuscript.
 
 # Acknowledgements
+
 David Pritchard posted the original versions of this template in 2009 and
 updated it in 2011, soon after TRB began allowing PDF submissions. Gregory
 Macfarlane and Ross Wang made adjustments to the template, and Ross Wang now
