@@ -23,7 +23,6 @@ bibliography: mybibfile.bib
 biblio-style: unsrtnat
 classoption:
   - numbered #  When numbered option is activated, lines are numbered.
-#numbersections: true
 output: rticles::trb_article
 wordcount: 684
 ---
