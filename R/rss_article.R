@@ -1,9 +1,9 @@
 #' Royal Statistical Society Journal Format
 #'
 #' Format for creating articles for Royal Statistical Society adapted from
-#' \url{https://rss.org.uk/news-publication/publications/journals/submit-paper/}.
+#' <https://rss.org.uk/news-publication/publications/journals/submit-paper/>.
 #' @inheritParams rmarkdown::pdf_document
-#' @param ... Arguments to \code{rmarkdown::pdf_document}
+#' @param ... Arguments to [rmarkdown::pdf_document()]
 #' @export
 rss_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
   fmt <- pdf_document_format(

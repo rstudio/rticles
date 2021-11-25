@@ -22,6 +22,7 @@ $if(title.short)$
 \Shorttitle{$title.short$}
 $endif$
 
+
 \Abstract{
 $abstract$
 }
@@ -57,6 +58,11 @@ $for(author)$
 $endfor$
 }
 
+% Pandoc syntax highlighting
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
 % Pandoc citation processing
 $if(csl-refs)$
 \newlength{\csllabelwidth}
@@ -87,7 +93,6 @@ $if(csl-refs)$
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
 
-% Pandoc header
 $for(header-includes)$
 $header-includes$
 $endfor$
