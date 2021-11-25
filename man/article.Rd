@@ -382,7 +382,9 @@ Macro package for Springer Journals.
 
 \section{\code{trb_article}}{
  Format for creating submissions to the Transportation
-  Research Board Annual Meeting. Addapted from \samp{https://www.overleaf.com/latex/templates/transportation-research-board-trb-latex-template/jkfndnnkkksw}
+Research Board Annual Meeting. Adapted from
+\samp{https://www.overleaf.com/latex/templates/transportation-research-board-trb-latex-template/jkfndnnkkksw},
+which in turn is hosted at \samp{https://github.com/chiehrosswang/TRB_LaTeX_tex}
 }
 
 \examples{
