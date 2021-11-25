@@ -1,6 +1,6 @@
 # rticles 0.22
 
-- Update Copernicus Publications template to version 6.4 from 2021-08-16
+- Update Copernicus Publications template to version 6.4 from 2021-08-16 (thanks, @RLumSK, #446).
  
 # rticles 0.21
 
