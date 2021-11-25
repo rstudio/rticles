@@ -27,8 +27,7 @@ $endif$
 % TODO: add macros for easier formatting of \author.
 \author{%
   $for(author)$
-  \textbf{$author.name$}\\
-  \textit{$if(author.note)$$author.note$\\$endif$}
+  \textbf{$author.name$}\\$if(author.note)$\textit{$author.note$}\\$endif$
   $author.position$\\
   $author.affiliation$\\
   $author.email$\\
