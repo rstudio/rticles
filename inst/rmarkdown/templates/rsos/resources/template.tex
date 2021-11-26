@@ -15,8 +15,13 @@ $endif$
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
-% Pandoc citation processing
+$if(highlighting-macros)$
+% For Pandoc highlighting needs
+$highlighting-macros$
+$endif$
+
 $if(csl-refs)$
+% Pandoc citation processing
 \newlength{\csllabelwidth}
 \setlength{\csllabelwidth}{3em}
 \newlength{\cslhangindent}

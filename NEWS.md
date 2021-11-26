@@ -1,16 +1,50 @@
-rticles 0.21
----------------------------------------------------------------------
+# rticles 0.22
 
-- Add the fenced div with id `#refs` in `frontier_article()` skeleton to place the reference section in the correct expected place (thanks, @graysonwhite, #423).
-- `bioinformatics_article()` has no more trailing comma after last author (thanks, @stephenturner, #413).
-- `bioinformatics_article()` now separates `manuscript_type` (e.g., Applications note, Original article) and `subject_section` (e.g. Genome analysis, Phylogenetics) in template and skeleton (thanks, @stephenturner, #415)
+- Update Copernicus Publications template to version 6.4 from 2021-08-16 (thanks, @RLumSK, #446).
 
-rticles 0.20
----------------------------------------------------------------------
+- `sage_article()` now correctly set cite style in template to use comma to match the Sage Havard style per Journal's guideline (thanks, @MalteHueckstaedt, #447).
+
+- Add `trb_article()` for annual meeting submissions to the Transportation Research Board Annual Meeting (thanks, @gregmacfarlane, #427).
 
 - New template `josis_article()` for the Journal of Spatial Information Science (thanks, @Robinlovelace, #382)
 
-- `lipics_article()` skeleton now sets option `bookdown.theorem.preamble` to FALSE to work with `bookdown::pdf_book()` and avoid conflicst in theorem environment definition. This requires **bookdown** 0.23 or higher (#392).
+# rticles 0.21
+
+## NEW FEATURES
+
+- New `jedm_article()` for the Journal of Educational Data Mining template (thanks, @jooyoungseo, #251).
+
+- New `ajs_article()` for *Austrian Journal of Statistics* (thanks, @matthias-da, #437).
+
+- New `glossa_article()` for articles of [Glossa: a journal of general linguistics](https://www.glossa-journal.org/) (thanks, @stefanocoretta, #361).
+
+## MAJOR CHANGES
+
+- Since **rticles** 0.15, per requirement with R Journal, `rjournal_article()` uses `knitr::purl()` to produce a R file with the code from the Rmd file. Last version eagerly overwrites any existing R file with the same name as the purled file. From now on, if a `.R` already exists with the name of the output, it won't be overwritten anymore, and not purled file will be outputted. This prevent issue with users maintaining themselves their own R file to accompany the article. A warning is issued to remind of deleting the existing R file is one want to use the purled R file (thanks, @Enchufa2, #433).
+
+- Update Copernicus Publications template to version 6.3 from 2021-07-08 (thanks, @RLumSK, #432).
+
+## MINOR CHANGES
+
+- All templates have now the `$highlighting-macros$` variables required for Pandoc highlighting (#435).
+
+- Template for `tf_article()` gains a `classoption` variable (thanks, @statzhero, #434).
+
+- Add the fenced div with id `#refs` in `frontiers_article()` skeleton to place the reference section in the correct expected place (thanks, @graysonwhite, #423).
+
+- `bioinformatics_article()` now separates `manuscript_type` (e.g., Applications note, Original article) and `subject_section` (e.g. Genome analysis, Phylogenetics) in template and skeleton (thanks, @stephenturner, #415)
+
+- For contributors to this package: Markdown syntax is now used with **roxygen2** to document R functions. Refer to formating rules on [**roxygen2** website](https://roxygen2.r-lib.org/articles/rd-formatting.html)
+
+## BUG FIXES
+
+- `bioinformatics_article()` has no more trailing comma after last author (thanks, @stephenturner, #413).
+
+- Fix an issue with `elsevier_article()` and table produced by RStudio Visual Editor. The template gains some packages for allowing grid table in Markdown (thanks, @ccamara, #421)
+
+# rticles 0.20
+
+- `lipics_article()` skeleton now sets option `bookdown.theorem.preamble` to FALSE to work with `bookdown::pdf_book()` and avoid conflicts in theorem environment definition. This requires **bookdown** 0.23 or higher (#392).
 
 - `oup_article()` template now largely compatible to that of `elsevier_article()` (thanks, @dmkaplan2000, #403)
 
@@ -20,7 +54,7 @@ rticles 0.20
 
 - Update Copernicus Publications template to comply with editor's guidelines following a manuscript bounce back during the typesetting step. Copernicus does not allow to add any `\usepackage` command as they all are included in `copernicus.cls` for supported LaTeX packages. **This is leading to breaking changes with existing template - please follow the advice below**.
   - `algorithms: true` cannot be used anymore and as no more effect. `\usepackage{algorithmic}` and `\usepackage{algorithm}` has been removed from the template as the command are already done in `copernicus.cls`. Please, make sure `algorithms` and `algorithmcx` are installed.  
-  - Additionally, the template gained support for the `highlight` parameter of `rmarkdown::pdf_document` to enable or disable syntax highlighting with Pandoc. To comply with the above guideline by Copernicus, it is disabled by default (`highlight: NULL`) to prevent Pandoc adding any more packages required for its highlighting. Syntax highlighting can be reactivating by using `highlight: "default"` in the YAML header as this can be desirable before submitting for typesetting. (thanks, @RLumSK, @nuest, #391).
+  - Additionally, the template gained support for the `highlight` parameter of [rmarkdown::pdf_document()] to enable or disable syntax highlighting with Pandoc. To comply with the above guideline by Copernicus, it is disabled by default (`highlight: NULL`) to prevent Pandoc adding any more packages required for its highlighting. Syntax highlighting can be reactivating by using `highlight: "default"` in the YAML header as this can be desirable before submitting for typesetting. (thanks, @RLumSK, @nuest, #391).
 
 - Fix issue with Pandoc's citation processing by updating all templates with last relevant changes from Pandoc's default template (thanks, @BlackEdder, @dahrens, #390)
 
@@ -28,8 +62,7 @@ rticles 0.20
 
 - fix an issue with `rjournal_article()` template to insert newline in author's block only if a field exist (thanks, @huizezhang-sherry, #387)
 
-rticles 0.19
----------------------------------------------------------------------
+# rticles 0.19
 
 - Update Copernicus Publications template to version 6.2 from 2021-01-15 (thanks, @RLumSK, #366).
 
@@ -37,8 +70,7 @@ rticles 0.19
 
 - Add article template `ims_article()` for *Institute of Mathematical Statistics* Journals, e.g., *Annals of Applied Statistics* (thanks, @auzaheta, #372)
 
-rticles 0.18
----------------------------------------------------------------------
+# rticles 0.18
 
 - `springer_article()` now uses the yaml variable biblio-style to set bibliography style
 instead of bibstyle. (@eliocamp, #358)
@@ -58,8 +90,7 @@ fix for the LaTeX problem sanitized with the last `rticles` update (thanks, @RLu
 
 - Add article template `jasa_article()` for the *Journal of the Acoustical Society of America* (JASA) (thanks, @stefanocoretta, #364)
 
-rticles 0.17
----------------------------------------------------------------------
+# rticles 0.17
 
 - Fixes `arxiv_article()` template when adding graphics from code chunks (thanks, @Athanasiamo, #332).
 
@@ -71,15 +102,13 @@ rticles 0.17
 
 - Add article template `lipics_article()` for *Leibniz International Proceedings in Informatics* (LIPIcs) (thanks, @nuest, #288).
 
-rticles 0.16
----------------------------------------------------------------------
+# rticles 0.16
 
 - Fixed `ctex_article()` to correctly use the default Pandoc template as intended in the PR #307, which introduced the bug #322 (thanks, @baketbek @cderv #323).
 
 - The minimal version of **knitr** required is 1.30 now.
 
-rticles 0.15
----------------------------------------------------------------------
+# rticles 0.15
 
 - Added a new `journals()` function to list all available journal names in this package (#318).
 
@@ -113,8 +142,7 @@ rticles 0.15
 
 - Added the output format `rticles::ctex_article` as an alias to `rticles::ctex`, to be consistent with the names of other `*_article` formats.
 
-rticles 0.14
----------------------------------------------------------------------
+# rticles 0.14
 
 - Added custom author ordering for the IEEE template (thanks, @DunLug, #263).
 
@@ -126,8 +154,7 @@ rticles 0.14
 
 - Added Oxford University Press (OUP) template (thanks, @dmkaplan2000, #271).
 
-rticles 0.13
----------------------------------------------------------------------
+# rticles 0.13
 
 - Added the `cslreferences` environment to all templates (thanks, @bbauzile, #260).
 
@@ -137,25 +164,21 @@ rticles 0.13
 
 - Add support for bibliography styles on the Springer template (thanks, @swhaat, #262).
 
-rticles 0.12
----------------------------------------------------------------------
+# rticles 0.12
 
 - Updated the `pnas_article()` document class from the PNAS website https://www.pnas.org/page/authors/latex (#21).
 
-rticles 0.11
----------------------------------------------------------------------
+# rticles 0.11
 
 - Added the Journal of Open Source Software (and Education) template (@noamross, #229).
 
 - Tweaked the `tf_article` template to avoid using absolute full paths for figures in the "Figures" section (@jooyoungseo, #246).
 
-rticles 0.10
----------------------------------------------------------------------
+# rticles 0.10
 
 - Support syntax highlighting in the `peerj_article()` format (@zkamvar, #238).
 
-rticles 0.9
----------------------------------------------------------------------
+# rticles 0.9
 
 - Added support for Keywords in IEEE Trans template (@espinielli, #227).
 
@@ -165,8 +188,7 @@ rticles 0.9
 
 - Use csl file for citations in output format `elsevier_article()` (@nuest, #233).
 
-rticles 0.8
----------------------------------------------------------------------
+# rticles 0.8
 
 - Added the Taylor & Francis journal template (@dleutnant, #218).
 
@@ -176,8 +198,7 @@ rticles 0.8
 
 - Updated the template for MDPI to 02/2019 (@dleutnant, #203).
 
-rticles 0.7
----------------------------------------------------------------------
+# rticles 0.7
 
 - Added the template for the Frontiers Journals (@muschellij2, @zkamvar, #209).
 
@@ -195,8 +216,7 @@ rticles 0.7
 
 - The function `ctex_template()` was removed. If you need to use a custom LaTeX template for the `ctex` output format, just use the `template` option under `ctex`.
 
-rticles 0.6
----------------------------------------------------------------------
+# rticles 0.6
 
 - Added the template for the SAGE Journals (thanks, @oguzhanogreden, #181).
 
@@ -208,8 +228,7 @@ rticles 0.6
 
 - Disabled syntax highlighting for `rjournal_article()` (thanks, @eddelbuettel, #185).
 
-rticles 0.5
----------------------------------------------------------------------
+# rticles 0.5
 
 - Added the template for the IEEE Transaction Journals (thanks, @Emaasit, #97).
 
@@ -233,20 +252,14 @@ rticles 0.5
 
 - Supports breaking the JSS author list into multiple lines; see #100 for details.
 
-rticles 0.4.1
----------------------------------------------------------------------
+# rticles 0.4.1
 
 - Add Royal Society Open Science journal template
-
-rticles 0.2.0.9000
----------------------------------------------------------------------
 
 - Add Institute of Electrical and Electronics Engineers (IEEE) IEEEtrans
   template for Conferences
 
-
-rticles 0.2
----------------------------------------------------------------------
+# rticles 0.2
 
 - Add American Chemical Society (ACS) template
 
@@ -260,8 +273,6 @@ rticles 0.2
 
 - Fix preamble variable name in R Journal template
 
-
-rticles 0.1
----------------------------------------------------------------------
+# rticles 0.1
 
 - Initial release to CRAN
