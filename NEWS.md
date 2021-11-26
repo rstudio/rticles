@@ -6,6 +6,8 @@
 
 - Add `trb_article()` for annual meeting submissions to the Transportation Research Board Annual Meeting (thanks, @gregmacfarlane, #427).
 
+- New template `josis_article()` for the Journal of Spatial Information Science (thanks, @Robinlovelace, #382)
+
 # rticles 0.21
 
 ## NEW FEATURES
