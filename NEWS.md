@@ -1,5 +1,12 @@
 # rticles 0.22
 
+- Update Copernicus Publications template to version 6.4 from 2021-08-16 (thanks, @RLumSK, #446).
+
+- `sage_article()` now correctly set cite style in template to use comma to match the Sage Havard style per Journal's guideline (thanks, @MalteHueckstaedt, #447).
+
+- Add `trb_article()` for annual meeting submissions to the Transportation Research Board Annual Meeting (thanks, @gregmacfarlane, #427).
+
+-  New `wellcomeor_article()` for Wellcome Open Research articles
 
 # rticles 0.21
 
@@ -10,8 +17,6 @@
 - New `ajs_article()` for *Austrian Journal of Statistics* (thanks, @matthias-da, #437).
 
 - New `glossa_article()` for articles of [Glossa: a journal of general linguistics](https://www.glossa-journal.org/) (thanks, @stefanocoretta, #361).
-
--  New `wellcomeor_article()` for Wellcome Open Research articles
 
 ## MAJOR CHANGES
 

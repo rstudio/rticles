@@ -31,6 +31,7 @@
 \alias{sim_article}
 \alias{springer_article}
 \alias{tf_article}
+\alias{trb_article}
 \alias{wellcomeor_article}
 \title{R Markdown output formats for (journal) articles}
 \usage{
@@ -138,7 +139,9 @@ springer_article(..., keep_tex = TRUE, citation_package = "default")
 
 tf_article(..., keep_tex = TRUE, citation_package = "natbib")
 
-wellcomeor_article(..., keep_tex = TRUE, citation_package = "default")
+trb_article(..., keep_tex = TRUE, citation_package = "natbib")
+
+wellcomeor_article(..., keep_tex = TRUE, citation_package = "natbib")
 }
 \arguments{
 \item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \verb{rmarkdown::[pdf_document]()}.}
@@ -378,6 +381,13 @@ Macro package for Springer Journals.
 \section{\code{tf_article}}{
  Format for creating submissions to a Taylor & Francis journal. Adapted from
 \samp{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
+}
+
+\section{\code{trb_article}}{
+ Format for creating submissions to the Transportation
+Research Board Annual Meeting. Adapted from
+\samp{https://www.overleaf.com/latex/templates/transportation-research-board-trb-latex-template/jkfndnnkkksw},
+which in turn is hosted at \samp{https://github.com/chiehrosswang/TRB_LaTeX_tex}
 }
 
 \section{\code{wellcomeor_article}}{
