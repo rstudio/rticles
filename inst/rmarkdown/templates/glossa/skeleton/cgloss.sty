@@ -1,0 +1,204 @@
+% -*- LaTeX -*-
+
+% Modified version of cgloss4e.sty.  Hacked and renamed cgloss.sty
+% by Alexis Dimitriadis (alexis@babel.ling.upenn.edu) 
+
+% Following borrows from Covington's style files inspired by Midnight by M.
+% de Groot, adapted to be used with gb4e.sty: examples beginning with \ex can
+% contain glosses directly. Default is
+% Linguistic Inquiry style with all lines in \rm; to change a line (eg. to
+% \it for a particular journal, change the appropriate line: e.g.,
+% \let\eachwordone=\rm in a copy of this file. Note that it will NOT work
+% to put \it before the line as the words are parsed separately.
+
+% Use \singlegloss to force single-spaced glosses even in double-space
+% environments. Works also in footnotes (^M as delimiter replaced by
+% \\)---hpk
+%
+
+% Changes by Alexis Dimitriadis 
+%
+% Removed flushleft environment and initial vskip to make macros usable
+% on the same line with earlier and/or later text, e.g.,
+% \item Q: \gll ... \\
+%               ... \\   \hfill (Greek)
+%    \trans Q: `...' 
+% Note: Text following the gloss will appear on line one of the example;
+% To get a line break, insert one manually with \\ or use \trans or \glt.
+% (\gln does not end the line, since it was already the
+% case in cgloss4e that a translation must be ended with a line break).
+%
+% Modified \glt to keep translation on the same page as the text.
+
+% BUGS: does not work very gracefully with double spacing (struts are not
+% automatically inserted after the \vboxes used by the macros).  
+% In double space mode without \nosinglegloss, when a translation
+% is not given, the next line of text is single-spaced from the glossed text.
+% With \nosinglegloss, the translation is set too close to the bottom line.
+
+
+%%%
+%%% Sentences with word-by-word glosses
+%%%
+
+% See covingtn.tex for full documentation.  Some examples:
+%
+% Displayed sentence with gloss and translation:
+%
+%             \gll Dit is een Nederlands voorbeeld.\\
+%                  This is a Dutch example.\\
+%             \glt `This is an example in Dutch.'
+%
+% Same, using bracketing where words do not correspond one-to-one:
+%
+%             \gll Dit is een voorbeeldje     in het Nederlands.\\
+%                  This is a {little example} in {}  Dutch.\\
+%             \glt `This is a little example in Dutch.'
+%
+% If you want to align 3 lines rather than two, use \glll instead of \gll.
+%
+% Layout is critical between \gll (or \glll) and \glt (or \gln).
+%
+% Thanks to Marcel R. van der Goot for permission to reproduce code.
+\let\@gsingle=1
+\def\singlegloss{\let\@gsingle=1}
+\def\nosinglegloss{\let\@gsingle=0}
+\@ifundefined{new@fontshape}%
+   {\def\@selfnt{\ifx\@currsize\normalsize\@normalsize\else\@currsize\fi}}
+   {\def\@selfnt{\selectfont}}
+
+\def\gll%                  % Introduces 2-line text-and-gloss.
+   {\bgroup %\begin{flushleft}
+     \ifx\@gsingle1%           conditionally force single spacing (hpk/MC)
+	 \def\baselinestretch{1}\@selfnt\fi
+%        \vskip\baselineskip\def\baselinestretch{1}%
+%        \@selfnt\vskip-\baselineskip\fi%
+    \bgroup
+    \twosent
+   }
+
+\def\glll%                  % Introduces 3-line text-and-gloss.
+   {\bgroup %\begin{flushleft}
+     \ifx\@gsingle1%        conditionally force single spacing (hpk/MC)
+	\def\baselinestretch{1}\@selfnt\fi
+%        \vskip\baselineskip\def\baselinestretch{1}%
+%        \@selfnt\vskip-\baselineskip\fi%
+    \bgroup
+    \threesent
+   }
+
+% \def\glt{\vskip.0\baselineskip}
+
+% redefine \gltoffset to set off translation from ex and gloss
+\@ifundefined{gltoffset}{\def\gltoffset{0pt}}{}
+
+\def\glt{\ifhmode\\*[\gltoffset]\else\nobreak\vskip\gltoffset\nobreak\fi}
+
+
+% Introduces a translation
+\let\trans\glt
+
+\def\gln{\relax}
+\def\glend{} % obsolete
+      % Ends the gloss environment.
+
+% The following TeX code is adapted, with permission, from:
+% gloss.tex: Macros for vertically aligning words in consecutive sentences.
+% Version: 1.0  release: 26 November 1990
+% Copyright (c) 1991 Marcel R. van der Goot (marcel@cs.caltech.edu).
+% Original Midnight/gloss.tex and Midnight/gloss.doc are available from
+% csvax.cs.caltech.edu [131.215.131.131] in pub/tex
+% and many other anonymous ftp archives.
+
+\newbox\lineone % boxes with words from first line
+\newbox\linetwo
+\newbox\linethree
+\newbox\wordone % a word from the first line (hbox)
+\newbox\wordtwo
+\newbox\wordthree
+\newbox\gline % the constructed double line (hbox)
+\newskip\glossglue % extra glue between glossed pairs or triples
+\glossglue = 0pt plus 2pt minus 1pt % allow stretch/shrink between words
+%\glossglue = 5pt plus 2pt minus 1pt % allow stretch/shrink between words
+\newif\ifnotdone
+
+\@ifundefined{eachwordone}{\let\eachwordone=\rm}{\relax}
+\@ifundefined{eachwordtwo}{\let\eachwordtwo=\rm}{\relax}
+\@ifundefined{eachwordthree}{\let\eachwordthree=\rm}{\relax}
+
+\def\lastword#1#2#3% #1 = \each, #2 = line box, #3 = word box
+   {\setbox#2=\vbox{\unvbox#2%
+                    \global\setbox#3=\lastbox
+                   }%
+    \ifvoid#3\global\setbox#3=\hbox{#1\strut{} }\fi
+        % extra space following \strut in case #1 needs a space
+   }
+
+\def\testdone
+   {\ifdim\ht\lineone=0pt
+         \ifdim\ht\linetwo=0pt \notdonefalse % tricky space after pt
+         \else\notdonetrue
+         \fi
+    \else\notdonetrue
+    \fi
+   }
+
+\gdef\getwords(#1,#2)#3 #4\\% #1=linebox, #2=\each, #3=1st word, #4=remainder
+   {\setbox#1=\vbox{\hbox{#2\strut#3 }% adds space
+                    \unvbox#1%
+                   }%
+    \def\more{#4}%
+    \ifx\more\empty\let\more=\donewords
+    \else\let\more=\getwords
+    \fi
+    \more(#1,#2)#4\\%
+   }
+
+\gdef\donewords(#1,#2)\\{}%
+
+\gdef\twosent#1\\ #2\\{% #1 = first line, #2 = second line
+    \getwords(\lineone,\eachwordone)#1 \\%
+    \getwords(\linetwo,\eachwordtwo)#2 \\%
+    \loop\lastword{\eachwordone}{\lineone}{\wordone}%
+         \lastword{\eachwordtwo}{\linetwo}{\wordtwo}%
+         \global\setbox\gline=\hbox{\unhbox\gline
+                                    \hskip\glossglue
+                                    \vtop{\box\wordone   % vtop was vbox
+                                          \nointerlineskip
+                                          \box\wordtwo
+                                         }%
+                                   }%
+         \testdone
+         \ifnotdone
+    \repeat
+    \egroup % matches \bgroup in \gloss
+   \gl@stop}
+
+\gdef\threesent#1\\ #2\\ #3\\{% #1 = first line, #2 = second line, #3 = third
+    \getwords(\lineone,\eachwordone)#1 \\%
+    \getwords(\linetwo,\eachwordtwo)#2 \\%
+    \getwords(\linethree,\eachwordthree)#3 \\%
+    \loop\lastword{\eachwordone}{\lineone}{\wordone}%
+         \lastword{\eachwordtwo}{\linetwo}{\wordtwo}%
+         \lastword{\eachwordthree}{\linethree}{\wordthree}%
+         \global\setbox\gline=\hbox{\unhbox\gline
+                                    \hskip\glossglue
+                                    \vtop{\box\wordone   % vtop was vbox
+                                          \nointerlineskip
+                                          \box\wordtwo
+                                          \nointerlineskip
+                                          \box\wordthree
+                                         }%
+                                   }%
+         \testdone
+         \ifnotdone
+    \repeat
+    \egroup % matches \bgroup in \gloss
+   \gl@stop}
+
+%\def\gl@stop{{\hskip -\glossglue}\unhbox\gline\end{flushleft}}
+
+% \leavevmode puts us back in horizontal mode, so that a \\ will work
+\def\gl@stop{{\hskip -\glossglue}\unhbox\gline\leavevmode \egroup}
+
+\endinput

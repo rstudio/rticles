@@ -2,3 +2,6 @@
 .Rproj.user
 .Rhistory
 .RData
+*.log
+reference
+inst/doc

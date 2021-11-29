@@ -1,0 +1,118 @@
+\documentclass[$layout$]{ametsoc}
+\usepackage{color}
+\usepackage{hyperref}
+\journal{$journal$}
+%  Please choose a journal abbreviation to use above from the following list:
+%
+%   jamc     (Journal of Applied Meteorology and Climatology)
+%   jtech     (Journal of Atmospheric and Oceanic Technology)
+%   jhm      (Journal of Hydrometeorology)
+%   jpo     (Journal of Physical Oceanography)
+%   jas      (Journal of Atmospheric Sciences)
+%   jcli      (Journal of Climate)
+%   mwr      (Monthly Weather Review)
+%   wcas      (Weather, Climate, and Society)
+%   waf       (Weather and Forecasting)
+%   bams (Bulletin of the American Meteorological Society)
+%   ei    (Earth Interactions)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Citations should be of the form ``author year''  not ``author, year''
+\bibpunct{(}{)}{;}{a}{}{,}
+\title{$title$}
+
+$if(author1)$
+\authors{$author1$
+$if(correspondingauthor)$
+\correspondingauthor{$author1$,$correspondingauthor$}
+$endif$
+$if(author2)$
+and $author2$
+$if(currentaddress)$
+\thanks{$currentaddress$}
+$endif$
+$endif$
+}
+$endif$
+$if(affiliation)$
+\affiliation{$affiliation$}
+$endif$
+$if(extraauthor)$
+    \extraauthor{Extra Author}
+$endif$
+$if(exaffiliation)$
+    \extraaffil{$exaffiliation$}
+$endif$
+
+$if(email)$
+$email$
+$endif$
+
+$for(exauthors)$
+\extraauthor{$exauthors.name$
+$if(exauthors.correspondingauthor)$
+\correspondingauthor{$exauthors.name$,$exauthors.correspondingauthor$}
+$endif$
+$if(exauthors.currentaddress)$
+\thanks{$exauthors.currentaddress$}
+$endif$}
+$if(exauthors.exaffiliation)$
+\extraaffil{$exauthors.exaffiliation$}
+$endif$
+$if(exauthors.email)$
+$exauthors.email$
+$endif$
+$endfor$
+
+$if(highlighting-macros)$
+% For Pandoc highlighting needs
+$highlighting-macros$
+$endif$
+
+$if(csl-refs)$
+% Pandoc citation processing
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc} % for calculating minipage widths
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+% pandoc header
+$for(header-includes)$
+$header-includes$
+$endfor$
+\abstract{$abstract$}
+\begin{document}
+\maketitle
+$for(include-before)$
+$include-before$
+
+$endfor$
+$body$
+$for(include-after)$
+$include-after$
+
+$endfor$
+\end{document}
