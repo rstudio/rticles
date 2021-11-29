@@ -461,7 +461,7 @@ $if(affiliation.author)$
   $if(affiliation.thanks)$$for(affiliation.thanks)$\thanks{$affiliation.thanks$}$endfor$$endif$
 }
 $else$
-$~$!!! Only 'affiliation.author' is supported for the journal mode.$~$
+$~$!!! Only 'affiliation.author' syntax is supported for the journal mode. Modify you YAML header accordingly.$~$
 $endif$
 
 \markboth{$journal$$~$, Vol. XX, No. X, XXXXXX 20XX$~$}%
