@@ -156,7 +156,7 @@ ctex_article <- function(..., template = 'default', latex_engine = 'xelatex') {
 #' @rdname article
 cvpr_article <- function(keep_tex = TRUE, ...)
 {
-  pdf_document_format('cvpr_article', keep_tex=keep_tex, ...)
+  pdf_document_format('cvpr', keep_tex=keep_tex, ...)
 }
 
 #' @export
