@@ -54,6 +54,7 @@ ieee_article <- function(
   with_dblfloatfix = FALSE,
   keep_tex         = TRUE,
   pandoc_args = NULL,
+  citation_package = "default",
   md_extensions    = c("-autolink_bare_uris"),
   number_sections = FALSE,
   ...
@@ -98,7 +99,7 @@ ieee_article <- function(
   pdf_document_format(
     "ieee", pandoc_args = c(pandoc_arg_list, pandoc_args),
     keep_tex = keep_tex, md_extensions = md_extensions,
-    number_sections = number_sections,
+    number_sections = number_sections, citation_package = citation_package,
     ...
   )
 }
