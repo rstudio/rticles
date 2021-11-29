@@ -84,10 +84,8 @@ abstract: |
   The abstract goes here.
   On multiple lines eventually.
 
-## If you're using latex style \cite commands, choose the backend you want to use.
-# natbib: true
-# biblatex: true
-# citation_sorting: none   ## used as sorting option of the biblatex package (if selected)
+## Example of option for biblatex
+# biblatexoptions: sorting=none
 
 ## When using pandoc for citation processing (the default), these options set the correct
 ## citation style, and add links to citations. 
