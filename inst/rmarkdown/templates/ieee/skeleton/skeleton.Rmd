@@ -73,11 +73,11 @@ affiliation:
         - name: Roy Batty
           email: roy@replicant.offworld
 
-  # ## used only in journal mode for author affiliations and other acknowledgements
-  thanks:
-    - "E. Tyrell and R. Batty are with Starfleet Academy."
-    - "M. Shell was with the Department of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta, GA, 30332 USA e-mail: (see http://www.michaelshell.org/contact.html)."
-    - "Manuscript received February 17, 2021; revised June 6, 2021."
+  ## used only in journal mode for author affiliations and other acknowledgements
+  # thanks:
+  #  - "E. Tyrell and R. Batty are with Starfleet Academy."
+  #  - "M. Shell was with the Department of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta, GA, 30332 USA e-mail: (see http://www.michaelshell.org/contact.html)."
+  #  - "Manuscript received February 17, 2021; revised June 6, 2021."
 
 keywords: ["keyword 1", "keyword 2"]
 abstract: |
