@@ -22,6 +22,7 @@
 \alias{jedm_article}
 \alias{mdpi_article}
 \alias{mnras_article}
+\alias{opmi_article}
 \alias{oup_article}
 \alias{peerj_article}
 \alias{pihph_article}
@@ -114,6 +115,8 @@ jedm_article(..., keep_tex = TRUE, citation_package = "natbib")
 mdpi_article(..., keep_tex = TRUE)
 
 mnras_article(..., keep_tex = TRUE, fig_caption = TRUE)
+
+opmi_article(..., keep_tex = TRUE)
 
 oup_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
@@ -288,6 +291,11 @@ from \url{https://www.mdpi.com/authors/latex}.
  Format for creating an Monthly Notices of
 Royal Astronomical Society (MNRAS) Journal articles. Adapted from
 \url{https://ras.ac.uk}.
+}
+
+\section{\code{opmi_article}}{
+ Format for creating Open Mind articles. Adapted from
+\url{https://www.mitpressjournals.org/journals/opmi/sub}.
 }
 
 \section{\code{oup_article}}{

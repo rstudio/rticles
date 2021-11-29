@@ -1,0 +1,85 @@
+\documentclass[$class_option$]{stjour}
+
+$if(journal_name)$\journalname{$journal_name$}$endif$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% For production only, not authors:
+%%\documentclass[OpenMind,finalfonts]{stjour}
+
+%%%%%%%%%%% Please supply information %%%%%%%%%%%%%%%%%%%%%%%%%
+
+\supplementslinks{$supplements_links$}
+
+$if(conflicts_of_interest)$
+\conflictsofinterest{$conflicts_of_interest$}
+$endif$
+
+%%%%%%%%%%% to be supplied by MIT Press, only %%%%%%%%%%%%%%%%%
+
+\citation{CITATION}
+
+\received{RECEIVED}
+\accepted{ACCEPTED}
+\published{PUBLISHED}
+
+%% DOI address:
+\setdoi{DOI}
+
+%%%%%%%% End MIT Press commands %%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% author definitions should be placed here:
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+\begin{document}
+
+\title[$short_title$]{$title$}
+$if(subtitle)$
+\subtitle{$subtitle$}
+$endif$
+
+\author[$short_author$]{
+  $for(author)$
+    $author.name$\affil{$author.affiliation$}$sep$,
+  $endfor$
+}
+
+$for(affiliation)$
+  \affiliation{$affiliation.code$}{$affiliation.address$}
+$endfor$
+
+\correspondingauthor{$corresponding_author.name$}{$corresponding_author.email$}
+
+\keywords{$for(keywords)$ $keywords$$sep$, $endfor$}
+
+\begin{abstract}
+$abstract$
+\end{abstract}
+
+$body$
+
+%%% End of Article
+
+$if(supportive_information)$
+  \section{Supportive Information}
+  $supportive_information$
+$endif$
+
+\acknowledgments
+$acknowledgments$
+
+\authorcontributions
+$author_contributions$
+
+\bibliography{$biblio$}
+
+\clearpage
+
+$for(include-after)$
+  $include-after$
+$endfor$
+
+\end{document}

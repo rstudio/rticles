@@ -6,6 +6,8 @@
 
 - Add `trb_article()` for annual meeting submissions to the Transportation Research Board Annual Meeting (thanks, @gregmacfarlane, #427).
 
+- Added OpenMind template (@mikabr)
+
 # rticles 0.21
 
 ## NEW FEATURES

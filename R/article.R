@@ -304,6 +304,14 @@ mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
   )
 }
 
+#' @section `opmi_article`: Format for creating Open Mind articles. Adapted from
+#'   \url{https://www.mitpressjournals.org/journals/opmi/sub}.
+#' @export
+#' @rdname article
+opmi_article <- function(..., keep_tex = TRUE) {
+  pdf_document_format("opmi", keep_tex = keep_tex, ...)
+}
+
 #' @section `oup_article`: Format for creating submissions to many Oxford University Press
 #'   journals. Adapted from
 #'   <https://academic.oup.com/journals/pages/authors/preparing_your_manuscript>
