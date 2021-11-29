@@ -49,7 +49,7 @@ test_format("copernicus")
 if (xfun::is_linux()) test_format("ctex") # only on linux due to fonts requirements
 test_format("elsevier")
 test_format("frontiers")
-test_format("ieee")
+if (rmarkdown::pandoc_available(2.8)) test_format("ieee")
 test_format("ims")
 test_format("ims", output_options = list(journal = "aap"))
 test_format("jasa")
@@ -77,7 +77,7 @@ test_format("trb")
 tinytex::tlmgr_remove("microtype")
 test_format("glossa")
 
-# Multiple demo file
+# Multiple demo files
 if (rmarkdown::pandoc_available(2.10)) {
   test_format("ieee", input = "IEEE-journal-example.Rmd",
               output_options = list(journal = "IEEE Transactions on Learning Technology"))

@@ -7,6 +7,10 @@
 #' `IEEEtran.cls` is supported, with experimental support for the
 #' `"journal"` mode.
 #'
+#' # Pandoc requirement
+#'
+#' This format requires at least Pandoc 2.8 and 2.10 when `journal` is used.
+#'
 #' @inheritParams rmarkdown::pdf_document
 #' @param draftmode Specify the draft mode to control spacing and whether images
 #' should be rendered. Valid options are: `"final"` (default), `"draft"`,
@@ -59,6 +63,8 @@ ieee_article <- function(
   number_sections = FALSE,
   ...
 ) {
+
+  rmarkdown::pandoc_available("2.8", error = TRUE)
 
   args <- c()
 

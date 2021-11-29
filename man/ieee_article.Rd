@@ -86,6 +86,10 @@ Presently, only the \code{"conference"} paper mode offered by the
 \code{IEEEtran.cls} is supported, with experimental support for the
 \code{"journal"} mode.
 }
+\section{Pandoc requirement}{
+This format requires at least Pandoc 2.8 and 2.10 when \code{journal} is used.
+}
+
 \references{
 Shell, Michael. "How to use the IEEEtran LATEX class." Journal of LATEX Class
 Files 1.11 (2002): 10-20.
