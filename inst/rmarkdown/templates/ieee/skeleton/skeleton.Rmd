@@ -95,7 +95,6 @@ link-citations: true
 ## bibliography file(s)
 bibliography: mybibfile.bib
 
-
 output: 
   rticles::ieee_article:
     ## Activate journal mode and specify journal for page headers
