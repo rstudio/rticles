@@ -146,11 +146,9 @@ Subsubsection text here.
 
 # R code
 
-R code can be added as usual. Note that syntax highlighting is not available. Fig. \@ref(fig:nice-plot) is a an example.
+R code can be added as usual. Fig. \@ref(fig:nice-plot) is a an example.
 
 ```{r echo = TRUE}
-#23456789012345678901234567890123456789012345678901234567890123456789012345
-#       10        20        30        40        50        60        70     
 summary(lm(mpg ~ disp, data = mtcars))
 ```
 

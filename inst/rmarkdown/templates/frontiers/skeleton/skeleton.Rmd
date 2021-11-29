@@ -156,11 +156,11 @@ LaTeX folder
 
 # References
 
-A reference list should be automatically created here. However it won't. Pandoc 
-will place the list of references at the end of the document instead. There are 
-no convenient solution for now to force Pandoc to do otherwise. The easiest way 
-to get around this problem is to edit the LaTeX file created by Pandoc before 
-compiling it again using the traditional LaTeX commands.
+A Frontier article expect the reference list to be included in this section.
+To make that happens, the below syntax can be used. This [feature is from Pandoc citeproc](https://pandoc.org/MANUAL.html#placement-of-the-bibliography) which is used with `frontier_article()` to handle the bibliography
+
+::: {#refs}
+:::
 
 # Figures {-}
 

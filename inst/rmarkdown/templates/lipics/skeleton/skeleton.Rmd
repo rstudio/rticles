@@ -173,7 +173,15 @@ appendix: |
   List of different predefined enumeration styles:
 output:
   rticles::lipics_article: default
+  # To use with bookdown feature
+  bookdown::pdf_book:
+    base_format: rticles::lipics_article
 ---
+
+```{r setup, include = FALSE}
+# deactivate addition of preamble when this format is used with bookdown
+options(bookdown.theorem.preamble = FALSE)
+```
 
 # Typesetting instructions -- Summary
 
