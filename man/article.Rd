@@ -133,7 +133,7 @@ pnas_article(..., keep_tex = TRUE)
 
 sage_article(..., highlight = NULL, citation_package = "natbib")
 
-science_article()
+science_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
 sim_article(..., highlight = NULL, citation_package = "natbib")
 
@@ -155,14 +155,8 @@ An R Markdown output format.
 Most article formats are based on \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}, with a
 custom Pandoc LaTeX template and different default values for other arguments
 (e.g., \code{keep_tex = TRUE}).
-
-Most article formats are based on \code{rmarkdown::pdf_document()}, with a
-custom Pandoc LaTeX template and different default values for other arguments
-(e.g., \code{keep_tex = TRUE}).
 }
 \section{Details}{
- You can find more details about each output format below.
-
  You can find more details about each output format below.
 }
 
@@ -353,6 +347,12 @@ Possible arguments for the YAML header are:
 \item \code{header-includes}: custom additions to the header, before the \verb{\\begin\{document\}} statement
 \item \code{include-after}: for including additional LaTeX code before the \verb{\\end\\\{document\}} statement
 }
+}
+
+\section{\code{science_article}}{
+ Format for AAAS - Science articles
+Based on the official Science Journal LaTeX guidelines
+\url{http://www.sciencemag.org/authors/preparing-manuscripts-using-latex}.
 }
 
 \section{\code{sim_article}}{
