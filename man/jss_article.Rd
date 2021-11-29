@@ -4,17 +4,26 @@
 \alias{jss_article}
 \title{Journal of Statistical Software (JSS) format.}
 \usage{
-jss_article(..., keep_tex = TRUE, citation_package = "natbib")
+jss_article(
+  ...,
+  keep_tex = TRUE,
+  citation_package = "natbib",
+  pandoc_args = NULL
+)
 }
 \arguments{
-\item{...}{Arguments to \code{rmarkdown::pdf_document}}
+\item{...}{Arguments to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}}
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 
 \item{citation_package}{The LaTeX package to process citations, \code{natbib}
-or \code{biblatex}. Use \code{none} if neither package is to be used.}
+or \code{biblatex}. Use \code{default} if neither package is to be used,
+which means citations will be processed via the command
+\command{pandoc-citeproc}.}
+
+\item{pandoc_args}{Additional command line options to pass to pandoc}
 }
 \description{
 Format for creating a Journal of Statistical Software (JSS) articles. Adapted
-from \url{http://www.jstatsoft.org/about/submissions}.
+from \url{https://www.jstatsoft.org/about/submissions}.
 }
