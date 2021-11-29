@@ -13,6 +13,9 @@
 #' `"draftcls"`, or `"draftclsnofoot"`.
 #' @param hyphenfixes A `character` value that provides the correct
 #' hyphenations for ambiguous words. Separate new words with spaces.
+#' @param journal Running Header to use for a journal paper. When set,
+#'   classoption `journal` will be used instead of `conference`.
+#'   `number_sections` will also default to `TRUE` in this case.
 #' @param IEEEspecialpaper  A `character` value containing the publication's
 #' special paper designation.
 #' @param with_ifpdf A `logical` value turning on (`TRUE`) or off
@@ -40,6 +43,7 @@
 ieee_article <- function(
   draftmode   = c("final", "draft", "draftcls", "draftclsnofoot"),
   hyphenfixes      = "op-tical net-works semi-conduc-tor",
+  journal = NULL,
   IEEEspecialpaper = "",
   with_ifpdf       = FALSE,
   with_cite        = FALSE,
@@ -51,6 +55,7 @@ ieee_article <- function(
   keep_tex         = TRUE,
   pandoc_args = NULL,
   md_extensions    = c("-autolink_bare_uris"),
+  number_sections = FALSE,
   ...
 ) {
 
@@ -60,6 +65,15 @@ ieee_article <- function(
   args <- c(args, "draftmode" = draftmode)
 
   args <- c(args, "hyphenfixes" = hyphenfixes)
+
+
+  # Some check when journal mode is set
+  if (!is.null(journal)) {
+    # Add as Pandoc's variable
+    args <- c(args, "journal" = journal)
+    # activate number_section by default
+    if(missing(number_sections)) number_sections <- TRUE
+  }
 
   # Avoid declaration of pandoc variable if field is empty
   if (nchar(IEEEspecialpaper) > 1) {
@@ -84,6 +98,7 @@ ieee_article <- function(
   pdf_document_format(
     "ieee", pandoc_args = c(pandoc_arg_list, pandoc_args),
     keep_tex = keep_tex, md_extensions = md_extensions,
+    number_sections = number_sections,
     ...
   )
 }

@@ -386,10 +386,8 @@ $endif$
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
 
-% Pandoc toggle for numbering sections (defaults to be off in conference, on in journal)
+% Pandoc toggle for numbering sections
 $if(numbersections)$
-\setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
-$elseif(journal)$
 \setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
 $else$
 \setcounter{secnumdepth}{0}
