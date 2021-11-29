@@ -98,7 +98,6 @@ bibliography: mybibfile.bib
 
 output: 
   rticles::ieee_article:
-    with_amsmath: true
     ## Activate journal mode and specify journal for page headers
     # journal: IEEE Transactions on Learning Technology 
     # use some specific Tex packages if needed. (see ?rticles::ieee_article())
