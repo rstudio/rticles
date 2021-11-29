@@ -78,7 +78,7 @@ tinytex::tlmgr_remove("microtype")
 test_format("glossa")
 
 # Multiple demo files
-if (rmarkdown::pandoc_available(2.10)) {
+if (rmarkdown::pandoc_available("2.10")) {
   test_format("ieee", input = "IEEE-journal-example.Rmd",
               output_options = list(journal = "IEEE Transactions on Learning Technology"))
 }
