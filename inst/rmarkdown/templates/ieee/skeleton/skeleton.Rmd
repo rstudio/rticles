@@ -1,13 +1,6 @@
 ---
 title: Bare Demo of IEEEtran.cls for IEEE Conferences & Journals
 
-## Either conference OR journal should be set;
-## for `conference` the value makes no difference, for `journal` you should set the
-## title of the journal you're publishing with, as it will be used in running headers.
-## if neither are set, the document defaults to conference mode.
-# conference: true
-journal: IEEE Transactions on Learning Technology ## specify journal for page headers
-
 affiliation:  
   ## use one only of the following
   # author-columnar: true         ## one column per author
@@ -116,7 +109,11 @@ link-citations: true
 bibliography: mybibfile.bib
 
 
-output: rticles::ieee_article
+output: 
+  rticles::ieee_article:
+    with_amsmath: true
+    ## Activate journal mode and specify journal for page headers
+    # journal: IEEE Transactions on Learning Technology 
 ---
 
 Introduction
