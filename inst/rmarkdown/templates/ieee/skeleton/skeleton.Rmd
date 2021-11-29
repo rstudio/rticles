@@ -84,16 +84,6 @@ abstract: |
   The abstract goes here.
   On multiple lines eventually.
 
-# use some specific Tex packages if needed. 
-# with_ifpdf: true
-# with_cite: true
-# amsmath need to be true to use with bookdown for referencing equations.
-with_amsmath: true
-# with_algorithmic: true
-# with_array: true
-# with_dblfloatfix: true
-
-
 ## If you're using latex style \cite commands, choose the backend you want to use.
 # natbib: true
 # biblatex: true
@@ -114,6 +104,14 @@ output:
     with_amsmath: true
     ## Activate journal mode and specify journal for page headers
     # journal: IEEE Transactions on Learning Technology 
+    # use some specific Tex packages if needed. (see ?rticles::ieee_article())
+    # with_ifpdf: true
+    # with_cite: true
+    with_amsmath: true # amsmath need to be true to use with bookdown for referencing equations.
+    # with_algorithmic: true
+    # with_subfig: true
+    # with_array: true
+    # with_dblfloatfix: true
 ---
 
 Introduction
