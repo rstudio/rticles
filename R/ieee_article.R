@@ -1,40 +1,41 @@
 #' IEEE Transactions journal format.
 #'
 #' Format for creating submissions to IEEE Transaction journals. Adapted from
-#' \url{http://www.ieee.org/publications_standards/publications/authors/author_templates.html}.
+#' <http://www.ieee.org/publications_standards/publications/authors/author_templates.html>.
 #'
-#' Presently, only the \code{"conference"} paper mode offered by
-#' \code{IEEEtran.cls} is fully supported, with experimental support for the
-#' \code{"journal"} mode.
+#' Presently, only the `"conference"` paper mode offered by the
+#' `IEEEtran.cls` is supported, with experimental support for the
+#' `"journal"` mode.
 #'
 #' @inheritParams rmarkdown::pdf_document
 #' @param draftmode Specify the draft mode to control spacing and whether images
-#' should be rendered. Valid options are: \code{"final"} (default), \code{"draft"},
-#' \code{"draftcls"}, or \code{"draftclsnofoot"}.
-#' @param hyphenfixes A \code{character} value that provides the correct
+#' should be rendered. Valid options are: `"final"` (default), `"draft"`,
+#' `"draftcls"`, or `"draftclsnofoot"`.
+#' @param hyphenfixes A `character` value that provides the correct
 #' hyphenations for ambiguous words. Separate new words with spaces.
-#' @param IEEEspecialpaper  A \code{character} value containing the publication's
+#' @param IEEEspecialpaper  A `character` value containing the publication's
 #' special paper designation.
-#' @param with_ifpdf A \code{logical} value turning on (\code{TRUE}) or off
-#' (\code{FALSE}) the \code{ifpdf} LaTeX package.
-#' @param with_cite A \code{logical} value turning on (\code{TRUE}) or off
-#' (\code{FALSE}) the \code{cite} LaTeX package.
-#' @param with_amsmath A \code{logical} value turning on (\code{TRUE}) or off
-#'  (\code{FALSE}) the \code{amsmath} LaTeX package.
-#' @param with_algorithmic A \code{logical} value turning on (\code{TRUE}) or
-#'  off (\code{FALSE}) the \code{algorithmic} LaTeX package.
-#' @param with_subfig A \code{logical} value turning on (\code{TRUE}) or off
-#' (\code{FALSE}) the \code{subfig} LaTeX package.
-#' @param with_array A \code{logical} value turning on (\code{TRUE}) or off
-#' (\code{FALSE}) the \code{array} LaTeX package.
-#' @param with_dblfloatfix A \code{logical} value turning on (\code{TRUE}) or
-#' off (\code{FALSE}) the \code{dblfloatfix} LaTeX package.
-#' @param ... Additional arguments to \code{rmarkdown::pdf_document}
+#' @param with_ifpdf A `logical` value turning on (`TRUE`) or off
+#' (`FALSE`) the `ifpdf` LaTeX package.
+#' @param with_cite A `logical` value turning on (`TRUE`) or off
+#' (`FALSE`) the `cite` LaTeX package.
+#' @param with_amsmath A `logical` value turning on (`TRUE`) or off
+#'  (`FALSE`) the `amsmath` LaTeX package.
+#' @param with_algorithmic A `logical` value turning on (`TRUE`) or
+#'  off (`FALSE`) the `algorithmic` LaTeX package.
+#' @param with_subfig A `logical` value turning on (`TRUE`) or off
+#' (`FALSE`) the `subfig` LaTeX package.
+#' @param with_array A `logical` value turning on (`TRUE`) or off
+#' (`FALSE`) the `array` LaTeX package.
+#' @param with_dblfloatfix A `logical` value turning on (`TRUE`) or
+#' off (`FALSE`) the `dblfloatfix` LaTeX package.
+#' @param ... Additional arguments to [rmarkdown::pdf_document()]
 #'
 #' @references
 #' Shell, Michael. "How to use the IEEEtran LATEX class." Journal of LATEX Class
 #'  Files 1.11 (2002): 10-20.
-#' \url{http://mirrors.rit.edu/CTAN/macros/latex/contrib/IEEEtran/IEEEtran_HOWTO.pdf}
+#' <http://mirrors.rit.edu/CTAN/macros/latex/contrib/IEEEtran/IEEEtran_HOWTO.pdf>
+#' @importFrom rmarkdown pandoc_variable_arg
 #' @export
 ieee_article <- function(
   draftmode   = c("final", "draft", "draftcls", "draftclsnofoot"),
@@ -75,13 +76,10 @@ ieee_article <- function(
 
   args <- c(args, plist[plist])
 
-  # pandoc_variable_arg not exported from rmarkdown
-  pandoc_arg_variable <- function(var_name, value) {
-    c("-V", paste0(var_name, "=", value))
-  }
-
   # Convert to pandoc arguments
-  pandoc_arg_list <- mapply(pandoc_arg_variable, names(args), args)
+  pandoc_arg_list <- mapply(rmarkdown::pandoc_variable_arg, names(args), args,
+                            USE.NAMES = FALSE, SIMPLIFY = FALSE)
+  pandoc_arg_list <- unlist(pandoc_arg_list)
 
   pdf_document_format(
     "ieee", pandoc_args = c(pandoc_arg_list, pandoc_args),

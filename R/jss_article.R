@@ -1,9 +1,9 @@
 #' Journal of Statistical Software (JSS) format.
 #'
 #' Format for creating a Journal of Statistical Software (JSS) articles. Adapted
-#' from \url{https://www.jstatsoft.org/about/submissions}.
+#' from <https://www.jstatsoft.org/about/submissions>.
 #' @inheritParams rmarkdown::pdf_document
-#' @param ... Arguments to \code{rmarkdown::pdf_document}
+#' @param ... Arguments to [rmarkdown::pdf_document()]
 #' @export
 jss_article <- function(
   ..., keep_tex = TRUE, citation_package = 'natbib',
@@ -50,6 +50,30 @@ jss_article <- function(
   }
 
   set_sweave_hooks(base, c('CodeInput', 'CodeOutput', 'CodeChunk'))
+}
+
+#' Austrian Journal of Statistics (AJS) format.
+#'
+#' Format for creating a Austrian Journal of Statistics (AJS) article. Adapted
+#' from <https://www.jstatsoft.org/about/submissions>.
+#' @inheritParams jss_article
+#' @importFrom rmarkdown pandoc_variable_arg
+#' @export
+ajs_article <- function(
+  ..., keep_tex = TRUE, citation_package = 'natbib',
+  pandoc_args = NULL
+) {
+  # set documentclass to ajs for this template
+  pandoc_args <- c(pandoc_args,
+            rmarkdown::pandoc_variable_arg("documentclass", "ajs")
+  )
+
+  jss_article(...,
+              keep_tex = keep_tex,
+              citation_package = citation_package,
+              pandoc_args = pandoc_args
+  )
+
 }
 
 # wrap the content in a raw latex block

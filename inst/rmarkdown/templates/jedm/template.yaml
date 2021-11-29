@@ -1,0 +1,5 @@
+name: Journal of Educational Data Mining (JDEM)
+description: >
+ Template for creating an article for submission to JEDM
+create_dir: true
+

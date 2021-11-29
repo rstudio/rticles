@@ -7,7 +7,7 @@
 rjournal_article(..., keep_tex = TRUE, citation_package = "natbib")
 }
 \arguments{
-\item{...}{Arguments to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document}}.}
+\item{...}{Arguments to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}.}
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 

@@ -1,0 +1,108 @@
+---
+title: Submission Instructions
+author:
+- name: First Author
+  institution: First author address
+  email: First author email
+- name: Second Author
+  institution: Second author address
+  email: Second author email
+abstract: |
+  This document serves both as JEDM submission instruction and as a template file.  This is the abstract. It should contain from 100 to 250 words.
+keywords: submission, JEDM, abstract, instructions, style
+bibliography: ref.bib
+output: rticles::jedm_article
+---
+
+```{r setup, include = FALSE, echo = FALSE, purl = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Paper format
+
+Manuscripts should be formatted for letter sized paper, one side only, leaving 2.75cm margins on the right and left sides and 2.25cm on the top and bottom. Body font should be Times Roman 12pt and sections, title, and authors font should be Helvetica.
+
+# Style files
+
+For LaTeX, a style file named \texttt{jedm.cls} is provided on the journal's web site.  An MS Word file containing this example text is also provided, \texttt{jedm.doc}, which can be used as a template (see the Styles menu). Note that copy/pasting into the template may not ensure correct formatting but selecting a region of text and applying the appropriate style should always work. 
+
+# Figures and tables
+
+Each figure and table must be mentioned in the text, and must be numbered consecutively in order of appearance (with captions in lower case). For the review process, the figures should be integrated into the text rather than being inserted at the end of the document.
+
+As JEDM is an electronic journal, authors are encouraged to use colours when it enhances visibility and understanding of figures.
+
+Examples of a figure and a table are given in Figure~\ref{tab:fig1} and Table~\ref{tab:1}.
+
+```{=latex}
+\begin{figure}
+  \centerline{\fbox{\parbox{.66\textwidth}{\centering \raisebox{0pt}[2cm][2cm]{%
+        \begin{tabular}{c}
+          \cellcolor{blue!35}{\sf This is a figure}\\
+          \cellcolor{blue!25}{\sf And yes, you can use colors!}\\
+          \cellcolor{blue!15}{\sf As long as it enhances visibility and understanding}\\
+        \end{tabular}
+  }}}}
+  \caption{This is the figure's caption.  It should be a centered paragraph of width 193mm (7.6in). Font size should be 11pt.}
+  \label{tab:fig1}
+\end{figure}
+```
+
+```{=latex}
+\begin{table}
+  \caption{This is an example of a table that lists the margins of this template.  Captions should follow the same rules as a figure, except that they are put on top of the table.}\vspace*{1ex}
+  \label{tab:1}
+  \centering
+  \begin{tabular}{| l | l |}
+    \hline
+    \multicolumn{1}{|c|}{\textbf{Margin}} & \multicolumn{1}{c|}{\textbf{Size}} \\
+    \hline
+    left&2.75cm\\
+    right&2.75cm\\
+    top&2.25cm\\
+    bottom&2.25cm\\
+    \hline
+  \end{tabular}
+\end{table}
+```
+
+# Appendices
+
+Supplementary technical material (e.g., mathematical proofs or descriptions of experimental procedures) should be collected in an appendix at the end of the paper (before the acknowledgements and the references sections).
+
+# Footnotes and acknowledgments
+
+Footnotes should be used sparingly and indicated by consecutive superscript numbers in the text. Material to be footnoted should appear at the bottom of the page on which it is referenced. Acknowledgments and grant numbers should be put into a separate 'Acknowledgment' section right before the list of references.
+
+# References
+
+References should follow the ACM standard.  The example provided here uses the \texttt{jedm.cls} class file and \texttt{acmtrans.bst} bib style file.  For example, we could write that \citeN{JEDM:baker2009} published a review on EDM in this journal; other reviews were published later \cite[for eg.]{romero2010educational}. The provided ref.bib file contains examples of virtually every possible citation type.
+
+# Supporting materials
+
+Authors are encouraged to submit the data they use and the analysis code in order to replicate and perform rigorous comparisons across studies.  The data and code can be stored on the \texttt{educationaldatamining.org} site for public reference, or stored privately for reviewing purpose only if required. See the online submission instructions for guidance on using and citing code repositories.
+
+# Page numbering and sectioning
+
+For the manuscript to be reviewed, page number should appear at the bottom of each page.  \textbf{For the final version, they must be taken out as the standard JEDM footer is be added.}
+
+## Sections and subsections
+
+Section style should follow the example in this document.
+
+### Subsection levels
+
+There should be no more than three levels of sections.
+
+#### Fourth level.
+
+The fourth level should simply have their title in the same font style as those of of subsections, without numbering and at the beginning of a paragraph.
+
+# Submission
+
+The journal prefers PDF format, but can also accommodate most other popular formats.  Care should be taken to embed fonts in the rendered PDF. The provided Word template has a larger filesize because it contains embedded fonts.
+
+Instructions for submitting the papers on the website are at \\
+\url{http://jedm.educationaldatamining.org/index.php/JEDM/about/submissions#onlineSubmissions}.  You first need to register and log in to the site.  When registering, you must activate your role as ``author''.
+
+# References {-}

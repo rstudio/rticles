@@ -1,0 +1,236 @@
+\documentclass[$journal$]{imsart}
+%% LaTeX 2e style file for the processing of LaTeX2e files
+%% of the following IMS/BS journals:
+%%
+%% - The Annals of Probability
+%% - The Annals of Applied Probability
+%% - The Annals of Statistics
+%% - The Annals of Applied Statistics
+%% - Statistical Science
+%% - Probability Surveys
+%% - Statistics Surveys
+%% - Electronic Journal of Statistics
+%% - Bernoulli
+%% - Annales de l'Institut Henri Poincar\'e - Probabilit\'es et Statistiques
+%% - Brazilian Journal of Probability and Statistics
+%% - Bayesian Analysis
+%%
+%% - Institute of Mathematical Statistics, U.S.A.
+%% - Bernoulli Society
+%% - Institut Henry Poincare
+%% - Brazilian Statistical Association
+%% - International Society for Bayesian Analysis
+%%
+%% Macros written by Vytas Statulevicius, VTeX, Lithuania
+%% Maintained by TeX group members, VTeX, Lithuania
+%% for Institute of Mathematical Statistics, U.S.A.
+%% Please submit bugs or your comments to latex-support@vtex.lt
+%%
+%% The original distribution is located at:
+%% https://www.e-publications.org/ims/support
+
+\RequirePackage{amsthm,amsmath,amsfonts,amssymb}
+\RequirePackage[authoryear]{natbib}
+\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
+\RequirePackage{graphicx}
+
+% Added package
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+% Pandoc syntax highlighting
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+% Pandoc citation processing
+$if(csl-refs)$
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc} % for calculating minipage widths
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+
+% Garantees bookdown compilation
+%\usepackage{lmodern}
+
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% alternative version to the shaded problem
+\makeatletter
+\@ifundefined{Shaded}{
+}{\renewenvironment{Shaded}{\begin{kframe}}{\end{kframe}}}
+\makeatother
+
+$if(predefined-theoremstyle)$
+\startlocaldefs
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                          %%
+% Uncomment next line to change            %%
+% the type of equation numbering           %%
+%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\numberwithin{equation}{section}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                          %%
+% For Axiom, Claim, Corollary, Hypothezis, %%
+% Lemma, Theorem, Proposition              %%
+% use \theoremstyle{plain}                 %%
+%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{plain}
+\newtheorem{axiom}{Axiom}
+\newtheorem{claim}[axiom]{Claim}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                          %%
+% For Assumption, Definition, Example,     %%
+% Notation, Property, Remark, Fact         %%
+% use \theoremstyle{remark}                %%
+%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{remark}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{example}{Example}
+\newtheorem*{fact}{Fact}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Please put your definitions here:        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\endlocaldefs
+$endif$
+
+% pandoc header
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+\begin{document}
+\begin{frontmatter}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the title of your article here     %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{$title$$if(thanks)$$for(thanks)$\thanksref{$thanks.ref$}$endfor$$endif$}
+%\title{A sample article title with some additional note\thanksref{T1}}
+\runtitle{$runtitle$}
+%\thankstext{T1}{A sample of additional note to the title.}
+
+$if(thanks)$
+$for(thanks)$
+\thankstext{$thanks.ref$}{$thanks.text$}$sep$
+$endfor$
+$endif$
+
+
+\begin{aug}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Only one address is permitted per author. %%
+%%Only division, organization and e-mail is %%
+%%included in the address.                  %%
+%%Additional information can be included in %%
+%%the Acknowledgments section if necessary. %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Example:
+%%\author[A]{\fnms{First} \snm{Author}\ead[label=e1]{first@somewhere.com}},
+%%\author[B]{\fnms{Second} \snm{Author}\ead[label=e2,mark]{second@somewhere.com}}
+%%\and
+%%\author[B]{\fnms{Third} \snm{Author}\ead[label=e3,mark]{third@somewhere.com}}
+
+$for(author)$
+\author[$author.addressLabel$]{\fnms{$author.name$} \snm{$author.surname$}
+  \ead[label=$author.label$]{$author.email$}}
+  $if(author.sepNext)$$author.sepNext$$endif$
+$endfor$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Addresses                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Example:
+%%\address[B]{Department,
+%%University or Company Name,
+%%\printead{e2,e3}}
+$for(affiliation)$
+\address[$affiliation.label$]{$affiliation.name$,
+  \printead{$affiliation.authorsLabels$}}
+$sep$
+$endfor$
+\end{aug}
+
+\begin{abstract}
+$abstract$
+\end{abstract}
+
+$if(with_kwsc)$
+$for(keyword-subclass)$
+$keyword-subclass$
+$endfor$
+$endif$
+
+\begin{keyword}
+$for(keywords)$
+\kwd{$keywords$}
+$sep$
+$endfor$
+\end{keyword}
+
+\end{frontmatter}
+
+$if(toc)$
+\tableofcontents
+$endif$
+
+$body$
+
+$if(bibliography)$
+$if(biblio-style)$
+\bibliographystyle{$biblio-style$}
+$endif$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+
+$for(include-after)$
+$include-after$
+
+$endfor$
+
+\end{document}
