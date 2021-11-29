@@ -2,9 +2,9 @@
 title: Bare Demo of IEEEtran.cls for IEEE Conferences & Journals
 
 affiliation:  
-  ## use one only of the following
+  ## use one only of the following - only relevant in conference mode and ignored in journal mode
   # author-columnar: true         ## one column per author
-  institution-columnar: true      ## one column per institution (multiple autors eventually)
+  institution-columnar: true      ## one column per institution (multiple authors eventually)
   # wide: true                    ## one column wide author/affiliation fields
 
   ## A custom author ordering field that breaks institution grouping. 
@@ -22,11 +22,11 @@ affiliation:
       mark: 4                    
       email: roy@replicant.offworld
       last: true                 ## mark the last author so that we can insert `and` 
-                                 ## at the appropriate place.
-                                 
+                                 ## at the appropriate place.                              
 
   ## Put authors in a given order, with multiline possibility. 
-  ## Authors cited in institution are ignored if exists
+  ## Authors cited in institution are ignored if exists.
+  ## Only relevant in conference mode.
   #author_multiline: 
   #  - line:         ## Create a new author line
   #    - name: Michael Shell
