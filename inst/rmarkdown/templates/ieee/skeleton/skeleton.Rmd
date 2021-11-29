@@ -89,10 +89,9 @@ abstract: |
 # biblatex: true
 # citation_sorting: none   ## used as sorting option of the biblatex package (if selected)
 
-## If you're using pandoc style @cite commands, these options set the correct
+## When using pandoc for citation processing (the default), these options set the correct
 ## citation style, and add links to citations. 
-## Note that this bypasses latex packages that alter citations, e.g. hyperref.
-citation-style: ieee
+csl: https://www.zotero.org/styles/ieee # download locally if needed.
 link-citations: true 
 
 ## bibliography file(s)
