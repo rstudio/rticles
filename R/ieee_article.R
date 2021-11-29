@@ -75,7 +75,7 @@ ieee_article <- function(
     # activate number_section by default
     if(missing(number_sections)) number_sections <- TRUE
     # New author syntax needs to be used which requires a recent pandoc
-    if (rmarkdown::pandoc_available("2.10")) {
+    if (!rmarkdown::pandoc_available("2.10")) {
       stop("Using `journal` mode for `ieee_article()` requires Pandoc >= 2.10", call. = FALSE)
     }
   }
