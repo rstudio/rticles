@@ -339,7 +339,7 @@ $if(natbib)$
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $endif$
 $if(biblatex)$
-\usepackage[backend=bibtex,citestyle=ieee,style=numeric$if(citation_sorting)$,sorting=$citation_sorting$$endif$]{biblatex}
+\usepackage[backend=bibtex,citestyle=ieee,style=$if(biblio-style)$$biblio-style$$else$numeric$endif$,if(citation_sorting)$sorting=$citation_sorting$,$endif$$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
 $if(bibliography)$
 $for(bibliography)$
 \addbibresource{$bibliography$}
