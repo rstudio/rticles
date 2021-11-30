@@ -83,3 +83,11 @@ Note that for
 \code{oup_version = 1} requires a minimum version of 2.10.
 }
 
+\examples{
+\dontrun{
+  # Use old template based on `ouparticle.cls`
+  rmarkdown::draft("MyArticle.Rmd", template = "oup_v0", package = "rticles")
+  # Use new template based on `oup-authoring-template` CTAN package
+  rmarkdown::draft("MyArticle.Rmd", template = "oup_v1", package = "rticles")
+}
+}

@@ -58,23 +58,24 @@ acknowledgements: |
   This is an acknowledgement.
 
   It consists of two paragraphs.
-#classoptions:
-#  - namedate # Could also be here...
+
 bibliography: mybibfile.bib # Includes refs in OUP example template
-#csl: mycitationstyle.csl
+## When using `citation_package = "default"`, a CSL file can be used
+#csl: https://www.zotero.org/styles/oxford-university-press-note
 output:
   rticles::oup_article:
     oup_version: 1 # 1 = 2020 CTAN OUP CLS package; 0 = 2009 OUP CLS package
-    keep_tex: TRUE
     journal: "Journal Name"
-    #document_style: "contemporary" # Can be contemporary, modern, traditional; default "contemporary"
-    #papersize: "large" # Can be large, medium, small; default large
-    #citation_package: "default" # Uncomment if using a CSL biblio style; default "natbib"
+    document_style: "contemporary" # Can be contemporary, modern, traditional
+    papersize: "large" # Can be large, medium, small
+    #citation_package: "default" # Uncomment when using a CSL; default "natbib"
     namedate: TRUE # Set FALSE to use numeric refs; Default FALSE
     #number_sections: FALSE # Uncomment to not number sections; default TRUE
-    #number_lines: TRUE # Default FALSE
-    #number_lines_options: ["mathlines","switch"]  # Options for latex lineno package. Default NULL
+    #number_lines: TRUE # Use `lineno` package - Default FALSE
+    #number_lines_options: ["mathlines","switch"]  # Options for latex lineno package.
     #onecolumn: TRUE # Uncomment for one column format; default FALSE
+
+## Example of pandoc's variable
 #urlcolor: orange
 #linkcolor: green
 #citecolor: red
@@ -91,12 +92,14 @@ header-includes:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE) # By default, hide code; set to TRUE to see code
-knitr::opts_chunk$set(fig.pos = 'th') # Places figures at top or here
-knitr::opts_chunk$set(out.width = '100%', dpi=300) # Figure resolution and size
-knitr::opts_chunk$set(fig.env="figure") # Latex figure environment
+knitr::opts_chunk$set(
+  echo = FALSE, # By default, hide code; set to TRUE to see code
+  fig.pos = 'th', # Places figures at top or here
+  out.width = '100%', dpi = 300, # Figure resolution and size
+  fig.env="figure"
+) # Latex figure environment
 
-options(knitr.table.format="latex") # For kable tables to work without setting format option
+options(knitr.table.format = "latex") # For kable tables to write LaTeX table directly
 ```
 
 # Introduction

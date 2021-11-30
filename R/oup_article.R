@@ -39,7 +39,7 @@
 #' @param ... Additional arguments to [rmarkdown::pdf_document()]
 #'
 #' @export
-#' @example \dontrun{
+#' @examples \dontrun{
 #'   # Use old template based on `ouparticle.cls`
 #'   rmarkdown::draft("MyArticle.Rmd", template = "oup_v0", package = "rticles")
 #'   # Use new template based on `oup-authoring-template` CTAN package
