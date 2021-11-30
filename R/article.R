@@ -176,6 +176,21 @@ frontiers_article <- function(..., keep_tex = TRUE) {
   pdf_document_format("frontiers", keep_tex = keep_tex, ...)
 }
 
+#' @section `gigascience_article`: Format for creating submissions to the
+#'   GigaScience journal. Adapted from GigaScience Overleaf template
+#'   <https://www.overleaf.com/latex/templates/template-for-gigascience-journal-manuscript-submissions/shgtrssvbjhs>.
+#'
+#' @export
+#' @rdname article
+gigascience_article <- function(keep_tex = TRUE,
+                                md_extensions = c("-autolink_bare_uris"),
+                                ...) {
+  pdf_document_format("gigascience",
+                      keep_tex = keep_tex,
+                      md_extensions = md_extensions,
+                      ...)
+}
+
 
 #' @section `glossa_article`: Format for creating submissions to Glossa: a
 #'   journal of general linguistics. Author Guidelines are available on
