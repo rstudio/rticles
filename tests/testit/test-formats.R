@@ -1,4 +1,4 @@
-test_format <- function(name, output_options = NULL, os_skip = NULL) {
+test_format <- function(name, input = NULL, output_options = NULL, os_skip = NULL) {
 
   # don't run on CRAN due to complicated dependencies (Pandoc/LaTeX packages)
   if (!identical(Sys.getenv("NOT_CRAN"), "true")) return()
@@ -18,8 +18,12 @@ test_format <- function(name, output_options = NULL, os_skip = NULL) {
     create_dir = FALSE, edit = FALSE
   )
 
+  # override the render file if input is provided
+  if (!is.null(input)) testdoc <- input
+
   message('Rendering the ', name, ' format...',
-          if(!is.null(output_options)) " (with output options)")
+          if(!is.null(output_options)) " (with output options)",
+          if (!is.null(input)) c(" using file ", input))
   output_file <- rmarkdown::render(testdoc, output_options = output_options, quiet = TRUE)
   assert(paste(name, "format works"), {
     file.exists(output_file)
@@ -45,7 +49,7 @@ test_format("copernicus")
 if (xfun::is_linux()) test_format("ctex") # only on linux due to fonts requirements
 test_format("elsevier")
 test_format("frontiers")
-test_format("ieee")
+if (rmarkdown::pandoc_available(2.8)) test_format("ieee")
 test_format("ims")
 test_format("ims", output_options = list(journal = "aap"))
 test_format("jasa")
@@ -72,3 +76,9 @@ test_format("trb")
 # special case: the glossa format doesn't work with the microtype package
 tinytex::tlmgr_remove("microtype")
 test_format("glossa")
+
+# Multiple demo files
+if (rmarkdown::pandoc_available("2.10")) {
+  test_format("ieee", input = "IEEE-journal-example.Rmd",
+              output_options = list(journal = "IEEE Transactions on Learning Technology"))
+}

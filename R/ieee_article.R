@@ -4,7 +4,12 @@
 #' <http://www.ieee.org/publications_standards/publications/authors/author_templates.html>.
 #'
 #' Presently, only the `"conference"` paper mode offered by the
-#' `IEEEtran.cls` is supported.
+#' `IEEEtran.cls` is supported, with experimental support for the
+#' `"journal"` mode.
+#'
+#' # Pandoc requirement
+#'
+#' This format requires at least Pandoc 2.8 and 2.10 when `journal` is used.
 #'
 #' @inheritParams rmarkdown::pdf_document
 #' @param draftmode Specify the draft mode to control spacing and whether images
@@ -12,6 +17,9 @@
 #' `"draftcls"`, or `"draftclsnofoot"`.
 #' @param hyphenfixes A `character` value that provides the correct
 #' hyphenations for ambiguous words. Separate new words with spaces.
+#' @param journal Running Header to use for a journal paper. When set,
+#'   classoption `journal` will be used instead of `conference`.
+#'   `number_sections` will also default to `TRUE` in this case.
 #' @param IEEEspecialpaper  A `character` value containing the publication's
 #' special paper designation.
 #' @param with_ifpdf A `logical` value turning on (`TRUE`) or off
@@ -39,6 +47,7 @@
 ieee_article <- function(
   draftmode   = c("final", "draft", "draftcls", "draftclsnofoot"),
   hyphenfixes      = "op-tical net-works semi-conduc-tor",
+  journal = NULL,
   IEEEspecialpaper = "",
   with_ifpdf       = FALSE,
   with_cite        = FALSE,
@@ -49,9 +58,13 @@ ieee_article <- function(
   with_dblfloatfix = FALSE,
   keep_tex         = TRUE,
   pandoc_args = NULL,
+  citation_package = "default",
   md_extensions    = c("-autolink_bare_uris"),
+  number_sections = FALSE,
   ...
 ) {
+
+  rmarkdown::pandoc_available("2.8", error = TRUE)
 
   args <- c()
 
@@ -59,6 +72,19 @@ ieee_article <- function(
   args <- c(args, "draftmode" = draftmode)
 
   args <- c(args, "hyphenfixes" = hyphenfixes)
+
+
+  # Some check when journal mode is set
+  if (!is.null(journal)) {
+    # Add as Pandoc's variable
+    args <- c(args, "journal" = journal)
+    # activate number_section by default
+    if(missing(number_sections)) number_sections <- TRUE
+    # New author syntax needs to be used which requires a recent pandoc
+    if (!rmarkdown::pandoc_available("2.10")) {
+      stop("Using `journal` mode for `ieee_article()` requires Pandoc >= 2.10", call. = FALSE)
+    }
+  }
 
   # Avoid declaration of pandoc variable if field is empty
   if (nchar(IEEEspecialpaper) > 1) {
@@ -83,6 +109,7 @@ ieee_article <- function(
   pdf_document_format(
     "ieee", pandoc_args = c(pandoc_arg_list, pandoc_args),
     keep_tex = keep_tex, md_extensions = md_extensions,
+    number_sections = number_sections, citation_package = citation_package,
     ...
   )
 }

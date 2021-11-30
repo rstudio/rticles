@@ -6,6 +6,8 @@
 
 - Add `trb_article()` for annual meeting submissions to the Transportation Research Board Annual Meeting (thanks, @gregmacfarlane, #427).
 
+- `ieee_article()` now supports journal articles with different defaults, using `journal` classoption for `IEEEtran` document class. This brings a pandoc minimum requirement of 2.8 for conference paper and 2.10 for journal article. A new demo Rmd file has been added in the bundle when creating the template for `ieee_article()` - see this file and help page for new argument and syntax (thanks, @Karel-Kroeze, #375). 
+
 # rticles 0.21
 
 ## NEW FEATURES

@@ -50,7 +50,11 @@
 % The testflow support page is at:
 % http://www.michaelshell.org/tex/testflow/
 
-\documentclass[conference,$if(fontsize)$$fontsize$,$endif$$if(draftmode)$$draftmode$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{IEEEtran}
+% *** rticle changes for journal/conference mode.
+% adding journal as an override for conference mode to maintain backwards
+% compatibility. Any future expansions to further modes will have to come up with
+% a cleverer solution, or introduce breaking changes.
+\documentclass[$if(journal)$journal$else$conference$endif$,$if(fontsize)$$fontsize$,$endif$$if(draftmode)$$draftmode$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{IEEEtran}
 % Some Computer Society conferences also require the compsoc mode option,
 % but others use the standard conference format.
 %
@@ -335,7 +339,7 @@ $if(natbib)$
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $endif$
 $if(biblatex)$
-\usepackage[backend=bibtex,citestyle=ieee,style=numeric$if(citation_sorting)$,sorting=$citation_sorting$$endif$]{biblatex}
+\usepackage[backend=bibtex,citestyle=ieee,style=$if(biblio-style)$$biblio-style$$else$numeric$endif$,$if(citation_sorting)$sorting=$citation_sorting$,$endif$$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
 $if(bibliography)$
 $for(bibliography)$
 \addbibresource{$bibliography$}
@@ -382,7 +386,7 @@ $endif$
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
 
-% Pandoc toggle for numbering sections (defaults to be off)
+% Pandoc toggle for numbering sections
 $if(numbersections)$
 \setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
 $else$
@@ -406,15 +410,18 @@ $if(csl-refs)$
   \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
   {\par}
 % For Pandoc 2.11+
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
 \newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
  {% don't indent paragraphs
   \setlength{\parindent}{0pt}
   % turn on hanging indent if param 1 is 1
-  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
-  % set entry spacing
-  \ifnum #2 > 0
-  \setlength{\parskip}{#2\baselineskip}
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
   \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
  }%
  {}
 \usepackage{calc} % for calculating minipage widths
@@ -446,6 +453,24 @@ $endfor$
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
 \title{$title$}
+
+
+% split author affiliations for journal and conference layouts
+$if(journal)$
+
+$if(affiliation.author)$
+\author{
+  $for(affiliation.author)$$if(it.last)$and $endif$$it.name$$if(it.member)$, \IEEEmembership{$it.member$}$endif$$sep$, $endfor$
+  $if(affiliation.thanks)$$for(affiliation.thanks)$\thanks{$affiliation.thanks$}$endfor$$endif$
+}
+$else$
+$~$!!! Only 'affiliation.author' syntax is supported for the journal mode. Modify you YAML header accordingly.$~$
+$endif$
+
+\markboth{$journal$$~$, Vol. XX, No. X, XXXXXX 20XX$~$}%
+{$title$}
+
+$else$ % -- end if/journal
 
 % author names and affiliations
 % use a multiple column layout for up to three different
@@ -563,6 +588,8 @@ $endif$ %% -- end if/affiliation.institution-columnar
 $endif$
 }
 
+$endif$ %% -- end else/journal
+
 % conference papers do not typically use \thanks and this command
 % is locked out in conference mode. If really needed, such as for
 % the acknowledgment of grants, issue a \IEEEoverridecommandlockouts
@@ -586,14 +613,6 @@ $endif$
 %\IEEEauthorblockA{\IEEEauthorrefmark{4}Tyrell Inc., 123 Replicant Street, Los Angeles, California 90210--4321}}
 
 
-
-
-% use for special paper notices
-%\IEEEspecialpapernotice{(Invited Paper)}
-
-
-
-
 % make the title area
 \maketitle
 
@@ -606,7 +625,7 @@ $abstract$
 % keywords
 $if(keywords)$
 \begin{IEEEkeywords}
-$for(keywords)$$keywords$$sep$; $endfor$
+$for(keywords)$$keywords$$sep$$if(journal)$, $else$; $endif$$endfor$
 \end{IEEEkeywords}
 $endif$
 
@@ -661,5 +680,3 @@ $include-after$
 
 $endfor$
 \end{document}
-
-

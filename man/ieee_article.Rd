@@ -7,6 +7,7 @@
 ieee_article(
   draftmode = c("final", "draft", "draftcls", "draftclsnofoot"),
   hyphenfixes = "op-tical net-works semi-conduc-tor",
+  journal = NULL,
   IEEEspecialpaper = "",
   with_ifpdf = FALSE,
   with_cite = FALSE,
@@ -17,7 +18,9 @@ ieee_article(
   with_dblfloatfix = FALSE,
   keep_tex = TRUE,
   pandoc_args = NULL,
+  citation_package = "default",
   md_extensions = c("-autolink_bare_uris"),
+  number_sections = FALSE,
   ...
 )
 }
@@ -28,6 +31,10 @@ should be rendered. Valid options are: \code{"final"} (default), \code{"draft"},
 
 \item{hyphenfixes}{A \code{character} value that provides the correct
 hyphenations for ambiguous words. Separate new words with spaces.}
+
+\item{journal}{Running Header to use for a journal paper. When set,
+classoption \code{journal} will be used instead of \code{conference}.
+\code{number_sections} will also default to \code{TRUE} in this case.}
 
 \item{IEEEspecialpaper}{A \code{character} value containing the publication's
 special paper designation.}
@@ -57,9 +64,16 @@ off (\code{FALSE}) the \code{dblfloatfix} LaTeX package.}
 
 \item{pandoc_args}{Additional command line options to pass to pandoc}
 
+\item{citation_package}{The LaTeX package to process citations, \code{natbib}
+or \code{biblatex}. Use \code{default} if neither package is to be used,
+which means citations will be processed via the command
+\command{pandoc-citeproc}.}
+
 \item{md_extensions}{Markdown extensions to be added or removed from the
 default definition or R Markdown. See the \code{\link[rmarkdown]{rmarkdown_format}} for
 additional details.}
+
+\item{number_sections}{\code{TRUE} to number section headings}
 
 \item{...}{Additional arguments to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}}
 }
@@ -69,8 +83,13 @@ Format for creating submissions to IEEE Transaction journals. Adapted from
 }
 \details{
 Presently, only the \code{"conference"} paper mode offered by the
-\code{IEEEtran.cls} is supported.
+\code{IEEEtran.cls} is supported, with experimental support for the
+\code{"journal"} mode.
 }
+\section{Pandoc requirement}{
+This format requires at least Pandoc 2.8 and 2.10 when \code{journal} is used.
+}
+
 \references{
 Shell, Michael. "How to use the IEEEtran LATEX class." Journal of LATEX Class
 Files 1.11 (2002): 10-20.
