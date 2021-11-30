@@ -16,13 +16,11 @@ affiliation:
 abstract: >
   The abstract of the article.
   It can also be on *multiple* lines.
-header-includes: >
-  \usepackage{lipsum}
 bibliography: sample.bib
 output:
+  rticles::peerj_article: default
   bookdown::pdf_book:
     base_format: rticles::peerj_article # for using bookdown features like \@ref()
-  rticles::peerj_article: default
 ---
 
 
@@ -129,31 +127,31 @@ We hope you find write\LaTeX\ useful for your PeerJ submission, and please let u
 
 # Methods {-}
 
-\lipsum[4] 
+This is an equation inserted using LaTeX syntax directly.
 
 \begin{equation}
 \cos^3 \theta =\frac{1}{4}\cos\theta+\frac{3}{4}\cos 3\theta
 \label{eq:refname2}
 \end{equation}
 
-\lipsum[5] 
+You can also use `$$..$$` to achieve the same
+
+$$
+\cos^3 \theta =\frac{1}{4}\cos\theta+\frac{3}{4}\cos 3\theta
+$$
 
 ## Subsection {-}
 
-\lipsum[6] 
+Use `{-}` after a header section so that it is unnumbered.
 
-\paragraph{Paragraph} \lipsum[7] 
-\paragraph{Paragraph} \lipsum[8] 
+#### Paragraph  
+
+Header level 4 are equivalent to `\paragraph{}`
 
 ## Subsection {-}
 
-\lipsum[9] 
 
-<!-- \begin{figure}[ht]\centering -->
-<!-- \includegraphics[width=\linewidth]{results} -->
-<!-- \caption{In-text Picture} -->
-<!-- \label{fig:results} -->
-<!-- \end{figure} -->
+You can insert figure using R code chunk with different options
 
 ```{r results, fig.width = 5, fig.height = 4, out.width = "100%", fig.cap = "In-text Picture", echo = FALSE}
 time = seq(1.5, 8, 0.1)
@@ -162,27 +160,27 @@ plot(time, sin(time), type = "l", xlab = "time [s]", ylab = "amplitude [m]",
 ```
 
 
-Reference to Figure \@ref(fig:results).
+You can reference figure if you use **bookdown** format extensions as shown in YAML header
 
 # Results and Discussion {-}
 
-\lipsum[10] 
+This is another section
 
 ## Subsection {-}
 
-\lipsum[11] 
+Which shows level 2
 
 ### Subsubsection {-}
 
-\lipsum[12] 
+And level 3 headers
 
 ### Subsubsection {-}
 
-\lipsum[14] 
+with multiple subsubsections
 
 ## Subsection {-}
 
-\lipsum[15-20] 
+and subsections
 
 # Acknowledgments {-}
 

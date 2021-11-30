@@ -3,7 +3,7 @@
 #' Format for creating submissions to Royal Society Open Science journals.
 #'
 #' @inheritParams rmarkdown::pdf_document
-#' @param ... Additional arguments to \code{rmarkdown::pdf_document}
+#' @param ... Additional arguments to [rmarkdown::pdf_document()]
 #' @export
 #' @importFrom rmarkdown output_format knitr_options pandoc_options
 #'   pandoc_variable_arg includes_to_pandoc_args

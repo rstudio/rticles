@@ -1,0 +1,5 @@
+name: AJS - Austrian Journal of Statistics
+description: >
+ Template for creating an article for submission to AJS
+create_dir: true
+

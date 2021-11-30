@@ -14,7 +14,7 @@ test_format <- function(name, output_options = NULL, os_skip = NULL) {
   # create a draft of the format
   testdoc <- paste0(name,"_article",".Rmd")
   rmarkdown::draft(
-    testdoc, pkg_file("rmarkdown", "templates", name),
+    testdoc, pkg_file_template(name),
     create_dir = FALSE, edit = FALSE
   )
 
@@ -34,6 +34,7 @@ test_format("acm")
 test_format("acs")
 test_format("aea")
 test_format("agu")
+test_format("ajs")
 test_format("amq")
 test_format("ams")
 test_format("arxiv")
@@ -67,3 +68,8 @@ test_format("sage")
 test_format("sim")
 test_format("springer")
 test_format("tf")
+test_format("trb")
+
+# special case: the glossa format doesn't work with the microtype package
+tinytex::tlmgr_remove("microtype")
+test_format("glossa")
