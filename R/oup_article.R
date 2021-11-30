@@ -21,13 +21,14 @@
 #' @param onecolumn For `oup_article`, `oup_version=1`, a logical variable indicating if one column formatting should be used. Defaults to `FALSE`.
 #' @param ... Additional arguments to [rmarkdown::pdf_document()]
 #' @export
+#' @importFrom rmarkdown pandoc_variable_arg
 oup_article <- function(
     # Controls template to use. 1 for newer template.
     oup_version = 0,
     keep_tex = TRUE,
     md_extensions = c("-autolink_bare_uris"),
-    number_sections=TRUE,
     journal = NULL,
+    number_sections = FALSE,
     number_lines = FALSE,
     number_lines_options = NULL,
     citation_package = ifelse(oup_version == 0, "default", "natbib"),
@@ -38,64 +39,83 @@ oup_article <- function(
     pandoc_args = NULL,
     ...
 ) {
-  switch(as.character(oup_version),
-         "0" = {
-           pdf_document_format(
-             "oup_v0",
-             keep_tex = keep_tex, md_extensions = md_extensions, ...
-           )
-         },
-         "1" = {
-           # Require minimum pandoc version
-           if (!rmarkdown::pandoc_available("2.10"))
-             stop("oup_article with oup_version>0 requires a minimum of pandoc 2.10.")
+  # Only two version available for now
+  oup_version <- as.character(match.arg(oup_version, c(0, 1)))
 
-           citation_package <- match.arg(citation_package,c("natbib","default"))
-           papersize <- match.arg(papersize)
-           document_style <- match.arg(document_style)
+  # Use old template
+  if (oup_version == "0") {
+    return(pdf_document_format("oup_v0",
+                               keep_tex = keep_tex,
+                               md_extensions = md_extensions,
+                               pandoc_args = pandoc_args,
+                               number_sections = number_sections,
+                               ...))
+  }
 
-           args <- c(
-             journal = journal,
-             papersize = papersize,
-             document_style = document_style
-           )
+  # oup_version == "1" - new template --------------
 
-           # Convert to pandoc arguments
-           pandoc_arg_list <- mapply(rmarkdown::pandoc_variable_arg,
-                                     names(args), args,
-                                     SIMPLIFY = FALSE, USE.NAMES = FALSE)
+  if (!rmarkdown::pandoc_available("2.10"))
+    stop("oup_article with oup_version > 0 requires a minimum of pandoc 2.10.")
 
-           # namedate
-           if (namedate)
-             pandoc_arg_list = c(pandoc_arg_list,
-                                 rmarkdown::pandoc_variable_arg("namedate"))
+  # change of defaults
+  if (missing(number_sections)) number_sections <- TRUE
 
-           # onecolumn
-           if (onecolumn)
-             pandoc_arg_list = c(pandoc_arg_list,
-                                 rmarkdown::pandoc_variable_arg("onecolumn"))
+  citation_package <-
+    match.arg(citation_package, c("natbib", "default"))
+  papersize <- match.arg(papersize)
+  document_style <- match.arg(document_style)
 
-           # line numbers
-           if (number_lines) {
-             pandoc_arg_list = c(pandoc_arg_list,
-                                 rmarkdown::pandoc_variable_arg("numberlines"))
+  args <- c(
+    journal = journal,
+    papersize = papersize,
+    document_style = document_style
+  )
 
-             if (!is.null(number_lines_options))
-               pandoc_arg_list =
-                 c(pandoc_arg_list,
-                   rmarkdown::pandoc_variable_arg("numberlines-options",
-                                                  paste(number_lines_options,collapse=",")))
-           }
+  # Convert to pandoc arguments
+  pandoc_arg_list <- mapply(
+    rmarkdown::pandoc_variable_arg,
+    names(args),
+    args,
+    SIMPLIFY = FALSE,
+    USE.NAMES = FALSE
+  )
 
-           pandoc_arg_list <- unlist(pandoc_arg_list)
+  # namedate
+  if (namedate)
+    pandoc_arg_list = c(pandoc_arg_list,
+                        rmarkdown::pandoc_variable_arg("namedate"))
 
-           pdf_document_format(
-             "oup_v1", keep_tex = keep_tex,
-             md_extensions=md_extensions,
-             citation_package = citation_package,
-             pandoc_args = c(pandoc_arg_list, pandoc_args),
-             number_sections=number_sections,
-             ...
-           )
-         })
+  # onecolumn
+  if (onecolumn)
+    pandoc_arg_list = c(pandoc_arg_list,
+                        rmarkdown::pandoc_variable_arg("onecolumn"))
+
+  # line numbers
+  if (number_lines) {
+    pandoc_arg_list = c(pandoc_arg_list,
+                        rmarkdown::pandoc_variable_arg("numberlines"))
+
+    if (!is.null(number_lines_options))
+      pandoc_arg_list =
+        c(
+          pandoc_arg_list,
+          rmarkdown::pandoc_variable_arg(
+            "numberlines-options",
+            paste(number_lines_options, collapse =
+                    ",")
+          )
+        )
+  }
+
+  pandoc_arg_list <- unlist(pandoc_arg_list)
+
+  pdf_document_format(
+    "oup_v1",
+    keep_tex = keep_tex,
+    md_extensions = md_extensions,
+    citation_package = citation_package,
+    pandoc_args = c(pandoc_arg_list, pandoc_args),
+    number_sections = number_sections,
+    ...
+  )
 }
