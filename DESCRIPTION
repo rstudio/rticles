@@ -1,7 +1,7 @@
 Package: rticles
 Type: Package
 Title: Article Formats for R Markdown
-Version: 0.20.3
+Version: 0.21.3
 Authors@R: c(
   person("JJ", "Allaire", role = "aut", email = "jj@rstudio.com"),
   person("Yihui", "Xie", role = c("aut", "cre"), email = "xie@yihui.name", comment = c(ORCID = "0000-0003-0645-5666")),
@@ -46,7 +46,10 @@ Authors@R: c(
   person('Jay', 'Hesselberth', role = c('aut', 'ctb'), email = 'jay.hesselberth@gmail.com', comment = c(ORCID = '0000-0002-6299-179X')),
   person("Alfredo", "Hernández", role = c("ctb"), email = "aldomann.designs@gmail.com", comment = c(ORCID = "0000-0002-2660-4545")),
   person("Stefano", "Coretta", role = c("ctb"), email = "stefano.coretta@gmail.com", comment = c(ORCID = "0000-0001-9627-5532", github = "stefanocoretta")),
-  person("Alvaro", "Uzaheta", role = c("ctb"), email = "alvaro.uzaheta@gess.ethz.ch", comment = c(github = "auzaheta"))
+  person("Greg", "Macfarlane", role = c("ctb"), email = "gregmacfarlane@gmail.com", comment = c(github = "gregmacfarlane")),
+  person("Matthias", "Templ", role = c("ctb"), email = "matthias.templ@gmail.com", comment = c(ORCID = "0000-0002-8638-5276", github = "matthias-da")),
+  person("Alvaro", "Uzaheta", role = c("ctb"), email = "alvaro.uzaheta@gess.ethz.ch", comment = c(github = "auzaheta")),
+  person("JooYoung", "Seo", role=c("ctb"), email="jseo1005@illinois.edu", comment = c(ORCID = "0000-0002-4064-6012"))
   )
 Description: A suite of custom R Markdown formats and templates for
   authoring journal articles and conference submissions.
@@ -55,8 +58,8 @@ Imports: utils, rmarkdown (>= 2.5), knitr (>= 1.30), yaml, tinytex (>= 0.30), xf
 SystemRequirements: GNU make
 URL: https://github.com/rstudio/rticles
 BugReports: https://github.com/rstudio/rticles/issues
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Suggests: testit, bookdown, xtable
 Encoding: UTF-8
-VignetteBuilder: knitr
 Config/Needs/website: magick, pdftools, gifski, rstudio/quillt
+Roxygen: list(markdown = TRUE)
