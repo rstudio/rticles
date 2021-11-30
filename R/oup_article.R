@@ -22,16 +22,21 @@
 #' @param ... Additional arguments to [rmarkdown::pdf_document()]
 #' @export
 oup_article <- function(
-    ..., keep_tex = TRUE,
-    oup_version = 0, # Controls template to use. 1 for newer template.
+    # Controls template to use. 1 for newer template.
+    oup_version = 0,
+    keep_tex = TRUE,
     md_extensions = c("-autolink_bare_uris"),
-    journal=NULL,pandoc_args=NULL,
     number_sections=TRUE,
-    number_lines=FALSE, number_lines_options=NULL,
-    citation_package=ifelse(oup_version==0,"default","natbib"),
-    papersize=c("large","medium","small"),
-    document_style=c("contemporary","modern","traditional"),
-    namedate=FALSE,onecolumn=FALSE
+    journal = NULL,
+    number_lines = FALSE,
+    number_lines_options = NULL,
+    citation_package = ifelse(oup_version == 0, "default", "natbib"),
+    papersize = c("large", "medium", "small"),
+    document_style = c("contemporary", "modern", "traditional"),
+    namedate = FALSE,
+    onecolumn = FALSE,
+    pandoc_args = NULL,
+    ...
 ) {
   switch(as.character(oup_version),
          "0" = {
