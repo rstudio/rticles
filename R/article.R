@@ -219,9 +219,7 @@ ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
     )
 
   # Convert to pandoc arguments
-  pandoc_arg_list <- mapply(rmarkdown::pandoc_variable_arg, names(args), args,
-                            SIMPLIFY = FALSE, USE.NAMES = FALSE)
-  pandoc_arg_list <- unlist(pandoc_arg_list)
+  pandoc_arg_list <- vec_to_pandoc_variable_args(args)
 
   pdf_document_format(
     "ims", keep_tex = keep_tex, citation_package = citation_package,
@@ -301,22 +299,6 @@ mdpi_article <- function(..., keep_tex = TRUE) {
 mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
   pdf_document_format(
     "mnras", keep_tex = keep_tex, fig_caption = fig_caption, ...
-  )
-}
-
-#' @section `oup_article`: Format for creating submissions to many Oxford University Press
-#'   journals. Adapted from
-#'   <https://academic.oup.com/journals/pages/authors/preparing_your_manuscript>
-#'   and <https://academic.oup.com/icesjms/pages/General_Instructions>.
-#' @export
-#' @rdname article
-oup_article <- function(
-  ..., keep_tex = TRUE,
-  md_extensions = c("-autolink_bare_uris")
-) {
-  pdf_document_format(
-    "oup",
-    keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
 }
 

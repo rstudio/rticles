@@ -22,7 +22,6 @@
 \alias{jedm_article}
 \alias{mdpi_article}
 \alias{mnras_article}
-\alias{oup_article}
 \alias{peerj_article}
 \alias{pihph_article}
 \alias{plos_article}
@@ -114,8 +113,6 @@ jedm_article(..., keep_tex = TRUE, citation_package = "natbib")
 mdpi_article(..., keep_tex = TRUE)
 
 mnras_article(..., keep_tex = TRUE, fig_caption = TRUE)
-
-oup_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
 peerj_article(..., keep_tex = TRUE)
 
@@ -288,13 +285,6 @@ from \url{https://www.mdpi.com/authors/latex}.
  Format for creating an Monthly Notices of
 Royal Astronomical Society (MNRAS) Journal articles. Adapted from
 \url{https://ras.ac.uk}.
-}
-
-\section{\code{oup_article}}{
- Format for creating submissions to many Oxford University Press
-journals. Adapted from
-\url{https://academic.oup.com/journals/pages/authors/preparing_your_manuscript}
-and \url{https://academic.oup.com/icesjms/pages/General_Instructions}.
 }
 
 \section{\code{peerj_article}}{

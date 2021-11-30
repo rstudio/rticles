@@ -132,3 +132,16 @@ render_draft <- function(journal, output_options = NULL, quiet = FALSE) {
     args = list(doc, output_options = output_options, quiet = quiet)
   )
 }
+
+# Use to create variables command for Pandoc from a named vector
+vec_to_pandoc_variable_args <- function(v_args) {
+  # Convert to pandoc arguments
+  pandoc_arg_list <- mapply(
+    rmarkdown::pandoc_variable_arg,
+    names(v_args),
+    v_args,
+    SIMPLIFY = FALSE,
+    USE.NAMES = FALSE
+  )
+  unlist(pandoc_arg_list)
+}
