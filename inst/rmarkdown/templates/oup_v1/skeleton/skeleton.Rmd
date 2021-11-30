@@ -74,7 +74,9 @@ output:
     #number_lines: TRUE # Use `lineno` package - Default FALSE
     #number_lines_options: ["mathlines","switch"]  # Options for latex lineno package.
     #onecolumn: TRUE # Uncomment for one column format; default FALSE
-
+    extra_dependencies:
+      - booktabs # to use with knitr::kable() example below
+      
 ## Example of pandoc's variable
 #urlcolor: orange
 #linkcolor: green

@@ -1,4 +1,5 @@
-% Colors for colorlinks
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
 $if(colorlinks)$
 \PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
 $endif$
@@ -17,47 +18,91 @@ $if(numberlines)$
 \linenumbers
 $endif$
 
-% Packages I think are necessary for basic Rmarkdown functionality
-\usepackage{hyperref}
-\usepackage{graphicx}
-\usepackage{listings}
-\usepackage{xcolor}
-\usepackage{fancyvrb}
-\usepackage{framed}
-
-% Link coloring
-\hypersetup{breaklinks=true,
-            bookmarks=true,
-            pdfauthor={$author-meta$},
-            pdftitle={$title-meta$}
-            $if(colorlinks)$
-            ,
-            colorlinks=true,
-            citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
-            urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
-            linkcolor=$if(linkcolor)$$linkcolor$$else$blue$endif$
-            $endif$
-}
-
-
-% For knitr::kable and kableExtra functionality
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{float}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-
-% For code highlighting
-$if(highlighting-macros)$
-$highlighting-macros$
-$endif$
-
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 
-% For making Rmarkdown lists
+% From Pandoc template for its feature
+$if(verbatim-in-note)$
+\usepackage{fancyvrb}
+$endif$
+\usepackage{xcolor}
+\usepackage{hyperref}
+$if(graphics)$
+\usepackage{graphicx}
+$endif$
+$if(listings)$
+\usepackage{listings}
+\newcommand{\passthrough}[1]{#1}
+\lstset{defaultdialect=[5.3]Lua}
+\lstset{defaultdialect=[x86masm]Assembler}
+$endif$
+
+\hypersetup{
+$if(title-meta)$
+  pdftitle={$title-meta$},
+$endif$
+$if(author-meta)$
+  pdfauthor={$author-meta$},
+$endif$
+$if(lang)$
+  pdflang={$lang$},
+$endif$
+$if(subject)$
+  pdfsubject={$subject$},
+$endif$
+$if(keywords)$
+  pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
+$endif$
+  breaklinks=true,
+  bookmarks=true,
+$if(colorlinks)$
+  colorlinks=true,
+  linkcolor={$if(linkcolor)$$linkcolor$$else$Maroon$endif$},
+  filecolor={$if(filecolor)$$filecolor$$else$Maroon$endif$},
+  citecolor={$if(citecolor)$$citecolor$$else$Blue$endif$},
+  urlcolor={$if(urlcolor)$$urlcolor$$else$Blue$endif$},
+$else$
+  hidelinks,
+$endif$
+  pdfcreator={LaTeX via pandoc}}
+
+
+$if(highlighting-macros)$
+% For code highlighting BY Pandoc
+$highlighting-macros$
+$endif$
+
+$if(tables)$
+% For Pandoc tables
+\usepackage{longtable,booktabs,array}
+$if(multirow)$
+\usepackage{multirow}
+$endif$
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+$endif$
+
+$if(links-as-notes)$
+% For pandoc feature
+% Make links footnotes instead of hotlinks:
+\DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
+$endif$
+$if(strikeout)$
+% For pandoc feature
+$-- also used for underline
+\usepackage[normalem]{ulem}
+% Avoid problems with \sout in headers with hyperref
+\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+$endif$
+
+% For Pandoc's list
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
@@ -155,10 +200,12 @@ $endfor$
 % Part for indenting CSL refs
 % Pandoc citation processing
 $if(csl-refs)$
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
 % for Pandoc 2.8 to 2.10.1
 \newenvironment{cslreferences}%
   {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
@@ -169,22 +216,23 @@ $if(csl-refs)$
  {% don't indent paragraphs
   \setlength{\parindent}{0pt}
   % turn on hanging indent if param 1 is 1
-  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
-  % set entry spacing
-  \ifnum #2 > 0
-  \setlength{\parskip}{#2\baselineskip}
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
   \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
  }%
  {}
-\usepackage{calc} % for calculating minipage widths
+\usepackage{calc}
 \newcommand{\CSLBlock}[1]{#1\hfill\break}
 \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
 
-% Pandoc header
 $for(header-includes)$
+% Pandoc header-include feature
 $header-includes$
 $endfor$
 
@@ -304,9 +352,8 @@ $endif$
 
 $if(natbib)$
 $if(bibliography)$
-
 $if(biblio-title)$
-$if(book-class)$
+$if(has-chapters)$
 \renewcommand\bibname{$biblio-title$}
 $else$
 \renewcommand\refname{$biblio-title$}
@@ -332,6 +379,7 @@ $endfor$
 
 $for(include-after)$
 $include-after$
+
 $endfor$
 
 \end{document}
