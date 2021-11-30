@@ -13,13 +13,31 @@
 #' * `oup_version=1`, `citation_package="natbib"` by default and
 #' `citation_package="biblatex"` is not supported.
 #'
+#' # Pandoc requirement
+#'
+#' `oup_version = 1` requires a minimum version of 2.10.
+#'
 #' @inheritParams rmarkdown::pdf_document
-#' @param oup_version For `oup_article`, set to 0 to use the 2009 OUP CLS style for document formatting or set to 1 to use the newer 2020 OUP CLS style package available on CTAN. Defaults to 0.
-#' @param document_style For `oup_article`, `oup_version=1`, one of "contemporary", "modern", or "traditional" setting overall style of document. Defaults to "contemporary".
-#' @param papersize For `oup_article`, `oup_version=1`, one of "large", "medium", or "small" setting output page size. Defaults to "large".
-#' @param namedate For `oup_article`, `oup_version=1`, a logical variable indicating if natbib citations should be in name-date format. Defaults to `FALSE`.
-#' @param onecolumn For `oup_article`, `oup_version=1`, a logical variable indicating if one column formatting should be used. Defaults to `FALSE`.
+#' @param oup_version set to 0 (default) to use the 2009 OUP `.cls` called `ouparticle`
+#'   formatting or set to 1 to use the newer 2020 OUP package available on CTAN
+#'   `oup-authoring-template`.
+#' @param journal journal Title. *(Only useful for `oup_version > 0`)*.
+#' @param number_sections It will be passed to [rmarkdown::pdf_document()]. Set to
+#'   TRUE by default when `oup_version = 1` is used.
+#' @param document_style one of "contemporary" (default), "modern", or
+#'   "traditional" setting overall style of document. *(Only useful for `oup_version > 0`)*
+#' @param papersize one of "large" (default), "medium", or "small" setting
+#'   output page size. *(Only useful for `oup_version > 0`)*
+#' @param namedate a logical variable
+#'   indicating if natbib citations should be in name-date format. Defaults to
+#'   `FALSE`. *(Only useful for `oup_version > 0`)*
+#' @param onecolumn a logical variable indicating if one column formatting
+#'   should be used. Defaults to `FALSE`. *(Only useful for `oup_version > 0`)*
+#' @param number_lines,number_lines_options Control the usage of CTAN package
+#'   `lineno` in the template. Use `number_lines =TRUE` to activate and set
+#'   `number_lines_options` to change options. *(Only useful for `oup_version > 0`)*
 #' @param ... Additional arguments to [rmarkdown::pdf_document()]
+#'
 #' @export
 #' @importFrom rmarkdown pandoc_variable_arg
 oup_article <- function(
@@ -27,13 +45,13 @@ oup_article <- function(
     oup_version = 0,
     journal = NULL,
     number_sections = FALSE,
-    number_lines = FALSE,
-    number_lines_options = NULL,
     citation_package = ifelse(oup_version == 0, "default", "natbib"),
     papersize = c("large", "medium", "small"),
     document_style = c("contemporary", "modern", "traditional"),
     namedate = FALSE,
     onecolumn = FALSE,
+    number_lines = FALSE,
+    number_lines_options = NULL,
     keep_tex = TRUE,
     md_extensions = c("-autolink_bare_uris"),
     pandoc_args = NULL,
@@ -49,6 +67,7 @@ oup_article <- function(
                                md_extensions = md_extensions,
                                pandoc_args = pandoc_args,
                                number_sections = number_sections,
+                               citation_package = citation_package,
                                ...))
   }
 
@@ -60,61 +79,47 @@ oup_article <- function(
   # change of defaults
   if (missing(number_sections)) number_sections <- TRUE
 
-  citation_package <-
-    match.arg(citation_package, c("natbib", "default"))
+  if (!citation_package %in% c("natbib", "default")) {
+    stop("Only `natbib` or `default` is supported for `oup_version = 1`")
+  }
   papersize <- match.arg(papersize)
   document_style <- match.arg(document_style)
 
   args <- c(
     journal = journal,
     papersize = papersize,
-    document_style = document_style
+    document_style = document_style,
   )
 
   # Convert to pandoc arguments
-  pandoc_arg_list <- mapply(
-    rmarkdown::pandoc_variable_arg,
-    names(args),
-    args,
-    SIMPLIFY = FALSE,
-    USE.NAMES = FALSE
-  )
+  args <- vec_to_pandoc_variable_args(args)
 
   # namedate
   if (namedate)
-    pandoc_arg_list = c(pandoc_arg_list,
-                        rmarkdown::pandoc_variable_arg("namedate"))
+    args <- c(args, rmarkdown::pandoc_variable_arg("namedate"))
 
   # onecolumn
   if (onecolumn)
-    pandoc_arg_list = c(pandoc_arg_list,
-                        rmarkdown::pandoc_variable_arg("onecolumn"))
+    args <- c(args, rmarkdown::pandoc_variable_arg("onecolumn"))
 
   # line numbers
   if (number_lines) {
-    pandoc_arg_list = c(pandoc_arg_list,
-                        rmarkdown::pandoc_variable_arg("numberlines"))
-
-    if (!is.null(number_lines_options))
-      pandoc_arg_list =
-        c(
-          pandoc_arg_list,
-          rmarkdown::pandoc_variable_arg(
-            "numberlines-options",
-            paste(number_lines_options, collapse =
-                    ",")
-          )
-        )
+    args <- c(args, rmarkdown::pandoc_variable_arg("numberlines"))
+    if (!is.null(number_lines_options)) {
+      args  <- c(args,
+                 rmarkdown::pandoc_variable_arg(
+                   "numberlines-options",
+                   paste(number_lines_options, collapse = ",")
+                 ))
+    }
   }
-
-  pandoc_arg_list <- unlist(pandoc_arg_list)
 
   pdf_document_format(
     "oup_v1",
     keep_tex = keep_tex,
     md_extensions = md_extensions,
     citation_package = citation_package,
-    pandoc_args = c(pandoc_arg_list, pandoc_args),
+    pandoc_args = c(args, pandoc_args),
     number_sections = number_sections,
     ...
   )

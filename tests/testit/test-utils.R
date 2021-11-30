@@ -33,3 +33,16 @@ assert("all journals are listed and have a template folder", {
   all <- gsub("_article$", "", all)
   (journals() %==% sort(all))
 })
+
+
+assert("Named vector is transformed to pandoc variable args", {
+  (vec_to_pandoc_variable_args(c(a = "b")) %==%
+     c(rmarkdown::pandoc_variable_arg("a", "b"))
+  )
+  (vec_to_pandoc_variable_args(c(a = "b", c = "d")) %==%
+       c(
+         rmarkdown::pandoc_variable_arg("a", "b"),
+         rmarkdown::pandoc_variable_arg("c", "d")
+       )
+  )
+  })
