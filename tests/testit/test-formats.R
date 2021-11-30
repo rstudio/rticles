@@ -55,7 +55,10 @@ test_format("jss")
 test_format("lipics")
 test_format("mdpi")
 test_format("mnras")
-test_format("oup")
+test_format("oup_v0")
+if (rmarkdown::pandoc_available(2.10)) {
+  test_format("oup_v1")
+}
 test_format("peerj")
 test_format("pihph")
 test_format("plos")

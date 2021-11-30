@@ -22,9 +22,9 @@ oup_article(
 )
 }
 \arguments{
-\item{oup_version}{set to 0 (default) to use the 2009 OUP \code{.cls} called \code{ouparticle}
-formatting or set to 1 to use the newer 2020 OUP package available on CTAN
-\code{oup-authoring-template}.}
+\item{oup_version}{set to 0 (default) to use the 2009 OUP \code{ouparticle.cls}
+included or set to 1 to use the newer 2020 OUP package
+\code{oup-authoring-template} available on CTAN.}
 
 \item{journal}{journal Title. \emph{(Only useful for \code{oup_version > 0})}.}
 

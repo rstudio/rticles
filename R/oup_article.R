@@ -18,9 +18,9 @@
 #' `oup_version = 1` requires a minimum version of 2.10.
 #'
 #' @inheritParams rmarkdown::pdf_document
-#' @param oup_version set to 0 (default) to use the 2009 OUP `.cls` called `ouparticle`
-#'   formatting or set to 1 to use the newer 2020 OUP package available on CTAN
-#'   `oup-authoring-template`.
+#' @param oup_version set to 0 (default) to use the 2009 OUP `ouparticle.cls`
+#'   included or set to 1 to use the newer 2020 OUP package
+#'   `oup-authoring-template` available on CTAN.
 #' @param journal journal Title. *(Only useful for `oup_version > 0`)*.
 #' @param number_sections It will be passed to [rmarkdown::pdf_document()]. Set to
 #'   TRUE by default when `oup_version = 1` is used.
@@ -39,6 +39,12 @@
 #' @param ... Additional arguments to [rmarkdown::pdf_document()]
 #'
 #' @export
+#' @example \dontrun{
+#'   # Use old template based on `ouparticle.cls`
+#'   rmarkdown::draft("MyArticle.Rmd", template = "oup_v0", package = "rticles")
+#'   # Use new template based on `oup-authoring-template` CTAN package
+#'   rmarkdown::draft("MyArticle.Rmd", template = "oup_v1", package = "rticles")
+#' }
 #' @importFrom rmarkdown pandoc_variable_arg
 oup_article <- function(
     # Controls template to use. 1 for newer template.
@@ -58,7 +64,7 @@ oup_article <- function(
     ...
 ) {
   # Only two version available for now
-  oup_version <- as.character(match.arg(oup_version, c(0, 1)))
+  oup_version <- match.arg(as.character(oup_version), c("0", "1"))
 
   # Use old template
   if (oup_version == "0") {
@@ -88,7 +94,7 @@ oup_article <- function(
   args <- c(
     journal = journal,
     papersize = papersize,
-    document_style = document_style,
+    document_style = document_style
   )
 
   # Convert to pandoc arguments
