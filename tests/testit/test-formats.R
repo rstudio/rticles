@@ -1,4 +1,4 @@
-test_format <- function(name, os_skip = NULL) {
+test_format <- function(name, output_options = NULL, os_skip = NULL) {
 
   # don't run on CRAN due to complicated dependencies (Pandoc/LaTeX packages)
   if (!identical(Sys.getenv("NOT_CRAN"), "true")) return()
@@ -14,12 +14,13 @@ test_format <- function(name, os_skip = NULL) {
   # create a draft of the format
   testdoc <- paste0(name,"_article",".Rmd")
   rmarkdown::draft(
-    testdoc, pkg_file("rmarkdown", "templates", name),
+    testdoc, pkg_file_template(name),
     create_dir = FALSE, edit = FALSE
   )
 
-  message('Rendering the ', name, ' format...')
-  output_file <- rmarkdown::render(testdoc, quiet = TRUE)
+  message('Rendering the ', name, ' format...',
+          if(!is.null(output_options)) " (with output options)")
+  output_file <- rmarkdown::render(testdoc, output_options = output_options, quiet = TRUE)
   assert(paste(name, "format works"), {
     file.exists(output_file)
   })
@@ -31,6 +32,7 @@ test_format("acm")
 test_format("acs")
 test_format("aea")
 test_format("agu")
+test_format("ajs")
 test_format("amq")
 test_format("ams")
 test_format("arxiv")
@@ -43,13 +45,18 @@ test_format("elsevier")
 test_format("frontiers")
 test_format("gigascience")
 test_format("ieee")
+test_format("ims")
+test_format("ims", output_options = list(journal = "aap"))
+test_format("jasa")
 test_format("joss")
+test_format("joss", output_options = list(journal = "JOSE"))
 test_format("jss")
 test_format("lipics")
 test_format("mdpi")
 test_format("mnras")
 test_format("oup")
 test_format("peerj")
+test_format("pihph")
 test_format("plos")
 test_format("pnas")
 test_format("rjournal")
@@ -59,3 +66,8 @@ test_format("sage")
 test_format("sim")
 test_format("springer")
 test_format("tf")
+test_format("trb")
+
+# special case: the glossa format doesn't work with the microtype package
+tinytex::tlmgr_remove("microtype")
+test_format("glossa")

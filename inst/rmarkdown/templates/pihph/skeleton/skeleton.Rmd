@@ -1,0 +1,95 @@
+---
+title: This is a title and this is too
+subtitle: A subtitle goes on another line
+# Use the following to specify a shorter title for the header. 
+# If not set, the title will be used.
+title-header: A short title
+
+author:
+- name: Author's name
+  affiliation: Author's affiliation
+  email: e-mail@uni.edu
+- name: Second author's name (if there is one)
+  affiliation: Second author's affiliation
+# Use the following to specify a short author name for the header. If not set, 
+# it will use the authors' name
+author-header: Authors
+
+# The journal uses Cambria, Calibri, and Lekton. If you don't have access to
+#  Cambria and Calibri, you can use the metrically equivalent Caladea and
+#  Carlito. Caladea, Carlito, and Lekton are available for download:
+#   - Caladea:   https://fontlibrary.org/en/font/caladea
+#   - Carlito:   https://fontlibrary.org/en/font/carlito
+#   - Lekton:    https://www.fontsquirrel.com/fonts/lekton
+# 
+# mainfont: Cambria # or Caladea
+# licensefont: Calibri # or Carlito
+# logofont: Lekton
+
+en-variant: british # Set to "american" for American English.
+single-quotes: true # To use double quotes, set single-quotes to false.
+# for the example, feel free to use your preferred package for glosses or comment.
+gloss: expex 
+
+# This format uses BibLaTeX by default, as recommended by the journal.
+bibliography: sample-bib.bib
+
+abstract: |
+ This is the template for \LaTeX{} users; we also have a Word template available, so feel free to use that if you're not into \LaTeX. All submissions to PiHPh should aim to follow the formatting set out in this template precisely, as there is no separate typesetting phase. Most styles in this template have been set up to insert the necessary white space where needed. You should use the styles that are provided in this template consistently to ensure that your submission is quickly processed. Do not change the margins or header/footer properties, including the material on this first page (such as volume, page numbers and DOI), which we will update when your submission is ready. Make sure to look at the user customization part of the preamble to this \texttt{.tex} source to change titles, running headers, bibliography etc. All the packages used here should be available in a recent version of \TeX Live. All articles should include an abstract in this position, of no more than 200 words.
+acknowledgements: Include any acknowledgements in an unnumbered section here, rather than in a footnote early in the paper.
+supplement: If you would like to post any data sets, statistical data, scripts or similar material that links to your article, you can include a description of it all at the end of the paper.
+output: rticles::pihph_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Heading level 1
+
+The first paragraph under all headings will not be indented.^[This is a footnote example]  The font for everything is Cambria --- use Xe\LaTeX{} to compile the document to achieve this. Cambria should hopefully have all the transcription symbols that you will need, but if you have any problems using symbols, get in touch (pihph@\hspace{0pt}mlist.ed.ac.uk). Use normal phonological conventions when transcribing: [skweːɹ] brackets for surface/narrow transcriptions and /slantɪd/ brackets for underlying/broad transcriptions. It’s fine to use either IPA conventions (e.g., /t͡ʃ, ɾ, j, y/) or Americanist conventions (e.g., /č, ᴅ, y, ü/), but if there is any possibility of ambiguity or if you need to use a non-conventional symbol, you should explain what it stands for.
+
+All paragraphs other than the first in a section will be indented by 0.7cm. Make sure that you use the shaftless arrow \enquote{>} for diachronic correspondences. The shafted arrow \enquote{→} (or `$\rightarrow$`) should be used for synchronic derivations. Use \enquote{smart quotation marks}, not \'straight quotation marks\' (we recommend the csquotes package, as in this template). Either British or American English spelling is fine, as long as you are consistent. It is crucial that you spellcheck and carefully proofread your piece before submission. Use a hyphen \enquote{-} only to join together two parts of a compound (as in \enquote{affrico-palatalisation}). For number ranges (as in \enquote{1999–2002}), use an en dash \enquote{--}. For all other purposes, use an em dash \enquote{---}.
+
+## Heading level 2
+
+Quotations of under 25 words should be included in the running text \enquote{as a wise person once said} (with an associated full reference, including page numbers). All references should follow the normal Author (date, page number) system.  Longer quotations should be set out as follows.
+
+
+> This is the format for a quotation of 25 words or more, with indentation of 0.7 cm throughout the quotation on both sides and a font size of 10 points (this is set up in the template) and a reference in the text above it, unless there is a good reason to give the reference elsewhere.
+
+All examples and anything that is not a table or figure should be given a number for reference, as normal. You can set out your examples, diagrams and other similar items in any way that you think sensible (within the general constraints of this template). We recommend the expex package for example, but you are welcome to use any others. Put the example number in brackets, but if you use subexamples the numbering is up to you. The numbers for examples should not be indented.
+
+```{=latex}
+\ex\begin{tabular}[t]{lll}
+     /ɛɡzampl/ & [ɛɡzámpl̩] & `example'
+   \end{tabular}
+\xe
+
+\ex\labels\begin{tabular}[t]{>{\tl}llll} % or use \pex
+& /tu e/ & [tʰʉː eː] & `two a' \\
+& /tu bi/ & [tʰʉː biː] & `two b'
+\end{tabular}
+\xe
+```
+
+If you need to include translations for examples, use single quotation marks. Do not use bold or underlining anywhere in an article (apart from where required by the template in headings and the like). Use italics for linguistic examples in the running text, for the titles of publications and for any kind of emphasis. If you encounter any problems with setting out your examples and similar things, contact us for advice (pihph@\hspace{0pt}mlist.is.ed.ac.uk).
+
+Captions for figures and tables should be set out below the figure or table. We recommend, but do not insist, that you avoid vertical rules in your tables (we recommend the booktabs package). Otherwise, the setting of figures and tables is also up to you. Everything should be placed in your article where you would like it to appear in the published PDF. Do not place anything at the end of an article unless it clearly belongs in an appendix (that is, it consists of material that a casual reader will not want to consult, but may be of interest to specialists). You will be able to host data sets, statistical data, scripts, and the like separately (within reason) if you would like to make them available in connection with an article. Contact us if you would like to discuss this (pihph@\hspace{0pt}mlist.is.ed.ac.uk).
+
+```{r example, fig.cap="Caption", fig.align='center'}
+knitr::include_graphics("pihph-logo.png")
+```
+
+# Bibliography and citations
+
+By default, this template uses Bib\LaTeX. To learn about Bib\LaTeX, see https://www.overleaf.com/learn/latex/Articles/Getting_started_with_BibLaTeX for a quick intro and the package documentation for detailed info. The `langsci-unified` style is used.
+
+To cite a reference, you can use the standard pandoc syntax `@blust2009` for a citation without parentheses, as in @blust2009, and `[@blust2009]` with parenthesis [@blust2009].
+
+These are other examples: @ramsammy2016 [p. 287], [but see @sen2016; @bermudez-otero2015]. Goldsmith is a relevant reference [-@goldsmith1990], although we should not forget @hyman1975.
+
+# Conclusion
+
+The following sections show the kinds of things that you might include at the end of your paper. Use the
+`\section*` to produce unnumbered sections.

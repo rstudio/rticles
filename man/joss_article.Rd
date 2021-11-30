@@ -12,7 +12,7 @@ joss_article(journal = "JOSS", keep_md = TRUE, latex_engine = "xelatex", ...)
 \item{keep_md}{Whether to retain the intermediate markdown and images.
 Defaults to TRUE.}
 
-\item{latex_engine, ...}{Arguments passed to \code{rmarkdown::pdf_document}}
+\item{latex_engine, ...}{Arguments passed to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}}
 }
 \description{
 Format for creating a Journal of Open Source Software (JOSS) or Journal of
@@ -24,6 +24,5 @@ R Markdown and to locally preview how the article will appear as PDF.
 \details{
 The following variables may be set in YAML metadata to populate fields in the
 article PDF, but are only necccessary fo local preview:
-\code{formatted_doi, citation_author, year, volume, issue, page, submitted, published,
-review_url, repository}, and \code{archive_doi}.
+\verb{formatted_doi, citation_author, year, volume, issue, page, submitted, published, review_url, repository}, and \code{archive_doi}.
 }

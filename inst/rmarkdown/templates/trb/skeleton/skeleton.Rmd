@@ -1,0 +1,147 @@
+---
+title: An Rticles Template for the Transport Research Board Annual Meeting
+runningheader: "Anonymous, Security, and Zoolander"
+author:
+  - name: Alice Anonymous
+    note: Corresponding Author
+    position: Graduate Student
+    email: alice@example.com
+    affiliation: Some Institute of Technology
+  - name: Bob Security
+    position: Assistant Professor
+    email: bob@example.com
+    affiliation: State University
+  - name: Derek Zoolander
+    position: Professor
+    email: derek@example.com
+    affiliation: Some Institute of Technology
+abstract: |
+  The Transportation Research Board (TRB) has unique and seemingly arbitrary requirements for manuscripts submitted for review. These requirements make it difficult to write the manuscripts quickly, and no existing \LaTeX\ style comes close to fooling the guidelines. This represents an initial effort at creating a template to meet the requirements of TRB authors using \LaTeX, R, Sweave, and/or other literate programming software.
+  
+keywords: ["Transportation", "Travel Behavior"]
+bibliography: mybibfile.bib
+biblio-style: unsrtnat
+classoption:
+  - numbered #  When numbered option is activated, lines are numbered.
+output: rticles::trb_article
+wordcount: 684
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+# Transportation Research Board Annual Meetings
+
+TRB has greatly simplified the submissions to its system, meaning that this
+template is no longer strictly required. However, there is a typical format
+that most people still use by default, and this template implements that change.
+
+
+# Features
+
+The template has a number of features that enable quick and painless manuscript authoring.
+
+## Mathematics
+
+Standard pandoc / \LaTeX math environments are available.  For example, the
+probability of an individual choosing alternative $i$ in a multinomial logit
+model is
+\begin{equation}
+  P_i = \frac{exp(V_i)}{\sum_{i, j \in J}exp(V_j)} \label{eq:mnl}
+\end{equation}
+Equations with a `\label{eq:label}` can be referred to later in the text with
+`\ref{eq:label}`, such as Equation \ref{eq:mnl}.
+
+## Title Page
+
+The template will automatically create a title page with the authors in the
+listed order.  Near the bottom of the title page, TRB requires a count of the manuscript's
+words and tables. The YAML header information contains a `wordcount` key where
+this can be encoded. The number of tables is counted automatically on build; 
+a default 250 words per table can be overriden with the `wordspertable` YAML
+key.
+
+The LaTeX template available from <https://github.com/chiehrosswang/TRB_LaTeX_tex>
+contain automatic word counters that have not been implemented in this `rticles`
+template. Authors can use the R Studio word count add-in available from
+<https://github.com/benmarwick/wordcountaddin>.
+
+## Page Layout
+
+The document has 1 inch margins as required, with the author's names in the left
+heading and the page number in the right. The running header information is set
+with the `runningheader` YAML key. Paragraphs leading sections and subsections
+are not indented, while all subsequent paragraphs in that section are. Section
+heading types are defined as outlined by the old TRB Author's Guide.
+
+The document is single-spaced in 12 point Times font. Times New Roman is a
+proprietary font and is therefore not available by installation in open-source
+software. While the differences between Times variants are negligible, Times New
+Roman itself can be used in Mac OSX by compiling under `xelatex`.
+
+## Figure and Table references
+
+The document can use standard pandoc referencing tools for in-text
+citations to figures and tables. If an R code chunk outputs a figure, the figure
+number can be referred to with `\@ref(fig:chunkname)` where `chunkname` is the
+name of the chunk that prints the figure.  For example, Figure \@ref(fig:figure-example)
+shows a default figure made by the R chunk below.
+
+```{r figure-example, fig.cap="Generic plot.", echo = TRUE}
+# Generate some sample data, then compute mean and standard deviation
+# in each group
+Speed <- cars$speed
+Distance <- cars$dist
+plot(Speed, Distance,
+     panel.first = lines(stats::lowess(Speed, Distance), lty = "dashed"),
+     pch = 0, cex = 1.2, col = "blue")
+```
+
+The template setup chunk sets `echo = FALSE` for the entire document, as printing
+code listings would not usually be appropriate or needed for a TRB article. But
+the option is there!
+
+The same referencing logic works for tables, with the `tab:` prefix on the
+chunk name instead of `fig:` used for figures. Table \@ref(tab:table-example)
+has a basic table. We recommend the `kableExtra` package for formatting 
+publication-ready tables with greater control than the default `knitr::kable()`
+function.
+
+```{r table-example}
+knitr::kable(mtcars[1:5, 1:6], format = "latex", table.envir = "table", 
+             booktabs = TRUE, caption = "Example Table") 
+```
+
+
+## Bibliography styles
+
+TRB still wants numbered, unsorted citations beginning on a new page. The
+template is configured to use `natbib` with the `unsrtnat` citation style, with
+some additional logic to use parentheses instead of brackets. The YAML key
+`bibliostyle` will allow the authors to select a different citation format, but
+this is not recommended at the moment. Citations use the pandoc logic. Including
+the reference in brackets `[@reference]` will print only the numeric reference;
+e.g. [@Feynman1963118; @Dirac1953888]. Including the reference without brackets
+`@reference` will print the authors and then the numeric reference; e.g.
+@Feynman1963118.
+
+# Author Contribution Statement
+
+The authors confirm contribution to the paper as follows: study conception and
+design: A. Anonymous, D. Zoolander; data collection: B. Security; analysis and
+interpretation of results: A. Anonymous, B. Security; draft manuscript
+preparation: A. Anonymous. All authors reviewed the results and approved
+the final version of the manuscript.
+
+# Acknowledgements
+
+David Pritchard posted the original versions of this template in 2009 and
+updated it in 2011, soon after TRB began allowing PDF submissions. Gregory
+Macfarlane and Ross Wang made adjustments to the template, and Ross Wang now
+maintains the \LaTeX template at
+<https://github.com/chiehrosswang/TRB_LaTeX_tex>. Gregory Macfarlane created the `rticles` template in 2021.
+
+
+# References {#references }
