@@ -3,7 +3,7 @@
 #' Format for creating submissions to Royal Society Open Science journals.
 #'
 #' @inheritParams rmarkdown::pdf_document
-#' @param ... Additional arguments to \code{rmarkdown::pdf_document}
+#' @param ... Additional arguments to [rmarkdown::pdf_document()]
 #' @export
 #' @importFrom rmarkdown output_format knitr_options pandoc_options
 #'   pandoc_variable_arg includes_to_pandoc_args
@@ -15,14 +15,14 @@ rsos_article <- function(
 
   extra <- list(...)
 
-  template <- find_resource('rsos_article')
+  template <- find_resource('rsos')
   args <- c(
-    "--template", template, pandoc_variable_arg("documentclass", "article"),
-    pandoc_args, "--natbib", includes_to_pandoc_args(includes)
+    "--template", template, rmarkdown::pandoc_variable_arg("documentclass", "article"),
+    pandoc_args, "--natbib", rmarkdown::includes_to_pandoc_args(includes)
   )
 
   if (length(extra) > 0) args <- c(args, sapply(names(extra), function(x){
-    pandoc_variable_arg(x, extra[[x]])
+    rmarkdown::pandoc_variable_arg(x, extra[[x]])
   }))
 
   opts_chunk <- list(

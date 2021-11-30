@@ -1,0 +1,144 @@
+\documentclass[$format$ ,$hyphenation$ $if(authorcolumns)$ ,authorcolumns $endif$ $if(cleveref)$,cleveref$endif$ $if(autoref)$,autoref$endif$ $if(thm-restate)$,thm-restate$endif$ $if(anonymous)$,anonymous$endif$ $if(numberwithinsect)$,numberwithinsect$endif$ ]{lipics-v2019}
+%This is a template for producing LIPIcs articles.
+%See lipics-manual.pdf for further information.
+%for A4 paper format use option "a4paper", for US-letter use option "letterpaper"
+%for british hyphenation rules use option "UKenglish", for american hyphenation rules use option "USenglish"
+%for section-numbered lemmas etc., use "numberwithinsect"
+%for enabling cleveref support, use "cleveref"
+%for enabling autoref support, use "autoref"
+%for anonymousing the authors (e.g. for double-blind review), add "anonymous"
+%for enabling thm-restate support, use "thm-restate"
+
+$if(graphicspath)$
+\graphicspath{{$graphicspath$}}
+$endif$
+
+% globally disable tightlists, see https://pandoc.org/MANUAL.html#lists and https://tex.stackexchange.com/a/257464
+\def\tightlist{}
+
+
+\bibliographystyle{plainurl}% the mandatory bibstyle
+
+\title{$title$}
+
+\titlerunning{$titlerunning$}
+
+$for(author)$
+
+\author{$author.name$ $if(author.footnote)$\footnote{$author.footnote$} $endif$}{$author.affiliation$}{$author.email$}{$author.orcid$}{$if(author.funding)$ $author.funding$ $endif$}
+
+$endfor$
+
+\authorrunning{$authorrunning$}
+
+\Copyright{$copyright$}
+
+\ccsdesc[$ccdesc.concept_significance$]{$ccdesc.concept_desc$}
+
+\keywords{$keywords$}
+
+%optional, e.g. invited paper
+$if(category)$
+\category{$category$}
+$endif$
+
+%optional
+$if(relatedversion)$
+\relatedversion{$relatedversion$}
+$endif$
+
+%optional
+$if(supplement)$
+\supplement{$supplement$}
+$endif$
+
+%optional
+$if(funding)$
+\funding{$funding$}
+$endif$
+
+%optional
+$if(acknowledgements)$
+\acknowledgements{$acknowledgements$}
+$endif$
+
+$if(nolinenumbers)$
+\nolinenumbers
+$endif$
+
+$if(hideLIPIcs)$
+\hideLIPIcs
+$endif$
+
+$if(highlighting-macros)$
+% For Pandoc highlighting needs
+$highlighting-macros$
+$endif$
+
+$if(csl-refs)$
+% Pandoc citation processing
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc} % for calculating minipage widths
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+%header-includes to be used sparingly
+$for(header-includes)$
+$header-includes$
+$endfor$
+%end of header-includes
+
+%Editor-only macros:: begin (do not touch as author)%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(volumemacros)$
+$volumemacros$
+$endif$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+
+%TODO mandatory: add short abstract of the document
+\begin{abstract}
+$abstract$
+\end{abstract}
+
+$body$
+
+%%
+%% Bibliography
+%%
+
+%% Please use bibtex,
+
+\bibliography{$bibliography$}
+
+$if(appendix)$
+\appendix
+$appendix$
+$endif$
+
+\end{document}

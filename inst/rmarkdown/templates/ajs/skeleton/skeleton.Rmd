@@ -1,0 +1,221 @@
+---
+author:
+  - name: FirstName LastName
+    affiliation: University/Company
+    # use this syntax to add text on several lines
+    address: |
+      | First line
+      | Second line
+    email: \email{name@company.com}
+    url: http://rstudio.com
+  - name: Second Author
+    affiliation: 'Affiliation \AND'
+    # To add another line, use \AND at the end of the previous one as above
+  - name: Third Author
+    address: |
+      | Department of Statistics and Mathematics,
+      | Faculty of Biosciences,
+      | Universitat Autònoma de Barcelona
+    affiliation: |
+      | Universitat Autònoma 
+      | de Barcelona
+    # use a different affiliation in adress field (differently formated here)
+    affiliation2: Universitat Autònoma de Barcelona
+title:
+  formatted: "A Capitalized Title: Something about a Topic"
+  # If you use tex in the formatted title, also supply version without
+  plain:     "A Capitalized Title: Something about a Topic"
+  # For running headers, if needed
+  short:     "A Capitalized Title"
+abstract: >
+  This guide of the Austrian Journal of Statistics (AJS) shows the required style of manuscripts submitted to the Austrian Journal of Statistics. We strongly recommend to follow the given instructions exactly already when writing the paper. When submitting papers to AJS, it is essential to follow these guidelines. Manuscripts submitted without consideration of the AJS style guide will most likely not be forwarded for review, but rejected with the possibility of resubmission.
+keywords:
+  # at least one keyword must be supplied
+  formatted: [keywords, not capitalized, "\\proglang{Java}"]
+  plain:     [keywords, not capitalized, Java]
+header-includes:
+ - \usepackage{amsmath}
+output: rticles::ajs_article
+---
+
+```{r, setup, include=FALSE}
+options(prompt = 'R> ', continue = '+ ')
+```
+
+
+Before we look at style in more detail, the most common mistakes and errors are described:
+
+# Frequently made style mistakes
+
+
+- AJS style is not used
+- Title in Capitalized style. See the title of the guidelines for illustration.
+- Subsection in lower case style. See the subsection of the guidelines for illustration
+- Capitalized Titles for references. E.g. \cite{fleet20} should appear in the reference list as "Fleet Management in Free-Floating Bike Sharing Systems Using
+  Predictive Modelling and Exploratory Tools" and NOT as "Fleet management in free-floating bike sharing systems using
+  predictive modelling and exploratory tools".
+- Include DOI numbers for each citation (if possible)
+- Use vector-based graphics such as \texttt{pdf}. Do not use pixel-based graphics like \texttt{png}, \texttt{jpeg}, and do not convert from \texttt{png} or \texttt{jpeg} to \texttt{pdf}
+
+
+# Introduction
+
+The style file of the Austrian Journal of Statistics is based on the style file of the Journal of Statistical Software (JSS) including minor modifications. We thank Achim Zeileis for his great work on the JSS style file.
+
+The Austrian Journal of Statistics is freely available over the net. Free and open-source tools used for production of your manuscript are therefore also highly supported. Code to reproduce the figures and tables in manuscripts as well as methods implemented in software can be published as supplementary material. This increases usually the number of downloads of your article.
+
+
+# Writing your manuscript
+
+The Journal is produced on the basis of computer readable manuscripts provided by the authors. 
+
+Footnotes should be avoided.
+
+The article should be structured by enumerated sections and
+subsections. The title should be in title case style, sections and subsections in section case style. Graphics and tables must contain captions, above
+tables and below graphics (figures). Examples are (see Figure~\ref{Fig3.4} and Table~\ref{Tab3.4}).
+Graphics \textbf{should be produced in \textbf{pdf} format} and included 
+ at suitable places of the manuscript. 
+
+\begin{figure}[hbt]
+\begin{center}
+\includegraphics{ajs-download20180210.pdf}
+\caption{\label{Fig3.4}Download statistics of articles per month at the Austrian Journal of Statistics.} 
+\end{center}
+\end{figure}
+
+\begin{table}[hbt]
+\caption{\label{Tab3.4}80 measured values of access time.}
+\vspace*{-5mm}
+\small
+\hspace{1.5cm}
+\begin{center}
+\begin{tabular}{|llllllll|}
+\toprule
+70.0 & 68.6 & 67.9 & 66.3 & 71.0 & 64.2 & 69.6 & 71.0\\
+... & ... & ... & ... & ... & ... & ... & ...\\
+%69.7 & 69.0 & 73.4 & 69.0 & 70.1 & 69.8 & 69.0 & 73.0\\
+%70.0 & 69.1 & 69.5-& 67.9 & 72.8 & 72.1 & 69.5+& 70.1\\
+%70.2 & 69.1 & 68.9 & 68.3 & 74.9 & 68.4 & 69.1 & 66.6\\
+%71.1 & 69.2 & 71.2 & 68.9 & 70.9 & 70.6 & 69.9 & 69.9\\
+%69.4 & 69.5+& 68.5+& 70.9 & 71.6 & 68.9 & 72.0 & 70.3\\
+%68.6 & 68.5-& 67.8 & 72.2 & 68.7 & 70.6 & 66.9 & 69.3\\
+%71.4 & 68.7 & 74.2 & 68.8 & 71.4 & 71.8 & 67.5-& 70.4\\
+%71.4 & 67.4 & 69.5-& 72.4 & 70.4 & 69.3 & 68.2 & 67.0\\
+71.7 & 70.5+& 72.5-& 68.2 & 67.6 & 68.6 & 70.5-& 65.8\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
+Mathematical formulas should be enumerated as far as they are
+referenced \textbf{only}. E.g.~Equation~(\ref{form3.1}) shows the density 
+\begin{equation}\label{form3.1}
+f(x) =
+\frac1{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\,.
+\end{equation}
+
+Please consider 
+
+- capitalized title case for titles and for all references and 
+- sentence, non-capitalized case for sections and subsections.
+
+
+
+Cited literature should be summarized at the end of the article in
+form of a non-enumerated section. \cite{leisch02} is a reference
+to an article. If the citation is in parentheses, it
+should look like \citep{leisch02}.
+References should be in title case.
+
+Correspondence addresses of author(s) should be added at the end
+of the manuscript. 
+
+
+# Submission and refereeing
+
+
+## Submission
+
+Consideration of the previously stated rules are of great help for
+the editing process. Whenever technically possible, manuscripts
+should be submitted through the editorial system at \href{www.ajs.or.at}{www.ajs.or.at}. The authors must be registered at this website.
+
+## Refereing
+
+All contributions will be anonymously refereed. Cited literature which is
+hardly available should accompany the submitted manuscript. It
+should also be considered to place used and analyzed data at
+disposal for the referees (if there are no legal or technical
+arguments against).
+
+Editor and referees must trust that the contribution has not been
+submitted for publication at the same time at another place. It is
+fair that the submitting author notifies if an earlier version has
+already been submitted somewhere before.
+
+## Copyrights and fees
+
+The Austrian Journal of Statistics is free of
+charge. Generally, we use the Creative Commons Attribution License (CC-BY).
+
+For copyright issues, publication ethics and malpractice statements, please have a look at 
+<www.ajs.or.at>
+
+
+
+
+
+# Specifics to markdown
+
+## Code formatting
+
+In general, don't use Markdown, but use the more precise LaTeX commands instead:
+
+* \proglang{Java}
+* \pkg{plyr}
+
+One exception is inline code, which can be written inside a pair of backticks (i.e., using the Markdown syntax).
+
+If you want to use LaTeX commands in headers, you need to provide a `short-title` attribute. You can also provide a custom identifier if necessary. See the header of Section \ref{r-code} for example.
+
+# \proglang{R} code {short-title="R code" #r-code}
+
+Can be inserted in regular R markdown blocks.
+
+```{r}
+x <- 1:10
+x
+```
+
+## Features specific to \pkg{rticles} {short-title="Features specific to rticles"}
+
+* Adding short titles to section headers is a feature specific to \pkg{rticles} (implemented via a Pandoc Lua filter). This feature is currently not supported by Pandoc and we will update this template if [it is officially supported in the future](https://github.com/jgm/pandoc/issues/4409).
+* Using the `\AND` syntax in the `author` field to add authors on a new line. This is a specific to the `rticles::ajs_article` format.
+
+
+# Checklist
+
+We list the most common mistakes when submitting manuscripts to the journal and formulate them in form of questions.
+
+- Did you upload a pdf of your manuscript for review? (no Word, no .tex, ...)
+- Did you use the style of AJS?  
+- Are your graphics produced in pdf format? 
+- Is your title captialized?
+- Are the titles of your cited papers in your references capitalized?
+- Are your section and subsection headers non-capitalized form?
+- Are your tables produced with \LaTeX ? (no screenshots)
+- Have you cited the software you used, e.g. R itself and R packages used? To not cite software is plagiarism and violates intellectual properties of the authors of the software.
+- Did you proposed at least three independent reviewers?
+
+
+# Frequently asked questions
+
+
+- *My citation shows all authors and not the typically shown et al.*. Answer: this is ok. We like to show all authors in the text.
+- *When I submit a paper, how long does it take to be published?*.  Answer: The average time from submission to publication is approx. 132 days. But it heavily depends if you can make satisfying revisions in time. 
+- *In which databases is AJS indexed.* Answer: we are indexed in many of them, most notable is Scopus (from Elsevier). More information can be found at the website of AJS. 
+- *Can I upload my paper on \href{https://arxiv.org/}{https://arxiv.org/} and distribute before the paper is online at AJS?*  Answer: Of course, you can do it. However, please clearly point out in the header of the paper that this paper is under review in the Austrian Journal of Statistics and will likely be published there. Note that the readers should check if the paper is already be published at AJS for correct citation, i.e. finally the journal should be cited. Update and upload  \href{https://arxiv.org/}{https://arxiv.org/} or similar sites with the final version in AJS style after the paper is published  in AJS. 
+
+
+

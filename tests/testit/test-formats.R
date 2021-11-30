@@ -1,4 +1,4 @@
-test_format <- function(name, os_skip = NULL) {
+test_format <- function(name, output_options = NULL, os_skip = NULL) {
 
   # don't run on CRAN due to complicated dependencies (Pandoc/LaTeX packages)
   if (!identical(Sys.getenv("NOT_CRAN"), "true")) return()
@@ -12,41 +12,63 @@ test_format <- function(name, os_skip = NULL) {
   on.exit(setwd(oldwd), add = TRUE)
 
   # create a draft of the format
-  testdoc <- paste0(name, ".Rmd")
+  testdoc <- paste0(name,"_article",".Rmd")
   rmarkdown::draft(
-    testdoc, system.file("rmarkdown", "templates", name, package = "rticles"),
+    testdoc, pkg_file_template(name),
     create_dir = FALSE, edit = FALSE
   )
 
-  if (name == 'pnas_article') return()
-  message('Rendering the ', name, ' format...')
-  output_file <- rmarkdown::render(testdoc, quiet = TRUE)
+  message('Rendering the ', name, ' format...',
+          if(!is.null(output_options)) " (with output options)")
+  output_file <- rmarkdown::render(testdoc, output_options = output_options, quiet = TRUE)
   assert(paste(name, "format works"), {
     file.exists(output_file)
   })
 }
 
-test_format("acm_article")
-test_format("acs_article")
-test_format("aea_article")
-test_format("agu_article")
-test_format("ams_article")
-test_format("asa_article")
-test_format("biometrics_article")
-test_format("elsevier_article")
-test_format("jss_article")
-test_format("joss_article")
-test_format("rss_article")
-test_format("pnas_article")
-test_format("ieee_article")
-test_format("rjournal_article")
-test_format("sage_article")
-test_format("sim_article")
-test_format("peerj_article")
-test_format("plos_article")
-test_format("amq_article")
-test_format("mdpi_article")
-test_format("mnras_article")
-test_format("copernicus_article")
-test_format("frontiers_article")
-test_format("tf_article")
+#--- NOTE to contributors ------------------------------------------------------
+# Please order these tests by formats alphabetically.
+#-------------------------------------------------------------------------------
+
+test_format("acm")
+test_format("acs")
+test_format("aea")
+test_format("agu")
+test_format("ajs")
+test_format("amq")
+test_format("ams")
+test_format("arxiv")
+test_format("asa")
+test_format("bioinformatics")
+test_format("biometrics")
+test_format("copernicus")
+if (xfun::is_linux()) test_format("ctex") # only on linux due to fonts requirements
+test_format("elsevier")
+test_format("frontiers")
+test_format("ieee")
+test_format("ims")
+test_format("ims", output_options = list(journal = "aap"))
+test_format("jasa")
+test_format("joss")
+test_format("joss", output_options = list(journal = "JOSE"))
+test_format("jss")
+test_format("lipics")
+test_format("mdpi")
+test_format("mnras")
+test_format("oup")
+test_format("peerj")
+test_format("pihph")
+test_format("plos")
+test_format("pnas")
+test_format("rjournal")
+test_format("rsos")
+test_format("rss")
+test_format("sage")
+test_format("sim")
+test_format("springer")
+test_format("tf")
+test_format("trb")
+
+# special case: the glossa format doesn't work with the microtype package
+tinytex::tlmgr_remove("microtype")
+test_format("glossa")

@@ -1,0 +1,305 @@
+% === GO TO THE USER CUSTOMIZATION SECTION TO MAKE CHANGES
+
+\documentclass[article, a4paper, 12pt, $for(classoption)$$classoption$$sep$,$endfor$]{memoir}
+
+% Please use XeLaTeX to compile
+
+\usepackage{xltxtra}
+\defaultfontfeatures{Ligatures=TeX}
+\usepackage{hyphenat}
+
+\newcommand\setlogofont[1]{\newfontfamily\logofont{#1}}
+\newcommand\setlicensefont[1]{\newfontfamily\licensefont{#1}}
+\usepackage{microtype}
+\usepackage{rotating}
+\usepackage{hyperxmp}
+\usepackage[colorlinks=true, unicode=true, breaklinks=true, linkcolor=black, urlcolor=blue, citecolor=black]{hyperref}
+
+\counterwithout{section}{chapter}
+\setsecnumdepth{subsubsection}
+\setcounter{tocdepth}{3}
+
+\usepackage[export]{adjustbox}
+\usepackage{graphicx}
+\usepackage[type={CC}, modifier={by}, version=4.0]{doclicense}
+
+\newcommand\affiliation[1]{{\normalfont\normalsize\itshape#1}}
+
+\pagestyle{simple}
+\makeevenfoot{simple}{}{}{}
+\makeoddfoot{simple}{}{}{}
+\raggedbottom
+
+\newcommand\authorheader[1]{\makeevenhead{simple}{\footnotesize\itshape#1}{}{\footnotesize\thepage}}
+\newcommand\titleheader[1]{\makeoddhead{simple}{\footnotesize\thepage}{}{\footnotesize\itshape#1}}
+
+\newcommand\thisdoi{10.2218/pihph.201x.x.xxxx}
+\newcommand\thisdoilink{http://dx.doi.org/\thisdoi}
+
+\renewcommand{\maketitlehooka}{%
+  \vspace*{-60pt}
+  \noindent\hspace*{-25pt}\begin{minipage}[t]{2.5cm}
+    \vspace*{-16pt}
+    \includegraphics[valign=t, width=2.5cm]{pihph-logo.png}
+  \end{minipage}
+  \begin{minipage}[t]{.75\linewidth}
+    \centering
+    $if(logofont)$\logofont$endif$\Large Papers in Historical Phonology\\[5pt]
+
+    \footnotesize
+
+    http://journals.ed.ac.uk/pihph
+
+    ISSN 2399-6714
+
+    \footnotesize\vspace*{5pt}
+
+    Volume 1, \thepage--\thelastpage
+
+    DOI: \thisdoi
+  \end{minipage}
+  \begin{minipage}[t]{2.1cm}
+    \centering
+    \vspace*{-14pt}
+    \adjustbox{valign=t}{\doclicenseImage[imagewidth=2.1cm]}\\
+      $if(licensefont)$\licensefont$endif$\tiny Licensed under~a \doclicenseLongNameRef{} License
+  \end{minipage}
+}
+
+\pretitle{\vspace*{24pt}\begin{center}\large\bfseries}
+\preauthor{\begin{center}\large\scshape\begin{tabular}[t]{c}}
+\postauthor{\end{tabular}\end{center}\vspace*{12pt}}
+
+\predate{\relax}
+\postdate{\relax}
+\date{}
+
+\captionnamefont{\footnotesize\bfseries}
+\captiontitlefont{\footnotesize}
+
+\renewcommand\abstractnamefont{\normalfont\footnotesize\bfseries}
+\renewcommand\abstracttextfont{\normalfont\footnotesize}
+\setlength\absleftindent{1cm}
+\setlength\absrightindent{1cm}
+\setlength{\abstitleskip}{-17pt}
+\setbeforesecskip{-18pt}
+\setaftersecskip{6pt}
+\setsecheadstyle{\normalfont\bfseries}
+\setbeforesubsecskip{-18pt}
+\setaftersubsecskip{6pt}
+\setsubsecheadstyle{\normalfont\bfseries}
+\setbeforesubsubsecskip{-18pt}
+\setaftersubsubsecskip{6pt}
+\setsubsubsecheadstyle{\normalfont\bfseries}
+\renewenvironment{quote}{\list{}{\leftmargin=0.7cm\rightmargin=0.7cm}\item[]\footnotesize}{\endlist}
+
+\setlrmarginsandblock{4cm}{4cm}{*}
+\setulmarginsandblock{4.5cm}{4.5cm}{*}
+\checkandfixthelayout
+
+\setlength{\footmarkwidth}{0em}
+\setlength{\footmarksep}{0em}
+\footmarkstyle{\textsuperscript{#1}\hspace{.3em}}
+\setfootins{24pt}{\bigskipamount}
+\renewcommand*{\footnoterule}{%
+   \kern-3pt%
+   \hrule width 0.4\columnwidth
+   \kern 2.6pt
+ \vspace{12pt}}
+
+\usepackage[usenames]{xcolor}
+\definecolor{pihphgreen}{RGB}{118, 146, 60}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{tcdoublebox}[1][]{%
+  enhanced jigsaw,
+  sharp corners,
+  colback=white,
+  text width=.95\textwidth,
+  before={\vspace*{18pt}\noindent},
+  left skip=-5mm,
+  borderline={1pt}{-2pt}{black},
+  #1
+}
+
+\newcommand\commentsinvited{
+\begin{tcdoublebox}
+
+\section*{\textcolor{pihphgreen}{Comments invited}}
+
+\textit{PiHPh} relies on post-publication review of the papers that it publishes. If you have any comments on this piece, please add them to its comments site. You are encouraged to consult this site after reading the paper, as there may be comments from other readers there, and replies from the author. This paper's site is here:
+
+\vspace*{1ex}\noindent \url{\thisdoilink}
+
+\end{tcdoublebox}
+}
+
+\widowpenalty=10000
+\clubpenalty=10000
+
+% === START OF USER CUSTOMIZATION
+
+
+\title{$title$$if(subtitle)$:\\$subtitle$$endif$}
+\author{$for(author)$$author.name$\\\affiliation{$author.affiliation$}$sep$ \and $endfor$}
+
+\authorheader{$if(author-header)$$author-header$$else$$for(author)$$author.name$$sep$, $endfor$$endif$}
+\titleheader{$if(title-header)$$title-header$$else$$title$$endif$}
+
+$if(mainfont)$
+\setmainfont{$mainfont$}
+$endif$
+$if(licensefont)$
+\setlicensefont{$licensefont$}
+$endif$
+$if(logofont)$
+\setlogofont{$logofont$}
+$endif$
+% If you do not have access to Cambria, you can use the metric-equivalent Caladea: https://fontlibrary.org/en/font/caladea
+% If you do not have access to Calibri, you can use the metric-equivalent Carlito: https://fontlibrary.org/en/font/carlito
+% Lekton available at https://www.fontsquirrel.com/fonts/lekton
+
+% Use polyglossia by default since the engine is xelatex.
+\usepackage{polyglossia}
+\setmainlanguage[$if(en-variant)$variant=$en-variant$$endif$]{english}
+\usepackage[autostyle$if(single-quotes)$,english=british$endif$]{csquotes} % remove the english=british option for double quotes
+$if(gloss)$
+\usepackage{$gloss$} % for examples, feel free to use anything else
+$endif$
+
+$if(listings)$
+\usepackage{listings}
+$endif$
+$if(lhs)$
+\lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
+$endif$
+% Pandoc syntax highlighting
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+$if(verbatim-in-note)$
+\usepackage{fancyvrb}
+\VerbatimFootnotes % allows verbatim text in footnotes
+$endif$
+
+% Some recommended packages
+
+\usepackage{booktabs} % for nice tables
+
+$if(biblatex)$
+% BibLaTeX setup, recommended
+\usepackage[backend=biber,
+       style=langsci-unified, % available on CTAN
+       mincrossrefs=50,
+       maxcitenames=3,
+       maxbibnames=50,
+       useprefix=true,
+       doi=false]{biblatex}
+$for(bibliography)$
+\addbibresource{$bibliography$}
+$endfor$
+% remember to include the .bib extension
+% remember to run biber rather than bibtex if using this option
+\AtEveryCitekey{\ifciteseen{}{\defcounter{maxnames}{99}}}
+$endif$
+
+% BibTeX setup, deprecated
+% \usepackage{natbib}
+% \bibpunct[:]{(}{)}{;}{a}{}{,}
+% \setlength\bibsep{0pt}
+
+
+% Pandoc citation processing
+$if(csl-refs)$
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc} % for calculating minipage widths
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+\begin{document}
+\setcounter{page}{1}
+\maketitle
+\thispagestyle{empty}
+
+$if(abstract)$
+\begin{abstract}
+\noindent $abstract$
+\end{abstract}
+$endif$
+
+$for(include-before)$
+$include-before$
+$endfor$
+
+$body$
+
+\commentsinvited % Please do not change this
+
+$if(acknowledgements)$
+\section*{Acknowledgements}
+$acknowledgements$
+$endif$
+
+$if(supplement)$
+\section*{Associated material}
+$supplement$
+$endif$
+
+\section*{Author's contact details}
+\label{sec:auth-cont-deta}
+
+$for(author)$
+\noindent \textit{$author.name$}
+
+$if(author.affiliation)$\noindent $author.affiliation$$endif$
+
+$if(author.address)$\noindent $author.address$$endif$
+
+$if(author.email)$
+\vspace*{5pt}
+\noindent \textit{$author.email$}
+$endif$
+$endfor$
+
+$if(biblatex)$
+% BibLaTeX setup, recommended
+\printbibliography[title=References]
+$endif$
+
+% BibTeX setup, deprecated
+% \bibliographystyle{unified} % unified.bst can be obtained at http://cexlj.org/downloads/unified.bst
+% \renewcommand\bibsection{\section*{References}}
+%\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+
+
+$for(include-after)$
+$include-after$
+$endfor$
+\end{document}

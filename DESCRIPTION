@@ -1,14 +1,15 @@
 Package: rticles
 Type: Package
 Title: Article Formats for R Markdown
-Version: 0.11.1
+Version: 0.21.3
 Authors@R: c(
   person("JJ", "Allaire", role = "aut", email = "jj@rstudio.com"),
   person("Yihui", "Xie", role = c("aut", "cre"), email = "xie@yihui.name", comment = c(ORCID = "0000-0003-0645-5666")),
+  person("Christophe", "Dervieux", role = c("aut"), email = "cderv@rstudio.com", comment = c(ORCID = "0000-0003-4474-2498")),
+  person(family = "RStudio", role = c("cph", "fnd")),
   person(family = "R Foundation", role = c("aut", "cph")),
   person("Hadley", "Wickham", role = "aut", email = "hadley@rstudio.com"),
   person(family = "Journal of Statistical Software", role = c("aut", "cph")),
-  person(family = "RStudio", role = "cph"),
   person("Ramnath ", "Vaidyanathan", role = c("aut", "cph"), email = "ramnath.vaidya@gmail.com"),
   person(family = "Association for Computing Machinery", role = c("aut", "cph")),
   person("Carl", "Boettiger", role = c("aut", "cph"), email = "cboettig@gmail.com"),
@@ -28,24 +29,38 @@ Authors@R: c(
   person("Dominik", "Leutnant", role = c("aut", "cph"), email = "leutnant@fh-muenster.de", comment = c(ORCID = "0000-0003-3293-2315")),
   person(family = "MDPI", role = c("aut", "cph")),
   person(family = "Taylor and Francis", role = c("aut", "cph")),
-  person("Oguzhan", "Ögreden", role = c("aut"), comment = c(ORCID = "0000-0002-9949-3348")),
+  person(family = "Journal of Learning Analytics", role = c("aut", "cph")),
+  person("Oğuzhan", "Öğreden", role = c("aut"), comment = c(ORCID = "0000-0002-9949-3348")),
   person("Dalton", "Hance", role = c("aut"), email = "dhance@usgs.gov"),
   person("Daniel", "Nüst", role = c("aut", "cph"), email = "daniel.nuest@uni-muenster.de", comment = c(ORCID = "0000-0002-0024-5046")),
   person("Petter", "Uvesten", role = c("aut", "cph"), email = "petter.uvesten.7362@student.lu.se"),
   person("Elio", "Campitelli", role = c("aut", "cph"), email = "elio.campitelli@cima.fcen.uba.ar", comment = c(ORCID = "0000-0002-7742-9230")),
   person("John", "Muschelli", role = c("aut", "cph"), email = "muschellij2@gmail.com", comment = c(ORCID = "0000-0001-6469-1750")),
+  person("Alex", "Hayes", role = "aut", email = "alexpghayes@gmail.com", comment = c(ORCID = "0000-0002-4985-5160")),
   person("Zhian N.", "Kamvar", role = c("aut", "cph"), email = "zkamvar@gmail.com", comment = c(ORCID = "0000-0003-1458-7108")),
   person("Noam", "Ross", role = c("aut", "cph"), email = "noam.ross@gmail.com", comment = c(ORCID = "0000-0002-2136-0000")),
-  person(family = "Journal of Learning Analytics", role = c("aut", "cph")),
-  person("JooYoung", "Seo", role=c("aut", "cph"), email="jooyoung@psu.edu", comment = c(ORCID = "0000-0002-4064-6012"))
+  person("Robrecht", "Cannoodt", role = c("aut", "cph"), email = "rcannood@gmail.com", comment = c(ORCID = "0000-0003-3641-729X", github = "rcannood")),
+  person("Duncan", "Luguern", role = c("aut"), email = "duncan.luguern@gmail.com"),
+  person("David M.", "Kaplan", role = c("aut", "ctb"), email = "dmkaplan2000@gmail.com", comment = c(ORCID = "0000-0001-6087-359X", github = "dmkaplan2000")),
+  person("Sebastian", "Kreutzer", role = c("aut"), email = "sebastian.kreutzer@aber.ac.uk", comment = c(ORCID = "0000-0002-0734-2199")),
+  person("Shixiang", "Wang", role = c("aut", "ctb"), email = "w_shixiang@163.com", comment = c(ORCID = "0000-0001-9855-7357")),
+  person('Jay', 'Hesselberth', role = c('aut', 'ctb'), email = 'jay.hesselberth@gmail.com', comment = c(ORCID = '0000-0002-6299-179X')),
+  person("Alfredo", "Hernández", role = c("ctb"), email = "aldomann.designs@gmail.com", comment = c(ORCID = "0000-0002-2660-4545")),
+  person("Stefano", "Coretta", role = c("ctb"), email = "stefano.coretta@gmail.com", comment = c(ORCID = "0000-0001-9627-5532", github = "stefanocoretta")),
+  person("Greg", "Macfarlane", role = c("ctb"), email = "gregmacfarlane@gmail.com", comment = c(github = "gregmacfarlane")),
+  person("Matthias", "Templ", role = c("ctb"), email = "matthias.templ@gmail.com", comment = c(ORCID = "0000-0002-8638-5276", github = "matthias-da")),
+  person("Alvaro", "Uzaheta", role = c("ctb"), email = "alvaro.uzaheta@gess.ethz.ch", comment = c(github = "auzaheta")),
+  person("JooYoung", "Seo", role=c("ctb"), email="jseo1005@illinois.edu", comment = c(ORCID = "0000-0002-4064-6012"))
   )
 Description: A suite of custom R Markdown formats and templates for
   authoring journal articles and conference submissions.
 License: GPL-3
-Imports: utils, rmarkdown, knitr, yaml, tinytex, xfun
+Imports: utils, rmarkdown (>= 2.5), knitr (>= 1.30), yaml, tinytex (>= 0.30), xfun
 SystemRequirements: GNU make
 URL: https://github.com/rstudio/rticles
 BugReports: https://github.com/rstudio/rticles/issues
-RoxygenNote: 6.1.99.9001
+RoxygenNote: 7.1.2
 Suggests: testit, bookdown, xtable
 Encoding: UTF-8
+Config/Needs/website: magick, pdftools, gifski, rstudio/quillt
+Roxygen: list(markdown = TRUE)
