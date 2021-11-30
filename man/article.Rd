@@ -18,6 +18,7 @@
 \alias{glossa_article}
 \alias{ims_article}
 \alias{jasa_article}
+\alias{jors_article}
 \alias{lipics_article}
 \alias{jedm_article}
 \alias{mdpi_article}
@@ -95,6 +96,13 @@ ims_article(
 )
 
 jasa_article(
+  ...,
+  keep_tex = TRUE,
+  latex_engine = "xelatex",
+  citation_package = "natbib"
+)
+
+jors_article(
   ...,
   keep_tex = TRUE,
   latex_engine = "xelatex",
@@ -260,6 +268,12 @@ The argument \code{journal} accepts the acronym of any of the
  Format for creating submissions to the
 Journal of the Acoustical Society of America. Adapted from
 \url{https://acousticalsociety.org/preparing-latex-manuscripts/}.
+}
+
+\section{\code{jors_article}}{
+ Format for creating submissions to the
+Journal of Open Research Software. Adapted from
+\url{https://openresearchsoftware.metajnl.com/about/submissions/}
 }
 
 \section{\code{lipics_article}}{

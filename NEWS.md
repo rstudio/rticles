@@ -6,6 +6,8 @@
 
 - Add `trb_article()` for annual meeting submissions to the Transportation Research Board Annual Meeting (thanks, @gregmacfarlane, #427).
 
+- Add article template `jors_article()` for *Journal of Open Research Software* (JORS) (thanks, @gpilgrim2670, #397).
+
 # rticles 0.21
 
 ## NEW FEATURES

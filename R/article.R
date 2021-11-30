@@ -244,6 +244,20 @@ jasa_article <- function(
   )
 }
 
+#' @section `jors_article`: Format for creating submissions to the
+#'   Journal of Open Research Software. Adapted from
+#'   <https://openresearchsoftware.metajnl.com/about/submissions/>
+#' @export
+#' @rdname article
+jors_article <- function(
+  ..., keep_tex = TRUE, latex_engine = "xelatex", citation_package = "natbib"
+) {
+  pdf_document_format(
+    "jors", keep_tex = keep_tex, latex_engine = latex_engine,
+    citation_package = citation_package, ...
+  )
+}
+
 #' @section `lipics_article`: Format for creating submissions to
 #'   LIPIcs - Leibniz International Proceedings Informatics - articles.
 #'   Adapted from the official Instructions for Authors at
