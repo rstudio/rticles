@@ -25,8 +25,6 @@
 oup_article <- function(
     # Controls template to use. 1 for newer template.
     oup_version = 0,
-    keep_tex = TRUE,
-    md_extensions = c("-autolink_bare_uris"),
     journal = NULL,
     number_sections = FALSE,
     number_lines = FALSE,
@@ -36,6 +34,8 @@ oup_article <- function(
     document_style = c("contemporary", "modern", "traditional"),
     namedate = FALSE,
     onecolumn = FALSE,
+    keep_tex = TRUE,
+    md_extensions = c("-autolink_bare_uris"),
     pandoc_args = NULL,
     ...
 ) {
