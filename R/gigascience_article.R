@@ -16,11 +16,11 @@
 #' }
 #'
 #' @export
-gigascience_article <- function(...,
-                             keep_tex = TRUE,
-                             md_extensions = c("-autolink_bare_uris")) {
-  inherit_pdf_document(...,
-                       template = find_resource("gigascience", "template.tex"),
-                       keep_tex = keep_tex,
-                       md_extensions = md_extensions)
+gigascience_article <- function(keep_tex = TRUE,
+                                md_extensions = c("-autolink_bare_uris"),
+                                ...) {
+  pdf_document_format("gigascience",
+                      keep_tex = keep_tex,
+                      md_extensions = md_extensions,
+                      ...)
 }
