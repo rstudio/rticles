@@ -158,6 +158,12 @@ $endfor$
 \begin{document}
 \label{firstpage}
 \pagerange{\pageref{firstpage}--\pageref{lastpage}}
+
+$for(include-before)$
+$include-before$
+
+$endfor$
+
 $if(title)$
 \maketitle
 $endif$

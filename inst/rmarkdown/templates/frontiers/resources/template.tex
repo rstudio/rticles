@@ -150,8 +150,14 @@ $endfor$
 
 
 \begin{document}
+
 \onecolumn
 \firstpage{1}
+
+$for(include-before)$
+$include-before$
+
+$endfor$
 
 \title[$runtitle$]{$title$}
 \author[\firstAuthorLast]{\Authors}

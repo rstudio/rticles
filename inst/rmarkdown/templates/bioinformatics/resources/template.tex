@@ -74,6 +74,12 @@ $endfor$
 \appnotes{$if(manuscript_type)$$manuscript_type$$else$$subject_section$$endif$}
 
 \begin{document}
+
+$for(include-before)$
+$include-before$
+
+$endfor$
+
 \firstpage{1}
 
 \subtitle{$subject_section$}

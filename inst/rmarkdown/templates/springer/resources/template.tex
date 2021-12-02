@@ -92,6 +92,11 @@ $header-includes$
 $endfor$
 \begin{document}
 
+$for(include-before)$
+$include-before$
+
+$endfor$
+
 \title{$title$ $if(thanks)$\thanks{$thanks$} $endif$}
 $if(subtitle)$ \subtitle{$subtitle$} $endif$
 

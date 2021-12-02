@@ -118,6 +118,12 @@ $header-includes$
 $endfor$
 
 \begin{document}
+
+$for(include-before)$
+$include-before$
+
+$endfor$
+
 $if(title)$
 \maketitle
 $endif$

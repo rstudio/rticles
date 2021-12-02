@@ -122,6 +122,12 @@ $abstract$
 % You should only change this length when you've finalised the article contents.
 \verticaladjustment{-2pt}
 
+$for(include-before)$
+$include-before$
+
+$endfor$
+
+
 \maketitle
 \thispagestyle{firststyle}
 \ifthenelse{\boolean{shortarticle}}{\ifthenelse{\boolean{singlecolumn}}{\abscontentformatted}{\abscontent}}{}

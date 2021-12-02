@@ -112,6 +112,11 @@ $endfor$
 
 \begin{document}
 
+$for(include-before)$
+$include-before$
+
+$endfor$
+
 \date{{\it Received $month$} $year$}
 
 \pagerange{\pageref{firstpage}--\pageref{lastpage}} \pubyear{$year$}
