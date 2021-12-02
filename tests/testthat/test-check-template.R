@@ -52,3 +52,21 @@ test_that("CSL-ref part for Pandoc's citeproc are in all templates", {
   }
 })
 
+test_that("header-includes is in all templates", {
+  for (f in temp_file) {
+    expect_contains(f, "for(header-includes)", fixed = TRUE)
+  }
+})
+
+test_that("include-before is in all templates", {
+  for (f in temp_file) {
+    expect_contains(f, "for(include-before)", fixed = TRUE)
+  }
+})
+
+test_that("include-after is in all templates", {
+  for (f in temp_file) {
+    expect_contains(f, "for(include-after)", fixed = TRUE)
+  }
+})
+
