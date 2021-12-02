@@ -7,8 +7,8 @@ title_short: Bioinformatics Rmd Template
 manuscript_type: Application Note
 
 # change accordingly
-copyrightyear: `r format(Sys.Date(), "%Y")`
-pubyear: `r format(Sys.Date(), "%Y")`
+copyrightyear: '`r format(Sys.Date(), "%Y")`'
+pubyear: '`r format(Sys.Date(), "%Y")`'
 
 # One of the following below. See https://academic.oup.com/bioinformatics/pages/instructions_for_authors#Detailed%20Scope%20Guidelines
 # Genome analysis
