@@ -59,7 +59,12 @@ SystemRequirements: GNU make
 URL: https://github.com/rstudio/rticles
 BugReports: https://github.com/rstudio/rticles/issues
 RoxygenNote: 7.1.2
-Suggests: testit, bookdown, xtable
+Suggests: 
+    testit,
+    bookdown,
+    xtable,
+    testthat (>= 3.0.0)
 Encoding: UTF-8
 Config/Needs/website: magick, pdftools, gifski, rstudio/quillt
 Roxygen: list(markdown = TRUE)
+Config/testthat/edition: 3
