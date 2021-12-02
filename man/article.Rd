@@ -60,7 +60,11 @@ amq_article(
   md_extensions = c("-autolink_bare_uris")
 )
 
-ams_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
+ams_article(
+  ...,
+  keep_tex = TRUE,
+  md_extensions = c("-autolink_bare_uris", "-auto_identifiers")
+)
 
 asa_article(..., keep_tex = TRUE, citation_package = "natbib")
 
