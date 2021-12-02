@@ -158,4 +158,9 @@ $body$
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$$if(bibstyle)$$bibstyle$$else$spbasic$endif$$endif$}
 \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 
+$for(include-after)$
+$include-after$
+
+$endfor$
+
 \end{document}
