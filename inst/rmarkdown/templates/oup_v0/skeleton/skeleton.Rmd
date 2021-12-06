@@ -66,6 +66,7 @@ bibliography: mybibfile.bib
 output: 
   rticles::oup_article:
     oup_version: 0 # 1 = 2020 CTAN OUP CLS package; 0 = 2009 OUP CLS package
+    extra_dependencies: booktabs # for kable example
 ---
 
 ```{r setup, include = FALSE}
@@ -127,13 +128,13 @@ A bullet list:
 ## Generate a figure.
 
 ```{r fig1, fig.cap="This is the first figure.",echo=TRUE}
-plot(1:10,main="Some data",xlab="Distance (cm)",ylab="Time (hours)")
+plot(1:10, main = "Some data", xlab = "Distance (cm)", ylab = "Time (hours)")
 ```
 
 You can reference this figure as follows: Fig. \ref{fig:fig1}.
 
 ```{r fig2, fig.cap="This is the second figure.",echo=TRUE}
-plot(1:5,pch=19,main="Some data",xlab="Distance (cm)",ylab="Time (hours)")
+plot(1:5, pch = 19, main = "Some data", xlab = "Distance (cm)", ylab = "Time (hours)")
 ```
 
 Reference to second figure: Fig. \ref{fig:fig2}
@@ -141,12 +142,13 @@ Reference to second figure: Fig. \ref{fig:fig2}
 ## Generate a table using `xtable`
 
 ```{r tab1, results="asis", echo=TRUE}
-df = data.frame(ID=1:3,code=letters[1:3])
+df <- data.frame(ID = 1:3, code = letters[1:3])
 
 # Creates tables that follow OUP guidelines using xtable
-library(xtable) 
-print(xtable(df,caption="This is the table caption",label="tab:tab1"),
-      comment=FALSE)
+library(xtable)
+print(xtable(df, caption = "This is the table caption", label = "tab:tab1"),
+  comment = FALSE
+)
 ```
 
 You can reference this table as follows: Table \ref{tab:tab1}.
@@ -154,11 +156,13 @@ You can reference this table as follows: Table \ref{tab:tab1}.
 ## Generate a table using `kable`
 
 ```{r anothertable, echo=TRUE}
-df = data.frame(ID=1:3,code=letters[1:3])
+df <- data.frame(ID = 1:3, code = letters[1:3])
 
 # kable can alse be used for creating tables
-knitr::kable(df,caption="This is the table caption",format="latex",
-             booktabs=TRUE,label="tab2")
+knitr::kable(df,
+  caption = "This is the table caption", format = "latex",
+  booktabs = TRUE, label = "tab2"
+)
 ```
 
 You can reference this table as follows: Table \ref{tab:tab2}.
