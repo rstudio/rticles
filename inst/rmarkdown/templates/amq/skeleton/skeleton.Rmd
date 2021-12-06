@@ -18,8 +18,6 @@ abstract: |
   
 keywords: premier mot, deuxième mot, troisième et dernier mot.
 
-# use-microtype: true # Uncomment to use the microtype package
-
 output: rticles::amq_article
 ---
 

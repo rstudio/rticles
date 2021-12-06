@@ -10,7 +10,7 @@
 
 - All template were updated to include parts required by some Pandoc feature when they are used: highlighting, CSL & citation processing, include before, after and in header, Pandoc's markdown tables. Checks are now included in CI test so that new template missing these parts are detected.
 
-- `microtype` CTAN package has been made optional in `amq_article()` due to a conflict with `\abstract` environment in last version of the `microtype` package. 
+- Fixed an issue with `microtype` CTAN package in `amq_article()` by patching the template until upstream issue if fixed. 
 
 ## BREAKING CHANGE
 
