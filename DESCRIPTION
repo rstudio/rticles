@@ -69,6 +69,6 @@ Config/Needs/website: magick,
  pdftools,
  gifski,
  tidyverse/tidytemplate,
- rstudio/quillt#42
+ rstudio/quillt
 Roxygen: list(markdown = TRUE)
 Config/testthat/edition: 3
