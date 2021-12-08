@@ -66,4 +66,5 @@ for (journal in journals) {
   # saving the new hash
   saveRDS(new_hash_db, hash_db_file)
 }
+
 ```
