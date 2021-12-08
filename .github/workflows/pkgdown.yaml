@@ -16,6 +16,8 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: r-lib/actions/setup-pandoc@v1
+        with:
+          pandoc-version: '2.16.2'
 
       - uses: r-lib/actions/setup-tinytex@v1
         env:
@@ -30,6 +32,10 @@ jobs:
         with:
           extra-packages: pkgdown
           needs: website
+
+      - name: Install system dependencies
+        if: runner.os == 'Linux'
+        run: sudo apt-get install -y ghostscript
 
       - name: Install package
         run: R CMD INSTALL .

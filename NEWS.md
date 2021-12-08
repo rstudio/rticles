@@ -12,6 +12,8 @@
 
 - Fixed an issue with `microtype` CTAN package in `amq_article()` by patching the template until upstream issue if fixed. 
 
+- `glossa_article()` is incompatible with `microtype` CTAN package for now. When TinyTeX is used, it will be uninstalled before rendering.
+
 ## BREAKING CHANGE
 
 - `oup_article()` template has been updated to include the possibility of using the latest OUP authoring template now available on CTAN. It is still possible to use old `.cls` file as some journals still depend on it. `oup_version` will now control if the old version (`oup_version = 0`) or the new version is to be used (`oup_version = 1`). For this version, `oup_version = 0` is the default. See `?rticles::oup_article()` for links to resources. The bundled Rmd template has also evolved. Use `oup_v0` or `oup_v1` as template name - Easiest way to create the template still remains using the RStudio IDE. `oup_version = 1` comes with a requirement of Pandoc 2.10 minimum. (thanks, @dmkaplan2000, #431)
