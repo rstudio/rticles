@@ -181,7 +181,7 @@ acknowledge from all those mentioned in the Acknowledgements section.
 
 Please do not list grant funding in this section.
 
-# References
+# Handling References
 
 References can be listed in any standard referencing style that uses a numbering
 system(i.e. not Harvard referencing style), and should be consistent between
