@@ -31,6 +31,10 @@ jobs:
           extra-packages: pkgdown
           needs: website
 
+      - name: Install system dependencies
+        if: runner.os == 'Linux'
+        run: sudo apt-get install -y ghostscript
+
       - name: Install package
         run: R CMD INSTALL .
 
