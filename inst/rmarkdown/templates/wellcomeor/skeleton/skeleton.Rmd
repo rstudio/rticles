@@ -24,6 +24,8 @@ colorlinks: FALSE # See hypersetup in template.tex for link color options
 # You can download the csl file if preferred and use it locally with `csl: elsevier-vancouver.csl`
 csl: https://www.zotero.org/styles/elsevier-vancouver
 output: 
+  rticles::wellcomeor_article:
+    citation_package: natbib
   bookdown::pdf_book:
     base_format: rticles::wellcomeor_article
     citation_package: natbib
