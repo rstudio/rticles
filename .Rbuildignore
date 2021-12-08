@@ -11,3 +11,4 @@
 ^pkgdown$
 ^vignettes$
 
+^vignettes/articles$

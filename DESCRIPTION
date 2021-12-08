@@ -65,6 +65,10 @@ Suggests:
     xtable,
     testthat (>= 3.0.0)
 Encoding: UTF-8
-Config/Needs/website: magick, pdftools, gifski, rstudio/quillt
+Config/Needs/website: magick,
+ pdftools,
+ gifski,
+ tidyverse/tidytemplate,
+ rstudio/quillt
 Roxygen: list(markdown = TRUE)
 Config/testthat/edition: 3
