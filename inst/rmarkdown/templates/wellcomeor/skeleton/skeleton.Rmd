@@ -20,7 +20,7 @@ date: "`r Sys.Date()`"
 bibliography: sample.bib
 biblio-style: "unsrtnat"
 link-citations: TRUE
-colorlinks: TRUE
+colorlinks: FALSE # See hypersetup in template.tex for link color options
 # You can download the csl file if preferred and use it locally with `csl: elsevier-vancouver.csl`
 csl: https://www.zotero.org/styles/elsevier-vancouver
 output: 

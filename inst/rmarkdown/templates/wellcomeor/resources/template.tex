@@ -18,10 +18,12 @@
 % Link coloring
 \hypersetup{$if(colorlinks)$
             ,
-            colorlinks=true,
+            colorlinks=$colorlinks$,
             citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
             urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
             linkcolor=$if(linkcolor)$$linkcolor$$else$blue$endif$
+            $else$
+            hidelinks,
             $endif$
 }
 
