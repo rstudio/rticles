@@ -184,6 +184,10 @@ frontiers_article <- function(..., keep_tex = TRUE) {
 #' @export
 #' @rdname article
 glossa_article <- function(..., keep_tex = TRUE, latex_engine = "xelatex") {
+  if (tinytex::is_tinytex() && tinytex::check_installed("microtype")) {
+    # TODO: known conflict - remove when fixed
+    tinytex::tlmgr_remove("microtype")
+  }
   pdf_document_format(
     "glossa", keep_tex = keep_tex, latex_engine = latex_engine, ...
   )

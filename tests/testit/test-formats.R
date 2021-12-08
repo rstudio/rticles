@@ -45,6 +45,7 @@ test_format("copernicus")
 test_format("ctex", skip = !xfun::is_linux()) # only on linux due to fonts requirements
 test_format("elsevier")
 test_format("frontiers")
+test_format("glossa")
 test_format("ieee")
 test_format("ims")
 test_format("ims", output_options = list(journal = "aap"))
@@ -69,7 +70,3 @@ test_format("sim")
 test_format("springer")
 test_format("tf")
 test_format("trb")
-
-# special case: the glossa format doesn't work with the microtype package
-tinytex::tlmgr_remove("microtype")
-test_format("glossa")
