@@ -3,9 +3,11 @@ title: Wellcome Open Research Article Template
 titlenote: The title should be detailed enough for someone to know whether the article would be of interest to them, but also concise. Please ensure the broadness and claims within the title are appropriate to the content of the article itself.
 author:
   - name: Author Name1
-    affilliation: 1
+    affil: 
+    - 1
+    - 2
   - name: Author Name2
-    affilliation: 2
+    affil: 2
 address:
   - code: 1
     address: Address1
@@ -29,7 +31,6 @@ output:
   bookdown::pdf_book:
     base_format: rticles::wellcomeor_article
     citation_package: natbib
-    number_sections: FALSE
 ---
 
 *Text based on Wellcome Open Research [Overleaf Latex

@@ -92,7 +92,7 @@ $endif$
 
 
 $for(author)$
-  \author{$author.name$}
+  \author[$for(author.affil)$$author.affil$$sep$,$endfor$]{$author.name$}
 $endfor$
 
 $for(address)$
