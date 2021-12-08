@@ -1,26 +1,19 @@
 on:
   push:
-    branches:
-     - main
-     - master
+    branches: [main, master]
+    tags: ['*']
   pull_request:
-    branches:
-     - main
-     - master
-
+    branches: [main, master]
 name: pkgdown
 
 jobs:
   pkgdown:
-    if: ${{ github.event_name == 'push' || startsWith(github.head_ref, 'pkgdown') }}
-    runs-on: macos-latest
+    if: ${{ github.event_name == 'push' || startsWith(github.head_ref, 'pkgdown/') }}
+    runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
-
-      - uses: r-lib/actions/setup-r@v1
-        id: install-r
 
       - uses: r-lib/actions/setup-pandoc@v1
 
@@ -29,27 +22,14 @@ jobs:
           # install full prebuilt version
           TINYTEX_INSTALLER: TinyTeX
 
-      - name: Install pak and query dependencies
-        run: |
-          install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
-          saveRDS(pak::pkg_deps(".", dependencies = TRUE), ".github/r-depends.rds")
-        shell: Rscript {0}
-
-      - name: Cache R packages
-        uses: actions/cache@v2
+      - uses: r-lib/actions/setup-r@v1
         with:
-          path: |
-            ${{ env.R_LIBS_USER }}/*
-            !${{ env.R_LIBS_USER }}/pak
-          key: macos-latest-${{ steps.install-r.outputs.installed-r-version }}-1-${{ hashFiles('.github/r-depends.rds') }}
-          restore-keys: macos-latest-${{ steps.install-r.outputs.installed-r-version }}-1-
+          use-public-rspm: true
 
-      - name: Install package and dependencies
-        run: |
-          pak::local_install_dev_deps(upgrade = TRUE, dependencies = c("all", "Config/Needs/website"))
-          pak::pkg_install("r-lib/pkgdown")
-          pak::pkg_install("rstudio/quillt")
-        shell: Rscript {0}
+      - uses: r-lib/actions/setup-r-dependencies@v1
+        with:
+          extra-packages: pkgdown
+          needs: website
 
       - name: Install package
         run: R CMD INSTALL .
@@ -64,7 +44,6 @@ jobs:
           key: ${{ hashFiles('vignettes/articles/_child_examples.Rmd') }}-1-${{ github.sha }}
           restore-keys: |
             ${{ hashFiles('vignettes/articles/_child_examples.Rmd') }}-1-
-
 
       - name: Build pkgdown site
         run: pkgdown::build_site(new_process = FALSE)
