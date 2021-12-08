@@ -55,9 +55,6 @@ jobs:
         run: pkgdown::build_site(new_process = FALSE)
         shell: Rscript {0}
 
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-
       - name: Deploy to Netlify
         id: netlify-deploy
         uses: nwtgck/actions-netlify@v1.1
