@@ -15,6 +15,15 @@ library(rticles)
 ```{r, include = FALSE}
 # We generate the YAML file on the fly to render the gallery
 
+# helper
+gen_fun <- function(journal) {
+  # handles special case
+  if (grepl("oup_", journal)) {
+    return(sprintf("oup_article(oup_version = %s)", gsub("oup_v(\\d)", journal)))
+  } 
+  sprintf("%s_article()", journal)
+}
+
 # list of sites
 articles <- lapply(journals(), function(journal) {
   name <- yaml::read_yaml(rticles:::pkg_file_template(journal, "template.yaml"))$name
