@@ -184,13 +184,19 @@ frontiers_article <- function(..., keep_tex = TRUE) {
 #' @export
 #' @rdname article
 glossa_article <- function(..., keep_tex = TRUE, latex_engine = "xelatex") {
+  format <- pdf_document_format(
+    "glossa", keep_tex = keep_tex, latex_engine = latex_engine, ...
+  )
   if (tinytex::is_tinytex() && tinytex::check_installed("microtype")) {
     # TODO: known conflict - remove when fixed
     tinytex::tlmgr_remove("microtype")
+    fun <- format$on_exit
+    format$on_exit <- function() {
+      if (is.function(fun)) fun()
+      if (!tinytex::check_installed("microtype")) tinytex::tlmgr_install("microtype")
+    }
   }
-  pdf_document_format(
-    "glossa", keep_tex = keep_tex, latex_engine = latex_engine, ...
-  )
+  format
 }
 
 #' @param journal one of `"aoas"`, `"aap"`, `"aop"`, `"aos"`, `"sts"` for `ims_article`
