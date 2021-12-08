@@ -68,8 +68,7 @@ Encoding: UTF-8
 Config/Needs/website: magick,
  pdftools,
  gifski,
- pkgdown,
  tidyverse/tidytemplate,
- rstudio/quillt
+ rstudio/quillt#42
 Roxygen: list(markdown = TRUE)
 Config/testthat/edition: 3
