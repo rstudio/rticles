@@ -26,8 +26,9 @@ keywords: |
 date: "`r Sys.Date()`"
 bibliography: sample.bib
 link-citations: TRUE
+# Setting CSL will be necessary if you use `citation_packahe = "default"`
 # You can download the csl file if preferred and use it locally with `csl: elsevier-vancouver.csl`
-csl: https://www.zotero.org/styles/elsevier-vancouver
+# csl: https://www.zotero.org/styles/elsevier-vancouver
 output: 
   rticles::wellcomeor_article:
     citation_package: natbib
