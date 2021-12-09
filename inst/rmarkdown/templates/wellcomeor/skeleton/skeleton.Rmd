@@ -6,13 +6,18 @@ author:
     affil: 
     - 1
     - 2
+    email: author1@email.com
   - name: Author Name2
     affil: 2
+    email: author2@email.com
+    corresponding: TRUE
 address:
   - code: 1
     address: Address1
   - code: 2
     address: Address2
+include-before: |
+  Please list all authors that played a significant role in the research involved in the article. Please provide full affiliation information (including full institutional address, ZIP code and e-mail address) for all authors, and identify who is/are the corresponding author(s).
 abstract: |
   Abstracts should be up to 300 words and provide a succinct summary of the article. Although the abstract should explain why the article might be interesting, care should be taken not to inappropriately over-emphasise the importance of the work described in the article. Citations should not be used in the abstract, and the use of abbreviations should be minimized. If you are writing a Research or Systematic Review article, please structure your abstract into Background, Methods, Results, and Conclusions.
 keywords: |

@@ -79,20 +79,20 @@ $if(csl-refs)$
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 $endif$
+
 $for(header-includes)$
-$header-includes$
+  $header-includes$
 $endfor$
 
 \begin{document}
 
 \title{$title$}
 $if(titlenote)$
-\titlenote{$titlenote$}
+  \titlenote{$titlenote$}
 $endif$
 
-
 $for(author)$
-  \author[$for(author.affil)$$author.affil$$sep$,$endfor$]{$author.name$}
+  \author[$for(author.affil)$$author.affil$$sep$,$endfor$$if(author.corresponding)$*$endif$]{$author.name$}
 $endfor$
 
 $for(address)$
@@ -100,9 +100,17 @@ $for(address)$
 $endfor$
 
 
-
 \maketitle
 \thispagestyle{fancy}
+
+$for(author)$
+    $author.name$: $author.email$\\
+$endfor$
+* Corresponding author\\
+
+$for(include-before)$
+  $include-before$
+$endfor$
 
 \begin{abstract}
 $abstract$
@@ -111,12 +119,7 @@ $abstract$
 \section*{Keywords}
 $keywords$
 
-
 \clearpage
-
-$for(include-before)$
-$include-before$
-$endfor$
 
 $body$
 
