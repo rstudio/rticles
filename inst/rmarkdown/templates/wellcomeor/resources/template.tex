@@ -54,8 +54,12 @@ $if(natbib)$
 \usepackage[$if(natbiboptions)$$natbiboptions$$else$numbers$endif$]{natbib}
 $endif$
 
-% Pandoc toggle for numbering sections (defaults to be off)
-\setcounter{secnumdepth}{0}
+% Pandoc toggle for numbering sections
+$if(numbersections)$
+\setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
+$else$
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+$endif$
 
 % Pandoc syntax highlighting
 $if(highlighting-macros)$
