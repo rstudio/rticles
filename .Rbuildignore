@@ -10,4 +10,6 @@
 ^reference$
 ^pkgdown$
 ^vignettes$
+^vignettes/articles$
 
+^revdep$

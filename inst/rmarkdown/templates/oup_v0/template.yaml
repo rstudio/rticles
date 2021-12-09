@@ -1,0 +1,6 @@
+name: Oxford University Press (OUP) - Old (2009) Template
+description: >
+ Template for creating an article for submission to Oxford University Press (OUP)
+ journals using their old template from 2009 still in use by some OUP journals (e.g., ICES JMS)
+create_dir: true
+

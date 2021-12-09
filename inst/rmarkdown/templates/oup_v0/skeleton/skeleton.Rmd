@@ -3,7 +3,7 @@
 # The two fields that are not in the elsevier format are:
 #      `corresponding_author` and `acknowledgements`
 title: Template for Oxford University Press papers
-#date: "`r Sys.Date()`"
+date: "`r Sys.Date()`"
 author:
   - name: Alice Anonymous
     email: alice@example.com
@@ -45,14 +45,16 @@ keywords:
   - key
   - dictionary
   - word
+bibliography: mybibfile.bib
+# Use a CSL when `citation_package = "default"`
+#csl: https://www.zotero.org/styles/oxford-university-press-note
+
+## Example of some pandoc's variable to use
 #fontsize: 12pt
 #spacing: halfline # could also be oneline
 #classoptions:
 #  - endnotes
-bibliography: mybibfile.bib
-#csl: mycitationstyle.csl
 #link-citations: yes
-output: rticles::oup_article
 #urlcolor: orange
 #linkcolor: green
 #citecolor: red
@@ -60,18 +62,39 @@ output: rticles::oup_article
 #  - \usepackage[nomarkers,tablesfirst]{endfloat} # For figures and tables at end
 #  - \usepackage{lineno} # For line numbering
 #  - \linenumbers # For line numbering
+
+output: 
+  rticles::oup_article:
+    oup_version: 0 # 1 = 2020 CTAN OUP CLS package; 0 = 2009 OUP CLS package
+    extra_dependencies: booktabs # for kable example
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE) # By default, hide code; set to TRUE to see code
-knitr::opts_chunk$set(fig.pos = 'p') # Places figures on pages separate from text
-knitr::opts_chunk$set(out.width = '100%', dpi=300) # Figure resolution and size
-knitr::opts_chunk$set(fig.env="figure") # Latex figure environment
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, # By default, hide code; set to TRUE to see code
+  fig.pos = 'p', # Places figures on pages separate from text
+  out.width = '100%', dpi = 300, # Figure resolution and size
+  fig.env = "figure" # Latex figure environment
+)
 ```
 
 # Introduction
 
 This template is based on the generic OUP template available [here](https://academic.oup.com/icesjms/pages/General_Instructions). The original OUP sample tex document, providing more details on prefered formatting for LaTeX documents, is included with the template in the file `ouparticle_sample.tex`.
+
+**OUP template version**
+
+This demo file will use the old template `ouparticle.cls`
+
+```yaml
+output: 
+  rticles::oup_article:
+    oup_version: 0
+```
+
+Set `oup_version: 1` to use the new template from  `oup-authoring-template` CTAN package. There is another Rmd template for this as example: Create it from RStudio IDE or using `rmarkdown::draft("MyArticle.Rmd", template = "oup_v0", package = "rticles")`
+
+# Reference example
 
 Here are two sample references: @Feynman1963118 [@Dirac1953888]. Bibliography will appear at the end of the document.
 
@@ -105,13 +128,13 @@ A bullet list:
 ## Generate a figure.
 
 ```{r fig1, fig.cap="This is the first figure.",echo=TRUE}
-plot(1:10,main="Some data",xlab="Distance (cm)",ylab="Time (hours)")
+plot(1:10, main = "Some data", xlab = "Distance (cm)", ylab = "Time (hours)")
 ```
 
 You can reference this figure as follows: Fig. \ref{fig:fig1}.
 
 ```{r fig2, fig.cap="This is the second figure.",echo=TRUE}
-plot(1:5,pch=19,main="Some data",xlab="Distance (cm)",ylab="Time (hours)")
+plot(1:5, pch = 19, main = "Some data", xlab = "Distance (cm)", ylab = "Time (hours)")
 ```
 
 Reference to second figure: Fig. \ref{fig:fig2}
@@ -119,12 +142,13 @@ Reference to second figure: Fig. \ref{fig:fig2}
 ## Generate a table using `xtable`
 
 ```{r tab1, results="asis", echo=TRUE}
-df = data.frame(ID=1:3,code=letters[1:3])
+df <- data.frame(ID = 1:3, code = letters[1:3])
 
 # Creates tables that follow OUP guidelines using xtable
-library(xtable) 
-print(xtable(df,caption="This is the table caption",label="tab:tab1"),
-      comment=FALSE)
+library(xtable)
+print(xtable(df, caption = "This is the table caption", label = "tab:tab1"),
+  comment = FALSE
+)
 ```
 
 You can reference this table as follows: Table \ref{tab:tab1}.
@@ -132,11 +156,13 @@ You can reference this table as follows: Table \ref{tab:tab1}.
 ## Generate a table using `kable`
 
 ```{r anothertable, echo=TRUE}
-df = data.frame(ID=1:3,code=letters[1:3])
+df <- data.frame(ID = 1:3, code = letters[1:3])
 
 # kable can alse be used for creating tables
-knitr::kable(df,caption="This is the table caption",format="latex",
-             booktabs=TRUE,label="tab2")
+knitr::kable(df,
+  caption = "This is the table caption", format = "latex",
+  booktabs = TRUE, label = "tab2"
+)
 ```
 
 You can reference this table as follows: Table \ref{tab:tab2}.

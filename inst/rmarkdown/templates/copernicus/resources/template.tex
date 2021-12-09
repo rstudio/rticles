@@ -107,15 +107,41 @@ $if(csl-refs)$
 $endif$
 
 % The "Technical instructions for LaTex" by Copernicus require _not_ to insert any additional packages.
-%$for(header-includes)$
-%$header-includes$
-%$endfor$
+% $if(tables)$
+% % From pandoc table feature
+% \usepackage{longtable,booktabs,array}
+% $if(multirow)$
+% \usepackage{multirow}
+% $endif$
+% \usepackage{calc} % for calculating minipage widths
+% % Correct order of tables after \paragraph or \subparagraph
+% \usepackage{etoolbox}
+% \makeatletter
+% \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+% \makeatother
+% % Allow footnotes in longtable head/foot
+% \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+% \makesavenoteenv{longtable}
+% $endif$
+
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
 
+%$for(header-includes)$
+%$header-includes$
+%$endfor$
+
 \begin{document}
+
+$for(include-before)$
+$include-before$
+
+$endfor$
 
 \title{$title$}
 
@@ -262,5 +288,10 @@ $endif$
 %% \citep[e.g.,][p.~32]{jones90}| & (e.g., Jones et al., 1990, p.~32)
 %% \citeauthor{jones90}|          & Jones et al.
 %% \citeyear{jones90}|            & 1990
+
+$for(include-after)$
+$include-after$
+
+$endfor$
 
 \end{document}

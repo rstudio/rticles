@@ -3,8 +3,16 @@
 on:
   push:
     branches: [main, master]
+    paths-ignore:
+      - '_pkgdown.yml'
+      - 'pkgdown/**'
+      - '.github/workflows/pkgdown.yaml'
   pull_request:
     branches: [main, master]
+    paths-ignore:
+      - '_pkgdown.yml'
+      - 'pkgdown/**'
+      - '.github/workflows/pkgdown.yaml'
 
 name: R-CMD-check
 

@@ -1,9 +1,9 @@
-test_format <- function(name, output_options = NULL, os_skip = NULL) {
+test_format <- function(name, output_options = NULL, skip = NULL) {
 
   # don't run on CRAN due to complicated dependencies (Pandoc/LaTeX packages)
   if (!identical(Sys.getenv("NOT_CRAN"), "true")) return()
-  # skip on OS if requested
-  if (!is.null(os_skip)) return()
+  # skip if requested
+  if (!is.null(skip) && isTRUE(skip)) return()
 
   # work in a temp directory
   dir <- tempfile()
@@ -42,9 +42,10 @@ test_format("asa")
 test_format("bioinformatics")
 test_format("biometrics")
 test_format("copernicus")
-if (xfun::is_linux()) test_format("ctex") # only on linux due to fonts requirements
+test_format("ctex", skip = !xfun::is_linux()) # only on linux due to fonts requirements
 test_format("elsevier")
 test_format("frontiers")
+test_format("glossa")
 test_format("ieee")
 test_format("ims")
 test_format("ims", output_options = list(journal = "aap"))
@@ -55,7 +56,8 @@ test_format("jss")
 test_format("lipics")
 test_format("mdpi")
 test_format("mnras")
-test_format("oup")
+test_format("oup_v0")
+test_format("oup_v1", skip = !rmarkdown::pandoc_available("2.10"))
 test_format("peerj")
 test_format("pihph")
 test_format("plos")
@@ -69,7 +71,3 @@ test_format("springer")
 test_format("tf")
 test_format("trb")
 test_format("wellcomeor")
-
-# special case: the glossa format doesn't work with the microtype package
-tinytex::tlmgr_remove("microtype")
-test_format("glossa")

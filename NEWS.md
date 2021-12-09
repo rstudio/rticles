@@ -4,9 +4,22 @@
 
 - `sage_article()` now correctly set cite style in template to use comma to match the Sage Havard style per Journal's guideline (thanks, @MalteHueckstaedt, #447).
 
-- Add `trb_article()` for annual meeting submissions to the Transportation Research Board Annual Meeting (thanks, @gregmacfarlane, #427).
+- New `trb_article()` for annual meeting submissions to the Transportation Research Board Annual Meeting (thanks, @gregmacfarlane, #427).
 
--  New `wellcomeor_article()` for Wellcome Open Research articles
+- New `wellcomeor_article()` for Wellcome Open Research articles
+
+- Add `copyrightyear` and `pubyear` variable in `bioinformatics_article()` (thanks, @stephenturner, #424). 
+
+- All template were updated to include parts required by some Pandoc feature when they are used: highlighting, CSL & citation processing, include before, after and in header, Pandoc's markdown tables. Checks are now included in CI test so that new template missing these parts are detected.
+
+- Fixed an issue with `microtype` CTAN package in `amq_article()` by patching the template until upstream issue if fixed. 
+
+- `glossa_article()` is incompatible with `microtype` CTAN package for now. When TinyTeX is used, it will be uninstalled before rendering.
+
+## BREAKING CHANGE
+
+- `oup_article()` template has been updated to include the possibility of using the latest OUP authoring template now available on CTAN. It is still possible to use old `.cls` file as some journals still depend on it. `oup_version` will now control if the old version (`oup_version = 0`) or the new version is to be used (`oup_version = 1`). For this version, `oup_version = 0` is the default. See `?rticles::oup_article()` for links to resources. The bundled Rmd template has also evolved. Use `oup_v0` or `oup_v1` as template name - Easiest way to create the template still remains using the RStudio IDE. `oup_version = 1` comes with a requirement of Pandoc 2.10 minimum. (thanks, @dmkaplan2000, #431)
+>>>>>>> 080207e644bc7a1d4f6738ce2c2068beb7907575
 
 # rticles 0.21
 
