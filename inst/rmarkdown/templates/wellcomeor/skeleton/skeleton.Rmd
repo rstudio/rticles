@@ -26,7 +26,6 @@ keywords: |
 date: "`r Sys.Date()`"
 bibliography: sample.bib
 link-citations: TRUE
-colorlinks: FALSE # See hypersetup in template.tex for link color options
 # You can download the csl file if preferred and use it locally with `csl: elsevier-vancouver.csl`
 csl: https://www.zotero.org/styles/elsevier-vancouver
 output: 
