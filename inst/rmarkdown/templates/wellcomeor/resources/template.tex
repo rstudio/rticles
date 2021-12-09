@@ -153,9 +153,12 @@ $keywords$
 $body$
 
 
-{\small\bibliographystyle{$biblio-style$}
-
-\bibliography{$bibliography$}
+$if(natbib)$
+{\small\bibliographystyle{$if(biblio-style)$$biblio-style$$else$unsrtnat$endif$}
+$if(bibliography)$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+$endif$
 
 
 % See this guide for more information on BibTeX:
