@@ -138,7 +138,7 @@ tf_article(..., keep_tex = TRUE, citation_package = "natbib")
 trb_article(..., keep_tex = TRUE, citation_package = "natbib")
 }
 \arguments{
-\item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \verb{rmarkdown::[pdf_document]()}.}
+\item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}.}
 
 \item{journal}{one of \code{"aoas"}, \code{"aap"}, \code{"aop"}, \code{"aos"}, \code{"sts"} for \code{ims_article}}
 }
