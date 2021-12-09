@@ -6,7 +6,7 @@
 
 - New `trb_article()` for annual meeting submissions to the Transportation Research Board Annual Meeting (thanks, @gregmacfarlane, #427).
 
-- New `wellcomeor_article()` for Wellcome Open Research articles
+- New `wellcomeor_article()` for Wellcome Open Research articles (thanks, @arnold-c, #436).
 
 - Add `copyrightyear` and `pubyear` variable in `bioinformatics_article()` (thanks, @stephenturner, #424). 
 
