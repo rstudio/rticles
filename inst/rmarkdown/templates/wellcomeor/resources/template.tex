@@ -45,15 +45,9 @@ $endif$
   pdfcreator={LaTeX via pandoc}}
 
 
-%% Default: numerical citations
-\usepackage[numbers]{natbib}
-
-%% Uncomment this lines for superscript citations instead
-% \usepackage[super]{natbib}
-
-%% Uncomment these lines for author-year citations instead
-% \usepackage[round]{natbib}
-% \let\cite\citep
+$if(natbib)$
+\usepackage[$if(natbiboptions)$$natbiboptions$$else$numbers$endif$]{natbib}
+$endif$
 
 % Pandoc toggle for numbering sections (defaults to be off)
 \setcounter{secnumdepth}{0}
