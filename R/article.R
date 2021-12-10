@@ -9,7 +9,7 @@
 #' (e.g., `keep_tex = TRUE`).
 #'
 #' @param
-#' ...,keep_tex,latex_engine,citation_package,highlight,fig_caption,md_extensions,template,pandoc_args
+#' ...,number_sections,keep_tex,latex_engine,citation_package,highlight,fig_caption,md_extensions,template,pandoc_args
 #' Arguments passed to [rmarkdown::pdf_document()].
 #' @section Details: You can find more details about each output format below.
 #' @name acm_article
@@ -442,5 +442,15 @@ tf_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
 trb_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
   pdf_document_format(
     "trb", keep_tex = keep_tex, citation_package = citation_package, ...
+  )
+}
+
+#' @section `wellcomeor_article`: Format for creating submissions to
+#' Wellcome Open Research. Adapted from <https://www.overleaf.com/project/6131911644b635ad3aaa4cb2>.
+#' @export
+#' @rdname article
+wellcomeor_article <- function(..., number_sections = FALSE, keep_tex = TRUE, citation_package = 'natbib') {
+  pdf_document_format(
+    "wellcomeor", keep_tex = keep_tex, number_sections = number_sections, citation_package = citation_package, ...
   )
 }

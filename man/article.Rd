@@ -31,6 +31,7 @@
 \alias{springer_article}
 \alias{tf_article}
 \alias{trb_article}
+\alias{wellcomeor_article}
 \title{R Markdown output formats for (journal) articles}
 \usage{
 acm_article(...)
@@ -136,9 +137,16 @@ springer_article(..., keep_tex = TRUE, citation_package = "default")
 tf_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 trb_article(..., keep_tex = TRUE, citation_package = "natbib")
+
+wellcomeor_article(
+  ...,
+  number_sections = FALSE,
+  keep_tex = TRUE,
+  citation_package = "natbib"
+)
 }
 \arguments{
-\item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}.}
+\item{..., number_sections, keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}.}
 
 \item{journal}{one of \code{"aoas"}, \code{"aap"}, \code{"aop"}, \code{"aos"}, \code{"sts"} for \code{ims_article}}
 }
@@ -375,6 +383,11 @@ Macro package for Springer Journals.
 Research Board Annual Meeting. Adapted from
 \samp{https://www.overleaf.com/latex/templates/transportation-research-board-trb-latex-template/jkfndnnkkksw},
 which in turn is hosted at \samp{https://github.com/chiehrosswang/TRB_LaTeX_tex}
+}
+
+\section{\code{wellcomeor_article}}{
+ Format for creating submissions to
+Wellcome Open Research. Adapted from \url{https://www.overleaf.com/project/6131911644b635ad3aaa4cb2}.
 }
 
 \examples{
