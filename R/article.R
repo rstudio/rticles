@@ -10,7 +10,7 @@
 #'
 #' @param
 #' ...,keep_tex,latex_engine,citation_package,highlight,fig_caption,md_extensions,template,pandoc_args
-#' Arguments passed to `rmarkdown::[pdf_document]()`.
+#' Arguments passed to [rmarkdown::pdf_document()].
 #' @section Details: You can find more details about each output format below.
 #' @name acm_article
 #' @rdname article
