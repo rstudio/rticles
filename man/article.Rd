@@ -138,7 +138,12 @@ tf_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 trb_article(..., keep_tex = TRUE, citation_package = "natbib")
 
-wellcomeor_article(..., keep_tex = TRUE, citation_package = "natbib")
+wellcomeor_article(
+  ...,
+  number_sections = FALSE,
+  keep_tex = TRUE,
+  citation_package = "natbib"
+)
 }
 \arguments{
 \item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \verb{rmarkdown::[pdf_document]()}.}
