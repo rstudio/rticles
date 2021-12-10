@@ -387,7 +387,7 @@ which in turn is hosted at \samp{https://github.com/chiehrosswang/TRB_LaTeX_tex}
 
 \section{\code{wellcomeor_article}}{
  Format for creating submissions to
-Wellcome Open Research. Adapted from \url{https://www.overleaf.com/project/6131911644b635ad3aaa4cb2}.
+Wellcome Open Research. Adapted from <overleaf.com/latex/templates/wellcome-open-research-article-template/hsmhhbpxvvbj>.
 }
 
 \examples{

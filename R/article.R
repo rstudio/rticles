@@ -446,7 +446,7 @@ trb_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
 }
 
 #' @section `wellcomeor_article`: Format for creating submissions to
-#' Wellcome Open Research. Adapted from <https://www.overleaf.com/project/6131911644b635ad3aaa4cb2>.
+#' Wellcome Open Research. Adapted from <overleaf.com/latex/templates/wellcome-open-research-article-template/hsmhhbpxvvbj>.
 #' @export
 #' @rdname article
 wellcomeor_article <- function(..., number_sections = FALSE, keep_tex = TRUE, citation_package = 'natbib') {
