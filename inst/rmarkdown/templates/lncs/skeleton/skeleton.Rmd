@@ -1,0 +1,178 @@
+---
+title: "Untitled"
+author-inputfile: "anonauthors.tex" 
+abstract: |
+  The abstract should briefly summarize the contents of the paper in 150--250 words.
+keywords: "First keyword \\and Second keyword \\and Another keyword."
+bibliography: ["rpackages.bib", "bibliography.bib"]
+#biblio-style: "apalike"
+link-citations: true
+output:
+  bookdown::pdf_document2:
+    fig_caption: true
+    keep_tex: false
+    template: lncs-template.tex
+    md_extensions: +footnotes
+    citation_package: biblatex
+    dev: pdf
+    
+---
+
+
+```{r knitr_init, echo=FALSE, message=FALSE, warning=FALSE, cache=FALSE, paged.print=TRUE}
+## Global options
+library(knitr)
+#options(max.print="75")
+opts_chunk$set(echo=FALSE,
+	             cache=FALSE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE,
+               out.width='100%'
+               )
+opts_knit$set(width=100)
+
+# Load required libraries
+library(rmdformats)
+library(rmdtemplates)
+library(tidyverse)
+library(cowplot)
+# add libraries here
+
+# Add libraries to cite here:
+pkgs <- c("knitr", "tidyverse", "rmdformats", "kableExtra", "scales", "psych", "rmdtemplates")
+rmdtemplates::write_bib(pkgs)
+```
+
+
+
+# First Section
+## A Subsection Sample
+Please note that the first paragraph of a section or subsection is
+not indented. The first paragraph that follows a table, figure,
+equation etc. does not need an indent, either. [^1]
+
+[^1]: Footnote
+
+<!-- Comment --> 
+
+Subsequent paragraphs, however, are indented.
+
+### Sample Heading (Third Level) 
+Only two levels of
+headings should be numbered. Lower level headings remain unnumbered;
+they are formatted as run-in headings.
+
+#### Sample Heading (Fourth Level)
+The contribution should contain no more than four levels of
+headings. Table \@ref(tab1) gives a summary of all heading levels.
+
+Another nice feature are shortcuts for \eg and \ie 
+Note: These don't work in HTML output.
+
+# References
+You can cite any paper in parenthesis as following [@valdez2017priming] or inline saying that @valdez2017priming found something.
+Multiple citations are possible as well [@valdez2017priming;@valdez2019users].
+
+You can refer to other sections by kebab-casing to section \@ref(a-subsection-sample). You can easily cite an r-package directly in the text by using the `cite_pkg` function from the package `r rmdtemplates::cite_pkg("rmdtemplates")`.  
+
+
+# Environments
+
+The environments 'definition', 'lemma', 'proposition', 'corollary', 'remark', and 'example' are defined in the LLNCS document class as well.
+
+
+## Theorems
+```{r theorem, echo=FALSE, results='asis'}
+theorem <- generate_environment("Theorem")
+theorem("This is a sample theorem. The run-in heading is set in bold, 
+        while the following text appears in italics. Definitions, lemmas, propositions, 
+        and corollaries are styled the same way.")
+```
+
+
+```{r theorem2, echo=FALSE, results='asis'}
+# note that environments require echo=FALSE and results='asis'
+
+theorem("This is a second. Numbering works automatically.")
+```
+
+
+
+## Equations
+\begin{equation}
+x + y = z
+\end{equation}
+
+
+
+## Tables
+You can get the non breaking space in RStudio by pressing ALT+SPACE.
+You can refer to tables by using Table \@ref(tab:table1).
+
+```{r table1, echo=FALSE}
+# Note that the label has to be added manually in the caption here.
+iris %>% head() %>% knitr::kable(caption = "Test", booktabs=T)
+```
+
+
+```{r table2}
+tribble(
+  ~`Column Head A`, ~`Column Head B`,
+  "a",  1:3,
+  "b",  4:6
+) %>% knitr::kable(caption = "A tribble example", booktabs=T, longtable=T)
+```
+
+
+### Inline Latex Tables
+You can directly add latex tables. However, these will not show up in HTML rendered output.
+
+\begin{table}
+\caption{Table captions should be placed above the
+tables.}\label{tab1}
+\begin{tabular}{|l|l|l|}
+\hline
+Heading level &  Example & Font size and style\\
+\hline
+Title (centered) &  {\Large\bfseries Lecture Notes} & 14 point, bold\\
+1st-level heading &  {\large\bfseries 1 Introduction} & 12 point, bold\\
+2nd-level heading & {\bfseries 2.1 Printing Area} & 10 point, bold\\
+3rd-level heading & {\bfseries Run-in Heading in Bold.} Text follows & 10 point, bold\\
+4th-level heading & {\itshape Lowest Level Heading.} Text follows & 10 point, italic\\
+\hline
+\end{tabular}
+\end{table}
+
+
+## Figures
+
+You can refer to tables by using Figure \@ref(fig:fig1).
+
+```{r fig1, fig.cap="This is the text caption under the figure"}
+# Note that the label for a figure is always fig:chunkname
+iris %>% ggplot() + aes(x = Sepal.Length) + geom_histogram() + cowplot::theme_minimal_hgrid()
+
+```
+
+
+```{r stimulus, eval=FALSE, fig.align='center', fig.cap="This is a small figuter (deactivated)", fig.show='hold', include=FALSE, out.width="50%"}
+
+knitr::include_graphics("../images/stimulus1.png")
+```
+
+<!-- You may include external Rmd-Files. Turn on off by switching Eval-->
+```{r introduction, eval=TRUE, child='10_introduction.Rmd'}
+```
+
+# Acknowledgements {-}
+We would like to thank xyz.
+We would further like to thank the authors of the packages we have used.
+```{r r_citations, eval=TRUE, include=TRUE, results="asis"}
+rmdtemplates::line_cite(pkgs) # This creates a single line citing all packages
+#rmdtemplates::list_cite(pkgs) # This creates a "thightlist" of all packages 
+```
+
+# References

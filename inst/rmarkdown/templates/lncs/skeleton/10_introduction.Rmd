@@ -1,0 +1,11 @@
+# External child file
+
+Documents can be split up into multiple files. Making distributed work using github easier.
+
+```{r setup}
+# you can even have a separate setup chunk per file..
+```
+
+
+
+
