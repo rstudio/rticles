@@ -4,8 +4,8 @@ Title: Article Formats for R Markdown
 Version: 0.21.10
 Authors@R: c(
   person("JJ", "Allaire", role = "aut", email = "jj@rstudio.com"),
-  person("Yihui", "Xie", role = c("aut", "cre"), email = "xie@yihui.name", comment = c(ORCID = "0000-0003-0645-5666")),
-  person("Christophe", "Dervieux", role = c("aut"), email = "cderv@rstudio.com", comment = c(ORCID = "0000-0003-4474-2498")),
+  person("Yihui", "Xie", role = c("aut"), email = "xie@yihui.name", comment = c(ORCID = "0000-0003-0645-5666")),
+  person("Christophe", "Dervieux", role = c("aut","cre"), email = "cderv@rstudio.com", comment = c(ORCID = "0000-0003-4474-2498")),
   person(family = "RStudio", role = c("cph", "fnd")),
   person(family = "R Foundation", role = c("aut", "cph")),
   person("Hadley", "Wickham", role = "aut", email = "hadley@rstudio.com"),
