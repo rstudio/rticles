@@ -29,6 +29,8 @@ fixed.
 
 - Add `copyrightyear` and `pubyear` variable in `bioinformatics_article()` (thanks, @stephenturner, #424). 
 
+- Added cvpr_article() document class
+
 # rticles 0.21
 
 ## NEW FEATURES

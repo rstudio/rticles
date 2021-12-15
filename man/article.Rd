@@ -12,6 +12,7 @@
 \alias{bioinformatics_article}
 \alias{biometrics_article}
 \alias{ctex_article}
+\alias{cvpr_article}
 \alias{ctex}
 \alias{elsevier_article}
 \alias{frontiers_article}
@@ -72,6 +73,8 @@ bioinformatics_article(..., keep_tex = TRUE, citation_package = "natbib")
 biometrics_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 ctex_article(..., template = "default", latex_engine = "xelatex")
+
+cvpr_article(keep_tex = TRUE, ...)
 
 ctex(..., template = "default", latex_engine = "xelatex")
 
@@ -224,6 +227,11 @@ Biometrics journal.
 \code{latex_engine} is changed to \command{xelatex}, so it works better for
 typesetting Chinese documents with the LaTeX package \pkg{ctex}. The
 function \code{ctex} is an alias of \code{ctex_article}.
+}
+
+\section{\code{cvpr_article}}{
+ Format for creating submissions to the CVPR conference.
+Adapted from \url{http://cvpr2020.thecvf.com/submission/main-conference/author-guidelines#submission-guidelines}.
 }
 
 \section{\code{elsevier_article}}{

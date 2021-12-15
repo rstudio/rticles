@@ -150,6 +150,15 @@ ctex_article <- function(..., template = 'default', latex_engine = 'xelatex') {
   )
 }
 
+#' @section `cvpr_article`: Format for creating submissions to the CVPR conference.
+#' Adapted from <http://cvpr2020.thecvf.com/submission/main-conference/author-guidelines#submission-guidelines>.
+#' @export
+#' @rdname article
+cvpr_article <- function(keep_tex = TRUE, ...)
+{
+  pdf_document_format('cvpr', keep_tex=keep_tex, ...)
+}
+
 #' @export
 #' @rdname article
 ctex <- ctex_article
