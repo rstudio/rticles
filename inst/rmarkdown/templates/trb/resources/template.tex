@@ -1,0 +1,145 @@
+% Repository:  https://github.com/chiehrosswang/TRB_LaTeX_tex
+%
+% Transportation Research Board conference paper template
+% version 4.0 Lite (updates made to be compatible in Overleaf and ShareLaTeX)
+%
+%
+% When numbered option is activated, lines are numbered.
+\documentclass[$for(classoption)$$classoption$$sep$,$endfor$]{trbunofficial}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\newread\somefile
+\usepackage{xparse}
+$if(natbib)$
+\usepackage{natbib}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$unsrtnat$endif$}
+\setcitestyle{round}
+$endif$
+% \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}
+% For TRB version hide links
+\usepackage[hidelinks$for(hyperrefoptions)$,$hyperrefoptions$$endfor$]{hyperref}
+
+% Put here what will go to headers as author
+\AuthorHeaders{$runningheader$}
+\title{$title$}
+
+% TODO: add macros for easier formatting of \author.
+\author{%
+  $for(author)$
+  \textbf{$author.name$}\\$if(author.note)$\textit{$author.note$}\\$endif$
+  $author.position$\\
+  $author.affiliation$\\
+  $author.email$\\
+  \hfill\break
+  $endfor$
+}
+
+% If necessary modify the number of words per table or figure default is set to
+% 250 words per table (default defined in cls)
+$if(wordspertable)$\WordsPerTable{$wordspertable$}$endif$
+
+% If words are counted manually, put that number here. This does not include
+% figures and tables. This can also be used to avoid problems with texcount
+% program i.e. if one does not have it installed.
+$if(wordcount)$\TotalWords{$wordcount$}$endif$
+
+$if(highlighting-macros)$
+% Pandoc syntax highlighting
+$highlighting-macros$
+$endif$
+
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+$if(tables)$
+% From pandoc table feature
+\usepackage{longtable,booktabs,array}
+$if(multirow)$
+\usepackage{multirow}
+$endif$
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+$endif$
+
+$if(csl-refs)$
+% Pandoc citation processing
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+\begin{document}
+\maketitle
+
+$for(include-before)$
+$include-before$
+$endfor$
+
+\section{Abstract}
+$abstract$
+\hfill\break%
+\hfill\break%
+\noindent\textit{Keywords}: $if(keywords)$ $for(keywords)$$keywords$, $endfor$ $endif$
+\newpage
+
+$body$
+
+\newpage
+$if(natbib)$
+$if(bibliography)$
+$if(biblio-title)$
+$if(book-class)$
+\renewcommand\bibname{$biblio-title$}
+$else$
+\renewcommand\refname{$biblio-title$}
+$endif$
+$endif$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+
+$endif$
+$endif$
+
+$for(include-after)$
+$include-after$
+
+$endfor$
+\end{document}

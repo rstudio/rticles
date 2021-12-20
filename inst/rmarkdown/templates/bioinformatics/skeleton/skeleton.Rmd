@@ -6,6 +6,10 @@ title_short: Bioinformatics Rmd Template
 # one of `Original Paper`, `Discovery Note`, `Applications Note`, `Review`, `Letter to the Editor`, `Conference Paper`    
 manuscript_type: Application Note
 
+# change accordingly
+copyrightyear: '`r format(Sys.Date(), "%Y")`'
+pubyear: '`r format(Sys.Date(), "%Y")`'
+
 # One of the following below. See https://academic.oup.com/bioinformatics/pages/instructions_for_authors#Detailed%20Scope%20Guidelines
 # Genome analysis
 # Sequence analysis

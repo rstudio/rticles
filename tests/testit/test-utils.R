@@ -31,5 +31,20 @@ assert("last author is prepend with and ", {
 assert("all journals are listed and have a template folder", {
   all <- grep("_article$", getNamespaceExports("rticles"), value = TRUE)
   all <- gsub("_article$", "", all)
-  (journals() %==% sort(all))
+  folder_name <- journals()
+  # Special case for format function handling several version of template
+  folder_name <- unique(gsub("^([^_]+)_.*$", "\\1", folder_name))
+  (folder_name %==% sort(all))
 })
+
+assert("Named vector is transformed to pandoc variable args", {
+  (vec_to_pandoc_variable_args(c(a = "b")) %==%
+     c(rmarkdown::pandoc_variable_arg("a", "b"))
+  )
+  (vec_to_pandoc_variable_args(c(a = "b", c = "d")) %==%
+       c(
+         rmarkdown::pandoc_variable_arg("a", "b"),
+         rmarkdown::pandoc_variable_arg("c", "d")
+       )
+  )
+  })

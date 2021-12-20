@@ -22,7 +22,6 @@
 \alias{jedm_article}
 \alias{mdpi_article}
 \alias{mnras_article}
-\alias{oup_article}
 \alias{peerj_article}
 \alias{pihph_article}
 \alias{plos_article}
@@ -31,6 +30,8 @@
 \alias{sim_article}
 \alias{springer_article}
 \alias{tf_article}
+\alias{trb_article}
+\alias{wellcomeor_article}
 \title{R Markdown output formats for (journal) articles}
 \usage{
 acm_article(...)
@@ -114,8 +115,6 @@ mdpi_article(..., keep_tex = TRUE)
 
 mnras_article(..., keep_tex = TRUE, fig_caption = TRUE)
 
-oup_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
-
 peerj_article(..., keep_tex = TRUE)
 
 pihph_article(
@@ -136,9 +135,18 @@ sim_article(..., highlight = NULL, citation_package = "natbib")
 springer_article(..., keep_tex = TRUE, citation_package = "default")
 
 tf_article(..., keep_tex = TRUE, citation_package = "natbib")
+
+trb_article(..., keep_tex = TRUE, citation_package = "natbib")
+
+wellcomeor_article(
+  ...,
+  number_sections = FALSE,
+  keep_tex = TRUE,
+  citation_package = "natbib"
+)
 }
 \arguments{
-\item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \verb{rmarkdown::[pdf_document]()}.}
+\item{..., number_sections, keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}.}
 
 \item{journal}{one of \code{"aoas"}, \code{"aap"}, \code{"aop"}, \code{"aos"}, \code{"sts"} for \code{ims_article}}
 }
@@ -287,13 +295,6 @@ Royal Astronomical Society (MNRAS) Journal articles. Adapted from
 \url{https://ras.ac.uk}.
 }
 
-\section{\code{oup_article}}{
- Format for creating submissions to many Oxford University Press
-journals. Adapted from
-\url{https://academic.oup.com/journals/pages/authors/preparing_your_manuscript}
-and \url{https://academic.oup.com/icesjms/pages/General_Instructions}.
-}
-
 \section{\code{peerj_article}}{
  Format for creating submissions to The PeerJ
 Journal. This was adapted from the
@@ -375,6 +376,18 @@ Macro package for Springer Journals.
 \section{\code{tf_article}}{
  Format for creating submissions to a Taylor & Francis journal. Adapted from
 \samp{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
+}
+
+\section{\code{trb_article}}{
+ Format for creating submissions to the Transportation
+Research Board Annual Meeting. Adapted from
+\samp{https://www.overleaf.com/latex/templates/transportation-research-board-trb-latex-template/jkfndnnkkksw},
+which in turn is hosted at \samp{https://github.com/chiehrosswang/TRB_LaTeX_tex}
+}
+
+\section{\code{wellcomeor_article}}{
+ Format for creating submissions to
+Wellcome Open Research. Adapted from <overleaf.com/latex/templates/wellcome-open-research-article-template/hsmhhbpxvvbj>.
 }
 
 \examples{

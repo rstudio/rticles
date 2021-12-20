@@ -9,8 +9,8 @@
 #' (e.g., `keep_tex = TRUE`).
 #'
 #' @param
-#' ...,keep_tex,latex_engine,citation_package,highlight,fig_caption,md_extensions,template,pandoc_args
-#' Arguments passed to `rmarkdown::[pdf_document]()`.
+#' ...,number_sections,keep_tex,latex_engine,citation_package,highlight,fig_caption,md_extensions,template,pandoc_args
+#' Arguments passed to [rmarkdown::pdf_document()].
 #' @section Details: You can find more details about each output format below.
 #' @name acm_article
 #' @rdname article
@@ -184,9 +184,19 @@ frontiers_article <- function(..., keep_tex = TRUE) {
 #' @export
 #' @rdname article
 glossa_article <- function(..., keep_tex = TRUE, latex_engine = "xelatex") {
-  pdf_document_format(
+  format <- pdf_document_format(
     "glossa", keep_tex = keep_tex, latex_engine = latex_engine, ...
   )
+  if (tinytex::is_tinytex() && tinytex::check_installed("microtype")) {
+    # TODO: known conflict - remove when fixed
+    tinytex::tlmgr_remove("microtype")
+    fun <- format$on_exit
+    format$on_exit <- function() {
+      if (is.function(fun)) fun()
+      if (!tinytex::check_installed("microtype")) tinytex::tlmgr_install("microtype")
+    }
+  }
+  format
 }
 
 #' @param journal one of `"aoas"`, `"aap"`, `"aop"`, `"aos"`, `"sts"` for `ims_article`
@@ -219,9 +229,7 @@ ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
     )
 
   # Convert to pandoc arguments
-  pandoc_arg_list <- mapply(rmarkdown::pandoc_variable_arg, names(args), args,
-                            SIMPLIFY = FALSE, USE.NAMES = FALSE)
-  pandoc_arg_list <- unlist(pandoc_arg_list)
+  pandoc_arg_list <- vec_to_pandoc_variable_args(args)
 
   pdf_document_format(
     "ims", keep_tex = keep_tex, citation_package = citation_package,
@@ -301,22 +309,6 @@ mdpi_article <- function(..., keep_tex = TRUE) {
 mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
   pdf_document_format(
     "mnras", keep_tex = keep_tex, fig_caption = fig_caption, ...
-  )
-}
-
-#' @section `oup_article`: Format for creating submissions to many Oxford University Press
-#'   journals. Adapted from
-#'   <https://academic.oup.com/journals/pages/authors/preparing_your_manuscript>
-#'   and <https://academic.oup.com/icesjms/pages/General_Instructions>.
-#' @export
-#' @rdname article
-oup_article <- function(
-  ..., keep_tex = TRUE,
-  md_extensions = c("-autolink_bare_uris")
-) {
-  pdf_document_format(
-    "oup",
-    keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
 }
 
@@ -438,5 +430,27 @@ springer_article <- function(..., keep_tex = TRUE, citation_package = 'default')
 tf_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
   pdf_document_format(
     "tf", keep_tex = keep_tex, citation_package = citation_package, ...
+  )
+}
+
+#' @section \code{trb_article}: Format for creating submissions to the Transportation
+#'   Research Board Annual Meeting. Adapted from
+#'   \samp{https://www.overleaf.com/latex/templates/transportation-research-board-trb-latex-template/jkfndnnkkksw},
+#'   which in turn is hosted at \samp{https://github.com/chiehrosswang/TRB_LaTeX_tex}
+#' @export
+#' @rdname article
+trb_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
+  pdf_document_format(
+    "trb", keep_tex = keep_tex, citation_package = citation_package, ...
+  )
+}
+
+#' @section `wellcomeor_article`: Format for creating submissions to
+#' Wellcome Open Research. Adapted from <overleaf.com/latex/templates/wellcome-open-research-article-template/hsmhhbpxvvbj>.
+#' @export
+#' @rdname article
+wellcomeor_article <- function(..., number_sections = FALSE, keep_tex = TRUE, citation_package = 'natbib') {
+  pdf_document_format(
+    "wellcomeor", keep_tex = keep_tex, number_sections = number_sections, citation_package = citation_package, ...
   )
 }

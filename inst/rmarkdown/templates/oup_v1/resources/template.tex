@@ -1,0 +1,384 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
+$if(colorlinks)$
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+$endif$
+
+% Set document class options
+\documentclass[webpdf$if(papersize)$,$papersize$$else$,large$endif$$if(document_style)$,$document_style$$else$,contemporary$endif$$if(numbersections)$$else$,unnumsec$endif$$if(namedate)$,namedate$endif$$if(classoptions)$,$for(classoptions)$$classoptions$$sep$,$endfor$$endif$]{oup-authoring-template}
+
+% one column
+$if(onecolumn)$\onecolumn$endif$
+
+%\usepackage{showframe}
+
+% line numbers
+$if(numberlines)$
+\usepackage$if(numberlines-options)$[$for(numberlines-options)$$numberlines-options$$sep$,$endfor$]$endif${lineno}
+\linenumbers
+$endif$
+
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+
+% From Pandoc template for its feature
+$if(verbatim-in-note)$
+\usepackage{fancyvrb}
+$endif$
+\usepackage{xcolor}
+\usepackage{hyperref}
+$if(graphics)$
+\usepackage{graphicx}
+$endif$
+$if(listings)$
+\usepackage{listings}
+\newcommand{\passthrough}[1]{#1}
+\lstset{defaultdialect=[5.3]Lua}
+\lstset{defaultdialect=[x86masm]Assembler}
+$endif$
+
+\hypersetup{
+$if(title-meta)$
+  pdftitle={$title-meta$},
+$endif$
+$if(author-meta)$
+  pdfauthor={$author-meta$},
+$endif$
+$if(lang)$
+  pdflang={$lang$},
+$endif$
+$if(subject)$
+  pdfsubject={$subject$},
+$endif$
+$if(keywords)$
+  pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
+$endif$
+  breaklinks=true,
+  bookmarks=true,
+$if(colorlinks)$
+  colorlinks=true,
+  linkcolor={$if(linkcolor)$$linkcolor$$else$Maroon$endif$},
+  filecolor={$if(filecolor)$$filecolor$$else$Maroon$endif$},
+  citecolor={$if(citecolor)$$citecolor$$else$Blue$endif$},
+  urlcolor={$if(urlcolor)$$urlcolor$$else$Blue$endif$},
+$else$
+  hidelinks,
+$endif$
+  pdfcreator={LaTeX via pandoc}}
+
+
+$if(highlighting-macros)$
+% Pandoc syntax highlighting
+$highlighting-macros$
+$endif$
+
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+$if(tables)$
+% From pandoc table feature
+\usepackage{longtable,booktabs,array}
+$if(multirow)$
+\usepackage{multirow}
+$endif$
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+$endif$
+
+$if(csl-refs)$
+% Pandoc citation processing
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+$if(links-as-notes)$
+% For pandoc feature
+% Make links footnotes instead of hotlinks:
+\DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
+$endif$
+$if(strikeout)$
+% For pandoc feature
+$-- also used for underline
+\usepackage[normalem]{ulem}
+% Avoid problems with \sout in headers with hyperref
+\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+$endif$
+
+% Counters for addresses and footnotes
+\newcounter{correspcnt} % For author footnotes
+\renewcommand*{\thecorrespcnt}{\fnsymbol{correspcnt}}
+\newcounter{addrcnt} % For author addresses
+
+% Macros for dealing with affiliations, footnotes, etc.
+\makeatletter
+
+\def\MyNewLabel#1#2#3{\expandafter\gdef\csname #1@#2\endcsname{#3}}
+
+\def\MyRef#1#2{\@ifundefined{#1@#2}{???}{\csname #1@#2\endcsname}}
+
+\newcommand*\ifcounter[1]{%
+  \ifcsname c@#1\endcsname
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+}
+
+\newcommand*\addrlblbycode[1]{%
+  \ifcounter{ADDRLBL@#1}
+    {}
+    {\refstepcounter{addrcnt}\newcounter{ADDRLBL@#1}\setcounter{ADDRLBL@#1}{\value{addrcnt}}}%
+    \arabic{ADDRLBL@#1}%
+}
+
+\newcommand*\addrbycode[1]{%
+  \ifcounter{ADDR@#1}
+    {}
+    {\newcounter{ADDR@#1}%
+     \address[\addrlblbycode{#1}]{\MyRef{ADDRTXT}{#1}}}%
+}
+
+\newcommand*\corresplblbycode[1]{%
+  \ifcounter{CORRESPLBL@#1}
+    {}
+    {\refstepcounter{correspcnt}\newcounter{CORRESPLBL@#1}\setcounter{CORRESPLBL@#1}{\value{correspcnt}}}%
+    \fnsymbol{CORRESPLBL@#1}%
+}
+
+\newcommand*\correspbycode[1]{%
+  \ifcounter{CORRESP@#1}
+    {}
+    {\newcounter{CORRESP@#1}%
+     \corresp[\corresplblbycode{#1}]{\MyRef{CORRESPTXT}{#1}}}%
+}
+
+\makeatother
+
+% Add missing \city command mentioned in documentation but absent from cls
+\providecommand\city[1]{#1}
+
+% Create labels for Addresses if the are given in Elsevier format
+$for(address)$
+ $if(address.code)$
+  \MyNewLabel{ADDRTXT}{$address.code$}{%
+ $elseif(address.id)$
+  \MyNewLabel{ADDRTXT}{$address.id$}{%
+ $endif$
+ $if(address.address)$$address.address$$else$%
+  $if(address.department)$\orgdiv{$address.department$}, $endif$%
+  $if(address.organization)$\orgname{$address.organization$}, $endif$%
+  $if(address.street)$\orgaddress{%
+   $elseif(address.city)$\orgaddress{%
+   $elseif(address.postcode)$\orgaddress{%
+   $elseif(address.state)$\orgaddress{%
+   $elseif(address.country)$\orgaddress{%
+  $endif$%
+  $if(address.street)$\street{$address.street$}, $endif$%
+  $if(address.postcode)$\postcode{$address.postcode$}, $endif$%
+  $if(address.city)$\city{$address.city$}, $endif$%
+  $if(address.state)$\state{$address.state$}, $endif$%
+  $if(address.country)$\country{$address.country$}$endif$%
+  $if(address.street)$}%
+   $elseif(address.city)$}%
+   $elseif(address.postcode)$}%
+   $elseif(address.state)$}%
+   $elseif(address.country)$}%
+  $endif$%
+ $endif$%
+ }
+$endfor$
+
+% Create labels for Footnotes if they are given in Elsevier format
+$for(footnote)$
+$if(footnote.code)$
+\MyNewLabel{CORRESPTXT}{$footnote.code$}{$footnote.text$}
+$endif$
+$endfor$
+
+$for(header-includes)$
+% Pandoc header-include feature
+$header-includes$
+$endfor$
+
+\begin{document}
+
+\journaltitle{$if(journal)$$journal$$else$Journal Title Here$endif$}
+\DOI{DOI HERE}
+\copyrightyear{YYYY}
+\pubyear{YYYY}
+\access{Advance Access Publication Date: Day Month Year}
+\appnotes{Paper}
+
+\firstpage{1}
+
+$if(subtitle)$\subtitle{$subtitle$}$endif$
+
+\title[$short_title$]{$title$}
+
+\newcounter{thisauthcorresp} % For storage if author is corresponding author
+\newcounter{thisauththanks} % For storage if author has thanks
+
+$for(authors)$
+
+\author[%
+$if(authors.address)$\refstepcounter{addrcnt}\arabic{addrcnt}$endif$%
+$if(authors.corresponding_author)$$if(authors.address)$,$endif$\refstepcounter{correspcnt}\setcounter{thisauthcorresp}{\value{correspcnt}}\fnsymbol{thisauthcorresp}$endif$%
+$if(authors.thanks)$$if(authors.address)$,$elseif(authors.corresponding_author)$,$endif$\refstepcounter{correspcnt}\setcounter{thisauththanks}{\value{correspcnt}}\fnsymbol{thisauththanks}$endif$%
+]{$authors.name$}
+
+$if(authors.address)$\address[\arabic{addrcnt}]{$authors.address$}$endif$
+
+$if(authors.corresponding_author)$\corresp[\fnsymbol{thisauthcorresp}]{Corresponding author. \href{mailto:$authors.email$}{\nolinkurl{$authors.email$}}}$endif$
+$if(authors.thanks)$\corresp[\fnsymbol{thisauththanks}]{$authors.thanks$}$endif$
+
+$endfor$
+
+$for(author)$
+
+\author[%
+$for(author.affiliation)$\addrlblbycode{$author.affiliation$}$sep$,$endfor$%
+$if(author.corresponding_author)$$if(author.affiliation)$,$endif$\refstepcounter{correspcnt}\setcounter{thisauthcorresp}{\value{correspcnt}}\fnsymbol{thisauthcorresp}$endif$%
+$if(author.thanks)$$if(author.affiliation)$,$elseif(author.corresponding_author)$,$endif$\refstepcounter{correspcnt}\setcounter{thisauththanks}{\value{correspcnt}}\fnsymbol{thisauththanks}$endif$%
+$if(author.footnote)$$if(author.affiliation)$,$elseif(author.corresponding_author)$,$elseif(author.thanks)$,$endif$$for(author.footnote)$\corresplblbycode{$author.footnote$}$sep$,$endfor$$endif$%
+]{$author.name$}
+
+$for(author.affiliation)$
+\addrbycode{$author.affiliation$}
+$endfor$
+
+$if(author.corresponding_author)$\corresp[\fnsymbol{thisauthcorresp}]{Corresponding author. \href{mailto:$author.email$}{\nolinkurl{$author.email$}}}$endif$
+$if(author.thanks)$\corresp[\fnsymbol{thisauththanks}]{$author.thanks$}$endif$
+
+$for(author.footnote)$
+\correspbycode{$author.footnote$}
+$endfor$
+
+$endfor$
+
+% Add author mark
+$if(authormark)$
+\authormark{$authormark$}
+$elseif(author)$
+\authormark{$for(author/first)$$it.name$$endfor$$if(author/rest/rest)$ et al.$else$$for(author/rest)$ \and $author.name$$endfor$$endif$}
+$elseif(authors)$
+\authormark{$for(authors/first)$$it.name$$endfor$$if(authors/rest/rest)$ et al.$else$$for(authors/rest)$ \and $authors.name$$endfor$$endif$}
+$endif$
+
+\received{Date}{0}{Year}
+\revised{Date}{0}{Year}
+\accepted{Date}{0}{Year}
+
+%\editor{Associate Editor: Name}
+
+\abstract{
+$for(abstract)$$abstract$$sep$\\
+$endfor$}
+
+\keywords{$for(keywords)$$keywords$$sep$; $endfor$}
+
+$if(boxedtext)$
+\boxedtext{
+$boxedtext$}
+$elseif(boxedlist)$
+\boxedtext{
+\begin{itemize}
+$for(boxedtext)$
+\item $boxedtext$
+$endfor$
+\end{itemize}}
+$endif$
+
+\maketitle
+
+$for(include-before)$
+$include-before$
+$endfor$
+
+$body$
+
+$if(competing_interests)$
+\section{Competing interests}
+
+$competing_interests$
+$endif$
+
+$if(author_contributions)$
+\section{Author contributions statement}
+
+$author_contributions$
+$endif$
+
+$if(acknowledgments)$
+\section{Acknowledgments}
+
+$acknowledgments$
+$endif$
+
+$if(natbib)$
+$if(bibliography)$
+$if(biblio-title)$
+$if(has-chapters)$
+\renewcommand\bibname{$biblio-title$}
+$else$
+\renewcommand\refname{$biblio-title$}
+$endif$
+$endif$
+
+\bibliographystyle{$if(namedate)$abbrvnat$else$plain$endif$}
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+$endif$
+
+%% Author bio-pics with images
+$for(author)$
+$if(author.biography)$
+\begin{biography}{%
+$if(author.biography_pic)$
+\includegraphics[$if(author.biography_pic_width)$width=$author.biography_pic_width$,$endif$$if(author.biography_pic_height)$height=$author.biography_pic_height$,$endif$]{$author.biography_pic$}%
+$endif$%
+}{\author{$author.name$} $author.biography$}
+\end{biography}
+$endif$
+$endfor$
+
+$for(include-after)$
+$include-after$
+
+$endfor$
+
+\end{document}

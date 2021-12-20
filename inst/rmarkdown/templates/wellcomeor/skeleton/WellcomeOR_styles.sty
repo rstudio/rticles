@@ -1,0 +1,98 @@
+\ProvidesPackage{WellcomeOR_styles}
+% Packages
+\usepackage{authblk}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage{colortbl}
+\usepackage[usenames,dvipsnames,table]{xcolor}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage[labelsep=period,justification=justified]{caption}
+\usepackage{lastpage}
+\usepackage{xifthen}
+\usepackage{todonotes}
+\usepackage[hmargin=1.8cm,vmargin=2.2cm]{geometry}
+\usepackage[nolists,nomarkers]{endfloat}
+\AtBeginFigures{\rfoot{}}
+\AtBeginTables{\rfoot{}}
+
+% Define the versionDate and flogo commands
+\newcommand{\versionDate}{\footnotesize Wellcome Open Research 2016 - DRAFT ARTICLE (PRE-SUBMISSION)}
+\newcommand{\flogo}{\includegraphics[height=12pt]{WellcomeOR_logo_black}}
+
+\definecolor{WORBlue}{HTML}{009BB2}
+\definecolor{WORCerulean}{HTML}{60C0CE}
+\definecolor{WORCyan}{HTML}{BAE2E2}
+
+% Section heading styles
+\usepackage[compact]{titlesec}
+
+\titleformat*{\section}{\Large\usefont{OT1}{phv}{b}{n}\color{darkgray}}
+\titleformat*{\subsection}{\large\usefont{OT1}{phv}{b}{n}}
+\titleformat*{\subsubsection}{\large\usefont{OT1}{phv}{b}{n}}
+
+% Section heading spacing (WORBlueuced space below headings)
+\titlespacing\section{0pt}{3.5ex plus 1.2ex minus .2ex}{0ex}
+\titlespacing\subsection{0pt}{3.25ex plus 1.2ex minus .2ex}{0ex}
+\titlespacing\subsubsection{0pt}{3.25ex plus 1.2ex minus .2ex}{0ex}
+
+% Caption style
+\captionsetup{labelfont={color=WORBlue,bf},textfont={color=black,bf}}
+
+% Table style
+% \definecolor{DarkKhaki}{rgb}{0.74,0.72,0.42}
+\colorlet{tableheadcolor}{WORCerulean} % Table header colour = 25% gray
+\newcommand{\header}{\rowcolor{tableheadcolor}} %
+\colorlet{tablerowcolor}{WORCyan} % Table row separator colour = 10% gray
+\newcommand{\row}{\rowcolor{tablerowcolor}} %
+\newenvironment{tabledata}[1][1]{%
+  \renewcommand*{\extrarowheight}{0.1cm}%
+  \tabular%
+}{%
+  \endtabular
+}
+
+% Define a title note command
+\newcommand\titlenote[1]{\renewcommand\@titlenote{#1}}
+\newcommand\@titlenote{}
+
+% Column separation
+\setlength{\columnsep}{0.25in}
+
+% Page margins, headers and footers
+\pagestyle{fancy}
+\setlength\parindent{0in}
+%\setlength\parskip{0.1in}
+\setlength\headheight{16.5pt}
+\renewcommand{\footrulewidth}{1pt}
+\lhead{\textsc{\flogo}}
+\chead{}
+\rhead{\versionDate}
+\lfoot{}
+\cfoot{}
+\rfoot{\footnotesize Page \thepage\ of \pageref{LastPage}}
+%
+\renewenvironment{abstract}{%
+\usefont{OT1}{phv}{m}{n}
+\hfill\begin{minipage}{0.65\textwidth}
+\rule{\textwidth}{1pt}\\ \textcolor{WORBlue}{\textbf{\abstractname}}}
+{\par\noindent\rule{\textwidth}{1pt}\end{minipage}}
+%
+\makeatletter
+\renewcommand\@maketitle{%
+\begin{minipage}{0.95\textwidth}
+\vskip 2em
+\let\footnote\thanks
+{\fontsize{20}{22}\usefont{OT1}{phv}{b}{n} \@title \par {\small{\@titlenote}} }
+\vskip 1.5em
+{\@author \par}
+\end{minipage}
+\vskip 1em \par
+}
+\makeatother
+\renewcommand\Authfont{\fontsize{16}{18}\usefont{OT1}{phv}{b}{n}}
+\renewcommand\Affilfont{\fontsize{10}{12}\usefont{OT1}{phv}{b}{n}}
