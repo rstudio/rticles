@@ -6,6 +6,7 @@
 %% 08/09/2012 Fixed typo in a message "mansucript" (s/b "manuscript")
 %% 03/09/2015 quick adjustment for use in SERV and STSC
 %% 11/05/2020 quick adjustment for use in IJDS
+%% 23/12/2021 modified by Rob J Hyndman to allow usage across all INFORMS journals
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{informs4}
   [2015/03/09 v0.97
@@ -382,6 +383,8 @@
 \newif\if@SERV\@SERVfalse
 \newif\if@STSC\@STSCfalse
 \newif\if@IJDS\@IJDSfalse
+\newif\if@STSY\@STSYfalse
+\newif\if@IJOO\@IJOOfalse
 \DeclareOption{deca}{\@DECAtrue}
 \DeclareOption{ijoc}{\@IJOCtrue}
 \DeclareOption{inte}{\@INTEtrue}
@@ -397,7 +400,8 @@
 \DeclareOption{serv}{\@SERVtrue}
 \DeclareOption{stsc}{\@STSCtrue}
 \DeclareOption{ijds}{\@IJDStrue}
-
+\DeclareOption{stsy}{\@STSYtrue}
+\DeclareOption{ijoo}{\@IJOOtrue}
 %
 \newif\if@COPYEDIT\@COPYEDITfalse
 \DeclareOption{copyedit}{\@COPYEDITtrue}
@@ -2187,16 +2191,20 @@ manuscript {\theMANUSCRIPTNO}\end{tabular}}}%
 \long\def\@makefigurecaption#1#2{\EGT\FigureCaptionFontStyle
   \begin{Center}\HD{9}{0}{\FigureNameFontStyle #1\kern16pt}\ignorespaces #2\HD{0}{0}\endgraf\end{Center}}
 \fi
-\if@STSC
+\if@SERV
 \long\def\@makefigurecaption#1#2{\EGT\FigureCaptionFontStyle
   \begin{Center}\HD{9}{0}{\FigureNameFontStyle #1\kern16pt}\ignorespaces #2\HD{0}{0}\endgraf\end{Center}}
 \fi
-
+%% MJ-8/22/2017
+\if@STSY
+\long\def\@makefigurecaption#1#2{\EGT\FigureCaptionFontStyle
+  \begin{Center}\HD{9}{0}{\FigureNameFontStyle #1\kern16pt}\ignorespaces #2\HD{0}{0}\endgraf\end{Center}}
+\fi
+\if@IJOO
+\long\def\@makefigurecaption#1#2{\EGT\FigureCaptionFontStyle
+  \begin{Center}\HD{9}{0}{\FigureNameFontStyle #1\kern16pt}\ignorespaces #2\HD{0}{0}\endgraf\end{Center}}
+\fi
 %% MW-11/5/2020
-\if@IJDS
-\long\def\@makefigurecaption#1#2{\EGT\FigureCaptionFontStyle
-  \begin{Center}\HD{9}{0}{\FigureNameFontStyle #1\kern16pt}\ignorespaces #2\HD{0}{0}\endgraf\end{Center}}
-\fi
 \if@IJDS
 \long\def\@makefigurecaption#1#2{\EGT\FigureCaptionFontStyle
   \begin{Center}\HD{9}{0}{\FigureNameFontStyle #1\kern16pt}\ignorespaces #2\HD{0}{0}\endgraf\end{Center}}
@@ -2247,117 +2255,6 @@ manuscript {\theMANUSCRIPTNO}\end{tabular}}}%
 \else
   \box4
 \fi}
-%************************************
-%************************************
-\if@STSC
-\def\FIGURE#1#2#3{%
-\long\def\testfignote{#3}%
-\long\def\itis@empty{}%
-\ifx\testfignote\itis@empty
-  \long\def\fignote##1{\relax}%
-\else
-  \long\def\fignote##1{\par\noindent
-  \FigureNoteStyle\noindent\HD{11}{0}{\it\FigureNoteName}\enskip ##1\endgraf}%
-\fi
-\if@rotate
-  \setbox4=\hbox to \textheight{\vbox{\hsize\textheight
-  \begin{minipage}{\textheight}
-  \caption[]{#2}%
-  \begin{Center}%
-  {#1}%
-  \end{Center}%
-  \fignote{#3}%
-  \end{minipage}}}
-\else
-  \setbox4=\hbox to \hsize{\vbox{%
-  \begin{minipage}{\hsize}
-  \caption[]{#2}
-  \hbox to\hsize{\hss{#1}\hss}%
-  \fignote{#3}%
-  \end{minipage}}}
-\fi
-\if@rotate
-  \noindent\vrule width0pt height0.5\textheight depth0.5\textheight
-  \hspace*{0.5\textwidth}\rotatebox{90}{\copy4}%
-\else
-  \box4
-\fi}
-\fi
-%************************************
-
-%************************************
-\if@IJDS
-\def\FIGURE#1#2#3{%
-\long\def\testfignote{#3}%
-\long\def\itis@empty{}%
-\ifx\testfignote\itis@empty
-  \long\def\fignote##1{\relax}%
-\else
-  \long\def\fignote##1{\par\noindent
-  \FigureNoteStyle\noindent\HD{11}{0}{\it\FigureNoteName}\enskip ##1\endgraf}%
-\fi
-\if@rotate
-  \setbox4=\hbox to \textheight{\vbox{\hsize\textheight
-  \begin{minipage}{\textheight}
-  \caption[]{#2}%
-  \begin{Center}%
-  {#1}%
-  \end{Center}%
-  \fignote{#3}%
-  \end{minipage}}}
-\else
-  \setbox4=\hbox to \hsize{\vbox{%
-  \begin{minipage}{\hsize}
-  \caption[]{#2}
-  \hbox to\hsize{\hss{#1}\hss}%
-  \fignote{#3}%
-  \end{minipage}}}
-\fi
-\if@rotate
-  \noindent\vrule width0pt height0.5\textheight depth0.5\textheight
-  \hspace*{0.5\textwidth}\rotatebox{90}{\copy4}%
-\else
-  \box4
-\fi}
-\fi
-%************************************
-
-%************************************
-\if@TRSC
-\def\FIGURE#1#2#3{%
-\long\def\testfignote{#3}%
-\long\def\itis@empty{}%
-\ifx\testfignote\itis@empty
-  \long\def\fignote##1{\relax}%
-\else
-  \long\def\fignote##1{\par\noindent
-  \FigureNoteStyle\noindent\HD{11}{0}{\it\FigureNoteName}\enskip ##1\endgraf}%
-\fi
-\if@rotate
-  \setbox4=\hbox to \textheight{\vbox{\hsize\textheight
-  \begin{minipage}{\textheight}
-  \begin{Center}%
-  {#1}%
-  \end{Center}%
-  \caption[]{#2}%
-  \fignote{#3}%
-  \end{minipage}}}
-\else
-  \setbox4=\hbox to \hsize{\vbox{%
-  \begin{minipage}{\hsize}
-  \hbox to\hsize{\hss{#1}\hss}%
-  \caption[]{#2}
-  \fignote{#3}%
-  \end{minipage}}}
-\fi
-\if@rotate
-  \noindent\vrule width0pt height0.5\textheight depth0.5\textheight
-  \hspace*{0.5\textwidth}\rotatebox{90}{\copy4}%
-\else
-  \box4
-\fi}
-\fi
-%************************************
 
 \def\TEGT{\TableSpaced}%
 
@@ -2701,6 +2598,17 @@ manuscript {\theMANUSCRIPTNO}\end{tabular}}}%
 \EISSN{2333-2077}%
 \fi
 
+\if@STSY
+\JOURNAL{Stochastic Systems}%
+\ISSN{1946-5238}%
+\EISSN{1946-5238}%
+\fi
+
+\if@IJOO
+\JOURNAL{INFORMS Journal on Optimization}%
+\ISSN{XXXX-XXXX}%
+\EISSN{XXXX-XXXX}%
+\fi
 
 \if@IJDS
 \JOURNAL{INFORMS Journal on Data Science}%
@@ -2837,5 +2745,5 @@ of the main paper, will be produced by the INFORMS office when the issue is bein
 
 \endinput
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% end of informs2.cls
+% end of informs.cls
 
