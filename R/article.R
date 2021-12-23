@@ -238,6 +238,16 @@ ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
   )
 }
 
+#' @section `informs_article`: Format for creating submissions to
+#'   INFORMS journals. Adapted from \samp{https://pubsonline.informs.org/authorportal/latex-style-files}.
+#' @export
+#' @rdname article
+informs_article <- function(..., keep_tex = TRUE) {
+  pdf_document_format(
+    "informs", keep_tex = keep_tex, citation_package = "natbib", ...
+  )
+}
+
 #' @section `jasa_article`: Format for creating submissions to the
 #'   Journal of the Acoustical Society of America. Adapted from
 #'   <https://acousticalsociety.org/preparing-latex-manuscripts/>.
@@ -452,15 +462,5 @@ trb_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
 wellcomeor_article <- function(..., number_sections = FALSE, keep_tex = TRUE, citation_package = 'natbib') {
   pdf_document_format(
     "wellcomeor", keep_tex = keep_tex, number_sections = number_sections, citation_package = citation_package, ...
-  )
-}
-
-#' @section `informs_article`: Format for creating submissions to
-#'   INFORMS journals. Adapted from \samp{https://pubsonline.informs.org/authorportal/latex-style-files}.
-#' @export
-#' @rdname article
-informs_article <- function(..., keep_tex = TRUE) {
-  pdf_document_format(
-    "informs", keep_tex = keep_tex, citation_package = "natbib", ...
   )
 }

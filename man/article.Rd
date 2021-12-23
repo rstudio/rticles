@@ -17,6 +17,7 @@
 \alias{frontiers_article}
 \alias{glossa_article}
 \alias{ims_article}
+\alias{informs_article}
 \alias{jasa_article}
 \alias{lipics_article}
 \alias{jedm_article}
@@ -32,7 +33,6 @@
 \alias{tf_article}
 \alias{trb_article}
 \alias{wellcomeor_article}
-\alias{informs_article}
 \title{R Markdown output formats for (journal) articles}
 \usage{
 acm_article(...)
@@ -95,6 +95,8 @@ ims_article(
   ...
 )
 
+informs_article(..., keep_tex = TRUE)
+
 jasa_article(
   ...,
   keep_tex = TRUE,
@@ -145,8 +147,6 @@ wellcomeor_article(
   keep_tex = TRUE,
   citation_package = "natbib"
 )
-
-informs_article(..., keep_tex = TRUE)
 }
 \arguments{
 \item{..., number_sections, keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}.}
@@ -262,6 +262,11 @@ The argument \code{journal} accepts the acronym of any of the
 \item \code{aos}: The Annals of Statistics
 \item \code{sts}: Statistical Science
 }
+}
+
+\section{\code{informs_article}}{
+ Format for creating submissions to
+INFORMS journals. Adapted from \samp{https://pubsonline.informs.org/authorportal/latex-style-files}.
 }
 
 \section{\code{jasa_article}}{
@@ -391,11 +396,6 @@ which in turn is hosted at \samp{https://github.com/chiehrosswang/TRB_LaTeX_tex}
 \section{\code{wellcomeor_article}}{
  Format for creating submissions to
 Wellcome Open Research. Adapted from <overleaf.com/latex/templates/wellcome-open-research-article-template/hsmhhbpxvvbj>.
-}
-
-\section{\code{informs_article}}{
- Format for creating submissions to
-INFORMS journals. Adapted from \samp{https://pubsonline.informs.org/authorportal/latex-style-files}.
 }
 
 \examples{
