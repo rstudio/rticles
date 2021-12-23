@@ -1,5 +1,9 @@
 # rticles 0.23 (development version)
 
+## NEW FEATURES
+
+- New `informs_article()` template for submissions to INFORMS journals.
+
 # rticles 0.22
 
 ## BREAKING CHANGE
