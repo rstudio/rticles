@@ -454,3 +454,13 @@ wellcomeor_article <- function(..., number_sections = FALSE, keep_tex = TRUE, ci
     "wellcomeor", keep_tex = keep_tex, number_sections = number_sections, citation_package = citation_package, ...
   )
 }
+
+#' @section `informs_article`: Format for creating submissions to
+#'   INFORMS journals. Adapted from \samp{https://pubsonline.informs.org/authorportal/latex-style-files}.
+#' @export
+#' @rdname article
+informs_article <- function(..., keep_tex = TRUE) {
+  pdf_document_format(
+    "informs", keep_tex = keep_tex, citation_package = "natbib", ...
+  )
+}
