@@ -95,7 +95,7 @@ ims_article(
   ...
 )
 
-informs_article(..., keep_tex = TRUE)
+informs_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 jasa_article(
   ...,

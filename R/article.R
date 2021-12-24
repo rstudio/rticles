@@ -242,9 +242,12 @@ ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
 #'   INFORMS journals. Adapted from \samp{https://pubsonline.informs.org/authorportal/latex-style-files}.
 #' @export
 #' @rdname article
-informs_article <- function(..., keep_tex = TRUE) {
+informs_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
+  if (citation_package != "natbib") {
+    stop("Informs template only supports `natbib` for citation processing.")
+  }
   pdf_document_format(
-    "informs", keep_tex = keep_tex, citation_package = "natbib", ...
+    "informs", keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
 

@@ -13,13 +13,6 @@
 
 %% BEGIN MY ADDITIONS %%
 \usepackage{hyperref}
-% Pandoc toggle for numbering sections (defaults to be off)
-$if(numbersections)$
-\setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
-$else$
-\setcounter{secnumdepth}{0}
-$endif$
-
 $if(highlighting-macros)$
 % Pandoc syntax highlighting
 $highlighting-macros$
@@ -132,15 +125,22 @@ $endfor$
 
 % Author's names for the running heads
 % Sample depending on the number of authors;
-% \RUNAUTHOR{Jones}
+\RUNAUTHOR{%
+$if(authors/allbutlast)$
+$for(authors/allbutlast)$$it.familyname$$sep$, $endfor$
+ and $for(authors/last)$$it.familyname$$endfor$
+$else$
+${authors/last}
+$endif$
+}
 % \RUNAUTHOR{Jones and Wilson}
 % \RUNAUTHOR{Jones, Miller, and Wilson}
 % \RUNAUTHOR{Jones et al.} % for four or more authors
 % Enter authors following the given pattern:
 %\RUNAUTHOR{}
 
-$if(short_title)$
-\RUNTITLE{$short_title$}
+$if(shorttitle)$
+\RUNTITLE{$shorttitle$}
 $else$
 \RUNTITLE{$title$}
 $endif$
@@ -149,7 +149,7 @@ $endif$
 
 \ARTICLEAUTHORS{%
 $for(authors)$
-\AUTHOR{$authors.name$}
+\AUTHOR{$authors.othernames$ $authors.familyname$}
 \AFF{$authors.affiliation$, \EMAIL{$authors.email$}}
 
 $endfor$%

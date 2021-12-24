@@ -2,7 +2,7 @@
 
 ## NEW FEATURES
 
-- New `informs_article()` template for submissions to INFORMS journals.
+- New `informs_article()` template for submissions to INFORMS journals (thanks, @robjhyndman, #460).
 
 # rticles 0.22
 
