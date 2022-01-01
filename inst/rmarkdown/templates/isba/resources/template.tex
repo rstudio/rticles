@@ -1,0 +1,86 @@
+% \documentclass[ba,preprint]{imsart}% use this for supplement article
+\documentclass[ba]{imsart}
+
+\pubyear{2021}
+\volume{TBA}
+\issue{TBA}
+% \doi{0000}
+\arxiv{2010.00000}
+\firstpage{1}
+\lastpage{1}
+
+%
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage[colorlinks,citecolor=blue,urlcolor=blue,filecolor=blue,backref=page]{hyperref}
+\usepackage{graphicx}
+
+\startlocaldefs
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\endlocaldefs
+
+% Pandoc header
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+$preamble$
+
+\begin{document}
+\begin{frontmatter}
+
+\title{$title$}
+\runtitle{$title$}
+\begin{aug}
+$for(author)$
+\author{$author.firstname$ $author.lastname$\thanksref{$author.affiliationref$,$if(author.footnoterefs)$$for(author.footnoterefs)$$it$$sep$,$endfor$}$endif$}$if(author.email)$\ead{$author.email$}$endif$$if(author.url)$\ead[label=url]{$author.url$}$endif$$sep$, $endfor$
+
+\runauthor{$for(author/first)$$it.lastname$$endfor$$if(author/rest/rest)$ et al.$else$$for(author/rest)$ \and $author.lastname$$endfor$$endif$}
+$for(affiliations)$
+\address[$it.ref$]{$it.name$,$it.address$}
+$endfor$
+$for(footnotes)$
+\thankstext{$it.ref$}{$it.text$}
+$endfor$
+\end{aug}
+
+\begin{abstract}
+$abstract$
+\end{abstract}
+$if(MSC2020primary)$ \begin{keyword}[class=MSC]
+$for(MSC2020primary/first)$\kwd[Primary ]{$it$}$endfor$
+$if(MSC2020primary/rest)$$for(MSC2020primary/rest)$\kwd{$it$}$sep $$endfor$$endif$
+$if(MSC2020secondary)$$for(MSC2020secondary/first)$\kwd[; secondary ]{$it$}$endfor$
+$if(MSC2020secondary/rest)$$for(MSC2020secondary/rest)$\kwd{$it$}$sep $$endfor$$endif$$endif$\end{keyword}$endif$
+
+$if(keywords)$ \begin{keyword} $for(keywords)$\kwd{$keywords$}$sep$ $endfor$\end{keyword}$endif$
+\end{frontmatter}
+
+$body$
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+$if(supplements)$
+$for(supplements)$
+\begin{supplement}
+\stitle{$it.title$}
+\sdescription{$it.description$}
+\end{supplement}
+$endfor$$endif$
+
+$if(acknowledgements)$
+\begin{acks}[Acknowledgments]
+$acknowledgements$
+\end{acks}
+$endif$
+
+\bibliographystyle{ba}
+\bibliography{$bibliography$}
+
+\end{document}
+

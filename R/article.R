@@ -440,3 +440,26 @@ tf_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
     "tf", keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
+
+#' @section `isba_article`: Format for creating submissions to Bayesian analysis.
+#' Based on the official Bayesian analysis [class](https://www.e-publications.org/isba/support/).
+#'
+#' Possible arguments for the YAML header are:
+#' * `title` title of the manuscript
+#' * `author` list of authors, containing `name`, `affiliation` (as code) and `email`
+#' * `address` list containing `code` (for defining `author` affiliations) and `address` itself
+#' * `abstract` abstract, limited to 250 words
+#' * `mcs2020-subjects` list of lists. On first level two elements `primary` and (optional) `secondary`.
+#' On second level, a list of codes from [MCS2020 database](https://mathscinet.ams.org/mathscinet/msc/msc2020.html)
+#' * `keywords` a list of keywords
+#' * `bibliography` BibTeX `.bib` file
+#' * `longtable` set to `true` to include the `longtable` package, used by default from `pandoc` to convert markdown to LaTeX code
+#' * `header-includes`: custom additions to the header, before the `\begin{document}` statement
+#' * `include-after`: for including additional LaTeX code before the `\end{document}` statement
+#' @export
+#' @rdname article
+isba_article <- function(..., highlight = NULL, citation_package = "natbib") {
+  pdf_document_format(
+    "isba", highlight = highlight, citation_package = citation_package, ...
+  )
+}

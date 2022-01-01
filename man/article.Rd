@@ -31,6 +31,7 @@
 \alias{sim_article}
 \alias{springer_article}
 \alias{tf_article}
+\alias{isba_article}
 \title{R Markdown output formats for (journal) articles}
 \usage{
 acm_article(...)
@@ -136,6 +137,8 @@ sim_article(..., highlight = NULL, citation_package = "natbib")
 springer_article(..., keep_tex = TRUE, citation_package = "default")
 
 tf_article(..., keep_tex = TRUE, citation_package = "natbib")
+
+isba_article(..., highlight = NULL, citation_package = "natbib")
 }
 \arguments{
 \item{..., keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \verb{rmarkdown::[pdf_document]()}.}
@@ -375,6 +378,26 @@ Macro package for Springer Journals.
 \section{\code{tf_article}}{
  Format for creating submissions to a Taylor & Francis journal. Adapted from
 \samp{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
+}
+
+\section{\code{isba_article}}{
+ Format for creating submissions to Bayesian analysis.
+Based on the official Bayesian analysis \href{https://www.e-publications.org/isba/support/}{class}.
+
+Possible arguments for the YAML header are:
+\itemize{
+\item \code{title} title of the manuscript
+\item \code{author} list of authors, containing \code{name}, \code{affiliation} (as code) and \code{email}
+\item \code{address} list containing \code{code} (for defining \code{author} affiliations) and \code{address} itself
+\item \code{abstract} abstract, limited to 250 words
+\item \code{mcs2020-subjects} list of lists. On first level two elements \code{primary} and (optional) \code{secondary}.
+On second level, a list of codes from \href{https://mathscinet.ams.org/mathscinet/msc/msc2020.html}{MCS2020 database}
+\item \code{keywords} a list of keywords
+\item \code{bibliography} BibTeX \code{.bib} file
+\item \code{longtable} set to \code{true} to include the \code{longtable} package, used by default from \code{pandoc} to convert markdown to LaTeX code
+\item \code{header-includes}: custom additions to the header, before the \verb{\\begin\{document\}} statement
+\item \code{include-after}: for including additional LaTeX code before the \verb{\\end\{document\}} statement
+}
 }
 
 \examples{
