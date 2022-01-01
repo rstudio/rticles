@@ -33,6 +33,7 @@
 \alias{tf_article}
 \alias{trb_article}
 \alias{wellcomeor_article}
+\alias{isba_article}
 \title{R Markdown output formats for (journal) articles}
 \usage{
 acm_article(...)
@@ -147,6 +148,8 @@ wellcomeor_article(
   keep_tex = TRUE,
   citation_package = "natbib"
 )
+
+isba_article(..., highlight = NULL, citation_package = "natbib")
 }
 \arguments{
 \item{..., number_sections, keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}.}
@@ -398,6 +401,26 @@ which in turn is hosted at \samp{https://github.com/chiehrosswang/TRB_LaTeX_tex}
 \section{\code{wellcomeor_article}}{
  Format for creating submissions to
 Wellcome Open Research. Adapted from <overleaf.com/latex/templates/wellcome-open-research-article-template/hsmhhbpxvvbj>.
+}
+
+\section{\code{isba_article}}{
+ Format for creating submissions to Bayesian analysis.
+Based on the official Bayesian analysis \href{https://www.e-publications.org/isba/support/}{class}.
+
+Possible arguments for the YAML header are:
+\itemize{
+\item \code{title} title of the manuscript
+\item \code{author} list of authors, containing \code{name}, \code{affiliation} (as code) and \code{email}
+\item \code{address} list containing \code{code} (for defining \code{author} affiliations) and \code{address} itself
+\item \code{abstract} abstract, limited to 250 words
+\item \code{mcs2020-subjects} list of lists. On first level two elements \code{primary} and (optional) \code{secondary}.
+On second level, a list of codes from \href{https://mathscinet.ams.org/mathscinet/msc/msc2020.html}{MCS2020 database}
+\item \code{keywords} a list of keywords
+\item \code{bibliography} BibTeX \code{.bib} file
+\item \code{longtable} set to \code{true} to include the \code{longtable} package, used by default from \code{pandoc} to convert markdown to LaTeX code
+\item \code{header-includes}: custom additions to the header, before the \verb{\\begin\{document\}} statement
+\item \code{include-after}: for including additional LaTeX code before the \verb{\\end\{document\}} statement
+}
 }
 
 \examples{
