@@ -1,3 +1,4 @@
+% based on https://vtex-soft.github.io/texsupport.isba-ba/
 % \documentclass[ba,preprint]{imsart}% use this for supplement article
 \documentclass[ba]{imsart}
 
@@ -34,28 +35,43 @@ $preamble$
 
 \title{$title$}
 \runtitle{$title$}
+
 \begin{aug}
-$for(author)$
-\author{$author.firstname$ $author.lastname$\thanksref{$author.affiliationref$,$if(author.footnoterefs)$$for(author.footnoterefs)$$it$$sep$,$endfor$}$endif$}$if(author.email)$\ead{$author.email$}$endif$$if(author.url)$\ead[label=url]{$author.url$}$endif$$sep$, $endfor$
+$for(author/pairs)$
+\author{$author.value.firstname$ $author.value.lastname$\thanksref{$author.value.affiliationref$,$if(author.value.footnoterefs)$$for(author.value.footnoterefs)$$it$$sep$,$endfor$}$endif$
+$if(author.value.email)$\ead[label=ea-$author.value.affiliationref$-$author.key$,email]{$author.value.email$}$endif$
+$if(author.value.url)$\ead[label=ua-$author.value.affiliationref$-$author.key$,url]{$author.value.url$}$endif$}$sep$, $endfor$
 
 \runauthor{$for(author/first)$$it.lastname$$endfor$$if(author/rest/rest)$ et al.$else$$for(author/rest)$ \and $author.lastname$$endfor$$endif$}
-$for(affiliations)$
-\address[$it.ref$]{$it.name$,$it.address$}
-$endfor$
+
+$for(affiliations)$ %loop through affiliations
+\address[$affiliations.ref$]{$affiliations.name$,$affiliations.address$ $for(author/pairs)$
+$if(it.value.email)$
+\ifstrequal{$affiliations.ref$}{$it.value.affiliationref$}{\printead{ea-$affiliations.ref$-$it.key$}}{}
+$endif$
+$if(it.value.url)$
+\ifstrequal{$affiliations.ref$}{$it.value.affiliationref$}{\printead{ua-$affiliations.ref$-$it.key$}}{}
+$endif$
+$sep$ $endfor$%authors
+}$endfor$%affiliations
+
 $for(footnotes)$
 \thankstext{$it.ref$}{$it.text$}
 $endfor$
+
 \end{aug}
 
 \begin{abstract}
 $abstract$
 \end{abstract}
+
+% MSC class
 $if(MSC2020primary)$ \begin{keyword}[class=MSC]
 $for(MSC2020primary/first)$\kwd[Primary ]{$it$}$endfor$
 $if(MSC2020primary/rest)$$for(MSC2020primary/rest)$\kwd{$it$}$sep $$endfor$$endif$
 $if(MSC2020secondary)$$for(MSC2020secondary/first)$\kwd[; secondary ]{$it$}$endfor$
 $if(MSC2020secondary/rest)$$for(MSC2020secondary/rest)$\kwd{$it$}$sep $$endfor$$endif$$endif$\end{keyword}$endif$
-
+% keywords
 $if(keywords)$ \begin{keyword} $for(keywords)$\kwd{$keywords$}$sep$ $endfor$\end{keyword}$endif$
 \end{frontmatter}
 
