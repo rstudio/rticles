@@ -57,6 +57,8 @@ supplements:
     description: Short description of Supplement A.
   - title: Title of Supplement B
     description: Short description of Supplement B.
+doi: "10.31219/osf.io/wh3wr"
+arxiv: 2010.010101
 acknowledgements: |
   And this is an acknowledgements section with a heading that was produced by the `acks` environment. Thank you all for helping me writing this Rmarkdown sample file.
 
