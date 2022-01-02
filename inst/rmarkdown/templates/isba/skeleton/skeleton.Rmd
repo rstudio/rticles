@@ -72,7 +72,9 @@ bibliography: sample.bib
 #linenumbers: true
 #numbersections: true
 csl: imsart.csl
-output: rticles::isba_article
+output: 
+  rticles::isba_article:
+    md_extensions: -autolink_bare_uris #keep these off or \printead{} will fail or email addresses
 ---
 
 # R Markdown
