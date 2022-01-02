@@ -2,11 +2,11 @@
 % \documentclass[ba,preprint]{imsart}% use this for supplement article
 \documentclass[ba]{imsart}
 
-\pubyear{2021}
+\pubyear{\the\year{}}
 \volume{TBA}
 \issue{TBA}
-% \doi{0000}
-\arxiv{2010.00000}
+$if(doi)$\doi{$doi$}$endif$
+$if(arxiv)$\arxiv{$arxiv$}$endif$
 \firstpage{1}
 \lastpage{1}
 
@@ -39,18 +39,18 @@ $preamble$
 \begin{aug}
 $for(author/pairs)$
 \author{$author.value.firstname$ $author.value.lastname$\thanksref{$author.value.affiliationref$,$if(author.value.footnoterefs)$$for(author.value.footnoterefs)$$it$$sep$,$endfor$}$endif$
-$if(author.value.email)$\ead[label=ea-$author.value.affiliationref$-$author.key$,email]{$author.value.email$}$endif$
-$if(author.value.url)$\ead[label=ua-$author.value.affiliationref$-$author.key$,url]{$author.value.url$}$endif$}$sep$, $endfor$
+$if(author.value.email)$\ead[label=ea-$author.key$,email]{$author.value.email$}$endif$
+$if(author.value.url)$\ead[label=ua-$author.key$,url]{$author.value.url$}$endif$}$sep$, $endfor$
 
 \runauthor{$for(author/first)$$it.lastname$$endfor$$if(author/rest/rest)$ et al.$else$$for(author/rest)$ \and $author.lastname$$endfor$$endif$}
 
 $for(affiliations)$ %loop through affiliations
 \address[$affiliations.ref$]{$affiliations.name$,$affiliations.address$ $for(author/pairs)$
 $if(it.value.email)$
-\ifstrequal{$affiliations.ref$}{$it.value.affiliationref$}{\printead{ea-$affiliations.ref$-$it.key$}}{}
+\ifstrequal{$affiliations.ref$}{$it.value.affiliationref$}{\printead{ea-$it.key$}}{}
 $endif$
 $if(it.value.url)$
-\ifstrequal{$affiliations.ref$}{$it.value.affiliationref$}{\printead{ua-$affiliations.ref$-$it.key$}}{}
+\ifstrequal{$affiliations.ref$}{$it.value.affiliationref$}{\printead{ua-$it.key$}}{}
 $endif$
 $sep$ $endfor$%authors
 }$endfor$%affiliations
