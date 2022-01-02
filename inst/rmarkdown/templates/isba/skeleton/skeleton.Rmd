@@ -74,7 +74,8 @@ bibliography: sample.bib
 csl: imsart.csl
 output: 
   rticles::isba_article:
-    md_extensions: -autolink_bare_uris #keep these off or \printead{} will fail or email addresses
+    md_extensions: -autolink_bare_uris #keep these off or \printead{} will fail on email addresses
+    keep_tex: true # you need it to submit to the journal
 ---
 
 # R Markdown
