@@ -460,8 +460,8 @@ tf_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
 #' @rdname article
 isba_article <- function(..., highlight = NULL, citation_package = "natbib") {
   # from https://github.com/rstudio/rmarkdown/issues/372
-  md_extensions <- c("+ascii_identifiers", "+tex_math_single_backslash", "-autolink_bare_uris")
+  #md_extensions <- c("+ascii_identifiers", "+tex_math_single_backslash", "-autolink_bare_uris")
   pdf_document_format(
-    "isba", highlight = highlight, citation_package = citation_package, md_extensions=md_extensions,...
+    "isba", highlight = highlight, citation_package = citation_package, ...
   )
 }
