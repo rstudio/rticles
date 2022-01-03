@@ -475,15 +475,21 @@ wellcomeor_article <- function(..., number_sections = FALSE, keep_tex = TRUE, ci
 
 #' @section `isba_article`: Format for creating submissions to Bayesian analysis.
 #' Based on the official Bayesian analysis [class](https://www.e-publications.org/isba/support/).
+#' Template shows how to use this format as a base format for `bookdown::pdf_book`, but it can very well be used on its own (with limitations that figure referencing will not work).
+#' Note that the template sets `md_extensions` to exclude `-autolink_bare_uris` because otherwise author emails produce error
 #'
 #' Possible arguments for the YAML header are:
 #' * `title` title of the manuscript
-#' * `author` list of authors, containing `name`, `affiliation` (as code) and `email`
-#' * `address` list containing `code` (for defining `author` affiliations) and `address` itself
+#' * `author` list of authors, containing `firstname`, `lastname`, `email`, `url`, `affiliationref` (as code) and `footnoterefs` (as list of codes)
+#' * `affiliations` list containing `ref` (code for defining `author` affiliations), institution `name` and `address` itself
+#' * `footnotes` a list of two-element entries: `ref` and `text`
 #' * `abstract` abstract, limited to 250 words
-#' * `mcs2020-subjects` list of lists. On first level two elements `primary` and (optional) `secondary`.
-#' On second level, a list of codes from [MCS2020 database](https://mathscinet.ams.org/mathscinet/msc/msc2020.html)
+#' * `MSC2020primary`, `MSC2020primary` lists of codes from [MCS2020 database](https://mathscinet.ams.org/mathscinet/msc/msc2020.html)
 #' * `keywords` a list of keywords
+#' * `supplements` a list of entries with two elements `title` and `description`
+#' * `doi` DOI of the article
+#' * `arxiv` Arxiv id
+#' * `acknowledgements` acknowledgement text, limited to 250 words
 #' * `bibliography` BibTeX `.bib` file
 #' * `longtable` set to `true` to include the `longtable` package, used by default from `pandoc` to convert markdown to LaTeX code
 #' * `header-includes`: custom additions to the header, before the `\begin{document}` statement
