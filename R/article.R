@@ -239,7 +239,9 @@ ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
 }
 
 #' @section `informs_article`: Format for creating submissions to
-#'   INFORMS journals. Adapted from \samp{https://pubsonline.informs.org/authorportal/latex-style-files}.
+#' INFORMS journals. Adapted from \samp{https://pubsonline.informs.org/authorportal/latex-style-files}.
+#'
+#' It requires a minimum version of 2.10 for Pandoc.
 #' @export
 #' @rdname article
 informs_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
