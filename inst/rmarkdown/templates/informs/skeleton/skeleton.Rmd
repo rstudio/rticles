@@ -1,0 +1,103 @@
+---
+journal: ijds
+title: Paper for INFORMS journal
+shorttitle: "Untitled"
+authors:
+- familyname: Lee
+  othernames: Sue
+  affiliation: Department of YYY, University of XXX
+  email: author@xxx.edu
+- familyname: Li
+  othernames: Xu
+  affiliation: Department of ZZZ, University of WWW
+  email: author@www.edu
+- familyname: Leigh
+  othernames:  Soo
+  affiliation: Department of BBB, University of VVV
+  email: author@www.edu
+keywords:
+  - 3 to 6 keywords
+  - that do not appear in the title
+abstract: |
+  Abstract goes here
+acknowledgment: |
+  The authors would like to thank ...
+bibliography: references.bib
+blind: false
+manuscriptno: to be added later
+output: rticles::informs_article
+---
+
+Notes: the journal must be one of deca, ijds, ijoc, inte, isre, mnsc, mksc, moor, msom, opre, orsc, trsc, ited, serv, stsc, corresponding to the associated INFORMS journal.
+
+# Section title {#sec:1}
+
+Text with citations by @cleveland1990stl or in parentheses [@HK06].
+
+## Subsection title {#sec:2}
+
+Don't forget to give each section
+and subsection a unique label (see Section \ref{sec:1} for an example).
+
+#### Paragraph headings
+
+Use paragraph headings if needed.
+
+## Equations
+
+Here is an equation:
+$$ 
+  f_{X}(x) = \left(\frac{\alpha}{\beta}\right)
+  \left(\frac{x}{\beta}\right)^{\alpha-1}
+  e^{-\left(\frac{x}{\beta}\right)^{\alpha}}; 
+  \alpha,\beta,x > 0 .
+$$
+Here is another:
+\begin{align}
+  a^2+b^2=c^2.
+\end{align}
+
+Inline equations: $\sum_{i = 2}^\infty\{\alpha_i^\beta\}$
+
+# Figures and tables
+
+## Figures coming from R
+
+Figure \ref{fig2} is generated using an R chunk.
+
+```{r fig2, fig.width = 5, fig.height = 5, fig.align='center', out.width="50%", fig.cap = "\\label{fig2}A meaningless scatterplot.", echo = FALSE}
+plot(runif(25), runif(25))
+```
+
+## Tables coming from R
+
+Tables can also be generated using R chunks, as shown in Table \ref{tab1} for example.
+
+```{r tab1, echo=FALSE}
+knitr::kable(head(mtcars)[,1:4], 
+    caption = "\\label{tab1}Caption centered above table"
+)
+```
+
+\clearpage
+
+::: {.APPENDIX latex="{General appendix}"}
+
+Some content for the appendix.
+
+:::
+
+::: {.APPENDICES latex=true}
+
+If there is more than one appendix (i.e., several unrelated sections), one should use `APPENDICES` instead, and add section headings like this.
+
+# Section A
+
+Content
+
+# Section B
+
+Content
+
+:::
+

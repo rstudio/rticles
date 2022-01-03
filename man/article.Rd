@@ -17,6 +17,7 @@
 \alias{frontiers_article}
 \alias{glossa_article}
 \alias{ims_article}
+\alias{informs_article}
 \alias{jasa_article}
 \alias{lipics_article}
 \alias{jedm_article}
@@ -93,6 +94,8 @@ ims_article(
   pandoc_args = NULL,
   ...
 )
+
+informs_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 jasa_article(
   ...,
@@ -259,6 +262,13 @@ The argument \code{journal} accepts the acronym of any of the
 \item \code{aos}: The Annals of Statistics
 \item \code{sts}: Statistical Science
 }
+}
+
+\section{\code{informs_article}}{
+ Format for creating submissions to
+INFORMS journals. Adapted from \samp{https://pubsonline.informs.org/authorportal/latex-style-files}.
+
+It requires a minimum version of 2.10 for Pandoc.
 }
 
 \section{\code{jasa_article}}{

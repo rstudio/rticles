@@ -238,6 +238,24 @@ ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
   )
 }
 
+#' @section `informs_article`: Format for creating submissions to
+#' INFORMS journals. Adapted from \samp{https://pubsonline.informs.org/authorportal/latex-style-files}.
+#'
+#' It requires a minimum version of 2.10 for Pandoc.
+#' @export
+#' @rdname article
+informs_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
+  if (citation_package != "natbib") {
+    stop("INFORMS template only supports `natbib` for citation processing.")
+  }
+  if (!rmarkdown::pandoc_available("2.10")) {
+    stop("informs_article requires a minimum of pandoc 2.10.")
+  }
+  pdf_document_format(
+    "informs", keep_tex = keep_tex, citation_package = citation_package, ...
+  )
+}
+
 #' @section `jasa_article`: Format for creating submissions to the
 #'   Journal of the Acoustical Society of America. Adapted from
 #'   <https://acousticalsociety.org/preparing-latex-manuscripts/>.
