@@ -73,7 +73,8 @@ bibliography: sample.bib
 #numbersections: true
 csl: imsart.csl
 output: 
-  rticles::isba_article:
+  bookdown::pdf_book: 
+    base_format: rticles::isba_article
     md_extensions: -autolink_bare_uris #keep these off or \printead{} will fail on email addresses
     keep_tex: true # you need it to submit to the journal
 ---
@@ -101,6 +102,9 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot. Because printing is different from typewriting, there are a number of things that you have to do differently when preparing an input file than if you were just typing the document directly.  Quotation marks separates the double and single quote. 
+
+$$a+b\geq c$$
+where $a$ is a variable and $c$ is variable as well.
 
 Dashes come in three sizes: a hyphen, an intra-word dash, a medium dash for number ranges like 1--2, and a punctuation dash in place of a comma, semicolon, colon or parentheses ---like this.
 

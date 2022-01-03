@@ -38,14 +38,12 @@ $preamble$
 
 \begin{aug}
 $for(author/pairs)$
-\author{$author.value.firstname$ $author.value.lastname$\thanksref{$author.value.affiliationref$,$if(author.value.footnoterefs)$$for(author.value.footnoterefs)$$it$$sep$,$endfor$}$endif$
-$if(author.value.email)$\ead[label=ea-$author.key$,email]{$author.value.email$}$endif$
-$if(author.value.url)$\ead[label=ua-$author.key$,url]{$author.value.url$}$endif$}$sep$, $endfor$
+\author{$author.value.firstname$ $author.value.lastname$\thanksref{$author.value.affiliationref$$if(author.value.footnoterefs)$,$for(author.value.footnoterefs)$$it$$sep$,$endfor$$endif$}$if(author.value.email)$\ead[label=ea-$author.key$,email]{$author.value.email$}$endif$$if(author.value.url)$\ead[label=ua-$author.key$,url]{$author.value.url$}$endif$}$sep$, $endfor$
 
 \runauthor{$for(author/first)$$it.lastname$$endfor$$if(author/rest/rest)$ et al.$else$$for(author/rest)$ \and $author.lastname$$endfor$$endif$}
 
 $for(affiliations)$ %loop through affiliations
-\address[$affiliations.ref$]{$affiliations.name$,$affiliations.address$ $for(author/pairs)$
+\address[$affiliations.ref$]{$affiliations.name$, $affiliations.address$ $for(author/pairs)$
 $if(it.value.email)$
 \ifstrequal{$affiliations.ref$}{$it.value.affiliationref$}{\printead{ea-$it.key$}}{}
 $endif$
