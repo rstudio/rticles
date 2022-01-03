@@ -3,6 +3,7 @@
 ## NEW FEATURES
 
 - New `informs_article()` template for submissions to INFORMS journals (thanks, @robjhyndman, #460).
+- New `isba_article()` template for submissions to Bayesian Analysis journal (thanks, @dmi3kno, ).
 
 # rticles 0.22
 
