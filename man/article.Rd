@@ -18,6 +18,7 @@
 \alias{glossa_article}
 \alias{ims_article}
 \alias{informs_article}
+\alias{iop_article}
 \alias{jasa_article}
 \alias{lipics_article}
 \alias{jedm_article}
@@ -96,6 +97,8 @@ ims_article(
 )
 
 informs_article(..., keep_tex = TRUE, citation_package = "natbib")
+
+iop_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 jasa_article(
   ...,
@@ -269,6 +272,11 @@ The argument \code{journal} accepts the acronym of any of the
 INFORMS journals. Adapted from \samp{https://pubsonline.informs.org/authorportal/latex-style-files}.
 
 It requires a minimum version of 2.10 for Pandoc.
+}
+
+\section{\code{iop_article}}{
+ Format for creating submissions to
+IOP journals. Adapted from \samp{https://publishingsupport.iopscience.iop.org/questions/latex-template/}.
 }
 
 \section{\code{jasa_article}}{
