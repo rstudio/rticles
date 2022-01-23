@@ -3,7 +3,7 @@
 ## NEW FEATURES
 
 - New `informs_article()` template for submissions to INFORMS journals (thanks, @robjhyndman, #460).
-- Update Copernicus Publications template to version 6.5 from 2021-12-15 (@RLumSK, #463)
+- Update Copernicus Publications template to version 6.6 from 2022-01-18 (@RLumSK, #463)
 
 # rticles 0.22
 
