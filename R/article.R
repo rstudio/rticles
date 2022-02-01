@@ -497,14 +497,14 @@ wellcomeor_article <- function(..., number_sections = FALSE, keep_tex = TRUE, ci
 #' * `include-after`: for including additional LaTeX code before the `\end{document}` statement
 #' @export
 #' @rdname article
-isba_article <- function(..., keep_tex=TRUE, highlight = NULL, citation_package = "natbib") {
-    if (citation_package != "natbib") {
-      stop("ISBA template only supports `natbib` for citation processing.")
-    }
+isba_article <- function(..., keep_tex = TRUE, highlight = NULL, citation_package = "natbib") {
+  if (citation_package != "natbib") {
+    stop("ISBA template only supports `natbib` for citation processing.")
+  }
   # from https://github.com/rstudio/rmarkdown/issues/372
   #md_extensions <- c("+ascii_identifiers", "+tex_math_single_backslash", "-autolink_bare_uris")
   if (!rmarkdown::pandoc_available("2.10")) {
-    stop("isba_article requires a minimum of pandoc 2.10.")
+    stop("`isba_article()` requires a minimum of pandoc 2.10.")
   }
   pdf_document_format(
     "isba", keep_tex = keep_tex, highlight = highlight, citation_package = citation_package, ...
