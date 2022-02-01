@@ -1,0 +1,160 @@
+% based on https://vtex-soft.github.io/texsupport.isba-ba/
+% \documentclass[ba,preprint]{imsart}% use this for supplement article
+\documentclass[$for(classoption)$$classoption$$sep$,$endfor$]{imsart}
+
+\pubyear{\the\year{}}
+\volume{TBA}
+\issue{TBA}
+$if(doi)$\doi{$doi$}$endif$
+$if(arxiv)$\arxiv{$arxiv$}$endif$
+\firstpage{1}
+\lastpage{1}
+
+%
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage[colorlinks,citecolor=blue,urlcolor=blue,filecolor=blue,backref=page]{hyperref}
+\usepackage{graphicx}
+
+\startlocaldefs
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\endlocaldefs
+% rticles required
+$if(highlighting-macros)$
+% Pandoc syntax highlighting
+$highlighting-macros$
+$endif$
+
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+$if(tables)$
+% From pandoc table feature
+\usepackage{longtable,booktabs,array}
+$if(multirow)$
+\usepackage{multirow}
+$endif$
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+$endif$
+
+$if(csl-refs)$
+% Pandoc citation processing
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+% Pandoc header
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+\begin{document}
+$for(include-before)$
+$include-before$
+$endfor$
+\begin{frontmatter}
+
+\title{$title$}
+\runtitle{$if(runtitle)$$runtitle$$else$$title$$endif$}
+
+\begin{aug}
+$for(author/pairs)$
+\author{$author.value.firstname$ $author.value.lastname$\thanksref{$author.value.affiliationref$$if(author.value.footnoterefs)$,$for(author.value.footnoterefs)$$it$$sep$,$endfor$$endif$}$if(author.value.email)$\ead[label=ea-$author.key$,email]{$author.value.email$}$endif$$if(author.value.url)$\ead[label=ua-$author.key$,url]{$author.value.url$}$endif$}$sep$, $endfor$
+
+\runauthor{$for(author/first)$$it.lastname$$endfor$$if(author/rest/rest)$ et al.$else$$for(author/rest)$ \and $author.lastname$$endfor$$endif$}
+
+$for(affiliations)$ %loop through affiliations
+\address[$affiliations.ref$]{$affiliations.name$, $affiliations.address$ $for(author/pairs)$
+$if(it.value.email)$
+\ifstrequal{$affiliations.ref$}{$it.value.affiliationref$}{\printead{ea-$it.key$}}{}
+$endif$
+$if(it.value.url)$
+\ifstrequal{$affiliations.ref$}{$it.value.affiliationref$}{\printead{ua-$it.key$}}{}
+$endif$
+$sep$ $endfor$%authors
+}$endfor$%affiliations
+
+$for(footnotes)$
+\thankstext{$it.ref$}{$it.text$}
+$endfor$
+
+\end{aug}
+
+\begin{abstract}
+$abstract$
+\end{abstract}
+
+% MSC class
+$if(MSC2020primary)$ \begin{keyword}[class=MSC]
+$for(MSC2020primary/first)$\kwd[Primary ]{$it$}$endfor$
+$for(MSC2020primary/rest)$\kwd{$it$}$sep $$endfor$
+$if(MSC2020secondary)$$for(MSC2020secondary/first)$\kwd[; secondary ]{$it$}$endfor$
+$if(MSC2020secondary/rest)$$for(MSC2020secondary/rest)$\kwd{$it$}$sep $$endfor$$endif$$endif$\end{keyword}$endif$
+% keywords
+$if(keywords)$ \begin{keyword} $for(keywords)$\kwd{$keywords$}$sep$ $endfor$\end{keyword}$endif$
+\end{frontmatter}
+
+$body$
+
+$if(supplements)$
+$for(supplements)$
+\begin{supplement}
+\stitle{$it.title$}
+\sdescription{$it.description$}
+\end{supplement}
+$endfor$$endif$
+
+$if(acknowledgements)$
+\begin{acks}[Acknowledgments]
+$acknowledgements$
+\end{acks}
+$endif$
+
+\bibliographystyle{ba}
+\bibliography{$bibliography$}
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+\end{document}
+

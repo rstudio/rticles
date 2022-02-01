@@ -472,3 +472,41 @@ wellcomeor_article <- function(..., number_sections = FALSE, keep_tex = TRUE, ci
     "wellcomeor", keep_tex = keep_tex, number_sections = number_sections, citation_package = citation_package, ...
   )
 }
+
+#' @section `isba_article`: Format for creating submissions to Bayesian analysis.
+#' Based on the official Bayesian analysis [class](https://www.e-publications.org/isba/support/).
+#' Template shows how to use this format as a base format for `bookdown::pdf_book`, but it can very well be used on its own (with limitations that figure referencing will not work).
+#' Note that the template sets `md_extensions` to exclude `-autolink_bare_uris` because otherwise author emails produce error
+#'
+#' Possible arguments for the YAML header are:
+#' * `title` title of the manuscript. Shorter version of the title can be provided as `runtitle`.
+#' * `classoption` should equal `ba` or `ba,preprint` for supplementary article.``
+#' * `author` list of authors, containing `firstname`, `lastname`, `email`, `url`, `affiliationref` (as code) and `footnoterefs` (as list of codes)
+#' * `affiliations` list containing `ref` (code for defining `author` affiliations), institution `name` and `address` itself
+#' * `footnotes` a list of two-element entries: `ref` and `text`
+#' * `abstract` abstract, limited to 250 words
+#' * `MSC2020primary`, `MSC2020primary` lists of codes from [MCS2020 database](https://mathscinet.ams.org/mathscinet/msc/msc2020.html)
+#' * `keywords` a list of keywords
+#' * `supplements` a list of entries with two elements `title` and `description`
+#' * `doi` DOI of the article
+#' * `arxiv` Arxiv id
+#' * `acknowledgements` acknowledgement text, limited to 250 words
+#' * `bibliography` BibTeX `.bib` file
+#' * `longtable` set to `true` to include the `longtable` package, used by default from `pandoc` to convert markdown to LaTeX code
+#' * `header-includes`: custom additions to the header, before the `\begin{document}` statement
+#' * `include-after`: for including additional LaTeX code before the `\end{document}` statement
+#' @export
+#' @rdname article
+isba_article <- function(..., keep_tex = TRUE, highlight = NULL, citation_package = "natbib") {
+  if (citation_package != "natbib") {
+    stop("ISBA template only supports `natbib` for citation processing.")
+  }
+  # from https://github.com/rstudio/rmarkdown/issues/372
+  #md_extensions <- c("+ascii_identifiers", "+tex_math_single_backslash", "-autolink_bare_uris")
+  if (!rmarkdown::pandoc_available("2.10")) {
+    stop("`isba_article()` requires a minimum of pandoc 2.10.")
+  }
+  pdf_document_format(
+    "isba", keep_tex = keep_tex, highlight = highlight, citation_package = citation_package, ...
+  )
+}
