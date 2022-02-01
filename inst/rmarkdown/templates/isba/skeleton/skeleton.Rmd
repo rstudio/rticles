@@ -72,7 +72,6 @@ date: "`r Sys.Date()`"
 bibliography: sample.bib
 #linenumbers: true
 #numbersections: true
-csl: imsart.csl
 output: 
   bookdown::pdf_book: 
     base_format: rticles::isba_article

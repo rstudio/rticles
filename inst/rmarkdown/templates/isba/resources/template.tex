@@ -88,6 +88,9 @@ $header-includes$
 $endfor$
 
 \begin{document}
+$for(include-before)$
+$include-before$
+$endfor$
 \begin{frontmatter}
 
 \title{$title$}
@@ -130,15 +133,7 @@ $if(MSC2020secondary/rest)$$for(MSC2020secondary/rest)$\kwd{$it$}$sep $$endfor$$
 $if(keywords)$ \begin{keyword} $for(keywords)$\kwd{$keywords$}$sep$ $endfor$\end{keyword}$endif$
 \end{frontmatter}
 
-$for(include-before)$
-$include-before$
-$endfor$
-
 $body$
-
-$for(include-after)$
-$include-after$
-$endfor$
 
 $if(supplements)$
 $for(supplements)$
@@ -156,6 +151,10 @@ $endif$
 
 \bibliographystyle{ba}
 \bibliography{$bibliography$}
+
+$for(include-after)$
+$include-after$
+$endfor$
 
 \end{document}
 
