@@ -10,7 +10,7 @@ template:
   bslib:
     primary: "#096B72"
     navbar-background: "#e6f3fc"
-  trailingslash_redirect: true
+  trailing_slash_redirect: true
   opengraph:
     image:
       src: man/figures/logo.png

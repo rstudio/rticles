@@ -12,11 +12,11 @@
 %% This file is part of the copernicus package for papers
 %% published by Copernicus Publications (Copernicus GmbH).
 %% 
-%%       Copyright (C) 2020 by Copernicus Publications
+%%       Copyright (C) 2022 by Copernicus Publications
 %% -----------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{copernicus}
-    [2021/07/07 9.32 Copernicus papers]
+    [2021/12/08 9.39 Copernicus papers]
 \frenchspacing
 \clubpenalty10000
 \widowpenalty10000
@@ -96,6 +96,7 @@
 \newif\if@secline% Underlined Sections, lup 2017-11-06
 \newif\if@dolinesec\@dolinesecfalse
 \newif\if@bar            %only used under \if@stage@final and \@cop@hometrue; for modern layout as well as for the classically layouted sub-journal "angeocom"
+\newif\if@firstbar       %only used under \if@stage@final and \@cop@hometrue; for modern layout as well as for the classically layouted sub-journal "angeocom"
 \newif\if@hvmath         \DeclareOption{hvmath}{\@hvmathtrue}%only used for discussions and only under \@cop@hometrue
 \InputIfFileExists{copernicus.cfg}%
   {\typeout{Additional configuration file copernicus.cfg used}}%
@@ -360,6 +361,7 @@
           \textcolor{rulecol}{\@ddsidemarginrule}%
       \fi\fi}
     \def\@evenhead{%
+      \if@firstbar\global\@barfalse\fi
       \if@cop@home\if@bar
           \textcolor{barcol}{\@vensidemarginbar}%
           %\textcolor{textcol}{\@vensidemarginrule}%
@@ -378,6 +380,7 @@
 \else%discussions
   \def\ps@headings{%
     \def\@oddhead{%
+      \if@firstbar\global\@barfalse\fi
       \hfil
       \rlap{%
         \kern5mm
@@ -397,6 +400,7 @@
     \let\@evenfoot\@oddfoot}
 \fi
 \if@stage@final
+  \if@firstbar\@bartrue\fi
   \if@bar
     \def\@titlebar{%
       \textcolor{barcol}{\@ddsidemarginbar}%
@@ -459,7 +463,8 @@
       \def\@oddhead{\parbox[t]{0.6\textwidth}{\@manuscriptInfo}}
       \let\@oddfoot\@empty
     \fi
-    \let\@mkboth\@gobbletwo}
+    \let\@mkboth\@gobbletwo
+  }
 \fi
 \AtEndDocument{%
   \clearpage
@@ -999,7 +1004,7 @@
 \def\labelitemii{\bfseries\textendash}
 \def\labelitemiii{$\m@th\bullet$}
 \def\labelitemiv{$\m@th\cdot$}
-\def\itemize{%
+\def\copstartlist{%
   \if@secline
     \ifx\@secline@omitted\relax
       \leavevmode
@@ -1008,6 +1013,10 @@
       \global\let\@secline@omitted\@undefined
     \fi
   \fi
+}
+
+\def\itemize{%
+  \copstartlist
   \ifnum \@itemdepth >\thr@@\@toodeep\else
     \advance\@itemdepth\@ne
     \edef\@itemitem{labelitem\romannumeral\the\@itemdepth}%
@@ -1016,6 +1025,46 @@
       \csname\@itemitem\endcsname
       {\def\makelabel##1{\hss\llap{##1}}}%
   \fi}
+
+\newenvironment{itemizewithoutindent}{%
+  \copstartlist
+  \ifnum \@itemdepth >\thr@@\@toodeep\else
+    \advance\@itemdepth\@ne
+    \edef\@itemitem{labelitem\romannumeral\the\@itemdepth}%
+    \expandafter
+    \list
+      \csname\@itemitem\endcsname
+      {\leftmargin\z@
+       \itemindent\z@
+       \labelwidth\z@
+       \labelsep\z@
+       \def\makelabel##1{\if!##1!\else##1\enskip\fi}}%
+  \fi
+}{\endlist}
+
+\newenvironment{plainlistindent}{%
+  \copstartlist
+  \ifnum \@itemdepth >\thr@@\@toodeep\else
+    \advance\@itemdepth\@ne
+    \edef\@itemitem{labelitem\romannumeral\the\@itemdepth}%
+    \expandafter
+    \list
+      \csname\@itemitem\endcsname
+      {\itemsep\z@
+       \topsep\z@
+       \parsep\z@
+       \itemindent=\dimexpr-\labelwidth-\itemsep\relax
+       \def\makelabel##1{%##1%
+         \edef\@tempa{##1}%
+         \ifx\@tempa\@empty
+           \hspace*{\labelwidth}%
+         \else
+           \hspace*{\dimexpr\labelwidth+\labelsep\relax}##1
+         \fi\ignorespaces
+       }}%
+  \fi
+}{\endlist}
+
 \let\@abslang\relax
 \long\def\secondabstract#1{%
   \subpdfbookmark{\secabstractname.}{\secabstractname.}%
@@ -1198,7 +1247,9 @@
   \else
     \expandafter\active@text@prime
   \fi}
-\AtBeginDocument{\catcode`\'=\active}
+\AtBeginDocument{% 0821: \AtBeginDocument is applied AFTER the .aux is read… If '' is in aux, it will throw an error.
+  \immediate\write\@auxout{\string\catcode\string`\string\'\string=\string\active}%
+  \catcode`\'=\active}
 \ifx\xmltexversion\@undefined
 \begingroup
 \obeylines\obeyspaces%
@@ -1321,7 +1372,7 @@
   \def\dosupplementname{Supplement}%
   \def\teamlistname{Liste d'auteurs}%
   \def\disclaimername{Clause de non-responsabilité}%
-  \def\sistatementname{Déclaration de la numéro special}%
+  \def\sistatementname{Déclaration du numéro spécial}%
   %% TBD
   \def\financialsupportname{Financement}%
   \def\reviewstatementname{Contr\^{o}le par les pairs}%
@@ -1987,7 +2038,23 @@
     \DeclareMathAlphabet{\mathbf}{OT1}{cmss}{bx}{n}
   \fi
 \fi
+\DeclareMathAlphabet{\mathbbs}{U}{BOONDOX-ds}{m}{n}
 \DeclareMathAlphabet{\mathblackbold}{U}{dsrom}{m}{n}
+\let\ltx@mathbb\mathbb
+
+\def\mathbb#1{%
+  \sbox\z@{\@tempcnta 0#1}%
+  \ifdim\wd\z@>\z@\relax
+    \edef\@tempb{#1}\@tempcnta=\expandafter`\@tempb\relax%
+    \ifnum\@tempcnta>96\relax
+      \mathbbs{#1}%% Kleinbuchstabe
+    \else
+      \ltx@mathbb{#1}%% Großbuchstabe
+    \fi
+  \else
+    \mathblackbold{#1}%% Zahl
+  \fi}
+
 \RequirePackage{pifont}
 \if@cop@home
   \if@nohyperref
@@ -2656,27 +2723,61 @@
   \edef\@journalnameshort{\@journalnameshort D}
   \edef\@journalnameshortlower{\@journalnameshortlower d}
 \fi
-\def\Etal#1{#1}
-\def\Issue#1{#1}
-\def\Particle#1{#1}
-\def\Link#1{#1}
-\def\Year#1{#1}
-\def\Lpage#1{#1}
-\def\Fpage#1{#1}
-\def\Volume#1{#1}
-\def\Source#1{#1}
-\def\Articletitle#1{#1}
-\def\Givennames#1{#1}
-\def\Surname#1{#1}
-\def\FirstName#1{#1}
-\def\Stringname#1{#1}
-\def\Persongroup#1{#1}
-\def\Journal#1{#1}
-\def\Uri#1{#1}
-\def\Content#1{#1}
-\def\Book#1{#1}
-\def\PublisherName#1{#1}
-\def\PublisherLoc#1{#1}
+\def\bDate#1{#1}
+\def\bYear#1{#1}
+\def\bMonth#1{#1}
+\def\bDay#1{#1}
+\def\bPubId#1{#1}
+\def\bLpage#1{#1}
+\def\bFpage#1{#1}
+\def\bPersonGroup#1{#1}
+\def\bName#1{#1}
+\def\bCollab#1{#1}
+\def\bSurname#1{#1}
+\def\bGivenNames#1{#1}
+\def\bVolume#1{#1}
+\def\bIssue#1{#1}
+\def\bSource#1{#1}
+\def\bUri#1{#1}
+\def\bArticleTitle#1{#1}
+\def\bChaptertitle#1{#1}
+\def\bEtal#1{#1}
+\def\bPublisherName#1{#1}
+\def\bPublisherLoc#1{#1}
+\def\bIsbn#1{#1}
+\def\bDateInCitation#1{#1}
+\def\bEdition#1{#1}
+\def\bConfName#1{#1}
+\def\bConfLoc#1{#1}
+\def\bConfDate#1{#1}
+\def\bComment#1{#1}
+\def\bPatent{\@ifnextchar [\@bPatent{\@bPatent[]}}%]
+\def\@bPatent[#1]#2{#2}
+\def\bSeries#1{#1}
+\def\bStd#1{#1}
+ %% LEGACY
+ \def\Etal#1{#1}
+ \def\Issue#1{#1}
+ \def\Particle#1{#1}
+ \def\Link#1{#1}
+ \def\Year#1{#1}
+ \def\Lpage#1{#1}
+ \def\Fpage#1{#1}
+ \def\Volume#1{#1}
+ \def\Source#1{#1}
+ \def\Articletitle#1{#1}
+ \def\Givennames#1{#1}
+ \def\Surname#1{#1}
+ \def\FirstName#1{#1}
+ \def\Stringname#1{#1}
+ \def\Persongroup#1{#1}
+ \def\Journal#1{#1}
+ \def\Uri#1{#1}
+ \def\Content#1{#1}
+ \def\Book#1{#1}
+ \def\PublisherName#1{#1}
+ \def\PublisherLoc#1{#1}
+ %% /LEGACY
 \def\mathring{\mathaccent6}
 
 \newenvironment{plainlist}
