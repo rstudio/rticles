@@ -14,11 +14,6 @@ Rename the downloaded folder to `<your-project-name>`.
 
 -   `imsart.cls` - LaTeX driver class file.
 -   `imsart.sty` - LaTeX style file.
--   `badoc.tex` - LaTeX source file of the sample paper. 
-    It contains useful information about typseting an article.
--   `badoc.pdf` - PDF output of the compiled sample paper.
--   `fig001.eps`, `fig001.pdf` - sample figures for `badoc.pdf`.
--   `template.tex` - the main template file which should be used for article preparation.
 -   `sample.bib` - sample bibliography database.
 -   `ba.bst` - BiBtex style file to prepare bibliography file.
     More information can be found [here](http://www.bibtex.org/Using/).

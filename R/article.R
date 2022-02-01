@@ -479,7 +479,7 @@ wellcomeor_article <- function(..., number_sections = FALSE, keep_tex = TRUE, ci
 #' Note that the template sets `md_extensions` to exclude `-autolink_bare_uris` because otherwise author emails produce error
 #'
 #' Possible arguments for the YAML header are:
-#' * `title` title of the manuscript
+#' * `title` title of the manuscript. Shorter version of the title can be provided as `runtitle`.
 #' * `author` list of authors, containing `firstname`, `lastname`, `email`, `url`, `affiliationref` (as code) and `footnoterefs` (as list of codes)
 #' * `affiliations` list containing `ref` (code for defining `author` affiliations), institution `name` and `address` itself
 #' * `footnotes` a list of two-element entries: `ref` and `text`
@@ -496,10 +496,13 @@ wellcomeor_article <- function(..., number_sections = FALSE, keep_tex = TRUE, ci
 #' * `include-after`: for including additional LaTeX code before the `\end{document}` statement
 #' @export
 #' @rdname article
-isba_article <- function(..., highlight = NULL, citation_package = "natbib") {
+isba_article <- function(..., keep_tex=TRUE, highlight = NULL, citation_package = "natbib") {
   # from https://github.com/rstudio/rmarkdown/issues/372
   #md_extensions <- c("+ascii_identifiers", "+tex_math_single_backslash", "-autolink_bare_uris")
+  if (!rmarkdown::pandoc_available("2.10")) {
+    stop("isba_article requires a minimum of pandoc 2.10.")
+  }
   pdf_document_format(
-    "isba", highlight = highlight, citation_package = citation_package, ...
+    "isba", keep_tex = keep_tex, highlight = highlight, citation_package = citation_package, ...
   )
 }

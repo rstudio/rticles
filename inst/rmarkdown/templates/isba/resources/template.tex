@@ -1,6 +1,6 @@
 % based on https://vtex-soft.github.io/texsupport.isba-ba/
 % \documentclass[ba,preprint]{imsart}% use this for supplement article
-\documentclass[ba]{imsart}
+\documentclass[$for(classoption)$$classoption$$sep$,$endfor$]{imsart}
 
 \pubyear{\the\year{}}
 \volume{TBA}
@@ -87,13 +87,11 @@ $for(header-includes)$
 $header-includes$
 $endfor$
 
-$preamble$
-
 \begin{document}
 \begin{frontmatter}
 
 \title{$title$}
-\runtitle{$title$}
+\runtitle{$if(runtitle)$$runtitle$$else$$title$$endif$}
 
 \begin{aug}
 $for(author/pairs)$
@@ -125,7 +123,7 @@ $abstract$
 % MSC class
 $if(MSC2020primary)$ \begin{keyword}[class=MSC]
 $for(MSC2020primary/first)$\kwd[Primary ]{$it$}$endfor$
-$if(MSC2020primary/rest)$$for(MSC2020primary/rest)$\kwd{$it$}$sep $$endfor$$endif$
+$for(MSC2020primary/rest)$\kwd{$it$}$sep $$endfor$
 $if(MSC2020secondary)$$for(MSC2020secondary/first)$\kwd[; secondary ]{$it$}$endfor$
 $if(MSC2020secondary/rest)$$for(MSC2020secondary/rest)$\kwd{$it$}$sep $$endfor$$endif$$endif$\end{keyword}$endif$
 % keywords

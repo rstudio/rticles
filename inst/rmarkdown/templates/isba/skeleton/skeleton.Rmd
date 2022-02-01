@@ -1,5 +1,6 @@
 ---
 title: Short Paper for Bayesian Analyis
+classoption: ba
 author:
   - firstname: Alice 
     lastname: Anonymous
@@ -76,7 +77,6 @@ output:
   bookdown::pdf_book: 
     base_format: rticles::isba_article
     md_extensions: -autolink_bare_uris #keep these off or \printead{} will fail on email addresses
-    keep_tex: true # you need it to submit to the journal
 ---
 
 # R Markdown
@@ -108,9 +108,8 @@ where $a$ is a variable and $c$ is variable as well.
 
 Dashes come in three sizes: a hyphen, an intra-word dash, a medium dash for number ranges like 1--2, and a punctuation dash in place of a comma, semicolon, colon or parentheses ---like this.
 
-The following are some other citations to check that the bibliographic style file is working correctly: \citet{akaike}, \citet*{akivarsq}, \citet{dyke},
-\citet{greene}, \citet*{kstuart}, \citet{hilbetech}, \citet{hilbe}, 
-\citet{hilbeglm}, \citet{maddalacntrsq}, and \citet*{companion}.  
+The following are some other citations to check that the bibliographic style file is working correctly: \citet{akaike}, \citet*{akivarsq},
+\citet*{kstuart}, and \citet{companion}.  
 
 # References {#references .unnumbered}
 
