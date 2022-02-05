@@ -34,6 +34,7 @@
 \alias{tf_article}
 \alias{trb_article}
 \alias{wellcomeor_article}
+\alias{isba_article}
 \title{R Markdown output formats for (journal) articles}
 \usage{
 acm_article(...)
@@ -148,6 +149,13 @@ wellcomeor_article(
   ...,
   number_sections = FALSE,
   keep_tex = TRUE,
+  citation_package = "natbib"
+)
+
+isba_article(
+  ...,
+  keep_tex = TRUE,
+  highlight = NULL,
   citation_package = "natbib"
 )
 }
@@ -406,6 +414,32 @@ which in turn is hosted at \samp{https://github.com/chiehrosswang/TRB_LaTeX_tex}
 \section{\code{wellcomeor_article}}{
  Format for creating submissions to
 Wellcome Open Research. Adapted from <overleaf.com/latex/templates/wellcome-open-research-article-template/hsmhhbpxvvbj>.
+}
+
+\section{\code{isba_article}}{
+ Format for creating submissions to Bayesian analysis.
+Based on the official Bayesian analysis \href{https://www.e-publications.org/isba/support/}{class}.
+Template shows how to use this format as a base format for \code{bookdown::pdf_book}, but it can very well be used on its own (with limitations that figure referencing will not work).
+Note that the template sets \code{md_extensions} to exclude \code{-autolink_bare_uris} because otherwise author emails produce error
+
+Possible arguments for the YAML header are:
+\itemize{
+\item \code{title} title of the manuscript. Shorter version of the title can be provided as \code{runtitle}.
+\item \code{author} list of authors, containing \code{firstname}, \code{lastname}, \code{email}, \code{url}, \code{affiliationref} (as code) and \code{footnoterefs} (as list of codes)
+\item \code{affiliations} list containing \code{ref} (code for defining \code{author} affiliations), institution \code{name} and \code{address} itself
+\item \code{footnotes} a list of two-element entries: \code{ref} and \code{text}
+\item \code{abstract} abstract, limited to 250 words
+\item \code{MSC2020primary}, \code{MSC2020primary} lists of codes from \href{https://mathscinet.ams.org/mathscinet/msc/msc2020.html}{MCS2020 database}
+\item \code{keywords} a list of keywords
+\item \code{supplements} a list of entries with two elements \code{title} and \code{description}
+\item \code{doi} DOI of the article
+\item \code{arxiv} Arxiv id
+\item \code{acknowledgements} acknowledgement text, limited to 250 words
+\item \code{bibliography} BibTeX \code{.bib} file
+\item \code{longtable} set to \code{true} to include the \code{longtable} package, used by default from \code{pandoc} to convert markdown to LaTeX code
+\item \code{header-includes}: custom additions to the header, before the \verb{\\begin\{document\}} statement
+\item \code{include-after}: for including additional LaTeX code before the \verb{\\end\{document\}} statement
+}
 }
 
 \examples{
