@@ -285,6 +285,7 @@ It requires a minimum version of 2.10 for Pandoc.
 \section{\code{iop_article}}{
  Format for creating submissions to
 IOP journals. Adapted from \samp{https://publishingsupport.iopscience.iop.org/questions/latex-template/}.
+Please read the guidelines at this link when preparing your article.
 }
 
 \section{\code{jasa_article}}{
