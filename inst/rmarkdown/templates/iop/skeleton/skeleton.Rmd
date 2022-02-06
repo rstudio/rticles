@@ -29,7 +29,7 @@ output: rticles::iop_article
 
 # Introduction {#sec:1}
 
-This template formats a paper to follow [the guidelines](https://publishingsupport.iopscience.iop.org/questions/latex-template/) for *Institute of Physics* journals. 
+This template formats a paper to follow [the guidelines](https://publishingsupport.iopscience.iop.org/questions/latex-template/) for *Institute of Physics* journals. Please read those guidelines carefully. You will need to submit the source files (tex, bib, figures, etc.) to the journal, not this Rmd file. 
 
 If you need to use AMS fonts, set `iopams` to `true` in the header.
 

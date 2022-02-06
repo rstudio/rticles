@@ -258,6 +258,7 @@ informs_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
 
 #' @section `iop_article`: Format for creating submissions to
 #'   IOP journals. Adapted from \samp{https://publishingsupport.iopscience.iop.org/questions/latex-template/}.
+#'   Please read the guidelines at this link when preparing your article.
 #' @export
 #' @rdname article
 iop_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
