@@ -6,11 +6,30 @@
 
 %% BEGIN MY ADDITIONS %%
 \pdfminorversion=4
-\usepackage{hyperref, graphicx, booktabs}
-% Bibliography allowing natbib with Harvard
+\usepackage{hyperref, graphicx, booktabs, longtable}
+% Bibliography allowing natbib with Harvard or Vancouver
+$if(natbib)$
 \usepackage{har2nat}  % loads 'natbib' automatically
-\bibliographystyle{dcu}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$dcu$endif$}
 \providecommand\newblock{} % suppress some meaningless warnings
+$else$
+$if(biblatex)$
+% BibLaTeX setup, recommended
+\usepackage[backend=biber,
+       style=$if(biblio-style)$$biblio-style$$else$authoryear$endif$,
+       mincrossrefs=50,
+       maxcitenames=3,
+       maxbibnames=50,
+       useprefix=true,
+       doi=false]{biblatex}
+$for(bibliography)$
+\addbibresource{$bibliography$}
+$endfor$
+% remember to include the .bib extension
+% remember to run biber rather than bibtex if using this option
+\AtEveryCitekey{\ifciteseen{}{\defcounter{maxnames}{99}}}
+$endif$ %biblatex
+$endif$ %natbib
 
 $if(highlighting-macros)$
 % Pandoc syntax highlighting
@@ -107,11 +126,14 @@ $if(acknowledgments)$
 \ack{$acknowledgments$}
 $endif$
 
-
+$if(biblatex)$
+\printbibliography
+$else$
 $if(bibliography)$
-\bibliography{$bibliography$}
-
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 $endif$
+$endif$
+
 
 $for(include-after)$
 $include-after$
