@@ -7,7 +7,7 @@ $endfor$
 \usepackage[utf8]{inputenc}
 
 \author{
-$for(author)$$author.name$\\$author.affiliation$$sep$ \And $endfor$
+$for(author)$$author.name$$if(author.orcid)$~\orcidlink{$author.orcid$}$endif$\\$author.affiliation$$sep$ \And $endfor$
 }
 \title{$title.formatted$}
 
