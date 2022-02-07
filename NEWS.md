@@ -2,7 +2,7 @@
 
 ## NEW FEATURES
 
-- Update Journal of Statistical Software template to use its updated class file and if specified in the YAML header of the Rmd file add ORCID links for each author (thanks, @remlapmot, #465).
+- Update `jss_article()` template to handle ORCID links for each author from  a new YAML field, and to use updated `jss.cls` class file (thanks, @remlapmot, #465).
 
 - New `informs_article()` template for submissions to INFORMS journals (thanks, @robjhyndman, #460).
 
