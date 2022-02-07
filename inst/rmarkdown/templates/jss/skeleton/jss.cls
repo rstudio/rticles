@@ -1,8 +1,8 @@
 %%
-%% This is file `jss.cls'
-\def\fileversion{3.2}
+%% This is file `jss.cls',
+\def\fileversion{3.3}
 \def\filename{jss}
-\def\filedate{2020/12/09}
+\def\filedate{2021/05/23}
 %%
 %% Package `jss' to use with LaTeX2e for JSS publications (http://www.jstatsoft.org/)
 %% License: GPL-2 | GPL-3
@@ -51,7 +51,7 @@
 \ProcessOptions
 \LoadClass[11pt,a4paper,twoside]{article}
 %% required packages
-\RequirePackage{graphicx,color,ae,fancyvrb}
+\RequirePackage{graphicx,xcolor,ae,fancyvrb}
 \RequirePackage[T1]{fontenc}
 \IfFileExists{upquote.sty}{\RequirePackage{upquote}}{}
 \IfFileExists{lmodern.sty}{\RequirePackage{lmodern}}{}
