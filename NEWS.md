@@ -2,6 +2,8 @@
 
 ## NEW FEATURES
 
+- Update Journal of Statistical Software template to use its updated class file and if specified in the YAML header of the Rmd file add ORCID links for each author (thanks, @remlapmot, #465).
+
 - New `informs_article()` template for submissions to INFORMS journals (thanks, @robjhyndman, #460).
 
 - New `isba_article()` template for submissions to Bayesian Analysis journal (thanks, @dmi3kno, #461).
