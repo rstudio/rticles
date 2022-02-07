@@ -2,6 +2,7 @@
 documentclass: jss
 author:
   - name: FirstName LastName
+    orcid: 0000-0000-0000-0000
     affiliation: University/Company
     # use this syntax to add text on several lines
     address: |
@@ -10,9 +11,11 @@ author:
     email: \email{name@company.com}
     url: http://rstudio.com
   - name: Second Author
+    orcid: 0000-0000-0000-0000
     affiliation: 'Affiliation \AND'
     # To add another line, use \AND at the end of the previous one as above
   - name: Third Author
+    orcid: 0000-0000-0000-0000
     address: |
       | Department of Statistics and Mathematics,
       | Faculty of Biosciences,
