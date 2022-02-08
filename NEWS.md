@@ -6,6 +6,8 @@
 
 - New `informs_article()` template for submissions to INFORMS journals (thanks, @robjhyndman, #460).
 
+- New `iop_article()` template for submissions to IOP journals (thanks, @robjhyndman, #462).
+
 - New `isba_article()` template for submissions to Bayesian Analysis journal (thanks, @dmi3kno, #461).
 
 - Update Copernicus Publications template to version 6.6 from 2022-01-18 (@RLumSK, #463, #464)

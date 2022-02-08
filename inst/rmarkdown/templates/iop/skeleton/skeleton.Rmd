@@ -1,0 +1,114 @@
+---
+title: Paper for IOP journal
+shorttitle: "Untitled"
+authors:
+- name: Sue Lee
+  address: Department of UUU, University of VVV
+  email: author@vvv.edu
+  footnote: Something here
+- name: Xu Li
+  address: Department of WWW, University of XXX
+  email: author@xxx.edu
+- name: Soo Leigh
+  address: Department of YYY, University of ZZZ
+  email: author@zzz.edu
+keywords:
+  - 3 to 7 keywords
+  - that do not appear in the title
+abstract: |
+  Abstract goes here. It should be a single paragraph of around 200 words.
+acknowledgments: |
+  We wish to thank...
+bibliography: references.bib
+biblio-style: dcu
+csl: https://www.zotero.org/styles/institute-of-physics-harvard.csl
+msc: AMS classification scheme numbers go here. Delete line to omit them.
+iopams: false
+twocolumn: false
+output: 
+  rticles::iop_article:
+    keep_tex: yes
+    citation_package: natbib
+---
+
+
+# Introduction {#sec:1}
+
+This template formats a paper to follow [the guidelines](https://publishingsupport.iopscience.iop.org/questions/latex-template/) for *Institute of Physics* journals. Please read those guidelines carefully. You will need to submit the source files (tex, bib, figures, etc.) to the journal, not this Rmd file. 
+
+If you need to use AMS fonts, set `iopams` to `true` in the header.
+
+If required, include MSC codes in the `msc` line in the header. Otherwise that line can be deleted.
+
+Referencing is handled using @cleveland1990stl or in parentheses [@HK06]. By default, the Harvard system is used with BibTeX (which is accepted by all IOP journals). The following table shows the suggested settings for other possible referencing methods.
+
+| Citation engine   |  `citation_package` | Citation style | style argument |
+| ----------------- | ------------------- | -------------- | -------------- |
+| pandoc            | `default`  | Harvard   | `csl: institute-of-physics-harvard.csl` |
+| pandoc            | `default`  | Vancouver | `csl: institute-of-physics-numeric.csl` |
+| Bibtex            | `natbib`   | Harvard   | `biblio-style: dcu`                     |
+| Bibtex            | `natbib`   | Vancouver | `biblio-style: unsrt`                   |
+| BibLatex          | `biblatex` | Harvard   | `biblio-style: authoryear`              |
+| BibLatex          | `biblatex` | Vancouver | `biblio-style: numeric`                 |
+
+The `biblio-style` argument will be ignored when using pandoc citations, and the `csl` argument will be ignored when using either Bibtex or BibLatex. The relevant csl files can be downloaded from `https://www.zotero.org/styles/` so they are available locally. Alternatively, use the full URL as in the example yaml.
+
+## Subsection title {#sec:2}
+
+Don't forget to give each section
+and subsection a unique label (see Section \ref{sec:1} for an example).
+
+#### Paragraph headings
+
+Use paragraph headings if needed.
+
+
+# Method
+
+## Equations
+
+Here is a displayed equation:
+$$ 
+  f_{X}(x) = \left(\frac{\alpha}{\beta}\right)
+  \left(\frac{x}{\beta}\right)^{\alpha-1}
+  e^{-\left(\frac{x}{\beta}\right)^{\alpha}}; 
+  \alpha,\beta,x > 0 .
+$$
+and here is an inline equation: $\sum_{i = 2}^\infty\{\alpha_i^\beta\}$.
+
+
+# Results
+
+## Figures coming from R
+
+Figure \ref{fig2} is generated using an R chunk.
+
+```{r fig2, fig.width = 5, fig.height = 5, fig.align='center', out.width="50%", fig.cap = "\\label{fig2}A meaningless scatterplot.", echo = FALSE}
+plot(runif(25), runif(25))
+```
+
+## Tables coming from R
+
+Tables can also be generated using R chunks, as shown in Table \ref{tab1} for example.
+
+```{r tab1, echo=FALSE}
+knitr::kable(head(mtcars)[,1:4], 
+    caption = "\\label{tab1}Caption above table",
+    longtable = FALSE,
+    booktabs=TRUE,
+    format = 'latex'
+)
+```
+
+# Discussion
+
+
+# Conclusion
+
+\appendix
+
+# More things to say
+
+This text is in the appendix.
+
+# References {-}

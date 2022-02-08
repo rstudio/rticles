@@ -256,6 +256,17 @@ informs_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
   )
 }
 
+#' @section `iop_article`: Format for creating submissions to
+#'   IOP journals. Adapted from \samp{https://publishingsupport.iopscience.iop.org/questions/latex-template/}.
+#'   Please read the guidelines at this link when preparing your article.
+#' @export
+#' @rdname article
+iop_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
+  pdf_document_format(
+    "iop", keep_tex = keep_tex, citation_package = citation_package, ...
+  )
+}
+
 #' @section `jasa_article`: Format for creating submissions to the
 #'   Journal of the Acoustical Society of America. Adapted from
 #'   <https://acousticalsociety.org/preparing-latex-manuscripts/>.
