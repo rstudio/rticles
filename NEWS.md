@@ -2,6 +2,8 @@
 
 ## NEW FEATURES
 
+- Update `jss_article()` template to handle ORCID links for each author from  a new YAML field, and to use updated `jss.cls` class file (thanks, @remlapmot, #465).
+
 - New `informs_article()` template for submissions to INFORMS journals (thanks, @robjhyndman, #460).
 
 - New `iop_article()` template for submissions to IOP journals (thanks, @robjhyndman, #462).
