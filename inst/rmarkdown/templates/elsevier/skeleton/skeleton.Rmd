@@ -36,7 +36,7 @@ keywords:
   - keyword2
 journal: "An awesome journal"
 date: "`r Sys.Date()`"
-layout: preprint, 3p, authoryear
+classoption: preprint, 3p, authoryear
 bibliography: mybibfile.bib
 linenumbers: false
 numbersections: true
