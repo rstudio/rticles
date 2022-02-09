@@ -165,7 +165,7 @@ elsevier_article <- function(
   ..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"),
   citation_package = "natbib"
 ) {
-  if(citation_package == "biblatex") {
+  if (citation_package == "biblatex") {
     stop("Elsevier template does not support `biblatex` for citation processing.")
   }
   if (!rmarkdown::pandoc_available("2.10")) {
