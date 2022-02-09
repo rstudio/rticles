@@ -12,6 +12,8 @@
 
 - Update Copernicus Publications template to version 6.6 from 2022-01-18 (@RLumSK, #463, #464)
 
+- Update Elsevier template to version 3.3. (thanks, @robjhyndman, #467)
+
 # rticles 0.22
 
 ## BREAKING CHANGE
