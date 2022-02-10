@@ -169,7 +169,7 @@ elsevier_article <- function(
     stop("Elsevier template does not support `biblatex` for citation processing.")
   }
   if (!rmarkdown::pandoc_available("2.10")) {
-    stop("informs_article requires a minimum of pandoc 2.10.")
+    stop("`elsevier_article()` now requires a minimum of pandoc 2.10.")
   }
   pdf_document_format(
     "elsevier", keep_tex = keep_tex, md_extensions = md_extensions,
