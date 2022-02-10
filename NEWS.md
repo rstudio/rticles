@@ -2,7 +2,7 @@
 
 ## BREAKING CHANGE
 
-- Update Elsevier template and of `elsarticle.cls` to version 3.3 in `elsevier_article()`. This is a breaking change in the format that now **requires at least Pandoc 2.10** and uses the latest version of the `.cls` file, also provided in [elsarticle](https://ctan.org/pkg/elsarticle) on CTAN. The format now use `natbib` by default for citation processing and gets new authors specification in YAML. See the included template. (thanks, @robjhyndman, #467). You can use [**renv**](https://pkgs.rstudio.com/renv/) to manage your project in locked environment of packages.
+- Update Elsevier template and of `elsarticle.cls` to version 3.3 in `elsevier_article()`. This is a breaking change in the format that now **requires at least Pandoc 2.10** and uses the latest version of the `.cls` file, also provided in [elsarticle](https://ctan.org/pkg/elsarticle) on CTAN. See the included template for this format. Also, `natbib` is now used y default for citation processing. You can use [**renv**](https://pkgs.rstudio.com/renv/) to manage your project in locked environment of packages  (thanks, @robjhyndman, #467).
 
 ## NEW FEATURES
 
