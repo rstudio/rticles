@@ -2,28 +2,10 @@
 \documentclass$if(classoption)$[$classoption$]$endif${statsoc}
 \usepackage{graphicx}
 \usepackage{listings}
-\usepackage{lstbayes} % for Stan and BUGS
 \usepackage{color}
 \usepackage{amssymb, amsmath, geometry}
 \usepackage{natbib}
 \usepackage{hyperref}
-
-$if(tables)$
-% From pandoc table feature
-\usepackage{longtable,booktabs,array}
-$if(multirow)$
-\usepackage{multirow}
-$endif$
-\usepackage{calc} % for calculating minipage widths
-% Correct order of tables after \paragraph or \subparagraph
-\usepackage{etoolbox}
-\makeatletter
-\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
-\makeatother
-% Allow footnotes in longtable head/foot
-\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
-\makesavenoteenv{longtable}
-$endif$
 
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -36,15 +18,31 @@ $endif$
 
 \title[$short_title$]{$title$}
 
+$if(author)$ % old format
+\author[$short_author$]{$author$}
+\address{$affiliation$,
+$city$,
+$country$}
+\email{$email$}
+$endif$
 
+$if(author2)$
+\author[$short_author$]{$author2$}
+\address{$affiliation2$,
+$city2$,
+$country2$}
+\email{$email2$}
+$endif$
+
+$if(authors)$ % new format
 $for(authors)$
 \author[$short_author$]{$it.name$}
-\address{$it.affiliation$,
-$it.city$,
-$it.country$}
-$if(it.email)$\email{$it.email$}$endif$
+\address{$authors.affiliation$,
+$authors.city$,
+$authors.country$}
+$if(authors.email)$\email{$authors.email$}$endif$
 
-$endfor$%
+$endfor$$endif$
 
 % BIBLIOGRAPHY
 \usepackage[authoryear]{natbib}
