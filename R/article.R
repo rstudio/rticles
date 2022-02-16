@@ -157,13 +157,23 @@ ctex <- ctex_article
 #' @section `elsevier_article`: Format for creating submissions to Elsevier
 #'   journals. Adapted from
 #'   <https://www.elsevier.com/authors/policies-and-guidelines/latex-instructions>.
+#'
+#' It requires a minimum version of 2.10 for Pandoc.
 #' @export
 #' @rdname article
 elsevier_article <- function(
-  ..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris")
+  ..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"),
+  citation_package = "natbib"
 ) {
+  if (citation_package == "biblatex") {
+    stop("Elsevier template does not support `biblatex` for citation processing.")
+  }
+  if (!rmarkdown::pandoc_available("2.10")) {
+    stop("`elsevier_article()` now requires a minimum of pandoc 2.10.")
+  }
   pdf_document_format(
-    "elsevier", keep_tex = keep_tex, md_extensions = md_extensions, ...
+    "elsevier", keep_tex = keep_tex, md_extensions = md_extensions,
+    citation_package = citation_package, ...
   )
 }
 
@@ -253,6 +263,17 @@ informs_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
   }
   pdf_document_format(
     "informs", keep_tex = keep_tex, citation_package = citation_package, ...
+  )
+}
+
+#' @section `iop_article`: Format for creating submissions to
+#'   IOP journals. Adapted from \samp{https://publishingsupport.iopscience.iop.org/questions/latex-template/}.
+#'   Please read the guidelines at this link when preparing your article.
+#' @export
+#' @rdname article
+iop_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
+  pdf_document_format(
+    "iop", keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
 

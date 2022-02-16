@@ -1,0 +1,144 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Author template for Institute of Physics (IOP) Journal articles
+%% Adapted for rticles by Rob J Hyndman Rob.Hyndman@monash.edu. Dec 2021
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[$if(fontsize)$$fontsize$$else$$if(twocolumn)$10pt$else$12pt$endif$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{iopart}
+
+%% BEGIN MY ADDITIONS %%
+\pdfminorversion=4
+\usepackage{hyperref, graphicx, booktabs, longtable}
+% Bibliography allowing natbib with Harvard or Vancouver
+$if(natbib)$
+\usepackage{har2nat}  % loads 'natbib' automatically
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$dcu$endif$}
+\providecommand\newblock{} % suppress some meaningless warnings
+$else$
+$if(biblatex)$
+% BibLaTeX setup, recommended
+\usepackage[backend=biber,
+       style=$if(biblio-style)$$biblio-style$$else$authoryear$endif$,
+       mincrossrefs=50,
+       maxcitenames=3,
+       maxbibnames=50,
+       useprefix=true,
+       doi=false]{biblatex}
+$for(bibliography)$
+\addbibresource{$bibliography$}
+$endfor$
+% remember to include the .bib extension
+% remember to run biber rather than bibtex if using this option
+\AtEveryCitekey{\ifciteseen{}{\defcounter{maxnames}{99}}}
+$endif$ %biblatex
+$endif$ %natbib
+
+$if(highlighting-macros)$
+% Pandoc syntax highlighting
+$highlighting-macros$
+$endif$
+
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+$if(tables)$
+% From pandoc table feature
+\usepackage{array}
+$if(multirow)$
+\usepackage{multirow}
+$endif$
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+$endif$
+
+$if(csl-refs)$
+% Pandoc citation processing
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+%% END MY ADDITIONS %%
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+
+%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%
+
+$for(include-before)$
+$include-before$
+
+$endfor$
+
+\title$if(shorttitle)$[$shorttitle$]$endif${$title$}
+
+$for(authors)$
+\author{$authors.name$$if(authors.footnote)$\footnote{$authors.footnote$}$endif$}
+$if(authors.address)$\address{$authors.address$}$endif$
+$if(authors.email)$\ead{$authors.email$}$endif$
+$endfor$
+
+\begin{abstract}
+$abstract$
+\end{abstract}
+
+$if(msc)$\ams{$msc$}$endif$
+
+\vspace{0.5cm}\noindent\textit{Keywords}: $for(keywords)$$keywords$$sep$, $endfor$
+
+\maketitle
+
+$if(twocolumn)$\ioptwocol$endif$
+
+$body$
+
+$if(acknowledgments)$
+\ack{$acknowledgments$}
+$endif$
+
+$if(biblatex)$
+\printbibliography
+$else$
+$if(bibliography)$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+$endif$
+
+
+$for(include-after)$
+$include-after$
+
+$endfor$
+
+
+\end{document}

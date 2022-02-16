@@ -1,12 +1,20 @@
 # rticles 0.23 (development version)
 
+## BREAKING CHANGE
+
+- Update Elsevier template and of `elsarticle.cls` to version 3.3 in `elsevier_article()`. This is a breaking change in the format that now **requires at least Pandoc 2.10** and uses the latest version of the `.cls` file, also provided in [elsarticle](https://ctan.org/pkg/elsarticle) on CTAN. See the included template for this format. Also, `natbib` is now used y default for citation processing. You can use [**renv**](https://pkgs.rstudio.com/renv/) to manage your project in locked environment of packages  (thanks, @robjhyndman, #467).
+
 ## NEW FEATURES
+
+- Update `jss_article()` template to handle ORCID links for each author from  a new YAML field, and to use updated `jss.cls` class file (thanks, @remlapmot, #465).
 
 - New `informs_article()` template for submissions to INFORMS journals (thanks, @robjhyndman, #460).
 
+- New `iop_article()` template for submissions to IOP journals (thanks, @robjhyndman, #462).
+
 - New `isba_article()` template for submissions to Bayesian Analysis journal (thanks, @dmi3kno, #461).
 
-- Update Copernicus Publications template to version 6.6 from 2022-01-18 (@RLumSK, #463, #464)
+- Update Copernicus Publications template to version 6.6 from 2022-01-18 (@RLumSK, #463, #464).
 
 # rticles 0.22
 

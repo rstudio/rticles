@@ -1,11 +1,12 @@
-\documentclass[$layout$]{elsarticle} %review=doublespace preprint=single 5p=2 column
+$-- Keeping in template layout for backward compatibility
+\documentclass[$if(layout)$$layout$$else$$for(classoption)$$classoption$$sep$,$endfor$$endif$]{elsarticle} %review=doublespace preprint=single 5p=2 column
 %%% Begin My package additions %%%%%%%%%%%%%%%%%%%
+
 \usepackage[hyphens]{url}
 
 $if(journal)$
   \journal{$journal$} % Sets Journal name
 $endif$
-
 
 \usepackage{lineno} % add
 $if(linenumbers)$
@@ -53,11 +54,10 @@ $if(geometry)$
 \usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
 $endif$
 $if(natbib)$
-\usepackage{natbib}
+\usepackage[$natbiboptions$]{natbib}
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
-$else$
-\bibliographystyle{elsarticle-harv}
 $endif$
+
 $if(listings)$
 \usepackage{listings}
 $endif$
@@ -85,7 +85,6 @@ $endif$
             urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
             linkcolor=$if(linkcolor)$$linkcolor$$else$magenta$endif$,
             pdfborder={0 0 0}}
-\urlstyle{same}  % don't use monospace font for urls
 $if(links-as-notes)$
 % Make links footnotes instead of hotlinks:
 \renewcommand{\href}[2]{#2\footnote{\url{#1}}}
@@ -194,20 +193,29 @@ $endfor$
 
   \title{$title$}
   $for(author)$
-  \author[$author.affiliation$]{$author.name$$if(author.footnote)$\corref{$author.footnote$}$endif$}
+  \author[$author.affiliation$]{$author.name$$if(author.footnote)$%
+  $if(author.correspondingauthor)$\corref{cor1}$endif$%
+  \fnref{$author.footnote$}$endif$}
   $if(author.email)$ \ead{$author.email$} $endif$
   $endfor$
   $for(address)$
-  \address[$address.code$]{$address.address$}
+  \affiliation[$address.code$]{$address.address$}
   $endfor$
+  \cortext[cor1]{Corresponding author}
   $for(footnote)$
-  \cortext[$footnote.code$]{$footnote.text$}
+  \fntext[$footnote.code$]{$footnote.text$}
   $endfor$
 
   \begin{abstract}
   $abstract$
   \end{abstract}
-  $if(keywords)$ \begin{keyword} $for(keywords)$$keywords$$sep$ $endfor$\end{keyword}$endif$
+  $if(keywords)$
+  \begin{keyword}
+    $for(keywords/allbutlast)$$keywords$ \sep $endfor$
+    $for(keywords/last)$$keywords$$endfor$
+  \end{keyword}
+  $endif$
+
  \end{frontmatter}
 
 $body$
