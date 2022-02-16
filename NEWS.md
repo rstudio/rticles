@@ -18,6 +18,10 @@
 
 - `rss_article()` now supports more than two authors using usual YAML list syntax in the new `authors` field. Old `author` and `author2` are kept for backward compatibility, but we advice any user to use the new formats. See update Rmd skeleton template (thanks, @dmi3kno, #466).
 
+## BUG FIXES
+
+- `graphicx` LaTeX package has been added to `ieee_article()` format (thanks, Sachin Hebbar, [on RStudio Community](https://community.rstudio.com/t/inserting-figures-in-rticles-ieee-transaction-template/129325)).
+
 # rticles 0.22
 
 ## BREAKING CHANGE
