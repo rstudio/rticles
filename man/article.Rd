@@ -15,6 +15,7 @@
 \alias{ctex}
 \alias{elsevier_article}
 \alias{frontiers_article}
+\alias{jla_article}
 \alias{glossa_article}
 \alias{ims_article}
 \alias{informs_article}
@@ -86,6 +87,8 @@ elsevier_article(
 )
 
 frontiers_article(..., keep_tex = TRUE)
+
+jla_article(..., keep_tex = TRUE)
 
 glossa_article(..., keep_tex = TRUE, latex_engine = "xelatex")
 
@@ -255,6 +258,20 @@ articles. Adapted from
 \url{https://www.frontiersin.org/about/author-guidelines}.
 }
 
+\section{\code{jla_article}}{
+ Format for creating Journal of Learning
+Analytics (JLA) articles. Adapted from
+\url{https://learning-analytics.info/journals/index.php/JLA/about/submissions#authorGuidelines}.
+}
+
+\section{\code{mdpi_article}}{
+ Format for creating submissions to
+
+ Format for creating submissions to
+Multidisciplinary Digital Publishing Institute (MDPI) journals. Adapted
+from \url{https://www.mdpi.com/authors/latex}.
+}
+
 \section{\code{glossa_article}}{
  Format for creating submissions to Glossa: a
 journal of general linguistics. Author Guidelines are available on
@@ -311,12 +328,6 @@ Project Public License (LPPL), Version 1.3c.
  Format for creating Journal of Educational
 Data Mining (JEDM) articles. Adapted from
 \url{https://jedm.educationaldatamining.org/index.php/JEDM/information/authors}.
-}
-
-\section{\code{mdpi_article}}{
- Format for creating submissions to
-Multidisciplinary Digital Publishing Institute (MDPI) journals. Adapted
-from \url{https://www.mdpi.com/authors/latex}.
 }
 
 \section{\code{mnras_article}}{

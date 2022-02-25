@@ -51,6 +51,8 @@ fixed.
 
 - Add `copyrightyear` and `pubyear` variable in `bioinformatics_article()` (thanks, @stephenturner, #424). 
 
+- Added the Journal of Learning Analytics template (thanks, @jooyoungseo, #252).
+
 # rticles 0.21
 
 ## NEW FEATURES

@@ -186,6 +186,16 @@ frontiers_article <- function(..., keep_tex = TRUE) {
   pdf_document_format("frontiers", keep_tex = keep_tex, ...)
 }
 
+#' @section `jla_article`: Format for creating Journal of Learning
+#'   Analytics (JLA) articles. Adapted from
+#'   <https://learning-analytics.info/journals/index.php/JLA/about/submissions#authorGuidelines>.
+#' @export
+#' @rdname article
+jla_article <- function(..., keep_tex = TRUE) {
+  pdf_document_format("jla", keep_tex = keep_tex, ...)
+}
+
+#' @section \code{mdpi_article}: Format for creating submissions to
 
 #' @section `glossa_article`: Format for creating submissions to Glossa: a
 #'   journal of general linguistics. Author Guidelines are available on
