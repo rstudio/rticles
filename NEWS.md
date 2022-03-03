@@ -14,6 +14,8 @@
 
 - New `isba_article()` template for submissions to Bayesian Analysis journal (thanks, @dmi3kno, #461).
 
+## MINOR CHANGES
+
 - Update Copernicus Publications template to version 6.6 from 2022-01-18 (@RLumSK, #463, #464).
 
 - `rss_article()` now supports more than two authors using usual YAML list syntax in the new `authors` field. Old `author` and `author2` are kept for backward compatibility, but we advice any user to use the new formats. See update Rmd skeleton template (thanks, @dmi3kno, #466).
