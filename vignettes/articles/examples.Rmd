@@ -36,7 +36,7 @@ articles <- lapply(journals(), function(journal) {
   name <- yaml::read_yaml(rticles:::pkg_file_template(journal, "template.yaml"))$name
   img <- file.path("resources", paste0(journal, "_article.gif"))
   href <- file.path("resources", paste0(journal, "_article.pdf"))
-  repo_url <- "https://github.com/rstudio/rticles/tree/master/inst/rmarkdown/templates/"
+  repo_url <- "https://github.com/rstudio/rticles/tree/main/inst/rmarkdown/templates/"
   if (!file.exists(img) || !file.exists(href)) return(list())
   fun <- gen_fun(journal)
   list(
