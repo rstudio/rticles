@@ -14,14 +14,18 @@ expect_contains <- function(file, pattern, nb = 1, ...) {
     return(invisible(file))
   }
   msg <- if (!any(matched)) {
-    sprintf("%s template does not contains %s",
-            sQuote(basename(dirname(dirname(file)))),
-            dQuote(pattern))
+    sprintf(
+      "%s template does not contains %s",
+      sQuote(basename(dirname(dirname(file)))),
+      dQuote(pattern)
+    )
   } else {
-    sprintf("%s template contains %s instead of %s",
-            sQuote(basename(dirname(dirname(file)))),
-            sum(matched),
-            nb)
+    sprintf(
+      "%s template contains %s instead of %s",
+      sQuote(basename(dirname(dirname(file)))),
+      sum(matched),
+      nb
+    )
   }
   fail(msg)
 }
@@ -69,4 +73,3 @@ test_that("include-after is in all templates", {
     expect_contains(f, "for(include-after)", fixed = TRUE)
   }
 })
-

@@ -8,22 +8,21 @@
 #' @importFrom rmarkdown output_format knitr_options pandoc_options
 #'   pandoc_variable_arg includes_to_pandoc_args
 #' @author Thierry Onkelinx, \email{thierry.onkelinx@@inbo.be}
-rsos_article <- function(
-  ..., keep_tex = TRUE, latex_engine = 'xelatex', pandoc_args = NULL,
-  includes = NULL, fig_crop = TRUE
-) {
-
+rsos_article <- function(..., keep_tex = TRUE, latex_engine = "xelatex", pandoc_args = NULL,
+                         includes = NULL, fig_crop = TRUE) {
   extra <- list(...)
 
-  template <- find_resource('rsos')
+  template <- find_resource("rsos")
   args <- c(
     "--template", template, rmarkdown::pandoc_variable_arg("documentclass", "article"),
     pandoc_args, "--natbib", rmarkdown::includes_to_pandoc_args(includes)
   )
 
-  if (length(extra) > 0) args <- c(args, sapply(names(extra), function(x){
-    rmarkdown::pandoc_variable_arg(x, extra[[x]])
-  }))
+  if (length(extra) > 0) {
+    args <- c(args, sapply(names(extra), function(x) {
+      rmarkdown::pandoc_variable_arg(x, extra[[x]])
+    }))
+  }
 
   opts_chunk <- list(
     latex.options = "{}", dev = "pdf", fig.align = "center", dpi = 300,
@@ -42,9 +41,9 @@ rsos_article <- function(
     text <- xfun::read_utf8(output_file)
 
     # set correct text in fmtext environment
-    end_first_page <- grep("^\\\\EndFirstPage", text) #nolint
+    end_first_page <- grep("^\\\\EndFirstPage", text) # nolint
     if (length(end_first_page)) {
-      maketitle <- grep("\\\\maketitle", text) #nolint
+      maketitle <- grep("\\\\maketitle", text) # nolint
       text <- c(
         text[1:(maketitle - 1)],
         "\\begin{fmtext}",

@@ -48,21 +48,23 @@
 #' render("MyArticle/MyArticle.Rmd")
 #' }
 #' @export
-copernicus_article <- function(
-  ..., keep_tex = TRUE, highlight = NULL, citation_package = "natbib", md_extensions = c(
-    "-autolink_bare_uris", # disables automatic links, needed for plain email in \correspondence
-    "-auto_identifiers"    # disables \hypertarget commands
-  )
-) {
-  if ("extra_dependencies" %in% names(list(...)))
+copernicus_article <- function(..., keep_tex = TRUE, highlight = NULL,
+                               citation_package = "natbib",
+                               md_extensions = c(
+                                 "-autolink_bare_uris", # disables automatic links, needed for plain email in \correspondence
+                                 "-auto_identifiers" # disables \hypertarget commands
+                               )) {
+  if ("extra_dependencies" %in% names(list(...))) {
     warning(
       "Copernicus does not support additional LaTeX packages and options!
           >> Please remove 'extra_dependencies' from your YAML header!",
       call. = FALSE
     )
+  }
 
   pdf_document_format(
-    "copernicus", citation_package = citation_package,
+    "copernicus",
+    citation_package = citation_package,
     keep_tex = keep_tex, highlight = highlight, md_extensions = md_extensions, ...
   )
 }
@@ -122,6 +124,7 @@ copernicus_journals <- list(
 #' @export
 copernicus_journal_abbreviations <- function(journal_name = "*") {
   unlist(copernicus_journals[grep(
-    journal_name, names(copernicus_journals), ignore.case = TRUE
+    journal_name, names(copernicus_journals),
+    ignore.case = TRUE
   )])
 }

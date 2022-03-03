@@ -36,23 +36,20 @@
 #' <http://mirrors.rit.edu/CTAN/macros/latex/contrib/IEEEtran/IEEEtran_HOWTO.pdf>
 #' @importFrom rmarkdown pandoc_variable_arg
 #' @export
-ieee_article <- function(
-  draftmode   = c("final", "draft", "draftcls", "draftclsnofoot"),
-  hyphenfixes      = "op-tical net-works semi-conduc-tor",
-  IEEEspecialpaper = "",
-  with_ifpdf       = FALSE,
-  with_cite        = FALSE,
-  with_amsmath     = FALSE,
-  with_algorithmic = FALSE,
-  with_subfig      = FALSE,
-  with_array       = FALSE,
-  with_dblfloatfix = FALSE,
-  keep_tex         = TRUE,
-  pandoc_args = NULL,
-  md_extensions    = c("-autolink_bare_uris"),
-  ...
-) {
-
+ieee_article <- function(draftmode = c("final", "draft", "draftcls", "draftclsnofoot"),
+                         hyphenfixes = "op-tical net-works semi-conduc-tor",
+                         IEEEspecialpaper = "",
+                         with_ifpdf = FALSE,
+                         with_cite = FALSE,
+                         with_amsmath = FALSE,
+                         with_algorithmic = FALSE,
+                         with_subfig = FALSE,
+                         with_array = FALSE,
+                         with_dblfloatfix = FALSE,
+                         keep_tex = TRUE,
+                         pandoc_args = NULL,
+                         md_extensions = c("-autolink_bare_uris"),
+                         ...) {
   args <- c()
 
   draftmode <- match.arg(draftmode)
@@ -65,13 +62,15 @@ ieee_article <- function(
     args <- c(args, "IEEEspecialpaper" = IEEEspecialpaper)
   }
 
-  plist <- c("with_ifpdf"       = with_ifpdf,
-             "with_cite"        = with_cite,
-             "with_amsmath"     = with_amsmath,
-             "with_algorithmic" = with_algorithmic,
-             "with_subfig"      = with_subfig,
-             "with_array"       = with_array,
-             "with_dblfloatfix" = with_dblfloatfix)
+  plist <- c(
+    "with_ifpdf" = with_ifpdf,
+    "with_cite" = with_cite,
+    "with_amsmath" = with_amsmath,
+    "with_algorithmic" = with_algorithmic,
+    "with_subfig" = with_subfig,
+    "with_array" = with_array,
+    "with_dblfloatfix" = with_dblfloatfix
+  )
 
   args <- c(args, plist[plist])
 
@@ -79,7 +78,8 @@ ieee_article <- function(
   pandoc_arg_list <- vec_to_pandoc_variable_args(args)
 
   pdf_document_format(
-    "ieee", pandoc_args = c(pandoc_arg_list, pandoc_args),
+    "ieee",
+    pandoc_args = c(pandoc_arg_list, pandoc_args),
     keep_tex = keep_tex, md_extensions = md_extensions,
     ...
   )
