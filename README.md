@@ -89,7 +89,7 @@ Currently included templates and their contributors are the following:
 | [IMS: Institute of Mathematical Statistics](https://imstat.org/) [AoAS: Annals of Applied Statistics](https://imstat.org/journals-and-publications/annals-of-applied-statistics/) | [@auzaheta](https://github.com/auzaheta)                                                                                                                                   | [\#372](https://github.com/rstudio/rticles/pull/372)                                                                                                                                                                                                                                                                             | `ims_article()`            |
 | [INFORMS: Institute for Operations Research and the Management Sciences](https://informs.org/)                                                                                    | [@robjhyndman](https://github.com/robjhyndman)                                                                                                                             | [\#460](https://github.com/rstudio/rticles/pull/460)                                                                                                                                                                                                                                                                             | `informs_article()`        |
 | [ISBA: International Society for Bayesian Analysis](https://bayesian.org/)                                                                                                        | [@dmi3nko](https://github.com/dmi3kno)                                                                                                                                     | [\#461](https://github.com/rstudio/rticles/pull/461)                                                                                                                                                                                                                                                                             | `isba_article()`           |
-| [IOP: Institute of Physics](https://iopscience.iop.org)                                                                                                                           | [@robjhyndman](https://github.com/robjhyndman)                                                                                                                             | [\#462](https://github.com/rstudio/rticles/pull/462)                                                                                                                                                                                                                                                                             | `iop_article()`            |
+| IOP: Institute of Physics (`https://iopscience.iop.org`)                                                                                                                          | [@robjhyndman](https://github.com/robjhyndman)                                                                                                                             | [\#462](https://github.com/rstudio/rticles/pull/462)                                                                                                                                                                                                                                                                             | `iop_article()`            |
 | [JASA: Journal of the Acoustical Society of America](https://asa.scitation.org/journal/jas)                                                                                       | [@stefanocoretta](https://github.com/stefanocoretta)                                                                                                                       | [\#364](https://github.com/rstudio/rticles/pull/364)                                                                                                                                                                                                                                                                             | `jasa_article()`           |
 | [Journal of Educational Data Mining](https://jedm.educationaldatamining.org/index.php/JEDM/about/submissions) journal submissions                                                 | [@jooyoungseo](https://github.com/jooyoungseo)                                                                                                                             | [\#251](https://github.com/rstudio/rticles/pull/251)                                                                                                                                                                                                                                                                             | `jedm_article()`           |
 | [JOSS: Journal of Open Source Software](https://joss.theoj.org/) [JOSE: Journal of Open Source Education](https://jose.theoj.org/)                                                | [@noamross](https://github.com/noamross)                                                                                                                                   | [\#229](https://github.com/rstudio/rticles/pull/229)                                                                                                                                                                                                                                                                             | `joss_article()`           |
@@ -114,6 +114,23 @@ Currently included templates and their contributors are the following:
 
 You can also get the list of available journal names with
 `rticles::journals()`.
+
+``` r
+rticles::journals()
+#>  [1] "acm"            "acs"            "aea"            "agu"           
+#>  [5] "ajs"            "amq"            "ams"            "arxiv"         
+#>  [9] "asa"            "bioinformatics" "biometrics"     "copernicus"    
+#> [13] "ctex"           "elsevier"       "frontiers"      "glossa"        
+#> [17] "ieee"           "ims"            "informs"        "iop"           
+#> [21] "isba"           "jasa"           "jedm"           "joss"          
+#> [25] "jss"            "lipics"         "mdpi"           "mnras"         
+#> [29] "oup_v0"         "oup_v1"         "peerj"          "pihph"         
+#> [33] "plos"           "pnas"           "rjournal"       "rsos"          
+#> [37] "rss"            "sage"           "sim"            "springer"      
+#> [41] "tf"             "trb"            "wellcomeor"
+```
+
+Those are the values to use within `rmarkdown::draft()`.
 
 Under the hood, LaTeX templates are used to ensure that documents
 conform precisely to submission standards. At the same time, composition
@@ -155,7 +172,7 @@ You may not feel confident enough or may not have time to contribute a
 new format. By opening a new issue, you can share the idea for this
 format, and see if someone in the community can help on it.  
 This is not the best way to quickly get your format included but at
-least it is a great way to see if others are insterested too.
+least it is a great way to see if others are interested too.
 
 To see the existing suggested formats, just filter issues with the [help
 wanted](https://github.com/rstudio/rticles/labels/help%20wanted) label.
