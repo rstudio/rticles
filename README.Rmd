@@ -19,11 +19,13 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/rstudio/rticles/workflows/R-CMD-check/badge.svg)](https://github.com/rstudio/rticles/actions)
+[![R-CMD-check](https://github.com/rstudio/rticles/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rstudio/rticles/actions/workflows/R-CMD-check.yaml)
 [![Downloads from the RStudio CRAN
 mirror](https://cranlogs.r-pkg.org/badges/rticles)](https://cran.r-project.org/package=rticles)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/rticles)](https://CRAN.R-project.org/package=rticles)
+[![Codecov test
+coverage](https://codecov.io/gh/rstudio/rticles/branch/master/graph/badge.svg)](https://app.codecov.io/gh/rstudio/rticles?branch=master)
 
 <!-- badges: end -->
 
@@ -85,7 +87,7 @@ output format and all the assets required by this format.
 Currently included templates and their contributors are the following:
 
 | Journal                                                                                                                                                                           | Contributors                                                                                                                                                                   | Pull request                                                                                                                                                                                                                                                                                                               | Output format              |
-|-----------------|-----------------|---------------------|-----------------|
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------|
 | [ACM: Association for Computings Machinery](https://www.acm.org/publications/about-publications)                                                                                  | [\@ramnathv](https://github.com/ramnathv)                                                                                                                                      | [#8](https://github.com/rstudio/rticles/pull/8)                                                                                                                                                                                                                                                                            | `acm_article()`            |
 | [ACS](https://pubs.acs.org)                                                                                                                                                       | [\@yufree](https://github.com/yufree)                                                                                                                                          | [#15](https://github.com/rstudio/rticles/pull/15)                                                                                                                                                                                                                                                                          | `acs_article()`            |
 | [AEA: American Economic Association](https://www.aeaweb.org/journals/policies/templates)                                                                                          | [\@sboysel](https://github.com/sboysel)                                                                                                                                        | [#86](https://github.com/rstudio/rticles/pull/86)                                                                                                                                                                                                                                                                          | `aea_articles()`           |
