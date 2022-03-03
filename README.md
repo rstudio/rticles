@@ -8,7 +8,7 @@ mirror](https://cranlogs.r-pkg.org/badges/rticles)](https://cran.r-project.org/p
 [![CRAN
 status](https://www.r-pkg.org/badges/version/rticles)](https://CRAN.R-project.org/package=rticles)
 [![Codecov test
-coverage](https://codecov.io/gh/rstudio/rticles/branch/master/graph/badge.svg)](https://app.codecov.io/gh/rstudio/rticles?branch=master)
+coverage](https://codecov.io/gh/rstudio/rticles/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rstudio/rticles?branch=main)
 
 <!-- badges: end -->
 
