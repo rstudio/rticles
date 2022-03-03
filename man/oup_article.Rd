@@ -56,7 +56,7 @@ should be used. Defaults to \code{FALSE}. \emph{(Only useful for \code{oup_versi
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 
 \item{md_extensions}{Markdown extensions to be added or removed from the
-default definition or R Markdown. See the \code{\link[rmarkdown]{rmarkdown_format}} for
+default definition of R Markdown. See the \code{\link[rmarkdown]{rmarkdown_format}} for
 additional details.}
 
 \item{pandoc_args}{Additional command line options to pass to pandoc}
@@ -85,9 +85,9 @@ Note that for
 
 \examples{
 \dontrun{
-  # Use old template based on `ouparticle.cls`
-  rmarkdown::draft("MyArticle.Rmd", template = "oup_v0", package = "rticles")
-  # Use new template based on `oup-authoring-template` CTAN package
-  rmarkdown::draft("MyArticle.Rmd", template = "oup_v1", package = "rticles")
+# Use old template based on `ouparticle.cls`
+rmarkdown::draft("MyArticle.Rmd", template = "oup_v0", package = "rticles")
+# Use new template based on `oup-authoring-template` CTAN package
+rmarkdown::draft("MyArticle.Rmd", template = "oup_v1", package = "rticles")
 }
 }

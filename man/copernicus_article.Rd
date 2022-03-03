@@ -21,9 +21,18 @@ allowed as Copernicus does not support additional packages included via \code{\\
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 
-\item{highlight}{Syntax highlighting style. Supported styles include
-"default", "tango", "pygments", "kate", "monochrome", "espresso",
-"zenburn", and "haddock". Pass \code{NULL} to prevent syntax highlighting.}
+\item{highlight}{Syntax highlighting style passed to Pandoc.
+
+ Supported built-in styles include "default", "tango", "pygments", "kate",
+ "monochrome", "espresso", "zenburn", "haddock", and "breezedark".
+
+  Two custom styles are also included, "arrow", an accessible color scheme,
+  and "rstudio", which mimics the default IDE theme. Alternatively, supply a
+  path to a \samp{.theme} file to use
+  \href{https://pandoc.org/MANUAL.html#syntax-highlighting}{a custom Pandoc
+  style}. Note that custom theme requires Pandoc 2.0+.
+
+  Pass \code{NULL} to prevent syntax highlighting.}
 
 \item{citation_package}{The LaTeX package to process citations, \code{natbib}
 or \code{biblatex}. Use \code{default} if neither package is to be used,
@@ -31,7 +40,7 @@ which means citations will be processed via the command
 \command{pandoc-citeproc}.}
 
 \item{md_extensions}{Markdown extensions to be added or removed from the
-default definition or R Markdown. See the \code{\link[rmarkdown]{rmarkdown_format}} for
+default definition of R Markdown. See the \code{\link[rmarkdown]{rmarkdown_format}} for
 additional details.}
 
 \item{journal_name}{A regular expression to filter the by the journal name, see \code{pattern} in \code{\link[base:grep]{base::grep()}}; defaults to \code{*}.}
