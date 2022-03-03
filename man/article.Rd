@@ -429,6 +429,7 @@ Note that the template sets \code{md_extensions} to exclude \code{-autolink_bare
 Possible arguments for the YAML header are:
 \itemize{
 \item \code{title} title of the manuscript. Shorter version of the title can be provided as \code{runtitle}.
+\item \code{classoption} should equal \code{ba} or \verb{ba,preprint} for supplementary article.``
 \item \code{author} list of authors, containing \code{firstname}, \code{lastname}, \code{email}, \code{url}, \code{affiliationref} (as code) and \code{footnoterefs} (as list of codes)
 \item \code{affiliations} list containing \code{ref} (code for defining \code{author} affiliations), institution \code{name} and \code{address} itself
 \item \code{footnotes} a list of two-element entries: \code{ref} and \code{text}
@@ -449,5 +450,6 @@ Possible arguments for the YAML header are:
 \examples{
 \dontrun{
 rmarkdown::draft("MyArticle.Rmd", template = "acm", package = "rticles")
-rmarkdown::draft("MyArticle.Rmd", template = "asa", package = "rticles")}
+rmarkdown::draft("MyArticle.Rmd", template = "asa", package = "rticles")
+}
 }

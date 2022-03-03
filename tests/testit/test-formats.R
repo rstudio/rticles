@@ -12,14 +12,16 @@ test_format <- function(name, output_options = NULL, skip = NULL) {
   on.exit(setwd(oldwd), add = TRUE)
 
   # create a draft of the format
-  testdoc <- paste0(name,"_article",".Rmd")
+  testdoc <- paste0(name, "_article", ".Rmd")
   rmarkdown::draft(
     testdoc, pkg_file_template(name),
     create_dir = FALSE, edit = FALSE
   )
 
-  message('Rendering the ', name, ' format...',
-          if(!is.null(output_options)) " (with output options)")
+  message(
+    "Rendering the ", name, " format...",
+    if (!is.null(output_options)) " (with output options)"
+  )
   output_file <- rmarkdown::render(testdoc, output_options = output_options, quiet = TRUE)
   assert(paste(name, "format works"), {
     file.exists(output_file)

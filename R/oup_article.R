@@ -40,47 +40,49 @@
 #'
 #' @export
 #' @examples \dontrun{
-#'   # Use old template based on `ouparticle.cls`
-#'   rmarkdown::draft("MyArticle.Rmd", template = "oup_v0", package = "rticles")
-#'   # Use new template based on `oup-authoring-template` CTAN package
-#'   rmarkdown::draft("MyArticle.Rmd", template = "oup_v1", package = "rticles")
+#' # Use old template based on `ouparticle.cls`
+#' rmarkdown::draft("MyArticle.Rmd", template = "oup_v0", package = "rticles")
+#' # Use new template based on `oup-authoring-template` CTAN package
+#' rmarkdown::draft("MyArticle.Rmd", template = "oup_v1", package = "rticles")
 #' }
 #' @importFrom rmarkdown pandoc_variable_arg
-oup_article <- function(
-    # Controls template to use. 1 for newer template.
-    oup_version = 0,
-    journal = NULL,
-    number_sections = FALSE,
-    citation_package = ifelse(oup_version == 0, "default", "natbib"),
-    papersize = c("large", "medium", "small"),
-    document_style = c("contemporary", "modern", "traditional"),
-    namedate = FALSE,
-    onecolumn = FALSE,
-    number_lines = FALSE,
-    number_lines_options = NULL,
-    keep_tex = TRUE,
-    md_extensions = c("-autolink_bare_uris"),
-    pandoc_args = NULL,
-    ...
-) {
+oup_article <- function( # Controls template to use. 1 for newer template.
+                        oup_version = 0,
+                        journal = NULL,
+                        number_sections = FALSE,
+                        citation_package = ifelse(oup_version == 0, "default", "natbib"),
+                        papersize = c("large", "medium", "small"),
+                        document_style = c("contemporary", "modern", "traditional"),
+                        namedate = FALSE,
+                        onecolumn = FALSE,
+                        number_lines = FALSE,
+                        number_lines_options = NULL,
+                        keep_tex = TRUE,
+                        md_extensions = c("-autolink_bare_uris"),
+                        pandoc_args = NULL,
+                        ...) {
   # Only two version available for now
   oup_version <- match.arg(as.character(oup_version), c("0", "1"))
 
   # Use old template
   if (oup_version == "0") {
-    return(pdf_document_format("oup_v0",
-                               keep_tex = keep_tex,
-                               md_extensions = md_extensions,
-                               pandoc_args = pandoc_args,
-                               number_sections = number_sections,
-                               citation_package = citation_package,
-                               ...))
+    return(
+      pdf_document_format("oup_v0",
+        keep_tex = keep_tex,
+        md_extensions = md_extensions,
+        pandoc_args = pandoc_args,
+        number_sections = number_sections,
+        citation_package = citation_package,
+        ...
+      )
+    )
   }
 
   # oup_version == "1" - new template --------------
 
-  if (!rmarkdown::pandoc_available("2.10"))
+  if (!rmarkdown::pandoc_available("2.10")) {
     stop("oup_article with oup_version > 0 requires a minimum of pandoc 2.10.")
+  }
 
   # change of defaults
   if (missing(number_sections)) number_sections <- TRUE
@@ -101,22 +103,26 @@ oup_article <- function(
   args <- vec_to_pandoc_variable_args(args)
 
   # namedate
-  if (namedate)
+  if (namedate) {
     args <- c(args, rmarkdown::pandoc_variable_arg("namedate"))
+  }
 
   # onecolumn
-  if (onecolumn)
+  if (onecolumn) {
     args <- c(args, rmarkdown::pandoc_variable_arg("onecolumn"))
+  }
 
   # line numbers
   if (number_lines) {
     args <- c(args, rmarkdown::pandoc_variable_arg("numberlines"))
     if (!is.null(number_lines_options)) {
-      args  <- c(args,
-                 rmarkdown::pandoc_variable_arg(
-                   "numberlines-options",
-                   paste(number_lines_options, collapse = ",")
-                 ))
+      args <- c(
+        args,
+        rmarkdown::pandoc_variable_arg(
+          "numberlines-options",
+          paste(number_lines_options, collapse = ",")
+        )
+      )
     }
   }
 
