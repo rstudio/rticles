@@ -46,9 +46,11 @@ jobs:
           - {os: ubuntu-20.04,   pandoc: '2.14.2',  r: 'oldrel'}
           - {os: ubuntu-20.04,   pandoc: '2.14.2',  r: 'devel', http-user-agent: 'release'}
           # testing other R versions
-          - {os: ubuntu-20.04,   pandoc: '2.14.2',  r: 'oldrel'}
-          - {os: ubuntu-20.04,   pandoc: '2.14.2',  r: 'devel', http-user-agent: "release" }
-
+          - {os: ubuntu-20.04,   pandoc: '2.17.1.1',  r: 'devel', http-user-agent: "release" }
+          - {os: ubuntu-20.04,   pandoc: '2.14.2',  r: 'oldrel-1'}
+          - {os: ubuntu-20.04,   pandoc: '2.7.3',  r: 'oldrel-2'}
+          - {os: ubuntu-20.04,   pandoc: '2.7.3',  r: 'oldrel-3'}
+          - {os: ubuntu-20.04,   pandoc: '2.7.3',  r: 'oldrel-4'}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
@@ -81,7 +83,7 @@ jobs:
       - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
         if: matrix.config.pandoc == 'devel'
 
-      - uses: r-lib/actions/setup-tinytex@v1
+      - uses: r-lib/actions/setup-tinytex@v2
         env:
           # install full prebuilt version
           TINYTEX_INSTALLER: TinyTeX
