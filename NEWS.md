@@ -1,4 +1,4 @@
-# rticles 0.23 (development version)
+# rticles 0.23
 
 ## BREAKING CHANGE
 
