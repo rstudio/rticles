@@ -11,7 +11,7 @@ name: pkgdown
 
 jobs:
   pkgdown:
-    if: ${{ github.event_name == 'push' || startsWith(github.head_ref, 'pkgdown/') }}
+    if: ${{ github.event_name != 'pull_request' || startsWith(github.head_ref, 'pkgdown/') }}
     runs-on: ubuntu-latest
     # Only restrict concurrency for non-PR jobs
     concurrency:
