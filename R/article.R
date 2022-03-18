@@ -330,6 +330,20 @@ lipics_article <- function(..., latex_engine = "xelatex", # xelatex used for 'th
   )
 }
 
+
+#' @section `lncs_article`: Format for creating submissions to
+#'   LNCS - Lecture Notes in Computer Science - articles.
+#'   Adapted from the official Instructions for Authors at
+#'   <https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines>
+#'   and the  template from the archive `LaTeX2e+Proceedings+Templates+download.zip` downloaded
+#'   with version tag 2.21.
+#' @export
+#' @rdname article
+lncs_article <- function(...) {
+  pdf_document_format("lncs", ...)
+}
+
+
 #' @section `jedm_article`: Format for creating Journal of Educational
 #'   Data Mining (JEDM) articles. Adapted from
 #'   <https://jedm.educationaldatamining.org/index.php/JEDM/information/authors>.

@@ -1,5 +1,10 @@
 # rticles (development version)
 
+
+## NEW FEATURES
+
+- New `lncs_article()` template for submissions to Lecture Notes in Computer Science (thanks, @eliocamp, #445).
+
 # rticles 0.23
 
 ## BREAKING CHANGE
