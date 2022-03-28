@@ -1,5 +1,5 @@
 %%
-%% This is file `copernicus.bst', version 1.3 (January 2021),
+%% This is file `copernicus.bst', version 1.4 (March 2022),
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
@@ -49,6 +49,7 @@
  %   \citep[chap. 2]{key} ==>>       (Jones et al., 1990, chap. 2)
  %   \citep[e.g.][]{key} ==>>        (e.g. Jones et al., 1990)
  %   \citep[e.g.][p. 32]{key} ==>>   (e.g. Jones et al., p. 32)
+ %   \citealp{key} ==>>              Jones et al., 1990
  %   \citeauthor{key} ==>>           Jones et al.
  %   \citeauthor*{key} ==>>          Jones, Baker, and Smith
  %   \citeyear{key} ==>>             1990
