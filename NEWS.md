@@ -2,7 +2,7 @@
 
 ## MINOR CHANGES
 
-- Update Copernicus Publications template to version 6.7 from 2022-03-16 (@RLumSK, #478).
+- Update Copernicus Publications template to version 6.8 from 2022-03-28 (@RLumSK, #478, #479).
 
 # rticles 0.23
 

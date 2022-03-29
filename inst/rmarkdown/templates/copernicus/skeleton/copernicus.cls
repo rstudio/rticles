@@ -16,7 +16,7 @@
 %% -----------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{copernicus}
-    [2022/03/03 9.44 Copernicus papers]
+    [2022/03/25 9.46 Copernicus papers]
 \frenchspacing
 \clubpenalty10000
 \widowpenalty10000
@@ -70,6 +70,7 @@
 \newif\if@noauthor       \DeclareOption{noauthor}{\@noauthortrue}
 \newif\if@nolastpage     \DeclareOption{nolastpage}{\@nolastpagetrue}
 \newif\if@noref          \DeclareOption{noref}{\@noreftrue}
+\newif\if@copDebug       \DeclareOption{debug}{\@copDebugtrue}
 \newif\if@nohyperref     \DeclareOption{nohyperref}{\@nohyperreftrue}
 \newif\if@cop@home       \IfFileExists{copernicuslogo.pdf}{\@cop@hometrue}{\@cop@homefalse}
 \newif\ifonline          \DeclareOption{online}{\onlinetrue}
@@ -1822,6 +1823,27 @@
     {\CopernicusWarningNoLine{Cannot find subfig.sty; proceeding without it}}
 \fi
 \let\@makecaption\cop@makecaption
+\RequirePackage{listings}
+\newdimen\listingnumwidth \listingnumwidth=1.25em\relax
+\renewcommand*\thelstnumber{\hb@xt@\listingnumwidth{\hss\the\c@lstnumber:}}
+\lstset{%
+  basicstyle=\small,%
+  numbers=left,%
+  numbersep=0.5em,%
+  numberstyle=\footnotesize,%
+  frame=lines,%
+  xleftmargin=\dimexpr\listingnumwidth+0.5em\relax,%
+  framexleftmargin=\dimexpr\listingnumwidth+0.5em\relax,
+}
+\newenvironment{listing}[1][]
+ {\edef\@argi{#1}%
+  \ifx\@argi\@empty\def\@argi{htbp}\fi
+  \setlistings
+  \lstset{aboveskip=0pt,belowskip=0pt}%
+  \def\@tempa{\begin{figure}}%
+    \expandafter\@tempa\expandafter[\@argi]}
+ {\end{figure}%
+  \setfigures}
 \IfFileExists{subfloat.sty}
   {\RequirePackage{subfloat}%
    \protected@xdef\themainfigure{\thefigure}%
@@ -2816,8 +2838,10 @@
 }
 {\endlist}
 
-\ifx\xmltexversion\@undefined
-\DeclareUnicodeCharacter{200B}{{\unskip\;\color{red}\vrule \@width1ex \@height1ex}}
+\if@copDebug
+  \ifx\xmltexversion\@undefined
+    \DeclareUnicodeCharacter{200B}{{\unskip\;\color{red}\vrule \@width1ex \@height1ex}}
+  \fi
 \fi
 \endinput
 %%
