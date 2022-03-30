@@ -77,7 +77,10 @@ latex_block <- function(hook) {
   force(hook)
   function(x, options) {
     x2 <- hook(x, options)
-    if (identical(x, x2)) x else paste0("```{=latex}\n", x2, "\n```")
+    x3 <- if (identical(x, x2)) x else paste0("```{=latex}\n", x2, "\n```")
+    if (is.null(s <- options$indent)) return(x3)
+    # knitr:::line_prompt equivalent
+    paste0(s, gsub('(?<=\n)(?=.|\n)', s, x3, perl = TRUE))
   }
 }
 
