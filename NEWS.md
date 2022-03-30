@@ -1,5 +1,9 @@
 # rticles (development version)
 
+## BUG FIXES
+
+- Nested code chunk in list are now correctly rendered in `jss_article()` (thanks, @nbenn, #476).
+
 ## MINOR CHANGES
 
 - Update Copernicus Publications template to version 6.8 from 2022-03-28 (@RLumSK, #478, #479).
