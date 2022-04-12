@@ -2,6 +2,8 @@
 
 ## BUG FIXES
 
+- `ams_article()` bundles `ametsoc.cls` now as **ametsoc** package is not more available on CTAN.
+
 - Nested code chunk in list are now correctly rendered in `jss_article()` (thanks, @nbenn, #476).
 
 ## MINOR CHANGES
