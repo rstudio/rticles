@@ -12,6 +12,8 @@
 
 - Update Copernicus Publications template to version 6.8 from 2022-03-28 (@RLumSK, #478, #479).
 
+- Update `rjournal_article()` template to match current style file. Package and task view macros use secure links, and the footer includes the year (@mitchelloharawild)
+
 # rticles 0.23
 
 ## BREAKING CHANGE
