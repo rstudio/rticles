@@ -51,7 +51,7 @@ Introductory section which may include references in parentheses
 This section may contain a figure such as Figure \ref{fig:Rlogo}.
 
 ```{r, Rlogo, echo=FALSE, fig.cap='The logo of R.', out.width='2in', fig.align='center', fig.pos='htbp'}
-knitr::include_graphics('Rlogo.pdf')
+knitr::include_graphics('Rlogo-5.png')
 ```
 
 ## Another section
