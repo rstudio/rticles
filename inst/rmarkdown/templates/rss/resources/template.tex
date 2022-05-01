@@ -18,11 +18,13 @@
 
 \title[$short_title$]{$title$}
 
+$if(author)$ $-- old format for backward compatibility
 \author[$short_author$]{$author$}
 \address{$affiliation$,
 $city$,
 $country$}
 \email{$email$}
+$endif$
 
 $if(author2)$
 \author[$short_author$]{$author2$}
@@ -31,6 +33,15 @@ $city2$,
 $country2$}
 \email{$email2$}
 $endif$
+
+$for(authors)$ $-- new formats for backward compatibility
+\author[$short_author$]{$it.name$}
+\address{$authors.affiliation$,
+$authors.city$,
+$authors.country$}
+$if(authors.email)$\email{$authors.email$}$endif$
+
+$endfor$
 
 % BIBLIOGRAPHY
 \usepackage[authoryear]{natbib}
@@ -47,7 +58,7 @@ $endif$
 
 $if(tables)$
 % From pandoc table feature
-\usepackage{longtable,booktabs,array}
+\usepackage{longtable,booktabs,array, tabularx}
 $if(multirow)$
 \usepackage{multirow}
 $endif$

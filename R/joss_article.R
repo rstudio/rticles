@@ -20,13 +20,13 @@ joss_article <- function(journal = "JOSS",
                          keep_md = TRUE,
                          latex_engine = "xelatex",
                          ...) {
-
-  rmarkdown::pandoc_available('2.2', TRUE)
+  rmarkdown::pandoc_available("2.2", TRUE)
 
   logo_path <- find_resource("joss", paste0(journal, "-logo.png"))
   journalname <- ifelse(journal == "JOSS",
-                        "Journal of Open Source Software",
-                        "Journal of Open Source Education")
+    "Journal of Open Source Software",
+    "Journal of Open Source Education"
+  )
 
   pdf_document_format(
     "joss",
@@ -38,6 +38,6 @@ joss_article <- function(journal = "JOSS",
       "-V", paste0("journal_name=", journalname),
       "-V", "graphics=true"
     ),
-    ...)
+    ...
+  )
 }
-

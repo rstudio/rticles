@@ -17,6 +17,8 @@
 \alias{frontiers_article}
 \alias{glossa_article}
 \alias{ims_article}
+\alias{informs_article}
+\alias{iop_article}
 \alias{jasa_article}
 \alias{lipics_article}
 \alias{jedm_article}
@@ -32,6 +34,7 @@
 \alias{tf_article}
 \alias{trb_article}
 \alias{wellcomeor_article}
+\alias{isba_article}
 \title{R Markdown output formats for (journal) articles}
 \usage{
 acm_article(...)
@@ -78,7 +81,8 @@ ctex(..., template = "default", latex_engine = "xelatex")
 elsevier_article(
   ...,
   keep_tex = TRUE,
-  md_extensions = c("-autolink_bare_uris")
+  md_extensions = c("-autolink_bare_uris"),
+  citation_package = "natbib"
 )
 
 frontiers_article(..., keep_tex = TRUE)
@@ -93,6 +97,10 @@ ims_article(
   pandoc_args = NULL,
   ...
 )
+
+informs_article(..., keep_tex = TRUE, citation_package = "natbib")
+
+iop_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 jasa_article(
   ...,
@@ -142,6 +150,13 @@ wellcomeor_article(
   ...,
   number_sections = FALSE,
   keep_tex = TRUE,
+  citation_package = "natbib"
+)
+
+isba_article(
+  ...,
+  keep_tex = TRUE,
+  highlight = NULL,
   citation_package = "natbib"
 )
 }
@@ -230,6 +245,8 @@ function \code{ctex} is an alias of \code{ctex_article}.
  Format for creating submissions to Elsevier
 journals. Adapted from
 \url{https://www.elsevier.com/authors/policies-and-guidelines/latex-instructions}.
+
+It requires a minimum version of 2.10 for Pandoc.
 }
 
 \section{\code{frontiers_article}}{
@@ -259,6 +276,19 @@ The argument \code{journal} accepts the acronym of any of the
 \item \code{aos}: The Annals of Statistics
 \item \code{sts}: Statistical Science
 }
+}
+
+\section{\code{informs_article}}{
+ Format for creating submissions to
+INFORMS journals. Adapted from \samp{https://pubsonline.informs.org/authorportal/latex-style-files}.
+
+It requires a minimum version of 2.10 for Pandoc.
+}
+
+\section{\code{iop_article}}{
+ Format for creating submissions to
+IOP journals. Adapted from \samp{https://publishingsupport.iopscience.iop.org/questions/latex-template/}.
+Please read the guidelines at this link when preparing your article.
 }
 
 \section{\code{jasa_article}}{
@@ -390,8 +420,36 @@ which in turn is hosted at \samp{https://github.com/chiehrosswang/TRB_LaTeX_tex}
 Wellcome Open Research. Adapted from <overleaf.com/latex/templates/wellcome-open-research-article-template/hsmhhbpxvvbj>.
 }
 
+\section{\code{isba_article}}{
+ Format for creating submissions to Bayesian analysis.
+Based on the official Bayesian analysis \href{https://www.e-publications.org/isba/support/}{class}.
+Template shows how to use this format as a base format for \code{bookdown::pdf_book}, but it can very well be used on its own (with limitations that figure referencing will not work).
+Note that the template sets \code{md_extensions} to exclude \code{-autolink_bare_uris} because otherwise author emails produce error
+
+Possible arguments for the YAML header are:
+\itemize{
+\item \code{title} title of the manuscript. Shorter version of the title can be provided as \code{runtitle}.
+\item \code{classoption} should equal \code{ba} or \verb{ba,preprint} for supplementary article.``
+\item \code{author} list of authors, containing \code{firstname}, \code{lastname}, \code{email}, \code{url}, \code{affiliationref} (as code) and \code{footnoterefs} (as list of codes)
+\item \code{affiliations} list containing \code{ref} (code for defining \code{author} affiliations), institution \code{name} and \code{address} itself
+\item \code{footnotes} a list of two-element entries: \code{ref} and \code{text}
+\item \code{abstract} abstract, limited to 250 words
+\item \code{MSC2020primary}, \code{MSC2020primary} lists of codes from \href{https://mathscinet.ams.org/mathscinet/msc/msc2020.html}{MCS2020 database}
+\item \code{keywords} a list of keywords
+\item \code{supplements} a list of entries with two elements \code{title} and \code{description}
+\item \code{doi} DOI of the article
+\item \code{arxiv} Arxiv id
+\item \code{acknowledgements} acknowledgement text, limited to 250 words
+\item \code{bibliography} BibTeX \code{.bib} file
+\item \code{longtable} set to \code{true} to include the \code{longtable} package, used by default from \code{pandoc} to convert markdown to LaTeX code
+\item \code{header-includes}: custom additions to the header, before the \verb{\\begin\{document\}} statement
+\item \code{include-after}: for including additional LaTeX code before the \verb{\\end\{document\}} statement
+}
+}
+
 \examples{
 \dontrun{
 rmarkdown::draft("MyArticle.Rmd", template = "acm", package = "rticles")
-rmarkdown::draft("MyArticle.Rmd", template = "asa", package = "rticles")}
+rmarkdown::draft("MyArticle.Rmd", template = "asa", package = "rticles")
+}
 }

@@ -12,14 +12,16 @@ test_format <- function(name, output_options = NULL, skip = NULL) {
   on.exit(setwd(oldwd), add = TRUE)
 
   # create a draft of the format
-  testdoc <- paste0(name,"_article",".Rmd")
+  testdoc <- paste0(name, "_article", ".Rmd")
   rmarkdown::draft(
     testdoc, pkg_file_template(name),
     create_dir = FALSE, edit = FALSE
   )
 
-  message('Rendering the ', name, ' format...',
-          if(!is.null(output_options)) " (with output options)")
+  message(
+    "Rendering the ", name, " format...",
+    if (!is.null(output_options)) " (with output options)"
+  )
   output_file <- rmarkdown::render(testdoc, output_options = output_options, quiet = TRUE)
   assert(paste(name, "format works"), {
     file.exists(output_file)
@@ -43,12 +45,15 @@ test_format("bioinformatics")
 test_format("biometrics")
 test_format("copernicus")
 test_format("ctex", skip = !xfun::is_linux()) # only on linux due to fonts requirements
-test_format("elsevier")
+test_format("elsevier", skip = !rmarkdown::pandoc_available("2.10"))
 test_format("frontiers")
 test_format("glossa")
 test_format("ieee")
 test_format("ims")
 test_format("ims", output_options = list(journal = "aap"))
+test_format("informs", skip = !rmarkdown::pandoc_available("2.10"))
+test_format("isba", skip = !rmarkdown::pandoc_available("2.10"))
+test_format("iop")
 test_format("jasa")
 test_format("joss")
 test_format("joss", output_options = list(journal = "JOSE"))

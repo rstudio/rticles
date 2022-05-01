@@ -7,7 +7,8 @@
 #' @export
 rss_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
   fmt <- pdf_document_format(
-    "rss", highlight = NULL, citation_package = citation_package,
+    "rss",
+    highlight = NULL, citation_package = citation_package,
     keep_tex = keep_tex, ...
   )
   fmt$knitr$knit_hooks$source <- function(x, options) {
@@ -17,14 +18,14 @@ rss_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
     }
     paste0(
       c(
-        '\n\\begin{lstlisting}[language=',
+        "\n\\begin{lstlisting}[language=",
         options$engine,
         "]",
         x,
-        '\\end{lstlisting}',
-        ''
+        "\\end{lstlisting}",
+        ""
       ),
-      collapse = '\n'
+      collapse = "\n"
     )
   }
   fmt

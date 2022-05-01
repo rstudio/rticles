@@ -1,4 +1,44 @@
-# rticles 0.23 (development version)
+# rticles (development version)
+
+## BUG FIXES
+
+- In `elsevier_article()`, corresponding author is correctly marked with a `*` even if no other footnote are set on the author.
+
+- `ams_article()` bundles `ametsoc.cls` now as **ametsoc** package is not more available on CTAN.
+
+- Nested code chunk in list are now correctly rendered in `jss_article()` (thanks, @nbenn, #476).
+
+## MINOR CHANGES
+
+- Update Copernicus Publications template to version 6.8 from 2022-03-28 (@RLumSK, #478, #479).
+
+- Update `rjournal_article()` template to match current style file. Package and task view macros use secure links, and the footer includes the year (@mitchelloharawild)
+
+# rticles 0.23
+
+## BREAKING CHANGE
+
+- Update Elsevier template and of `elsarticle.cls` to version 3.3 in `elsevier_article()`. This is a breaking change in the format that now **requires at least Pandoc 2.10** and uses the latest version of the `.cls` file, also provided in [elsarticle](https://ctan.org/pkg/elsarticle) on CTAN. See the included template for this format. Also, `natbib` is now used y default for citation processing. You can use [**renv**](https://pkgs.rstudio.com/renv/) to manage your project in locked environment of packages  (thanks, @robjhyndman, #467).
+
+## NEW FEATURES
+
+- Update `jss_article()` template to handle ORCID links for each author from  a new YAML field, and to use updated `jss.cls` class file (thanks, @remlapmot, #465).
+
+- New `informs_article()` template for submissions to INFORMS journals (thanks, @robjhyndman, #460).
+
+- New `iop_article()` template for submissions to IOP journals (thanks, @robjhyndman, #462).
+
+- New `isba_article()` template for submissions to Bayesian Analysis journal (thanks, @dmi3kno, #461).
+
+## MINOR CHANGES
+
+- Update Copernicus Publications template to version 6.6 from 2022-01-18 (@RLumSK, #463, #464).
+
+- `rss_article()` now supports more than two authors using usual YAML list syntax in the new `authors` field. Old `author` and `author2` are kept for backward compatibility, but we advice any user to use the new formats. See update Rmd skeleton template (thanks, @dmi3kno, #466).
+
+## BUG FIXES
+
+- `graphicx` LaTeX package has been added to `ieee_article()` format (thanks, Sachin Hebbar, [on RStudio Community](https://community.rstudio.com/t/inserting-figures-in-rticles-ieee-transaction-template/129325)).
 
 # rticles 0.22
 

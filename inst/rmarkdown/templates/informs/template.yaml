@@ -1,0 +1,5 @@
+name: INFORMS Journal Article
+description: >
+ Template for creating an article for submission to any INFORMS journal
+create_dir: true
+

@@ -50,12 +50,12 @@
 #' @inheritParams rmarkdown::pdf_document
 #' @param ... Arguments to [rmarkdown::pdf_document()].
 #' @export
-rjournal_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
-
-  rmarkdown::pandoc_available('2.2', TRUE)
+rjournal_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
+  rmarkdown::pandoc_available("2.2", TRUE)
 
   base <- pdf_document_format(
-    "rjournal", highlight = NULL, citation_package = citation_package,
+    "rjournal",
+    highlight = NULL, citation_package = citation_package,
     keep_tex = keep_tex, ...
   )
 
@@ -92,8 +92,9 @@ rjournal_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') 
     # underscores in the filename will be problematic in \input{filename};
     # pandoc will escape underscores but it should not, i.e., should be
     # \input{foo_bar} instead of \input{foo\_bar}
-    if (filename != (filename2 <- gsub('_', '-', filename))) {
-      file.rename(filename, filename2); filename <- filename2
+    if (filename != (filename2 <- gsub("_", "-", filename))) {
+      file.rename(filename, filename2)
+      filename <- filename2
     }
 
     # Copy purl-ed R file with the correct name
@@ -128,7 +129,7 @@ rjournal_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') 
     # check bibliography name
     bib_filename <- metadata$bibliography
     if (length(bib_filename) == 1 &&
-        xfun::sans_ext(bib_filename) != xfun::sans_ext(filename)) {
+      xfun::sans_ext(bib_filename) != xfun::sans_ext(filename)) {
       msg <- paste0(
         "Per R journal requirement, bibliography file and tex file should",
         " have the same name. Currently, you have a bib file ", bib_filename,
@@ -140,9 +141,10 @@ rjournal_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') 
 
     # Create RJwrapper.tex per R Journal requirement
     m <- list(filename = xfun::sans_ext(filename))
-    h <- get_list_element(metadata, c('output', 'rticles::rjournal_article', 'includes', 'in_header'))
-    h <- c(h, if (length(preamble <- unlist(metadata[c('preamble', 'header-includes')]))) {
-      f <- tempfile(fileext = '.tex'); on.exit(unlink(f), add = TRUE)
+    h <- get_list_element(metadata, c("output", "rticles::rjournal_article", "includes", "in_header"))
+    h <- c(h, if (length(preamble <- unlist(metadata[c("preamble", "header-includes")]))) {
+      f <- tempfile(fileext = ".tex")
+      on.exit(unlink(f), add = TRUE)
       xfun::write_utf8(preamble, f)
       f
     })

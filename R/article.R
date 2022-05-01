@@ -23,7 +23,8 @@ NULL
 #' @return An R Markdown output format.
 #' @examples \dontrun{
 #' rmarkdown::draft("MyArticle.Rmd", template = "acm", package = "rticles")
-#' rmarkdown::draft("MyArticle.Rmd", template = "asa", package = "rticles")}
+#' rmarkdown::draft("MyArticle.Rmd", template = "asa", package = "rticles")
+#' }
 #' @export
 #' @rdname article
 acm_article <- function(...) {
@@ -35,11 +36,12 @@ acm_article <- function(...) {
 #'   <https://pubs.acs.org/page/4authors/submission/tex.html>.
 #' @export
 #' @rdname article
-acs_article <- function(
-  ..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"), fig_caption = TRUE
-) {
+acs_article <- function(..., keep_tex = TRUE,
+                        md_extensions = c("-autolink_bare_uris"),
+                        fig_caption = TRUE) {
   pdf_document_format(
-    "acs", keep_tex = keep_tex, md_extensions = md_extensions,
+    "acs",
+    keep_tex = keep_tex, md_extensions = md_extensions,
     fig_caption = fig_caption, ...
   )
 }
@@ -48,9 +50,11 @@ acs_article <- function(
 #'   Economic Association (AER, AEJ, JEL, PP).
 #' @export
 #' @rdname article
-aea_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris")) {
+aea_article <- function(..., keep_tex = TRUE,
+                        md_extensions = c("-autolink_bare_uris")) {
   pdf_document_format(
-    "aea", keep_tex = keep_tex, md_extensions = md_extensions, ...
+    "aea",
+    keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
 }
 
@@ -59,12 +63,12 @@ aea_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_
 #'   <https://www.agu.org/Publish-with-AGU/Publish/#1>.
 #' @export
 #' @rdname article
-agu_article <- function(
-  ..., keep_tex = TRUE, citation_package = 'natbib',
-  highlight = NULL, md_extensions = c("-autolink_bare_uris", "-auto_identifiers")
-) {
+agu_article <- function(..., keep_tex = TRUE,
+                        citation_package = "natbib", highlight = NULL,
+                        md_extensions = c("-autolink_bare_uris", "-auto_identifiers")) {
   pdf_document_format(
-    "agu", keep_tex = keep_tex, highlight = highlight,
+    "agu",
+    keep_tex = keep_tex, highlight = highlight,
     citation_package = citation_package, md_extensions = md_extensions, ...
   )
 }
@@ -73,12 +77,11 @@ agu_article <- function(
 #'   l'AMQ.
 #' @export
 #' @rdname article
-amq_article <- function(
-  ..., latex_engine = 'xelatex', keep_tex = TRUE, fig_caption = TRUE,
-  md_extensions = c("-autolink_bare_uris")
-) {
+amq_article <- function(..., latex_engine = "xelatex", keep_tex = TRUE,
+                        fig_caption = TRUE, md_extensions = c("-autolink_bare_uris")) {
   pdf_document_format(
-    "amq", latex_engine = latex_engine, highlight = NULL, keep_tex = keep_tex,
+    "amq",
+    latex_engine = latex_engine, highlight = NULL, keep_tex = keep_tex,
     md_extensions = md_extensions, fig_caption = fig_caption, ...
   )
 }
@@ -88,9 +91,11 @@ amq_article <- function(
 #'   <https://www.ametsoc.org/ams/index.cfm/publications/authors/journal-and-bams-authors/author-resources/latex-author-info/>.
 #' @export
 #' @rdname article
-ams_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris")) {
+ams_article <- function(..., keep_tex = TRUE,
+                        md_extensions = c("-autolink_bare_uris")) {
   pdf_document_format(
-    "ams", keep_tex = keep_tex, md_extensions = md_extensions, ...
+    "ams",
+    keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
 }
 
@@ -99,9 +104,10 @@ ams_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_
 #'   American Statistical Association (ASA) journals.
 #' @export
 #' @rdname article
-asa_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
+asa_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
   pdf_document_format(
-    "asa", keep_tex = keep_tex, citation_package = citation_package, ...
+    "asa",
+    keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
 
@@ -112,7 +118,8 @@ asa_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
 #' @rdname article
 arxiv_article <- function(..., keep_tex = TRUE) {
   pdf_document_format(
-    "arxiv", keep_tex = keep_tex, ...
+    "arxiv",
+    keep_tex = keep_tex, ...
   )
 }
 
@@ -120,10 +127,11 @@ arxiv_article <- function(..., keep_tex = TRUE) {
 #' <https://academic.oup.com/bioinformatics/pages/submission_online>.
 #' @export
 #' @rdname article
-bioinformatics_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
+bioinformatics_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
   pdf_document_format(
-    "bioinformatics", keep_tex = keep_tex, citation_package = citation_package,
-    md_extensions = "-auto_identifiers",...
+    "bioinformatics",
+    keep_tex = keep_tex, citation_package = citation_package,
+    md_extensions = "-auto_identifiers", ...
   )
 }
 
@@ -131,9 +139,10 @@ bioinformatics_article <- function(..., keep_tex = TRUE, citation_package = 'nat
 #'   Biometrics journal.
 #' @export
 #' @rdname article
-biometrics_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
+biometrics_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
   pdf_document_format(
-    'biometrics', keep_tex = keep_tex, citation_package = citation_package, ...
+    "biometrics",
+    keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
 
@@ -144,9 +153,10 @@ biometrics_article <- function(..., keep_tex = TRUE, citation_package = 'natbib'
 #'   function `ctex` is an alias of `ctex_article`.
 #' @export
 #' @rdname article
-ctex_article <- function(..., template = 'default', latex_engine = 'xelatex') {
+ctex_article <- function(..., template = "default", latex_engine = "xelatex") {
   pdf_document_format(
-    'ctex', latex_engine = latex_engine, template = template, ...
+    "ctex",
+    latex_engine = latex_engine, template = template, ...
   )
 }
 
@@ -157,13 +167,23 @@ ctex <- ctex_article
 #' @section `elsevier_article`: Format for creating submissions to Elsevier
 #'   journals. Adapted from
 #'   <https://www.elsevier.com/authors/policies-and-guidelines/latex-instructions>.
+#'
+#' It requires a minimum version of 2.10 for Pandoc.
 #' @export
 #' @rdname article
-elsevier_article <- function(
-  ..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris")
-) {
+elsevier_article <- function(..., keep_tex = TRUE,
+                             md_extensions = c("-autolink_bare_uris"),
+                             citation_package = "natbib") {
+  if (citation_package == "biblatex") {
+    stop("Elsevier template does not support `biblatex` for citation processing.")
+  }
+  if (!rmarkdown::pandoc_available("2.10")) {
+    stop("`elsevier_article()` now requires a minimum of pandoc 2.10.")
+  }
   pdf_document_format(
-    "elsevier", keep_tex = keep_tex, md_extensions = md_extensions, ...
+    "elsevier",
+    keep_tex = keep_tex, md_extensions = md_extensions,
+    citation_package = citation_package, ...
   )
 }
 
@@ -185,7 +205,8 @@ frontiers_article <- function(..., keep_tex = TRUE) {
 #' @rdname article
 glossa_article <- function(..., keep_tex = TRUE, latex_engine = "xelatex") {
   format <- pdf_document_format(
-    "glossa", keep_tex = keep_tex, latex_engine = latex_engine, ...
+    "glossa",
+    keep_tex = keep_tex, latex_engine = latex_engine, ...
   )
   if (tinytex::is_tinytex() && tinytex::check_installed("microtype")) {
     # TODO: known conflict - remove when fixed
@@ -218,7 +239,6 @@ ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
                         md_extensions = c(
                           "-autolink_bare_uris" # disables automatic links
                         ), pandoc_args = NULL, ...) {
-
   journal <- match.arg(journal)
 
   with_kwsc <- journal %in% c("aap", "aop", "aos") # with keyword_subclass
@@ -226,15 +246,47 @@ ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
   args <- c(
     "journal" = journal,
     if (with_kwsc) c("with_kwsc" = with_kwsc)
-    )
+  )
 
   # Convert to pandoc arguments
   pandoc_arg_list <- vec_to_pandoc_variable_args(args)
 
   pdf_document_format(
-    "ims", keep_tex = keep_tex, citation_package = citation_package,
+    "ims",
+    keep_tex = keep_tex, citation_package = citation_package,
     md_extensions = md_extensions, pandoc_args = c(pandoc_arg_list, pandoc_args),
     ...
+  )
+}
+
+#' @section `informs_article`: Format for creating submissions to
+#' INFORMS journals. Adapted from \samp{https://pubsonline.informs.org/authorportal/latex-style-files}.
+#'
+#' It requires a minimum version of 2.10 for Pandoc.
+#' @export
+#' @rdname article
+informs_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
+  if (citation_package != "natbib") {
+    stop("INFORMS template only supports `natbib` for citation processing.")
+  }
+  if (!rmarkdown::pandoc_available("2.10")) {
+    stop("informs_article requires a minimum of pandoc 2.10.")
+  }
+  pdf_document_format(
+    "informs",
+    keep_tex = keep_tex, citation_package = citation_package, ...
+  )
+}
+
+#' @section `iop_article`: Format for creating submissions to
+#'   IOP journals. Adapted from \samp{https://publishingsupport.iopscience.iop.org/questions/latex-template/}.
+#'   Please read the guidelines at this link when preparing your article.
+#' @export
+#' @rdname article
+iop_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
+  pdf_document_format(
+    "iop",
+    keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
 
@@ -243,11 +295,11 @@ ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
 #'   <https://acousticalsociety.org/preparing-latex-manuscripts/>.
 #' @export
 #' @rdname article
-jasa_article <- function(
-  ..., keep_tex = TRUE, latex_engine = "xelatex", citation_package = "natbib"
-) {
+jasa_article <- function(..., keep_tex = TRUE, latex_engine = "xelatex",
+                         citation_package = "natbib") {
   pdf_document_format(
-    "jasa", keep_tex = keep_tex, latex_engine = latex_engine,
+    "jasa",
+    keep_tex = keep_tex, latex_engine = latex_engine,
     citation_package = citation_package, ...
   )
 }
@@ -261,18 +313,18 @@ jasa_article <- function(
 #'   Project Public License (LPPL), Version 1.3c.
 #' @export
 #' @rdname article
-lipics_article <- function(
-  ..., latex_engine = 'xelatex', # xelatex used for 'thin space' Unicode
-                                 # character, see YAML field 'authorrunning'
-  keep_tex = TRUE, citation_package = "natbib", md_extensions = c(
-    "-autolink_bare_uris", # disables automatic links
-    "-auto_identifiers"    # disables \hypertarget commands
-  )
-) {
+lipics_article <- function(..., latex_engine = "xelatex", # xelatex used for 'thin space' Unicode
+                           # character, see YAML field 'authorrunning'
+                           keep_tex = TRUE, citation_package = "natbib",
+                           md_extensions = c(
+                             "-autolink_bare_uris", # disables automatic links
+                             "-auto_identifiers" # disables \hypertarget commands
+                           )) {
   # quick dev shortcut for Ubuntu: click "Install and restart" then run:
   # unlink("MyArticle/", recursive = TRUE); rmarkdown::draft("MyArticle.Rmd", template = "lipics", package = "rticles", edit = FALSE); rmarkdown::render("MyArticle/MyArticle.Rmd"); system(paste0("xdg-open ", here::here("MyArticle", "MyArticle.pdf")))
   pdf_document_format(
-    "lipics", latex_engine = latex_engine,
+    "lipics",
+    latex_engine = latex_engine,
     citation_package = citation_package, keep_tex = keep_tex,
     md_extensions = md_extensions, ...
   )
@@ -285,9 +337,10 @@ lipics_article <- function(
 #' @rdname article
 jedm_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
   pdf_document_format("jedm",
-                      keep_tex = keep_tex,
-                      citation_package = citation_package,
-                      ...)
+    keep_tex = keep_tex,
+    citation_package = citation_package,
+    ...
+  )
 }
 
 #' @section `mdpi_article`: Format for creating submissions to
@@ -297,7 +350,8 @@ jedm_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
 #' @rdname article
 mdpi_article <- function(..., keep_tex = TRUE) {
   pdf_document_format(
-    "mdpi", keep_tex = keep_tex, citation_package = "natbib", ...
+    "mdpi",
+    keep_tex = keep_tex, citation_package = "natbib", ...
   )
 }
 
@@ -308,7 +362,8 @@ mdpi_article <- function(..., keep_tex = TRUE) {
 #' @rdname article
 mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
   pdf_document_format(
-    "mnras", keep_tex = keep_tex, fig_caption = fig_caption, ...
+    "mnras",
+    keep_tex = keep_tex, fig_caption = fig_caption, ...
   )
 }
 
@@ -319,7 +374,7 @@ mnras_article <- function(..., keep_tex = TRUE, fig_caption = TRUE) {
 #' @export
 #' @rdname article
 peerj_article <- function(..., keep_tex = TRUE) {
-  pdf_document_format("peerj",  keep_tex = keep_tex, ...)
+  pdf_document_format("peerj", keep_tex = keep_tex, ...)
 }
 
 #' @section `pihph_article`: Format for creating submissions to the Papers
@@ -332,24 +387,24 @@ peerj_article <- function(..., keep_tex = TRUE) {
 #'   template.
 #' @export
 #' @rdname article
-pihph_article <- function(
-  ..., keep_tex = TRUE, latex_engine = "xelatex",
-  citation_package = "biblatex"
-) {
+pihph_article <- function(..., keep_tex = TRUE, latex_engine = "xelatex",
+                          citation_package = "biblatex") {
   pdf_document_format(
-    "pihph", keep_tex = keep_tex, latex_engine = latex_engine,
-    citation_package = citation_package, ...)
+    "pihph",
+    keep_tex = keep_tex, latex_engine = latex_engine,
+    citation_package = citation_package, ...
+  )
 }
 
 #' @section `plos_article`: Format for creating submissions to PLOS
 #'   journals. Adapted from <https://journals.plos.org/ploscompbiol/s/latex>.
 #' @export
 #' @rdname article
-plos_article <- function(
-  ..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris")
-) {
+plos_article <- function(..., keep_tex = TRUE,
+                         md_extensions = c("-autolink_bare_uris")) {
   pdf_document_format(
-    "plos", keep_tex = keep_tex, md_extensions = md_extensions, ...
+    "plos",
+    keep_tex = keep_tex, md_extensions = md_extensions, ...
   )
 }
 
@@ -382,7 +437,8 @@ pnas_article <- function(..., keep_tex = TRUE) {
 #' @rdname article
 sage_article <- function(..., highlight = NULL, citation_package = "natbib") {
   pdf_document_format(
-    "sage", highlight = highlight, citation_package = citation_package, ...
+    "sage",
+    highlight = highlight, citation_package = citation_package, ...
   )
 }
 
@@ -409,7 +465,8 @@ sage_article <- function(..., highlight = NULL, citation_package = "natbib") {
 #' @rdname article
 sim_article <- function(..., highlight = NULL, citation_package = "natbib") {
   pdf_document_format(
-    "sim", highlight = highlight, citation_package = citation_package, ...
+    "sim",
+    highlight = highlight, citation_package = citation_package, ...
   )
 }
 
@@ -417,9 +474,11 @@ sim_article <- function(..., highlight = NULL, citation_package = "natbib") {
 #'   Macro package for Springer Journals.
 #' @export
 #' @rdname article
-springer_article <- function(..., keep_tex = TRUE, citation_package = 'default'){
+springer_article <- function(..., keep_tex = TRUE,
+                             citation_package = "default") {
   pdf_document_format(
-    "springer", keep_tex = keep_tex, citation_package = citation_package, ...
+    "springer",
+    keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
 
@@ -427,9 +486,10 @@ springer_article <- function(..., keep_tex = TRUE, citation_package = 'default')
 #' \samp{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
 #' @export
 #' @rdname article
-tf_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
+tf_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
   pdf_document_format(
-    "tf", keep_tex = keep_tex, citation_package = citation_package, ...
+    "tf",
+    keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
 
@@ -439,9 +499,10 @@ tf_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
 #'   which in turn is hosted at \samp{https://github.com/chiehrosswang/TRB_LaTeX_tex}
 #' @export
 #' @rdname article
-trb_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
+trb_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
   pdf_document_format(
-    "trb", keep_tex = keep_tex, citation_package = citation_package, ...
+    "trb",
+    keep_tex = keep_tex, citation_package = citation_package, ...
   )
 }
 
@@ -449,8 +510,50 @@ trb_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
 #' Wellcome Open Research. Adapted from <overleaf.com/latex/templates/wellcome-open-research-article-template/hsmhhbpxvvbj>.
 #' @export
 #' @rdname article
-wellcomeor_article <- function(..., number_sections = FALSE, keep_tex = TRUE, citation_package = 'natbib') {
+wellcomeor_article <- function(..., number_sections = FALSE, keep_tex = TRUE,
+                               citation_package = "natbib") {
   pdf_document_format(
-    "wellcomeor", keep_tex = keep_tex, number_sections = number_sections, citation_package = citation_package, ...
+    "wellcomeor",
+    keep_tex = keep_tex, number_sections = number_sections,
+    citation_package = citation_package, ...
+  )
+}
+
+#' @section `isba_article`: Format for creating submissions to Bayesian analysis.
+#' Based on the official Bayesian analysis [class](https://www.e-publications.org/isba/support/).
+#' Template shows how to use this format as a base format for `bookdown::pdf_book`, but it can very well be used on its own (with limitations that figure referencing will not work).
+#' Note that the template sets `md_extensions` to exclude `-autolink_bare_uris` because otherwise author emails produce error
+#'
+#' Possible arguments for the YAML header are:
+#' * `title` title of the manuscript. Shorter version of the title can be provided as `runtitle`.
+#' * `classoption` should equal `ba` or `ba,preprint` for supplementary article.``
+#' * `author` list of authors, containing `firstname`, `lastname`, `email`, `url`, `affiliationref` (as code) and `footnoterefs` (as list of codes)
+#' * `affiliations` list containing `ref` (code for defining `author` affiliations), institution `name` and `address` itself
+#' * `footnotes` a list of two-element entries: `ref` and `text`
+#' * `abstract` abstract, limited to 250 words
+#' * `MSC2020primary`, `MSC2020primary` lists of codes from [MCS2020 database](https://mathscinet.ams.org/mathscinet/msc/msc2020.html)
+#' * `keywords` a list of keywords
+#' * `supplements` a list of entries with two elements `title` and `description`
+#' * `doi` DOI of the article
+#' * `arxiv` Arxiv id
+#' * `acknowledgements` acknowledgement text, limited to 250 words
+#' * `bibliography` BibTeX `.bib` file
+#' * `longtable` set to `true` to include the `longtable` package, used by default from `pandoc` to convert markdown to LaTeX code
+#' * `header-includes`: custom additions to the header, before the `\begin{document}` statement
+#' * `include-after`: for including additional LaTeX code before the `\end{document}` statement
+#' @export
+#' @rdname article
+isba_article <- function(..., keep_tex = TRUE, highlight = NULL, citation_package = "natbib") {
+  if (citation_package != "natbib") {
+    stop("ISBA template only supports `natbib` for citation processing.")
+  }
+  # from https://github.com/rstudio/rmarkdown/issues/372
+  # md_extensions <- c("+ascii_identifiers", "+tex_math_single_backslash", "-autolink_bare_uris")
+  if (!rmarkdown::pandoc_available("2.10")) {
+    stop("`isba_article()` requires a minimum of pandoc 2.10.")
+  }
+  pdf_document_format(
+    "isba",
+    keep_tex = keep_tex, highlight = highlight, citation_package = citation_package, ...
   )
 }

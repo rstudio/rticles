@@ -1,0 +1,114 @@
+---
+title: Short Paper for Bayesian Analyis
+classoption: ba
+author:
+  - firstname: Alice 
+    lastname: Anonymous
+    email: alice@example.com
+    url: www.example.com/aliceanon
+    affiliationref: addr1
+    footnoterefs: 
+      - t1
+      - t2
+      - m1
+  - firstname: Bob
+    lastname: Security
+    email: bob@example.com
+    affiliationref: addr1
+    footnoterefs: 
+      - t3
+      - m1
+      - m2
+  - firstname: Cat
+    lastname: Memes
+    email: cat@example.com
+    affiliationref: addr2
+    footnoterefs: 
+      - t1
+      - m2
+affiliations:
+  - ref: addr1
+    name: Some Institute of Technology 
+    address: Department, Street, City, State, Zip
+  - ref: addr2
+    name: Another University
+    address: Department, Street, City, State, Zip
+footnotes:
+  - ref: t1
+    text: "Corresponding Author"
+  - ref: t2
+    text: "Equal contribution"
+  - ref: t3
+    text: "Something"
+  - ref: m1
+    text: "Something"  
+  - ref: m2
+    text: "Something"
+MSC2020primary:
+  - 62C10
+  - 62F15
+MSC2020secondary:
+  - 60K35
+  - 91A27
+keywords:
+  - bayesian
+  - statistics
+supplements:
+  - title: Title of Supplement A
+    description: Short description of Supplement A.
+  - title: Title of Supplement B
+    description: Short description of Supplement B.
+doi: "10.31219/osf.io/wh3wr"
+arxiv: 2010.010101
+acknowledgements: |
+  And this is an acknowledgements section with a heading that was produced by the `acks` environment. Thank you all for helping me writing this Rmarkdown sample file.
+
+  Also thankful to God, mom and my cats.
+abstract: |
+  The abstract should summarize the contents of the paper. It should be clear, descriptive, self-explanatory and not longer than 200 words. It should also be suitable for publication in abstracting services. Please avoid using math formulas as much as possible.
+
+  This is a sample input file.  Comparing it with the output it generates can show you how to produce a simple document of your. That was the second paragraph.
+date: "`r Sys.Date()`"
+bibliography: sample.bib
+#linenumbers: true
+#numbersections: true
+output: 
+  bookdown::pdf_book: 
+    base_format: rticles::isba_article
+    md_extensions: -autolink_bare_uris #keep these off or \printead{} will fail on email addresses
+---
+
+# R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## YAML fields
+
+For `MSC2020primary` and `MSC2020secondary`, please refer to [MSC database](https://mathscinet.ams.org/mathscinet/msc/msc2020.html).
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot. Because printing is different from typewriting, there are a number of things that you have to do differently when preparing an input file than if you were just typing the document directly.  Quotation marks separates the double and single quote. 
+
+$$a+b\geq c$$
+where $a$ is a variable and $c$ is variable as well.
+
+Dashes come in three sizes: a hyphen, an intra-word dash, a medium dash for number ranges like 1--2, and a punctuation dash in place of a comma, semicolon, colon or parentheses ---like this.
+
+The following are some other citations to check that the bibliographic style file is working correctly: \citet{akaike}, \citet*{akivarsq},
+\citet*{kstuart}, and \citet{companion}.  
+
+# References {#references .unnumbered}
+

@@ -1,75 +1,109 @@
-Package: rticles
 Type: Package
+Package: rticles
 Title: Article Formats for R Markdown
-Version: 0.22.1
+Version: 0.23.4
 Authors@R: c(
-  person("JJ", "Allaire", role = "aut", email = "jj@rstudio.com"),
-  person("Yihui", "Xie", role = c("aut"), email = "xie@yihui.name", comment = c(ORCID = "0000-0003-0645-5666")),
-  person("Christophe", "Dervieux", role = c("aut","cre"), email = "cderv@rstudio.com", comment = c(ORCID = "0000-0003-4474-2498")),
-  person(family = "RStudio", role = c("cph", "fnd")),
-  person(family = "R Foundation", role = c("aut", "cph")),
-  person("Hadley", "Wickham", role = "aut", email = "hadley@rstudio.com"),
-  person(family = "Journal of Statistical Software", role = c("aut", "cph")),
-  person("Ramnath ", "Vaidyanathan", role = c("aut", "cph"), email = "ramnath.vaidya@gmail.com"),
-  person(family = "Association for Computing Machinery", role = c("aut", "cph")),
-  person("Carl", "Boettiger", role = c("aut", "cph"), email = "cboettig@gmail.com"),
-  person(family = "Elsevier", role = c("aut", "cph")),
-  person("Karl", "Broman", role = c("aut", "cph"), email = "kbroman@gmail.com"),
-  person("Kirill", "Mueller", role = c("aut", "cph"), email = "kirill.mueller@ivt.baug.ethz.ch"),
-  person("Bastiaan", "Quast", role = c("aut", "cph"), email = "bquast@gmail.com"),
-  person("Randall ", "Pruim", role = c("aut", "cph"), email = "rpruim@gmail.com"),
-  person("Ben", "Marwick", role = c("aut", "cph"), email = "bmarwick@uw.edu"),
-  person("Charlotte", "Wickham", role = c("aut", "cph"), email = "cwickham@gmail.com"),
-  person("Oliver", "Keyes", role = c("aut", "cph"), email = "okeyes@wikimedia.org"),
-  person("Miao", "Yu", role = c("aut", "cph"), email = "yufreecas@gmail.com"),
-  person("Daniel", "Emaasit", role = c("aut", "cph"), email = "daniel.emaasit@gmail.com"),
-  person("Thierry", "Onkelinx", role = c("aut", "cph"), email = "thierry.onkelinx@inbo.be"),
-  person("Alessandro", "Gasparini", role = c("aut", "cph"), email = "ellessenne@gmail.com", comment = c(ORCID = "0000-0002-8319-7624")),
-  person("Marc-Andre", "Desautels", role = c("aut", "cph"), email = "marc-andre.desautels@cstjean.qc.ca"),
-  person("Dominik", "Leutnant", role = c("aut", "cph"), email = "leutnant@fh-muenster.de", comment = c(ORCID = "0000-0003-3293-2315")),
-  person(family = "MDPI", role = c("aut", "cph")),
-  person(family = "Taylor and Francis", role = c("aut", "cph")),
-  person("Oğuzhan", "Öğreden", role = c("aut"), comment = c(ORCID = "0000-0002-9949-3348")),
-  person("Dalton", "Hance", role = c("aut"), email = "dhance@usgs.gov"),
-  person("Daniel", "Nüst", role = c("aut", "cph"), email = "daniel.nuest@uni-muenster.de", comment = c(ORCID = "0000-0002-0024-5046")),
-  person("Petter", "Uvesten", role = c("aut", "cph"), email = "petter.uvesten.7362@student.lu.se"),
-  person("Elio", "Campitelli", role = c("aut", "cph"), email = "elio.campitelli@cima.fcen.uba.ar", comment = c(ORCID = "0000-0002-7742-9230")),
-  person("John", "Muschelli", role = c("aut", "cph"), email = "muschellij2@gmail.com", comment = c(ORCID = "0000-0001-6469-1750")),
-  person("Alex", "Hayes", role = "aut", email = "alexpghayes@gmail.com", comment = c(ORCID = "0000-0002-4985-5160")),
-  person("Zhian N.", "Kamvar", role = c("aut", "cph"), email = "zkamvar@gmail.com", comment = c(ORCID = "0000-0003-1458-7108")),
-  person("Noam", "Ross", role = c("aut", "cph"), email = "noam.ross@gmail.com", comment = c(ORCID = "0000-0002-2136-0000")),
-  person("Robrecht", "Cannoodt", role = c("aut", "cph"), email = "rcannood@gmail.com", comment = c(ORCID = "0000-0003-3641-729X", github = "rcannood")),
-  person("Duncan", "Luguern", role = c("aut"), email = "duncan.luguern@gmail.com"),
-  person("David M.", "Kaplan", role = c("aut", "ctb"), email = "dmkaplan2000@gmail.com", comment = c(ORCID = "0000-0001-6087-359X", github = "dmkaplan2000")),
-  person("Sebastian", "Kreutzer", role = c("aut"), email = "sebastian.kreutzer@aber.ac.uk", comment = c(ORCID = "0000-0002-0734-2199")),
-  person("Shixiang", "Wang", role = c("aut", "ctb"), email = "w_shixiang@163.com", comment = c(ORCID = "0000-0001-9855-7357")),
-  person('Jay', 'Hesselberth', role = c('aut', 'ctb'), email = 'jay.hesselberth@gmail.com', comment = c(ORCID = '0000-0002-6299-179X')),
-  person("Alfredo", "Hernández", role = c("ctb"), email = "aldomann.designs@gmail.com", comment = c(ORCID = "0000-0002-2660-4545")),
-  person("Stefano", "Coretta", role = c("ctb"), email = "stefano.coretta@gmail.com", comment = c(ORCID = "0000-0001-9627-5532", github = "stefanocoretta")),
-  person("Greg", "Macfarlane", role = c("ctb"), email = "gregmacfarlane@gmail.com", comment = c(github = "gregmacfarlane")),
-  person("Matthias", "Templ", role = c("ctb"), email = "matthias.templ@gmail.com", comment = c(ORCID = "0000-0002-8638-5276", github = "matthias-da")),
-  person("Alvaro", "Uzaheta", role = c("ctb"), email = "alvaro.uzaheta@gess.ethz.ch", comment = c(github = "auzaheta")),
-  person("JooYoung", "Seo", role=c("ctb"), email="jseo1005@illinois.edu", comment = c(ORCID = "0000-0002-4064-6012")),
-  person("Callum", "Arnold", role = c("ctb"), email = "cal.rk.arnold@gmail.com", comment = c(github = "arnold-c"))
+    person("JJ", "Allaire", , "jj@rstudio.com", role = "aut"),
+    person("Yihui", "Xie", , "xie@yihui.name", role = "aut",
+           comment = c(ORCID = "0000-0003-0645-5666")),
+    person("Christophe", "Dervieux", , "cderv@rstudio.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-4474-2498")),
+    person(, "RStudio", role = c("cph", "fnd")),
+    person(, "R Foundation", role = c("aut", "cph")),
+    person("Hadley", "Wickham", , "hadley@rstudio.com", role = "aut"),
+    person(, "Journal of Statistical Software", role = c("aut", "cph")),
+    person("Ramnath ", "Vaidyanathan", , "ramnath.vaidya@gmail.com", role = c("aut", "cph")),
+    person(, "Association for Computing Machinery", role = c("aut", "cph")),
+    person("Carl", "Boettiger", , "cboettig@gmail.com", role = c("aut", "cph")),
+    person(, "Elsevier", role = c("aut", "cph")),
+    person("Karl", "Broman", , "kbroman@gmail.com", role = c("aut", "cph")),
+    person("Kirill", "Mueller", , "kirill.mueller@ivt.baug.ethz.ch", role = c("aut", "cph")),
+    person("Bastiaan", "Quast", , "bquast@gmail.com", role = c("aut", "cph")),
+    person("Randall ", "Pruim", , "rpruim@gmail.com", role = c("aut", "cph")),
+    person("Ben", "Marwick", , "bmarwick@uw.edu", role = c("aut", "cph")),
+    person("Charlotte", "Wickham", , "cwickham@gmail.com", role = c("aut", "cph")),
+    person("Oliver", "Keyes", , "okeyes@wikimedia.org", role = c("aut", "cph")),
+    person("Miao", "Yu", , "yufreecas@gmail.com", role = c("aut", "cph")),
+    person("Daniel", "Emaasit", , "daniel.emaasit@gmail.com", role = c("aut", "cph")),
+    person("Thierry", "Onkelinx", , "thierry.onkelinx@inbo.be", role = c("aut", "cph")),
+    person("Alessandro", "Gasparini", , "ellessenne@gmail.com", role = c("aut", "cph"),
+           comment = c(ORCID = "0000-0002-8319-7624")),
+    person("Marc-Andre", "Desautels", , "marc-andre.desautels@cstjean.qc.ca", role = c("aut", "cph")),
+    person("Dominik", "Leutnant", , "leutnant@fh-muenster.de", role = c("aut", "cph"),
+           comment = c(ORCID = "0000-0003-3293-2315")),
+    person(, "MDPI", role = c("aut", "cph")),
+    person(, "Taylor and Francis", role = c("aut", "cph")),
+    person("Oğuzhan", "Öğreden", role = "aut",
+           comment = c(ORCID = "0000-0002-9949-3348")),
+    person("Dalton", "Hance", , "dhance@usgs.gov", role = "aut"),
+    person("Daniel", "Nüst", , "daniel.nuest@uni-muenster.de", role = c("aut", "cph"),
+           comment = c(ORCID = "0000-0002-0024-5046")),
+    person("Petter", "Uvesten", , "petter.uvesten.7362@student.lu.se", role = c("aut", "cph")),
+    person("Elio", "Campitelli", , "elio.campitelli@cima.fcen.uba.ar", role = c("aut", "cph"),
+           comment = c(ORCID = "0000-0002-7742-9230")),
+    person("John", "Muschelli", , "muschellij2@gmail.com", role = c("aut", "cph"),
+           comment = c(ORCID = "0000-0001-6469-1750")),
+    person("Alex", "Hayes", , "alexpghayes@gmail.com", role = "aut",
+           comment = c(ORCID = "0000-0002-4985-5160")),
+    person("Zhian N.", "Kamvar", , "zkamvar@gmail.com", role = c("aut", "cph"),
+           comment = c(ORCID = "0000-0003-1458-7108")),
+    person("Noam", "Ross", , "noam.ross@gmail.com", role = c("aut", "cph"),
+           comment = c(ORCID = "0000-0002-2136-0000")),
+    person("Robrecht", "Cannoodt", , "rcannood@gmail.com", role = c("aut", "cph"),
+           comment = c(ORCID = "0000-0003-3641-729X", github = "rcannood")),
+    person("Duncan", "Luguern", , "duncan.luguern@gmail.com", role = "aut"),
+    person("David M.", "Kaplan", , "dmkaplan2000@gmail.com", role = c("aut", "ctb"),
+           comment = c(ORCID = "0000-0001-6087-359X", github = "dmkaplan2000")),
+    person("Sebastian", "Kreutzer", , "sebastian.kreutzer@aber.ac.uk", role = "aut",
+           comment = c(ORCID = "0000-0002-0734-2199")),
+    person("Shixiang", "Wang", , "w_shixiang@163.com", role = c("aut", "ctb"),
+           comment = c(ORCID = "0000-0001-9855-7357")),
+    person("Jay", "Hesselberth", , "jay.hesselberth@gmail.com", role = c("aut", "ctb"),
+           comment = c(ORCID = "0000-0002-6299-179X")),
+    person("Alfredo", "Hernández", , "aldomann.designs@gmail.com", role = "ctb",
+           comment = c(ORCID = "0000-0002-2660-4545")),
+    person("Stefano", "Coretta", , "stefano.coretta@gmail.com", role = "ctb",
+           comment = c(ORCID = "0000-0001-9627-5532", github = "stefanocoretta")),
+    person("Greg", "Macfarlane", , "gregmacfarlane@gmail.com", role = "ctb",
+           comment = c(github = "gregmacfarlane")),
+    person("Matthias", "Templ", , "matthias.templ@gmail.com", role = "ctb",
+           comment = c(ORCID = "0000-0002-8638-5276", github = "matthias-da")),
+    person("Alvaro", "Uzaheta", , "alvaro.uzaheta@gess.ethz.ch", role = "ctb",
+           comment = c(github = "auzaheta")),
+    person("JooYoung", "Seo", , "jseo1005@illinois.edu", role = "ctb",
+           comment = c(ORCID = "0000-0002-4064-6012")),
+    person("Callum", "Arnold", , "cal.rk.arnold@gmail.com", role = "ctb",
+           comment = c(github = "arnold-c")),
+    person("Rob", "Hyndman", , "Rob.Hyndman@monash.edu", role = "aut",
+           comment = c(ORCID = "0000-0002-2140-5352")),
+    person("Dmytro", "Perepolkin", , "dperepolkin@gmail.com", role = "ctb",
+           comment = c(ORCID = "0000-0001-8558-6183", github = "dmi3kno")),
+    person("Tom", "Palmer", , "remlapmot@hotmail.com", role = "ctb",
+           comment = c(ORCID = "0000-0003-4655-4511", github = "remlapmot"))
   )
 Description: A suite of custom R Markdown formats and templates for
-  authoring journal articles and conference submissions.
+    authoring journal articles and conference submissions.
 License: GPL-3
-Imports: utils, rmarkdown (>= 2.5), knitr (>= 1.30), yaml, tinytex (>= 0.30), xfun
-SystemRequirements: GNU make
 URL: https://github.com/rstudio/rticles
 BugReports: https://github.com/rstudio/rticles/issues
-RoxygenNote: 7.1.2
+Imports: 
+    knitr (>= 1.30),
+    rmarkdown (>= 2.13.7),
+    tinytex (>= 0.30),
+    utils,
+    xfun,
+    yaml
 Suggests: 
-    testit,
+    covr,
     bookdown,
-    xtable,
-    testthat (>= 3.0.0)
-Encoding: UTF-8
-Config/Needs/website: magick,
- pdftools,
- gifski,
- tidyverse/tidytemplate,
- rstudio/quillt
-Roxygen: list(markdown = TRUE)
+    testit,
+    testthat (>= 3.0.0),
+    xtable
+Config/Needs/website: magick, pdftools, gifski, tidyverse/tidytemplate,
+    rstudio/quillt
 Config/testthat/edition: 3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+SystemRequirements: GNU make
+Remotes: rstudio/rmarkdown
