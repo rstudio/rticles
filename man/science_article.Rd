@@ -9,7 +9,8 @@ science_article(
   keep_tex = TRUE,
   move_figures = TRUE,
   move_tables = TRUE,
-  number_sections = FALSE
+  number_sections = FALSE,
+  draft = TRUE
 )
 }
 \arguments{
@@ -17,11 +18,18 @@ science_article(
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 
-\item{move_figures}{set to \code{TRUE} to move figures to end. Default is \code{TRUE}.}
+\item{move_figures}{set to \code{TRUE} to move figures to end. Default is \code{TRUE}. Only
+works when \code{draft == TRUE}.}
 
-\item{move_tables}{set to \code{TRUE} to move tables to end. Default is \code{TRUE}.}
+\item{move_tables}{set to \code{TRUE} to move tables to end. Default is \code{TRUE}. Only
+works when \code{draft == TRUE}.}
 
 \item{number_sections}{\code{TRUE} to number section headings}
+
+\item{draft}{set to \code{TRUE} for the draft version or \code{FALSE} for a
+final submission version. \code{TRUE} creates a sub directory in the document
+directory and saves each figure to its own PDF there. It also moves the supplemental
+materials to its own file.}
 }
 \description{
 Format for creating submissions to Science. Based on the Science
