@@ -80,15 +80,16 @@ Whenever possible, use vector graphics instead (see Fig.\ \ref{fig:fig1}).
 plot(pressure)
 ```
 
-\begin{theorem}
+::: {.theorem latex=true}
 This is a sample theorem. The run-in heading is set in bold, while the following text appears in italics. Definitions, lemmas, propositions, and corollaries are styled the same way.
-\end{theorem}
+:::
 
 The environments 'definition', 'lemma', 'proposition', 'corollary', 'remark', and 'example' are defined in the LLNCS documentclass as well.
 
-\begin{proof}
+::: {.proof latex=true}
 Proofs, examples, and remarks have the initial word in italics, while the following text appears in normal font.
-\end{proof}   
+:::
+
 For citations of references, use\ \cite{Nuncio2011}.
 Multiple citations are grouped\ \cite{Levitus2012,Raphael2004}.
 
