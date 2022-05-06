@@ -16,7 +16,7 @@
 %% -----------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{copernicus}
-    [2021/12/08 9.39 Copernicus papers]
+    [2022/03/25 9.46 Copernicus papers]
 \frenchspacing
 \clubpenalty10000
 \widowpenalty10000
@@ -70,12 +70,14 @@
 \newif\if@noauthor       \DeclareOption{noauthor}{\@noauthortrue}
 \newif\if@nolastpage     \DeclareOption{nolastpage}{\@nolastpagetrue}
 \newif\if@noref          \DeclareOption{noref}{\@noreftrue}
+\newif\if@copDebug       \DeclareOption{debug}{\@copDebugtrue}
 \newif\if@nohyperref     \DeclareOption{nohyperref}{\@nohyperreftrue}
 \newif\if@cop@home       \IfFileExists{copernicuslogo.pdf}{\@cop@hometrue}{\@cop@homefalse}
 \newif\ifonline          \DeclareOption{online}{\onlinetrue}
 \newif\if@twostagejnl
 \newif\if@forHTML
 \newif\if@manuscript     \DeclareOption{manuscript}{\@manuscripttrue}
+\newif\if@proof          \DeclareOption{proof}{\@prooftrue}
 \newif\if@noline         \DeclareOption{noline}{\@nolinetrue}%classical
 \DeclareOption{corrigendum}  {\def\specialp@perstring{Corrigendum}}
 \DeclareOption{editorialnote}{\def\specialp@perstring{Editorial note}}
@@ -347,13 +349,14 @@
 \if@stage@final
   \def\ps@plain{%only used for manuscript
      \let\@mkboth\@gobbletwo
-     \let\@oddhead\@empty
-     \let\@evenhead\@empty
+     \def\@oddhead{\if@proof\watermark\fi}
+     \let\@evenhead\@oddhead
      \def\@oddfoot{\reset@font\bfseries\hfil\thepage\hfil}%
      \let\@evenfoot\@oddfoot}
   \def\ps@headings{%
     \def\@oddhead{%
       \runningheaderfont
+      \if@proof\watermark\fi
       \@runhd\hfil\llap{\thepage}%
       \if@cop@home\if@bar
           \textcolor{barcol}{\@ddsidemarginbar}%
@@ -362,25 +365,26 @@
       \fi\fi}
     \def\@evenhead{%
       \if@firstbar\global\@barfalse\fi
+      \if@proof\watermark\fi
       \if@cop@home\if@bar
           \textcolor{barcol}{\@vensidemarginbar}%
           %\textcolor{textcol}{\@vensidemarginrule}%
           \textcolor{rulecol}{\@vensidemarginrule}%
       \fi\fi
       \runningheaderfont
-      \rlap{\thepage}\hfil\@runhd}
-    \if@cop@home
+      \rlap{\thepage}\hfil\@runhd}%
+    \let\@oddfoot\@empty
+    \let\@evenfoot\@empty
+    \if@cop@home\if@proof\else
       \def\@oddfoot{\edit@rnotereminder\runningheaderfont\if@preface \@journalurlInfo\hfil Preface\else\@journalurlInfo\hfil\ifx\specialp@perstring\@undefined\@journalInfo\else\specialp@perstring\fi\fi}
       \def\@evenfoot{\edit@rnotereminder\runningheaderfont\if@preface Preface\hfil\@journalurlInfo\else\ifx\specialp@perstring\@undefined\@journalInfo\else\specialp@perstring\fi\hfil\@journalurlInfo\fi}
-    \else
-      \let\@oddfoot\@empty
-      \let\@evenfoot\@empty
-    \fi
+    \fi\fi
     \let\@mkboth\@gobbletwo}
 \else%discussions
   \def\ps@headings{%
     \def\@oddhead{%
       \if@firstbar\global\@barfalse\fi
+      \if@proof\watermark\fi
       \hfil
       \rlap{%
         \kern5mm
@@ -501,7 +505,7 @@
     \fi
   \fi
   \setcounter{footnote}{0}%
-  \if@stage@final\if@manuscript\else\thispagestyle{titlepage}\fi\fi
+  \if@stage@final\if@manuscript\else\if@proof\thispagestyle{plain}\else\thispagestyle{titlepage}\fi\fi\fi
   \begingroup
     \parindent=\z@
     \@maketitle
@@ -1599,6 +1603,7 @@
   \def\theequation{\thesection\@arabic\c@equation}%
   \def\thereaction{\thesection R\@arabic\c@reaction}%
   \let\c@org@lst\c@listings%
+  \let\c@org@alg\c@algorithms%
   \let\c@org@eq\c@equation%
   \let\org@theeq\theequation%
   \if@stage@final
@@ -1611,6 +1616,9 @@
     \@addtoreset{listings}{section}%
     \setcounter{listings}{0}%
     \def\thelistings{\thesection\@arabic\c@listings}%
+    \@addtoreset{algorithm}{section}%
+    \setcounter{algorithm}{0}%
+    \def\thealgorithm{\thesection\@arabic\c@algorithm}
   \fi
   \global\let\old@sect\@sect
   \def\@sect##1##2##3##4##5##6[##7]##8{%
@@ -1675,6 +1683,7 @@
   \ifx\old@ssect\@undefined\else\global\let\@ssect\old@ssect\fi
   \def\thefigure{\@arabic\c@figure}%
   \def\thelistings{\@arabic\c@listings}%
+  \def\thealgorithms{\@arabic\c@algorithms}%
   \def\thetable{\@arabic\c@table}}
 \IfFileExists{url.sty}
   {\RequirePackage{url}\urlstyle{same}}%
@@ -1784,7 +1793,8 @@
        \let\@endfloatbox\relax\orig@end@float}
    \fi
    \RequirePackage{algorithm}
-   \def\theHalgorithm{\@arabic\c@algorithm}}
+   \def\theHalgorithm{\@arabic\c@algorithm}
+ }
   {\CopernicusWarningNoLine{Cannot find algorithm.sty; proceeding without it}}
 \let\cop@makecaption\@makecaption
 \let\c@org@fig\c@figure
@@ -1813,6 +1823,27 @@
     {\CopernicusWarningNoLine{Cannot find subfig.sty; proceeding without it}}
 \fi
 \let\@makecaption\cop@makecaption
+\RequirePackage{listings}
+\newdimen\listingnumwidth \listingnumwidth=1.25em\relax
+\renewcommand*\thelstnumber{\hb@xt@\listingnumwidth{\hss\the\c@lstnumber:}}
+\lstset{%
+  basicstyle=\small,%
+  numbers=left,%
+  numbersep=0.5em,%
+  numberstyle=\footnotesize,%
+  frame=lines,%
+  xleftmargin=\dimexpr\listingnumwidth+0.5em\relax,%
+  framexleftmargin=\dimexpr\listingnumwidth+0.5em\relax,
+}
+\newenvironment{listing}[1][]
+ {\edef\@argi{#1}%
+  \ifx\@argi\@empty\def\@argi{htbp}\fi
+  \setlistings
+  \lstset{aboveskip=0pt,belowskip=0pt}%
+  \def\@tempa{\begin{figure}}%
+    \expandafter\@tempa\expandafter[\@argi]}
+ {\end{figure}%
+  \setfigures}
 \IfFileExists{subfloat.sty}
   {\RequirePackage{subfloat}%
    \protected@xdef\themainfigure{\thefigure}%
@@ -2646,7 +2677,8 @@
     \else
       \clearpage
     \fi
-    \thispagestyle{empty}%
+    \if@proof\@prooffalse\fi
+    \thispagestyle{plain}%
     \parindent\z@
     \begin{nolinenumbers}%
     \expandafter\def\expandafter\@tempa\expandafter{\the\CEnotes}%
@@ -2699,7 +2731,14 @@
 \newcommand\@journallogo{Journallogo}
 \newcommand\@sentence{Sentence.}
 \newcommand\@sentenceDisc{Sentence.}
+\def\watermark{%
+  \smash{\rlap{%
+      \fontsize{120}{120}\selectfont
+      \lower.75\textheight\hbox{\hskip10mm\rotatebox{36}{\rmfamily\textcolor{watermark}{Proof only}}}%
+    }}
+}
 \if@stage@final
+  \definecolor{watermark}{gray}{.85}
   \definecolor{textcol}{rgb}{0,0,0}
   \definecolor{bgcol}{rgb}{1,1,1}
   \definecolor{barcol}{rgb}{1,1,1}
@@ -2734,14 +2773,18 @@
 \def\bName#1{#1}
 \def\bCollab#1{#1}
 \def\bSurname#1{#1}
+\def\bParticle#1{#1}
+\def\bSuffix#1{#1}
+\def\bELocationID#1{#1}
 \def\bGivenNames#1{#1}
 \def\bVolume#1{#1}
 \def\bIssue#1{#1}
 \def\bSource#1{#1}
-\def\bUri#1{#1}
+\let\bUri\url
 \def\bArticleTitle#1{#1}
-\def\bChaptertitle#1{#1}
+\def\bChapterTitle#1{#1}
 \def\bEtal#1{#1}
+\def\bElementCitation#1{#1}
 \def\bPublisherName#1{#1}
 \def\bPublisherLoc#1{#1}
 \def\bIsbn#1{#1}
@@ -2755,6 +2798,7 @@
 \def\@bPatent[#1]#2{#2}
 \def\bSeries#1{#1}
 \def\bStd#1{#1}
+\def\bAttribute#1#2{}
  %% LEGACY
  \def\Etal#1{#1}
  \def\Issue#1{#1}
@@ -2794,6 +2838,11 @@
 }
 {\endlist}
 
+\if@copDebug
+  \ifx\xmltexversion\@undefined
+    \DeclareUnicodeCharacter{200B}{{\unskip\;\color{red}\vrule \@width1ex \@height1ex}}
+  \fi
+\fi
 \endinput
 %%
 %% End of file `copernicus.cls'.
