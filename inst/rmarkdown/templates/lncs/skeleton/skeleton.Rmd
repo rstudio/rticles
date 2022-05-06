@@ -4,7 +4,7 @@ title: "Contribution Title\\thanks{Supported by organization x.}"
 # If the paper title is too long for the 
 # running head, you can set an abbreviated 
 # paper title here.
-# titlerunning: "Abbreviated paper title"
+# shorttitle: "Abbreviated paper title"
 authors: 
   - name: "First Author"
     inst: "1"
