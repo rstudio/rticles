@@ -38,7 +38,8 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE,
+                      out.extra = "")  # This forces knitr to label all figures.
 ```
 
 # First Section
@@ -58,23 +59,13 @@ Lower level headings remain unnumbered; they are formatted as run-in headings.
 #### Sample Heading (Fourth Level)
 
 The contribution should contain no more than four levels of headings. 
-Table\ \ref{tab1} gives a summary of all heading levels.
+Table\ \ref{tab:table} gives a summary of all heading levels.
 
-\begin{table}
-\caption{Table captions should be placed above the
-tables.}\label{tab1}
-\begin{tabular}{|l|l|l|}
-\hline
-Heading level &  Example & Font size and style\\
-\hline
-Title (centered) &  {\Large\bfseries Lecture Notes} & 14 point, bold\\
-1st-level heading &  {\large\bfseries 1 Introduction} & 12 point, bold\\
-2nd-level heading & {\bfseries 2.1 Printing Area} & 10 point, bold\\
-3rd-level heading & {\bfseries Run-in Heading in Bold.} Text follows & 10 point, bold\\
-4th-level heading & {\itshape Lowest Level Heading.} Text follows & 10 point, italic\\
-\hline
-\end{tabular}
-\end{table}
+```{r table}
+knitr::kable(head(pressure), 
+             format = "latex",
+             caption = "Table captions should be placed above the tables.")
+```
 
 \noindent Displayed equations are centered and set on a separate line.
 
@@ -83,13 +74,11 @@ x + y = z
 \end{equation}
 
 Please try to avoid rasterized images for line-art diagrams and schemas. 
-Whenever possible, use vector graphics instead (see Fig.\ \ref{fig1}).
+Whenever possible, use vector graphics instead (see Fig.\ \ref{fig:fig1}).
 
-\begin{figure}
-\includegraphics[width=\textwidth]{fig1.eps}
-\caption{A figure caption is always placed below the illustration.
-Please note that short captions are centered, while long ones are justified by the macro package automatically.} \label{fig1}
-\end{figure}
+```{r fig1, fig.cap = "A figure caption is always placed below the illustration. Please note that short captions are centered, while long ones are justified by the macro package automatically."}
+plot(pressure)
+```
 
 \begin{theorem}
 This is a sample theorem. The run-in heading is set in bold, while the following text appears in italics. Definitions, lemmas, propositions, and corollaries are styled the same way.
