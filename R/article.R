@@ -340,7 +340,7 @@ lipics_article <- function(..., latex_engine = "xelatex", # xelatex used for 'th
 #' @export
 #' @rdname article
 lncs_article <- function(..., keep_tex = TRUE) {
-  pdf_document_format("lncs", keep_tex = keep_tex, ...)
+  pdf_document_format("lncs", keep_tex = keep_tex, citation_package = "default", ...)
 }
 
 

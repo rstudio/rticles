@@ -24,7 +24,7 @@ institutes:
     email: "lncs@springer.com"
     url: "http://www.springer.com/gp/computer-science/lncs"
   - name: "ABC Institute, Rupert-Karls-University Heidelberg, Heidelberg, Germany"
-    email: "\\{abc,lncs\\}@uni-heidelberg.de"
+    email: "\\{abc,lncs\\}\\@uni-heidelberg.de"
 abstract: | 
   The abstract should briefly summarize the contents of the paper in 150--250 words.
 keywords: 
