@@ -339,8 +339,8 @@ lipics_article <- function(..., latex_engine = "xelatex", # xelatex used for 'th
 #'   with version tag 2.21.
 #' @export
 #' @rdname article
-lncs_article <- function(...) {
-  pdf_document_format("lncs", ...)
+lncs_article <- function(..., keep_tex = TRUE) {
+  pdf_document_format("lncs", keep_tex = keep_tex, ...)
 }
 
 
