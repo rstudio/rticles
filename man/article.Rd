@@ -118,7 +118,7 @@ lipics_article(
   md_extensions = c("-autolink_bare_uris", "-auto_identifiers")
 )
 
-lncs_article(...)
+lncs_article(..., keep_tex = TRUE)
 
 jedm_article(..., keep_tex = TRUE, citation_package = "natbib")
 
