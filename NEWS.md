@@ -1,5 +1,9 @@
 # rticles (development version)
 
+## NEW FEATURES
+
+- New `lncs_article()` template for submissions to Lecture Notes in Computer Science (thanks, @eliocamp, #445).
+
 ## BUG FIXES
 
 - In `elsevier_article()`, corresponding author is correctly marked with a `*` even if no other footnote are set on the author.

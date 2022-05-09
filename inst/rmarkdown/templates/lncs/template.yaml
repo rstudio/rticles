@@ -1,0 +1,5 @@
+name: Springer Lecture Notes in Computer Science (LNCS) Article Template
+description: >
+ Template for creating an article for submission to LNCS.
+create_dir: true
+

@@ -21,6 +21,7 @@
 \alias{iop_article}
 \alias{jasa_article}
 \alias{lipics_article}
+\alias{lncs_article}
 \alias{jedm_article}
 \alias{mdpi_article}
 \alias{mnras_article}
@@ -116,6 +117,8 @@ lipics_article(
   citation_package = "natbib",
   md_extensions = c("-autolink_bare_uris", "-auto_identifiers")
 )
+
+lncs_article(..., keep_tex = TRUE, citation_package = c("default", "natbib"))
 
 jedm_article(..., keep_tex = TRUE, citation_package = "natbib")
 
@@ -305,6 +308,15 @@ Adapted from the official Instructions for Authors at
 template from the archive \code{authors-lipics-v2019.zip} downloaded
 with version tag v2019.2. The template is provided under The LaTeX
 Project Public License (LPPL), Version 1.3c.
+}
+
+\section{\code{lncs_article}}{
+ Format for creating submissions to
+LNCS - Lecture Notes in Computer Science - articles.
+Adapted from the official Instructions for Authors at
+\url{https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines}
+and the  template from the archive \code{LaTeX2e+Proceedings+Templates+download.zip} downloaded
+with version tag 2.21.
 }
 
 \section{\code{jedm_article}}{
