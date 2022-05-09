@@ -83,6 +83,11 @@ $endfor$
 \usepackage{color}
 \renewcommand\UrlFont{\color{blue}\rmfamily}
 
+$if(natbib)$
+\usepackage[$natbiboptions$]{natbib}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$splncs04$endif$}
+$endif$
+
 \begin{document}
 
 $for(include-before)$
@@ -123,17 +128,16 @@ $body$
 
 %
 % ---- Bibliography ----
-%
-% BibTeX users should specify bibliography style 'splncs04'.
-% References will then be sorted and formatted in the correct style.
-%
-\bibliographystyle{splncs04}
-% \bibliography{mybibliography}
-%
-$if(bibliography)$
-\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
-$endif$
 
+$if(natbib)$
+$if(bibliography)$
+$if(biblio-title)$
+\renewcommand\refname{$biblio-title$}
+$endif$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+
+$endif$
+$endif$
 
 $for(include-after)$
 $include-after$

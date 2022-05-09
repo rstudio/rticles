@@ -339,8 +339,9 @@ lipics_article <- function(..., latex_engine = "xelatex", # xelatex used for 'th
 #'   with version tag 2.21.
 #' @export
 #' @rdname article
-lncs_article <- function(..., keep_tex = TRUE) {
-  pdf_document_format("lncs", keep_tex = keep_tex, citation_package = "default", ...)
+lncs_article <- function(..., keep_tex = TRUE, citation_package = c("default", "natbib")) {
+  citation_package <- match.arg(citation_package)
+  pdf_document_format("lncs", keep_tex = keep_tex, citation_package = citation_package, ...)
 }
 
 

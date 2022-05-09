@@ -34,9 +34,12 @@ keywords:
 bibliography: lncs-test.bib
 # Use csl when using default citation_package for Pandoc citeproc
 csl: https://www.zotero.org/styles/springer-lecture-notes-in-computer-science
+# citations with arabic numbers is prefered when using natbib
+natbiboptions: numbers
 
 output: 
-  rticles::lncs_article
+  rticles::lncs_article:
+    citation_package: default # or natbib
 ---
 
 ```{r setup, include=FALSE}
