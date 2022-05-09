@@ -1,6 +1,7 @@
 ---
 classoption: "runningheads"
 title: "Contribution Title\\thanks{Supported by organization x.}"
+shorttitle: "Short title"
 # If the paper title is too long for the 
 # running head, you can set an abbreviated 
 # paper title here.
