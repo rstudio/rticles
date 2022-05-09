@@ -32,6 +32,8 @@ keywords:
   - Second keyword
   - Another keyword
 bibliography: lncs-test.bib
+# Use csl when using default citation_package for Pandoc citeproc
+csl: https://www.zotero.org/styles/springer-lecture-notes-in-computer-science
 
 output: 
   rticles::lncs_article
