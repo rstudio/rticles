@@ -122,7 +122,7 @@
   \RequirePackage[bitstream-charter]{mathdesign} %math font close to Charis SIL
   \RequirePackage[no-math]{fontspec}
   \setmainfont{CharisSIL}
-  \RequirePackage{FiraSans} %sf font
+  \RequirePackage{FiraSans} %sf font; download from https://www.fontsquirrel.com/fonts/fira-sans
   \RequirePackage{amssymb}
   \RequirePackage{textcomp}
   \else\relax
