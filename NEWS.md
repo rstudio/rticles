@@ -6,6 +6,8 @@
 
 ## BUG FIXES
 
+- Update `glossa_article()` and path template to opt-out using `microtype` to prevent issues. Add it back using `extra_dependencies` in YAML with adding a preamble if needed (thanks, @stefanocoretta, #487).
+
 - In `elsevier_article()`, corresponding author is correctly marked with a `*` even if no other footnote are set on the author.
 
 - `ams_article()` bundles `ametsoc.cls` now as **ametsoc** package is not more available on CTAN.
