@@ -87,7 +87,7 @@ output format and all the assets required by this format.
 Currently included templates and their contributors are the following:
 
 | Journal                                                                                                                                                                           | Contributors                                                                                                                                                                   | Pull request                                                                                                                                                                                                                                                                                                               | Output format              |
-|-----------------|-----------------|-----------------------|-----------------|
+|------------------------|---------------|---------------|------------------------|
 | [ACM: Association for Computings Machinery](https://www.acm.org/publications/about-publications)                                                                                  | [\@ramnathv](https://github.com/ramnathv)                                                                                                                                      | [#8](https://github.com/rstudio/rticles/pull/8)                                                                                                                                                                                                                                                                            | `acm_article()`            |
 | [ACS](https://pubs.acs.org)                                                                                                                                                       | [\@yufree](https://github.com/yufree)                                                                                                                                          | [#15](https://github.com/rstudio/rticles/pull/15)                                                                                                                                                                                                                                                                          | `acs_article()`            |
 | [AEA: American Economic Association](https://www.aeaweb.org/journals/policies/templates)                                                                                          | [\@sboysel](https://github.com/sboysel)                                                                                                                                        | [#86](https://github.com/rstudio/rticles/pull/86)                                                                                                                                                                                                                                                                          | `aea_articles()`           |
@@ -184,8 +184,9 @@ This is not the best way to quickly get your format included but at
 least it is a great way to see if others are interested too.
 
 To see the existing suggested formats, just filter issues with the [help
-wanted](https://github.com/rstudio/rticles/labels/help%20wanted) label.
-You can then add a :+1: or help to add the template :wink:.
+wanted
+:heart:](https://github.com/rstudio/rticles/labels/help%20wanted%20%3Aheart%3A)
+label. You can then add a :+1: or help to add the template :wink:.
 
 ### Contribute a new template format opening a pull request.
 
@@ -220,4 +221,3 @@ templates in these places:
 You can study [existing
 formats](https://github.com/rstudio/rticles/tree/main/inst/rmarkdown/templates)
 to see how all this works.
-

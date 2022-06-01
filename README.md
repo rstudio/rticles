@@ -178,8 +178,9 @@ This is not the best way to quickly get your format included but at
 least it is a great way to see if others are interested too.
 
 To see the existing suggested formats, just filter issues with the [help
-wanted](https://github.com/rstudio/rticles/labels/help%20wanted) label.
-You can then add a :+1: or help to add the template :wink:.
+wanted
+:heart:](https://github.com/rstudio/rticles/labels/help%20wanted%20%3Aheart%3A)
+label. You can then add a :+1: or help to add the template :wink:.
 
 ### Contribute a new template format opening a pull request.
 
