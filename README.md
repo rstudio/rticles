@@ -211,5 +211,6 @@ templates in these places:
     Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/latex-template.html)
 -   [The Pandoc manual](https://pandoc.org/MANUAL.html#templates)
 
-You can study [existing formats](inst/rmarkdown/templates) to see how
-all this works.
+You can study [existing
+formats](https://github.com/rstudio/rticles/tree/main/inst/rmarkdown/templates)
+to see how all this works.
