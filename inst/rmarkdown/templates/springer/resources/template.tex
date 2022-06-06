@@ -164,7 +164,7 @@ $for(authors)$
 $endfor$
 
 $for(affiliations)$
-  \affil[$affiliations.number$]{$for(affiliations.info/pairs)$\$it.key${$it.value$}$sep$, $endfor$$if(affiliations.address)$, \orgaddress{$for(affiliations.address/pairs)$\$it.key${$it.value$}$sep$, $endfor$}$endif$}
+  \affil$if(affiliations.corresponding)$*$endif$[$affiliations.number$]{$for(affiliations.info/pairs)$\$it.key${$it.value$}$sep$, $endfor$$if(affiliations.address)$, \orgaddress{$for(affiliations.address/pairs)$\$it.key${$it.value$}$sep$, $endfor$}$endif$}
 $endfor$
 
 \abstract{$abstract$}
