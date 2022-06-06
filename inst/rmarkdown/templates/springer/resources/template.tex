@@ -1,29 +1,74 @@
-% !TeX program = pdfLaTeX
-\documentclass[smallextended]{svjour3}       % onecolumn (second format)
-%\documentclass[twocolumn]{svjour3}          % twocolumn
-%
-\smartqed  % flush right qed marks, e.g. at end of proof
-%
-\usepackage{amsmath}
-\usepackage{graphicx}
-\usepackage[utf8]{inputenc}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[hyphens]{url} % not crucial - just used below for the URL
-\usepackage{hyperref}
+%%\documentclass[referee,sn-basic]{sn-jnl}% referee option is meant for double line spacing
 
-%
-% \usepackage{mathptmx}      % use Times fonts if available on your TeX system
-%
-% insert here the call for the packages your document requires
-%\usepackage{latexsym}
-% etc.
-%
-% please place your own definitions here and don't use \def but
-% \newcommand{}{}
-%
-% Insert the name of "your journal" with
-% \journalname{myjournal}
-%
+%%=======================================================%%
+%% to print line numbers in the margin use lineno option %%
+%%=======================================================%%
+
+%%\documentclass[lineno,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+%%======================================================%%
+%% to compile with pdflatex/xelatex use pdflatex option %%
+%%======================================================%%
+
+%%\documentclass[pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+\documentclass[pdflatex,$for(classoptions)$$classoptions$$sep$,$endfor$]{sn-jnl}
+%%\documentclass[sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+%%\documentclass[pdflatex,sn-mathphys]{sn-jnl}% Math and Physical Sciences Reference Style
+%%\documentclass[sn-aps]{sn-jnl}% American Physical Society (APS) Reference Style
+%%\documentclass[sn-vancouver]{sn-jnl}% Vancouver Reference Style
+%%\documentclass[sn-apa]{sn-jnl}% APA Reference Style
+%%\documentclass[sn-chicago]{sn-jnl}% Chicago-based Humanities Reference Style
+%%\documentclass[sn-standardnature]{sn-jnl}% Standard Nature Portfolio Reference Style
+%%\documentclass[default]{sn-jnl}% Default
+%%\documentclass[default,iicol]{sn-jnl}% Default with double column layout
+
+%%%% Standard Packages
+%%<additional latex packages if required can be included here>
+%%%%
+
+%%%%%=============================================================================%%%%
+%%%%  Remarks: This template is provided to aid authors with the preparation
+%%%%  of original research articles intended for submission to journals published
+%%%%  by Springer Nature. The guidance has been prepared in partnership with
+%%%%  production teams to conform to Springer Nature technical requirements.
+%%%%  Editorial and presentation requirements differ among journal portfolios and
+%%%%  research disciplines. You may find sections in this template are irrelevant
+%%%%  to your work and are empowered to omit any such section if allowed by the
+%%%%  journal you intend to submit to. The submission guidelines and policies
+%%%%  of the journal take precedence. A detailed User Manual is available in the
+%%%%  template package for technical guidance.
+%%%%%=============================================================================%%%%
+
+\jyear{$year$}%
+
+%% as per the requirement new theorem styles can be included as shown below
+\theoremstyle{thmstyleone}%
+\newtheorem{theorem}{Theorem}%  meant for continuous numbers
+%%\newtheorem{theorem}{Theorem}[section]% meant for sectionwise numbers
+%% optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
+\newtheorem{proposition}[theorem]{Proposition}%
+%%\newtheorem{proposition}{Proposition}% to get separate numbers for theorem and proposition etc.
+
+\theoremstyle{thmstyletwo}%
+\newtheorem{example}{Example}%
+\newtheorem{remark}{Remark}%
+
+\theoremstyle{thmstylethree}%
+\newtheorem{definition}{Definition}%
+
+\raggedbottom
+%%\unnumbered% uncomment this for unnumbered level heads
 
 %% load any required packages here
 $preamble$
@@ -90,82 +135,62 @@ $endif$
 $for(header-includes)$
 $header-includes$
 $endfor$
+
 \begin{document}
+
 
 $for(include-before)$
 $include-before$
 
 $endfor$
 
-\title{$title$ $if(thanks)$\thanks{$thanks$} $endif$}
-$if(subtitle)$ \subtitle{$subtitle$} $endif$
+\title[$if(titlerunning)$$titlerunning$$endif$]{$title$}
 
-$if(titlerunning)$
-    \titlerunning{$titlerunning$}
+%%=============================================================%%
+%% Prefix	-> \pfx{Dr}
+%% GivenName	-> \fnm{Joergen W.}
+%% Particle	-> \spfx{van der} -> surname prefix
+%% FamilyName	-> \sur{Ploeg}
+%% Suffix	-> \sfx{IV}
+%% NatureName	-> \tanm{Poet Laureate} -> Title after name
+%% Degrees	-> \dgr{MSc, PhD}
+%% \author*[1,2]{\pfx{Dr} \fnm{Joergen W.} \spfx{van der} \sur{Ploeg} \sfx{IV} \tanm{Poet Laureate}
+%%                 \dgr{MSc, PhD}}\email{iauthor@gmail.com}
+%%=============================================================%%
+
+$for(authors)$
+\author$if(authors.corresponding)$*$endif$[$for(authors.affiliation)$$authors.affiliation$$sep$,$endfor$]{$if(authors.prefix)$\pfx{$authors.prefix$} $endif$$if(authors.firstname)$\fnm{$authors.firstname$} $endif$$if(authors.particle)$\spfx{$authors.particle$} $endif$$if(authors.lastname)$\sur{$authors.lastname$} $endif$$if(authors.suffix)$\sfx{$authors.suffix$} $endif$$if(authors.naturename)$\tanm{$authors.naturename$} $endif$$if(authors.degrees)$\dgr{$authors.degrees$}$endif$}$if(authors.email)$\email{$authors.email$}$endif$
+
+$endfor$
+
+$for(affiliations)$
+  \affil[$affiliations.number$]{$for(affiliations.info/pairs)$\$it.key${$it.value$}$sep$, $endfor$$if(affiliations.address)$, \orgaddress{$for(affiliations.address/pairs)$\$it.key${$it.value$}$sep$, $endfor$}$endif$}
+$endfor$
+
+\abstract{$abstract$}
+
+\keywords{$for(keywords)$$keywords$$sep$, $endfor$}
+
+$if(PACS)$
+\pacs[JEL Classification]{$for(PACS)$$PACS$$sep$, $endfor$}
 $endif$
 
-\author{ $for(authors)$ $authors.name$ \and $endfor$ }
-
-$if(authorrunning)$
-    \authorrunning{ $authorrunning$ }
+$if(PACS)$
+\pacs[MSC Classification]{$for(PACS)$$PACS$$sep$, $endfor$}
 $endif$
-
-\institute{
-    $for(authors)$
-    $authors.name$ \at
-    $if(authors.address)$ $authors.address$ $endif$\\
-    $if(authors.email)$ \email{$authors.email$} $endif$ %  \\
-%             \emph{Present address:} of F. Author  %  if needed
-    \and
-    $endfor$
-}
-
-\date{Received: date / Accepted: date}
-% The correct dates will be entered by the editor
-
 
 \maketitle
-
-\begin{abstract}
-$abstract$
-\\
-\keywords{
-    $for(keywords)$
-    $keywords$ \and
-    $endfor$
-}
-$if(PACS)$
-    \PACS{
-        $for(PACS)$
-            $PACS$ \and
-        $endfor$
-    }
-$endif$
-
-$if(MSC)$
-    \subclass{
-        $for(MSC)$
-            $MSC$ \and
-        $endfor$
-    }
-$endif$
-
-\end{abstract}
-
-
-\def\spacingset#1{\renewcommand{\baselinestretch}%
-{#1}\small\normalsize} \spacingset{1}
-
 
 $body$
 
 
-\bibliographystyle{$if(biblio-style)$$biblio-style$$else$$if(bibstyle)$$bibstyle$$else$spbasic$endif$$endif$}
 \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+
 
 $for(include-after)$
 $include-after$
 
 $endfor$
+
 
 \end{document}
