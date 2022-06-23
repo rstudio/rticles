@@ -1,5 +1,6 @@
 ---
-title: My Long, Long, JDS Paper Title That May
+title: |
+  My Long, Long, JDS Paper Title That May
   Take not One but Two or not Two but Three or not Three but Four or
   Not Four but Five Lines
 shorttitle: Short JDS Paper Title
@@ -21,9 +22,9 @@ abstract: |
   make use of the conditional distribution of lung function across a range of
   quantiles in order to quantify disease severity of CF.\@
 keywords: 
-  Conditional distribution
-  Cystic fibrosis
-  Quantiles
+  - Conditional distribution
+  - Cystic fibrosis
+  - Quantiles
 bibliography: JDSbib.bib
 output: rticles::jds_article
 ---
