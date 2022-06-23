@@ -1,0 +1,5 @@
+name: Journal of Data Science (JDS)
+description: >
+ Template for creating an article for submission to JDS
+create_dir: true
+

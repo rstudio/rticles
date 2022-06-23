@@ -1,0 +1,84 @@
+%----------------------------------------------------------------------------------------
+% The original JDS LaTeX template has been modified by JooYoung Seo (jseo1005@illinois.edu) to work with R Markdown.
+%----------------------------------------------------------------------------------------
+
+
+\documentclass[letterpaper, inpress]{jds} % use this for production
+% \documentclass[a4paper, review]{jds}      % use this for review
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% the following edits should be done by Journal typesetters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{page}{1}            % set the first page number
+\jdsmonth{July}                 % month
+\jdsyear{2020}                  % year
+\jdsvolume{xx}                  % volume number
+\jdsissue{xx}                   % issue number
+\jdsdoi{xx.xxxx/xxxxxxxxx}      % doi
+\jdsreceived{April, 2020}       % optional: comment it out if no received date
+\jdsaccepted{May, 2020}         % optional: comment it out if no accepted date
+%% manually set running header for a shorter list of authors if needed
+% \shortauthors{A Author A, et al.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% edits by authors are given below
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsfonts,amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+
+\usepackage{lipsum}
+
+\title[$shorttitle$]{$title$}
+
+$if(author)$
+%% corresponding authors can be labeled by either \thanks or \footnote
+\author[1,2]{Adam Ahen\thanks{Corresponding author. Email: foo1@bar.com}}
+\author[2]{Brett Berger\footnote{Corresponding author. Email: foo2@bar.com}}
+\author[3]{Carl Camp}
+\author[3]{David Dodge}
+\affil[1]{Department of Statistics, University of Achievement, Street
+  Address, Country}
+\affil[2]{Institution B}
+\affil[3]{Institution C}
+$endif$
+
+\begin{document}
+
+$for(include-before)$
+$include-before$
+
+$endfor$
+
+
+\maketitle
+
+$if(abstract)$
+\begin{abstract}
+  $abstract$
+\end{abstract}
+$endif$
+
+$if(keywords)$
+\begin{keywords} % alphabetical; excluding anything in the title already
+  $for(keywords)$$keywords$$sep$; $endfor$.
+\end{keywords}
+$endif$
+
+
+$body$
+
+$if(natbib)$
+$if(bibliography)$
+\bibliographystyle{jds}
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+$endif$
+
+$for(include-after)$
+$include-after$
+
+$endfor$
+
+\end{document}

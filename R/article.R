@@ -344,6 +344,18 @@ lncs_article <- function(..., keep_tex = TRUE, citation_package = c("default", "
   pdf_document_format("lncs", keep_tex = keep_tex, citation_package = citation_package, ...)
 }
 
+#' @section `jds_article`: Format for creating Journal of Data
+#'   Science (JDS) articles. Adapted from
+#'   <https://jds-online.org/journal/JDS/information/submit-your-article>.
+#' @export
+#' @rdname article
+jds_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
+  pdf_document_format("jds",
+    keep_tex = keep_tex,
+    citation_package = citation_package,
+    ...
+  )
+}
 
 #' @section `jedm_article`: Format for creating Journal of Educational
 #'   Data Mining (JEDM) articles. Adapted from
