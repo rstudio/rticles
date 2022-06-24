@@ -1,6 +1,0 @@
-PWD c:/test/rticles/inst/rmarkdown/templates/jds/resources
-INPUT c:/tools/TinyTeX/texmf.cnf
-INPUT c:/tools/TinyTeX/texmf-dist/web2c/texmf.cnf
-INPUT c:/tools/TinyTeX/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT c:/test/rticles/inst/rmarkdown/templates/jds/resources/template.tex
-OUTPUT template.log
