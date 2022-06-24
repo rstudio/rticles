@@ -5,12 +5,25 @@ title: |
   Not Four but Five Lines
 shorttitle: Short JDS Paper Title
 author:
-- name: First Author
-  institution: First author address
-  email: First author email
-- name: Second Author
-  institution: Second author address
-  email: Second author email
+- name: Adam Ahen
+  affiliation: "1,2"  # Must be quoted when including comma.
+  email: "foo1@bar.com"  # Only corresponding authors require email.
+- name: Brett Berger
+  affiliation: 2
+  email: "foo2@bar.com"  # Only corresponding authors require email.
+- name: Carl Camp
+  affiliation: 3
+- name: David Dodge
+  affiliation: 3
+
+affiliation:
+- id: 1
+  institution: "Department of Statistics, University of Achievement, Street Address, Country"
+- id: 2
+  institution: "Institution B"
+- id: 3
+  institution: "Institution C"
+
 abstract: |
   This article presents a classification of disease severity for
   patients with cystic fibrosis (CF). CF is a genetic disease that dramatically
@@ -34,8 +47,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
-\section{Introduction}%
-\label{sec:intro}
+# Introduction {#sec:intro}
 
 This is a template for both the review version and the production
 version of JDS articles. They corresponds to two options of document
@@ -45,9 +57,7 @@ class \texttt{jds}: \texttt{review} and \texttt{inpress}.
 \lipsum[1-2]
 
 
-\section{Equations}%
-\label{sec:eq}
-
+# Equations {#sec:eq}
 
 Weibull distribution has the virtue of being a mathematically tractable model
 and is versatile in terms of its applications in reliability, life data
@@ -79,8 +89,7 @@ environment. For example,
 An equation that is not referenced should not be labeled. The starred
 version of the \texttt{equation} and \texttt{align} are for this purpose.
 
-\section{Tables}%
-\label{sec:tabs}
+# Tables {#sec:tabs}
 
 We recommend \LaTeX\ package \texttt{booktabs} for professional
 looking tables. Its toprule and bottomrule are thicker than midrule.
@@ -117,16 +126,14 @@ Table~\ref{tab:realdata} is an illustration.
 
 
 
-\section{Figures}%
-\label{sec:figs}
+# Figures {#sec:figs}
 
 Vector graphics do not lose clarity when being scaled. Make your
 figure in pdf format when you first generate it and keep in mind its
 sizes in the article to avoid over-scaling. Do not simply convert a
 jpeg or png image to a pdf.
 
-\section{Code}%
-\label{sec:code}
+# Code {#sec:code}
 
 The document class \texttt{jds} provides several commands to decorate
 \begin{itemize}
@@ -137,8 +144,7 @@ The document class \texttt{jds} provides several commands to decorate
 \end{itemize}
 
 
-\section{Guide for Authors}%
-\label{sec:guide-authors}
+# Guide for Authors {#sec:guide-authors}
 
 The following requirements must be followed as closely as possible. A
 technically acceptable manuscript that fails to follow these requirements may be
@@ -146,7 +152,7 @@ returned for retyping, leading to delay in publication.We only accept
 submissions in PDF format. The Latex file must be provided after the manuscript
 is accepted.
 
-\subsection{Submission of Papers}
+## Submission of Papers
 
 Submission of a manuscript must be the original work of the author(s) and have
 not been published elsewhere or under consideration for another publication, or
@@ -157,12 +163,12 @@ research fields, e-mail, phone numbers and addresses) who are qualified to serve
 as referees for their paper.
 
 
-% \subsection{Manuscript Preparation}
+<!-- ## Manuscript Preparation -->
 
-% All manuscripts should be written in English. Letters are generally no more than
-% three journal pages. The supporting organization and the grant number should be
-% given at the end of the manuscript. For more details of submission format,
-% please visit the website:
+<!-- All manuscripts should be written in English. Letters are generally no more than -->
+<!-- three journal pages. The supporting organization and the grant number should be -->
+<!-- given at the end of the manuscript. For more details of submission format, -->
+<!-- please visit the website: -->
 
 % \begin{itemize}
 % \item Title: The title of the paper should be concise but informative.
@@ -216,13 +222,11 @@ as referees for their paper.
 % \end{itemize}
 
 
-\section{A Placeholder Section}%
-\label{sec:placeholder}
+# A Placeholder Section {#sec:placeholder}
 
 \lipsum[4-7]
 
-\section{Citing References}%
-\label{sec:citations}
+# Citing References {#sec:citations}
 
 The citations are in the author-year format with the
 \texttt{chicago} bibstyle.
@@ -243,7 +247,7 @@ work on quantile regression; The Laplace distribution has applications
 in many fields \citep{Kotz2001}.
 
 
-\section{Discussion}
+# Discussion
 
 \lipsum[1-3]
 

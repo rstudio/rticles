@@ -98,14 +98,14 @@ $endfor$
 
 $if(author)$
 %% corresponding authors can be labeled by either \thanks or \footnote
-\author[1,2]{Adam Ahen\thanks{Corresponding author. Email: foo1@bar.com}}
-\author[2]{Brett Berger\footnote{Corresponding author. Email: foo2@bar.com}}
-\author[3]{Carl Camp}
-\author[3]{David Dodge}
-\affil[1]{Department of Statistics, University of Achievement, Street
-  Address, Country}
-\affil[2]{Institution B}
-\affil[3]{Institution C}
+$for(author)$
+\author[$author.affiliation$]{$author.name$$if(author.email)$\thanks{Corresponding author. Email: $author.email$}$endif$}
+$endfor$
+$endif$
+$if(affiliation)$
+$for(affiliation)$
+\affil[$affiliation.id$]{$affiliation.institution$}
+$endfor$
 $endif$
 
 \begin{document}
