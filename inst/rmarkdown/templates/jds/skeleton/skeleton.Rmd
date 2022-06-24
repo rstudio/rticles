@@ -170,56 +170,56 @@ as referees for their paper.
 <!-- given at the end of the manuscript. For more details of submission format, -->
 <!-- please visit the website: -->
 
-% \begin{itemize}
-% \item Title: The title of the paper should be concise but informative.
-% \item Author name(s): A list of all authors, as well as corresponding addresses,
-%   should be provided on the title page. Authors’ names should be given in a
-%   consistent form on all publications to facilitate indexing. It will be better
-%   if the fax number(s), e-mail address(es), and telephone number(s) are all
-%   provided.
-% \item Abstract: The abstract should be no longer than 100 words. It should be
-%   informative, without descriptive words or citations, and contain the major
-%   conclusions and quantitative results or other significant items in the
-%   paper. Together with the title, the abstract must be adequate as an index to
-%   all the subjects treated in the paper, and will be used as a base for
-%   indexing.
-% \item Main body of the paper: The body of the paper should include all the
-%   information of the research, but no subtitles.
-% \item Formulas: Formulas should be punctuated and aligned to bring out their
-%   structure, and numbered consecutively in round brackets on the right-hand side
-%   of the page.
-% \item Notation: Notation must be legible, clear, compact, and consistent with
-%   standard usage. All unusual symbols whose identity may not be obvious,
-%   including subscript or superscript, must be made comprehensible. Physical and
-%   mathematical variables should be in italic, vectors in boldface. Units,
-%   abbreviations and special functions should be upright. Please add notes to
-%   explain any other special symbols.
-% \item Figures: Figures should be original laser prints with high contrast,
-%   suitable for immediate reproduction, typed on separate sheets and identified
-%   by its number. They will normally be reduced to one column width (6--8 cm). In
-%   the figures, the main lines should be about 0.3 mm in width, and the assistant
-%   lines 0.15 mm. Notations in the figures should be distinct and consistent with
-%   the same ones in the text, and their font size will be 7--9 pt. The positions
-%   of figures should be marked in the text by boxes of a suitable size. Each
-%   figure should have its own caption. For photographs, the original photos must
-%   be supplied with good contrast and clearly distinguishable details.
-% \item Tables: Tables, numbered in order of appearance, should be appended on
-%   separate sheets and identified with appropriate titles.The table title, which
-%   should be brief, goes above the table. A detailed description of its contents
-%   or table footnotes should be given directly below the body of the table.
-% \item References: References must be published work, and numbered consecutively
-%   in order of their first citation. References should be listed individually at
-%   the end of the text and indicated in the text with a superscript number in
-%   square brackets. All of the references’ authors, as well as the titles of the
-%   referenced articles, should be given.
-% \item Proofs: Authors will receive a letter informing them whether the
-%   manuscript is accepted or rejected in two months. Authors should return their
-%   revisions to the Manuscript Office within one month on receipt. When an
-%   article has been amended in compliance with the comments of referee(s), an
-%   electronic file of the final version should be sent with the revised
-%   manuscript. Proofs will be sent to the authors and should be returned
-%   preferably within 48 hours to avoid publication delays.
-% \end{itemize}
+<!-- \begin{itemize} -->
+<!-- \item Title: The title of the paper should be concise but informative. -->
+<!-- \item Author name(s): A list of all authors, as well as corresponding addresses, -->
+  <!-- should be provided on the title page. Authors’ names should be given in a -->
+  <!-- consistent form on all publications to facilitate indexing. It will be better -->
+  <!-- if the fax number(s), e-mail address(es), and telephone number(s) are all -->
+  <!-- provided. -->
+<!-- \item Abstract: The abstract should be no longer than 100 words. It should be -->
+  <!-- informative, without descriptive words or citations, and contain the major -->
+  <!-- conclusions and quantitative results or other significant items in the -->
+  <!-- paper. Together with the title, the abstract must be adequate as an index to -->
+  <!-- all the subjects treated in the paper, and will be used as a base for -->
+  <!-- indexing. -->
+<!-- \item Main body of the paper: The body of the paper should include all the -->
+  <!-- information of the research, but no subtitles. -->
+<!-- \item Formulas: Formulas should be punctuated and aligned to bring out their -->
+  <!-- structure, and numbered consecutively in round brackets on the right-hand side -->
+  <!-- of the page. -->
+<!-- \item Notation: Notation must be legible, clear, compact, and consistent with -->
+  <!-- standard usage. All unusual symbols whose identity may not be obvious, -->
+  <!-- including subscript or superscript, must be made comprehensible. Physical and -->
+  <!-- mathematical variables should be in italic, vectors in boldface. Units, -->
+  <!-- abbreviations and special functions should be upright. Please add notes to -->
+  <!-- explain any other special symbols. -->
+<!-- \item Figures: Figures should be original laser prints with high contrast, -->
+  <!-- suitable for immediate reproduction, typed on separate sheets and identified -->
+  <!-- by its number. They will normally be reduced to one column width (6--8 cm). In -->
+  <!-- the figures, the main lines should be about 0.3 mm in width, and the assistant -->
+  <!-- lines 0.15 mm. Notations in the figures should be distinct and consistent with -->
+  <!-- the same ones in the text, and their font size will be 7--9 pt. The positions -->
+  <!-- of figures should be marked in the text by boxes of a suitable size. Each -->
+  <!-- figure should have its own caption. For photographs, the original photos must -->
+  <!-- be supplied with good contrast and clearly distinguishable details. -->
+<!-- \item Tables: Tables, numbered in order of appearance, should be appended on -->
+  <!-- separate sheets and identified with appropriate titles.The table title, which -->
+  <!-- should be brief, goes above the table. A detailed description of its contents -->
+  <!-- or table footnotes should be given directly below the body of the table. -->
+<!-- \item References: References must be published work, and numbered consecutively -->
+  <!-- in order of their first citation. References should be listed individually at -->
+  <!-- the end of the text and indicated in the text with a superscript number in -->
+  <!-- square brackets. All of the references’ authors, as well as the titles of the -->
+  <!-- referenced articles, should be given. -->
+<!-- \item Proofs: Authors will receive a letter informing them whether the -->
+  <!-- manuscript is accepted or rejected in two months. Authors should return their -->
+  <!-- revisions to the Manuscript Office within one month on receipt. When an -->
+  <!-- article has been amended in compliance with the comments of referee(s), an -->
+  <!-- electronic file of the final version should be sent with the revised -->
+  <!-- manuscript. Proofs will be sent to the authors and should be returned -->
+  <!-- preferably within 48 hours to avoid publication delays. -->
+<!-- \end{itemize} -->
 
 
 # A Placeholder Section {#sec:placeholder}
@@ -235,16 +235,15 @@ A bibfile contains all the citations in
 bibtex format is prepared (see \texttt{JDSbib.bib}). Some characters
 in the title of the references needs to be protected so that the style
 file does not alter it. For example, in the bibtex entry for
-\citet{Pozd:etal:2017}, the ``B'' in ``Brownian'' and the ``E'' in
+@Pozd:etal:2017, the ``B'' in ``Brownian'' and the ``E'' in
 ``estimation''  following the colon are protected.
-A book reference \citep[e.g.,][]{Kotz2001} should have an address field.
+A book reference [e.g., @Kotz2001] should have an address field.
 
 
-Citations can be in either text or parenthesis format style with
-\texttt{$\backslash$citet} or \texttt{$\backslash$citep},
-respectively. For example, \citet{KoenkerBassett1978} is a seminal
+Citations can be in either text or parenthesis format style with `@citation-key` or `[@citation-key]`,
+respectively. For example, @KoenkerBassett1978 is a seminal
 work on quantile regression; The Laplace distribution has applications
-in many fields \citep{Kotz2001}.
+in many fields [@Kotz2001].
 
 
 # Discussion
