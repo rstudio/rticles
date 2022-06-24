@@ -22,6 +22,7 @@
 \alias{jasa_article}
 \alias{lipics_article}
 \alias{lncs_article}
+\alias{jds_article}
 \alias{jedm_article}
 \alias{mdpi_article}
 \alias{mnras_article}
@@ -119,6 +120,8 @@ lipics_article(
 )
 
 lncs_article(..., keep_tex = TRUE, citation_package = c("default", "natbib"))
+
+jds_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 jedm_article(..., keep_tex = TRUE, citation_package = "natbib")
 
@@ -317,6 +320,12 @@ Adapted from the official Instructions for Authors at
 \url{https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines}
 and the  template from the archive \code{LaTeX2e+Proceedings+Templates+download.zip} downloaded
 with version tag 2.21.
+}
+
+\section{\code{jds_article}}{
+ Format for creating Journal of Data
+Science (JDS) articles. Adapted from
+\url{https://jds-online.org/journal/JDS/information/submit-your-article}.
 }
 
 \section{\code{jedm_article}}{
