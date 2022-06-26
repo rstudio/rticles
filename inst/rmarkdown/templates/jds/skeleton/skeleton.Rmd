@@ -51,12 +51,16 @@ accepted: "May, 2020"  # optional: comment it out if no accepted date
 
 bibliography: JDSbib.bib
 output:
+  rticles::jds_article: default
   bookdown::pdf_book:
-    base_format: rticles::jds_article
+    base_format: rticles::jds_article # for using bookdown features like \@ref()
 ---
 
 ```{r setup, include = FALSE, echo = FALSE, purl = FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+
+# deactivate addition of preamble when this format is used with bookdown
+options(bookdown.theorem.preamble = FALSE)
 ```
 
 
