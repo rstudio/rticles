@@ -10,14 +10,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% the following edits should be done by Journal typesetters
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setcounter{page}{1}            % set the first page number
-\jdsmonth{July}                 % month
-\jdsyear{2020}                  % year
-\jdsvolume{xx}                  % volume number
-\jdsissue{xx}                   % issue number
-\jdsdoi{xx.xxxx/xxxxxxxxx}      % doi
-\jdsreceived{April, 2020}       % optional: comment it out if no received date
-\jdsaccepted{May, 2020}         % optional: comment it out if no accepted date
+\setcounter{page}{$page$}            % set the first page number
+\jdsmonth{$month$}                 % month
+\jdsyear{$year$}                  % year
+\jdsvolume{$volume$}                  % volume number
+\jdsissue{$issue$}                   % issue number
+\jdsdoi{$doi$}      % doi
+$if(received)$\jdsreceived{$received$}$endif$       % optional: comment it out if no received date
+$if(accepted)$\jdsaccepted{$accepted$}$endif$         % optional: comment it out if no accepted date
 %% manually set running header for a shorter list of authors if needed
 % \shortauthors{A Author A, et al.}
 

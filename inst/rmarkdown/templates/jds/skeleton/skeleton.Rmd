@@ -33,13 +33,26 @@ abstract: |
   continuous severity index measure, quantile regression, rankscores, and
   corresponding normalized ranks are calculated for CF patients. These ranks
   make use of the conditional distribution of lung function across a range of
-  quantiles in order to quantify disease severity of CF.\@
+  quantiles in order to quantify disease severity of CF.
 keywords: 
   - Conditional distribution
   - Cystic fibrosis
   - Quantiles
+
+# the following edits should be done by Journal typesetters
+page: 1  # set the first page number
+month: July
+year: 2020
+volume: xx
+issue: xx
+doi: "xx.xxxx/xxxxxxxxx"
+received: "April, 2020"  # optional: comment it out if no received date
+accepted: "May, 2020"  # optional: comment it out if no accepted date
+
 bibliography: JDSbib.bib
-output: rticles::jds_article
+output:
+  bookdown::pdf_book:
+    base_format: rticles::jds_article
 ---
 
 ```{r setup, include = FALSE, echo = FALSE, purl = FALSE}
@@ -91,12 +104,13 @@ version of the \texttt{equation} and \texttt{align} are for this purpose.
 
 # Tables {#sec:tabs}
 
-We recommend \LaTeX\ package \texttt{booktabs} for professional
+We recommend \LaTeX\ package `booktabs` for professional
 looking tables. Its toprule and bottomrule are thicker than midrule.
 
 A professional table contains no vertical lines.
 
-Table~\ref{tab:realdata} is an illustration.
+Table \@ref(tab:realdata) is an illustration.
+
 \begin{table}[tbp]
   \caption{Analysis results for real data. Point
     estimates (EST) from both two-piece method and marginal method are
