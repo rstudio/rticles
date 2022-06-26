@@ -109,7 +109,7 @@ looking tables. Its toprule and bottomrule are thicker than midrule.
 
 A professional table contains no vertical lines.
 
-Table \@ref(tab:realdata) is an illustration.
+Table \ref{tab:realdata} is an illustration.
 
 \begin{table}[tbp]
   \caption{Analysis results for real data. Point
