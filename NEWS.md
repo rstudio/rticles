@@ -4,6 +4,9 @@
 
 - New `lncs_article()` template for submissions to Lecture Notes in Computer Science (thanks, @eliocamp, #445).
 
+- New `jds_article()` template for submissions to Journal of Data Science (thanks, @jooyoungseo, #498).
+
+
 ## BUG FIXES
 
 - Remove `\usepackage{utf8x}` usage by default in `plos_article()` TeX template as it conflicts with recent `latex2e`. As it is in the official PLS journal template, it is not removed completely but opt-out by default. Use `with_utf8x` pandoc variable in YAML to opt-in again if you want to deal with the conflict differently (thanks, @Sciurus365, #496).
