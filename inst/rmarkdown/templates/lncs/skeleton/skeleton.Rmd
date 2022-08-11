@@ -1,0 +1,103 @@
+---
+classoption: "runningheads"
+title: "Contribution Title\\thanks{Supported by organization x.}"
+shorttitle: "Short title"
+# If the paper title is too long for the 
+# running head, you can set an abbreviated 
+# paper title here.
+# shorttitle: "Abbreviated paper title"
+authors: 
+  - name: "First Author"
+    inst: "1"
+    orcid: "0000-1111-2222-3333"
+  - name: "Second Author"
+    inst: "2,3"
+    orcid: "1111-2222-3333-4444"
+  - name: "Third Author"
+    inst: "3"
+    orcid: "2222--3333-4444-5555"
+# First names are abbreviated in the running head.
+# If there are more than two authors, 'et al.' is used.
+authorrunning: "F. Author et al." 
+institutes: 
+  - name: "Princeton University, Princeton NJ 08544, USA"
+  - name: "Springer Heidelberg, Tiergartenstr. 17, 69121 Heidelberg, Germany"
+    email: "lncs@springer.com"
+    url: "http://www.springer.com/gp/computer-science/lncs"
+  - name: "ABC Institute, Rupert-Karls-University Heidelberg, Heidelberg, Germany"
+    email: "dummy@uni-heidelberg.de"
+abstract: | 
+  The abstract should briefly summarize the contents of the paper in 150--250 words.
+keywords: 
+  - First keyword
+  - Second keyword
+  - Another keyword
+bibliography: lncs-test.bib
+# Use csl when using default citation_package for Pandoc citeproc
+csl: https://www.zotero.org/styles/springer-lecture-notes-in-computer-science
+# citations with arabic numbers is prefered when using natbib
+natbiboptions: numbers
+
+output: 
+  rticles::lncs_article:
+    citation_package: default # or natbib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      out.extra = "")  # This forces knitr to label all figures.
+```
+
+# First Section
+
+## A Subsection Sample
+
+Please note that the first paragraph of a section or subsection is not indented. 
+The first paragraph that follows a table, figure, equation etc. does not need an indent, either.
+
+Subsequent paragraphs, however, are indented.
+
+### Sample Heading (Third Level)
+
+Only two levels of headings should be numbered. 
+Lower level headings remain unnumbered; they are formatted as run-in headings.
+
+#### Sample Heading (Fourth Level)
+
+The contribution should contain no more than four levels of headings. 
+Table\ \ref{tab:table} gives a summary of all heading levels.
+
+```{r table}
+knitr::kable(head(pressure), 
+             format = "latex",
+             caption = "Table captions should be placed above the tables.")
+```
+
+\noindent Displayed equations are centered and set on a separate line.
+
+\begin{equation}
+x + y = z
+\end{equation}
+
+Please try to avoid rasterized images for line-art diagrams and schemas. 
+Whenever possible, use vector graphics instead (see Fig.\ \ref{fig:fig1}).
+
+```{r fig1, fig.cap = "A figure caption is always placed below the illustration. Please note that short captions are centered, while long ones are justified by the macro package automatically."}
+plot(pressure)
+```
+
+::: {.theorem latex=true}
+This is a sample theorem. The run-in heading is set in bold, while the following text appears in italics. Definitions, lemmas, propositions, and corollaries are styled the same way.
+:::
+
+The environments 'definition', 'lemma', 'proposition', 'corollary', 'remark', and 'example' are defined in the LLNCS documentclass as well.
+
+::: {.proof latex=true}
+Proofs, examples, and remarks have the initial word in italics, while the following text appears in normal font.
+:::
+
+For citations of references, use\ \cite{Nuncio2011}.
+Multiple citations are grouped\ \cite{Levitus2012,Raphael2004}.
+
+### Acknowledgements
+Please place your acknowledgments at the end of the paper, preceded by an unnumbered run-in heading (i.e. 3rd-level heading).
