@@ -459,7 +459,7 @@ sage_article <- function(..., highlight = NULL, citation_package = "natbib") {
 
 #' @section `sim_article`: Format for creating submissions to Statistics in
 #'   Medicine. Based on the official Statistics in Medicine
-#'   [class](http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm).
+#'   [class](https://onlinelibrary.wiley.com/page/journal/10970258/homepage/la_tex_class_file.htm).
 #'
 #' Possible arguments for the YAML header are:
 #' * `title` title of the manuscript

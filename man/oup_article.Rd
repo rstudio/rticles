@@ -66,7 +66,7 @@ additional details.}
 \description{
 Format for creating submissions to many Oxford University Press journals.
 Adapted from
-\url{https://academic.oup.com/journals/pages/authors/preparing_your_manuscript}
+\url{https://academic.oup.com/pages/authoring/journals/preparing_your_manuscript}
 and \url{https://academic.oup.com/icesjms/pages/General_Instructions}. and the
 \code{oup-authoring-template} available on CTAN at
 \url{https://www.ctan.org/pkg/oup-authoring-template}.
