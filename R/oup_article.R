@@ -2,7 +2,7 @@
 #'
 #' Format for creating submissions to many Oxford University Press journals.
 #' Adapted from
-#' <https://academic.oup.com/journals/pages/authors/preparing_your_manuscript>
+#' <https://academic.oup.com/pages/authoring/journals/preparing_your_manuscript>
 #' and <https://academic.oup.com/icesjms/pages/General_Instructions>. and the
 #' `oup-authoring-template` available on CTAN at
 #' <https://www.ctan.org/pkg/oup-authoring-template>.

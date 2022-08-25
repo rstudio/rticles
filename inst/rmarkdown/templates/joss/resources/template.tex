@@ -168,7 +168,7 @@ $endif$
 \urlstyle{same}  % don't use monospace font for urls
 $if(lang)$
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
+  \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$$if(babel-lang)$main=$babel-lang$$endif$]{babel}
 $if(babel-newcommands)$
   $babel-newcommands$
 $endif$
@@ -218,8 +218,6 @@ $if(links-as-notes)$
 $endif$
 $if(strikeout)$
 \usepackage[normalem]{ulem}
-% avoid problems with \sout in headers with hyperref:
-\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
 $endif$
 $if(indent)$
 $else$
