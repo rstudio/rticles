@@ -94,8 +94,8 @@ Imports:
     xfun,
     yaml
 Suggests: 
-    covr,
     bookdown,
+    covr,
     testit,
     testthat (>= 3.0.0),
     xtable
