@@ -100,7 +100,7 @@ ams_article <- function(..., keep_tex = TRUE,
 }
 
 #' @section `asa_article`: This format was adapted from The American
-#'   Statistican (TAS) format, but it should be fairly consistent across
+#'   Statistician (TAS) format, but it should be fairly consistent across
 #'   American Statistical Association (ASA) journals.
 #' @export
 #' @rdname article

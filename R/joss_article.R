@@ -7,7 +7,7 @@
 #' R Markdown and to locally preview how the article will appear as PDF.
 #'
 #' The following variables may be set in YAML metadata to populate fields in the
-#' article PDF, but are only necccessary fo local preview:
+#' article PDF, but are only necessary fo local preview:
 #' `formatted_doi, citation_author, year, volume, issue, page, submitted, published,
 #' review_url, repository`, and `archive_doi`.
 #'
