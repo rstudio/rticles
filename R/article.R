@@ -33,7 +33,7 @@ acm_article <- function(...) {
 
 #' @section `acs_article`: Format for creating an American Chemical Society
 #'   (ACS) Journal articles. Adapted from
-#'   <https://pubs.acs.org/page/4authors/submission/tex.html>.
+#'   `https://pubs.acs.org/page/4authors/submission/tex.html`
 #' @export
 #' @rdname article
 acs_article <- function(..., keep_tex = TRUE,
@@ -459,7 +459,7 @@ sage_article <- function(..., highlight = NULL, citation_package = "natbib") {
 
 #' @section `sim_article`: Format for creating submissions to Statistics in
 #'   Medicine. Based on the official Statistics in Medicine
-#'   [class](https://onlinelibrary.wiley.com/page/journal/10970258/homepage/la_tex_class_file.htm).
+#'   at `https://onlinelibrary.wiley.com/page/journal/10970258/homepage/la_tex_class_file.htm`.
 #'
 #' Possible arguments for the YAML header are:
 #' * `title` title of the manuscript
