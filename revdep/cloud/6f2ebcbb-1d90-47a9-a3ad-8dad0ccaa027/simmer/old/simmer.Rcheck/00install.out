@@ -1,0 +1,24 @@
+* installing *source* package ‘simmer’ ...
+** package ‘simmer’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++14 -I"/opt/R/4.1.1/lib/R/include" -DNDEBUG -I../inst/include -DBOOST_NO_LONG_LONG -DBOOST_NO_AUTO_PTR -DBOOST_BIND_GLOBAL_PLACEHOLDERS -DRCPP_NO_RTTI -DRCPP_USE_UNWIND_PROTECT -I'/opt/R/4.1.1/lib/R/site-library/Rcpp/include' -I'/opt/R/4.1.1/lib/R/site-library/BH/include' -I/usr/local/include   -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+g++ -std=gnu++14 -I"/opt/R/4.1.1/lib/R/include" -DNDEBUG -I../inst/include -DBOOST_NO_LONG_LONG -DBOOST_NO_AUTO_PTR -DBOOST_BIND_GLOBAL_PLACEHOLDERS -DRCPP_NO_RTTI -DRCPP_USE_UNWIND_PROTECT -I'/opt/R/4.1.1/lib/R/site-library/Rcpp/include' -I'/opt/R/4.1.1/lib/R/site-library/BH/include' -I/usr/local/include   -fpic  -g -O2  -c activity.cpp -o activity.o
+g++ -std=gnu++14 -I"/opt/R/4.1.1/lib/R/include" -DNDEBUG -I../inst/include -DBOOST_NO_LONG_LONG -DBOOST_NO_AUTO_PTR -DBOOST_BIND_GLOBAL_PLACEHOLDERS -DRCPP_NO_RTTI -DRCPP_USE_UNWIND_PROTECT -I'/opt/R/4.1.1/lib/R/site-library/Rcpp/include' -I'/opt/R/4.1.1/lib/R/site-library/BH/include' -I/usr/local/include   -fpic  -g -O2  -c monitor.cpp -o monitor.o
+g++ -std=gnu++14 -I"/opt/R/4.1.1/lib/R/include" -DNDEBUG -I../inst/include -DBOOST_NO_LONG_LONG -DBOOST_NO_AUTO_PTR -DBOOST_BIND_GLOBAL_PLACEHOLDERS -DRCPP_NO_RTTI -DRCPP_USE_UNWIND_PROTECT -I'/opt/R/4.1.1/lib/R/site-library/Rcpp/include' -I'/opt/R/4.1.1/lib/R/site-library/BH/include' -I/usr/local/include   -fpic  -g -O2  -c process.cpp -o process.o
+g++ -std=gnu++14 -I"/opt/R/4.1.1/lib/R/include" -DNDEBUG -I../inst/include -DBOOST_NO_LONG_LONG -DBOOST_NO_AUTO_PTR -DBOOST_BIND_GLOBAL_PLACEHOLDERS -DRCPP_NO_RTTI -DRCPP_USE_UNWIND_PROTECT -I'/opt/R/4.1.1/lib/R/site-library/Rcpp/include' -I'/opt/R/4.1.1/lib/R/site-library/BH/include' -I/usr/local/include   -fpic  -g -O2  -c resource.cpp -o resource.o
+g++ -std=gnu++14 -I"/opt/R/4.1.1/lib/R/include" -DNDEBUG -I../inst/include -DBOOST_NO_LONG_LONG -DBOOST_NO_AUTO_PTR -DBOOST_BIND_GLOBAL_PLACEHOLDERS -DRCPP_NO_RTTI -DRCPP_USE_UNWIND_PROTECT -I'/opt/R/4.1.1/lib/R/site-library/Rcpp/include' -I'/opt/R/4.1.1/lib/R/site-library/BH/include' -I/usr/local/include   -fpic  -g -O2  -c simulator.cpp -o simulator.o
+g++ -std=gnu++14 -shared -L/opt/R/4.1.1/lib/R/lib -L/usr/local/lib -o simmer.so RcppExports.o activity.o monitor.o process.o resource.o simulator.o -L/opt/R/4.1.1/lib/R/lib -lR
+installing to /tmp/workdir/simmer/old/simmer.Rcheck/00LOCK-simmer/00new/simmer/libs
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (simmer)

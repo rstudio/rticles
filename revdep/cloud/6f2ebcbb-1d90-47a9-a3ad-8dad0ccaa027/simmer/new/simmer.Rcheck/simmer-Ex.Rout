@@ -1,0 +1,1414 @@
+
+R version 4.1.1 (2021-08-10) -- "Kick Things"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "simmer"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('simmer')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("Extract.trajectory")
+> ### * Extract.trajectory
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: Extract.trajectory
+> ### Title: Extract or Replace Parts of a Trajectory
+> ### Aliases: Extract.trajectory [.trajectory [[.trajectory [<-.trajectory
+> ###   [[<-.trajectory
+> 
+> ### ** Examples
+> 
+> x <- join(lapply(1:12, function(i)
++   trajectory() %>% timeout(i)
++ ))
+> x
+trajectory: anonymous, 12 activities
+{ Activity: Timeout      | delay: 1 }
+{ Activity: Timeout      | delay: 2 }
+{ Activity: Timeout      | delay: 3 }
+{ Activity: Timeout      | delay: 4 }
+{ Activity: Timeout      | delay: 5 }
+{ Activity: Timeout      | delay: 6 }
+{ Activity: Timeout      | delay: 7 }
+{ Activity: Timeout      | delay: 8 }
+{ Activity: Timeout      | delay: 9 }
+{ Activity: Timeout      | delay: 10 }
+{ Activity: Timeout      | delay: 11 }
+{ Activity: Timeout      | delay: 12 }
+> 
+> x[10]                 # the tenth element of x
+trajectory: anonymous, 1 activities
+{ Activity: Timeout      | delay: 10 }
+> x[-1]                 # delete the 1st element of x
+trajectory: anonymous, 11 activities
+{ Activity: Timeout      | delay: 2 }
+{ Activity: Timeout      | delay: 3 }
+{ Activity: Timeout      | delay: 4 }
+{ Activity: Timeout      | delay: 5 }
+{ Activity: Timeout      | delay: 6 }
+{ Activity: Timeout      | delay: 7 }
+{ Activity: Timeout      | delay: 8 }
+{ Activity: Timeout      | delay: 9 }
+{ Activity: Timeout      | delay: 10 }
+{ Activity: Timeout      | delay: 11 }
+{ Activity: Timeout      | delay: 12 }
+> x[c(TRUE, FALSE)]     # logical indexing
+trajectory: anonymous, 6 activities
+{ Activity: Timeout      | delay: 1 }
+{ Activity: Timeout      | delay: 3 }
+{ Activity: Timeout      | delay: 5 }
+{ Activity: Timeout      | delay: 7 }
+{ Activity: Timeout      | delay: 9 }
+{ Activity: Timeout      | delay: 11 }
+> x[c(1, 5, 2, 12, 4)]  # numeric indexing
+trajectory: anonymous, 5 activities
+{ Activity: Timeout      | delay: 1 }
+{ Activity: Timeout      | delay: 5 }
+{ Activity: Timeout      | delay: 2 }
+{ Activity: Timeout      | delay: 12 }
+{ Activity: Timeout      | delay: 4 }
+> x[c(FALSE, TRUE)] <- x[c(TRUE, FALSE)] # replacing
+> x
+trajectory: anonymous, 12 activities
+{ Activity: Timeout      | delay: 1 }
+{ Activity: Timeout      | delay: 1 }
+{ Activity: Timeout      | delay: 3 }
+{ Activity: Timeout      | delay: 3 }
+{ Activity: Timeout      | delay: 5 }
+{ Activity: Timeout      | delay: 5 }
+{ Activity: Timeout      | delay: 7 }
+{ Activity: Timeout      | delay: 7 }
+{ Activity: Timeout      | delay: 9 }
+{ Activity: Timeout      | delay: 9 }
+{ Activity: Timeout      | delay: 11 }
+{ Activity: Timeout      | delay: 11 }
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("activate")
+> ### * activate
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: activate
+> ### Title: Activate/Deactivate Sources
+> ### Aliases: activate deactivate
+> 
+> ### ** Examples
+> 
+> traj <- trajectory() %>%
++   deactivate("dummy") %>%
++   timeout(1) %>%
++   activate("dummy")
+> 
+> simmer() %>%
++   add_generator("dummy", traj, function() 1) %>%
++   run(10) %>%
++   get_mon_arrivals()
+    name start_time end_time activity_time finished replication
+1 dummy0          1        2             1     TRUE           1
+2 dummy1          3        4             1     TRUE           1
+3 dummy2          5        6             1     TRUE           1
+4 dummy3          7        8             1     TRUE           1
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("batch")
+> ### * batch
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: batch
+> ### Title: Batch/Separate Arrivals
+> ### Aliases: batch separate
+> 
+> ### ** Examples
+> 
+> ## unnamed batch with a timeout
+> traj <- trajectory() %>%
++   log_("arrived") %>%
++   batch(2, timeout=5) %>%
++   log_("in a batch") %>%
++   timeout(5) %>%
++   separate() %>%
++   log_("leaving")
+> 
+> simmer() %>%
++   add_generator("dummy", traj, at(0:2)) %>%
++   run() %>% invisible
+0: dummy0: arrived
+1: dummy1: arrived
+1: batch0: in a batch
+2: dummy2: arrived
+6: dummy0: leaving
+6: dummy1: leaving
+7: batch1: in a batch
+12: dummy2: leaving
+> 
+> ## batching based on some dynamic rule
+> traj <- trajectory() %>%
++   log_("arrived") %>%
++   # always FALSE -> no batches
++   batch(2, rule=function() FALSE) %>%
++   log_("not in a batch") %>%
++   timeout(5) %>%
++   separate() %>%
++   log_("leaving")
+> 
+> simmer() %>%
++   add_generator("dummy", traj, at(0:2)) %>%
++   run() %>% invisible
+0: dummy0: arrived
+0: dummy0: not in a batch
+1: dummy1: arrived
+1: dummy1: not in a batch
+2: dummy2: arrived
+2: dummy2: not in a batch
+5: dummy0: leaving
+6: dummy1: leaving
+7: dummy2: leaving
+> 
+> ## named batch, shared across trajectories
+> traj0 <- trajectory() %>%
++   log_("arrived traj0") %>%
++   batch(2, name = "mybatch")
+> 
+> traj1 <- trajectory() %>%
++   log_("arrived traj1") %>%
++   timeout(1) %>%
++   batch(2, name = "mybatch") %>%
++   log_("in a batch") %>%
++   timeout(2) %>%
++   separate() %>%
++   log_("leaving traj1")
+> 
+> simmer() %>%
++   add_generator("dummy0", traj0, at(0)) %>%
++   add_generator("dummy1", traj1, at(0)) %>%
++   run() %>% invisible
+0: dummy00: arrived traj0
+0: dummy10: arrived traj1
+1: batch_mybatch: in a batch
+3: dummy00: leaving traj1
+3: dummy10: leaving traj1
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("branch")
+> ### * branch
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: branch
+> ### Title: Fork the Trajectory Path
+> ### Aliases: branch
+> 
+> ### ** Examples
+> 
+> env <- simmer()
+> 
+> traj <- trajectory() %>%
++   set_global("path", 1, mod="+", init=-1) %>%
++   log_(function() paste("Path", get_global(env, "path"), "selected")) %>%
++   branch(
++     function() get_global(env, "path"), continue=c(TRUE, FALSE),
++     trajectory() %>%
++       log_("following path 1"),
++     trajectory() %>%
++       log_("following path 2")) %>%
++   log_("continuing after the branch (path 0)")
+> 
+> env %>%
++   add_generator("dummy", traj, at(0:2)) %>%
++   run() %>% invisible
+0: dummy0: Path 0 selected
+0: dummy0: continuing after the branch (path 0)
+1: dummy1: Path 1 selected
+1: dummy1: following path 1
+1: dummy1: continuing after the branch (path 0)
+2: dummy2: Path 2 selected
+2: dummy2: following path 2
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("clone")
+> ### * clone
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: clone
+> ### Title: Clone/Synchronize Arrivals
+> ### Aliases: clone synchronize
+> 
+> ### ** Examples
+> 
+> ## clone and wait for the others
+> traj <- trajectory() %>%
++   clone(
++     n = 3,
++     trajectory() %>%
++       log_("clone 0 (original)") %>%
++       timeout(1),
++     trajectory() %>%
++       log_("clone 1") %>%
++       timeout(2),
++     trajectory() %>%
++       log_("clone 2") %>%
++       timeout(3)) %>%
++   log_("sync reached") %>%
++   synchronize(wait = TRUE) %>%
++   log_("leaving")
+> 
+> simmer() %>%
++   add_generator("arrival", traj, at(0)) %>%
++   run() %>% invisible
+0: arrival0: clone 0 (original)
+0: arrival0: clone 1
+0: arrival0: clone 2
+1: arrival0: sync reached
+2: arrival0: sync reached
+3: arrival0: sync reached
+3: arrival0: leaving
+> 
+> ## more clones that trajectories available
+> traj <- trajectory() %>%
++   clone(
++     n = 5,
++     trajectory() %>%
++       log_("clone 0 (original)") %>%
++       timeout(1)) %>%
++   log_("sync reached") %>%
++   synchronize(wait = TRUE) %>%
++   log_("leaving")
+> 
+> simmer() %>%
++   add_generator("arrival", traj, at(0)) %>%
++   run() %>% invisible
+0: arrival0: clone 0 (original)
+0: arrival0: sync reached
+0: arrival0: sync reached
+0: arrival0: sync reached
+0: arrival0: sync reached
+1: arrival0: sync reached
+1: arrival0: leaving
+> 
+> ## clone and continue without waiting
+> traj <- trajectory() %>%
++   clone(
++     n = 3,
++     trajectory() %>%
++       log_("clone 0 (original)") %>%
++       timeout(1),
++     trajectory() %>%
++       log_("clone 1") %>%
++       timeout(2),
++     trajectory() %>%
++       log_("clone 2") %>%
++       timeout(3)) %>%
++   log_("sync reached") %>%
++   synchronize(wait = FALSE) %>%
++   log_("leaving")
+> 
+> simmer() %>%
++   add_generator("arrival", traj, at(0)) %>%
++   run() %>% invisible
+0: arrival0: clone 0 (original)
+0: arrival0: clone 1
+0: arrival0: clone 2
+1: arrival0: sync reached
+1: arrival0: leaving
+2: arrival0: sync reached
+3: arrival0: sync reached
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("generators")
+> ### * generators
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: generators
+> ### Title: Convenience Functions for Generators
+> ### Aliases: generators at from to from_to when_activated
+> 
+> ### ** Examples
+> 
+> ## common to all examples below
+> # some trajectory
+> t0 <- trajectory() %>%
++   timeout(0)
+> # some distribution
+> distr <- function() runif(1, 1, 2)
+> 
+> # arrivals at 0, 1, 10, 30, 40 and 43
+> simmer() %>%
++   add_generator("dummy", t0, at(0, c(1,10,30), 40, 43)) %>%
++   run(100) %>%
++   get_mon_arrivals()
+    name start_time end_time activity_time finished replication
+1 dummy0          0        0             0     TRUE           1
+2 dummy1          1        1             0     TRUE           1
+3 dummy2         10       10             0     TRUE           1
+4 dummy3         30       30             0     TRUE           1
+5 dummy4         40       40             0     TRUE           1
+6 dummy5         43       43             0     TRUE           1
+> 
+> # apply distribution starting at 5 (and no end)
+> simmer() %>%
++   add_generator("dummy", t0, from(5, distr)) %>%
++   run(10) %>%
++   get_mon_arrivals()
+    name start_time end_time activity_time finished replication
+1 dummy0   5.000000 5.000000             0     TRUE           1
+2 dummy1   6.265509 6.265509             0     TRUE           1
+3 dummy2   7.637633 7.637633             0     TRUE           1
+4 dummy3   9.210486 9.210486             0     TRUE           1
+> 
+> # apply distribution until 5 (starting at 0)
+> simmer() %>%
++   add_generator("dummy", t0, to(5, distr)) %>%
++   run(10) %>%
++   get_mon_arrivals()
+    name start_time end_time activity_time finished replication
+1 dummy0   1.201682 1.201682             0     TRUE           1
+2 dummy1   3.100072 3.100072             0     TRUE           1
+> 
+> # apply distribution from 8 to 16 h every 24 h:
+> simmer() %>%
++   add_generator("dummy", t0, from_to(8, 16, distr, every=24)) %>%
++   run(48) %>%
++   get_mon_arrivals()
+      name start_time  end_time activity_time finished replication
+1   dummy0   8.000000  8.000000             0     TRUE           1
+2   dummy1   9.660798  9.660798             0     TRUE           1
+3   dummy2  11.289912 11.289912             0     TRUE           1
+4   dummy3  12.351698 12.351698             0     TRUE           1
+5   dummy4  13.557673 13.557673             0     TRUE           1
+6   dummy5  14.734229 14.734229             0     TRUE           1
+7   dummy6  32.000000 32.000000             0     TRUE           1
+8   dummy7  33.384104 33.384104             0     TRUE           1
+9   dummy8  35.153945 35.153945             0     TRUE           1
+10  dummy9  36.651644 36.651644             0     TRUE           1
+11 dummy10  38.369263 38.369263             0     TRUE           1
+> 
+> # triggering arrivals on demand from a trajectory
+> t1 <- trajectory() %>%
++   activate("dummy")
+> 
+> simmer() %>%
++   add_generator("dummy", t0, when_activated()) %>%
++   add_generator("trigger", t1, at(2)) %>%
++   run() %>%
++   get_mon_arrivals()
+      name start_time end_time activity_time finished replication
+1 trigger0          2        2             0     TRUE           1
+2   dummy0          2        2             0     TRUE           1
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("handle_unfinished")
+> ### * handle_unfinished
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: handle_unfinished
+> ### Title: Handle Unfinished Arrivals
+> ### Aliases: handle_unfinished
+> 
+> ### ** Examples
+> 
+> traj <- trajectory() %>%
++   log_("arrived") %>%
++   handle_unfinished(
++     trajectory() %>%
++       log_("preempted!")) %>%
++   seize("res") %>%
++   log_("resource seized") %>%
++   timeout(10) %>%
++   release("res") %>%
++   log_("leaving")
+> 
+> simmer() %>%
++   add_resource("res", 1, 0, preemptive=TRUE, queue_size_strict=TRUE) %>%
++   add_generator("dummy", traj, at(0)) %>%
++   add_generator("priority_dummy", traj, at(5), priority=1) %>%
++   run() %>% invisible
+0: dummy0: arrived
+0: dummy0: resource seized
+5: priority_dummy0: arrived
+5: priority_dummy0: resource seized
+5: dummy0: preempted!
+15: priority_dummy0: leaving
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("join")
+> ### * join
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: join
+> ### Title: Join Trajectories
+> ### Aliases: join
+> 
+> ### ** Examples
+> 
+> t1 <- trajectory() %>% seize("dummy", 1)
+> t2 <- trajectory() %>% timeout(1)
+> t3 <- trajectory() %>% release("dummy", 1)
+> 
+> ## join can be used alone
+> join(t1, t2, t3)
+trajectory: anonymous, 3 activities
+{ Activity: Seize        | resource: dummy, amount: 1 }
+{ Activity: Timeout      | delay: 1 }
+{ Activity: Release      | resource: dummy, amount: 1 }
+> 
+> ## or can be chained in a trajectory definition
+> trajectory() %>%
++   join(t1) %>%
++   timeout(1) %>%
++   join(t3)
+trajectory: anonymous, 3 activities
+{ Activity: Seize        | resource: dummy, amount: 1 }
+{ Activity: Timeout      | delay: 1 }
+{ Activity: Release      | resource: dummy, amount: 1 }
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("length.trajectory")
+> ### * length.trajectory
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: length.trajectory
+> ### Title: Number of Activities in a Trajectory
+> ### Aliases: length.trajectory get_n_activities
+> 
+> ### ** Examples
+> 
+> x <- trajectory() %>%
++   timeout(1)
+> 
+> x <- x %>%
++   clone(2, x, x)
+> x
+trajectory: anonymous, 4 activities
+{ Activity: Timeout      | delay: 1 }
+{ Activity: Clone        | n: 2 }
+  Fork 1, continue,  trajectory: anonymous, 1 activities
+  { Activity: Timeout      | delay: 1 }
+  Fork 2, continue,  trajectory: anonymous, 1 activities
+  { Activity: Timeout      | delay: 1 }
+> 
+> ## length does not account for subtrajectories
+> length(x)
+[1] 2
+> get_n_activities(x)
+[1] 4
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("log_")
+> ### * log_
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: log_
+> ### Title: Debugging
+> ### Aliases: log_ stop_if
+> 
+> ### ** Examples
+> 
+> ## log levels
+> traj <- trajectory() %>%
++   log_("this is always printed") %>% # level = 0 by default
++   log_("this is printed if `log_level>=1`", level = 1) %>%
++   log_("this is printed if `log_level>=2`", level = 2)
+> 
+> simmer() %>%
++   add_generator("dummy", traj, at(0)) %>%
++   run() %>% invisible
+0: dummy0: this is always printed
+> 
+> simmer(log_level = 1) %>%
++   add_generator("dummy", traj, at(0)) %>%
++   run() %>% invisible
+0: dummy0: this is always printed
+0: dummy0: this is printed if `log_level>=1`
+> 
+> simmer(log_level = Inf) %>%
++   add_generator("dummy", traj, at(0)) %>%
++   run() %>% invisible
+0: dummy0: this is always printed
+0: dummy0: this is printed if `log_level>=1`
+0: dummy0: this is printed if `log_level>=2`
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("monitor")
+> ### * monitor
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: monitor
+> ### Title: Create a Monitor
+> ### Aliases: monitor monitor_mem monitor_delim monitor_csv
+> 
+> ### ** Examples
+> 
+> mon <- monitor_csv()
+> mon
+simmer monitor: to disk (delimited files)
+{ arrivals: /tmp/RtmpMhWXCC/file147b52c8c9d0_arrivals.csv }
+{ releases: /tmp/RtmpMhWXCC/file147b52c8c9d0_releases.csv }
+{ attributes: /tmp/RtmpMhWXCC/file147b52c8c9d0_attributes.csv }
+{ resources: /tmp/RtmpMhWXCC/file147b52c8c9d0_resources.csv }
+> 
+> env <- simmer(mon=mon) %>%
++   add_generator("dummy", trajectory() %>% timeout(1), function() 1) %>%
++   run(10)
+> env
+simmer environment: anonymous | now: 10 | next: 10
+{ Monitor: to disk (delimited files) }
+  { arrivals: /tmp/RtmpMhWXCC/file147b52c8c9d0_arrivals.csv }
+  { releases: /tmp/RtmpMhWXCC/file147b52c8c9d0_releases.csv }
+  { attributes: /tmp/RtmpMhWXCC/file147b52c8c9d0_attributes.csv }
+  { resources: /tmp/RtmpMhWXCC/file147b52c8c9d0_resources.csv }
+{ Source: dummy | monitored: 1 | n_generated: 10 }
+> 
+> read.csv(mon$handlers$arrivals) # direct access
+    name start_time end_time activity_time finished
+1 dummy0          1        2             1        1
+2 dummy1          2        3             1        1
+3 dummy2          3        4             1        1
+4 dummy3          4        5             1        1
+5 dummy4          5        6             1        1
+6 dummy5          6        7             1        1
+7 dummy6          7        8             1        1
+8 dummy7          8        9             1        1
+> get_mon_arrivals(env)           # adds the "replication" column
+    name start_time end_time activity_time finished replication
+1 dummy0          1        2             1        1           1
+2 dummy1          2        3             1        1           1
+3 dummy2          3        4             1        1           1
+4 dummy3          4        5             1        1           1
+5 dummy4          5        6             1        1           1
+6 dummy5          6        7             1        1           1
+7 dummy6          7        8             1        1           1
+8 dummy7          8        9             1        1           1
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("renege")
+> ### * renege
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: renege
+> ### Title: Renege on some Condition
+> ### Aliases: renege leave renege_in renege_if renege_abort
+> 
+> ### ** Examples
+> 
+> ## leave with some probability
+> set.seed(1234)
+> 
+> traj <- trajectory() %>%
++   log_("leave with some probability") %>%
++   leave(function() runif(1) < 0.5) %>%
++   log_("didn't leave")
+> 
+> simmer() %>%
++   add_generator("dummy", traj, at(0, 1)) %>%
++   run() %>% invisible
+0: dummy0: leave with some probability
+1: dummy1: leave with some probability
+1: dummy1: didn't leave
+> 
+> ## reneging after some time
+> bank <- trajectory() %>%
++   log_("here I am") %>%
++   # renege in 5 minutes
++   renege_in(
++     5,
++     out = trajectory() %>%
++       log_("lost my patience. Reneging...")) %>%
++   seize("clerk") %>%
++   # stay if I'm being attended within 5 minutes
++   renege_abort() %>%
++   log_("I'm being attended") %>%
++   timeout(10) %>%
++   release("clerk") %>%
++   log_("finished")
+> 
+> simmer() %>%
++   add_resource("clerk", 1) %>%
++   add_generator("customer", bank, at(0, 1)) %>%
++   run() %>% invisible
+0: customer0: here I am
+0: customer0: I'm being attended
+1: customer1: here I am
+6: customer1: lost my patience. Reneging...
+10: customer0: finished
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("rollback")
+> ### * rollback
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: rollback
+> ### Title: Rollback a Number of Activities
+> ### Aliases: rollback
+> 
+> ### ** Examples
+> 
+> ## rollback a specific number of times
+> traj <- trajectory() %>%
++   log_("hello!") %>%
++   timeout(1) %>%
++   rollback(2, 3)
+> 
+> simmer() %>%
++   add_generator("hello_sayer", traj, at(0)) %>%
++   run() %>% invisible
+0: hello_sayer0: hello!
+1: hello_sayer0: hello!
+2: hello_sayer0: hello!
+3: hello_sayer0: hello!
+> 
+> ## custom check
+> env <- simmer()
+> 
+> traj <- trajectory() %>%
++   set_attribute("var", 0) %>%
++   log_(function()
++     paste("attribute level is at:", get_attribute(env, "var"))) %>%
++   set_attribute("var", 25, mod="+") %>%
++   rollback(2, check=function() get_attribute(env, "var") < 100) %>%
++   log_("done")
+> 
+> env %>%
++   add_generator("dummy", traj, at(0)) %>%
++   run() %>% invisible
+0: dummy0: attribute level is at: 0
+0: dummy0: attribute level is at: 25
+0: dummy0: attribute level is at: 50
+0: dummy0: attribute level is at: 75
+0: dummy0: done
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("run")
+> ### * run
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: run
+> ### Title: Run a Simulation
+> ### Aliases: run stepn
+> 
+> ### ** Examples
+> 
+> ## show the progress just printing the steps
+> simmer() %>%
++   run(progress=message, steps=5)
+0
+0.2
+0.4
+0.6
+0.8
+1
+simmer environment: anonymous | now: 0 | next: 
+{ Monitor: in memory }
+> 
+> ## using the 'progress' package
+> ## Not run: 
+> ##D mm1 <- trajectory() %>%
+> ##D   seize("server", 1) %>%
+> ##D   timeout(function() rexp(1, 66)) %>%
+> ##D   release("server", 1)
+> ##D 
+> ##D simmer() %>%
+> ##D   add_resource("server", 1) %>%
+> ##D   add_generator("customer", mm1, function() rexp(100, 60)) %>%
+> ##D   run(3000, progress=progress::progress_bar$new()$update)
+> ## End(Not run)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("schedule")
+> ### * schedule
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: schedule
+> ### Title: Generate a Scheduling Object
+> ### Aliases: schedule
+> 
+> ### ** Examples
+> 
+> # Schedule 3 units from 8 to 16 h
+> #          2 units from 16 to 24 h
+> #          1 units from 24 to 8 h
+> capacity_schedule <- schedule(c(8, 16, 24), c(3, 2, 1), period=24)
+> 
+> env <- simmer() %>%
++   add_resource("dummy", capacity_schedule)
+> 
+> # Composition of schedules
+> sch1 <- schedule(c(8, 16), c(3, 0), period=24)
+> sch2 <- schedule(c(16, 24), c(2, 1), period=24)
+> all.equal(sch1 + sch2, capacity_schedule)
+[1] TRUE
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("seize")
+> ### * seize
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: seize
+> ### Title: Seize/Release Resources
+> ### Aliases: seize seize_selected release release_selected release_all
+> ###   release_selected_all
+> 
+> ### ** Examples
+> 
+> ## simple seize, delay, then release
+> traj <- trajectory() %>%
++   seize("doctor", 1) %>%
++   timeout(3) %>%
++   release("doctor", 1)
+> 
+> simmer() %>%
++   add_resource("doctor", capacity=1) %>%
++   add_generator("patient", traj, at(0, 1)) %>%
++   run() %>%
++   get_mon_resources()
+  resource time server queue capacity queue_size system limit replication
+1   doctor    0      1     0        1        Inf      1   Inf           1
+2   doctor    1      1     1        1        Inf      2   Inf           1
+3   doctor    3      1     0        1        Inf      1   Inf           1
+4   doctor    6      0     0        1        Inf      0   Inf           1
+> 
+> ## arrival rejection (no space left in the queue)
+> traj <- trajectory() %>%
++   log_("arriving...") %>%
++   seize("doctor", 1) %>%
++   # the second patient won't reach this point
++   log_("doctor seized") %>%
++   timeout(5) %>%
++   release("doctor", 1)
+> 
+> simmer() %>%
++   add_resource("doctor", capacity=1, queue_size=0) %>%
++   add_generator("patient", traj, at(0, 1)) %>%
++   run() %>% invisible
+0: patient0: arriving...
+0: patient0: doctor seized
+1: patient1: arriving...
+> 
+> ## capturing rejection to retry
+> traj <- trajectory() %>%
++   log_("arriving...") %>%
++   seize(
++     "doctor", 1, continue = FALSE,
++     reject = trajectory() %>%
++       log_("rejected!") %>%
++       # go for a walk and try again
++       timeout(2) %>%
++       log_("retrying...") %>%
++       rollback(amount = 4, times = Inf)) %>%
++   # the second patient will reach this point after a couple of walks
++   log_("doctor seized") %>%
++   timeout(5) %>%
++   release("doctor", 1) %>%
++   log_("leaving")
+> 
+> simmer() %>%
++   add_resource("doctor", capacity=1, queue_size=0) %>%
++   add_generator("patient", traj, at(0, 1)) %>%
++   run() %>% invisible
+0: patient0: arriving...
+0: patient0: doctor seized
+1: patient1: arriving...
+1: patient1: rejected!
+3: patient1: retrying...
+3: patient1: rejected!
+5: patient1: retrying...
+5: patient0: leaving
+5: patient1: doctor seized
+10: patient1: leaving
+> 
+> ## combining post.seize and reject
+> traj <- trajectory() %>%
++   log_("arriving...") %>%
++   seize(
++     "doctor", 1, continue = c(TRUE, TRUE),
++     post.seize = trajectory("admitted patient") %>%
++       log_("admitted") %>%
++       timeout(5) %>%
++       release("doctor", 1),
++     reject = trajectory("rejected patient") %>%
++       log_("rejected!") %>%
++       seize("nurse", 1) %>%
++       timeout(2) %>%
++       release("nurse", 1)) %>%
++   # both patients will reach this point, as continue = c(TRUE, TRUE)
++   timeout(10) %>%
++   log_("leaving...")
+> 
+> simmer() %>%
++   add_resource("doctor", capacity=1, queue_size=0) %>%
++   add_resource("nurse", capacity=10, queue_size=0) %>%
++   add_generator("patient", traj, at(0, 1)) %>%
++   run() %>% invisible
+0: patient0: arriving...
+0: patient0: admitted
+1: patient1: arriving...
+1: patient1: rejected!
+13: patient1: leaving...
+15: patient0: leaving...
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("select")
+> ### * select
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: select
+> ### Title: Select Resources
+> ### Aliases: select
+> 
+> ### ** Examples
+> 
+> ## predefined policy
+> traj <- trajectory() %>%
++   select(paste0("doctor", 1:3), "round-robin") %>%
++   seize_selected(1) %>%
++   timeout(5) %>%
++   release_selected(1)
+> 
+> simmer() %>%
++   add_resource("doctor1") %>%
++   add_resource("doctor2") %>%
++   add_resource("doctor3") %>%
++   add_generator("patient", traj, at(0, 1, 2)) %>%
++   run() %>%
++   get_mon_resources()
+  resource time server queue capacity queue_size system limit replication
+1  doctor1    0      1     0        1        Inf      1   Inf           1
+2  doctor2    1      1     0        1        Inf      1   Inf           1
+3  doctor3    2      1     0        1        Inf      1   Inf           1
+4  doctor1    5      0     0        1        Inf      0   Inf           1
+5  doctor2    6      0     0        1        Inf      0   Inf           1
+6  doctor3    7      0     0        1        Inf      0   Inf           1
+> 
+> ## custom policy
+> env <- simmer()
+> res <- paste0("doctor", 1:3)
+> 
+> traj <- trajectory() %>%
++   select(function() {
++     occ <- get_server_count(env, res) + get_queue_count(env, res)
++     res[which.min(occ)[1]]
++   }) %>%
++   seize_selected(1) %>%
++   timeout(5) %>%
++   release_selected(1)
+> 
+> for (i in res) env %>%
++   add_resource(i)
+> env %>%
++   add_generator("patient", traj, at(0, 1, 2)) %>%
++   run() %>%
++   get_mon_resources()
+  resource time server queue capacity queue_size system limit replication
+1  doctor1    0      1     0        1        Inf      1   Inf           1
+2  doctor2    1      1     0        1        Inf      1   Inf           1
+3  doctor3    2      1     0        1        Inf      1   Inf           1
+4  doctor1    5      0     0        1        Inf      0   Inf           1
+5  doctor2    6      0     0        1        Inf      0   Inf           1
+6  doctor3    7      0     0        1        Inf      0   Inf           1
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("send")
+> ### * send
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: send
+> ### Title: Inter-arrival Communication
+> ### Aliases: send trap untrap wait
+> 
+> ### ** Examples
+> 
+> ## block, signal and continue with a handler
+> signal <- "you shall pass"
+> 
+> t_blocked <- trajectory() %>%
++   trap(
++     signal,
++     trajectory() %>%
++       log_("executing the handler")) %>%
++   log_("waiting...") %>%
++   wait() %>%
++   log_("continuing!")
+> 
+> t_signaler <- trajectory() %>%
++   log_(signal) %>%
++   send(signal)
+> 
+> simmer() %>%
++   add_generator("blocked", t_blocked, at(0)) %>%
++   add_generator("signaler", t_signaler, at(5)) %>%
++   run() %>% invisible
+0: blocked0: waiting...
+5: signaler0: you shall pass
+5: blocked0: executing the handler
+5: blocked0: continuing!
+> 
+> ## handlers can be interrupted, unless interruptible=FALSE
+> t_worker <- trajectory() %>%
++   trap(
++   signal,
++   handler = trajectory() %>%
++     log_("ok, I'm packing...") %>%
++     timeout(1)) %>%
++   log_("performing a looong task...") %>%
++   timeout(100) %>%
++   log_("and I'm leaving!")
+> 
+> simmer() %>%
++   add_generator("worker", t_worker, at(0)) %>%
++   add_generator("signaler", t_signaler, at(5, 5.5)) %>%
++   run() %>% invisible
+0: worker0: performing a looong task...
+5: signaler0: you shall pass
+5: worker0: ok, I'm packing...
+5.5: signaler1: you shall pass
+5.5: worker0: ok, I'm packing...
+6.5: worker0: and I'm leaving!
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("set_attribute")
+> ### * set_attribute
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: set_attribute
+> ### Title: Set Attributes
+> ### Aliases: set_attribute set_global
+> 
+> ### ** Examples
+> 
+> env <- simmer()
+> 
+> traj <- trajectory() %>%
++ 
++   # simple assignment
++   set_attribute("my_key", 123) %>%
++   set_global("global_key", 321) %>%
++ 
++   # more than one assignment at once
++   set_attribute(c("my_key", "other_key"), c(5, 64)) %>%
++ 
++   # increment
++   set_attribute("my_key", 1, mod="+") %>%
++ 
++   # assignment using a function
++   set_attribute("independent_key", function() runif(1)) %>%
++ 
++   # assignment dependent on another attribute
++   set_attribute("dependent_key", function()
++     ifelse(get_attribute(env, "my_key") <= 0.5, 1, 0))
+> 
+> env %>%
++   add_generator("dummy", traj, at(3), mon=2) %>%
++   run() %>%
++   get_mon_attributes()
+  time   name             key       value replication
+1    3 dummy0          my_key 123.0000000           1
+2    3             global_key 321.0000000           1
+3    3 dummy0          my_key   5.0000000           1
+4    3 dummy0       other_key  64.0000000           1
+5    3 dummy0          my_key   6.0000000           1
+6    3 dummy0 independent_key   0.2655087           1
+7    3 dummy0   dependent_key   0.0000000           1
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("set_capacity")
+> ### * set_capacity
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: set_capacity
+> ### Title: Set Resource Parameters
+> ### Aliases: set_capacity set_capacity_selected set_queue_size
+> ###   set_queue_size_selected
+> 
+> ### ** Examples
+> 
+> ## a resource with a queue size equal to the number of arrivals waiting
+> traj <- trajectory() %>%
++   set_queue_size("res", 1, mod="+") %>%
++   seize("res") %>%
++   set_queue_size("res", -1, mod="+") %>%
++   timeout(10) %>%
++   release("res")
+> 
+> simmer() %>%
++   add_resource("res", 1, 0) %>%
++   add_generator("dummy", traj, at(0:2)) %>%
++   run() %>%
++   get_mon_resources()
+   resource time server queue capacity queue_size system limit replication
+1       res    0      0     0        1          1      0     2           1
+2       res    0      1     0        1          1      1     2           1
+3       res    0      1     0        1          0      1     1           1
+4       res    1      1     0        1          1      1     2           1
+5       res    1      1     1        1          1      2     2           1
+6       res    2      1     1        1          2      2     3           1
+7       res    2      1     2        1          2      3     3           1
+8       res   10      1     1        1          2      2     3           1
+9       res   10      1     1        1          1      2     2           1
+10      res   20      1     0        1          1      1     2           1
+11      res   20      1     0        1          0      1     1           1
+12      res   30      0     0        1          0      0     1           1
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("set_prioritization")
+> ### * set_prioritization
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: set_prioritization
+> ### Title: Set Prioritization Values
+> ### Aliases: set_prioritization
+> 
+> ### ** Examples
+> 
+> traj <- trajectory() %>%
++ 
++   # static values
++   set_prioritization(c(3, 7, TRUE)) %>%
++ 
++   # increment
++   set_prioritization(c(2, 1, 0), mod="+") %>%
++ 
++   # dynamic, custom
++   set_attribute("priority", 3) %>%
++   set_prioritization(function() {
++     prio <- get_prioritization(env)
++     attr <- get_attribute(env, "priority")
++     c(attr, prio[[2]]+1, FALSE)
++   })
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("set_trajectory")
+> ### * set_trajectory
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: set_trajectory
+> ### Title: Set Source Parameters
+> ### Aliases: set_trajectory set_source
+> 
+> ### ** Examples
+> 
+> traj1 <- trajectory() %>%
++   timeout(1)
+> 
+> traj2 <- trajectory() %>%
++   set_source("dummy", function() 1) %>%
++   set_trajectory("dummy", traj1) %>%
++   timeout(2)
+> 
+> simmer() %>%
++   add_generator("dummy", traj2, function() 2) %>%
++   run(6) %>%
++   get_mon_arrivals()
+    name start_time end_time activity_time finished replication
+1 dummy0          2        4             2     TRUE           1
+2 dummy1          3        4             1     TRUE           1
+3 dummy2          4        5             1     TRUE           1
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("simmer-package")
+> ### * simmer-package
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: simmer-package
+> ### Title: 'simmer': Discrete-Event Simulation for R
+> ### Aliases: simmer-package
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D # introduction to simmer
+> ##D vignette("simmer-01-introduction")
+> ##D 
+> ##D # JSS paper available as vignette
+> ##D vignette("simmer-02-jss")
+> ##D 
+> ##D # more vignettes
+> ##D vignette(package = "simmer")
+> ## End(Not run)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("simmer")
+> ### * simmer
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: simmer
+> ### Title: Create a Simulator
+> ### Aliases: simmer
+> 
+> ### ** Examples
+> 
+> ## a simple trajectory that prints a message
+> t0 <- trajectory("my trajectory") %>%
++   log_("arrival generated")
+> 
+> ## create an empty simulation environment
+> env <- simmer("SuperDuperSim")
+> env
+simmer environment: SuperDuperSim | now: 0 | next: 
+{ Monitor: in memory }
+> 
+> ## add a generator and attach it to the trajectory above
+> env %>% add_generator("dummy", t0, function() 1)
+simmer environment: SuperDuperSim | now: 0 | next: 0
+{ Monitor: in memory }
+{ Source: dummy | monitored: 1 | n_generated: 0 }
+> 
+> ## run for some time
+> env %>% run(until=4.5)
+1: dummy0: arrival generated
+2: dummy1: arrival generated
+3: dummy2: arrival generated
+4: dummy3: arrival generated
+simmer environment: SuperDuperSim | now: 4.5 | next: 5
+{ Monitor: in memory }
+{ Source: dummy | monitored: 1 | n_generated: 5 }
+> env %>% now()           # current simulation time
+[1] 4.5
+> env %>% peek()          # time for the next event
+[1] 5
+> env %>% stepn()         # execute next event
+5: dummy4: arrival generated
+simmer environment: SuperDuperSim | now: 5 | next: 5
+{ Monitor: in memory }
+{ Source: dummy | monitored: 1 | n_generated: 5 }
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("timeout")
+> ### * timeout
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: timeout
+> ### Title: Delay
+> ### Aliases: timeout timeout_from_attribute timeout_from_global
+> 
+> ### ** Examples
+> 
+> env <- simmer()
+> 
+> traj <- trajectory() %>%
++ 
++   # static delay
++   timeout(3) %>%
++ 
++   # dynamic, exponential delay
++   timeout(function() rexp(1, 10)) %>%
++ 
++   # dependent on an attribute
++   set_attribute("delay", 2) %>%
++   set_global("other", function() rexp(1, 2)) %>%
++   timeout_from_attribute("delay") %>%
++   timeout_from_global("other")
+> 
+> env %>%
++   add_generator("dummy", traj, at(0)) %>%
++   run() %>%
++   get_mon_arrivals()
+    name start_time end_time activity_time finished replication
+1 dummy0          0  5.66634       5.66634     TRUE           1
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("trajectory")
+> ### * trajectory
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: trajectory
+> ### Title: Create a Trajectory
+> ### Aliases: trajectory
+> 
+> ### ** Examples
+> 
+> ## create an empty trajectory
+> x <- trajectory("my trajectory")
+> x
+trajectory: my trajectory, 0 activities
+> 
+> ## add some activities by chaining them
+> x <- x %>%
++   log_("here I am!") %>%
++   timeout(5) %>%
++   log_("leaving!")
+> x
+trajectory: my trajectory, 3 activities
+{ Activity: Log          | message: here I am!, level: 0 }
+{ Activity: Timeout      | delay: 5 }
+{ Activity: Log          | message: leaving!, level: 0 }
+> 
+> ## join trajectories
+> x <- join(x, x)
+> 
+> ## extract and replace
+> x[c(3, 4)] <- x[2]
+> x
+trajectory: my trajectory, 6 activities
+{ Activity: Log          | message: here I am!, level: 0 }
+{ Activity: Timeout      | delay: 5 }
+{ Activity: Timeout      | delay: 5 }
+{ Activity: Timeout      | delay: 5 }
+{ Activity: Timeout      | delay: 5 }
+{ Activity: Log          | message: leaving!, level: 0 }
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("wrap")
+> ### * wrap
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: wrap
+> ### Title: Wrap a Simulation Environment
+> ### Aliases: wrap
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D library(parallel)
+> ##D 
+> ##D mm1 <- trajectory() %>%
+> ##D   seize("server", 1) %>%
+> ##D   timeout(function() rexp(1, 2)) %>%
+> ##D   release("server", 1)
+> ##D 
+> ##D envs <- mclapply(1:4, function(i) {
+> ##D   simmer("M/M/1 example") %>%
+> ##D     add_resource("server", 1) %>%
+> ##D     add_generator("customer", mm1, function() rexp(1, 1)) %>%
+> ##D     run(100) %>%
+> ##D     wrap()
+> ##D })
+> ## End(Not run)
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  0.579 0.006 0.586 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

@@ -1,0 +1,58 @@
+
+R version 4.1.1 (2021-08-10) -- "Kick Things"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> 
+> library(testthat)
+> library(ricu)
+
+── ricu 0.5.3 ──────────────────────────────────────────────────────────────────
+
+The following data sources are configured to be attached:
+(the environment variable `RICU_SRC_LOAD` controls this)
+
+✖ mimic: 0 of 26 tables available
+✔ mimic_demo: 25 of 25 tables available
+✖ eicu: 0 of 31 tables available
+✔ eicu_demo: 31 of 31 tables available
+✖ hirid: 0 of 5 tables available
+✖ aumc: 0 of 7 tables available
+✖ miiv: 0 of 27 tables available
+
+────────────────────────────────────────────────────────────────────────────────
+
+
+Attaching package: 'ricu'
+
+The following objects are masked from 'package:testthat':
+
+    is_false, is_true
+
+> 
+> # for running interactively, do Sys.setenv(TESTTHAT_PKG = "ricu")
+> 
+> test_check("ricu")
+[ FAIL 0 | WARN 0 | SKIP 8 | PASS 600 ]
+
+══ Skipped tests ═══════════════════════════════════════════════════════════════
+• No local testdata is available (1)
+• On CRAN (7)
+
+[ FAIL 0 | WARN 0 | SKIP 8 | PASS 600 ]
+> 
+> proc.time()
+   user  system elapsed 
+138.824   1.707  88.102 

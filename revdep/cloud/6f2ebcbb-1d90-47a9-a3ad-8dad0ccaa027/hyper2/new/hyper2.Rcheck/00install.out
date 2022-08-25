@@ -1,0 +1,26 @@
+* installing *source* package ‘hyper2’ ...
+** package ‘hyper2’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+g++ -std=gnu++14 -I"/opt/R/4.1.1/lib/R/include" -DNDEBUG  -I'/opt/R/4.1.1/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c RcppExports.cpp -o RcppExports.o
+gcc -I"/opt/R/4.1.1/lib/R/include" -DNDEBUG  -I'/opt/R/4.1.1/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c hyper2_init.c -o hyper2_init.o
+g++ -std=gnu++14 -I"/opt/R/4.1.1/lib/R/include" -DNDEBUG  -I'/opt/R/4.1.1/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c hyperdirichlet2.cpp -o hyperdirichlet2.o
+g++ -std=gnu++14 -I"/opt/R/4.1.1/lib/R/include" -DNDEBUG  -I'/opt/R/4.1.1/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2  -c hyperdirichlet3.cpp -o hyperdirichlet3.o
+g++ -std=gnu++14 -shared -L/opt/R/4.1.1/lib/R/lib -L/usr/local/lib -o hyper2.so RcppExports.o hyper2_init.o hyperdirichlet2.o hyperdirichlet3.o -L/opt/R/4.1.1/lib/R/lib -lR
+installing to /tmp/workdir/hyper2/new/hyper2.Rcheck/00LOCK-hyper2/00new/hyper2/libs
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Creating a new generic function for ‘weights’ in package ‘hyper2’
+** help
+*** installing help indices
+*** copying figures
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (hyper2)

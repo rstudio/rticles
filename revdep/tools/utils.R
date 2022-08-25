@@ -1,8 +1,8 @@
 library(httr)
 
 # Setup
-cloud_url <- ""
-id <- ""
+cloud_url <- Sys.getenv("RSTUDIO_CLOUD_REVDEP_URL")
+id <- "6f2ebcbb-1d90-47a9-a3ad-8dad0ccaa027"
 cloud_url <- modify_url(cloud_url, path = glue::glue("staging/check/{id}"))
 auth_header <- add_headers('x-api-key' = Sys.getenv("RSTUDIO_CLOUD_REVDEP_KEY"))
 

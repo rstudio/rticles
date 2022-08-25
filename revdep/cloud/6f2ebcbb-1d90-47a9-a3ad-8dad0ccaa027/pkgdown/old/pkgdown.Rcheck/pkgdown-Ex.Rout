@@ -1,0 +1,348 @@
+
+R version 4.1.1 (2021-08-10) -- "Kick Things"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "pkgdown"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('pkgdown')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("autolink_html")
+> ### * autolink_html
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: autolink_html
+> ### Title: Automatically link references and articles in an HTML page
+> ### Aliases: autolink_html
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D autolink_html("path/to/file.html",
+> ##D   local_packages = c(
+> ##D     shiny = "shiny",
+> ##D     shinydashboard = "shinydashboard"
+> ##D   )
+> ##D )
+> ## End(Not run)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("build_site")
+> ### * build_site
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: build_site
+> ### Title: Build a complete pkgdown website
+> ### Aliases: build_site
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D build_site()
+> ##D 
+> ##D build_site(override = list(destination = tempdir()))
+> ## End(Not run)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("in_pkgdown")
+> ### * in_pkgdown
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: in_pkgdown
+> ### Title: Determine if code is executed by pkgdown
+> ### Aliases: in_pkgdown
+> 
+> ### ** Examples
+> 
+> in_pkgdown()
+[1] FALSE
+> 
+> 
+> 
+> cleanEx()
+> nameEx("rd2html")
+> ### * rd2html
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: rd2html
+> ### Title: Translate an Rd string to its HTML output
+> ### Aliases: rd2html
+> 
+> ### ** Examples
+> 
+> rd2html("a\n%b\nc")
+[1] "a"           "<!-- %b -->" "c"          
+> 
+> rd2html("a & b")
+[1] "a &amp; b"
+> 
+> rd2html("\\strong{\\emph{x}}")
+[1] "<strong><em>x</em></strong>"
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("templates")
+> ### * templates
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: template_navbar
+> ### Title: Generate YAML templates
+> ### Aliases: template_navbar template_reference template_articles
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D pkgdown::template_navbar()
+> ## End(Not run)
+> 
+> ## Not run: 
+> ##D pkgdown::template_reference()
+> ## End(Not run)
+> 
+> ## Not run: 
+> ##D pkgdown::template_articles()
+> ## End(Not run)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("test-crayon")
+> ### * test-crayon
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: test-crayon
+> ### Title: Test case: crayon
+> ### Aliases: test-crayon
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> cat(cli::col_red("This is red"), "\n")
+This is red 
+> cat(cli::col_blue("This is blue"), "\n")
+This is blue 
+> 
+> message(cli::col_green("This is green"))
+This is green
+> 
+> warning(cli::style_bold("This is bold"))
+Warning: This is bold
+> 
+> 
+> 
+> cleanEx()
+> nameEx("test-dont")
+> ### * test-dont
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: test-dont
+> ### Title: Test case: don't
+> ### Aliases: test-dont
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D   stop("This is an error!", call. = FALSE)
+> ## End(Not run)
+> 
+> # Inline \donttest is silently ommitted
+> 
+> # Block \donttest indicated with comments
+> 
+> # And works even when not at the top level
+> if (TRUE) {
++ }
+NULL
+> 
+> answer <- 1
+> ## Don't show: 
+> answer <- 42
+> ## End(Don't show)
+> answer # should be 42
+[1] 42
+> 
+> # To hide the \dontshow part, for conditional examples
+> ## Don't show: 
+> if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)({ # examplesIf
++ ## End(Don't show)
++ answer <- 43
++ ## Don't show: 
++ }) # examplesIf
+> ## End(Don't show)
+> answer # should be still 42
+[1] 42
+> 
+> # But this one runs, and the condition is hidden
+> ## Don't show: 
+> if (TRUE) (if (getRversion() >= "3.4") withAutoprint else force)({ # examplesIf
++ ## End(Don't show)
++ answer <- 43
++ ## Don't show: 
++ }) # examplesIf
+> answer <- 43
+> ## End(Don't show)
+> answer
+[1] 43
+> 
+> 
+> 
+> cleanEx()
+> nameEx("test-figures")
+> ### * test-figures
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: test-figures
+> ### Title: Test case: figures
+> ### Aliases: test-figures
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> x <- seq(0, 2 * pi, length.out = 25)
+> plot(x, sin(x))
+> 
+> plot(1:10)
+> lines(1:10)
+> text(2, 5, "Hello", srt = 30, cex = 2)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("test-links")
+> ### * test-links
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: test-links
+> ### Title: Test case: links
+> ### Aliases: test-links
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> magrittr::subtract(10, 1)
+[1] 9
+> 
+> library(magrittr, warn.conflicts = FALSE)
+> subtract(10, 1)
+[1] 9
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:magrittr’
+
+> nameEx("test-long-lines")
+> ### * test-long-lines
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: test-long-lines
+> ### Title: Test case: long-lines
+> ### Aliases: test-long-lines
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> pkgdown:::ruler()
+----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8
+12345678901234567890123456789012345678901234567890123456789012345678901234567890
+> 
+> cat(rep("x ", 100), sep = "")
+x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x > cat(rep("xy", 100), sep = "")
+xyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxy> cat(rep("x ", 100), sep = "")
+x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x > cat(rep("xy", 100), sep = "")
+xyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxyxy> 
+> 
+> 
+> cleanEx()
+> nameEx("test-output-styles")
+> ### * test-output-styles
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: test-output-styles
+> ### Title: Test case: output styles
+> ### Aliases: test-output-styles
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> # This example illustrates some important output types
+> # The following output should be wrapped over multiple lines
+> a <- 1:100
+> a
+  [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18
+ [19]  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36
+ [37]  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54
+ [55]  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71  72
+ [73]  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90
+ [91]  91  92  93  94  95  96  97  98  99 100
+> 
+> cat("This some text!\n")
+This some text!
+> message("This is a message!")
+This is a message!
+> warning("This is a warning!")
+Warning: This is a warning!
+> 
+> # This is a multi-line block
+> {
++   1 + 2
++   2 + 2
++ }
+[1] 4
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  0.387 0.013 0.4 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

@@ -1,0 +1,541 @@
+
+R version 4.1.1 (2021-08-10) -- "Kick Things"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "multgee"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('multgee')
+Loading required package: gnm
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("LORgee.control")
+> ### * LORgee.control
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: LORgee.control
+> ### Title: Control For The GEE Solver
+> ### Aliases: LORgee.control
+> 
+> ### ** Examples
+> 
+> data(arthritis)
+> fitmod <- ordLORgee(y ~ factor(trt) + factor(baseline) + factor(time),
++   data = arthritis, id = id, repeated = time)
+> 
+> ## A one-step GEE estimator
+> fitmod1 <- update(fitmod, control = LORgee.control(maxiter = 1))
+> coef(fitmod)
+           beta10            beta20            beta30            beta40 
+    -1.8400309824      0.2771206650      2.2477901855      4.5482393432 
+     factor(trt)2 factor(baseline)2 factor(baseline)3 factor(baseline)4 
+    -0.5046327176     -0.7029056812     -1.2755770115     -2.6557883443 
+factor(baseline)5     factor(time)3     factor(time)5 
+    -3.9955527616     -0.0007861839     -0.3605008054 
+> coef(fitmod1)
+           beta10            beta20            beta30            beta40 
+     -1.855655757       0.261221932       2.231172289       4.528778515 
+     factor(trt)2 factor(baseline)2 factor(baseline)3 factor(baseline)4 
+     -0.504267348      -0.689343310      -1.257796323      -2.635456148 
+factor(baseline)5     factor(time)3     factor(time)5 
+     -3.967164807      -0.001051669      -0.360976747 
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("arthritis")
+> ### * arthritis
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: arthritis
+> ### Title: Rheumatoid Arthritis Clinical Trial
+> ### Aliases: arthritis
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> data(arthritis)
+> str(arthritis)
+'data.frame':	906 obs. of  7 variables:
+ $ id      : int  1 1 1 2 2 2 3 3 3 4 ...
+ $ y       : int  4 5 5 4 4 4 3 4 4 4 ...
+ $ sex     : int  2 2 2 1 1 1 2 2 2 2 ...
+ $ age     : int  54 54 54 41 41 41 48 48 48 40 ...
+ $ trt     : int  2 2 2 1 1 1 2 2 2 1 ...
+ $ baseline: int  2 2 2 3 3 3 3 3 3 3 ...
+ $ time    : num  1 3 5 1 3 5 1 3 5 1 ...
+> 
+> 
+> 
+> cleanEx()
+> nameEx("confint.LORgee")
+> ### * confint.LORgee
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: confint.LORgee
+> ### Title: Confidence Intervals for Model Parameters
+> ### Aliases: confint.LORgee confint
+> 
+> ### ** Examples
+> 
+> fitmod <- ordLORgee(formula = y ~ factor(time) + factor(trt) + factor(baseline),
++   data = arthritis, id = id, LORstr = "uniform", repeated = time)
+> confint(fitmod)
+                       2.5 %      97.5 %
+beta10            -2.6061497 -1.08015721
+beta20            -0.4193163  0.95314883
+beta30             1.5134867  2.94915281
+beta40             3.6998267  5.35101277
+factor(time)3     -0.2373805  0.24018865
+factor(time)5     -0.5850535 -0.13837735
+factor(trt)2      -0.8413778 -0.18287050
+factor(baseline)2 -1.4151270  0.07587068
+factor(baseline)3 -1.9516257 -0.56978096
+factor(baseline)4 -3.4528305 -1.83462340
+factor(baseline)5 -5.0081187 -2.92413445
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("housing")
+> ### * housing
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: housing
+> ### Title: Homeless Data
+> ### Aliases: housing
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> data(housing)
+> str(housing)
+'data.frame':	1448 obs. of  4 variables:
+ $ id  : int  1 1 1 1 2 2 2 2 3 3 ...
+ $ y   : int  1 2 2 2 1 2 2 1 0 2 ...
+ $ time: num  0 6 12 24 0 6 12 24 0 6 ...
+ $ sec : int  1 1 1 1 1 1 1 1 1 1 ...
+> 
+> 
+> 
+> cleanEx()
+> nameEx("intrinsic.pars")
+> ### * intrinsic.pars
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: intrinsic.pars
+> ### Title: Intrinsic Parameters Estimation
+> ### Aliases: intrinsic.pars
+> 
+> ### ** Examples
+> 
+> data(arthritis)
+> intrinsic.pars(y, arthritis, id, time, rscale = "ordinal")
+[1] 0.6517843 0.9097341 0.9022272
+> ## The intrinsic parameters do not vary much. The 'uniform' local odds ratios
+> ## structure might be a good approximation for the association pattern.
+> 
+> set.seed(1)
+> data(housing)
+> intrinsic.pars(y, housing, id, time, rscale = "nominal")
+Initialising
+Running start-up iterations..
+Running main iterations..........
+Done
+Initialising
+Running start-up iterations..
+Running main iterations.....
+Done
+Initialising
+Running start-up iterations..
+Running main iterations....................
+Done
+Initialising
+Running start-up iterations..
+Running main iterations..............
+Done
+Initialising
+Running start-up iterations..
+Running main iterations.........
+Done
+Initialising
+Running start-up iterations..
+Running main iterations..........
+Done
+[1] 1.0644358 0.8748243 0.6171560 2.5821523 1.6521931 3.6752210
+> ## The intrinsic parameters vary. The 'RC' local odds ratios structure
+> ## might be a good approximation for the association pattern.
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("matrixLOR")
+> ### * matrixLOR
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: matrixLOR
+> ### Title: Creating A Probability Matrix With Specified Local Odds Ratios
+> ### Aliases: matrixLOR
+> 
+> ### ** Examples
+> 
+> ## Illustrating the construction of a "fixed" local odds ratios structure
+> ## using the arthritis dataset. Here, we assume a uniform local odds ratios
+> ## structure equal to 2 for each time pair.
+> 
+> ## Create the uniform local odds ratios structure.
+> lorterm <- matrixLOR(matrix(2, 4, 4))
+> 
+> ## Create the LORterm argument.
+> lorterm <- c(lorterm)
+> lorterm <- matrix(c(lorterm), 3, 25, TRUE)
+> 
+> ## Fit the marginal model.
+> data(arthritis)
+> fitmod <- ordLORgee(y ~ factor(trt) + factor(time) + factor(baseline),
++   data = arthritis, id = id, repeated = time, LORstr = "fixed",
++   LORterm = lorterm)
+> fitmod
+Call:
+ordLORgee(formula = y ~ factor(trt) + factor(time) + factor(baseline), 
+    data = arthritis, id = id, repeated = time, LORstr = "fixed", 
+    LORterm = lorterm)
+
+Number of clusters: 301 
+Maximum cluster size: 3 
+
+Number of categories: 5 
+Number of observations: 888 
+
+Coefficients:
+           beta10            beta20            beta30            beta40 
+    -1.8362948214      0.2693444384      2.2321986900      4.5280320442 
+     factor(trt)2     factor(time)3     factor(time)5 factor(baseline)2 
+    -0.5134738174     -0.0008047854     -0.3645328663     -0.6702606753 
+factor(baseline)3 factor(baseline)4 factor(baseline)5 
+    -1.2603788984     -2.6426918872     -3.9702756952 
+
+Number of iterations: 6 
+Algorithm converged: TRUE 
+
+Local Odds Ratios Structure[1:6,1:6]
+     [,1] [,2] [,3] [,4] [,5] [,6]
+[1,]    0    0    0    0    2    2
+[2,]    0    0    0    0    2    2
+[3,]    0    0    0    0    2    2
+[4,]    0    0    0    0    2    2
+[5,]    2    2    2    2    0    0
+[6,]    2    2    2    2    0    0
+
+p-value of Null model: < 0.0001 
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("nomLORgee")
+> ### * nomLORgee
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: nomLORgee
+> ### Title: Marginal Models For Correlated Nominal Multinomial Responses
+> ### Aliases: nomLORgee
+> 
+> ### ** Examples
+> 
+> ## See the interpretation in Touloumis (2011).
+> data(housing)
+> fitmod <- nomLORgee(y ~ factor(time) * sec, data = housing, id = id,
++                     repeated = time)
+> summary(fitmod)
+GEE FOR NOMINAL MULTINOMIAL RESPONSES 
+version 1.6.0 modified 2017-07-10 
+
+Link : Baseline Category Logit 
+
+Local Odds Ratios:
+Structure:         time.exch
+Model:             3way
+Homogenous scores: TRUE
+
+call:
+nomLORgee(formula = y ~ factor(time) * sec, data = housing, id = id, 
+    repeated = time)
+
+Summary of residuals:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-0.585928 -0.278018 -0.128670 -0.002166  0.421173  0.908809 
+
+Number of Iterations: 3 
+
+Coefficients:
+                     Estimate   san.se   san.z Pr(>|san.z|)    
+beta10                1.66073  0.25026  6.6359      < 2e-16 ***
+factor(time)6:1      -1.87010  0.31876 -5.8668      < 2e-16 ***
+factor(time)12:1     -2.92506  0.36829 -7.9424      < 2e-16 ***
+factor(time)24:1     -2.81359  0.34258 -8.2130      < 2e-16 ***
+sec:1                -0.53680  0.33704 -1.5927      0.11122    
+factor(time)6:sec:1  -1.18218  0.46036 -2.5680      0.01023 *  
+factor(time)12:sec:1  0.07916  0.48306  0.1639      0.86984    
+factor(time)24:sec:1  0.03273  0.46558  0.0703      0.94396    
+beta20                1.16643  0.26273  4.4397        1e-05 ***
+factor(time)6:2      -0.25454  0.30080 -0.8462      0.39742    
+factor(time)12:2     -0.57052  0.31176 -1.8300      0.06725 .  
+factor(time)24:2     -1.04101  0.30716 -3.3892      0.00070 ***
+sec:2                -0.10704  0.34759 -0.3080      0.75811    
+factor(time)6:sec:2  -1.62342  0.41349 -3.9261        9e-05 ***
+factor(time)12:sec:2 -2.04850  0.44543 -4.5990      < 2e-16 ***
+factor(time)24:sec:2 -1.04965  0.41831 -2.5093      0.01210 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Local Odds Ratios Estimates:
+      [,1]  [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8]
+[1,] 0.000 0.000 1.359 1.882 1.359 1.882 1.359 1.882
+[2,] 0.000 0.000 1.882 3.687 1.882 3.687 1.882 3.687
+[3,] 1.359 1.882 0.000 0.000 1.359 1.882 1.359 1.882
+[4,] 1.882 3.687 0.000 0.000 1.882 3.687 1.882 3.687
+[5,] 1.359 1.882 1.359 1.882 0.000 0.000 1.359 1.882
+[6,] 1.882 3.687 1.882 3.687 0.000 0.000 1.882 3.687
+[7,] 1.359 1.882 1.359 1.882 1.359 1.882 0.000 0.000
+[8,] 1.882 3.687 1.882 3.687 1.882 3.687 0.000 0.000
+
+p-value of Null model: < 0.0001 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("ordLORgee")
+> ### * ordLORgee
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: ordLORgee
+> ### Title: Marginal Models For Correlated Ordinal Multinomial Responses
+> ### Aliases: ordLORgee
+> 
+> ### ** Examples
+> 
+> data(arthritis)
+> intrinsic.pars(y, arthritis, id, time)
+[1] 0.6517843 0.9097341 0.9022272
+> fitmod <- ordLORgee(formula = y ~ factor(time) + factor(trt) + factor(baseline),
++   data = arthritis, id = id, repeated = time, LORstr = "uniform")
+> summary(fitmod)
+GEE FOR ORDINAL MULTINOMIAL RESPONSES 
+version 1.6.0 modified 2017-07-10 
+
+Link : Cumulative logit 
+
+Local Odds Ratios:
+Structure:         uniform
+Model:             3way
+
+call:
+ordLORgee(formula = y ~ factor(time) + factor(trt) + factor(baseline), 
+    data = arthritis, id = id, repeated = time, LORstr = "uniform")
+
+Summary of residuals:
+      Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
+-0.5161111 -0.2399227 -0.0749670  0.0000219 -0.0066995  0.9932912 
+
+Number of Iterations: 5 
+
+Coefficients:
+                  Estimate   san.se   san.z Pr(>|san.z|)    
+beta10            -1.84315  0.38929 -4.7346      < 2e-16 ***
+beta20             0.26692  0.35013  0.7624      0.44585    
+beta30             2.23132  0.36625  6.0924      < 2e-16 ***
+beta40             4.52542  0.42123 10.7434      < 2e-16 ***
+factor(time)3      0.00140  0.12183  0.0115      0.99080    
+factor(time)5     -0.36172  0.11395 -3.1743      0.00150 ** 
+factor(trt)2      -0.51212  0.16799 -3.0486      0.00230 ** 
+factor(baseline)2 -0.66963  0.38036 -1.7605      0.07832 .  
+factor(baseline)3 -1.26070  0.35252 -3.5763      0.00035 ***
+factor(baseline)4 -2.64373  0.41282 -6.4041      < 2e-16 ***
+factor(baseline)5 -3.96613  0.53164 -7.4602      < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Local Odds Ratios Estimates:
+       [,1]  [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8]  [,9] [,10] [,11] [,12]
+ [1,] 0.000 0.000 0.000 0.000 2.257 2.257 2.257 2.257 2.257 2.257 2.257 2.257
+ [2,] 0.000 0.000 0.000 0.000 2.257 2.257 2.257 2.257 2.257 2.257 2.257 2.257
+ [3,] 0.000 0.000 0.000 0.000 2.257 2.257 2.257 2.257 2.257 2.257 2.257 2.257
+ [4,] 0.000 0.000 0.000 0.000 2.257 2.257 2.257 2.257 2.257 2.257 2.257 2.257
+ [5,] 2.257 2.257 2.257 2.257 0.000 0.000 0.000 0.000 2.257 2.257 2.257 2.257
+ [6,] 2.257 2.257 2.257 2.257 0.000 0.000 0.000 0.000 2.257 2.257 2.257 2.257
+ [7,] 2.257 2.257 2.257 2.257 0.000 0.000 0.000 0.000 2.257 2.257 2.257 2.257
+ [8,] 2.257 2.257 2.257 2.257 0.000 0.000 0.000 0.000 2.257 2.257 2.257 2.257
+ [9,] 2.257 2.257 2.257 2.257 2.257 2.257 2.257 2.257 0.000 0.000 0.000 0.000
+[10,] 2.257 2.257 2.257 2.257 2.257 2.257 2.257 2.257 0.000 0.000 0.000 0.000
+[11,] 2.257 2.257 2.257 2.257 2.257 2.257 2.257 2.257 0.000 0.000 0.000 0.000
+[12,] 2.257 2.257 2.257 2.257 2.257 2.257 2.257 2.257 0.000 0.000 0.000 0.000
+
+p-value of Null model: < 0.0001 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("vcov.LORgee")
+> ### * vcov.LORgee
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: vcov.LORgee
+> ### Title: Calculate Variance-Covariance Matrix for a Fitted LORgee Object.
+> ### Aliases: vcov.LORgee vcov
+> 
+> ### ** Examples
+> 
+> fitmod <- ordLORgee(formula = y ~ factor(time) + factor(trt) + factor(baseline),
++   data = arthritis, id = id, repeated = time, LORstr = "uniform")
+> vcov(fitmod, method = "robust")
+                        beta10       beta20       beta30       beta40
+beta10             0.151547441  0.124278449  0.124477139  0.132119480
+beta20             0.124278449  0.122587568  0.122515979  0.130119655
+beta30             0.124477139  0.122515979  0.134137661  0.143104123
+beta40             0.132119480  0.130119655  0.143104123  0.177433592
+factor(time)3     -0.007961954 -0.006729961 -0.006714746 -0.006595265
+factor(time)5     -0.005490825 -0.004894144 -0.006497757 -0.006808052
+factor(trt)2      -0.020918362 -0.018702156 -0.020220378 -0.018741285
+factor(baseline)2 -0.113360949 -0.109246594 -0.111526554 -0.117888673
+factor(baseline)3 -0.112455421 -0.109440685 -0.114393382 -0.128145453
+factor(baseline)4 -0.112382565 -0.113839119 -0.125814915 -0.144351135
+factor(baseline)5 -0.115065418 -0.114697267 -0.125896509 -0.151084747
+                  factor(time)3 factor(time)5  factor(trt)2 factor(baseline)2
+beta10            -0.0079619542 -0.0054908248 -0.0209183620      -0.113360949
+beta20            -0.0067299610 -0.0048941442 -0.0187021563      -0.109246594
+beta30            -0.0067147456 -0.0064977569 -0.0202203783      -0.111526554
+beta40            -0.0065952652 -0.0068080516 -0.0187412850      -0.117888673
+factor(time)3      0.0148428185  0.0075460008  0.0017052679      -0.001320727
+factor(time)5      0.0075460008  0.0129846242  0.0009688278      -0.000772676
+factor(trt)2       0.0017052679  0.0009688278  0.0282205208       0.003853452
+factor(baseline)2 -0.0013207271 -0.0007726760  0.0038534519       0.144676416
+factor(baseline)3 -0.0007987312  0.0001051202  0.0030060548       0.109160144
+factor(baseline)4  0.0014140161  0.0032213105  0.0034175948       0.113124573
+factor(baseline)5 -0.0001853059 -0.0012235181  0.0012299031       0.115542826
+                  factor(baseline)3 factor(baseline)4 factor(baseline)5
+beta10                -0.1124554210      -0.112382565     -0.1150654175
+beta20                -0.1094406851      -0.113839119     -0.1146972671
+beta30                -0.1143933823      -0.125814915     -0.1258965094
+beta40                -0.1281454528      -0.144351135     -0.1510847475
+factor(time)3         -0.0007987312       0.001414016     -0.0001853059
+factor(time)5          0.0001051202       0.003221311     -0.0012235181
+factor(trt)2           0.0030060548       0.003417595      0.0012299031
+factor(baseline)2      0.1091601436       0.113124573      0.1155428258
+factor(baseline)3      0.1242688713       0.119077926      0.1245682907
+factor(baseline)4      0.1190779261       0.170416657      0.1357856599
+factor(baseline)5      0.1245682907       0.135785660      0.2826393846
+> vcov(fitmod, method = "naive")
+                        beta10       beta20       beta30       beta40
+beta10             0.133548228  0.103547695  0.101945346  0.102744964
+beta20             0.103547695  0.108551743  0.108087480  0.109337410
+beta30             0.101945346  0.108087480  0.118705538  0.120686343
+beta40             0.102744964  0.109337410  0.120686343  0.144301543
+factor(time)3     -0.006065867 -0.006065439 -0.006062032 -0.006056811
+factor(time)5     -0.005293711 -0.006259009 -0.007414231 -0.008502092
+factor(trt)2      -0.014214526 -0.015204434 -0.017111529 -0.018778123
+factor(baseline)2 -0.092562055 -0.096302725 -0.099114709 -0.099523913
+factor(baseline)3 -0.091685004 -0.096720369 -0.102336515 -0.103736943
+factor(baseline)4 -0.091247529 -0.096896021 -0.106313053 -0.115450557
+factor(baseline)5 -0.091080659 -0.096803565 -0.106786368 -0.126529934
+                  factor(time)3 factor(time)5  factor(trt)2 factor(baseline)2
+beta10            -6.065867e-03 -0.0052937114 -1.421453e-02     -0.0925620548
+beta20            -6.065439e-03 -0.0062590085 -1.520443e-02     -0.0963027245
+beta30            -6.062032e-03 -0.0074142311 -1.711153e-02     -0.0991147088
+beta40            -6.056811e-03 -0.0085020915 -1.877812e-02     -0.0995239134
+factor(time)3      1.229746e-02  0.0061315591  7.791462e-05     -0.0001017799
+factor(time)5      6.131559e-03  0.0126603134  3.835991e-04      0.0003245929
+factor(trt)2       7.791462e-05  0.0003835991  2.963615e-02      0.0005430026
+factor(baseline)2 -1.017799e-04  0.0003245929  5.430026e-04      0.1274115518
+factor(baseline)3 -6.081569e-05  0.0006724003  1.750354e-03      0.0978543491
+factor(baseline)4 -1.224061e-04  0.0014830231  2.701125e-03      0.0989061730
+factor(baseline)5 -1.285300e-04  0.0020056651  2.264716e-03      0.0991441996
+                  factor(baseline)3 factor(baseline)4 factor(baseline)5
+beta10                -9.168500e-02     -0.0912475288      -0.091080659
+beta20                -9.672037e-02     -0.0968960215      -0.096803565
+beta30                -1.023365e-01     -0.1063130525      -0.106786368
+beta40                -1.037369e-01     -0.1154505566      -0.126529934
+factor(time)3         -6.081569e-05     -0.0001224061      -0.000128530
+factor(time)5          6.724003e-04      0.0014830231       0.002005665
+factor(trt)2           1.750354e-03      0.0027011253       0.002264716
+factor(baseline)2      9.785435e-02      0.0989061730       0.099144200
+factor(baseline)3      1.154430e-01      0.1017437972       0.102486642
+factor(baseline)4      1.017438e-01      0.1465391209       0.112549381
+factor(baseline)5      1.024866e-01      0.1125493811       0.308001812
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("waldts")
+> ### * waldts
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: waldts
+> ### Title: Wald Test of Nested GEE Models
+> ### Aliases: waldts
+> 
+> ### ** Examples
+> 
+> data(housing)
+> set.seed(1)
+> fitmod1 <- nomLORgee(y ~ factor(time) * sec, data = housing, id = id,
++   repeated = time)
+> set.seed(1)
+> fitmod0 <- update(fitmod1, formula = y ~ factor(time) + sec)
+> waldts(fitmod0, fitmod1)
+Goodness of Fit based on the Wald test 
+
+Model under H_0: y ~ factor(time) + sec
+Model under H_1: y ~ factor(time) * sec
+
+Wald Statistic = 43.2221, df = 6, p-value < 0.0001
+> 
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  22.509 68.646 21.072 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

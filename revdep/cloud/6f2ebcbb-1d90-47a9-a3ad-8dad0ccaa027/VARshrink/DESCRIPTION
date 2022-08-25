@@ -1,0 +1,44 @@
+Package: VARshrink
+Title: Shrinkage Estimation Methods for Vector Autoregressive Models
+Version: 0.3.1
+Authors@R: c(
+    person("Namgil", "Lee", role = c("aut", "cre"),
+           email = "namgil.lee@kangwon.ac.kr",
+           comment = c(ORCID = "0000-0003-0593-9028")),
+    person("Heon Young", "Yang", role = c("ctb"),
+           email = "hyyang@kangwon.ac.kr"),
+    person("Sung-Ho", "Kim", role = c("aut"),
+           email = "sung-ho.kim@kaist.edu")
+    )
+Description: 
+    Vector autoregressive (VAR) model is a fundamental and effective approach
+    for multivariate time series analysis. Shrinkage estimation methods can be
+    applied to high-dimensional VAR models with dimensionality greater than
+    the number of observations, contrary to the standard ordinary least squares
+    method. This package is an integrative package delivering nonparametric,
+    parametric, and semiparametric methods in a unified and consistent manner,
+    such as the multivariate ridge regression in Golub, Heath, and Wahba (1979)
+    <doi:10.2307/1268518>, a James-Stein type nonparametric shrinkage method in
+    Opgen-Rhein and Strimmer (2007) <doi:10.1186/1471-2105-8-S2-S3>, and
+    Bayesian estimation methods using noninformative and informative priors
+    in Lee, Choi, and S.-H. Kim (2016) <doi:10.1016/j.csda.2016.03.007> and
+    Ni and Sun (2005) <doi:10.1198/073500104000000622>.
+License: GPL-3
+Depends: R (>= 3.5.0)
+Imports: vars (>= 1.5.3), ars (>= 0.6), corpcor (>= 1.6.9),
+        strucchange, stats, MASS, mvtnorm
+Suggests: knitr, rmarkdown, rticles, kableExtra
+URL: https://github.com/namgillee/VARshrink/
+BugReports: https://github.com/namgillee/VARshrink/issues/
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+VignetteBuilder: knitr
+NeedsCompilation: no
+Packaged: 2019-10-07 13:31:17 UTC; namgi
+Author: Namgil Lee [aut, cre] (<https://orcid.org/0000-0003-0593-9028>),
+  Heon Young Yang [ctb],
+  Sung-Ho Kim [aut]
+Maintainer: Namgil Lee <namgil.lee@kangwon.ac.kr>
+Repository: CRAN
+Date/Publication: 2019-10-09 15:10:03 UTC

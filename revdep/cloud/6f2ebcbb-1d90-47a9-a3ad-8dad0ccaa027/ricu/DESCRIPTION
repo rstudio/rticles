@@ -1,0 +1,48 @@
+Package: ricu
+Title: Intensive Care Unit Data with R
+Description: Focused on (but not exclusive to) data sets hosted on PhysioNet
+    (<https://physionet.org>), 'ricu' provides utilities for download, setup
+    and access of intensive care unit (ICU) data sets. In addition to
+    functions for running arbitrary queries against available data sets, a
+    system for defining clinical concepts and encoding their representations
+    in tabular ICU data is presented.
+Version: 0.5.3
+Authors@R: c(
+    person(given = "Nicolas",
+           family = "Bennett",
+           role = c("aut", "cre"),
+           email = "r@nbenn.ch"),
+    person(given = "Drago",
+           family = "Plecko",
+           role = c("aut"),
+           email = "drago.plecko@stat.math.ethz.ch"),
+    person(given = "Ida-Fong",
+           family = "Ukor",
+           role = c("aut"),
+           email = "ida-fong.ukor@monashhealth.org")
+    )
+License: GPL-3
+Encoding: UTF-8
+Language: en-US
+URL: https://github.com/eth-mds/ricu, https://physionet.org
+BugReports: https://github.com/eth-mds/ricu/issues
+Depends: R (>= 3.4.0)
+Imports: data.table, curl, assertthat, fst, readr, jsonlite, methods,
+        stats, prt (>= 0.1.2), tibble, backports, rlang, vctrs, cli (>=
+        2.1.0), fansi, openssl, utils
+Suggests: xml2, covr, testthat (>= 3.0.0), withr, mockthat, pkgload,
+        mimic.demo, eicu.demo, progress, knitr, rmarkdown, ggplot2,
+        cowplot, survival, forestmodel, rticles, kableExtra, units,
+        pdftools, magick
+RoxygenNote: 7.2.0
+Additional_repositories: https://eth-mds.github.io/physionet-demo
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+NeedsCompilation: no
+Packaged: 2022-07-12 08:14:07 UTC; nbennett
+Author: Nicolas Bennett [aut, cre],
+  Drago Plecko [aut],
+  Ida-Fong Ukor [aut]
+Maintainer: Nicolas Bennett <r@nbenn.ch>
+Repository: CRAN
+Date/Publication: 2022-07-12 10:50:14 UTC

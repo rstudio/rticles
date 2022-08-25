@@ -1,0 +1,32 @@
+Type: Package
+Package: wrswoR
+Title: Weighted Random Sampling without Replacement
+Version: 1.1.1
+Date: 2020-07-26
+Authors@R: 
+    person(given = "Kirill",
+           family = "M\u00fcller",
+           role = c("aut", "cre"),
+           email = "krlmlr+r@mailbox.org")
+Description: A collection of implementations of classical and
+    novel algorithms for weighted sampling without replacement.
+License: GPL-3
+URL: http://krlmlr.github.io/wrswoR
+BugReports: https://github.com/krlmlr/wrswoR/issues
+Depends: R (>= 3.0.2)
+Imports: logging (>= 0.4-13), Rcpp
+Suggests: BatchExperiments, BiocManager, dplyr, ggplot2, import, kimisc
+        (>= 0.2-4), knitcitations, knitr, metap, microbenchmark,
+        rmarkdown, roxygen2, rticles (>= 0.1), sampling, testthat,
+        tidyr, tikzDevice (>= 0.9-1)
+LinkingTo: Rcpp (>= 0.11.5)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1.9000
+URLNote: https://github.com/krlmlr/wrswoR
+NeedsCompilation: yes
+Packaged: 2020-07-26 17:53:56 UTC; kirill
+Author: Kirill Müller [aut, cre]
+Maintainer: Kirill Müller <krlmlr+r@mailbox.org>
+Repository: CRAN
+Date/Publication: 2020-07-26 18:20:02 UTC

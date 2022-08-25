@@ -1,0 +1,43 @@
+
+R version 4.1.1 (2021-08-10) -- "Kick Things"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # Use a temporary directory ----------------------------
+> owd = getwd()
+> td = tempfile()
+> dir.create(td,recursive=TRUE)
+> setwd(td)
+> print(td) # To see where files will be
+[1] "/tmp/RtmpDn0QL9/fileb427510ac2b"
+> 
+> # Create the draft template ----------------------------
+> rmarkdown::draft("MYARTICLENAME.Rmd","generic_article","starticles",edit=FALSE)
+> 
+> # Render PDF document ----------------------------------
+> # Fails for me when run using RStudio "Run examples" link in help,
+> # but not when sourced from command line.
+> 
+> # Requires recent version of pandoc (provided by RStudio)
+> if (rmarkdown::pandoc_available(version="2.17"))
++   rmarkdown::render("MYARTICLENAME/MYARTICLENAME.Rmd",
++                     envir=new.env(parent = globalenv()))
+> 
+> # Return to orignal workind directory ------------------
+> setwd(owd)
+> 
+> proc.time()
+   user  system elapsed 
+  0.520   0.484   0.489 

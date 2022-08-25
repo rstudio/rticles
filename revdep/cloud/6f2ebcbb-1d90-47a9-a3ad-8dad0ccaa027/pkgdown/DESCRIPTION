@@ -1,0 +1,44 @@
+Package: pkgdown
+Title: Make Static HTML Documentation for a Package
+Version: 2.0.6
+Authors@R: c(
+    person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-4757-117X")),
+    person("Jay", "Hesselberth", role = "aut",
+           comment = c(ORCID = "0000-0002-6299-179X")),
+    person("Maëlle", "Salmon", role = "aut",
+           comment = c(ORCID = "0000-0002-2815-0399")),
+    person("RStudio", role = c("cph", "fnd"))
+  )
+Description: Generate an attractive and useful website from a source
+    package.  'pkgdown' converts your documentation, vignettes, 'README',
+    and more to 'HTML' making it easy to share information about your
+    package online.
+License: MIT + file LICENSE
+URL: https://pkgdown.r-lib.org, https://github.com/r-lib/pkgdown
+BugReports: https://github.com/r-lib/pkgdown/issues
+Depends: R (>= 3.1.0)
+Imports: bslib (>= 0.3.1), callr (>= 2.0.2), cli, desc, digest, downlit
+        (>= 0.4.0), fs (>= 1.4.0), httr (>= 1.4.2), jsonlite, magrittr,
+        memoise, purrr, ragg, rlang (>= 1.0.0), rmarkdown (>=
+        1.1.9007), tibble, whisker, withr (>= 2.4.3), xml2 (>= 1.3.1),
+        yaml
+Suggests: covr, diffviewer, evaluate, htmltools, htmlwidgets, knitr,
+        lifecycle, methods, openssl, pkgload (>= 1.0.2), rsconnect,
+        rstudioapi, rticles, sass, testthat (>= 3.1.3), tools
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+Config/potools/style: explicit
+Config/Needs/website: usethis, servr
+Encoding: UTF-8
+RoxygenNote: 7.2.0
+SystemRequirements: pandoc
+NeedsCompilation: no
+Packaged: 2022-07-16 13:29:33 UTC; hadleywickham
+Author: Hadley Wickham [aut, cre] (<https://orcid.org/0000-0003-4757-117X>),
+  Jay Hesselberth [aut] (<https://orcid.org/0000-0002-6299-179X>),
+  Maëlle Salmon [aut] (<https://orcid.org/0000-0002-2815-0399>),
+  RStudio [cph, fnd]
+Maintainer: Hadley Wickham <hadley@rstudio.com>
+Repository: CRAN
+Date/Publication: 2022-07-16 14:50:02 UTC
