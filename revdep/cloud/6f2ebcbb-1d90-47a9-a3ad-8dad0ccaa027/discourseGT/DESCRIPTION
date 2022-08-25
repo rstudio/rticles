@@ -1,0 +1,38 @@
+Package: discourseGT
+Type: Package
+Title: Analyze Group Patterns using Graph Theory in Educational
+        Settings
+Version: 1.1.7
+Date: 2021-11-3
+Authors@R: c(
+  person("Albert","Chai",   role=c("aut"), email = "albertchai@ucsd.edu"),
+  person("Andrew","Lee",    role=("aut"), email = "aleet383@ucla.edu"),
+  person("Joshua","Le",     role=c("aut"), email = "jpl038@ucsd.edu"),
+  person("Katherine","Ly",  role=c("ctb"), email = "ktl045@ucsd.edu"),
+  person("Kevin","Banh",    role=c("ctb"), email = "kebanh@ucsd.edu"),
+  person("Priya","Pahal",   role=c("ctb"), email = "ppahal@ucsd.edu"),
+  person("Jitarth","Sheth", role=c("aut", "cre"), email = "jhsheth@ucsd.edu"),
+  person("Stanley","Lo",    role=c("aut"), email = "smlo@ucsd.edu"))
+Description: Analyzes group patterns using discourse analysis data with graph theory mathematics. Takes the order of which individuals talk and converts it to a network edge and weight list. Returns the density, centrality, centralization, and subgroup information for each group. Based on the analytical framework laid out in Chai et al. (2019) <doi:10.1187/cbe.18-11-0222>.
+License: MIT + file LICENSE
+LazyData: true
+Encoding: UTF-8
+Depends: R (>= 3.5.0)
+Suggests: rmarkdown, markdown, rticles, knitr, R.rsp, BiocManager,
+        ggpubr, sna
+RoxygenNote: 7.0.2
+Imports: igraph, GGally, network, ggplot2, dplyr, ggrepel
+NeedsCompilation: no
+Packaged: 2021-11-03 06:47:57 UTC; jitar
+Author: Albert Chai [aut],
+  Andrew Lee [aut],
+  Joshua Le [aut],
+  Katherine Ly [ctb],
+  Kevin Banh [ctb],
+  Priya Pahal [ctb],
+  Jitarth Sheth [aut, cre],
+  Stanley Lo [aut]
+Maintainer: Jitarth Sheth <jhsheth@ucsd.edu>
+VignetteBuilder: knitr, R.rsp
+Repository: CRAN
+Date/Publication: 2021-11-03 10:30:05 UTC

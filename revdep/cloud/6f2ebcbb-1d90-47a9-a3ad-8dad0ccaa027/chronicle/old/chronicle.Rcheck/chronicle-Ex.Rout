@@ -1,0 +1,999 @@
+
+R version 4.1.1 (2021-08-10) -- "Kick Things"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "chronicle"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('chronicle')
+Loading required package: magrittr
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("add_barplot")
+> ### * add_barplot
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: add_barplot
+> ### Title: Add a bar plot to a chronicle report
+> ### Aliases: add_barplot
+> 
+> ### ** Examples
+> 
+> html_report <- add_barplot(report = '',
++                            dt = iris,
++                            bars = 'Species',
++                            value = 'Sepal.Length')
+> cat(html_report)
+
+
+## Sepal.Length by Species
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=params$figure_width, fig.height=params$figure_height}
+chronicle::make_barplot(dt = iris,
+                        bars = 'Species',
+                        value = 'Sepal.Length',
+                        horizontal = FALSE,
+                        sort_by_value = FALSE,
+                        sort_decreasing = TRUE,
+                        ggtheme = 'minimal',
+                        plot_palette = params$plot_palette,
+                        plot_palette_generator = params$plot_palette_generator,
+                        static = params$set_static)
+```> 
+> 
+> 
+> cleanEx()
+> nameEx("add_boxplot")
+> ### * add_boxplot
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: add_boxplot
+> ### Title: Add a box plot to a chronicle report
+> ### Aliases: add_boxplot
+> 
+> ### ** Examples
+> 
+> html_report <- add_boxplot(report = '',
++                            dt = iris,
++                            value = 'Sepal.Length',
++                            groups = 'Species', jitter = TRUE)
+> cat(html_report)
+
+
+## Distribution of Sepal.Length, by Species
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=params$figure_width, fig.height=params$figure_height}
+chronicle::make_boxplot(dt = iris,
+                        value = 'Sepal.Length',
+                        groups = 'Species',
+                        jitter = TRUE,
+                        plot_palette = params$plot_palette,
+                        plot_palette_generator = params$plot_palette_generator,
+                        static = params$set_static)
+```> 
+> 
+> 
+> cleanEx()
+> nameEx("add_chunk")
+> ### * add_chunk
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: add_chunk
+> ### Title: Transforms a function call into an Rmarkdown chunk
+> ### Aliases: add_chunk
+> 
+> ### ** Examples
+> 
+> library(chronicle)
+> html_chunk <- add_chunk(fun = chronicle::make_barplot,
++                         params = list(dt = 'iris',
++                                       value = 'Sepal.Width',
++                                       bars = 'Species'))
+> cat(html_chunk)
+
+
+## Sepal.Width by Species
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=params$figure_width, fig.height=params$figure_height}
+chronicle::make_barplot(dt = iris,
+                        value = 'Sepal.Width',
+                        bars = 'Species')
+```> 
+> 
+> 
+> cleanEx()
+> nameEx("add_code")
+> ### * add_code
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: add_code
+> ### Title: Add formatted code chunks to a chronicle R Markdown report
+> ### Aliases: add_code
+> 
+> ### ** Examples
+> 
+> html_report <- add_code(report = '',
++                         code_title = 'Code comes after this title',
++                         code = 'f <- function(x, y){paste(x,y)},
++ f("a", "b")',
++                         eval = FALSE,
++                         echo = TRUE,
++                         fig_width = 12,
++                         fig_height = 8)
+> cat(html_report)
+
+
+## Code comes after this title
+
+
+```{r, eval=FALSE, warning=FALSE, message=FALSE, echo=TRUE, fig.width= 12, fig.height= 8}
+f <- function(x, y){paste(x,y)},
+f("a", "b")
+```> 
+> 
+> 
+> cleanEx()
+> nameEx("add_density")
+> ### * add_density
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: add_density
+> ### Title: Add a density plot to a chronicle report
+> ### Aliases: add_density
+> 
+> ### ** Examples
+> 
+> html_report <- add_density(report = "",
++                            dt = iris,
++                            value = 'Sepal.Length',
++                            groups = 'Species')
+> cat(html_report)
+
+
+## Distribution of Sepal.Length by Species
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=params$figure_width, fig.height=params$figure_height}
+chronicle::make_density(dt = iris,
+                        value = 'Sepal.Length',
+                        groups = 'Species',
+                        faceted = TRUE,
+                        scales = 'fixed',
+                        plot_palette = params$plot_palette,
+                        plot_palette_generator = params$plot_palette_generator,
+                        static = params$set_static)
+```> 
+> 
+> 
+> cleanEx()
+> nameEx("add_dygraph")
+> ### * add_dygraph
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: add_dygraph
+> ### Title: Add a dygraph to a chronicle report
+> ### Aliases: add_dygraph
+> 
+> ### ** Examples
+> 
+> dat <- data.frame(x = c(rnorm(100, 2, 4),
++                         rnorm(100, 6, 1),
++                         rnorm(100, 8, 2)),
++                  group = c(rep('A', 100),
++                            rep('B', 100),
++                            rep('C', 100)),
++                  date = rep(seq(as.Date("2020-01-01"),
++                                 as.Date("2020-04-09"),
++                                 'days'),
++                             3))
+> html_report <- add_dygraph(report = '',
++                           dt = dat,
++                           value = 'x',
++                           date = 'date')
+> cat(html_report)
+
+
+## Evolution of x
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=params$figure_width, fig.height=params$figure_height}
+chronicle::make_dygraph(dt = dat,
+                        value = 'x',
+                        date = 'date',
+                        plot_palette = params$plot_palette,
+                        plot_palette_generator = params$plot_palette_generator,
+                        static = params$set_static)
+```> 
+> 
+> 
+> cleanEx()
+> nameEx("add_histogram")
+> ### * add_histogram
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: add_histogram
+> ### Title: Add a histogram plot to a chronicle report
+> ### Aliases: add_histogram
+> 
+> ### ** Examples
+> 
+> html_report <- add_histogram(report = "",
++                              dt = iris,
++                              value = 'Sepal.Length',
++                              groups = 'Species')
+> cat(html_report)
+
+
+## Distribution of Sepal.Length by Species
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=params$figure_width, fig.height=params$figure_height}
+chronicle::make_histogram(dt = iris,
+                          value = 'Sepal.Length',
+                          groups = 'Species',
+                          scales = 'fixed',
+                          plot_palette = params$plot_palette,
+                          plot_palette_generator = params$plot_palette_generator,
+                          static = params$set_static)
+```> 
+> 
+> 
+> cleanEx()
+> nameEx("add_image")
+> ### * add_image
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: add_image
+> ### Title: Add an image to a chronicle Rmarkdown report
+> ### Aliases: add_image
+> 
+> ### ** Examples
+> 
+> 
+> library(chronicle)
+> report <- add_image(image_path = 'readme1.png',
++                     image_caption = 'This is the caption of the image',
++                     image_title = 'This is the image that I want to include')
+> 
+> 
+> 
+> cleanEx()
+> nameEx("add_lineplot")
+> ### * add_lineplot
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: add_lineplot
+> ### Title: Add a line plot to a chronicle report
+> ### Aliases: add_lineplot
+> 
+> ### ** Examples
+> 
+> html_report <- add_lineplot(report = "",
++                             dt = ggplot2::mpg,
++                             x = 'hwy',
++                             y = 'cty',
++                             groups = 'manufacturer',
++                             faceted = FALSE)
+> cat(html_report)
+
+
+## hwy vs cty by manufacturer
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=params$figure_width, fig.height=params$figure_height}
+chronicle::make_lineplot(dt = ggplot2::mpg,
+                         x = 'hwy',
+                         y = 'cty',
+                         groups = 'manufacturer',
+                         faceted = FALSE,
+                         plot_palette = params$plot_palette,
+                         plot_palette_generator = params$plot_palette_generator,
+                         static = params$set_static)
+```> 
+> 
+> 
+> cleanEx()
+> nameEx("add_quotes")
+> ### * add_quotes
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: add_quotes
+> ### Title: Adds additional quotations to character values
+> ### Aliases: add_quotes
+> 
+> ### ** Examples
+> 
+> params = list(a = TRUE, b = FALSE, c = 'ABC', d = 15)
+> add_quotes(params)
+$a
+[1] TRUE
+
+$b
+[1] FALSE
+
+$c
+[1] "'ABC'"
+
+$d
+[1] 15
+
+> add_quotes(params, except = 'c')
+$a
+[1] TRUE
+
+$b
+[1] FALSE
+
+$c
+[1] "ABC"
+
+$d
+[1] 15
+
+> 
+> 
+> 
+> cleanEx()
+> nameEx("add_raincloud")
+> ### * add_raincloud
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: add_raincloud
+> ### Title: Add a raincloud plot to a chronicle report
+> ### Aliases: add_raincloud
+> 
+> ### ** Examples
+> 
+> html_report <- add_raincloud(report = "",
++                              dt = iris,
++                              value = 'Sepal.Length',
++                              groups = 'Species')
+> cat(html_report)
+
+
+## Distribution of Sepal.Length by Species
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=params$figure_width, fig.height=params$figure_height}
+chronicle::make_raincloud(dt = iris,
+                          value = 'Sepal.Length',
+                          groups = 'Species',
+                          adjust = 0.5,
+                          include_boxplot = TRUE,
+                          include_mean = FALSE,
+                          include_median = TRUE,
+                          force_all_jitter_obs = FALSE,
+                          ggtheme = 'minimal',
+                          plot_palette = params$plot_palette,
+                          plot_palette_generator = params$plot_palette_generator,
+                          static = params$set_static)
+```> 
+> 
+> 
+> cleanEx()
+> nameEx("add_scatterplot")
+> ### * add_scatterplot
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: add_scatterplot
+> ### Title: Add a scatter plot to a chronicle report
+> ### Aliases: add_scatterplot
+> 
+> ### ** Examples
+> 
+> html_report <- add_scatterplot(report = "",
++                             dt = ggplot2::mpg,
++                             x = 'hwy',
++                             y = 'cty',
++                             groups = 'manufacturer',
++                             faceted = FALSE)
+> cat(html_report)
+
+
+## hwy vs cty by manufacturer
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=params$figure_width, fig.height=params$figure_height}
+chronicle::make_scatterplot(dt = ggplot2::mpg,
+                            x = 'hwy',
+                            y = 'cty',
+                            groups = 'manufacturer',
+                            faceted = FALSE,
+                            plot_palette = params$plot_palette,
+                            plot_palette_generator = params$plot_palette_generator,
+                            static = params$set_static)
+```> 
+> 
+> 
+> cleanEx()
+> nameEx("add_table")
+> ### * add_table
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: add_table
+> ### Title: Add a table to a chronicle report
+> ### Aliases: add_table
+> 
+> ### ** Examples
+> 
+> html_report <- add_table(table = iris,
++                          table_title = 'Iris measures',
++                          html_table_type = 'kable')
+> cat(html_report)
+
+
+## Iris measures
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::kable(iris)
+```> 
+> 
+> 
+> cleanEx()
+> nameEx("add_text")
+> ### * add_text
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: add_text
+> ### Title: Add text to a chronicle Rmarkdown report
+> ### Aliases: add_text
+> 
+> ### ** Examples
+> 
+> html_report <- add_text(text = 'This is the text that will be seen outside of any chunk',
++                         text_title = 'Text title')
+> cat(html_report)
+
+
+## Text title
+
+This is the text that will be seen outside of any chunk> 
+> 
+> 
+> cleanEx()
+> nameEx("add_title")
+> ### * add_title
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: add_title
+> ### Title: Add a titled section to a chronicle Rmarkdown report
+> ### Aliases: add_title
+> 
+> ### ** Examples
+> 
+> html_report <- add_title(report = '',
++                          title = 'Just the title here')
+> cat(html_report)
+
+
+# Just the title here
+> 
+> 
+> 
+> cleanEx()
+> nameEx("add_violin")
+> ### * add_violin
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: add_violin
+> ### Title: Add a violin plot to a chronicle report
+> ### Aliases: add_violin
+> 
+> ### ** Examples
+> 
+> html_report <- add_violin(report = "",
++                              dt = iris,
++                              value = 'Sepal.Length',
++                              groups = 'Species', jitter = TRUE)
+> cat(html_report)
+
+
+## Distribution of Sepal.Length by Species
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=params$figure_width, fig.height=params$figure_height}
+chronicle::make_violin(dt = iris,
+                       value = 'Sepal.Length',
+                       groups = 'Species',
+                       jitter = TRUE,
+                       plot_palette = params$plot_palette,
+                       plot_palette_generator = params$plot_palette_generator,
+                       static = params$set_static)
+```> 
+> 
+> 
+> cleanEx()
+> nameEx("assemble_call")
+> ### * assemble_call
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: assemble_call
+> ### Title: Assembles a formatted function call from a function and a list
+> ###   of parameters
+> ### Aliases: assemble_call
+> 
+> ### ** Examples
+> 
+> chronicle::assemble_call(fun_name = 'base::sapply',
++                          params = list(X = 'iris',
++                                        FUN= 'class'))
+base::sapply(X = 'iris',
+             FUN = 'class')
+> chronicle::assemble_call(fun_name = 'base::sapply',
++                          params = list(X = 'iris',
++                                        FUN= 'class'),
++                          non_char = c('X', 'FUN'))
+base::sapply(X = iris,
+             FUN = class)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("check_cols")
+> ### * check_cols
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: check_cols
+> ### Title: Warns if any of the passed column names is missing from the data
+> ###   provided.
+> ### Aliases: check_cols
+> 
+> ### ** Examples
+> 
+> chronicle::check_cols(mtcars, c('cyl', 'made_up_column'))
+Warning in chronicle::check_cols(mtcars, c("cyl", "made_up_column")) :
+  made_up_column not present in the provided data.frame
+[1] "cyl"
+> 
+> 
+> 
+> cleanEx()
+> nameEx("file_extension")
+> ### * file_extension
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: file_extension
+> ### Title: Parse the file extension for each R Markdown output format
+> ### Aliases: file_extension
+> 
+> ### ** Examples
+> 
+> file_extension(c('prettydoc', 'word_document', 'tufte_handout'))
+[1] ".html" ".docx" ".pdf" 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("make_barplot")
+> ### * make_barplot
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: make_barplot
+> ### Title: Create a bar plot from a data frame through ggplotly
+> ### Aliases: make_barplot
+> 
+> ### ** Examples
+> 
+> make_barplot(dt = iris, bars = 'Species', value = 'Sepal.Length')
+> make_barplot(dt = ggplot2::mpg,
++              bars = 'manufacturer',
++              break_bars_by = 'model',
++              value = 'cty',
++              horizontal = TRUE,
++              sort_by_value = TRUE)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("make_boxplot")
+> ### * make_boxplot
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: make_boxplot
+> ### Title: Create a box plot from a data frame through ggplotly
+> ### Aliases: make_boxplot
+> 
+> ### ** Examples
+> 
+> make_boxplot(dt = ggplot2::mpg, value = 'hwy', groups = 'drv', jitter = TRUE)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("make_density")
+> ### * make_density
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: make_density
+> ### Title: Create a density plot from a data frame through ggplotly
+> ### Aliases: make_density
+> 
+> ### ** Examples
+> 
+> make_density(dt = iris,
++              value = 'Sepal.Length',
++              groups = 'Species')
+> make_density(dt = iris,
++              value = 'Sepal.Length',
++              groups = 'Species',
++              faceted = FALSE)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("make_dygraph")
+> ### * make_dygraph
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: make_dygraph
+> ### Title: Plot a time series from a data frame through dygraph's
+> ###   interactive html plot interface
+> ### Aliases: make_dygraph
+> 
+> ### ** Examples
+> 
+> dat <- data.frame(x = c(rnorm(100, 2, 4),
++                         rnorm(100, 6, 1),
++                         rnorm(100, 8, 2)),
++                   group = c(rep('A', 100),
++                             rep('B', 100),
++                             rep('C', 100)),
++                   date = rep(seq(as.Date("2020-01-01"),
++                                  as.Date("2020-04-09"),
++                                  'days'),
++                              3))
+> make_dygraph(dt = dat,
++              value = 'x',
++              date = 'date')
+> make_dygraph(dt = dat,
++              value = 'x',
++              groups = 'group',
++              date = 'date')
+> 
+> 
+> 
+> cleanEx()
+> nameEx("make_histogram")
+> ### * make_histogram
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: make_histogram
+> ### Title: Create a histogram plot from a data frame through ggplotly
+> ### Aliases: make_histogram
+> 
+> ### ** Examples
+> 
+> make_histogram(dt = iris,
++                value = 'Sepal.Length',
++                groups = 'Species')
+> 
+> 
+> 
+> cleanEx()
+> nameEx("make_lineplot")
+> ### * make_lineplot
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: make_lineplot
+> ### Title: Create a line plot from a data frame through ggplotly
+> ### Aliases: make_lineplot
+> 
+> ### ** Examples
+> 
+> make_lineplot(dt = ggplot2::mpg,
++               x = 'hwy',
++               y = 'cty',
++               groups = 'manufacturer',
++               faceted = FALSE)
+> 
+> make_lineplot(dt = ggplot2::mpg,
++               x = 'hwy',
++               y = 'cty',
++               groups = 'manufacturer',
++               faceted = TRUE,
++               scales = 'free')
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("make_raincloud")
+> ### * make_raincloud
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: make_raincloud
+> ### Title: Create a raincloud plot from a data frame through ggplotly
+> ### Aliases: make_raincloud
+> 
+> ### ** Examples
+> 
+> make_raincloud(dt = iris, value = 'Sepal.Width')
+> make_raincloud(dt = iris, value = 'Sepal.Width', adjust = 1)
+> make_raincloud(dt = iris, value = 'Petal.Length', groups = 'Species', static = TRUE, adjust = 1)
+> make_raincloud(dt = iris, value = 'Sepal.Length', groups = 'Species', adjust = 1)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("make_scatterplot")
+> ### * make_scatterplot
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: make_scatterplot
+> ### Title: Create a scatter plot from a data frame through ggplotly
+> ### Aliases: make_scatterplot
+> 
+> ### ** Examples
+> 
+> make_scatterplot(dt = ggplot2::mpg,
++               x = 'hwy',
++               y = 'cty',
++               groups = 'manufacturer',
++               faceted = FALSE)
+> 
+> make_scatterplot(dt = ggplot2::mpg,
++               x = 'hwy',
++               y = 'cty',
++               groups = 'manufacturer',
++               faceted = TRUE,
++               scales = 'free')
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("make_title")
+> ### * make_title
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: make_title
+> ### Title: Guess a title out of function parameters
+> ### Aliases: make_title
+> 
+> ### ** Examples
+> 
+> make_title(fun = chronicle::make_barplot,
++                      params = list(value = 'Amount',
++                                    bars = 'Country',
++                                    break_bars_by = 'Region'))
+[1] "Amount by Country and Region"
+> 
+> make_title(fun = chronicle::make_raincloud,
++            params = list(value = 'value',
++                          groups = 'species'))
+[1] "Distribution of value by species"
+> 
+> 
+> 
+> cleanEx()
+> nameEx("make_violin")
+> ### * make_violin
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: make_violin
+> ### Title: Create a violin plot from a data frame through ggplotly
+> ### Aliases: make_violin
+> 
+> ### ** Examples
+> 
+> make_violin(dt = ggplot2::mpg, value = 'hwy', groups = 'drv')
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("output_config")
+> ### * output_config
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: output_config
+> ### Title: Build the yaml output specification for an R Markdown
+> ### Aliases: output_config
+> 
+> ### ** Examples
+> 
+> cat(output_config('prettydoc'))
+---
+date: "`r Sys.Date()`" 
+
+output:
+  prettydoc::html_pretty:
+    theme: leonids
+    number_sections: false
+    toc: false
+params:
+  set_static: FALSE
+  figure_width: 8
+  figure_height: 5
+  plot_palette: !r c()
+  plot_palette_generator: 'plasma'
+---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(chronicle)
+# If you want this report to be reproducible, add all the libraries, data
+# loading and preprocessing code into this chunk before knitting.
+```> cat(output_config('ioslides'))
+---
+date: "`r Sys.Date()`" 
+
+output:
+  ioslides_presentation:
+    widescreen: true
+params:
+  set_static: FALSE
+  figure_width: 8
+  figure_height: 5
+  plot_palette: !r c()
+  plot_palette_generator: 'plasma'
+---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(chronicle)
+# If you want this report to be reproducible, add all the libraries, data
+# loading and preprocessing code into this chunk before knitting.
+```> 
+> 
+> 
+> cleanEx()
+> nameEx("plot_columns")
+> ### * plot_columns
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot_columns
+> ### Title: Plot all columns of a table
+> ### Aliases: plot_columns
+> 
+> ### ** Examples
+> 
+> chronicle::plot_columns(dt = iris, by_column = 'Species')
+$Sepal.Length
+
+$Sepal.Width
+
+$Petal.Length
+
+$Petal.Width
+
+$Species
+
+> 
+> 
+> 
+> cleanEx()
+> nameEx("render_report")
+> ### * render_report
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: render_report
+> ### Title: Render the report using all objects from the global environment
+> ### Aliases: render_report
+> 
+> ### ** Examples
+> 
+> # report_demo <- add_title(title = 'This is how a chronicle report looks', title_level = 1) %>%
+> # add_density(dt = iris, groups = 'Species', value = 'Sepal.Length', faceted = F) %>%
+> #   add_boxplot(dt = iris, groups = 'Species', value = 'Sepal.Length') %>%
+> #   add_barplot(dt = iris, bars = 'Species', value = 'Sepal.Length')
+> #   add_table(table = iris,
+> #             table_title = 'This is the iris dataset. Smells good!',
+> #             html_table_type = 'kable') %>%
+> #   add_table(table = mpg,
+> #             table_title = 'And this is mpg',
+> #             html_table_type = 'DT')
+> # render_report(report = report_demo,
+> #              title = 'Demo Output',
+> #              author = 'This is the author',
+> #              filename = 'demo_output',
+> #              output_format = 'prettydoc',
+> #              keep_rmd = TRUE)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("report_columns")
+> ### * report_columns
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: report_columns
+> ### Title: HTML interactive report detailing each column on a table
+> ### Aliases: report_columns
+> 
+> ### ** Examples
+> 
+> # chronicle::report_columns(dt = iris,
+> #                           by_column = 'Species',
+> #                           horizontal_bars = TRUE,
+> #                           keep_rmd = TRUE)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("rmd_title_level")
+> ### * rmd_title_level
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: rmd_title_level
+> ### Title: Returns the count of '#' corresponding to a given title level
+> ### Aliases: rmd_title_level
+> 
+> ### ** Examples
+> 
+> rmd_title_level(1)
+[1] "#"
+> rmd_title_level(3)
+[1] "###"
+> 
+> 
+> 
+> cleanEx()
+> nameEx("set_classes")
+> ### * set_classes
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: set_classes
+> ### Title: Change column classes with a named vector
+> ### Aliases: set_classes
+> 
+> ### ** Examples
+> 
+> library(chronicle)
+> iris_changed <- chronicle::set_classes(dt = iris,
++                                        character = 'Species',
++                                        integer = c('Sepal.Length', 'Sepal.Width'))
+> purrr::map_chr(iris_changed, class)
+Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species 
+   "integer"    "integer"    "numeric"    "numeric"  "character" 
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  11.482 3.85 10.961 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

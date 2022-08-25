@@ -1,0 +1,30 @@
+Package: starticles
+Type: Package
+Title: A Generic, Publisher-Independent Template for Writing Scientific
+        Documents in 'rmarkdown'
+Version: 0.1.0
+Authors@R: c(
+  person("David M.", "Kaplan", role = c("aut", "cre", "cph"), email = "dmkaplan2000@gmail.com", comment = c(ORCID = "0000-0001-6087-359X", github = "dmkaplan2000"))
+  )
+Description: Provides a generic, publisher-independent Rmarkdown template for writing 
+  scientific papers and reports in Rmarkdown. The template allows for all the basic features of a
+  scientific article, including a title page with author affiliations and footnotes possibly shown
+  in two common formats, multi-language abstracts and keywords, page headers and footers, and 
+  the ability to place figures and tables at the end of the output PDF. Smart cross-referencing of
+  figures, tables, equations and sections is provided using the bookdown package. See package
+  README.md for basic package usage.
+License: GPL-3
+Encoding: UTF-8
+URL: https://github.com/dmkaplan2000/starticles
+Depends: R (> 3.5.0)
+Imports: rmarkdown, bookdown, knitr
+Suggests: rticles
+VignetteBuilder: knitr
+RoxygenNote: 7.2.0
+NeedsCompilation: no
+Packaged: 2022-06-07 14:39:02 UTC; dmk
+Author: David M. Kaplan [aut, cre, cph]
+    (<https://orcid.org/0000-0001-6087-359X>, dmkaplan2000)
+Maintainer: David M. Kaplan <dmkaplan2000@gmail.com>
+Repository: CRAN
+Date/Publication: 2022-06-09 07:50:02 UTC

@@ -1,0 +1,56 @@
+Package: markovchain
+Type: Package
+Title: Easy Handling Discrete Time Markov Chains
+Version: 0.9.0
+Date: 2022-07-01
+Authors@R: c(
+    person("Giorgio Alfredo", "Spedicato", role = c("aut", "cre"),
+      email = "spedicato_giorgio@yahoo.it",comment = c(ORCID = "0000-0002-0315-8888")),
+    person("Tae", "Seung Kang", role = "aut"),
+    person("Sai", "Bhargav Yalamanchi", role = "aut"),
+    person("Mildenberger", "Thoralf", role = "ctb", comment = c(ORCID = "0000-0001-7242-1873")),
+    person("Deepak", "Yadav", role = "aut"),
+    person("Ignacio", "Cordón", role = "aut", comment = c(ORCID = "0000-0002-3152-0231")),
+    person("Vandit", "Jain", role = "ctb"),
+    person("Toni", "Giorgino", role="ctb", comment = c(ORCID = "0000-0001-6449-0596")),
+    person("Richèl J.C.", "Bilderbeek", role = "ctb", comment = c(ORCID = "0000-0003-1107-7049")),
+    person("Daniel", "Ebbert", email = "daniel@ebbert.nrw", role = "ctb", comment = c(ORCID = "0000-0003-3666-7205")),
+    person("Shreyash", "Maheshwari", email = "coolshreysh1000@gmail.com", role = "ctb")
+  )
+Maintainer: Giorgio Alfredo Spedicato <spedicato_giorgio@yahoo.it>
+Description: Functions and S4 methods to create and manage discrete time Markov
+    chains more easily. In addition functions to perform statistical (fitting
+    and drawing random variates) and probabilistic (analysis of their structural
+    proprieties) analysis are provided. See Spedicato (2017) <doi:10.32614/RJ-2017-036>.
+License: GPL-2
+Depends: R (>= 4.0.0), methods
+Imports: igraph, Matrix, expm, stats4, parallel, Rcpp (>= 1.0.2),
+        RcppParallel, utils, stats, grDevices
+Suggests: knitr, testthat, diagram, DiagrammeR, msm, Rsolnp, rmarkdown,
+        ctmcd, bookdown, rticles
+Enhances: etm
+VignetteBuilder: utils, knitr
+LinkingTo: Rcpp, RcppParallel, RcppArmadillo (>= 0.9.600.4.0)
+SystemRequirements: GNU make
+LazyLoad: yes
+ByteCompile: yes
+Encoding: UTF-8
+BugReports: https://github.com/spedygiorgio/markovchain/issues
+URL: https://github.com/spedygiorgio/markovchain/
+RoxygenNote: 7.2.0
+NeedsCompilation: yes
+Packaged: 2022-07-01 11:44:24 UTC; giorgio
+Author: Giorgio Alfredo Spedicato [aut, cre]
+    (<https://orcid.org/0000-0002-0315-8888>),
+  Tae Seung Kang [aut],
+  Sai Bhargav Yalamanchi [aut],
+  Mildenberger Thoralf [ctb] (<https://orcid.org/0000-0001-7242-1873>),
+  Deepak Yadav [aut],
+  Ignacio Cordón [aut] (<https://orcid.org/0000-0002-3152-0231>),
+  Vandit Jain [ctb],
+  Toni Giorgino [ctb] (<https://orcid.org/0000-0001-6449-0596>),
+  Richèl J.C. Bilderbeek [ctb] (<https://orcid.org/0000-0003-1107-7049>),
+  Daniel Ebbert [ctb] (<https://orcid.org/0000-0003-3666-7205>),
+  Shreyash Maheshwari [ctb]
+Repository: CRAN
+Date/Publication: 2022-07-01 12:30:02 UTC

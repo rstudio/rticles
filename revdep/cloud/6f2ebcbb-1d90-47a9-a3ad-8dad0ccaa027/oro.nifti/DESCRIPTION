@@ -1,0 +1,60 @@
+Package: oro.nifti
+Version: 0.11.4
+Title: Rigorous - 'NIfTI' + 'ANALYZE' + 'AFNI' : Input / Output
+Authors@R: c(
+    person("Brandon", "Whitcher", , "bwhitcher@gmail.com", role = c("aut", "cre")),
+    person("Volker", "Schmid", , "volker.schmid@lmu.de", role = "aut"),
+    person("Andrew", "Thornton", , "zeripath@gmail.com", role = "aut"),
+    person("Karsten", "Tabelow", , "karsten.tabelow@wias-berlin.de", role = "ctb"),
+    person("Jon", "Clayden", , "code@clayden.org", role = "ctb"),
+    person("John", "Muschelli", , "muschellij2@gmail.com", role = "aut")
+  )
+Description: Functions for the input/output and visualization of
+    medical imaging data that follow either the 'ANALYZE', 'NIfTI' or 'AFNI'
+    formats.  This package is part of the Rigorous Analytics bundle.
+Depends: R (>= 2.14.0)
+Suggests: XML, testthat, covr, knitr, rmarkdown, rticles
+Imports: stats, bitops, splines, graphics, grDevices, methods, utils,
+        abind, RNifti (>= 0.9.0)
+Enhances: fmri, oro.dicom
+License: BSD_3_clause + file LICENSE
+BugReports: https://github.com/bjw34032/oro.nifti/issues
+URL: https://rigorousanalytics.blogspot.com
+Collate: 'auditTrail.R' 'niftiS4.R' 'analyzeS4.R' 'afniS4.R' 'is.R'
+        'nifti_assign.R' 'coerce.R' 'writeS4.R' 'convert_anlz.R'
+        'convert_nifti.R' 'cal_img.R' 'drop_img_dim.R' 'hotmetal.R'
+        'miscellaneous.R' 'plot.R' 'slice.R' 'slice_overlay.R'
+        'blend.R' 'readS4.R' 'remove.R' 'tim_colors.R' 'transform.R'
+        'wrappers.R' 'onefile.R' 'voxdim.R' 'anlz_Operators.R'
+        'Operators.R' 'zero_trans.R' 'aux_file.R' 'cal_max.R'
+        'cal_min.R' 'descrip.R' 'glmax.R' 'glmin.R' 'pixdim.R'
+        'qform_code.R' 'scl_inter.R' 'scl_slope.R' 'sform_code.R'
+        'vox_offset.R' 'bitpix.R' 'data_type.R' 'datatype.R'
+        'db_name.R' 'dim_.R' 'dim_info.R' 'extender.R' 'extents.R'
+        'img_data.R' 'intent_code.R' 'intent_name.R' 'intent_p1.R'
+        'intent_p2.R' 'intent_p3.R' 'magic.R' 'qoffset_x.R'
+        'qoffset_y.R' 'qoffset_z.R' 'quatern_b.R' 'quatern_c.R'
+        'quatern_d.R' 'quaternion.R' 'regular.R' 'session_error.R'
+        'sizeof_hdr.R' 'slice_code.R' 'slice_duration.R' 'slice_end.R'
+        'slice_start.R' 'srow_x.R' 'srow_y.R' 'srow_z.R' 'toffset.R'
+        'xyzt_units.R' 'cal_units.R' 'compressed.R' 'dim_un0.R'
+        'exp_date.R' 'exp_time.R' 'field_skip.R' 'funused1.R'
+        'funused2.R' 'funused3.R' 'generated.R' 'hist_un0.R'
+        'hkey_un0.R' 'niftiImage_class.R' 'nii2oro.R' 'oro2nii.R'
+        'omax.R' 'omin.R' 'orient.R' 'origin.R' 'patient_id.R'
+        'scannum.R' 'smax.R' 'smin.R' 'start_field.R' 'unused1.R'
+        'verified.R' 'views.R' 'vols_added.R' 'vox_units.R' 'voxres.R'
+        'img_length.R' 'zzz.R' 'zzz_niftiImage.R'
+RoxygenNote: 7.2.1
+Encoding: UTF-8
+NeedsCompilation: no
+Packaged: 2022-08-10 04:09:52 UTC; johnmuschelli
+Author: Brandon Whitcher [aut, cre],
+  Volker Schmid [aut],
+  Andrew Thornton [aut],
+  Karsten Tabelow [ctb],
+  Jon Clayden [ctb],
+  John Muschelli [aut]
+Maintainer: Brandon Whitcher <bwhitcher@gmail.com>
+Repository: CRAN
+Date/Publication: 2022-08-10 16:10:02 UTC

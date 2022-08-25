@@ -1,0 +1,15 @@
+* installing *source* package ‘oro.nifti’ ...
+** package ‘oro.nifti’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** demo
+** inst
+** byte-compile and prepare package for lazy loading
+Creating a new generic function for ‘origin’ in package ‘oro.nifti’
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (oro.nifti)

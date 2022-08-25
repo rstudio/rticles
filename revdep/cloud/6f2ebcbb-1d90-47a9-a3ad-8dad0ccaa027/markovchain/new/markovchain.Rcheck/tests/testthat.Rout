@@ -1,0 +1,42 @@
+
+R version 4.1.1 (2021-08-10) -- "Kick Things"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(testthat)
+> library(markovchain)
+Package:  markovchain
+Version:  0.9.0
+Date:     2022-07-01
+BugReport: https://github.com/spedygiorgio/markovchain/issues
+
+> test_check("markovchain")
+Mathematica MC  Markov chain that is composed by: 
+Closed classes: 
+c d 
+e 
+Recurrent classes: 
+{c,d},{e}
+Transient classes: 
+{a,b}
+The Markov chain is not irreducible 
+The absorbing states are: e
+[ FAIL 0 | WARN 1 | SKIP 0 | PASS 96 ]
+
+[ FAIL 0 | WARN 1 | SKIP 0 | PASS 96 ]
+> 
+> proc.time()
+   user  system elapsed 
+  3.881   1.397   3.766 
