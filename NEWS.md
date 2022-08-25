@@ -22,6 +22,8 @@
 
 - Update `rjournal_article()` template to match current style file. Package and task view macros use secure links, and the footer includes the year (@mitchelloharawild)
 
+- Updates to Pandoc's template following recent change with new Pandoc version in relevant templates.
+
 # rticles 0.23
 
 ## BREAKING CHANGE
