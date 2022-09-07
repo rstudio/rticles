@@ -14,10 +14,10 @@
 
 % DON'T change margins - should be 1 inch all around.
 \addtolength{\oddsidemargin}{-.5in}%
-\addtolength{\evensidemargin}{-.5in}%
+\addtolength{\evensidemargin}{-1in}%
 \addtolength{\textwidth}{1in}%
-\addtolength{\textheight}{1.3in}%
-\addtolength{\topmargin}{-.8in}%
+\addtolength{\textheight}{1.7in}%
+\addtolength{\topmargin}{-1in}%
 
 %% load any required packages here
 $preamble$
@@ -123,20 +123,27 @@ $endfor$
 } \fi
 
 \bigskip
+$if(abstract)$
 \begin{abstract}
 $abstract$
 \end{abstract}
+$endif$
 
 \noindent%
-{\it Keywords:} $for(keywords)$$keywords$$sep$, $endfor$
+$if(keywords)${\it Keywords:}$endif$ $for(keywords)$$keywords$$sep$, $endfor$
+
 \vfill
 
 \newpage
-\spacingset{1.45} % DON'T change the spacing!
+\spacingset{1.9} % DON'T change the spacing!
 
 $body$
 
+$if(biblio-style)$
+\bibliographystyle{$biblio-style$}
+$else$
 \bibliographystyle{agsm}
+$endif$
 \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 
 $for(include-after)$
