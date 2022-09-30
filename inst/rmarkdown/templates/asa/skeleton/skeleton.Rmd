@@ -1,7 +1,7 @@
 ---
 title: Title here
 
-# to produce blinded version set to 1
+# set to 1 to the authors and acknowledgements, producing the required blinded version.
 blinded: 0
 
 authors: 
@@ -15,42 +15,65 @@ authors:
 keywords:
 - 3 to 6 keywords
 - that do not appear in the title
-
 abstract: |
   The text of your abstract.  200 or fewer words.
 
 bibliography: bibliography.bib
+biblio-style: apalike # default is using plain.bst
 output: rticles::asa_article
 ---
 
 # Introduction
 
 This template demonstrates some of the basic latex you'll need to know to create a ASA article.
+It is built from template find at Journal of the American Statistical Association [instruction for authors](https://www.tandfonline.com/action/authorSubmission?show=instructions&journalCode=uasa20#formatting)
 
-\section{Verifications}
-\label{sec:verify}
+## Plot
+
+Plot example - LaTeX floating to be adjusted if you don't want it.
+
+```{r, fig.cap = "A plot example", echo = FALSE}
+plot(cars)
+```
+
+## Table
+
+Table example
+
+```{r, echo = FALSE}
+knitr::kable(head(cars))
+```
+
+## Various guidelines
+
+- Note that figures and tables should appear in the paper, not at the end or
+in separate files.
+- Remember that in the blind version, you should not identify authors indirectly in the text.  That is, don't say "In Smith et. al.  (2009) we showed that ...".  Instead, say "Smith et. al. (2009) showed that ...".
+- These points are only intended to remind you of some requirements. Please refer to the instructions for authors
+at <http://amstat.tandfonline.com/action/authorSubmission?journalCode=uasa20&page=instructions#.VFkk7fnF_0c>
+- For more about ASA style, please see <http://journals.taylorandfrancis.com/amstat/asa-style-guide/>
+- If you have supplementary material (e.g., software, data, technical proofs), identify them in the section below.  In early stages of the submission process, you may be unsure what to include as supplementary material.  Don't worry---this is something that can be worked out at later stages.
+
+# Methods {#meth}
+
+Don't take any of these section titles seriously.  They're just for illustration.
+
+# Verifications {#verify}
+
 This section will be just long enough to illustrate what a full page of
 text looks like, for margins and spacing.
 
-@Campbell02 @Schubert13 [@Chi81]
+```{=latex}
+\addtolength{\textheight}{.5in}%
+```
+
+See @Campbell02 and @Schubert13 or [@Chi81]
 
 The quick brown fox jumped over the lazy dog.
 The quick brown fox jumped over the lazy dog.
 The quick brown fox jumped over the lazy dog.
 The quick brown fox jumped over the lazy dog.
-__With this spacing we have 30 lines per page.__
-
-The quick brown fox jumped over the lazy dog.
-The quick brown fox jumped over the lazy dog.
-The quick brown fox jumped over the lazy dog.
-The quick brown fox jumped over the lazy dog.
-The quick brown fox jumped over the lazy dog.
-
-The quick brown fox jumped over the lazy dog.
-The quick brown fox jumped over the lazy dog.
-The quick brown fox jumped over the lazy dog.
-The quick brown fox jumped over the lazy dog.
-The quick brown fox jumped over the lazy dog.
+**With this spacing we have 25 lines per page.**
 The quick brown fox jumped over the lazy dog.
 The quick brown fox jumped over the lazy dog.
 The quick brown fox jumped over the lazy dog.
@@ -79,16 +102,9 @@ The quick brown fox jumped over the lazy dog.
 The quick brown fox jumped over the lazy dog.
 The quick brown fox jumped over the lazy dog.
 
-The quick brown fox jumped over the lazy dog.
-The quick brown fox jumped over the lazy dog.
-The quick brown fox jumped over the lazy dog.
-The quick brown fox jumped over the lazy dog.
-The quick brown fox jumped over the lazy dog.
-The quick brown fox jumped over the lazy dog.
-The quick brown fox jumped over the lazy dog.
-The quick brown fox jumped over the lazy dog.
-The quick brown fox jumped over the lazy dog.
-The quick brown fox jumped over the lazy dog.
+```{=latex}
+\addtolength{\textheight}{-.3in}%
+```
 
 The quick brown fox jumped over the lazy dog.
 The quick brown fox jumped over the lazy dog.
@@ -149,5 +165,49 @@ The quick brown fox jumped over the lazy dog.
 The quick brown fox jumped over the lazy dog.
 The quick brown fox jumped over the lazy dog.
 The quick brown fox jumped over the lazy dog.
+The quick brown fox jumped over the lazy dog.
+The quick brown fox jumped over the lazy dog.
+The quick brown fox jumped over the lazy dog.
+The quick brown fox jumped over the lazy dog.
+The quick brown fox jumped over the lazy dog.
+The quick brown fox jumped over the lazy dog.
+
+The quick brown fox jumped over the lazy dog.
+The quick brown fox jumped over the lazy dog.
+The quick brown fox jumped over the lazy dog.
+The quick brown fox jumped over the lazy dog.
+The quick brown fox jumped over the lazy dog.
+The quick brown fox jumped over the lazy dog.
+The quick brown fox jumped over the lazy dog.
+The quick brown fox jumped over the lazy dog.
+The quick brown fox jumped over the lazy dog.
+The quick brown fox jumped over the lazy dog.
+
+The quick brown fox jumped over the lazy dog.
+The quick brown fox jumped over the lazy dog.
+The quick brown fox jumped over the lazy dog.
+The quick brown fox jumped over the lazy dog.
+
+# Conclusion {#conc}
+
+\bigskip
+::: {.center latex=true}
+**SUPPLEMENTARY MATERIAL**
+:::
+
+> Use [definition list syntax](https://pandoc.org/MANUAL.html#definition-lists) in this part
+
+Title:
+  ~ Brief description. (file type)
+
+R-package for  MYNEW routine:
+  ~ R-package **MYNEW** containing code to perform the diagnostic methods described in the article. The package also contains all datasets used as examples in the article. (GNU zipped tar file)
+
+HIV data set:
+  ~ Data set used in the illustration of MYNEW method in Section~ 3.2. (.txt file)
+
+# Bibliography. 
+
+Using `natbib` is the default with this format, using `plain.bst` by default on the template, and `apalike.bst` in this Rmd skeleton. Chante to your preference using the `biblio-style` in YAML
 
 
