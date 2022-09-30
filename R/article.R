@@ -105,6 +105,9 @@ ams_article <- function(..., keep_tex = TRUE,
 #' @export
 #' @rdname article
 asa_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
+  if (citation_package == "biblatex") {
+    stop("ASA template does not support `biblatex` for citation processing.")
+  }
   pdf_document_format(
     "asa",
     keep_tex = keep_tex, citation_package = citation_package, ...

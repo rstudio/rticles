@@ -20,6 +20,7 @@ abstract: |
   The text of your abstract.  200 or fewer words.
 
 bibliography: bibliography.bib
+biblio-style: apalike # default is using plain.bst
 output: rticles::asa_article
 ---
 

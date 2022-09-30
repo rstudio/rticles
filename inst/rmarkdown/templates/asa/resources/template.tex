@@ -3,7 +3,9 @@
 \usepackage{amsmath}
 \usepackage{graphicx,psfrag,epsf}
 \usepackage{enumerate}
-\usepackage{natbib}
+$if(natbib)$
+\usepackage[$natbiboptions$]{natbib}
+$endif$
 \usepackage{textcomp}
 \usepackage[hyphens]{url} % not crucial - just used below for the URL
 \usepackage{hyperref}
@@ -139,12 +141,16 @@ $if(keywords)${\it Keywords:}$endif$ $for(keywords)$$keywords$$sep$, $endfor$
 
 $body$
 
-$if(biblio-style)$
-\bibliographystyle{$biblio-style$}
-$else$
-\bibliographystyle{agsm}
+$if(natbib)$
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plain$endif$}
+$if(bibliography)$
+$if(biblio-title)$
+\renewcommand\refname{$biblio-title$}
+$endif$
 $endif$
 \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+
+$endif$
 
 $for(include-after)$
 $include-after$
