@@ -1,5 +1,10 @@
 # rticles (development version)
 
+- Update to the `asa_article()` format (thanks, @ianmtaylor1 #506, @jepusto, #507):
+    - Better support for `natbib` to tweak option and biblio-style using Pandoc's variables
+    - Update to template following the guidelines
+    - Better support for links in template to be closer to guidelines
+
 # rticles 0.24
 
 ## NEW FEATURES
