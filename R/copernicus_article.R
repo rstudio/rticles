@@ -113,6 +113,7 @@ copernicus_journals <- list(
   "Scientific Drilling" = "sd",
   "SOIL" = "soil",
   "Solid Earth" = "se",
+  "State of the Planet" = "sp",
   "The Cryosphere" = "tc",
   "Web Ecology" = "we",
   "Weather and Climate Dynamics" = "wcd",
