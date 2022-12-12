@@ -1,9 +1,15 @@
 # rticles (development version)
 
+## MINOR CHANGES
+
 - Update to the `asa_article()` format (thanks, @ianmtaylor1 #506, @jepusto, #507):
     - Better support for `natbib` to tweak option and biblio-style using Pandoc's variables
     - Update to template following the guidelines
     - Better support for links in template to be closer to guidelines
+    
+## BUG FIXES
+
+- Template internal change: `lineno` CTAN package is now loaded after `amsmath` in `peerj_article()`, `elsevier_article()` and `mdpi_article()` because of a conflict with last version of `lineno` (thanks, @bischrob, #513). 
 
 # rticles 0.24
 
