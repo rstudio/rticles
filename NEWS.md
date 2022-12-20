@@ -5,7 +5,7 @@
     - Update to template following the guidelines
     - Better support for links in template to be closer to guidelines
 
-- Update Copernicus Publications template to version 6.9 from 2022-09-26 (@RLumSK, #508)
+- Update Copernicus Publications template to version 7.1 from 2022-12-06 (@RLumSK, #508)
 
 # rticles 0.24
 
