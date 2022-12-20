@@ -8,17 +8,18 @@ $if(journal)$
   \journal{$journal$} % Sets Journal name
 $endif$
 
-\usepackage{lineno} % add
-$if(linenumbers)$
-  \linenumbers % turns line numbering on
-$endif$
-
 \usepackage{graphicx}
 %%%%%%%%%%%%%%%% end my additions to header
 
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
+% TODO: Currently lineno needs to be loaded after amsmath because of conflict
+% https://github.com/latex-lineno/lineno/issues/5
+\usepackage{lineno} % add
+$if(linenumbers)$
+  \linenumbers % turns line numbering on
+$endif$
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
 % use upquote if available, for straight quotes in verbatim environments
