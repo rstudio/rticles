@@ -445,12 +445,16 @@ The text continues here.
 
 # Discussion
 
-Authors should discuss the results and how they can be interpreted in perspective of previous studies and of the working hypotheses. The findings and their implications should be discussed in the broadest context possible. Future research directions may also be highlighted.
+Authors should discuss the results and how they can be interpreted in 
+perspective of previous studies and of the working hypotheses. The findings and 
+their implications should be discussed in the broadest context possible. Future 
+research directions may also be highlighted.
 
 # Conclusion
 
-This section is not mandatory, but can be added to the manuscript if the discussion is unusually long or complex.
+This section is not mandatory, but can be added to the manuscript if the
+discussion is unusually long or complex.
 
 # Patents
 
-This section is not mandatory, but may be added if there are patents resulting from the work reported in this manuscript.
+This section is not mandatory, but may be added if there are patents resulting
