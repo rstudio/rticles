@@ -458,3 +458,4 @@ discussion is unusually long or complex.
 # Patents
 
 This section is not mandatory, but may be added if there are patents resulting
+from the work reported in this manuscript.
