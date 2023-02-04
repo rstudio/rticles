@@ -400,26 +400,47 @@ knitr::kable(df, format = "latex",
 
 \finishlandscape
 
+## Formatting of Mathematical Components
 
 This is an example of an equation:
 
 \begin{equation}
-\mathbb{S}
+a = 1,
 \end{equation}
+
+the text following an equation need not be a new paragraph. Please punctuate 
+equations as regular text.
+
 <!-- If the documentclass option "submit" is chosen, please insert a blank line before and after any math environment (equation and eqnarray environments). This ensures correct linenumbering. The blank line should be removed when the documentclass option is changed to "accept" because the text following an equation should not be a new paragraph. -->
 
-<!-- Please punctuate equations as regular text. Theorem-type environments (including propositions, lemmas, corollaries etc.) can be formatted as follows: -->
+This is the example 2 of equation:
+
+
+\begin{adjustwidth}{-\extralength}{0cm}
+\begin{equation}
+a = b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + 
+u + v + w + x + y + z
+\end{equation}
+\end{adjustwidth}
+
+Theorem-type environments (including propositions, lemmas, corollaries etc.) 
+can be formatted as follows:
+
 Example of a theorem:
-\begin{Theorem}
-Example text of a theorem.
-\end{Theorem}
+
+::: {.Theorem latex=true}
+Example text of a theorem
+:::
 
 The text continues here. Proofs must be formatted as follows:
 
 Example of a proof:
-\begin{proof}[Proof of Theorem 1]
-Text of the proof. Note that the phrase `of Theorem 1' is optional if it is clear which theorem is being referred to.
-\end{proof}
+
+::: {.proof latex="[Proof of Theorem1]"}
+Text of the proof. Note that the phrase ``of Theorem 1'' is optional if it is 
+clear which theorem is being referred to.
+:::
+
 The text continues here.
 
 # Discussion
