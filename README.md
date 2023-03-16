@@ -12,7 +12,7 @@ coverage](https://codecov.io/gh/rstudio/rticles/branch/main/graph/badge.svg)](ht
 
 <!-- badges: end -->
 
-# rticles <img src="man/figures/logo.png" align="right" height="138.5"/>
+# rticles <a href="https://pkgs.rstudio.com/rticles/"><img src="man/figures/logo.png" align="right" height="138"/></a>
 
 The **rticles** package provides a suite of custom [R
 Markdown](https://rmarkdown.rstudio.com) LaTeX formats and templates for
@@ -45,8 +45,12 @@ To use **rticles** from RStudio, you can access the templates through
 `File -> New File -> R Markdown`. This will open the dialog box where
 you can select from one of the available templates:
 
-![New R
-Markdown](https://bookdown.org/yihui/rmarkdown/images/rticles-templates.png)
+<figure>
+<img
+src="https://bookdown.org/yihui/rmarkdown/images/rticles-templates.png"
+alt="New R Markdown" />
+<figcaption aria-hidden="true">New R Markdown</figcaption>
+</figure>
 
 If you are not using RStudio, you’ll also need to install
 [Pandoc](https://pandoc.org) following these
