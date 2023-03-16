@@ -8,7 +8,7 @@ Authors@R: c(
            comment = c(ORCID = "0000-0003-0645-5666")),
     person("Christophe", "Dervieux", , "cderv@posit.co", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-4474-2498")),
-    person(, "RStudio", role = c("cph", "fnd")),
+    person(given = "Posit Software, PBC", role = c("cph", "fnd")),
     person(, "R Foundation", role = c("aut", "cph")),
     person("Hadley", "Wickham", , "hadley@posit.co", role = "aut"),
     person(, "Journal of Statistical Software", role = c("aut", "cph")),

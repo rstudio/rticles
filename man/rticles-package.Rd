@@ -67,7 +67,7 @@ Authors:
 
 Other contributors:
 \itemize{
-  \item  RStudio [copyright holder, funder]
+  \item Posit Software, PBC [copyright holder, funder]
   \item Alfredo Hernández \email{aldomann.designs@gmail.com} (\href{https://orcid.org/0000-0002-2660-4545}{ORCID}) [contributor]
   \item Stefano Coretta \email{stefano.coretta@gmail.com} (\href{https://orcid.org/0000-0001-9627-5532}{ORCID}) (stefanocoretta) [contributor]
   \item Greg Macfarlane \email{gregmacfarlane@gmail.com} (gregmacfarlane) [contributor]
