@@ -19,14 +19,14 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Christophe Dervieux \email{cderv@rstudio.com} (\href{https://orcid.org/0000-0003-4474-2498}{ORCID})
+\strong{Maintainer}: Christophe Dervieux \email{cderv@posit.co} (\href{https://orcid.org/0000-0003-4474-2498}{ORCID})
 
 Authors:
 \itemize{
-  \item JJ Allaire \email{jj@rstudio.com}
+  \item JJ Allaire \email{jj@posit.co}
   \item Yihui Xie \email{xie@yihui.name} (\href{https://orcid.org/0000-0003-0645-5666}{ORCID})
   \item  R Foundation [copyright holder]
-  \item Hadley Wickham \email{hadley@rstudio.com}
+  \item Hadley Wickham \email{hadley@posit.co}
   \item  Journal of Statistical Software [copyright holder]
   \item Ramnath  Vaidyanathan \email{ramnath.vaidya@gmail.com} [copyright holder]
   \item  Association for Computing Machinery [copyright holder]
