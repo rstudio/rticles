@@ -11,7 +11,7 @@
 
 - Template internal change: `lineno` CTAN package is now loaded after `amsmath` in `peerj_article()`, `elsevier_article()` and `mdpi_article()` because of a conflict with last version of `lineno` (thanks, @bischrob, #513). 
 
-- Update Copernicus Publications template to version 7.3 from 2023-03-17 (@RLumSK, #508, #514, ##519)
+- Update Copernicus Publications template to version 7.3 from 2023-03-17 (@RLumSK, #508, #514, #519)
 
 # rticles 0.24
 
