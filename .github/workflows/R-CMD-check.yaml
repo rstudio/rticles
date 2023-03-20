@@ -112,7 +112,7 @@ jobs:
           upload-snapshots: true
 
       - name: Test coverage
-        if: success() && runner.os == 'Linux' && matrix.config.r == 'release' && matrix.config.pandoc == '2.7.3'
+        if: success() && runner.os == 'Linux' && matrix.config.r == 'release' && matrix.config.pandoc == '2.19.2'
         run: |
           pak::pkg_install('covr')
           covr::codecov()
