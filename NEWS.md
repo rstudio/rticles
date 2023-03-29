@@ -2,6 +2,8 @@
 
 ## MINOR CHANGES
 
+- Update `RJournal.sty` to latest version to support number sections (thanks, @zeileis, #517).
+
 - Update to the `asa_article()` format (thanks, @ianmtaylor1 #506, @jepusto, #507):
     - Better support for `natbib` to tweak option and biblio-style using Pandoc's variables
     - Update to template following the guidelines
