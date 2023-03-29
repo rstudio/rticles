@@ -223,6 +223,29 @@ glossa_article <- function(..., keep_tex = TRUE, latex_engine = "xelatex") {
   format
 }
 
+#' @section `glossapx_article`: Format for creating submissions to Glossa: a
+#'   journal of general linguistics. Author Guidelines are available on
+#'   [www.glossa-journal.org](https://www.glossa-journal.org/site/author-guidelines/).
+#'    Template is adapted from <https://github.com/guidovw/Glossalatex>.
+#' @export
+#' @rdname article
+glossapx_article <- function(..., keep_tex = TRUE, latex_engine = "xelatex") {
+  format <- pdf_document_format(
+    "glossa",
+    keep_tex = keep_tex, latex_engine = latex_engine, ...
+  )
+  if (tinytex::is_tinytex() && tinytex::check_installed("microtype")) {
+    # TODO: known conflict - remove when fixed
+    tinytex::tlmgr_remove("microtype")
+    fun <- format$on_exit
+    format$on_exit <- function() {
+      if (is.function(fun)) fun()
+      if (!tinytex::check_installed("microtype")) tinytex::tlmgr_install("microtype")
+    }
+  }
+  format
+}
+
 #' @param journal one of `"aoas"`, `"aap"`, `"aop"`, `"aos"`, `"sts"` for `ims_article`
 #' @section `ims_article`: Format for creating submissions to the Institute of Mathematical Statistics
 #' [IMS](https://imstat.org/) journals and publications. Adapted from
