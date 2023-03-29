@@ -77,4 +77,5 @@ test_format("sim")
 test_format("springer")
 test_format("tf")
 test_format("trb")
-test_format("wellcomeor")
+# Deactivate because of https://github.com/rstudio/rticles/issues/523
+# test_format("wellcomeor")
