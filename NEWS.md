@@ -2,7 +2,7 @@
 
 ## BREAKING CHANGES
 
-- `ajs_article()` requires Pandoc 2.7+ 
+- `ajs_article()` and `jss_article()` require Pandoc 2.7+ (possibly required by some changes in `jss.cls`)
 
 ## MINOR CHANGES
 
