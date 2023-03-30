@@ -19,7 +19,13 @@ author:
     footnote: 2
 address:
   - code: Some Institute of Technology
-    address: Department, Street, City, State, Zip
+    address: 
+      organization: Big Wig University
+      addressline: 1 main street
+      city: Gotham
+      state: State
+      postcode: 123456
+      country: United States
   - code: Another University
     address: Department, Street, City, State, Zip
 footnote:

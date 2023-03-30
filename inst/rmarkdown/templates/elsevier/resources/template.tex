@@ -198,7 +198,14 @@ $endfor$
   $if(author.email)$ \ead{$author.email$} $endif$
   $endfor$
   $for(address)$
-  \affiliation[$address.code$]{$address.address$}
+  \affiliation[$address.code$]{$if(address.address)$$address.address$$else$
+    $if(address.organization)$organization={$address.organization$},$endif$
+    $if(address.addressline)$addressline={$address.addressline$},$endif$
+    $if(address.city)$city={$address.city$},$endif$
+    $if(address.postcode)$postcode={$address.postcode$},$endif$
+    $if(address.state)$state={$address.state$},$endif$
+    $if(address.country)$country={$address.country$},$endif$
+    $endif$}
   $endfor$
   \cortext[cor1]{Corresponding author}
   $for(footnote)$
