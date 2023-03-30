@@ -6,6 +6,8 @@
 
 ## MINOR CHANGES
 
+- Improve `elsevier_article()` affilliations for authors by supporting same fields as in official template. This also fix address with comma not showing (thanks, @gjpstrain, @mps9506, #509).
+
 - Update `RJournal.sty` to latest version to support number sections (thanks, @zeileis, #517).
 
 - Update to the `asa_article()` format (thanks, @ianmtaylor1 #506, @jepusto, #507):
