@@ -1,5 +1,9 @@
 # rticles (development version)
 
+## BREAKING CHANGES
+
+- `ajs_article()` requires Pandoc 2.7+ 
+
 ## MINOR CHANGES
 
 - Update `RJournal.sty` to latest version to support number sections (thanks, @zeileis, #517).
