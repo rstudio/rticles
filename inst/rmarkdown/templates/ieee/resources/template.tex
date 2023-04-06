@@ -459,29 +459,19 @@ $if(affiliation)$
 %% ---- classic IEEETrans wide authors' list ----------------
 $if(affiliation.wide)$
 \IEEEauthorblockN{
-$if(affiliation.author)$
-$for(affiliation.author)$
-$affiliation.author.name$$for(affiliation.author.mark)$\IEEEauthorrefmark{$affiliation.author.mark$}$endfor$$sep$,
-$endfor$
-$else$ $-- else affiliation.author
-$if(affiliation.author_multiline)$
-$for(affiliation.author_multiline)$
+$if(affiliation.author)$$for(affiliation.author)$
+$affiliation.author.name$$for(affiliation.author.mark)$\IEEEauthorrefmark{$affiliation.author.mark$}$endfor$$sep$,$endfor$
+$else$%% $-- else affiliation.author
+$if(affiliation.author_multiline)$$for(affiliation.author_multiline)$
 $for(affiliation.author_multiline.line)$
-$affiliation.author_multiline.line.name$\IEEEauthorrefmark{$affiliation.author_multiline.line.mark$}
-$sep$,
-$endfor$ $-- end affiliation.author_multiline.line
-$sep$}\IEEEauthorblockN{
-$endfor$ $-- end affiliation.author_multiline
-$else$ $-- else affiliation.author_multiline
-$for(affiliation.institution)$ %% -- beg for/affiliation.institution
-$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
-$affiliation.institution.author.name$\IEEEauthorrefmark{$affiliation.institution.mark$}
-$sep$,
-$endfor$ $-- end for/affiliation.institution.author
-$sep$,
-$endfor$ $-- end for/affiliation.institution
-$endif$ $-- end affiliation.author_multiline
-$endif$ $-- end affiliation.author
+$affiliation.author_multiline.line.name$$for(affiliation.author_multiline.line.mark)$\IEEEauthorrefmark{$affiliation.author_multiline.line.mark$}$endfor$$sep$,
+$endfor$$-- end affiliation.author_multiline.line
+$sep$}
+\IEEEauthorblockN{
+$endfor$$else$%%$-- end for affiliation.author_multiline and else affiliation.author_multiline
+$for(affiliation.institution)$$for(affiliation.institution.author)$
+$affiliation.institution.author.name$\IEEEauthorrefmark{$affiliation.institution.mark$}$sep$,$endfor$$-- end for/affiliation.institution.author
+$sep$,$endfor$$endif$$endif$%%$-- end for/affiliation.institution and end if affiliation.author_multiline and affiliation.author
 }
 
 $for(affiliation.institution)$
@@ -495,11 +485,8 @@ $if(affiliation.institution.email)$
 \\ $affiliation.institution.email$
 $endif$
 }
-$endfor$ $-- end for/affiliation.institution
-$endif$ $-- end affiliation.wide
+$endfor$$endif$$-- end for/affiliation.institution and end if affiliation.wide
 %% ----------------------------------------------------------
-
-
 
 %% ---- classic IEEETrans one column per institution --------
 $if(affiliation.institution-columnar)$ %% -- beg if/affiliation.institution-columnar
