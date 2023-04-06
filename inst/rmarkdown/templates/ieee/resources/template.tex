@@ -461,7 +461,7 @@ $if(affiliation.wide)$
 \IEEEauthorblockN{
 $if(affiliation.author)$
 $for(affiliation.author)$
-$affiliation.author.name$\IEEEauthorrefmark{$affiliation.author.mark$}$sep$,
+$affiliation.author.name$$for(affiliation.author.mark)$\IEEEauthorrefmark{$affiliation.author.mark$}$endfor$$sep$,
 $endfor$
 $else$ $-- else affiliation.author
 $if(affiliation.author_multiline)$
