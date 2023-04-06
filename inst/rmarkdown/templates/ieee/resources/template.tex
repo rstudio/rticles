@@ -463,28 +463,28 @@ $if(affiliation.author)$
 $for(affiliation.author)$
 $affiliation.author.name$\IEEEauthorrefmark{$affiliation.author.mark$}$sep$,
 $endfor$
-$else$
+$else$ $-- else affiliation.author
 $if(affiliation.author_multiline)$
 $for(affiliation.author_multiline)$
 $for(affiliation.author_multiline.line)$
 $affiliation.author_multiline.line.name$\IEEEauthorrefmark{$affiliation.author_multiline.line.mark$}
 $sep$,
-$endfor$
+$endfor$ $-- end affiliation.author_multiline.line
 $sep$}\IEEEauthorblockN{
-$endfor$
-$else$
+$endfor$ $-- end affiliation.author_multiline
+$else$ $-- else affiliation.author_multiline
 $for(affiliation.institution)$ %% -- beg for/affiliation.institution
 $for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
 $affiliation.institution.author.name$\IEEEauthorrefmark{$affiliation.institution.mark$}
 $sep$,
-$endfor$ %% -- end for/affiliation.institution.author
+$endfor$ $-- end for/affiliation.institution.author
 $sep$,
-$endfor$ %% -- end for/affiliation.institution
-$endif$
-$endif$
+$endfor$ $-- end for/affiliation.institution
+$endif$ $-- end affiliation.author_multiline
+$endif$ $-- end affiliation.author
 }
 
-$for(affiliation.institution)$ %% -- beg for/affiliation.institution
+$for(affiliation.institution)$
 \IEEEauthorblockA{\IEEEauthorrefmark{$affiliation.institution.mark$}
 $if(affiliation.institution.department)$
 $affiliation.institution.department$\\
@@ -495,8 +495,8 @@ $if(affiliation.institution.email)$
 \\ $affiliation.institution.email$
 $endif$
 }
-$endfor$ %% -- end for/affiliation.institution
-$endif$ % -- end affiliation.wide
+$endfor$ $-- end for/affiliation.institution
+$endif$ $-- end affiliation.wide
 %% ----------------------------------------------------------
 
 
