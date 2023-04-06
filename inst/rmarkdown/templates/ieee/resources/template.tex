@@ -489,31 +489,19 @@ $endfor$$endif$$-- end for/affiliation.institution and end if affiliation.wide
 %% ----------------------------------------------------------
 
 %% ---- classic IEEETrans one column per institution --------
-$if(affiliation.institution-columnar)$ %% -- beg if/affiliation.institution-columnar
+$if(affiliation.institution-columnar)$
 $for(affiliation.institution)$
-\IEEEauthorblockN{
-$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
-$affiliation.institution.author.name$$sep$,
-$endfor$ %% -- end for/affiliation.institution.author
-}
-\IEEEauthorblockA{$if(affiliation.institution.department)$
-$affiliation.institution.department$\\
-$endif$
+\IEEEauthorblockN{$for(affiliation.institution.author)$$affiliation.institution.author.name$$sep$, $endfor$}
+\IEEEauthorblockA{
+$if(affiliation.institution.department)$$affiliation.institution.department$\\$endif$%%
 $affiliation.institution.name$\\
 $affiliation.institution.location$
-$if(affiliation.institution.email)$
-\\$affiliation.institution.email$
-$else$
-$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
-$if(affiliation.institution.author.email)$
-\\$affiliation.institution.author.email$
-$endif$
-$endfor$ %% -- end for/affiliation.institution.author
-$endif$
+$if(affiliation.institution.email)$\\$affiliation.institution.email$$else$$for(affiliation.institution.author)$$if(affiliation.institution.author.email)$\\$affiliation.institution.author.email$$endif$$endfor$%%
+$endif$%%$-- end for/affiliation.institution.author
 }
 $sep$\and
-$endfor$ %% -- end for/affiliation.institution
-$endif$ %% -- end if/affiliation.institution-columnar
+$endfor$ %%$-- end for/affiliation.institution
+$endif$ %%$-- end if/affiliation.institution-columnar
 %% ----------------------------------------------------------
 
 
