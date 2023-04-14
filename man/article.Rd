@@ -16,6 +16,7 @@
 \alias{elsevier_article}
 \alias{frontiers_article}
 \alias{glossa_article}
+\alias{glossapx_article}
 \alias{ims_article}
 \alias{informs_article}
 \alias{iop_article}
@@ -89,6 +90,8 @@ elsevier_article(
 frontiers_article(..., keep_tex = TRUE)
 
 glossa_article(..., keep_tex = TRUE, latex_engine = "xelatex")
+
+glossapx_article(..., keep_tex = TRUE, latex_engine = "xelatex")
 
 ims_article(
   journal = c("aoas", "aap", "aop", "aos", "sts"),
@@ -263,6 +266,12 @@ articles. Adapted from
 journal of general linguistics. Author Guidelines are available on
 \href{https://www.glossa-journal.org/site/author-guidelines/}{www.glossa-journal.org}.
 Template is adapted from \url{https://github.com/guidovw/Glossalatex}.
+}
+
+\section{\code{glossapx_article}}{
+ Format for creating submissions to Glossa Psycholinguistics.
+Submission structure from \url{https://escholarship.org/uc/glossapsycholinguistics/structure_of_submission}
+Template is adapted from the Glossa rticles template.
 }
 
 \section{\code{ims_article}}{

@@ -48,6 +48,7 @@ test_format("ctex", skip = !xfun::is_linux()) # only on linux due to fonts requi
 test_format("elsevier", skip = !rmarkdown::pandoc_available("2.10"))
 test_format("frontiers")
 test_format("glossa")
+test_format("glossapx")
 test_format("ieee")
 test_format("ims")
 test_format("ims", output_options = list(journal = "aap"))

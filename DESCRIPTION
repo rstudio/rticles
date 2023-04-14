@@ -79,7 +79,9 @@ Authors@R: c(
     person("Dmytro", "Perepolkin", , "dperepolkin@gmail.com", role = "ctb",
            comment = c(ORCID = "0000-0001-8558-6183", github = "dmi3kno")),
     person("Tom", "Palmer", , "remlapmot@hotmail.com", role = "ctb",
-           comment = c(ORCID = "0000-0003-4655-4511", github = "remlapmot"))
+           comment = c(ORCID = "0000-0003-4655-4511", github = "remlapmot")),
+    person("Veronica", "Boyce", , "vero.boyce@gmail.com", role="ctb",
+          comment=c(ORCID = "0000-0002-8890-2775", github= "vboyce"))
   )
 Description: A suite of custom R Markdown formats and templates for
     authoring journal articles and conference submissions.

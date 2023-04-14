@@ -223,10 +223,9 @@ glossa_article <- function(..., keep_tex = TRUE, latex_engine = "xelatex") {
   format
 }
 
-#' @section `glossapx_article`: Format for creating submissions to Glossa: a
-#'   journal of general linguistics. Author Guidelines are available on
-#'   [www.glossa-journal.org](https://www.glossa-journal.org/site/author-guidelines/).
-#'    Template is adapted from <https://github.com/guidovw/Glossalatex>.
+#' @section `glossapx_article`: Format for creating submissions to Glossa Psycholinguistics.
+#' Submission structure from <https://escholarship.org/uc/glossapsycholinguistics/structure_of_submission>
+#'    Template is adapted from the Glossa rticles template.
 #' @export
 #' @rdname article
 glossapx_article <- function(..., keep_tex = TRUE, latex_engine = "xelatex") {

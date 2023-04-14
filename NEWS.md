@@ -1,5 +1,9 @@
 # rticles (development version)
 
+## NEW FEATURES
+
+- New `glossapx_article()` template for submissions to Glossa Psycholinguistics 
+
 ## MINOR CHANGES
 
 - Update to the `asa_article()` format (thanks, @ianmtaylor1 #506, @jepusto, #507):
