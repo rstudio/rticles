@@ -69,9 +69,95 @@ The names of all authors, affiliations, contact details, biography (optional) an
 
 The body of the submission should be structured in a logical and easy to follow manner. The text must follow the instructions in Glossa Psycholinguistics' Style sheet: See the Style Sheet below. Double-spacing is not required and tables and figures should be placed in the appropriate locations in the text.
 
-## Subheading
+# Style sheet
+Here is some of the glossa style sheet. For the full information, see https://escholarship.org/uc/glossapsycholinguistics/structure_of_submission. 
 
-You can have subheadings too!
+## Parts of the text
+The title should not contain any capitalization, apart from the first word and words that require capitals in all contexts. The title is followed by the first and last name of the author(s), their affiliation, and e-mail. First names should not include only initials. To ensure double-blind review, any information identifying the author(s) should be removed from the text as long as it is under review.
+
+Articles are preceded by an abstract of no more than 300 words and up to six keywords. The Abstract and Keywords should also be added to the metadata when making the initial online submission.
+
+Articles are subdivided into numbered sections (and possibly subsections, numbered 1.1 etc., and subsubsections, numbered 1.1.1 etc.), with a bold-faced heading in each case. The numbering always begins with 1, not 0. Section headings end with a period; subsection headings do not. Neither type of heading has any special capitalization.
+
+The conclusion is the last numbered section. It may be followed by several unnumbered sections: Abbreviations, Data Accessibility Statement, Ethics and consent, Acknowledgements, Competing Interests, and Authors' contributions, in this order. Of these, only the Abbreviations and Acknowledgments sections are optional. If your paper contains glossed examples, the Abbreviations section. Consult the Glossa website for more information. The last part is the list of bibliographical references (References). For the style of references, see below.
+
+## Numbered examples and formulae
+Examples from languages other than English must be glossed (with word-by-word alignment) and translated (cf. the Leipzig Glossing Rules recommended as basic guidelines here: http://www.eva.mpg.de/lingua/resources/glossing-rules.php). Example numbers are enclosed in parentheses, and left-aligned. Example sentences usually have normal capitalization at the beginning and normal punctuation. The gloss line has no capitalization and no punctuation.
+
+When the example is not a complete sentence, there is no capitalization and no full stop at the end. If the name of the language is added, the source of the example, or any extra information, this information must be added on an extra first line of the example (with the name of the language in italics). Do not use italics to emphasize any language material in numbered example sentences. Instead, please use bold face to indicate emphasis on particular parts of a numbered example.
+
+Ungrammatical examples can be given a parenthesized idiomatic translation. A literal translation may be given in parentheses after the idiomatic translation.
+
+The use of any nonstandard layout in examples beyond what is illustrated above is strongly discouraged, as this will increase production time (and cost) of your paper, as well as increase the chances of the HTML version format including errors in some browsers/screen sizes. If you feel an example needs additional explanation, try as much as possible to provide this in the text that goes with the example. If nonstandard layout is essential then please raise this with the editorial team to discuss the options available.
+
+Formulae must be proofed carefully by the author(s). Editors will not edit formulae. If special software has been used to create formulae, the way it is laid out is the way they will appear in the publication.
+
+## In-text citations of language material
+For numbered examples, italics are reserved only for the name of the language as in (2) above. However, any in-text reference to a form in an object language should be presented in italics, with its meaning or translation in single quotes. For example: 
+
+The Mandarin long-distance reflexive ziji 'self' may take antecedents outside of the local clause.
+
+## Use of footnotes/endnotes
+Use footnotes rather than endnotes (we refer to these as "Notes" in the online publication). These will appear at the bottom of each page. All notes should be used only where crucial clarifying information needs to be conveyed.^[I'm a footnote.]
+
+Avoid using notes for purposes of referencing, with in-text citations used instead. If in-text citations cannot be used, a source can be cited as part of a note. Please insert the footnote marker after the end punctuation.[^1]
+
+The footnote reference number normally follows a period or a comma, though exceptionally it may follow an individual word. Footnote numbers start with 1. Examples in footnotes have the numbers (i), (ii), etc.
+
+
+[^1]:I'm another footnote. 
+
+## Tables and figures
+
+
+
+You can cross reference Figures like Figure \@ref(fig:fig1) and Tables like Table \@ref(tab:tab1). 
+
+```{r fig1, fig.cap="I'm a figure caption. Note that I am below the figure and left-aligned."}
+
+x <- runif(10)
+y <- runif(10)
+
+plot(x,y)
+
+```
+
+```{r tab1}
+df <- data.frame(x=x, y=y)
+
+knitr::kable(df, caption="I'm a table caption. I go above the table.")
+
+```
+
+Tables and figures are treated as floats in typesetting. This means that their placement on the page will not necessarily be where you put it in your manuscript, as this may lead to large parts of the page ending up white (e.g. when a table or figure does not fit on the current page anymore and wraps onto the following page). For this reason, you must always refer to tables and figures in the running text (e.g. “… as shown in Table 1”). Do not refer to tables and figures using the words "following', "below" or "above", as the final placement of your table or figure may be different from where you placed them in your manuscript.
+
+Tables and figures are numbered consecutively. Each table and each figure has a caption. The caption is placed below figures, but above tables, with only the figure or table number in bold. The caption ends in a full stop.
+
+All figures must be uploaded separately as supplementary files once the paper is accepted, if possible in colour and at a resolution of at least 300dpi. No file should be larger than 20MB. Standard formats accepted are: jpg, tiff, gif, png, eps. For line drawings, please provide the original vector file (e.g. .ai, or .eps).
+
+Tables must be created using a word processor's table function, not tabbed text. Tables should be included in the manuscript.
+
+Tables should not include:
+
+- Rotated text
+- Color to denote meaning (it will not display the same on all devices)
+- Images
+- Diagonal lines
+- Multiple parts (e.g. "Table 1a" and "Table 1b"). These should either be merged into one table, or separated into "Table 1" and "Table 2".
+
+If there are more columns than can fit on a single page, the table will be rotated by 90 degrees to fit on the page. Do not use tables that cannot fit onto a single page.
+
+Tree diagrams should be treated as examples, not as figures. If your figure or tree diagram includes text, then for the best match with the typeset text use the font Charis Sil, or Fira Sans. These fonts also support the International Phonetical Alphabet (IPA) symbols.
+
+## In-text citations
+In-text citations should be formatted according to APA style, 7th edition. For details, see the APA Publication Manual, 7th Edition. A useful summary can be found here. 
+
+## References
+Please ensure that all in-text citations in the text have a corresponding entry in the reference list. References should be formatted according to the APA Publication Manual, 7th Edition. For more information, please consult this website.  APA style (7th edition) for Zotero is available at American Psychological Association 7th edition.
+
+You can cite things like @tanenhaus1995. 
+
+
 
 # Abbreviations (optional) {.unnumbered}
 
@@ -99,7 +185,7 @@ Please add a short paragraph detailing the roles that each author held with rega
 
 \newpage
 
-# References
+# References {.unnumbered}
 
 \begingroup
 \setlength{\parindent}{-0.5in}
