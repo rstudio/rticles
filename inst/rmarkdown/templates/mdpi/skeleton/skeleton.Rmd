@@ -138,7 +138,7 @@ output: rticles::mdpi_article
 
 # Version
 
-This Rmd-skeleton uses the mdpi Latex template published 2022-03-25. 
+This Rmd-skeleton uses the mdpi Latex template published 2023-03-25. 
 However, the official template gets more frequently updated than the 'rticles'
 package. Therefore, please make sure prior to paper submission, that you're 
 using the most recent .cls, .tex and .bst files 
