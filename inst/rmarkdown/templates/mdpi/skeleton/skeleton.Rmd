@@ -28,13 +28,11 @@ secondnote: |
   These authors contributed equally to this work.
 correspondence: |
   leutnant@fh-muenster.de; Tel.: +XX-000-00-0000.
-# class options
-classoption:
-  - notspecified #first option is the journal name
-  - article #second option is the type of manuscript
-  - submit #do not change
-  - moreauthors #change to oneauthor for single author papers
-  - pdftex #remove if compiling with XeLaTeX
+# document options
+journal: notspecified
+type: article
+status: submit
+multipleauthors: true
 # front matter
 simplesummary: |
   A Simple summary goes here.
