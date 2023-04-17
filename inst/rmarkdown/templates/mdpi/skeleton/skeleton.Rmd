@@ -133,9 +133,7 @@ abbreviations:
 bibliography: mybibfile.bib
 appendix: appendix.tex
 endnotes: false
-output: 
-  rticles::mdpi_article:
-    latex_engine: pdflatex #pdflatex or XeLaTeX allowed
+output: rticles::mdpi_article
 ---
 
 # Version

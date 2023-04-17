@@ -3,11 +3,9 @@
 
 %=================================================================
 % pandoc conditionals added to preserve backwards compatibility with previous versions of rticles
-$if(classoption)$
-\documentclass[$for(classoption)$$classoption$$sep$,$endfor$]{$cls$}
-$else$
-\documentclass[$journal$,$type$,$status$,moreauthor,pdftex]{$cls$}
-$endif$
+
+\documentclass[$journal$,$type$,$status$,$if(multipleauthors)$moreauthors$else$oneauthor$endif$$if(pdftex)$,pdftex$endif$]{$cls$}
+
 
 %% Some pieces required from the pandoc template
 \setlist[itemize]{leftmargin=*,labelsep=5.8mm}
