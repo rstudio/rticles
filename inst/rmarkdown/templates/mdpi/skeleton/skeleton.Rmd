@@ -28,11 +28,6 @@ secondnote: |
   These authors contributed equally to this work.
 correspondence: |
   leutnant@fh-muenster.de; Tel.: +XX-000-00-0000.
-# specify the mdpi cls and location of file
-# as of 2021 the template files are located in
-# a subdirectory and should be retained there 
-# since file locations are hard coded in the cls file.
-cls: '`r if(file.exists("mdpi.cls")) "mdpi" else "Definitions/mdpi"`'
 # class options
 classoption:
   - notspecified #first option is the journal name

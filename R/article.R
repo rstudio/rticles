@@ -366,10 +366,18 @@ jedm_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
 #'   from <https://www.mdpi.com/authors/latex>.
 #' @export
 #' @rdname article
+#' @importFrom rmarkdown pandoc_variable_arg
 mdpi_article <- function(..., keep_tex = TRUE) {
+
+  ## check location of mdpi.cls file (new versions are in subfolder)
+  ## to ensure compatibility with old versions
+  cls_loc <- if(file.exists("mdpi.cls")) "mdpi" else "Definitions/mdpi"
+
   pdf_document_format(
     "mdpi",
-    keep_tex = keep_tex, citation_package = "natbib", ...
+    keep_tex = keep_tex, citation_package = "natbib",
+    pandoc_args = c(pandoc_variable_arg("cls", cls_loc)),
+    ...
   )
 }
 
