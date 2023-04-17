@@ -438,7 +438,7 @@ FUNCTION {format.pdate}
     }
     {  month empty$
 	{ " " year * }
-	{ " " month * ", " * year *  }
+	{ " " month * " " * year *  }
       if$}
   if$
 }
@@ -915,12 +915,12 @@ FUNCTION {inproceedings}
 	{ organization publisher new.sentence.checkb
 	  organization output
 	  publisher output
-	  format.bdate "year" output.check
+	  format.pdate "year" output.check
 	}
-	{ after.item 'output.state :=
+	{ mid.sentence 'output.state :=
 	  organization output
-	  format.publisher.and.address output.nonnull
-      format.bdate "year" output.check
+	  address output.nonnull
+      format.pdate "year" output.check
       after.item 'output.state :=
 	}
       if$
@@ -1148,11 +1148,11 @@ FUNCTION {format.lab.names}
   s #1 "{vv~}{ll}" format.name$
   s num.names$ duplicate$
   #2 >
-    { pop$ " \em{et~al.}" * }
+    { pop$ " et~al." * }
     { #2 <
         'skip$
         { s #2 "{ff }{vv }{ll}{ jj}" format.name$ "others" =
-            { " \em{et~al.}" * }
+            { " et~al." * }
             { " and " * s #2 "{vv~}{ll}" format.name$ * }
           if$
         }

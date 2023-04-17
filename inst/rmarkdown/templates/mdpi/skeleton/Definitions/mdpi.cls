@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%	MDPI class for LaTeX files	 22 December 2022
+%%%%	MDPI class for LaTeX files	 25 March 2023
 %% %%	For any information please send an e-mail to:
 %% %%		latex@mdpi.com
 %% %%
@@ -21,7 +21,7 @@
 
 %% IDENTIFICATION
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{Definitions/mdpi}[22/12/2022 MDPI paper class]
+\ProvidesClass{Definitions/mdpi}[25/03/2023 MDPI paper class]
 
  %% PRELIMINARY DECLARATIONS
 \LoadClass[10pt,a4paper]{article}
@@ -1388,7 +1388,7 @@
 %% For text alignment in tables
 \renewcommand\tabularxcolumn[1]{m{#1}} % vertical centering
 \newcolumntype{C}{>{\centering\arraybackslash}X} % centered text in C columns
-
+\newcolumntype{L}{>{\raggedright\arraybackslash}X} % centered text in L columns
 
 %%%% Bullet lists
 \setitemize{topsep=3pt,parsep=0pt,itemsep=0pt,leftmargin=*,labelsep=5.5mm,align=parleft}
@@ -1522,8 +1522,8 @@
 \renewcommand\@biblabel[1]{#1.\hfill}
 \def\thebibliography#1{
 \emergencystretch 2em
-\section*{\@reftitle}
-\addcontentsline{toc}{section}{References}
+\titleformat {\section} [block] {\raggedright \fontsize{10}{10}\selectfont\bfseries} {} {0pt} {}
+\section{\@reftitle}
 \fontsize{9}{11}\selectfont
 \list{{\arabic{enumi}}}{\def\makelabel##1{\hss{##1}}
 \topsep=0\p@

@@ -1656,7 +1656,7 @@ FUNCTION {begin.bib}
     'skip$
     { preamble$ write$ newline$ }
   if$
-  "\begin{thebibliography}{}" write$ newline$
+  "\begin{thebibliography}{999}" write$ newline$
 }
 
 
