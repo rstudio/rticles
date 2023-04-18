@@ -380,7 +380,7 @@ mdpi_article <- function(..., keep_tex = TRUE, latex_engine = "pdflatex") {
                             output_dir) {
 
     if(length(metadata$author) > 1) {
-       return(pandoc_variable_arg("multipleauthors", "multipleauthors"))
+       return(pandoc_variable_arg("multipleauthors", "moreauthors"))
     } else {
       return(pandoc_variable_arg("multipleauthors", "oneauthor"))
     }
