@@ -378,7 +378,7 @@ mdpi_article <- function(..., keep_tex = TRUE, latex_engine = "pdflatex") {
   if(!latex_engine %in% c("pdflatex", "xelatex")) {
     stop("latex_engine must be one of 'pdflatex' or 'xelatex' when using the MDPI template.")
   }
-  ## if latex engine is pdflatex, class argument must be pdftex
+  ## if latex engine is pdflatex, mdpi class argument must be pdftex
   if(latex_engine == "pdflatex") {
     pandoc_args <- c(pandoc_args,
                      pandoc_variable_arg("pdftex", "pdftex"))
