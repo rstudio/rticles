@@ -96,17 +96,13 @@ $endfor$
 
 \title[$shorttitle$]{$title$}
 
-$if(author)$
 %% corresponding authors can be labeled by either \thanks or \footnote
 $for(author)$
 \author[$author.affiliation$]{$author.name$$if(author.email)$\thanks{Corresponding author. Email: $author.email$}$endif$}
 $endfor$
-$endif$
-$if(affiliation)$
 $for(affiliation)$
 \affil[$affiliation.id$]{$affiliation.institution$}
 $endfor$
-$endif$
 
 \begin{document}
 
