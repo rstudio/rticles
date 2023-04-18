@@ -395,6 +395,12 @@ knitr::kable(df, format = "latex",
 
 This is an example of an equation:
 
+$$
+a = 1.
+$$
+
+If you want numbered equations use Latex and wrap in the equation environment:
+
 \begin{equation}
 a = 1,
 \end{equation}
