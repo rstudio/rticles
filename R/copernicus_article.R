@@ -13,7 +13,7 @@
 #'
 #' An number of required and optional manuscript sections, e.g. `acknowledgements`, `competinginterests`, or `authorcontribution`, must be declared using the respective properties of the R Markdown header - see skeleton file.
 #'
-#' **Version:** Based on `copernicus_package.zip` in the version 6.7, 16 March 2022, using `copernicus.cls` in version 9.46, 25 March  2022.
+#' **Version:** Based on `copernicus_package.zip` in the version 7.3, 15 March 2023, using `copernicus.cls` in version 10.1.4, 5 December 2022.
 #'
 #' **Copernicus journal abbreviations:** You can use the function `copernicus_journal_abbreviations()` to get the journal abbreviation for all journals supported by the Copernicus article template.
 #'
@@ -77,6 +77,7 @@ copernicus_journals <- list(
   "Advances in Radio Science" = "ars",
   "Advances in Science and Research" = "asr",
   "Advances in Statistical Climatology, Meteorology and Oceanography" = "ascmo",
+  "Aerosol Research" = "ar",
   "Annales Geophysicae" = "angeo",
   "Archives Animal Breeding" = "aab",
   "Atmospheric Chemistry and Physics" = "acp",
@@ -84,7 +85,6 @@ copernicus_journals <- list(
   "Biogeosciences" = "bg",
   "Climate of the Past" = "cp",
   "DEUQUA Special Publications" = "deuquasp",
-  "Drinking Water Engineering and Science" = "dwes",
   "Earth Surface Dynamics" = "esurf",
   "Earth System Dynamics" = "esd",
   "Earth System Science Data" = "essd",
@@ -113,6 +113,7 @@ copernicus_journals <- list(
   "Scientific Drilling" = "sd",
   "SOIL" = "soil",
   "Solid Earth" = "se",
+  "State of the Planet" = "sp",
   "The Cryosphere" = "tc",
   "Web Ecology" = "we",
   "Weather and Climate Dynamics" = "wcd",

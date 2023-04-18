@@ -192,7 +192,7 @@ Machinery (ACM) articles. Adapted from
 \section{\code{acs_article}}{
  Format for creating an American Chemical Society
 (ACS) Journal articles. Adapted from
-\url{https://pubs.acs.org/page/4authors/submission/tex.html}.
+\verb{https://pubs.acs.org/page/4authors/submission/tex.html}
 }
 
 \section{\code{aea_article}}{
@@ -219,7 +219,7 @@ Society (AMS) Journal articles. Adapted from
 
 \section{\code{asa_article}}{
  This format was adapted from The American
-Statistican (TAS) format, but it should be fairly consistent across
+Statistician (TAS) format, but it should be fairly consistent across
 American Statistical Association (ASA) journals.
 }
 
@@ -398,7 +398,7 @@ Possible arguments for the YAML header are:
 \section{\code{sim_article}}{
  Format for creating submissions to Statistics in
 Medicine. Based on the official Statistics in Medicine
-\href{https://onlinelibrary.wiley.com/page/journal/10970258/homepage/la_tex_class_file.htm}{class}.
+at \verb{https://onlinelibrary.wiley.com/page/journal/10970258/homepage/la_tex_class_file.htm}.
 
 Possible arguments for the YAML header are:
 \itemize{

@@ -1,16 +1,16 @@
 Type: Package
 Package: rticles
 Title: Article Formats for R Markdown
-Version: 0.23.7
+Version: 0.24.8
 Authors@R: c(
-    person("JJ", "Allaire", , "jj@rstudio.com", role = "aut"),
+    person("JJ", "Allaire", , "jj@posit.co", role = "aut"),
     person("Yihui", "Xie", , "xie@yihui.name", role = "aut",
            comment = c(ORCID = "0000-0003-0645-5666")),
-    person("Christophe", "Dervieux", , "cderv@rstudio.com", role = c("aut", "cre"),
+    person("Christophe", "Dervieux", , "cderv@posit.co", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-4474-2498")),
-    person(, "RStudio", role = c("cph", "fnd")),
+    person(given = "Posit Software, PBC", role = c("cph", "fnd")),
     person(, "R Foundation", role = c("aut", "cph")),
-    person("Hadley", "Wickham", , "hadley@rstudio.com", role = "aut"),
+    person("Hadley", "Wickham", , "hadley@posit.co", role = "aut"),
     person(, "Journal of Statistical Software", role = c("aut", "cph")),
     person("Ramnath ", "Vaidyanathan", , "ramnath.vaidya@gmail.com", role = c("aut", "cph")),
     person(, "Association for Computing Machinery", role = c("aut", "cph")),
@@ -88,14 +88,14 @@ URL: https://github.com/rstudio/rticles
 BugReports: https://github.com/rstudio/rticles/issues
 Imports: 
     knitr (>= 1.30),
-    rmarkdown (>= 2.13.7),
+    rmarkdown (>= 2.14),
     tinytex (>= 0.30),
     utils,
     xfun,
     yaml
 Suggests: 
-    covr,
     bookdown,
+    covr,
     testit,
     testthat (>= 3.0.0),
     xtable
@@ -104,6 +104,5 @@ Config/Needs/website: magick, pdftools, gifski, tidyverse/tidytemplate,
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 SystemRequirements: GNU make
-Remotes: rstudio/rmarkdown

@@ -20,12 +20,14 @@
 \LoadClass{article}
 \RequirePackage{times}      % Loads the Times-Roman Fonts
 \RequirePackage{mathptmx}   % Loads the Times-Roman Math Fonts
+\RequirePackage{amsmath,amsfonts,amssymb}
+% TODO: Currently lineno needs to be loaded after amsmath because of conflict
+% https://github.com/latex-lineno/lineno/issues/5
 \RequirePackage{lineno}     % For numbering the lines if lineno option is given
 \if@peerjlineno\linenumbers\fi
 
 \RequirePackage{ifpdf}
 
-\RequirePackage{amsmath,amsfonts,amssymb}
 \RequirePackage{graphicx,xcolor}
 \RequirePackage{booktabs}
 \RequirePackage{authblk}
