@@ -4,7 +4,7 @@
 %=================================================================
 % pandoc conditionals added to preserve backwards compatibility with previous versions of rticles
 
-\documentclass[$journal$,$type$,$status$,$if(multipleauthors)$moreauthors$else$oneauthor$endif$$if(pdftex)$,pdftex$endif$]{$cls$}
+\documentclass[$journal$,$type$,$status$,$multipleauthors$$if(pdftex)$,pdftex$endif$]{$cls$}
 
 
 %% Some pieces required from the pandoc template

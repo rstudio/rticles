@@ -369,6 +369,23 @@ jedm_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
 #' @importFrom rmarkdown pandoc_variable_arg
 mdpi_article <- function(..., keep_tex = TRUE, latex_engine = "pdflatex") {
 
+
+  ## pre_processor checks if author metadata > 1 and uses moreauthors mdpi class
+  ## argument
+  pre_processor <- function(metadata,
+                            input_file,
+                            runtime,
+                            knit_meta,
+                            files_dir,
+                            output_dir) {
+
+    if(length(metadata$author) > 1) {
+       return(pandoc_variable_arg("multipleauthors", "multipleauthors"))
+    } else {
+      return(pandoc_variable_arg("multipleauthors", "oneauthor"))
+    }
+  }
+
   ## check location of mdpi.cls file (new versions are in subfolder)
   ## to ensure compatibility with old versions
   cls_loc <- if(file.exists("mdpi.cls")) "mdpi" else "Definitions/mdpi"
@@ -384,13 +401,15 @@ mdpi_article <- function(..., keep_tex = TRUE, latex_engine = "pdflatex") {
                      pandoc_variable_arg("pdftex", "pdftex"))
   }
 
-  pdf_document_format(
+  base <- pdf_document_format(
     "mdpi",
     keep_tex = keep_tex, citation_package = "natbib",
     latex_engine = latex_engine,
     pandoc_args = pandoc_args,
     ...
   )
+  base$pre_processor <- pre_processor
+  base
 }
 
 #' @section `mnras_article`: Format for creating an Monthly Notices of

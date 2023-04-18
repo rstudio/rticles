@@ -32,7 +32,6 @@ correspondence: |
 journal: notspecified
 type: article
 status: submit
-multipleauthors: true
 # front matter
 simplesummary: |
   A Simple summary goes here.
