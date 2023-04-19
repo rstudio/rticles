@@ -163,26 +163,30 @@ affiliation:
   - num: 1,..., n for each affiliation
     address: required
     email: required
-cls: Inlcuded in the YAML, but you probably don't want to change this.
+authorcitation: |
+  Lastname, F.
+correspondence: |
+  email@email.com; Tel.: +XX-000-00-0000.
+journal: notspecified
+type: article
+status: submit
 
 ```
 
-This template uses the mdpi document class that has a couple of arguments that 
-can be set with the following:
+Journal options are in Table \ref{tab:mdpinames}. The status variable should 
+generally not be changed by authors. The type variable describes 
+the type of of submission and defaults to `article` but can be replaced with:
 
 ```yaml
-
-classoption:
-  - notspecified #first option is the journal name
-  - article #second option is the type of manuscript
-  - submit #do not change
-  - moreauthors #change to oneauthor for single author papers
-  - pdflatex #other option is XeLaTeX
-
+abstract, addendum, article, book, bookreview, briefreport, 
+casereport, comment, commentary, communication, conferenceproceedings, 
+correction, conferencereport, entry, expressionofconcern, extendedabstract, 
+datadescriptor, editorial, essay, erratum, hypothesis, interestingimage, 
+obituary, opinion, projectreport, reply, retraction, review, perspective, 
+protocol, shortnote, studyprotocol, systematicreview, supfile, 
+technicalnote, viewpoint, guidelines, registeredreport, tutorial
 ```
 
-The first option specifies the journal you are submitting to. MDPI has many 
-journals, see Table \ref{tab:mdpinames} to find the appropriate short journal name.
 
 
 \startlandscape
@@ -214,25 +218,7 @@ knitr::kable(mdpi_journals,
 \finishlandscape
 
 
-The second option specifies the type of submission and defaults to `article` 
-but can be replaced with:
 
-```yaml
-abstract, addendum, article, book, bookreview, briefreport, 
-casereport, comment, commentary, communication, conferenceproceedings, 
-correction, conferencereport, entry, expressionofconcern, extendedabstract, 
-datadescriptor, editorial, essay, erratum, hypothesis, interestingimage, 
-obituary, opinion, projectreport, reply, retraction, review, perspective, 
-protocol, shortnote, studyprotocol, systematicreview, supfile, 
-technicalnote, viewpoint, guidelines, registeredreport, tutorial
-```
-
-The two remaining options that can be adjusted are `moreauthors` and `pdflatex`. 
-Single author submission should be changed to `oneauthor`. `pdftex` can be 
-changed to `xelatex` if needed.
-
-The remaining YAML header options can be edited, removed, or commented out as
-appropriate.
 
 # Introduction
 
@@ -255,8 +241,8 @@ To use endnotes, change `endnotes: true` in the YAML header, then use
 
 # Materials and Methods
 
-Materials and Methods should be described with sufficient details to allow o
-thers to replicate and build on published results. Please note that publication 
+Materials and Methods should be described with sufficient details to allow 
+others to replicate and build on published results. Please note that publication 
 of your manuscript implicates that you must make all materials, data, computer 
 code, and protocols associated with the publication available to readers. Please
 disclose at the submission stage any restrictions on the availability of 
