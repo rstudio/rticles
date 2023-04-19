@@ -122,7 +122,7 @@ lncs_article(..., keep_tex = TRUE, citation_package = c("default", "natbib"))
 
 jedm_article(..., keep_tex = TRUE, citation_package = "natbib")
 
-mdpi_article(..., keep_tex = TRUE)
+mdpi_article(..., keep_tex = TRUE, latex_engine = "pdflatex")
 
 mnras_article(..., keep_tex = TRUE, fig_caption = TRUE)
 
