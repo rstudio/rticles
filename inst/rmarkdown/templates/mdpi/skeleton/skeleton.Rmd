@@ -187,6 +187,52 @@ protocol, shortnote, studyprotocol, systematicreview, supfile,
 technicalnote, viewpoint, guidelines, registeredreport, tutorial
 ```
 
+## Journal Specific YAML variables
+
+```yaml
+# for journal Diversity,
+# add the Life Science Identifier using:
+lsid: http://zoobank.org/urn:lsid:zoobank.org:act:nnnn
+
+
+# for journal Applied Sciences
+# add featured application
+featuredapplication: |
+  Authors are encouraged to provide a concise 
+  description of the specific application or 
+  a potential application of the work. This 
+  section is not mandatory.
+
+# for the journal Data
+# add dataset doi and license
+dataset: https://doi.org/10.1000/182
+datasetlicense: CC-BY-4.0
+
+# for the journal Toxins
+# add key contributions
+keycontributions: |
+  The breakthroughs or highlights of the manuscript. 
+  Authors can write one or two sentences to describe 
+  the most important part of the paper.
+
+# for the journal Encyclopedia
+encyclopediadef: |
+  For entry manuscripts only: please provide a brief overview
+  of the entry title instead of an abstract.
+entrylink: The Link to this entry published on the encyclopedia platform.
+
+# for the journal Advances in Respiratory Medicine
+# add highlights
+addhighlights: |
+  This is an obligatory section in “Advances in Respiratory Medicine”, 
+  whose goal is to increase the discoverability and readability of the
+  article via search engines and other scholars. Highlights should not 
+  be a copy of the abstract, but a simple text allowing the reader to 
+  quickly and simplified find out what the article is about and what can 
+  be cited from it. Each of these parts should be devoted up to 2~bullet 
+  points.
+
+```
 
 
 \startlandscape
