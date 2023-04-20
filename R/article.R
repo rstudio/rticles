@@ -409,22 +409,6 @@ mdpi_article <- function(..., keep_tex = TRUE, latex_engine = "pdflatex", pandoc
     stop("`latex_engine` must be one of 'pdflatex' or 'xelatex' when using the MDPI template.")
   }
 
-  ## pre_processor checks if author metadata > 1 and uses moreauthors mdpi class
-  ## argument
-  pre_processor <- function(metadata,
-                            input_file,
-                            runtime,
-                            knit_meta,
-                            files_dir,
-                            output_dir) {
-
-    if(length(metadata$author) > 1) {
-       return(pandoc_variable_arg("multipleauthors", "moreauthors"))
-    } else {
-      return(pandoc_variable_arg("multipleauthors", "oneauthor"))
-    }
-  }
-
   ## check location of mdpi.cls file (new versions are in subfolder)
   ## to ensure compatibility with old versions
   cls_loc <- if(file.exists("mdpi.cls")) "mdpi" else "Definitions/mdpi"
@@ -437,11 +421,42 @@ mdpi_article <- function(..., keep_tex = TRUE, latex_engine = "pdflatex", pandoc
 
   base <- pdf_document_format(
     "mdpi",
-    keep_tex = keep_tex, citation_package = "natbib",
+    keep_tex = keep_tex,
+    citation_package = "natbib",
     latex_engine = latex_engine,
     pandoc_args = pandoc_args,
     ...
   )
+
+  base_pre_processor <- base$pre_processor
+
+  ## pre_processor checks if author metadata > 1 and uses moreauthors mdpi class
+  ## argument
+  mdpi_pre_processor <- function(metadata,
+                            input_file,
+                            runtime,
+                            knit_meta,
+                            files_dir,
+                            output_dir) {
+    args <- c(
+      # run the base prepocessor of the format
+      if (is.function(base_pre_processor)) {
+        base_pre_processor(
+          metadata, input_file, runtime, knit_meta, files_dir, output_dir
+        )
+      },
+      # Set a variable based on metadata field
+      if (!is.null(metadata$author)) {
+        if (length(metadata$author) > 1) {
+          pandoc_variable_arg("multipleauthors", "moreauthors")
+        } else {
+          pandoc_variable_arg("multipleauthors", "oneauthor")
+        }
+      }
+    )
+    args
+  }
+
   base$pre_processor <- pre_processor
   base
 }
