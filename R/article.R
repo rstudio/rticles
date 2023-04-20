@@ -272,6 +272,7 @@ informs_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
   if (citation_package != "natbib") {
     stop("INFORMS template only supports `natbib` for citation processing.")
   }
+
   if (!rmarkdown::pandoc_available("2.10")) {
     stop("informs_article requires a minimum of pandoc 2.10.")
   }
@@ -396,8 +397,17 @@ jedm_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
 #' @export
 #' @rdname article
 #' @importFrom rmarkdown pandoc_variable_arg
-mdpi_article <- function(..., keep_tex = TRUE, latex_engine = "pdflatex") {
+mdpi_article <- function(..., keep_tex = TRUE, latex_engine = "pdflatex", citation_package = "natbib") {
 
+  # check all arguments for format's default
+  if (citation_package != "natbib") {
+      stop("MDPI template only supports 'natbib' for citation processing.")
+  }
+
+  ## check if latex engine is pdflatex or xelatex
+  if(!latex_engine %in% c("pdflatex", "xelatex")) {
+    stop("`latex_engine` must be one of 'pdflatex' or 'xelatex' when using the MDPI template.")
+  }
 
   ## pre_processor checks if author metadata > 1 and uses moreauthors mdpi class
   ## argument
@@ -420,10 +430,6 @@ mdpi_article <- function(..., keep_tex = TRUE, latex_engine = "pdflatex") {
   cls_loc <- if(file.exists("mdpi.cls")) "mdpi" else "Definitions/mdpi"
   pandoc_args <- pandoc_variable_arg("cls", cls_loc)
 
-  ## check if latex engine is pdflatex or xelatex
-  if(!latex_engine %in% c("pdflatex", "xelatex")) {
-    stop("latex_engine must be one of 'pdflatex' or 'xelatex' when using the MDPI template.")
-  }
   ## if latex engine is pdflatex, mdpi class argument must be pdftex
   if(latex_engine == "pdflatex") {
     pandoc_args <- c(pandoc_args,
