@@ -396,7 +396,6 @@ jedm_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
 #' * `include-after`: for including additional LaTeX code before the `\end{document}` statement
 #' @export
 #' @rdname article
-#' @importFrom rmarkdown pandoc_variable_arg
 mdpi_article <- function(..., keep_tex = TRUE, latex_engine = "pdflatex", pandoc_args = NULL, citation_package = "natbib") {
 
   # check all arguments for format's default
@@ -412,11 +411,11 @@ mdpi_article <- function(..., keep_tex = TRUE, latex_engine = "pdflatex", pandoc
   ## check location of mdpi.cls file (new versions are in subfolder)
   ## to ensure compatibility with old versions
   cls_loc <- if(file.exists("mdpi.cls")) "mdpi" else "Definitions/mdpi"
-  pandoc_args <- c(pandoc_args, pandoc_variable_arg("cls", cls_loc))
+  pandoc_args <- c(pandoc_args, rmarkdown::pandoc_variable_arg("cls", cls_loc))
 
   ## if latex engine is pdflatex, mdpi class argument must be pdftex
   if(latex_engine == "pdflatex") {
-    pandoc_args <- c(pandoc_args, pandoc_variable_arg("pdftex", "pdftex"))
+    pandoc_args <- c(pandoc_args, rmarkdown::pandoc_variable_arg("pdftex", "pdftex"))
   }
 
   base <- pdf_document_format(
@@ -448,16 +447,16 @@ mdpi_article <- function(..., keep_tex = TRUE, latex_engine = "pdflatex", pandoc
       # Set a variable based on metadata field
       if (!is.null(metadata$author)) {
         if (length(metadata$author) > 1) {
-          pandoc_variable_arg("multipleauthors", "moreauthors")
+          rmarkdown::pandoc_variable_arg("multipleauthors", "moreauthors")
         } else {
-          pandoc_variable_arg("multipleauthors", "oneauthor")
+          rmarkdown::pandoc_variable_arg("multipleauthors", "oneauthor")
         }
       }
     )
     args
   }
 
-  base$pre_processor <- pre_processor
+  base$pre_processor <- mdpi_pre_processor
   base
 }
 
