@@ -364,6 +364,35 @@ jedm_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
 #' @section `mdpi_article`: Format for creating submissions to
 #'   Multidisciplinary Digital Publishing Institute (MDPI) journals. Adapted
 #'   from <https://www.mdpi.com/authors/latex>.
+#'
+#' Possible arguments for the YAML header are:
+#' * `title` title of the manuscript
+#' * `author` list of authors, containing `name`, `affil`, and `orcid` (optional)
+#' * `affiliation` list containing `num`, `address`, and `email` for defining `author` affiliations
+#' * `authorcitation` string with last name and first intial of authors as expected to be shown in a reference
+#' * `firstnote` can include `firstnote` through `eightnote` that correspond to footnote marks in `affil`
+#' * `correspondence` contact information of the corresponding author
+#' * `journal` short name (case sensitive) of the journal, see template for options
+#' * `type` usually "article" but see template for options
+#' * `status` usually "submit"
+#' * `simplesummary` optional, may depend on specific journal
+#' * `abstract` abstract, limited to 200 words
+#' * `keywords` 3 to 10 keywords seperated with a semicolon
+#' * `acknowledgement` acknowledgement backmatter (optional)
+#' * `authorcontributions` report authorship contributions (optional)
+#' * `funding` research funding statement
+#' * `institutionalreview` IRB statements (optional)
+#' * `informedconsent` Informed consent statements for human research (optional)
+#' * `dataavailability` Links to datasets or archives (optional)
+#' * `conflictsofinterest` Conflict of interest statement (see journal  instructions)
+#' * `sampleavailability` Sample availability statement (optional)
+#' * `supplementary` Supplementary data statement, see template for example (optional)
+#' * `abbreviations` list of abbreviations containing `short` and `long`
+#' * `bibliography` BibTeX `.bib` file
+#' * `appendix` name of appendix tex file
+#' * `endnote` boolean, if `TRUE` will print list of endnotes if included in text (optional)
+#' * `header-includes`: custom additions to the header, before the `\begin{document}` statement
+#' * `include-after`: for including additional LaTeX code before the `\end{document}` statement
 #' @export
 #' @rdname article
 #' @importFrom rmarkdown pandoc_variable_arg
