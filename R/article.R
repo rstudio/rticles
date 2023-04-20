@@ -397,7 +397,7 @@ jedm_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
 #' @export
 #' @rdname article
 #' @importFrom rmarkdown pandoc_variable_arg
-mdpi_article <- function(..., keep_tex = TRUE, latex_engine = "pdflatex", citation_package = "natbib") {
+mdpi_article <- function(..., keep_tex = TRUE, latex_engine = "pdflatex", pandoc_args = NULL, citation_package = "natbib") {
 
   # check all arguments for format's default
   if (citation_package != "natbib") {
@@ -428,12 +428,11 @@ mdpi_article <- function(..., keep_tex = TRUE, latex_engine = "pdflatex", citati
   ## check location of mdpi.cls file (new versions are in subfolder)
   ## to ensure compatibility with old versions
   cls_loc <- if(file.exists("mdpi.cls")) "mdpi" else "Definitions/mdpi"
-  pandoc_args <- pandoc_variable_arg("cls", cls_loc)
+  pandoc_args <- c(pandoc_args, pandoc_variable_arg("cls", cls_loc))
 
   ## if latex engine is pdflatex, mdpi class argument must be pdftex
   if(latex_engine == "pdflatex") {
-    pandoc_args <- c(pandoc_args,
-                     pandoc_variable_arg("pdftex", "pdftex"))
+    pandoc_args <- c(pandoc_args, pandoc_variable_arg("pdftex", "pdftex"))
   }
 
   base <- pdf_document_format(
