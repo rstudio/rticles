@@ -26,5 +26,5 @@ If the number of elements can't be split equally in the \code{n} column, blank
 cells will be created and all placed in the last column.
 }
 \examples{
-string_to_table(paste(letters, collapse = ", "))
+string_to_table(paste(letters, collapse = ", "), 3)
 }

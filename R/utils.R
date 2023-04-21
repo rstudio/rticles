@@ -181,7 +181,7 @@ vec_to_pandoc_variable_args <- function(v_args) {
 #' @export
 #'
 #' @examples
-#' string_to_table(paste(letters, collapse = ", "))
+#' string_to_table(paste(letters, collapse = ", "), 3)
 string_to_table <- function(x, n, split_regex = ", ?") {
   vec <- unlist(strsplit(x, split_regex))
   vec_list <- split(vec, cut(seq_along(vec), n, labels = FALSE))
