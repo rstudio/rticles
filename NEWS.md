@@ -6,7 +6,8 @@
 
 ## NEW FEATURES
 
-- `ieee_article()` now supports several affiliations per `authors` when using the `wide: true` mode (thanks, @phamdn, #500)
+- `ieee_article()` now supports several affiliations per `authors` when using the `wide: true` mode (thanks, @phamdn, #500).
+- Add a helper function `string_to_table()` for documentating configuration from a list copy pasted from a `.tex` template. 
 
 ## MINOR CHANGES
 
