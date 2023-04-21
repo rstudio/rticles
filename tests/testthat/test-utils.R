@@ -1,6 +1,6 @@
 test_that("vec_to_table split using default separator", {
   x <- paste(letters, collapse = ", ")
-  df <- vec_to_table(x, 3)
+  df <- string_to_table(x, 3)
   df_target <-
     structure(list(
       X1 = c("a", "b", "c", "d", "e", "f", "g", "h",
@@ -16,7 +16,7 @@ test_that("vec_to_table split using default separator", {
 
 test_that("vec_to_table split using custom separator", {
   x <- paste(letters, collapse = "#")
-  df <- vec_to_table(x, 3, "#")
+  df <- string_to_table(x, 3, "#")
   df_target <-
     structure(list(
       X1 = c("a", "b", "c", "d", "e", "f", "g", "h",
