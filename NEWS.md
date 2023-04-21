@@ -2,6 +2,12 @@
 
 ## MINOR CHANGES
 
+- Update to the `mdpi_article()` format (thanks, @mps9506, #515)
+    - New yaml configuration fields.
+    - Now working with `xelatex`.
+    - New template skeleton to start with.
+    - Compatibility with new resources expectations to be in `Definitions/mdpi` folder.
+
 - Update to the `asa_article()` format (thanks, @ianmtaylor1 #506, @jepusto, #507):
     - Better support for `natbib` to tweak option and biblio-style using Pandoc's variables
     - Update to template following the guidelines
