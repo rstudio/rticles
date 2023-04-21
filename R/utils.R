@@ -160,3 +160,43 @@ vec_to_pandoc_variable_args <- function(v_args) {
   )
   unlist(pandoc_arg_list)
 }
+
+## takes a character string with names separated by comma (e.g. journal's names)
+## and turns them into a table
+
+#' Split character string into table
+#'
+#' It takes a character string with names separated by comma (e.g. journal's names)
+#' and turns them into a table
+#'
+#' If the number of elements can't be split equally in the `n` column, blank
+#' cells will be created and all placed in the last column.
+#'
+#' @param x string to split and convert to table
+#' @param n number of bucket to create. It will be the number of column in the
+#'   resulting data.frame
+#' @param split_regex defaults to `, ?`. Pass to `split` in [base::strsplit()].
+#'
+#' @return a dataframe of `n` columns
+#' @export
+#'
+#' @examples
+#' string_to_table(paste(letters, collapse = ", "))
+string_to_table <- function(x, n, split_regex = ", ?") {
+  vec <- unlist(strsplit(x, split_regex))
+  vec_list <- split(vec, cut(seq_along(vec), n, labels = FALSE))
+  max_n <- max(unlist(lapply(vec_list, length)))
+  # fill with NA
+  for (i in 1:n) {
+    # resize bucket
+    length(vec_list[[i]]) <- max_n
+    # and move empty spot at the end
+    if (i != n && any(ii  <- is.na(vec_list[[i]]))) {
+      vec_list[[i]][ii] <- vec_list[[i + 1]][seq_along(which(ii))]
+      vec_list[[i + 1]] <- vec_list[[i + 1]][-seq_along(which(ii))]
+    }
+  }
+  df <- data.frame(vec_list)
+  df[is.na(df)] <- ""
+  df
+}
