@@ -132,15 +132,15 @@ abbreviations:
 bibliography: mybibfile.bib
 appendix: appendix.tex
 endnotes: false
-output: rticles::mdpi_article
-header-includes:
-  - \usepackage{longtable}
+output: 
+  rticles::mdpi_article:
+    extra_dependencies: longtable
 ---
 
 # Version
 
 This Rmd-skeleton uses the mdpi Latex template published 2023-03-25. 
-However, the official template gets more frequently updated than the 'rticles'
+However, the official template gets more frequently updated than the **rticles**
 package. Therefore, please make sure prior to paper submission, that you're 
 using the most recent .cls, .tex and .bst files 
 (available [here](http://www.mdpi.com/authors/latex)).
@@ -170,12 +170,11 @@ correspondence: |
 journal: notspecified
 type: article
 status: submit
-
 ```
 
-Journal options are in Table \ref{tab:mdpinames}. The status variable should 
-generally not be changed by authors. The type variable describes 
-the type of of submission and defaults to `article` but can be replaced with:
+Journal options are in Table \ref{tab:mdpinames}. The `status` variable should 
+generally not be changed by authors. The `type` variable describes 
+the type of of submission and defaults to `article` but can be replaced with any of the following in Table \ref{Tab:article-type}
 
 ```{r article-type, echo = FALSE}
 type <- c("abstract, addendum, article, book, bookreview, briefreport, 
@@ -345,7 +344,7 @@ knitr::kable(mtcars[1:5, 1:3], format = "latex",
              booktabs = TRUE, 
              caption = "This is a table caption. Tables should be placed in the 
              main text near to the first time they are~cited.", 
-             align='ccc', centering = FALSE,
+             align = 'ccc', centering = FALSE,
              table.envir = "table", position = "H")
 ```
 
@@ -366,7 +365,7 @@ df <- data.frame(`Title 1` = c("Entry 1", "Entry 2"),
 knitr::kable(df, format = "latex", 
              booktabs = TRUE, 
              caption = "This is a very wide table", 
-             align='ccc', centering = FALSE,
+             align = 'ccc', centering = FALSE,
              table.envir = "table", position = "H")
 ```
 
@@ -394,7 +393,6 @@ If the documentclass option "submit" is chosen, please insert a blank line befor
 ```
 
 This is the example 2 of equation:
-
 
 \begin{adjustwidth}{-\extralength}{0cm}
 \begin{equation}
