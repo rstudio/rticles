@@ -12,7 +12,7 @@ coverage](https://codecov.io/gh/rstudio/rticles/branch/main/graph/badge.svg)](ht
 
 <!-- badges: end -->
 
-# rticles <img src="man/figures/logo.png" align="right" height="138.5"/>
+# rticles <a href="https://pkgs.rstudio.com/rticles/"><img src="man/figures/logo.png" align="right" height="138"/></a>
 
 The **rticles** package provides a suite of custom [R
 Markdown](https://rmarkdown.rstudio.com) LaTeX formats and templates for
@@ -36,7 +36,8 @@ If you wish to install the development version from GitHub (which often
 contains new article formats), you can do this:
 
 ``` r
-remotes::install_github("rstudio/rticles")
+# install.packages("pak")
+pak::pak("rstudio/rticles")
 ```
 
 ## Using rticles

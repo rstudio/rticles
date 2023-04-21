@@ -1,5 +1,13 @@
 # rticles (development version)
 
+## BREAKING CHANGES
+
+- `ajs_article()` and `jss_article()` require Pandoc 2.7+ (possibly required by some changes in `jss.cls`)
+
+## NEW FEATURES
+
+- `ieee_article()` now supports several affiliations per `authors` when using the `wide: true` mode (thanks, @phamdn, #500)
+
 ## MINOR CHANGES
 
 - Update to the `mdpi_article()` format (thanks, @mps9506, #515)
@@ -7,6 +15,10 @@
     - Now working with `xelatex`.
     - New template skeleton to start with.
     - Compatibility with new resources expectations to be in `Definitions/mdpi` folder.
+
+- Improve `elsevier_article()` affilliations for authors by supporting same fields as in official template. This also fix address with comma not showing (thanks, @gjpstrain, @mps9506, #509).
+
+- Update `RJournal.sty` to latest version to support number sections (thanks, @zeileis, #517).
 
 - Update to the `asa_article()` format (thanks, @ianmtaylor1 #506, @jepusto, #507):
     - Better support for `natbib` to tweak option and biblio-style using Pandoc's variables
@@ -17,7 +29,7 @@
 
 - Template internal change: `lineno` CTAN package is now loaded after `amsmath` in `peerj_article()`, `elsevier_article()` and `mdpi_article()` because of a conflict with last version of `lineno` (thanks, @bischrob, #513). 
 
-- Update Copernicus Publications template to version 7.2 from 2023-01-09 (@RLumSK, #508, #514)
+- Update Copernicus Publications template to version 7.3 from 2023-03-17 (@RLumSK, #508, #514, #519)
 
 # rticles 0.24
 
