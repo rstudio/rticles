@@ -174,9 +174,9 @@ status: submit
 
 Journal options are in Table \ref{tab:mdpinames}. The `status` variable should 
 generally not be changed by authors. The `type` variable describes 
-the type of of submission and defaults to `article` but can be replaced with any of the following in Table \ref{Tab:article-type}
+the type of of submission and defaults to `article` but can be replaced with any of the ones in Table \ref{tab:mdpitype}
 
-```{r article-type, echo = FALSE}
+```{r mdpitype, echo = FALSE}
 type <- c("abstract, addendum, article, book, bookreview, briefreport, 
 casereport, comment, commentary, communication, conferenceproceedings, 
 correction, conferencereport, entry, expressionofconcern, extendedabstract, 
