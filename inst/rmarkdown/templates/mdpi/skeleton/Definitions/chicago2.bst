@@ -266,8 +266,8 @@ FUNCTION {output.check.colon}
 FUNCTION {output.year.check}
 { year empty$
      { "empty year in " cite$ * warning$ }
-     { write$
-        ". " year * extra.label *
+     { add.period$ write$
+        " " year * extra.label *
        month empty$
           { }
           { ", " * month * }
@@ -775,7 +775,7 @@ FUNCTION {format.tr.number}
 
 FUNCTION {format.article.crossref}
 { "See"
-  "\citeN{" * crossref * "}" *
+  "\citep{" * crossref * "}" *
 }
 
 FUNCTION {format.crossref.editor}
@@ -821,12 +821,12 @@ FUNCTION {format.book.crossref}
     }
     { format.crossref.editor * }
   if$
-  " \citeN{" * crossref * "}" *
+  " \citep{" * crossref * "}" *
 }
 
 FUNCTION {format.incoll.inproc.crossref}
 { "See"
-  " \citeN{" * crossref * "}" *
+  " \citep{" * crossref * "}" *
 }
 
 % format.lab.names:
@@ -1010,17 +1010,10 @@ FUNCTION {output.bibitem}
 }
 
 %% For printing DOI numbers (it is a hyperlink but printed in black)
-FUNCTION {format.doi}
-{ doi empty$
-  { ""  }
-  {"\href{https://doi.org/" doi * "}" * }
-  if$
-}
-
 FUNCTION {formatfull.doi}
 { doi empty$
   { ""  }
-  {"doi:{\changeurlcolor{black}\href{https://doi.org/" doi * "}{\detokenize{" * doi * "}}}" * }
+  {"{\url{https://doi.org/" doi * "}}" * }
   if$
 }
 
@@ -1663,7 +1656,7 @@ FUNCTION {begin.bib}
     'skip$
     { preamble$ write$ newline$ }
   if$
-  "\begin{thebibliography}{}" write$ newline$
+  "\begin{thebibliography}{999}" write$ newline$
 }
 
 

@@ -6,9 +6,16 @@
 
 ## NEW FEATURES
 
-- `ieee_article()` now supports several affiliations per `authors` when using the `wide: true` mode (thanks, @phamdn, #500)
+- `ieee_article()` now supports several affiliations per `authors` when using the `wide: true` mode (thanks, @phamdn, #500).
+- Add a helper function `string_to_table()` for documentating configuration from a list copy pasted from a `.tex` template. 
 
 ## MINOR CHANGES
+
+- Update to the `mdpi_article()` format (thanks, @mps9506, #515)
+    - New yaml configuration fields.
+    - Now working with `xelatex`.
+    - New template skeleton to start with.
+    - Compatibility with new resources expectations to be in `Definitions/mdpi` folder.
 
 - Improve `elsevier_article()` affilliations for authors by supporting same fields as in official template. This also fix address with comma not showing (thanks, @gjpstrain, @mps9506, #509).
 
