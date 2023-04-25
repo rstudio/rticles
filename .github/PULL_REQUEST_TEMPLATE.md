@@ -2,7 +2,7 @@
 
 To contribute a new article template to this package, please make sure you have done the following things (note that `journalname_article` below is only an example name):
 
-- [ ] This project uses a Contributor Licence Agreement (CLA) that you'll be asked to sign when opening a PR. This is required for a significant pull request (it is fine not to sign it if a PR is only intended to fix a few typos). Unless you have done it in any other RStudio / Posit projects before, sign the individual or corporate contributor agreement as appropriate. You can send the signed copy to contribute@rstudio.com.
+- [ ] This project uses a Contributor Licence Agreement (CLA) that you'll be asked to sign when opening a PR. This is required for a significant pull request (it is fine not to sign it if a PR is only intended to fix a few typos). Unless you have done it in any other RStudio / Posit projects before, sign the individual or corporate contributor agreement as appropriate. You can send the signed copy to <jj@posit.co>.
 
 - [ ] Add the `journalname_article()` function to `R/article.R` if the output format is simple enough, otherwise create a separate `R/journalname_article.R`.
 
