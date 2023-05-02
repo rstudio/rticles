@@ -489,11 +489,15 @@ sim_article <- function(..., highlight = NULL, citation_package = "natbib") {
 #'   Macro package for Springer Journals.
 #' @export
 #' @rdname article
-springer_article <- function(..., keep_tex = TRUE,
-                             citation_package = "natbib") {
+springer_article <- function(..., keep_tex = TRUE) {
+
+  # if (!rmarkdown::pandoc_available("2.10")) {
+  #   stop("`elsevier_article()` now requires a minimum of pandoc 2.10.")
+  # }
+
   pdf_document_format(
     "springer",
-    keep_tex = keep_tex, citation_package = citation_package, ...
+    keep_tex = keep_tex, citation_package = "natbib", ...
   )
 }
 
