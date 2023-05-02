@@ -11,6 +11,11 @@ $if(natbib)$
 $endif$
 \usepackage{textcomp}
 
+$if(verbatim-in-note)$
+% For Pandoc feature verbatim_in_note
+\usepackage{fancyvrb}
+$endif$
+
 %\pdfminorversion=4
 % NOTE: To produce blinded version, replace "0" with "1" below.
 \newcommand{\blind}{$blinded$}
@@ -96,7 +101,7 @@ $if(links-as-notes)$
 \DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
 $endif$
 $if(verbatim-in-note)$
-\VerbatimFootnotes % allow verbatim text in footnotes
+\VerbatimFootnotes % allows verbatim text in footnotes
 $endif$
 \hypersetup{
 $if(title-meta)$

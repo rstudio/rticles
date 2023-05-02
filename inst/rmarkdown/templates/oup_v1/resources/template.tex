@@ -23,6 +23,7 @@ $endif$
 
 % From Pandoc template for its feature
 $if(verbatim-in-note)$
+% For Pandoc feature verbatim_in_note
 \usepackage{fancyvrb}
 $endif$
 \usepackage{xcolor}
@@ -136,6 +137,9 @@ $if(links-as-notes)$
 % For pandoc feature
 % Make links footnotes instead of hotlinks:
 \DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
+$endif$
+$if(verbatim-in-note)$
+\VerbatimFootnotes % allows verbatim text in footnotes
 $endif$
 $if(strikeout)$
 % For pandoc feature

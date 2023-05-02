@@ -23,6 +23,11 @@
 ]{biblatex}
 \bibliography{$bibliography$}
 
+$if(verbatim-in-note)$
+% For Pandoc feature verbatim_in_note
+\usepackage{fancyvrb}
+$endif$
+
 
 % --- Page layout -------------------------------------------------------------
 \usepackage[top=3.5cm, bottom=3cm, right=1.5cm, left=1.0cm,
@@ -198,7 +203,6 @@ $if(lhs)$
 \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
 $endif$
 $if(verbatim-in-note)$
-\usepackage{fancyvrb}
 \VerbatimFootnotes % allows verbatim text in footnotes
 $endif$
 $if(graphics)$
