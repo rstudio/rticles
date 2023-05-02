@@ -92,6 +92,7 @@ Imports:
     rmarkdown (>= 2.14),
     tinytex (>= 0.30),
     utils,
+    withr,
     xfun,
     yaml
 Suggests: 

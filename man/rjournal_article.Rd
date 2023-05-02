@@ -17,14 +17,18 @@ which means citations will be processed via the command
 \command{pandoc-citeproc}.}
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+This function is now deprecated in favor of the \href{https://rjournal.github.io/rjtools/}{\strong{rjtools}} package
+which is now officialy recommanded by R Journal \url{https://rjournal.github.io/submissions.html}. See below for document
+}
+\section{About this format and the R Journal requirements}{
 Format for creating R Journal articles. Adapted from
 \url{https://journal.r-project.org/submissions.html}.
-}
-\details{
+
 This file is only a basic article template. For full details of \emph{The R
 Journal} style and information on how to prepare your article for submission,
 see the \href{https://journal.r-project.org/share/author-guide.pdf}{Instructions for Authors}
-\subsection{About this format and the R Journal requirements}{
 
 \code{rticles::rjournal_article} will help you build the correct files requirements:
 \itemize{
@@ -39,7 +43,7 @@ template (\code{RJreferences.bib}) and you will have to name your bib file as th
 tex, R, and pdf files.
 }
 }
-}
+
 \section{About YAML header fields}{
 This section documents some of the YAML fields that can be used with this
 formats.
