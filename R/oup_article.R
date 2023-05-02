@@ -100,7 +100,7 @@ oup_article <- function( # Controls template to use. 1 for newer template.
   )
 
   # Convert to pandoc arguments
-  args <- vec_to_pandoc_variable_args(args)
+  args <- list_to_pandoc_variable_args(args)
 
   # namedate
   if (namedate) {

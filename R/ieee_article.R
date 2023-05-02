@@ -75,7 +75,7 @@ ieee_article <- function(draftmode = c("final", "draft", "draftcls", "draftclsno
   args <- c(args, plist[plist])
 
   # Convert to pandoc arguments
-  pandoc_arg_list <- vec_to_pandoc_variable_args(args)
+  pandoc_arg_list <- list_to_pandoc_variable_args(args)
 
   pdf_document_format(
     "ieee",

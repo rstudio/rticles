@@ -252,7 +252,7 @@ ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
   )
 
   # Convert to pandoc arguments
-  pandoc_arg_list <- vec_to_pandoc_variable_args(args)
+  pandoc_arg_list <- list_to_pandoc_variable_args(args)
 
   pdf_document_format(
     "ims",

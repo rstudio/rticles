@@ -139,9 +139,19 @@ render_draft <- function(journal, output_options = NULL, quiet = FALSE) {
 }
 
 # Use to create variables command for Pandoc from a named vector
-vec_to_pandoc_variable_args <- function(v_args) {
-  truthy <- Filter(isTRUE, v_args)
-  v_args <- setdiff(v_args, truthy)
+list_to_pandoc_variable_args <- function(v_args) {
+  truthy <- which(sapply(v_args, isTRUE))
+  truthy_arg <- NULL
+  if (length(truthy) > 0) {
+    truthy_arg <- mapply(
+      rmarkdown::pandoc_variable_arg,
+      names(v_args[truthy]),
+      SIMPLIFY = FALSE,
+      USE.NAMES = FALSE
+    )
+    v_args <- v_args[-truthy]
+  }
+
   # Convert to pandoc arguments
   pandoc_arg_list <-  c(
     mapply(
@@ -151,12 +161,7 @@ vec_to_pandoc_variable_args <- function(v_args) {
       SIMPLIFY = FALSE,
       USE.NAMES = FALSE
     ),
-    mapply(
-      rmarkdown::pandoc_variable_arg,
-      names(truthy),
-      SIMPLIFY = FALSE,
-      USE.NAMES = FALSE
-    )
+    truthy_arg
   )
   unlist(pandoc_arg_list)
 }
@@ -210,7 +215,7 @@ pdf_document_format <- function(format,
   fmt$inherits <- "pdf_document"
 
   ## Set some variables to adapt template based on Pandoc version
-  args <- vec_to_pandoc_variable_args(list(
+  args <- list_to_pandoc_variable_args(list(
     pandoc3 = rmarkdown::pandoc_available("3")
   ))
   fmt$pandoc$args <- c(fmt$pandoc$args, args)
