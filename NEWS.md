@@ -4,6 +4,8 @@
 
 - `ajs_article()` and `jss_article()` require Pandoc 2.7+ (possibly required by some changes in `jss.cls`)
 
+- `rjournal_article()` is now soft deprecated in favor of `rjtools::rjournal_pdf_article()` as **rjtools** package is now the recommended workflow at <https://rjournal.github.io/submissions.html>
+
 ## NEW FEATURES
 
 - `ieee_article()` now supports several affiliations per `authors` when using the `wide: true` mode (thanks, @phamdn, #500).

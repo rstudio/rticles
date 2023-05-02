@@ -1,5 +1,7 @@
 test_format <- function(name, output_options = NULL, skip = NULL) {
 
+  withr::local_options(lifecycle_verbosity = "quiet")
+
   # don't run on CRAN due to complicated dependencies (Pandoc/LaTeX packages)
   if (!identical(Sys.getenv("NOT_CRAN"), "true")) return()
   # skip if requested

@@ -1,7 +1,7 @@
 Type: Package
 Package: rticles
 Title: Article Formats for R Markdown
-Version: 0.24.12
+Version: 0.24.13
 Authors@R: c(
     person("JJ", "Allaire", , "jj@posit.co", role = "aut"),
     person("Yihui", "Xie", , "xie@yihui.name", role = "aut",
@@ -88,9 +88,11 @@ URL: https://github.com/rstudio/rticles
 BugReports: https://github.com/rstudio/rticles/issues
 Imports: 
     knitr (>= 1.30),
+    lifecycle,
     rmarkdown (>= 2.14),
     tinytex (>= 0.30),
     utils,
+    withr,
     xfun,
     yaml
 Suggests: 
