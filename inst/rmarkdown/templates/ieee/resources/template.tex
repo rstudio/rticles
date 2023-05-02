@@ -333,12 +333,10 @@ $if(natbib)$
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $endif$
 $if(biblatex)$
-\usepackage[backend=bibtex,citestyle=ieee$if(biblio-style)$,style=$biblio-style$$endif$$if(citation_sorting)$,sorting=$citation_sorting$$endif$]{biblatex}
-$if(bibliography)$
+\usepackage[citestyle=ieee,$if(biblio-style)$style=$biblio-style$,$endif$$if(citation_sorting)$sorting=$citation_sorting$$endif$,$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
 $for(bibliography)$
 \addbibresource{$bibliography$}
 $endfor$
-$endif$
 $endif$
 
 \usepackage[unicode=true]{hyperref}
