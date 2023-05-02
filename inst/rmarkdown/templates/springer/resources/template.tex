@@ -60,13 +60,18 @@
 \theoremstyle{thmstylethree}%
 \newtheorem{definition}{Definition}%
 
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+
 \raggedbottom
 
 $if(unnumbered)$
 \unnumbered uncomment this for unnumbered level heads
 $endif$
 
-$preamble$
 
 $if(highlighting-macros)$
 % Pandoc syntax highlighting
@@ -127,9 +132,6 @@ $if(csl-refs)$
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
 
-$for(header-includes)$
-$header-includes$
-$endfor$
 
 
 \begin{document}
