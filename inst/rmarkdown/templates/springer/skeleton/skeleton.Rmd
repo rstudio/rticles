@@ -132,8 +132,8 @@ Sample body text.
 # Equations {#sec4}
 
 Equations in \LaTeX\ can either be inline or on-a-line by itself ("display equations"). For
-inline equations use the \verb+$...$+ commands. E.g.: The equation
-$H\psi = E \psi$ is written via the command \verb+$H \psi = E \psi$+.
+inline equations use the `$...$` commands. E.g.: The equation
+$H\psi = E \psi$ is written via the command `$H \psi = E \psi$`.
 
 For display equations (with auto generated equation numbers)
 one can use the equation or align environments:
@@ -149,11 +149,11 @@ D_\mu &=  \partial_\mu - ig \frac{\lambda^a}{2} A^a_\mu \nonumber \\
 F^a_{\mu\nu} &= \partial_\mu A^a_\nu - \partial_\nu A^a_\mu + g f^{abc} A^b_\mu A^a_\nu \label{eq2}
 \end{align}
 
-Notice the use of \verb+\nonumber+ in the align environment at the end
+Notice the use of `\nonumber` in the align environment at the end
 of each line, except the last, so as not to produce equation numbers on
-lines where no equation numbers are required. The \verb+\label{}+ command
+lines where no equation numbers are required. The `\label{}` command
 should only be used at the last line of an align environment where
-\verb+\nonumber+ is not used.
+`\nonumber` is not used.
 
 \begin{equation}
 Y_\infty = \left( \frac{m}{\textrm{GeV}} \right)^{-3}
@@ -161,9 +161,9 @@ Y_\infty = \left( \frac{m}{\textrm{GeV}} \right)^{-3}
     + \frac{\ln(c_2/5)}{15} \right]
 \end{equation}
 
-The class file also supports the use of \verb+\mathbb{}+, \verb+\mathscr{}+ and
-\verb+\mathcal{}+ commands. As such \verb+\mathbb{R}+, \verb+\mathscr{R}+
-and \verb+\mathcal{R}+ produces $\mathbb{R}$, $\mathscr{R}$ and $\mathcal{R}$
+The class file also supports the use of `\mathbb{}`, `\mathscr{}` and
+`\mathcal{}` commands. As such `\mathbb{R}`, `\mathscr{R}`
+and `\mathcal{R}` produces $\mathbb{R}$, $\mathscr{R}$ and $\mathcal{R}$
 respectively (refer Subsubsection\ \ref{subsubsec2}).
 
 # Tables {#sec5}
@@ -177,9 +177,9 @@ knitr::kable(head(pressure),
 ```
 
 Tables can also be inserted via the normal table and tabular environment. To put
-footnotes inside tables you should use \verb+\footnotetext[]{...}+ tag.
+footnotes inside tables you should use `\footnotetext[]{...}` tag.
 The footnote appears just below the table itself (refer Tables~\ref{tab1} and \ref{tab2}).
-For the corresponding footnotemark use \verb+\footnotemark[...]+
+For the corresponding footnotemark use `\footnotemark[...]`
 
 \begin{table}[h]
 \caption{Caption text}\label{tab1}%
@@ -241,10 +241,10 @@ Element 4  & 500 A & 961  & $922\pm10$  & 900 A & 1268 & $1092\pm40$\\
 \vfill\eject
 
 In case of double column layout, tables which do not fit in single column width should be set to full text width. 
-For this, you need to use \verb+\begin{table*}+ \verb+...+ \verb+\end{table*}+ instead of \verb+\begin{table}+ \verb+...+ \verb+\end{table}+ environment. Lengthy tables which do not fit in textwidth should be set as rotated table. For this, you need to use \verb+\begin{sidewaystable}+ \verb+...+ \verb+\end{sidewaystable}+ instead of \verb+\begin{table*}+ \verb+...+ \verb+\end{table*}+ environment. This environment puts tables rotated to single column width. For tables rotated to double column width, use \verb+\begin{sidewaystable*}+ \verb+...+ \verb+\end{sidewaystable*}+.
+For this, you need to use `\begin{table*}` `...` `\end{table*}` instead of `\begin{table}` `...` `\end{table}` environment. Lengthy tables which do not fit in textwidth should be set as rotated table. For this, you need to use `\begin{sidewaystable}` `...` `\end{sidewaystable}` instead of `\begin{table*}` `...` `\end{table*}` environment. This environment puts tables rotated to single column width. For tables rotated to double column width, use `\begin{sidewaystable*}` `...` `\end{sidewaystable*}`.
 
 \begin{sidewaystable}
-\caption{Tables which are too long to fit, should be written using the ``sidewaystable'' environment as shown here}\label{tab3}
+\caption{Tables which are too long to fit, should be written using the "sidewaystable" environment as shown here}\label{tab3}
 \begin{tabular*}{\textheight}{@{\extracolsep\fill}lcccccc}
 \toprule%
 & \multicolumn{3}{@{}c@{}}{Element 1\footnotemark[1]}& \multicolumn{3}{@{}c@{}}{Element\footnotemark[2]} \\\cmidrule{2-4}\cmidrule{5-7}%
@@ -262,13 +262,13 @@ Element 6 & 500 A & 961  & $922\pm10$  & 900 A & 1268 & $1092\pm40$ \\
 
 # Figures {#sec6}
 
-As per the \LaTeX\ standards you need to use eps images for \LaTeX\ compilation and \verb+pdf/jpg/png+ images for \verb+PDFLaTeX+ compilation. 
+As per the \LaTeX\ standards you need to use eps images for \LaTeX\ compilation and `pdf/jpg/png` images for `PDFLaTeX` compilation. 
 Use the `dev` knitr option to use the approrpate format. 
-This is one of the major difference between \LaTeX\ and \verb+PDFLaTeX+.
+This is one of the major difference between \LaTeX\ and `PDFLaTeX`.
 Each image should be from a single input .eps/vector image file. 
 Avoid using subfigures.
-The command for inserting images for \LaTeX\ and \verb+PDFLaTeX+ can be generalized. 
-The package used to insert images in \verb+LaTeX/PDFLaTeX+ is the graphicx package. 
+The command for inserting images for \LaTeX\ and `PDFLaTeX` can be generalized. 
+The package used to insert images in `LaTeX/PDFLaTeX` is the graphicx package. 
 Figures can be inserted via the normal figure environment as shown in the below example:
 
 ```{r fig1, fig.cap = "This is an example of a caption", fig.width = 5}
@@ -277,7 +277,7 @@ plot(pressure)
 
 # Algorithms, Program codes and Listings {#sec7}
 
-Packages \verb+algorithm+, \verb+algorithmicx+ and \verb+algpseudocode+ are used for setting algorithms in \LaTeX\ using the format:
+Packages `algorithm`, `algorithmicx` and `algpseudocode` are used for setting algorithms in \LaTeX\ using the format:
 
 
 <!-- For presentation purpose, we have included   -->
@@ -295,9 +295,9 @@ Packages \verb+algorithm+, \verb+algorithmicx+ and \verb+algpseudocode+ are used
 <!-- For presentation purpose, we have included   -->
 <!-- \bigskip command. please ignore this.        -->
 
-You may refer above listed package documentations for more details before setting \verb+algorithm+ environment. For program codes, the ``program'' package is required and the command to be used is \verb+\begin{program}+ \verb+...+ \verb+\end{program}+. A fast exponentiation procedure:
+You may refer above listed package documentations for more details before setting `algorithm` environment. For program codes, the "program" package is required and the command to be used is `\begin{program}` `...` `\end{program}`. A fast exponentiation procedure:
 
-Similarly, for \verb+listings+, use the \verb+listings+ package. \verb+\begin{lstlisting}+ \verb+...+ \verb+\end{lstlisting}+ is used to set environments similar to \verb+verbatim+ environment. Refer to the \verb+lstlisting+ package documentation for more details.
+Similarly, for `listings`, use the `listings` package. `\begin{lstlisting}` `...` `\end{lstlisting}` is used to set environments similar to `verbatim` environment. Refer to the `lstlisting` package documentation for more details.
 
 A fast exponentiation procedure:
 
@@ -367,15 +367,15 @@ Write('Pascal keywords.');
 # Cross referencing {#sec8}
 
 Figures and tables are labeled with a prefix (fig or tab, respectively) plus the chunk label. 
-Other environments such as equation and align can be labelled via the \verb+\label{#label}+ command inside or just below the \verb+\caption{}+ command.
+Other environments such as equation and align can be labelled via the `\label{#label}` command inside or just below the `\caption{}` command.
 You can then use the label for cross-reference. As an example, consider
 the chunk label declared for Figure\ \ref{fig:fig1} which is
 fig1. 
 To cross-reference it, use the command
-\verb+Figure \ref{fig:fig1}+, for which it comes up as
-``Figure\ \ref{fig:fig1}''.
+`Figure \ref{fig:fig1}`, for which it comes up as
+"Figure\ \ref{fig:fig1}".
 
-To reference line numbers in an algorithm, consider the label declared for the line number 2 of Algorithm\ \ref{algo1} is \verb+\label{algln2}+. To cross-reference it, use the command \verb+\ref{algln2}+ for which it comes up as line\ \ref{algln2} of Algorithm\ \ref{algo1}.
+To reference line numbers in an algorithm, consider the label declared for the line number 2 of Algorithm\ \ref{algo1} is `\label{algln2}`. To cross-reference it, use the command `\ref{algln2}` for which it comes up as line\ \ref{algln2} of Algorithm\ \ref{algo1}.
 
 ## Details on reference citations {#subsec7}
 
