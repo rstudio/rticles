@@ -201,7 +201,7 @@ row 3    & data 7   & data 8  & data 9\footnotemark[2]  \\
 The input format for the above table is as follows:
 
 
-\begin{verbatim}
+```
 \begin{table}[<placement-specifier>]
 \caption{<table-caption>}\label{<table-label>}%
 \begin{tabular}{@{}llll@{}}
@@ -220,7 +220,7 @@ This is an example of table footnote.}
 \footnotetext[2]{Example for a second table footnote.
 This is an example of table footnote.}
 \end{table}
-\end{verbatim}
+```
 
 \begin{table}[h]
 \caption{Example of a lengthy table which is set to full textwidth}\label{tab2}
@@ -279,21 +279,14 @@ plot(pressure)
 
 Packages `algorithm`, `algorithmicx` and `algpseudocode` are used for setting algorithms in \LaTeX\ using the format:
 
-
-<!-- For presentation purpose, we have included   -->
-<!-- \bigskip command. please ignore this.        -->
-\bigskip
-\begin{verbatim}
+```
 \begin{algorithm}
 \caption{<alg-caption>}\label{<alg-label>}
 \begin{algorithmic}[1]
 . . .
 \end{algorithmic}
 \end{algorithm}
-\end{verbatim}
-\bigskip
-<!-- For presentation purpose, we have included   -->
-<!-- \bigskip command. please ignore this.        -->
+```
 
 You may refer above listed package documentations for more details before setting `algorithm` environment. For program codes, the "program" package is required and the command to be used is `\begin{program}` `...` `\end{program}`. A fast exponentiation procedure:
 
@@ -301,6 +294,7 @@ Similarly, for `listings`, use the `listings` package. `\begin{lstlisting}` `...
 
 A fast exponentiation procedure:
 
+```{=latex}
 \lstset{texcl=true,basicstyle=\small\sf,commentstyle=\small\rm,mathescape=true,escapeinside={(*}{*)}}
 \begin{lstlisting}
 begin
@@ -319,7 +313,9 @@ proc expt($x,n$) $\equiv$
   print($z$). 
 end
 \end{lstlisting}
+```
 
+```{=latex}
 \begin{algorithm}
 \caption{Calculate $y = x^n$}\label{algo1}
 \begin{algorithmic}[1]
@@ -344,12 +340,8 @@ end
 \EndWhile
 \end{algorithmic}
 \end{algorithm}
+```
 
-%%=============================================%%
-%% For presentation purpose, we have included  %%
-%% \bigskip command. please ignore this.       %%
-%%=============================================%%
-\bigskip
 \begin{minipage}{\hsize}%
 \lstset{frame=single,framexleftmargin=-1pt,framexrightmargin=-17pt,framesep=12pt,linewidth=0.98\textwidth,language=pascal}% Set your language (you can change the language for each code-block optionally)
 %%% Start your code-block
