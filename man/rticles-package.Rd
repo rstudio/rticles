@@ -6,7 +6,7 @@
 \alias{rticles-package}
 \title{rticles: Article Formats for R Markdown}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
 A suite of custom R Markdown formats and templates for authoring journal articles and conference submissions.
 }
