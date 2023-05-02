@@ -136,8 +136,17 @@ $if(links-as-notes)$
 $endif$
 $if(strikeout)$
 % For pandoc feature
-$-- also used for underline
+$if(pandoc3)$
+$-- Compatible only with Pandoc 3.0+
+\ifLuaTeX
+  \usepackage{luacolor}
+  \usepackage[soul]{lua-ul}
+\else
+  \usepackage{soul}
+\fi
+$else$
 \usepackage[normalem]{ulem}
+$endif$
 $endif$
 
 % Counters for addresses and footnotes

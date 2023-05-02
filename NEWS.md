@@ -25,6 +25,8 @@
     - Better support for `natbib` to tweak option and biblio-style using Pandoc's variables
     - Update to template following the guidelines
     - Better support for links in template to be closer to guidelines
+
+- Adapt some template supporting strikethrough to new Pandoc 3.0+ usage of **soul** instead of **ulem**.
     
 ## BUG FIXES
 
