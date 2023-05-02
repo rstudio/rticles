@@ -215,10 +215,6 @@ $endif$
 $if(svg)$
 \usepackage{svg}
 $endif$
-$if(links-as-notes)$
-% Make links footnotes instead of hotlinks:
-\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
-$endif$
 $if(strikeout)$
 % For pandoc feature
 $if(pandoc3)$
@@ -335,6 +331,11 @@ $if(csl-refs)$
 \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+$if(links-as-notes)$
+% Make links footnotes instead of hotlinks:
+\DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
 $endif$
 
 $for(header-includes)$
