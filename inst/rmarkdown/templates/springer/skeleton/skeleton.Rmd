@@ -63,14 +63,14 @@ keywords:
   - key
   - dictionary
   - word
-
-PACS:
-  - D8
-  - H51
-    
-# MSC:
-#   - 35A01
-#   - 65L10
+  
+pacs: 
+  jel:
+    - "D8"
+    - "H51"
+  msc:
+    - "35A01"
+    - "65L10"
 
 # Sample for unstructured abstract 
 # abstract: |

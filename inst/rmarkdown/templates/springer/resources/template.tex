@@ -170,12 +170,13 @@ $endfor$
 \keywords{$for(keywords)$$keywords$$sep$, $endfor$}
 
 
-$if(PACS)$
-\pacs[JEL Classification]{$for(PACS)$$PACS$$sep$, $endfor$}
+$if(pacs)$
+$if(pacs.jel)$
+\pacs[JEL Classification]{$for(pacs.jel)$$pacs.jel$$sep$, $endfor$}
 $endif$
-
-$if(MSC)$
-\pacs[MSC Classification]{$for(MSC)$$MSC$$sep$, $endfor$}
+$if(pacs.msc)$
+\pacs[MSC Classification]{$for(pacs.msc)$$pacs.msc$$sep$, $endfor$}
+$endif$
 $endif$
 
 \maketitle
