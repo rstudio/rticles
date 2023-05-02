@@ -492,7 +492,7 @@ sim_article <- function(..., highlight = NULL, citation_package = "natbib") {
 springer_article <- function(..., keep_tex = TRUE) {
 
   if (!rmarkdown::pandoc_available("2.11.4")) {
-    stop("`springer_article()` now requires a minimum of pandoc 2.10.")
+    stop("`springer_article()` now requires a minimum of pandoc 2.11.4")
   }
 
   pdf_document_format(
