@@ -1,4 +1,7 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Version 2.1 April 2023
+% See section 11 of the User Manual for version history
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                                 %%
 %% Please do not use \input{...} to include other tex files.       %%
 %% Submit your LaTeX manuscript as one .tex document.              %%
@@ -8,33 +11,25 @@
 %%                                                                 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%\documentclass[referee,sn-basic]{sn-jnl}% referee option is meant for double line spacing
-
-%%=======================================================%%
-%% to print line numbers in the margin use lineno option %%
-%%=======================================================%%
-
-%%\documentclass[lineno,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
-
-%%======================================================%%
-%% to compile with pdflatex/xelatex use pdflatex option %%
-%%======================================================%%
-
-%%\documentclass[pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
-
-\documentclass[pdflatex,$for(classoptions)$$classoptions$$sep$,$endfor$]{sn-jnl}
-%%\documentclass[sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
-%%\documentclass[pdflatex,sn-mathphys]{sn-jnl}% Math and Physical Sciences Reference Style
-%%\documentclass[sn-aps]{sn-jnl}% American Physical Society (APS) Reference Style
-%%\documentclass[sn-vancouver]{sn-jnl}% Vancouver Reference Style
-%%\documentclass[sn-apa]{sn-jnl}% APA Reference Style
-%%\documentclass[sn-chicago]{sn-jnl}% Chicago-based Humanities Reference Style
-%%\documentclass[sn-standardnature]{sn-jnl}% Standard Nature Portfolio Reference Style
-%%\documentclass[default]{sn-jnl}% Default
-%%\documentclass[default,iicol]{sn-jnl}% Default with double column layout
+\documentclass[$for(classoptions)$$classoptions$$sep$,$endfor$]{sn-jnl}
 
 %%%% Standard Packages
 %%<additional latex packages if required can be included here>
+
+\usepackage{graphicx}%
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage{mathrsfs}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs}%
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\usepackage{listings}%
 %%%%
 
 %%%%%=============================================================================%%%%
@@ -49,8 +44,6 @@
 %%%%  of the journal take precedence. A detailed User Manual is available in the
 %%%%  template package for technical guidance.
 %%%%%=============================================================================%%%%
-
-\jyear{$year$}%
 
 %% as per the requirement new theorem styles can be included as shown below
 \theoremstyle{thmstyleone}%
@@ -68,9 +61,11 @@
 \newtheorem{definition}{Definition}%
 
 \raggedbottom
-%%\unnumbered% uncomment this for unnumbered level heads
 
-%% load any required packages here
+$if(unnumbered)$
+\unnumbered uncomment this for unnumbered level heads
+$endif$
+
 $preamble$
 
 $if(highlighting-macros)$
@@ -136,8 +131,8 @@ $for(header-includes)$
 $header-includes$
 $endfor$
 
-\begin{document}
 
+\begin{document}
 
 $for(include-before)$
 $include-before$
@@ -160,8 +155,9 @@ $endfor$
 
 $for(authors)$
 \author$if(authors.corresponding)$*$endif$[$for(authors.affiliation)$$authors.affiliation$$sep$,$endfor$]{$if(authors.prefix)$\pfx{$authors.prefix$} $endif$$if(authors.firstname)$\fnm{$authors.firstname$} $endif$$if(authors.particle)$\spfx{$authors.particle$} $endif$$if(authors.lastname)$\sur{$authors.lastname$} $endif$$if(authors.suffix)$\sfx{$authors.suffix$} $endif$$if(authors.naturename)$\tanm{$authors.naturename$} $endif$$if(authors.degrees)$\dgr{$authors.degrees$}$endif$}$if(authors.email)$\email{$authors.email$}$endif$
-
+$if(authors.equal_contribution)$\equalcont{authors.equal_contribution}$endif$
 $endfor$
+
 
 $for(affiliations)$
   \affil$if(affiliations.corresponding)$*$endif$[$affiliations.number$]{$for(affiliations.info/pairs)$\$it.key${$it.value$}$sep$, $endfor$$if(affiliations.address)$, \orgaddress{$for(affiliations.address/pairs)$\$it.key${$it.value$}$sep$, $endfor$}$endif$}
@@ -171,26 +167,24 @@ $endfor$
 
 \keywords{$for(keywords)$$keywords$$sep$, $endfor$}
 
+
 $if(PACS)$
 \pacs[JEL Classification]{$for(PACS)$$PACS$$sep$, $endfor$}
 $endif$
 
-$if(PACS)$
-\pacs[MSC Classification]{$for(PACS)$$PACS$$sep$, $endfor$}
+$if(MSC)$
+\pacs[MSC Classification]{$for(MSC)$$MSC$$sep$, $endfor$}
 $endif$
 
 \maketitle
 
 $body$
 
-
 \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
-
 
 $for(include-after)$
 $include-after$
 
 $endfor$
-
 
 \end{document}

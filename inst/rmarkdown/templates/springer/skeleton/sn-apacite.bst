@@ -3612,7 +3612,7 @@ FUNCTION { format.journal.vol.num.pages.check }
       "}{" *                     volume  "" connect.check
       "}{" *                     number  "" connect.check
       "}{" *                     swap$   "" connect.check
-      "}"  *
+      ",}"  *
     }
   if$
 }
@@ -4067,12 +4067,12 @@ FUNCTION {format.orig.note}
   if$
 }
 FUNCTION {fin.entry}
-{ doi empty$
-    'skip$
-    { output.new.block
-      format.doi
-    }
-  if$
+{ %doi empty$
+  %  'skip$
+  %  { output.new.block
+  %    format.doi
+  %  }
+  % if$
   output.end.block
   "\PrintBackRefs{\CurrentBib}" write$ newline$
   test
@@ -4109,9 +4109,9 @@ FUNCTION {format.eprint}
 { eprint empty$
      { ""}
      { archive empty$
-          {"{\href{https://arxiv.org/abs/" eprint * "}" *
+          {"{\href{https://arxiv.org/abs/" eprint * "}" * 
              "{{" * format.archive * eprint * "}}}" *}
-          {"{\href{https://arxiv.org/abs/" eprint * "}" *
+          { "{\href{https://arxiv.org/abs/" eprint * "}" * 
              "{{" * format.archive * eprint * "}}}" *}
        if$
      }
@@ -4189,11 +4189,18 @@ FUNCTION {periodical}
     %   and check if journal not empty
     %
   format.journal.vol.num.pages.check
-    %
+%  output.new.block
+  doi empty$
+    'skip$
+    { output.new.block
+      format.doi
+    }
+  if$
+     %
     % if not empty, insert howpublished.
     % (used if article is retrieved from the internet)
     %
-  format.howpublished  add.period$
+%  format.howpublished  add.period$
       %
       % format url
       %
@@ -4216,7 +4223,7 @@ FUNCTION {periodical}
   output.new.block
   format.primaryClass
   fin.entry
-}
+  }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %
@@ -5310,7 +5317,7 @@ FUNCTION {begin.bib}
     { preamble$ write$ newline$ }
   if$
   "\begin{thebibliography}{}"  write$ newline$
-  "\providecommand{\doi}[1]{\url{https://doi.org/#1}}"
+  "\renewcommand{\doi}[1]{\url{https://doi.org/#1}}"
   write$ newline$
   "\bibcommenthead" write$ newline$
 }

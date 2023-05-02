@@ -472,7 +472,7 @@ FUNCTION {format.soft.eprint}
      { ""}
      { archive empty$
           {"{\href{https://arxiv.org/abs/" eprint * "}" *
-             "{{https://arxiv.org/abs/" * format.archive * eprint * "}}}" *}
+             "{{" * format.archive * eprint * "}}}" *}
           {"{\href{https://arxiv.org/abs/" eprint * "}" *
              "{{" * format.archive * eprint * "}}}" *}
        if$
@@ -771,7 +771,7 @@ FUNCTION {n.separate}
 }
 FUNCTION {n.dashify}
 {
-  n.separate
+%%  n.separate
   't :=
   ""
     { t empty$ not }

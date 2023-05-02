@@ -936,11 +936,54 @@ FUNCTION {format.type}
   if$
 }
 
+FUNCTION {cite.author.editor}
+{ 's :=
+  s #1 "{vv~}{ll}" format.name$
+  s num.names$ duplicate$
+  #2 >
+    { pop$ " et~al." * }
+    { #2 =
+        {	s #2 "{vv~}{ll}{ jj}{ f}" format.name$ "others" =
+            { " et~al."  * }
+            { " and " * s #2 "{vv~}{ll}" format.name$ * }
+           if$
+         }
+         'skip$
+        if$
+    }
+  if$
+}
+
+FUNCTION {check.auth.edit.org}
+{author empty$
+  {
+    editor empty$
+      {
+        organization empty$
+          {""}
+          {organization}
+        if$		
+      }
+      {editor cite.author.editor}
+    if$		
+  }
+  {author cite.author.editor}
+ if$	
+}
+
+FUNCTION {check.year}
+{	year empty$
+    {""}
+    {year}
+  if$	
+}
+
 FUNCTION {output.bibitem}
 { outside.brackets 'bracket.state := % urlbst
    newline$
-  "\bibitem{" write$
-  cite$ write$
+  "\bibitem[\protect\citeauthoryear{" write$
+check.auth.edit.org write$
+"}{" write$ check.year write$ "}]{" write$ cite$ write$
   "}" write$
   newline$
   ""

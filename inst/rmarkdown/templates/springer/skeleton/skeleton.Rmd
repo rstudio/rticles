@@ -1,7 +1,24 @@
 ---
+# Supported options: 
+#   sn-nature:       Style for submissions to Nature Portfolio journals
+#   sn-basic:        Basic Springer Nature Reference Style/Chemistry Reference Style
+#   sn-mathphys:     Math and Physical Sciences Reference Style
+#   sn-aps:          American Physical Society (APS) Reference Style
+#   sn-vancouver:    Vancouver Reference Style
+#   sn-apa:          APA Reference Style 
+#   sn-chicago:      Chicago-based Humanities Reference Style
+#   default:         Default
+
 classoptions: 
-  - sn-basic
-year: 2022
+  - sn-basic      
+  - pdflatex      # Optional: Compile with pdflatex/xelatex
+  # - Numbered      # Optional: Use numbered references instead of namedate references (only for sn-nature, sn-basic, sn-vancouver, sn-chicago, sn-mathphys or sn-nature)
+  # - referee       # Optional: Use double line spacing 
+  # - lineno        # Optional: Add line numbers
+  # - iicol         # Optional: Double column layour
+
+# unnumbered: TRUE # For unnumbered level heads
+
 title: Article Title
 titlerunning: Article Title runing
 
@@ -16,10 +33,12 @@ authors:
     email: abc@def
     affiliation: [1,2]
     corresponding: TRUE
+    equalcont: These authors contributed equally to this work.
     
   - firstname: Second
     lastname: Author
     affiliation: 2
+    equalcont: These authors contributed equally to this work.
 
 
 affiliations:
@@ -40,7 +59,6 @@ affiliations:
       orgname: Other Organisation
     
   
-
 keywords:
   - key
   - dictionary
@@ -54,7 +72,7 @@ PACS:
 #   - 35A01
 #   - 65L10
 
-# sample for unstructured abstract 
+# Sample for unstructured abstract 
 # abstract: |
 #   The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. Authors are advised to check the author instructions for the journal they are submitting to for word limits and if structural elements like subheadings, citations, or equations are permitted.
 
@@ -80,18 +98,22 @@ knitr::opts_chunk$set(echo = FALSE,
 
 # Introduction {#sec1}
 
-
 The Introduction section, of referenced text @bib1 expands on the background of the work (some overlap with the Abstract is acceptable). The introduction should not include subheadings.
 
-Springer Nature does not impose a strict layout as standard however authors are advised to check the individual requirements for the journal they are planning to submit to as there may be journal-level preferences. When preparing your text please also be aware that some stylistic choices are not supported in full text XML (publication version), including coloured font. These will not be replicated in the typeset article if it is accepted.
+Springer Nature does not impose a strict layout as standard however authors are advised to check the individual requirements for the journal they are planning to submit to as there may be journal-level preferences. 
+When preparing your text please also be aware that some stylistic choices are not supported in full text XML (publication version), including coloured font. 
+These will not be replicated in the typeset article if it is accepted.
 
+# Results {#sec2}
 
-## Results {#sec2}
-
-Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text.
-
-
-
+Sample body text. 
+Sample body text. 
+Sample body text. 
+Sample body text.
+Sample body text.
+Sample body text.
+Sample body text. 
+Sample body text.
 
 # This is an example for first level head---section head {#sec3}
 
@@ -99,10 +121,15 @@ Sample body text. Sample body text. Sample body text. Sample body text. Sample b
 
 ### This is an example for third level head---subsubsection head {#subsubsec2}
 
-Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text.
+Sample body text. 
+Sample body text. 
+Sample body text.
+Sample body text.
+Sample body text.
+Sample body text. 
+Sample body text.
 
 # Equations {#sec4}
-
 
 Equations in \LaTeX\ can either be inline or on-a-line by itself (``display equations''). For
 inline equations use the \verb+$...$+ commands. E.g.: The equation
@@ -139,12 +166,9 @@ The class file also supports the use of \verb+\mathbb{}+, \verb+\mathscr{}+ and
 and \verb+\mathcal{R}+ produces $\mathbb{R}$, $\mathscr{R}$ and $\mathcal{R}$
 respectively (refer Subsubsection\ \ref{subsubsec2}).
 
-
-
 # Tables {#sec5}
 
-Tables can be inserted via the normal `knitr::kable()` function.
-
+Tables can be inserted via the normal `knitr::kable()` function or other table-generating packages. 
 
 ```{r tab1}
 knitr::kable(head(pressure), 
@@ -152,22 +176,108 @@ knitr::kable(head(pressure),
              caption = "Caption text")
 ```
 
+Tables can also be inserted via the normal table and tabular environment. To put
+footnotes inside tables you should use \verb+\footnotetext[]{...}+ tag.
+The footnote appears just below the table itself (refer Tables~\ref{tab1} and \ref{tab2}).
+For the corresponding footnotemark use \verb+\footnotemark[...]+
+
+\begin{table}[h]
+\caption{Caption text}\label{tab1}%
+\begin{tabular}{@{}llll@{}}
+\toprule
+Column 1 & Column 2  & Column 3 & Column 4\\
+\midrule
+row 1    & data 1   & data 2  & data 3  \\
+row 2    & data 4   & data 5\footnotemark[1]  & data 6  \\
+row 3    & data 7   & data 8  & data 9\footnotemark[2]  \\
+\botrule
+\end{tabular}
+\footnotetext{Source: This is an example of table footnote. This is an example of table footnote.}
+\footnotetext[1]{Example for a first table footnote. This is an example of table footnote.}
+\footnotetext[2]{Example for a second table footnote. This is an example of table footnote.}
+\end{table}
+
+\noindent
+The input format for the above table is as follows:
+
+
+\begin{verbatim}
+\begin{table}[<placement-specifier>]
+\caption{<table-caption>}\label{<table-label>}%
+\begin{tabular}{@{}llll@{}}
+\toprule
+Column 1 & Column 2 & Column 3 & Column 4\\
+\midrule
+row 1 & data 1 & data 2	 & data 3 \\
+row 2 & data 4 & data 5\footnotemark[1] & data 6 \\
+row 3 & data 7 & data 8	 & data 9\footnotemark[2]\\
+\botrule
+\end{tabular}
+\footnotetext{Source: This is an example of table footnote.
+This is an example of table footnote.}
+\footnotetext[1]{Example for a first table footnote.
+This is an example of table footnote.}
+\footnotetext[2]{Example for a second table footnote.
+This is an example of table footnote.}
+\end{table}
+\end{verbatim}
+
+\begin{table}[h]
+\caption{Example of a lengthy table which is set to full textwidth}\label{tab2}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lcccccc}
+\toprule%
+& \multicolumn{3}{@{}c@{}}{Element 1\footnotemark[1]} & \multicolumn{3}{@{}c@{}}{Element 2\footnotemark[2]} \\\cmidrule{2-4}\cmidrule{5-7}%
+Project & Energy & $\sigma_{calc}$ & $\sigma_{expt}$ & Energy & $\sigma_{calc}$ & $\sigma_{expt}$ \\
+\midrule
+Element 3  & 990 A & 1168 & $1547\pm12$ & 780 A & 1166 & $1239\pm100$\\
+Element 4  & 500 A & 961  & $922\pm10$  & 900 A & 1268 & $1092\pm40$\\
+\botrule
+\end{tabular*}
+\footnotetext{Note: This is an example of table footnote. This is an example of table footnote this is an example of table footnote this is an example of~table footnote this is an example of table footnote.}
+\footnotetext[1]{Example for a first table footnote.}
+\footnotetext[2]{Example for a second table footnote.}
+\end{table}
+
+\vfill\eject
+
+In case of double column layout, tables which do not fit in single column width should be set to full text width. 
+For this, you need to use \verb+\begin{table*}+ \verb+...+ \verb+\end{table*}+ instead of \verb+\begin{table}+ \verb+...+ \verb+\end{table}+ environment. Lengthy tables which do not fit in textwidth should be set as rotated table. For this, you need to use \verb+\begin{sidewaystable}+ \verb+...+ \verb+\end{sidewaystable}+ instead of \verb+\begin{table*}+ \verb+...+ \verb+\end{table*}+ environment. This environment puts tables rotated to single column width. For tables rotated to double column width, use \verb+\begin{sidewaystable*}+ \verb+...+ \verb+\end{sidewaystable*}+.
+
+\begin{sidewaystable}
+\caption{Tables which are too long to fit, should be written using the ``sidewaystable'' environment as shown here}\label{tab3}
+\begin{tabular*}{\textheight}{@{\extracolsep\fill}lcccccc}
+\toprule%
+& \multicolumn{3}{@{}c@{}}{Element 1\footnotemark[1]}& \multicolumn{3}{@{}c@{}}{Element\footnotemark[2]} \\\cmidrule{2-4}\cmidrule{5-7}%
+Projectile & Energy	& $\sigma_{calc}$ & $\sigma_{expt}$ & Energy & $\sigma_{calc}$ & $\sigma_{expt}$ \\
+\midrule
+Element 3 & 990 A & 1168 & $1547\pm12$ & 780 A & 1166 & $1239\pm100$ \\
+Element 4 & 500 A & 961  & $922\pm10$  & 900 A & 1268 & $1092\pm40$ \\
+Element 5 & 990 A & 1168 & $1547\pm12$ & 780 A & 1166 & $1239\pm100$ \\
+Element 6 & 500 A & 961  & $922\pm10$  & 900 A & 1268 & $1092\pm40$ \\
+\botrule
+\end{tabular*}
+\footnotetext{Note: This is an example of table footnote this is an example of table footnote this is an example of table footnote this is an example of~table footnote this is an example of table footnote.}
+\footnotetext[1]{This is an example of table footnote.}
+\end{sidewaystable}
 
 # Figures {#sec6}
 
-As per the \LaTeX\ standards you need to use eps images for \LaTeX\ compilation and \verb+pdf/jpg/png+ images for \verb+PDFLaTeX+ compilation. This is one of the major difference between \LaTeX\ and \verb+PDFLaTeX+. Each image should be from a single input .eps/vector image file. Avoid using subfigures. The command for inserting images for \LaTeX\ and \verb+PDFLaTeX+ can be generalized. The package used to insert images in \verb+LaTeX/PDFLaTeX+ is the graphicx package. Figures can be inserted via the normal figure environment as shown in the below example:
+As per the \LaTeX\ standards you need to use eps images for \LaTeX\ compilation and \verb+pdf/jpg/png+ images for \verb+PDFLaTeX+ compilation. 
+Use the `dev` knitr option to use the approrpate format. 
+This is one of the major difference between \LaTeX\ and \verb+PDFLaTeX+.
+Each image should be from a single input .eps/vector image file. 
+Avoid using subfigures.
+The command for inserting images for \LaTeX\ and \verb+PDFLaTeX+ can be generalized. 
+The package used to insert images in \verb+LaTeX/PDFLaTeX+ is the graphicx package. 
+Figures can be inserted via the normal figure environment as shown in the below example:
 
 ```{r fig1, fig.cap = "This is an example of a caption", fig.width = 5}
 plot(pressure)
 ```
 
-
-
 # Algorithms, Program codes and Listings {#sec7}
 
-
 Packages \verb+algorithm+, \verb+algorithmicx+ and \verb+algpseudocode+ are used for setting algorithms in \LaTeX\ using the format:
-
 
 
 <!-- For presentation purpose, we have included   -->
@@ -187,30 +297,34 @@ Packages \verb+algorithm+, \verb+algorithmicx+ and \verb+algpseudocode+ are used
 
 You may refer above listed package documentations for more details before setting \verb+algorithm+ environment. For program codes, the ``program'' package is required and the command to be used is \verb+\begin{program}+ \verb+...+ \verb+\end{program}+. A fast exponentiation procedure:
 
-\begin{program}
-\BEGIN \\ %
-  \FOR i:=1 \TO 10 \STEP 1 \DO
-     |expt|(2,i); \\ |newline|() \OD %
-\rcomment{Comments will be set flush to the right margin}
-\WHERE
-\PROC |expt|(x,n) \BODY
-          z:=1;
-          \DO \IF n=0 \THEN \EXIT \FI;
-             \DO \IF |odd|(n) \THEN \EXIT \FI;
-\COMMENT{This is a comment statement};
-                n:=n/2; x:=x*x \OD;
-             \{ n>0 \};
-             n:=n-1; z:=z*x \OD;
-          |print|(z) \ENDPROC
-\END
-\end{program}
+Similarly, for \verb+listings+, use the \verb+listings+ package. \verb+\begin{lstlisting}+ \verb+...+ \verb+\end{lstlisting}+ is used to set environments similar to \verb+verbatim+ environment. Refer to the \verb+lstlisting+ package documentation for more details.
 
+A fast exponentiation procedure:
+
+\lstset{texcl=true,basicstyle=\small\sf,commentstyle=\small\rm,mathescape=true,escapeinside={(*}{*)}}
+\begin{lstlisting}
+begin
+  for $i:=1$ to $10$ step $1$ do
+      expt($2,i$);  
+      newline() od                (*\textrm{Comments will be set flush to the right margin}*)
+where
+proc expt($x,n$) $\equiv$
+  $z:=1$;
+  do if $n=0$ then exit fi;
+     do if odd($n$) then exit fi;                 
+        comment: (*\textrm{This is a comment statement;}*)
+        $n:=n/2$; $x:=x*x$ od;
+     { $n>0$ };
+     $n:=n-1$; $z:=z*x$ od;
+  print($z$). 
+end
+\end{lstlisting}
 
 \begin{algorithm}
 \caption{Calculate $y = x^n$}\label{algo1}
 \begin{algorithmic}[1]
 \Require $n \geq 0 \vee x \neq 0$
-\Ensure $y = x^n$
+\Ensure $y = x^n$ 
 \State $y \Leftarrow 1$
 \If{$n < 0$}\label{algln2}
         \State $X \Leftarrow 1 / x$
@@ -230,15 +344,11 @@ You may refer above listed package documentations for more details before settin
 \EndWhile
 \end{algorithmic}
 \end{algorithm}
-\bigskip
 
-<!-- For presentation purpose, we have included   -->
-<!-- \bigskip command. please ignore this.        -->
-
-Similarly, for \verb+listings+, use the \verb+listings+ package. \verb+\begin{lstlisting}+ \verb+...+ \verb+\end{lstlisting}+ is used to set environments similar to \verb+verbatim+ environment. Refer to the \verb+lstlisting+ package documentation for more details.
-
-<!-- For presentation purpose, we have included   -->
-<!-- \bigskip command. please ignore this.        -->
+%%=============================================%%
+%% For presentation purpose, we have included  %%
+%% \bigskip command. please ignore this.       %%
+%%=============================================%%
 \bigskip
 \begin{minipage}{\hsize}%
 \lstset{frame=single,framexleftmargin=-1pt,framexrightmargin=-17pt,framesep=12pt,linewidth=0.98\textwidth,language=pascal}% Set your language (you can change the language for each code-block optionally)
@@ -252,6 +362,7 @@ Write('Case insensitive ');
 Write('Pascal keywords.');
 \end{lstlisting}
 \end{minipage}
+
 
 # Cross referencing {#sec8}
 
