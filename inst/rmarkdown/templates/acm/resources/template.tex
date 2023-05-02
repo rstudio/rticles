@@ -36,6 +36,9 @@ $if(graphics)$
  \gdef\includegraphics{\@ifnextchar[{\Oldincludegraphics}{\Oldincludegraphics[width=\ScaleIfNeeded]}}%
 }%
 $endif$
+$if(svg)$
+\usepackage{svg}
+$endif$
 
 \numberofauthors{2}
 \author{
