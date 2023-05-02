@@ -385,16 +385,14 @@ Example theorem text.
 
 To add labels and subheadings, use LaTeX notation
 
-\begin{theorem}[Theorem subhead]\label{thm1}
+::: {.theorem latex="[Theorem subhead]\label{thm1}"}
 Example theorem text. Example theorem text. Example theorem text. Example theorem text. Example theorem text.
 Example theorem text. Example theorem text. Example theorem text. Example theorem text. Example theorem text.
 Example theorem text.
-\end{theorem}
+:::
 
 
 Other environments are proposition, example, remark, definition, proof and quote
-
-
 
 # Methods {#sec11}
 
