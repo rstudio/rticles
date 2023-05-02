@@ -342,9 +342,10 @@ end
 \end{algorithm}
 ```
 
-\begin{minipage}{\hsize}%
-\lstset{frame=single,framexleftmargin=-1pt,framexrightmargin=-17pt,framesep=12pt,linewidth=0.98\textwidth,language=pascal}% Set your language (you can change the language for each code-block optionally)
-%%% Start your code-block
+::: {.minipage latex="{\hsize}"}
+\lstset{frame=single,framexleftmargin=-1pt,framexrightmargin=-17pt,framesep=12pt,linewidth=0.98\textwidth,language=pascal}
+<!-- Set your language (you can change the language for each code-block optionally) -->
+<!-- Start your code-block -->
 \begin{lstlisting}
 for i:=maxint to 0 do
 begin
@@ -353,8 +354,7 @@ end;
 Write('Case insensitive ');
 Write('Pascal keywords.');
 \end{lstlisting}
-\end{minipage}
-
+:::
 
 # Cross referencing {#sec8}
 
