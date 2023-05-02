@@ -131,7 +131,7 @@ Sample body text.
 
 # Equations {#sec4}
 
-Equations in \LaTeX\ can either be inline or on-a-line by itself (``display equations''). For
+Equations in \LaTeX\ can either be inline or on-a-line by itself ("display equations"). For
 inline equations use the \verb+$...$+ commands. E.g.: The equation
 $H\psi = E \psi$ is written via the command \verb+$H \psi = E \psi$+.
 
