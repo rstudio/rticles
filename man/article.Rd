@@ -147,7 +147,9 @@ springer_article(
   ...,
   keep_tex = TRUE,
   citation_package = "natbib",
-  number_sections = TRUE
+  number_sections = TRUE,
+  latex_engine = "pdflatex",
+  pandoc_args = NULL
 )
 
 tf_article(..., keep_tex = TRUE, citation_package = "natbib")
