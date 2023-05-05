@@ -58,7 +58,7 @@ off (\code{FALSE}) the \code{dblfloatfix} LaTeX package.}
 \item{pandoc_args}{Additional command line options to pass to pandoc}
 
 \item{md_extensions}{Markdown extensions to be added or removed from the
-default definition or R Markdown. See the \code{\link[rmarkdown]{rmarkdown_format}} for
+default definition of R Markdown. See the \code{\link[rmarkdown]{rmarkdown_format}} for
 additional details.}
 
 \item{...}{Additional arguments to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}}

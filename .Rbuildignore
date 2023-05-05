@@ -10,4 +10,10 @@
 ^reference$
 ^pkgdown$
 ^vignettes$
+^vignettes/articles$
 
+^revdep$
+^Untitled/
+^codecov\.yml$
+^CRAN-SUBMISSION$
+^cran-comments\.md$

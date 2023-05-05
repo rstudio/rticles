@@ -1,0 +1,247 @@
+$if(colorlinks)$
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+$endif$
+
+\documentclass[$if(fontsize)$$fontsize$,$else$12pt,$endif$$if(spacing)$$spacing$,$else$halfline,$endif$$if(papersize)$$papersize$,$else$a4paper,$endif$$for(classoptions)$$classoptions$$sep$,$endfor$]{ouparticle}
+
+% Packages I think are necessary for basic Rmarkdown functionality
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{fancyvrb}
+\usepackage{framed}
+
+% Link coloring
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={$author-meta$},
+            pdftitle={$title-meta$}
+            $if(colorlinks)$
+            ,
+            colorlinks=true,
+            citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
+            urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
+            linkcolor=$if(linkcolor)$$linkcolor$$else$blue$endif$
+            $endif$
+}
+
+
+%% To allow better options for figure placement
+%\usepackage{float}
+
+% Packages that are supposedly required by OUP sty file
+\usepackage{amssymb, amsmath, geometry, amsfonts, verbatim, endnotes, setspace}
+
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+
+% Macros for dealing with affiliations, footnotes, etc.
+\makeatletter
+\def\Newlabel#1#2#3{\expandafter\gdef\csname #1@#2\endcsname{#3}}
+
+\def\Ref#1#2{\@ifundefined{#1@#2}{???}{\csname #1@#2\endcsname}}
+
+\newcommand*\samethanks[1][\value{footnote}]{\footnotemark[#1]}
+
+\newcommand*\ifcounter[1]{%
+  \ifcsname c@#1\endcsname
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+}
+
+\newcommand*\thanksbycode[1]{%
+  \ifcounter{FNCT@#1}
+    {\samethanks[\value{FNCT@#1}]}
+    {\thanks{\Ref{FN}{#1}}\newcounter{FNCT@#1}\setcounter{FNCT@#1}{\value{footnote}}}
+}
+
+% Create labels for Addresses if the are given in Elsevier format
+$if(address)$
+$for(address)$
+$if(address.code)$
+\Newlabel{ADR}{$address.code$}{$address.address$}
+$endif$
+$if(address.id)$
+\Newlabel{ADR}{$address.id$}{$address.address$}
+$endif$
+$endfor$
+$endif$
+
+% Create labels for Footnotes if the are given in Elsevier format
+$if(footnote)$
+$for(footnote)$
+$if(footnote.code)$
+\Newlabel{FN}{$footnote.code$}{$footnote.text$}
+$endif$
+$endfor$
+$endif$
+
+% Part for setting citation format package: natbib
+$if(natbib)$
+\usepackage{natbib}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
+$endif$
+
+% Part for setting citation format package: biblatex
+$if(biblatex)$
+\usepackage[$if(biblio-citestyle)$citestyle=$biblio-citestyle$$else$citestyle=ieee$endif$$if(biblio-style)$,style=$biblio-style$$else$,style=numeric$endif$$if(citation_sorting)$,sorting=$citation_sorting$$endif$]{biblatex}
+$if(bibliography)$
+$for(bibliography)$
+\addbibresource{$bibliography$}
+$endfor$
+$endif$
+$endif$
+
+$if(highlighting-macros)$
+% Pandoc syntax highlighting
+$highlighting-macros$
+$endif$
+
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+$if(tables)$
+% From pandoc table feature
+\usepackage{longtable,booktabs,array}
+$if(multirow)$
+\usepackage{multirow}
+$endif$
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+$endif$
+
+$if(csl-refs)$
+% Pandoc citation processing
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+\begin{document}
+
+\title{$title$}
+
+\author{%
+%
+% Code for old style authors field
+$for(authors)$
+\name{$authors.name$}$if(authors.address)$\address{$authors.address$}$endif$$if(authors.email)$\email{\href{mailto:$authors.email$}{$authors.email$}}$endif$$if(authors.thanks)$\thanks{$authors.thanks$}$else$$if(authors.corresponding_author)$\thanks{Corresponding author; Email: \href{mailto:$authors.email$}{$authors.email$}}$endif$$endif$
+$sep$\and
+$endfor$
+%
+% Add \and if both authors and author
+$if(authors)$$if(author)$\and$endif$$endif$%
+%
+% Code for new (elsevier) style author field
+$for(author)$
+\name{$author.name$}
+$if(author.affiliation)$
+$for(author.affiliation)$
+\address{\Ref{ADR}{$author.affiliation$}}
+$endfor$
+$endif$%
+$if(author.email)$\email{\href{mailto:$author.email$}{$author.email$}}$endif$%
+$if(author.corresponding_author)$\thanks{Corresponding author; Email: \href{mailto:$author.email$}{$author.email$}}$endif$%
+$if(author.thanks)$\thanks{$author.thanks$}$endif$%
+$if(author.footnote)$
+$for(author.footnote)$
+\thanksbycode{$author.footnote$}
+$endfor$
+$endif$%
+$sep$\and
+$endfor$
+%
+}
+
+\abstract{$abstract$}
+
+\date{$if(date)$$date$$else$\today$endif$}
+
+\keywords{$for(keywords)$$keywords$$sep$; $endfor$}
+
+\maketitle
+
+
+$for(include-before)$
+$include-before$
+$endfor$
+
+$body$
+
+$if(notes)$
+\begin{notes}
+$notes$
+\end{notes}
+$endif$
+
+$if(acknowledgements)$
+\begin{notes}[Acknowledgements]
+$acknowledgements$
+\end{notes}
+$endif$
+
+$if(natbib)$
+$if(bibliography)$
+
+$if(biblio-title)$
+$if(book-class)$
+\renewcommand\bibname{$biblio-title$}
+$else$
+\renewcommand\refname{$biblio-title$}
+$endif$
+$endif$
+
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+$endif$
+
+$if(biblatex)$
+\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+$endif$
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+\end{document}

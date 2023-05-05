@@ -1,10 +1,124 @@
+# rticles (development version)
+
+## BREAKING CHANGES
+
+- `ajs_article()` and `jss_article()` require Pandoc 2.7+ (possibly required by some changes in `jss.cls`).
+
+- `rjournal_article()` is now soft deprecated in favor of `rjtools::rjournal_pdf_article()` as **rjtools** package is now the recommended workflow at <https://rjournal.github.io/submissions.html>. A warning will be thrown when rticles' function is used.
+
+## NEW FEATURES
+
+- `ieee_article()` now supports several affiliations per `authors` when using the `wide: true` mode (thanks, @phamdn, #500).
+
+- Add a helper function `string_to_table()` for documentating configuration from a list copy pasted from a `.tex` template. 
+
+## MINOR CHANGES
+
+- Update to the `mdpi_article()` format (thanks, @mps9506, #515)
+    - New yaml configuration fields.
+    - Now working with `xelatex`.
+    - New template skeleton to start with.
+    - Compatibility with new resources expectations to be in `Definitions/mdpi` folder.
+
+- Improve `elsevier_article()` affilliations for authors by supporting same fields as in official template. This also fix address with comma not showing (thanks, @gjpstrain, @mps9506, #509).
+
+- Update `RJournal.sty` to latest version to support number sections (thanks, @zeileis, #517).
+
+- Update to the `asa_article()` format (thanks, @ianmtaylor1 #506, @jepusto, #507):
+    - Better support for `natbib` to tweak option and biblio-style using Pandoc's variables,
+    - Update to template following the guidelines,
+    - Better support for links in template to be closer to guidelines.
+
+- Adapt some template supporting strikethrough to new Pandoc 3.0+ usage of **soul** instead of **ulem**.
+
+- Some other minors change to templates to be closer to Pandoc's own LaTeX template.
+    
+## BUG FIXES
+
+- Template internal change: `lineno` CTAN package is now loaded after `amsmath` in `peerj_article()`, `elsevier_article()` and `mdpi_article()` because of a conflict with last version of `lineno` (thanks, @bischrob, #513). 
+
+- Update Copernicus Publications template to version 7.3 from 2023-03-17 (@RLumSK, #508, #514, #519).
+
+# rticles 0.24
+
+## NEW FEATURES
+
+- New `lncs_article()` template for submissions to Lecture Notes in Computer Science (thanks, @eliocamp, #445).
+
+## BUG FIXES
+
+- Remove `\usepackage{utf8x}` usage by default in `plos_article()` TeX template as it conflicts with recent `latex2e`. As it is in the official PLS journal template, it is not removed completely but opt-out by default. Use `with_utf8x` pandoc variable in YAML to opt-in again if you want to deal with the conflict differently (thanks, @Sciurus365, #496).
+
+- Update `glossa_article()` and path template to opt-out using `microtype` to prevent issues. Add it back using `extra_dependencies` in YAML with adding a preamble if needed (thanks, @stefanocoretta, #487).
+
+- In `elsevier_article()`, corresponding author is correctly marked with a `*` even if no other footnote are set on the author.
+
+- `ams_article()` bundles `ametsoc.cls` now as **ametsoc** package is not more available on CTAN.
+
+- Nested code chunk in list are now correctly rendered in `jss_article()` (thanks, @nbenn, #476).
+
+## MINOR CHANGES
+
+- Update Copernicus Publications template to version 6.8 from 2022-03-28 (@RLumSK, #478, #479).
+
+- Update `rjournal_article()` template to match current style file. Package and task view macros use secure links, and the footer includes the year (@mitchelloharawild)
+
+- Updates to Pandoc's template following recent change with new Pandoc version in relevant templates.
+
+# rticles 0.23
+
+## BREAKING CHANGE
+
+- Update Elsevier template and of `elsarticle.cls` to version 3.3 in `elsevier_article()`. This is a breaking change in the format that now **requires at least Pandoc 2.10** and uses the latest version of the `.cls` file, also provided in [elsarticle](https://ctan.org/pkg/elsarticle) on CTAN. See the included template for this format. Also, `natbib` is now used y default for citation processing. You can use [**renv**](https://pkgs.rstudio.com/renv/) to manage your project in locked environment of packages  (thanks, @robjhyndman, #467).
+
+## NEW FEATURES
+
+- Update `jss_article()` template to handle ORCID links for each author from  a new YAML field, and to use updated `jss.cls` class file (thanks, @remlapmot, #465).
+
+- New `informs_article()` template for submissions to INFORMS journals (thanks, @robjhyndman, #460).
+
+- New `iop_article()` template for submissions to IOP journals (thanks, @robjhyndman, #462).
+
+- New `isba_article()` template for submissions to Bayesian Analysis journal (thanks, @dmi3kno, #461).
+
+## MINOR CHANGES
+
+- Update Copernicus Publications template to version 6.6 from 2022-01-18 (@RLumSK, #463, #464).
+
+- `rss_article()` now supports more than two authors using usual YAML list syntax in the new `authors` field. Old `author` and `author2` are kept for backward compatibility, but we advice any user to use the new formats. See update Rmd skeleton template (thanks, @dmi3kno, #466).
+
+## BUG FIXES
+
+- `graphicx` LaTeX package has been added to `ieee_article()` format (thanks, Sachin Hebbar, [on RStudio Community](https://community.rstudio.com/t/inserting-figures-in-rticles-ieee-transaction-template/129325)).
+
 # rticles 0.22
+
+## BREAKING CHANGE
+
+- `oup_article()` template has been updated to include the possibility of using the latest OUP authoring template now available on CTAN. It is still possible to use old `.cls` file as some journals still depend on it. `oup_version` will now control if the old version (`oup_version = 0`) or the new version is to be used (`oup_version = 1`). For this version, `oup_version = 0` is the default. See `?rticles::oup_article()` for links to resources. The bundled Rmd template has also evolved. Use `oup_v0` or `oup_v1` as template name - Easiest way to create the template still remains using the RStudio IDE. `oup_version = 1` comes with a requirement of Pandoc 2.10 minimum. (thanks, @dmkaplan2000, #431)
+
+## NEW FEATURES
+
+- New `trb_article()` for annual meeting submissions to the Transportation Research Board Annual Meeting (thanks, @gregmacfarlane, #427).
+
+- New `wellcomeor_article()` for Wellcome Open Research articles (thanks, @arnold-c, #436).
+
+## MAJOR CHANGES
 
 - Update Copernicus Publications template to version 6.4 from 2021-08-16 (thanks, @RLumSK, #446).
 
+- `glossa_article()` is incompatible with `microtype` CTAN package for now. When TinyTeX is used, it will be uninstalled before rendering.
+
+- All template were updated to include parts required by some Pandoc feature when they are used: highlighting, CSL & citation processing, include before, after and in header, Pandoc's markdown tables. Checks are now included in CI test so that new template missing these parts are detected.
+
+- Fixed an issue with `microtype` CTAN package in `amq_article()` by patching the template until upstream issue if 
+fixed. 
+
+## MINOR CHANGES
+
 - `sage_article()` now correctly set cite style in template to use comma to match the Sage Havard style per Journal's guideline (thanks, @MalteHueckstaedt, #447).
 
-- Add `trb_article()` for annual meeting submissions to the Transportation Research Board Annual Meeting (thanks, @gregmacfarlane, #427).
+- Add `copyrightyear` and `pubyear` variable in `bioinformatics_article()` (thanks, @stephenturner, #424). 
 
 # rticles 0.21
 

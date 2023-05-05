@@ -1,0 +1,202 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Author template for INFORMS Journal on Data Science (ijds) [interim solution; new styles under construction]
+%% Mirko Janc, Ph.D., INFORMS, mirko.janc@informs.org
+%% ver. 0.91, March 2015 - updated November 2020 by Matthew Walls, matthew.walls@informs.org
+%% Adapted for rticles by Rob J Hyndman Rob.Hyndman@monash.edu. Dec 2021
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[$if(fontsize)$$fontsize$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$,$journal$,$if(blind)$blindrev$else$nonblindrev$endif$]{informs}
+
+\OneAndAHalfSpacedXI
+%%\OneAndAHalfSpacedXII % Current default line spacing
+%%\DoubleSpacedXII
+%%\DoubleSpacedXI
+
+%% BEGIN MY ADDITIONS %%
+\usepackage{hyperref}
+$if(highlighting-macros)$
+% Pandoc syntax highlighting
+$highlighting-macros$
+$endif$
+
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+$if(tables)$
+% From pandoc table feature
+\usepackage{longtable,booktabs,array}
+$if(multirow)$
+\usepackage{multirow}
+$endif$
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+$endif$
+
+$if(csl-refs)$
+% Pandoc citation processing
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+%% END MY ADDITIONS %%
+
+
+% Natbib setup for author-year style
+\usepackage{natbib}
+ \bibpunct[, ]{(}{)}{,}{a}{}{,}%
+ \def\bibfont{\small}%
+ \def\bibsep{\smallskipamount}%
+ \def\bibhang{24pt}%
+ \def\newblock{\ }%
+ \def\BIBand{and}%
+
+
+%% Setup of theorem styles. Outcomment only one.
+%% Preferred default is the first option.
+\TheoremsNumberedThrough     % Preferred (Theorem 1, Lemma 1, Theorem 2)
+%\TheoremsNumberedByChapter  % (Theorem 1.1, Lema 1.1, Theorem 1.2)
+\ECRepeatTheorems
+
+%% Setup of the equation numbering system. Outcomment only one.
+%% Preferred default is the first option.
+\EquationsNumberedThrough    % Default: (1), (2), ...
+%\EquationsNumberedBySection % (1.1), (1.2), ...
+
+% For new submissions, leave this number blank.
+% For revisions, input the manuscript number assigned by the on-line
+% system along with a suffix ".Rx" where x is the revision number.
+\MANUSCRIPTNO{$manuscriptno$}
+
+%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%
+
+% Outcomment only when entries are known. Otherwise leave as is and
+%   default values will be used.
+%\setcounter{page}{1}
+%\VOLUME{00}%
+%\NO{0}%
+%\MONTH{Xxxxx}% (month or a similar seasonal id)
+%\YEAR{0000}% e.g., 2005
+%\FIRSTPAGE{000}%
+%\LASTPAGE{000}%
+%\SHORTYEAR{00}% shortened year (two-digit)
+%\ISSUE{0000} %
+%\LONGFIRSTPAGE{0001} %
+%\DOI{10.1287/xxxx.0000.0000}%
+
+% Author's names for the running heads
+% Sample depending on the number of authors;
+\RUNAUTHOR{%
+$if(authors/allbutlast)$
+$for(authors/allbutlast)$$it.familyname$$sep$, $endfor$
+ and $for(authors/last)$$it.familyname$$endfor$
+$else$
+${authors/last}
+$endif$
+}
+% \RUNAUTHOR{Jones and Wilson}
+% \RUNAUTHOR{Jones, Miller, and Wilson}
+% \RUNAUTHOR{Jones et al.} % for four or more authors
+% Enter authors following the given pattern:
+%\RUNAUTHOR{}
+
+$if(shorttitle)$
+\RUNTITLE{$shorttitle$}
+$else$
+\RUNTITLE{$title$}
+$endif$
+
+\TITLE{$title$}
+
+\ARTICLEAUTHORS{%
+$for(authors)$
+\AUTHOR{$authors.othernames$ $authors.familyname$}
+\AFF{$authors.affiliation$, \EMAIL{$authors.email$}}
+
+$endfor$%
+}
+
+\ABSTRACT{$abstract$}
+
+\KEYWORDS{$for(keywords)$$keywords$$sep$; $endfor$}
+
+\maketitle
+
+$for(include-before)$
+$include-before$
+
+$endfor$
+
+$body$
+
+% Appendix here
+% Options are (1) APPENDIX (with or without general title) or
+%             (2) APPENDICES (if it has more than one unrelated sections)
+% Outcomment the appropriate case if necessary
+%
+% \begin{APPENDIX}{<Title of the Appendix>}
+% \end{APPENDIX}
+%
+%   or
+%
+% \begin{APPENDICES}
+% \section{<Title of Section A>}
+% \section{<Title of Section B>}
+% etc
+% \end{APPENDICES}
+
+
+% Acknowledgments here
+\ACKNOWLEDGMENT{$acknowledgment$}
+
+$if(bibliography)$
+\bibliographystyle{informs2014}
+\bibliography{$bibliography$}
+$endif$
+
+$for(include-after)$
+$include-after$
+
+$endfor$
+
+
+\end{document}

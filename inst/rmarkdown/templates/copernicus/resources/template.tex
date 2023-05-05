@@ -20,6 +20,7 @@
 % Advances in Radio Science (ars)
 % Advances in Science and Research (asr)
 % Advances in Statistical Climatology, Meteorology and Oceanography (ascmo)
+% Aerosol Research (ar)
 % Annales Geophysicae (angeo)
 % Archives Animal Breeding (aab)
 % Atmospheric Chemistry and Physics (acp)
@@ -27,11 +28,11 @@
 % Biogeosciences (bg)
 % Climate of the Past (cp)
 % DEUQUA Special Publications (deuquasp)
-% Drinking Water Engineering and Science (dwes)
 % Earth Surface Dynamics (esurf)
 % Earth System Dynamics (esd)
 % Earth System Science Data (essd)
 % E&G Quaternary Science Journal (egqsj)
+% EGUsphere (egusphere) | This is only for EGUsphere preprints submitted without relation to an EGU journal.
 % European Journal of Mineralogy (ejm)
 % Fossil Record (fr)
 % Geochronology (gchron)
@@ -56,25 +57,11 @@
 % Scientific Drilling (sd)
 % SOIL (soil)
 % Solid Earth (se)
+% State of the Planet (sp)
 % The Cryosphere (tc)
 % Weather and Climate Dynamics (wcd)
 % Web Ecology (we)
 % Wind Energy Science (wes)
-
-%% Please DO NOT add additional packages or LaTeX commands to the template. They
-%% are not supported by Coperncius. LaTeX packages already
-%% included in the copernicus.cls are:
-%\usepackage[german, english]{babel}
-%\usepackage{tabularx}
-%\usepackage{cancel}
-%\usepackage{multirow}
-%\usepackage{supertabular}
-%\usepackage{algorithmic}
-%\usepackage{algorithm}
-%\usepackage{amsthm}
-%\usepackage{float}
-%\usepackage{subfig}
-%\usepackage{rotating}
 
 % Pandoc citation processing
 $if(csl-refs)$
@@ -107,15 +94,41 @@ $if(csl-refs)$
 $endif$
 
 % The "Technical instructions for LaTex" by Copernicus require _not_ to insert any additional packages.
-%$for(header-includes)$
-%$header-includes$
-%$endfor$
+% $if(tables)$
+% % From pandoc table feature
+% \usepackage{longtable,booktabs,array}
+% $if(multirow)$
+% \usepackage{multirow}
+% $endif$
+% \usepackage{calc} % for calculating minipage widths
+% % Correct order of tables after \paragraph or \subparagraph
+% \usepackage{etoolbox}
+% \makeatletter
+% \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+% \makeatother
+% % Allow footnotes in longtable head/foot
+% \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+% \makesavenoteenv{longtable}
+% $endif$
+
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
 
+%$for(header-includes)$
+%$header-includes$
+%$endfor$
+
 \begin{document}
+
+$for(include-before)$
+$include-before$
+
+$endfor$
 
 \title{$title$}
 
@@ -262,5 +275,10 @@ $endif$
 %% \citep[e.g.,][p.~32]{jones90}| & (e.g., Jones et al., 1990, p.~32)
 %% \citeauthor{jones90}|          & Jones et al.
 %% \citeyear{jones90}|            & 1990
+
+$for(include-after)$
+$include-after$
+
+$endfor$
 
 \end{document}

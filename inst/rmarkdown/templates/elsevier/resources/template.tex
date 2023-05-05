@@ -1,18 +1,12 @@
-\documentclass[$layout$]{elsarticle} %review=doublespace preprint=single 5p=2 column
+$-- Keeping in template layout for backward compatibility
+\documentclass[$if(layout)$$layout$$else$$for(classoption)$$classoption$$sep$,$endfor$$endif$]{elsarticle} %review=doublespace preprint=single 5p=2 column
 %%% Begin My package additions %%%%%%%%%%%%%%%%%%%
+
 \usepackage[hyphens]{url}
 
 $if(journal)$
   \journal{$journal$} % Sets Journal name
 $endif$
-
-
-\usepackage{lineno} % add
-$if(linenumbers)$
-  \linenumbers % turns line numbering on
-$endif$
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 \usepackage{graphicx}
 %%%%%%%%%%%%%%%% end my additions to header
@@ -20,6 +14,12 @@ $endif$
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
+% TODO: Currently lineno needs to be loaded after amsmath because of conflict
+% https://github.com/latex-lineno/lineno/issues/5
+\usepackage{lineno} % add
+$if(linenumbers)$
+  \linenumbers % turns line numbering on
+$endif$
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
 % use upquote if available, for straight quotes in verbatim environments
@@ -55,40 +55,25 @@ $if(geometry)$
 \usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
 $endif$
 $if(natbib)$
-\usepackage{natbib}
+\usepackage[$natbiboptions$]{natbib}
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
-$else$
-\bibliographystyle{elsarticle-harv}
 $endif$
+
 $if(listings)$
 \usepackage{listings}
 $endif$
 $if(lhs)$
 \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
 $endif$
-$if(highlighting-macros)$
-$highlighting-macros$
-$endif$
 $if(verbatim-in-note)$
+% For Pandoc feature verbatim_in_note
 \usepackage{fancyvrb}
-$endif$
-$if(tables)$
-\usepackage{longtable,booktabs,array}
-$if(multirow)$
-\usepackage{multirow}
-$endif$
-\usepackage{calc} % for calculating minipage widths
-% Correct order of tables after \paragraph or \subparagraph
-\usepackage{etoolbox}
-\makeatletter
-\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
-\makeatother
-% Allow footnotes in longtable head/foot
-\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
-\makesavenoteenv{longtable}
 $endif$
 $if(graphics)$
 \usepackage{graphicx}
+$endif$
+$if(svg)$
+\usepackage{svg}
 $endif$
 \ifxetex
   \usepackage[setpagesize=false, % page size defined by xetex
@@ -105,15 +90,19 @@ $endif$
             urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
             linkcolor=$if(linkcolor)$$linkcolor$$else$magenta$endif$,
             pdfborder={0 0 0}}
-\urlstyle{same}  % don't use monospace font for urls
-$if(links-as-notes)$
-% Make links footnotes instead of hotlinks:
-\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
-$endif$
 $if(strikeout)$
+% For pandoc feature
+$if(pandoc3)$
+$-- Compatible only with Pandoc 3.0+
+\ifLuaTeX
+  \usepackage{luacolor}
+  \usepackage[soul]{lua-ul}
+\else
+  \usepackage{soul}
+\fi
+$else$
 \usepackage[normalem]{ulem}
-% avoid problems with \sout in headers with hyperref:
-\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+$endif$
 $endif$
 
 $if(numbersections)$
@@ -138,12 +127,40 @@ $else$
 \setcounter{secnumdepth}{0}
 $endif$
 
-% Pandoc citation processing
+$if(highlighting-macros)$
+% Pandoc syntax highlighting
+$highlighting-macros$
+$endif$
+
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+$if(tables)$
+% From pandoc table feature
+\usepackage{longtable,booktabs,array}
+$if(multirow)$
+\usepackage{multirow}
+$endif$
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+$endif$
+
 $if(csl-refs)$
+% Pandoc citation processing
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
 \setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
 % for Pandoc 2.8 to 2.10.1
 \newenvironment{cslreferences}%
   {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
@@ -154,11 +171,12 @@ $if(csl-refs)$
  {% don't indent paragraphs
   \setlength{\parindent}{0pt}
   % turn on hanging indent if param 1 is 1
-  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
-  % set entry spacing
-  \ifnum #2 > 0
-  \setlength{\parskip}{#2\baselineskip}
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
   \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
  }%
  {}
 \usepackage{calc}
@@ -168,7 +186,11 @@ $if(csl-refs)$
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
 
-% Pandoc header
+$if(links-as-notes)$
+% Make links footnotes instead of hotlinks:
+\DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
+$endif$
+
 $for(header-includes)$
 $header-includes$
 $endfor$
@@ -176,24 +198,40 @@ $endfor$
 $preamble$
 
 \begin{document}
+
+$for(include-before)$
+$include-before$
+
+$endfor$
+
 \begin{frontmatter}
 
   \title{$title$}
   $for(author)$
-  \author[$author.affiliation$]{$author.name$$if(author.footnote)$\corref{$author.footnote$}$endif$}
+  \author[$author.affiliation$]{$author.name$%
+  $if(author.correspondingauthor)$\corref{cor1}$endif$%
+  $if(author.footnote)$\fnref{$author.footnote$}$endif$}
   $if(author.email)$ \ead{$author.email$} $endif$
   $endfor$
   $for(address)$
-  \address[$address.code$]{$address.address$}
+  \affiliation[$address.code$]{$if(address.address)$$address.address$$else$
+    $if(address.organization)$organization={$address.organization$},$endif$$if(address.addressline)$addressline={$address.addressline$},$endif$$if(address.city)$city={$address.city$},$endif$$if(address.postcode)$postcode={$address.postcode$},$endif$$if(address.state)$state={$address.state$},$endif$$if(address.country)$country={$address.country$},$endif$$endif$}
   $endfor$
+  \cortext[cor1]{Corresponding author}
   $for(footnote)$
-  \cortext[$footnote.code$]{$footnote.text$}
+  \fntext[$footnote.code$]{$footnote.text$}
   $endfor$
 
   \begin{abstract}
   $abstract$
   \end{abstract}
-  $if(keywords)$ \begin{keyword} $for(keywords)$$keywords$$sep$ $endfor$\end{keyword}$endif$
+  $if(keywords)$
+  \begin{keyword}
+    $for(keywords/allbutlast)$$keywords$ \sep $endfor$
+    $for(keywords/last)$$keywords$$endfor$
+  \end{keyword}
+  $endif$
+
  \end{frontmatter}
 
 $body$

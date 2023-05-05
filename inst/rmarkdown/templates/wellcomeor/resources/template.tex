@@ -1,0 +1,198 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to Overleaf --- just edit your article on the left,
+% and we'll compile it for you on the right. If you give
+% someone the link to this page, they can edit at the same
+% time. See the help menu above for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% For more detailed article preparation guidelines, please see: http://wellcomeopenresearch.org/for-authors/article-guidelines and http://wellcomeopenresearch.org/for-authors/data-guidelines
+% Options for packages loaded elsewhere - from Pandoc's template
+\PassOptionsToPackage{unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+$if(colorlinks)$
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+$endif$
+\documentclass[10pt,a4paper,twocolumn]{article}
+\usepackage{WellcomeOR_styles}
+
+% hyperref required
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+
+% Link coloring
+% Link coloring
+\hypersetup{
+$if(title-meta)$
+  pdftitle={$title-meta$},
+$endif$
+$if(author-meta)$
+  pdfauthor={$author-meta$},
+$endif$
+$if(lang)$
+  pdflang={$lang$},
+$endif$
+$if(subject)$
+  pdfsubject={$subject$},
+$endif$
+$if(keywords)$
+  pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
+$endif$
+$if(colorlinks)$
+  colorlinks=true,
+  linkcolor={$if(linkcolor)$$linkcolor$$else$Maroon$endif$},
+  filecolor={$if(filecolor)$$filecolor$$else$Maroon$endif$},
+  citecolor={$if(citecolor)$$citecolor$$else$Blue$endif$},
+  urlcolor={$if(urlcolor)$$urlcolor$$else$Blue$endif$},
+$else$
+$if(boxlinks)$
+$else$
+  hidelinks,
+$endif$
+$endif$
+  pdfcreator={LaTeX via pandoc}}
+
+
+$if(natbib)$
+\usepackage[$if(natbiboptions)$$natbiboptions$$else$numbers$endif$]{natbib}
+$endif$
+
+% Pandoc toggle for numbering sections
+$if(numbersections)$
+\setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
+$else$
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+$endif$
+
+% Pandoc syntax highlighting
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+$if(tables)$
+% From pandoc table feature
+\usepackage{longtable,booktabs,array}
+$if(multirow)$
+\usepackage{multirow}
+$endif$
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+$endif$
+
+% Pandoc citation processing
+$if(csl-refs)$
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+\everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+\setlength{\parindent}{0pt}
+% turn on hanging indent if param 1 is 1
+\ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+% set entry spacing
+\ifnum #2 > 0
+\setlength{\parskip}{#2\baselineskip}
+\fi
+ }%
+ {}
+\usepackage{calc} % for calculating minipage widths
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+$endif$
+
+$for(header-includes)$
+  $header-includes$
+$endfor$
+
+\begin{document}
+
+\title{$title$}
+$if(titlenote)$
+  \titlenote{$titlenote$}
+$endif$
+
+$for(author)$
+  \author[$for(author.affil)$$author.affil$$sep$,$endfor$$if(author.corresponding)$*$endif$]{$author.name$}
+$endfor$
+
+$for(address)$
+  \affil[$address.code$]{$address.address$}
+$endfor$
+
+
+\maketitle
+\thispagestyle{fancy}
+
+$for(author)$
+    $author.name$: $author.email$\\
+$endfor$
+* Corresponding author\\
+
+$for(include-before)$
+  $include-before$
+
+$endfor$
+
+\begin{abstract}
+$abstract$
+\end{abstract}
+
+\section*{Keywords}
+$keywords$
+
+\clearpage
+
+$body$
+
+
+$if(natbib)$
+{\small\bibliographystyle{$if(biblio-style)$$biblio-style$$else$unsrtnat$endif$}
+$if(bibliography)$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+$endif$
+
+
+% See this guide for more information on BibTeX:
+% http://libguides.mit.edu/content.php?pid=55482&sid=406343
+
+% For more author guidance please see:
+% http://wellcomeopenresearch.org/for-authors/article-guidelines
+
+% When all authors are happy with the paper, use the
+% ‘Submit to WELLCOME OPEN RESEARCH' button from the menu above
+% to submit directly to the open life science journal Wellcome Open Research.
+
+% Please note that this template results in a draft pre-submission PDF document.
+% Articles will be professionally typeset when accepted for publication.
+
+% We hope you find the Wellcome Open Research Overleaf template useful,
+% please let us know if you have any feedback using the help menu above.
+
+$for(include-after)$
+$include-after$
+
+$endfor$
+
+\end{document}

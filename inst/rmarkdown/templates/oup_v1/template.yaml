@@ -1,0 +1,6 @@
+name: Oxford University Press (OUP) - New (2020) CTAN Template v1.0
+description: >
+ Template for creating an article based on the new (2020) Oxford University Press (OUP)
+ template available in the oup-authoring-template package on CTAN
+create_dir: true
+
