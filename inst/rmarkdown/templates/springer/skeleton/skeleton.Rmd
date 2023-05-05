@@ -16,8 +16,6 @@ classoptions:
   # - lineno        # Optional: Add line numbers
   # - iicol         # Optional: Double column layour
 
-# unnumbered: TRUE # For unnumbered level heads
-
 title: Article Title
 titlerunning: Article Title runing
 

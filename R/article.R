@@ -489,7 +489,7 @@ sim_article <- function(..., highlight = NULL, citation_package = "natbib") {
 #'   Macro package for Springer Journals.
 #' @export
 #' @rdname article
-springer_article <- function(..., keep_tex = TRUE,  citation_package = "natbib") {
+springer_article <- function(..., keep_tex = TRUE,  citation_package = "natbib", number_sections = TRUE) {
 
   if (!rmarkdown::pandoc_available("2.11.4")) {
     stop("`springer_article()` now requires a minimum of pandoc 2.11.4")
@@ -500,9 +500,14 @@ springer_article <- function(..., keep_tex = TRUE,  citation_package = "natbib")
     pandoc_args <- c(pandoc_args, rmarkdown::pandoc_variable_arg("pdflatex", "pdflatex"))
   }
 
+  if(!number_sections) {
+    pandoc_args <- c(pandoc_args, rmarkdown::pandoc_variable_arg("unnumbered", TRUE))
+  }
+
   pdf_document_format(
     "springer",
-    keep_tex = keep_tex, citation_package = citation_package, ...
+    keep_tex = keep_tex, citation_package = citation_package,
+    number_sections = number_sections, ...
   )
 }
 
