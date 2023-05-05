@@ -506,7 +506,7 @@ springer_article <- function(..., keep_tex = TRUE,  citation_package = "natbib",
     pandoc_args <- c(pandoc_args, rmarkdown::pandoc_variable_arg("unnumbered", TRUE))
   }
 
-  pdf_document_format(
+  format <- pdf_document_format(
     "springer",
     keep_tex = keep_tex,
     citation_package = citation_package,
@@ -514,6 +514,17 @@ springer_article <- function(..., keep_tex = TRUE,  citation_package = "natbib",
     latex_engine = latex_engine,
     pandoc_args = pandoc_args, ...
   )
+
+  format$pre_knit <-  function(input, ...) {
+    options <- rmarkdown::yaml_front_matter(input)
+    if (is.null(options[["classoptions"]])) {
+      stop("springer_article() now requires the classoptions field. ",
+           "If you are rendering an old Rmd, be advise that the template has changed.")
+    }
+
+    return(invisible(NULL))
+  }
+  format
 }
 
 #' @section `tf_article`: Format for creating submissions to a Taylor & Francis journal. Adapted from
