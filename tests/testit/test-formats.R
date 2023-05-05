@@ -29,9 +29,11 @@ test_format <- function(name, output_options = NULL, skip = NULL) {
     file.exists(output_file)
   })
 }
+
 #--- NOTE to contributors ------------------------------------------------------
 # Please order these tests by formats alphabetically.
 #-------------------------------------------------------------------------------
+
 test_format("acm")
 test_format("acs")
 test_format("aea")
