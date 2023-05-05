@@ -495,6 +495,11 @@ springer_article <- function(..., keep_tex = TRUE,  citation_package = "natbib")
     stop("`springer_article()` now requires a minimum of pandoc 2.11.4")
   }
 
+  #  "to compile with pdflatex/xelatex use pdflatex option"
+  if(latex_engine %in% c("pdflatex", "xelatex")) {
+    pandoc_args <- c(pandoc_args, rmarkdown::pandoc_variable_arg("pdflatex", "pdflatex"))
+  }
+
   pdf_document_format(
     "springer",
     keep_tex = keep_tex, citation_package = citation_package, ...

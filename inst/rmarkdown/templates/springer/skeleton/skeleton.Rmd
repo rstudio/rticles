@@ -11,7 +11,6 @@
 
 classoptions: 
   - sn-basic      
-  - pdflatex      # Optional: Compile with pdflatex/xelatex
   # - Numbered      # Optional: Use numbered references instead of namedate references (only for sn-nature, sn-basic, sn-vancouver, sn-chicago, sn-mathphys or sn-nature)
   # - referee       # Optional: Use double line spacing 
   # - lineno        # Optional: Add line numbers

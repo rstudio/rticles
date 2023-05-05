@@ -11,7 +11,7 @@
 %%                                                                 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[$for(classoptions)$$classoptions$$sep$,$endfor$]{sn-jnl}
+\documentclass[$for(classoptions)$$classoptions$$sep$,$endfor$$if(pdflatex)$,pdflatex$endif$]]{sn-jnl}
 
 %%%% Standard Packages
 %%<additional latex packages if required can be included here>
