@@ -620,7 +620,7 @@ springer_article <- function(..., keep_tex = TRUE,  citation_package = "natbib",
       stop("`springer_article()` now requires the 'classoptions' field in YAML front matter. ",
            "If you are rendering an old Rmd, be advise that the template has changed in version '0.24'.", call. = FALSE)
     }
-    if (!is.null("biblio-style")) {
+    if (!is.null(options[["biblio-style"]])) {
       warning("`springer_article()` now ignores the 'biblio-style' field in YAML front matter. ",
       "Reference style for 'natbib' is now set using the 'classoptions' field.\n",
       "If you are rendering an old Rmd, be advise that the template has changed in version '0.24'.")
