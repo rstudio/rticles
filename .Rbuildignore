@@ -15,3 +15,5 @@
 ^revdep$
 ^Untitled/
 ^codecov\.yml$
+^CRAN-SUBMISSION$
+^cran-comments\.md$

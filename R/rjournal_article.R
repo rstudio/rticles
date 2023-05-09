@@ -1,5 +1,13 @@
 #' R Journal format.
 #'
+#' @description
+#' `r lifecycle::badge('deprecated')`
+#'
+#' This function is now deprecated in favor of the [**rjtools**](https://rjournal.github.io/rjtools/) package
+#' which is now officialy recommanded by R Journal <https://rjournal.github.io/submissions.html>. See below for document
+#'
+#' @details # About this format and the R Journal requirements
+#'
 #' Format for creating R Journal articles. Adapted from
 #' <https://journal.r-project.org/submissions.html>.
 #'
@@ -7,7 +15,7 @@
 #' Journal_ style and information on how to prepare your article for submission,
 #' see the [Instructions for Authors](https://journal.r-project.org/share/author-guide.pdf)
 #'
-#' ## About this format and the R Journal requirements
+
 #'
 #' `rticles::rjournal_article` will help you build the correct files requirements:
 #'
@@ -51,6 +59,8 @@
 #' @param ... Arguments to [rmarkdown::pdf_document()].
 #' @export
 rjournal_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
+
+  lifecycle::deprecate_warn("0.25", "rjournal_article()", "rjtools::rjournal_pdf_article()", details = "See official recommandation at https://rjournal.github.io/submissions.html")
   rmarkdown::pandoc_available("2.2", TRUE)
 
   base <- pdf_document_format(

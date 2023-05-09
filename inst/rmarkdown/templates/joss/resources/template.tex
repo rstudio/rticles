@@ -23,6 +23,11 @@
 ]{biblatex}
 \bibliography{$bibliography$}
 
+$if(verbatim-in-note)$
+% For Pandoc feature verbatim_in_note
+\usepackage{fancyvrb}
+$endif$
+
 
 % --- Page layout -------------------------------------------------------------
 \usepackage[top=3.5cm, bottom=3cm, right=1.5cm, left=1.0cm,
@@ -168,7 +173,7 @@ $endif$
 \urlstyle{same}  % don't use monospace font for urls
 $if(lang)$
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
+  \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$$if(babel-lang)$main=$babel-lang$$endif$]{babel}
 $if(babel-newcommands)$
   $babel-newcommands$
 $endif$
@@ -198,7 +203,6 @@ $if(lhs)$
 \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
 $endif$
 $if(verbatim-in-note)$
-\usepackage{fancyvrb}
 \VerbatimFootnotes % allows verbatim text in footnotes
 $endif$
 $if(graphics)$
@@ -212,14 +216,22 @@ $if(graphics)$
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 $endif$
-$if(links-as-notes)$
-% Make links footnotes instead of hotlinks:
-\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+$if(svg)$
+\usepackage{svg}
 $endif$
 $if(strikeout)$
+% For pandoc feature
+$if(pandoc3)$
+$-- Compatible only with Pandoc 3.0+
+\ifLuaTeX
+  \usepackage{luacolor}
+  \usepackage[soul]{lua-ul}
+\else
+  \usepackage{soul}
+\fi
+$else$
 \usepackage[normalem]{ulem}
-% avoid problems with \sout in headers with hyperref:
-\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+$endif$
 $endif$
 $if(indent)$
 $else$
@@ -323,6 +335,11 @@ $if(csl-refs)$
 \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+$if(links-as-notes)$
+% Make links footnotes instead of hotlinks:
+\DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
 $endif$
 
 $for(header-includes)$

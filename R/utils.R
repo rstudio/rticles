@@ -72,16 +72,6 @@ template_pandoc <- function(metadata, template, output,
   invisible(output)
 }
 
-# Helper function to create a custom format derived from pdf_document that
-# includes a custom LaTeX template
-pdf_document_format <- function(format,
-                                template = find_resource(format, "template.tex"),
-                                ...) {
-  fmt <- rmarkdown::pdf_document(..., template = template)
-  fmt$inherits <- "pdf_document"
-  fmt
-}
-
 # recursion into a list to get an element using a vector of names
 get_list_element <- function(x, names) {
   n <- length(names)
@@ -149,14 +139,85 @@ render_draft <- function(journal, output_options = NULL, quiet = FALSE) {
 }
 
 # Use to create variables command for Pandoc from a named vector
-vec_to_pandoc_variable_args <- function(v_args) {
+list_to_pandoc_variable_args <- function(v_args) {
+  truthy <- which(sapply(v_args, isTRUE))
+  truthy_arg <- NULL
+  if (length(truthy) > 0) {
+    truthy_arg <- mapply(
+      rmarkdown::pandoc_variable_arg,
+      names(v_args[truthy]),
+      SIMPLIFY = FALSE,
+      USE.NAMES = FALSE
+    )
+    v_args <- v_args[-truthy]
+  }
+
   # Convert to pandoc arguments
-  pandoc_arg_list <- mapply(
-    rmarkdown::pandoc_variable_arg,
-    names(v_args),
-    v_args,
-    SIMPLIFY = FALSE,
-    USE.NAMES = FALSE
+  pandoc_arg_list <-  c(
+    mapply(
+      rmarkdown::pandoc_variable_arg,
+      names(v_args),
+      v_args,
+      SIMPLIFY = FALSE,
+      USE.NAMES = FALSE
+    ),
+    truthy_arg
   )
   unlist(pandoc_arg_list)
+}
+
+## takes a character string with names separated by comma (e.g. journal's names)
+## and turns them into a table
+
+#' Split character string into table
+#'
+#' It takes a character string with names separated by comma (e.g. journal's names)
+#' and turns them into a table
+#'
+#' If the number of elements can't be split equally in the `n` column, blank
+#' cells will be created and all placed in the last column.
+#'
+#' @param x string to split and convert to table
+#' @param n number of bucket to create. It will be the number of column in the
+#'   resulting data.frame
+#' @param split_regex defaults to `, ?`. Pass to `split` in [base::strsplit()].
+#'
+#' @return a dataframe of `n` columns
+#' @export
+#'
+#' @examples
+#' string_to_table(paste(letters, collapse = ", "), 3)
+string_to_table <- function(x, n, split_regex = ", ?") {
+  vec <- unlist(strsplit(x, split_regex))
+  vec_list <- split(vec, cut(seq_along(vec), n, labels = FALSE))
+  max_n <- max(unlist(lapply(vec_list, length)))
+  # fill with NA
+  for (i in 1:n) {
+    # resize bucket
+    length(vec_list[[i]]) <- max_n
+    # and move empty spot at the end
+    if (i != n && any(ii  <- is.na(vec_list[[i]]))) {
+      vec_list[[i]][ii] <- vec_list[[i + 1]][seq_along(which(ii))]
+      vec_list[[i + 1]] <- vec_list[[i + 1]][-seq_along(which(ii))]
+    }
+  }
+  df <- data.frame(vec_list)
+  df[is.na(df)] <- ""
+  df
+}
+
+# Helper function to create a custom format derived from pdf_document that
+# includes a custom LaTeX template
+pdf_document_format <- function(format,
+                                template = find_resource(format, "template.tex"),
+                                ...) {
+  fmt <- rmarkdown::pdf_document(..., template = template)
+  fmt$inherits <- "pdf_document"
+
+  ## Set some variables to adapt template based on Pandoc version
+  args <- list_to_pandoc_variable_args(list(
+    pandoc3 = rmarkdown::pandoc_available("3")
+  ))
+  fmt$pandoc$args <- c(fmt$pandoc$args, args)
+  fmt
 }

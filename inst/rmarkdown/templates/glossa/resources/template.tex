@@ -25,6 +25,11 @@
 \usepackage[linguistics]{forest} %for nice trees!
 \usepackage{longtable}
 
+$if(verbatim-in-note)$
+% For Pandoc feature verbatim_in_note
+\usepackage{fancyvrb}
+$endif$
+
 \title[$if(shorttitle)$$shorttitle$$endif$]{$title$$if(wordcount)$\\ \bigskip \large Word count: $wordcount$$endif$}
 % Optional short title inside square brackets, for the running headers.
 
@@ -129,7 +134,6 @@ $if(lhs)$
 $endif$
 
 $if(verbatim-in-note)$
-\usepackage{fancyvrb}
 \VerbatimFootnotes % allows verbatim text in footnotes
 $endif$
 

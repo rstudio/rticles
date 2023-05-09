@@ -23,12 +23,16 @@ $endif$
 
 % From Pandoc template for its feature
 $if(verbatim-in-note)$
+% For Pandoc feature verbatim_in_note
 \usepackage{fancyvrb}
 $endif$
 \usepackage{xcolor}
 \usepackage{hyperref}
 $if(graphics)$
 \usepackage{graphicx}
+$endif$
+$if(svg)$
+\usepackage{svg}
 $endif$
 $if(listings)$
 \usepackage{listings}
@@ -62,7 +66,10 @@ $if(colorlinks)$
   citecolor={$if(citecolor)$$citecolor$$else$Blue$endif$},
   urlcolor={$if(urlcolor)$$urlcolor$$else$Blue$endif$},
 $else$
+$if(boxlinks)$
+$else$
   hidelinks,
+$endif$
 $endif$
   pdfcreator={LaTeX via pandoc}}
 
@@ -131,12 +138,22 @@ $if(links-as-notes)$
 % Make links footnotes instead of hotlinks:
 \DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
 $endif$
+$if(verbatim-in-note)$
+\VerbatimFootnotes % allows verbatim text in footnotes
+$endif$
 $if(strikeout)$
 % For pandoc feature
-$-- also used for underline
+$if(pandoc3)$
+$-- Compatible only with Pandoc 3.0+
+\ifLuaTeX
+  \usepackage{luacolor}
+  \usepackage[soul]{lua-ul}
+\else
+  \usepackage{soul}
+\fi
+$else$
 \usepackage[normalem]{ulem}
-% Avoid problems with \sout in headers with hyperref
-\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+$endif$
 $endif$
 
 % Counters for addresses and footnotes

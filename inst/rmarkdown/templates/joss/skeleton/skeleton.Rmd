@@ -75,7 +75,7 @@ $$\Theta(x) = \left\{\begin{array}{l}
 # Citations
 
 Citations to entries in paper.bib should be in
-[rMarkdown](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
+[rMarkdown](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
 format.
 
 For a quick reference, the following citation commands can be used:

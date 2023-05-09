@@ -205,14 +205,28 @@ FUNCTION {format.names}
     { namesleft #0 > }
     { s nameptr "{vv~}{ll}{, jj}{, f{.}}." format.name$ 't :=
       nameptr #1 >
-	{ namesleft #1 >
-	    { "; " * t * }
-	    { numnames #2 >
-		{ "" * }
+        {
+          nameptr #10
+          #1 + =
+          numnames #10
+          > and
+            { "others" 't :=
+              #1 'namesleft := }
+            'skip$
+          if$
+          namesleft #1 >
+            { "; " * t * }
+            {
+              s nameptr "{ll}" format.name$ duplicate$ "others" =
+                { 't := }
+                { pop$ }
+              if$
+              numnames #2 >
+       { "" * }
 		'skip$
 	      if$
 	      t "others" =
-		{ " et~al." * }
+		{"; " * " et~al." * }
 		{ "; " * t * }
 	      if$
 	    }
@@ -232,7 +246,6 @@ FUNCTION {format.key}
     { "" }
   if$
 }
-
 
 FUNCTION {format.authors}
 { author empty$
@@ -425,7 +438,7 @@ FUNCTION {format.pdate}
     }
     {  month empty$
 	{ " " year * }
-	{ " " month * ", " * year *  }
+	{ " " month * " " * year *  }
       if$}
   if$
 }
@@ -587,13 +600,13 @@ FUNCTION {format.in.ed.booktitle.proc}
     { "" }
     { editor empty$
 	{ edition empty$
-            {" " booktitle  *} 
-            {" " booktitle  * ", " * edition * " ed." *}
+            {"In Proceedings of the " booktitle  *} 
+            {"In Proceedings of the " booktitle  * ", " * edition * " ed." *}
           if$
          }
 	{ edition empty$
-            {" " booktitle  * "; " * format.editors * }
-            {" " booktitle  * ", " * edition * " ed." * ";  " * format.editors * }
+            {"In Proceedings of the " booktitle  * "; " * format.editors * }
+            {"In Proceedings of the " booktitle  * ", " * edition * " ed." * ";  " * format.editors * }
           if$
          }
       if$
@@ -741,17 +754,10 @@ if$
 
 
 %% For printing DOI numbers (it is a hyperlink but printed in black)
-FUNCTION {format.doi}
-{ doi empty$
-  { ""  }
-  {"\href{https://doi.org/" doi * "}" * }
-  if$
-}
-
 FUNCTION {formatfull.doi}
 { doi empty$
   { ""  }
-  {"doi:{\changeurlcolor{black}\href{https://doi.org/" doi * "}{\detokenize{" * doi * "}}}" * }
+  {"{\url{https://doi.org/" doi * "}}" * }
   if$
 }
 
@@ -909,12 +915,12 @@ FUNCTION {inproceedings}
 	{ organization publisher new.sentence.checkb
 	  organization output
 	  publisher output
-	  format.bdate "year" output.check
+	  format.pdate "year" output.check
 	}
-	{ after.item 'output.state :=
+	{ mid.sentence 'output.state :=
 	  organization output
-	  format.publisher.and.address output.nonnull
-      format.bdate "year" output.check
+	  address output.nonnull
+      format.pdate "year" output.check
       after.item 'output.state :=
 	}
       if$
@@ -1142,11 +1148,11 @@ FUNCTION {format.lab.names}
   s #1 "{vv~}{ll}" format.name$
   s num.names$ duplicate$
   #2 >
-    { pop$ " \em{et~al.}" * }
+    { pop$ " et~al." * }
     { #2 <
         'skip$
         { s #2 "{ff }{vv }{ll}{ jj}" format.name$ "others" =
-            { " \em{et~al.}" * }
+            { " et~al." * }
             { " and " * s #2 "{vv~}{ll}" format.name$ * }
           if$
         }
@@ -1321,9 +1327,7 @@ ITERATE {forward.pass}
 REVERSE {reverse.pass}
 
 FUNCTION {begin.bib}
-{ "\begin{thebibliography}{-------}"
-  write$ newline$
-  "\providecommand{\natexlab}[1]{#1}"
+{ "\begin{thebibliography}{999}"
   write$ newline$
 }
 

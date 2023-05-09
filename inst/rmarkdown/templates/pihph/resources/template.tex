@@ -23,6 +23,11 @@
 \usepackage{graphicx}
 \usepackage[type={CC}, modifier={by}, version=4.0]{doclicense}
 
+$if(verbatim-in-note)$
+% For Pandoc feature verbatim_in_note
+\usepackage{fancyvrb}
+$endif$
+
 \newcommand\affiliation[1]{{\normalfont\normalsize\itshape#1}}
 
 \pagestyle{simple}
@@ -174,7 +179,6 @@ $if(lhs)$
 \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
 $endif$
 $if(verbatim-in-note)$
-\usepackage{fancyvrb}
 \VerbatimFootnotes % allows verbatim text in footnotes
 $endif$
 

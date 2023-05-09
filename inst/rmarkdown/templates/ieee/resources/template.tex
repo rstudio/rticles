@@ -329,16 +329,14 @@ $endif$
 %% BEGIN MY ADDITIONS %%
 
 $if(natbib)$
-\usepackage{natbib}
+\usepackage[$natbiboptions$]{natbib}
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $endif$
 $if(biblatex)$
-\usepackage[backend=bibtex,citestyle=ieee,style=numeric$if(citation_sorting)$,sorting=$citation_sorting$$endif$]{biblatex}
-$if(bibliography)$
+\usepackage[citestyle=ieee,$if(biblio-style)$style=$biblio-style$,$endif$$if(citation_sorting)$sorting=$citation_sorting$$endif$,$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
 $for(bibliography)$
 \addbibresource{$bibliography$}
 $endfor$
-$endif$
 $endif$
 
 \usepackage[unicode=true]{hyperref}
@@ -459,32 +457,22 @@ $if(affiliation)$
 %% ---- classic IEEETrans wide authors' list ----------------
 $if(affiliation.wide)$
 \IEEEauthorblockN{
-$if(affiliation.author)$
-$for(affiliation.author)$
-$affiliation.author.name$\IEEEauthorrefmark{$affiliation.author.mark$}$sep$,
-$endfor$
-$else$
-$if(affiliation.author_multiline)$
-$for(affiliation.author_multiline)$
+$if(affiliation.author)$$for(affiliation.author)$
+$affiliation.author.name$$for(affiliation.author.mark)$\IEEEauthorrefmark{$affiliation.author.mark$}$endfor$$sep$,$endfor$
+$else$%% $-- else affiliation.author
+$if(affiliation.author_multiline)$$for(affiliation.author_multiline)$
 $for(affiliation.author_multiline.line)$
-$affiliation.author_multiline.line.name$\IEEEauthorrefmark{$affiliation.author_multiline.line.mark$}
-$sep$,
-$endfor$
-$sep$}\IEEEauthorblockN{
-$endfor$
-$else$
-$for(affiliation.institution)$ %% -- beg for/affiliation.institution
-$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
-$affiliation.institution.author.name$\IEEEauthorrefmark{$affiliation.institution.mark$}
-$sep$,
-$endfor$ %% -- end for/affiliation.institution.author
-$sep$,
-$endfor$ %% -- end for/affiliation.institution
-$endif$
-$endif$
+$affiliation.author_multiline.line.name$$for(affiliation.author_multiline.line.mark)$\IEEEauthorrefmark{$affiliation.author_multiline.line.mark$}$endfor$$sep$,
+$endfor$$-- end affiliation.author_multiline.line
+$sep$}
+\IEEEauthorblockN{
+$endfor$$else$%%$-- end for affiliation.author_multiline and else affiliation.author_multiline
+$for(affiliation.institution)$$for(affiliation.institution.author)$
+$affiliation.institution.author.name$\IEEEauthorrefmark{$affiliation.institution.mark$}$sep$,$endfor$$-- end for/affiliation.institution.author
+$sep$,$endfor$$endif$$endif$%%$-- end for/affiliation.institution and end if affiliation.author_multiline and affiliation.author
 }
 
-$for(affiliation.institution)$ %% -- beg for/affiliation.institution
+$for(affiliation.institution)$
 \IEEEauthorblockA{\IEEEauthorrefmark{$affiliation.institution.mark$}
 $if(affiliation.institution.department)$
 $affiliation.institution.department$\\
@@ -495,38 +483,23 @@ $if(affiliation.institution.email)$
 \\ $affiliation.institution.email$
 $endif$
 }
-$endfor$ %% -- end for/affiliation.institution
-$endif$ % -- end affiliation.wide
+$endfor$$endif$$-- end for/affiliation.institution and end if affiliation.wide
 %% ----------------------------------------------------------
 
-
-
 %% ---- classic IEEETrans one column per institution --------
-$if(affiliation.institution-columnar)$ %% -- beg if/affiliation.institution-columnar
+$if(affiliation.institution-columnar)$
 $for(affiliation.institution)$
-\IEEEauthorblockN{
-$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
-$affiliation.institution.author.name$$sep$,
-$endfor$ %% -- end for/affiliation.institution.author
-}
-\IEEEauthorblockA{$if(affiliation.institution.department)$
-$affiliation.institution.department$\\
-$endif$
+\IEEEauthorblockN{$for(affiliation.institution.author)$$affiliation.institution.author.name$$sep$, $endfor$}
+\IEEEauthorblockA{
+$if(affiliation.institution.department)$$affiliation.institution.department$\\$endif$%%
 $affiliation.institution.name$\\
 $affiliation.institution.location$
-$if(affiliation.institution.email)$
-\\$affiliation.institution.email$
-$else$
-$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
-$if(affiliation.institution.author.email)$
-\\$affiliation.institution.author.email$
-$endif$
-$endfor$ %% -- end for/affiliation.institution.author
-$endif$
+$if(affiliation.institution.email)$\\$affiliation.institution.email$$else$$for(affiliation.institution.author)$$if(affiliation.institution.author.email)$\\$affiliation.institution.author.email$$endif$$endfor$%%
+$endif$%%$-- end for/affiliation.institution.author
 }
 $sep$\and
-$endfor$ %% -- end for/affiliation.institution
-$endif$ %% -- end if/affiliation.institution-columnar
+$endfor$ %%$-- end for/affiliation.institution
+$endif$ %%$-- end if/affiliation.institution-columnar
 %% ----------------------------------------------------------
 
 
@@ -534,12 +507,10 @@ $endif$ %% -- end if/affiliation.institution-columnar
 
 
 %% ---- one column per author, classic/default IEEETrans ----
-$if(affiliation.author-columnar)$ % -- beg affiliation.author-columnar
+$if(affiliation.author-columnar)$
 $for(affiliation.institution)$
-$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
-\IEEEauthorblockN{
-$affiliation.institution.author.name$
-}
+$for(affiliation.institution.author)$
+\IEEEauthorblockN{$affiliation.institution.author.name$}
 \IEEEauthorblockA{$affiliation.institution.name$\\
 $if(affiliation.institution.department)$
 $affiliation.institution.department$\\
@@ -548,18 +519,18 @@ $affiliation.institution.location$
 $if(affiliation.institution.email)$
 \\$affiliation.institution.email$
 $else$
-$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
+$for(affiliation.institution.author)$
 $if(affiliation.institution.author.email)$
 \\$affiliation.institution.author.email$
 $endif$
-$endfor$ %% -- end for/affiliation.institution.author
+$endfor$%%$-- end for/affiliation.institution.author
 $endif$
 }
 $sep$\and
-$endfor$ %% -- end for/affiliation.institution.author
+$endfor$$-- end for/affiliation.institution.author
 $sep$\and
-$endfor$ %% -- end for/affiliation.institution
-$endif$ %% -- end if/affiliation.institution-columnar
+$endfor$$-- end for/affiliation.institution
+$endif$$-- end if/affiliation.institution-columnar
 %% ----------------------------------------------------------
 
 $endif$
@@ -642,16 +613,15 @@ $endfor$
 $body$
 
 $if(natbib)$
-$if(biblio-files)$
+$if(bibliography)$
 $if(biblio-title)$
-$if(book-class)$
+$if(has-chapters)$
 \renewcommand\bibname{$biblio-title$}
 $else$
 \renewcommand\refname{$biblio-title$}
 $endif$
 $endif$
-\bibliography{$biblio-files$}
-
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 $endif$
 $endif$
 $if(biblatex)$

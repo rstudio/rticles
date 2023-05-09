@@ -1,23 +1,36 @@
 ---
 title: Bare Demo of IEEEtran.cls for IEEE Conferences
 affiliation:
-  ## use one only of the following
-  # author-columnar: true         ## one column per author
-  institution-columnar: true  ## one column per institution (multiple autors eventually)
-  # wide: true                  ## one column wide author/affiliation fields
-
-  #author:   ## A custom author ordering field that breaks institution grouping.
-  #  - name: Eldon Tyrell
-  #    mark: 4
-  #    email: eldon@starfleet-academy.star
-  #  - name: Michael Shell
-  #    mark: 1
-  #  - name: Roy Batty
-  #    mark: 4
-  #    email: roy@replicant.offworld
-  ## Authors cited in institution field are ignored when author field exists
-
-  #author_multiline: ## Put authors in a given order, with multiline possibility. Authors cited in institution are ignored if exists
+  ## Author mode :  use one only of the following --- +
+  
+  ## one column per author - using only the institution field
+  # author-columnar: true # uncomment this line to use
+  
+  ## one column per institution - using only the institution field
+  # institution-columnar: true # uncomment this line to use
+  
+  ## one column wide author/affiliation fields - using author or author_multiline and institution for mark
+  wide: true # uncomment this line to use
+  
+  ## Author mode: End ----
+  
+  ## A custom author ordering field that breaks institution grouping (used with `wide: true`)
+  ## Authors cited in institution field are ignored when this author field exists
+  ## Comment / Uncomment below
+  author:   
+   - name: Eldon Tyrell
+     mark: [2, 3]
+     email: eldon@starfleet-academy.star
+   - name: Michael Shell
+     mark: 1
+   - name: Roy Batty
+     mark: 4
+     email: roy@replicant.offworld
+  
+  ## Put authors in a given order, with multiline possibility (used with `wide: true` if `authors` above unset)
+  ## Authors cited in institution are ignored if exists
+  ## Comment / Uncomment below
+  #author_multiline: 
   #  - line:         ## Create a new author line
   #    - name: Michael Shell
   #      mark: 1
@@ -33,11 +46,12 @@ affiliation:
   #    - name: Eldon Tyrell
   #      mark: 4
 
+  ## Define institution, and also authors used when `author-columnar: true` or `institution-columnar: true`
   institution:
     - name: Georgia Institute of Technology
       department: School of Electrical and Computer Engineering
       location: Atlanta, Georgia 30332--0250
-      email: ece@datech.edu
+      email: ece@datech.edu # if unset, authors' email will be used
       mark: 1
       author:
         - name: Michael Shell
@@ -61,6 +75,7 @@ affiliation:
           email: eldon@starfleet-academy.star
         - name: Roy Batty
           email: roy@replicant.offworld
+
 keywords: ["keyword 1", "keyword 2"]
 abstract: |
   The abstract goes here.
@@ -80,8 +95,8 @@ output: rticles::ieee_article
 #citation_sorting: none   ## used as sorting option of the biblatex package (if selected)
 ---
 
-Introduction
-=============
+# Introduction
+
 <!-- no \IEEEPARstart -->
 This demo file is intended to serve as a ``starter file''
 for IEEE conference papers produced under \LaTeX\ using
@@ -89,7 +104,6 @@ IEEEtran.cls version 1.8b and later.
 <!-- You must have at least 2 lines in the paragraph with the drop letter
 (should never be an issue) -->
 I wish you the best of success.
-
 
 ## Subsection Heading Here
 Subsection text here.
@@ -192,22 +206,19 @@ footnotes above bottom floats. This can be corrected via the
 \fnbelowfloat command of the stfloats package. -->
 
 
-Conclusion
-============
+# Conclusion
+
 The conclusion goes here.
 
 <!-- conference papers do not normally have an appendix -->
 
-Acknowledgment {#acknowledgment}
-==============
+# Acknowledgment {#acknowledgment}
 
 The authors would like to thank...
 
-Bibliography styles
-===================
+# Bibliography styles
 
 Here are two sample references: @Feynman1963118 [@Dirac1953888].
 
 \newpage
-References {#references .numbered}
-==========
+# References {#references .numbered}

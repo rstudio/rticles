@@ -1,12 +1,20 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
 % !TeX program = pdfLaTeX
 \documentclass[12pt]{article}
 \usepackage{amsmath}
 \usepackage{graphicx,psfrag,epsf}
 \usepackage{enumerate}
-\usepackage{natbib}
+$if(natbib)$
+\usepackage[$natbiboptions$]{natbib}
+$endif$
 \usepackage{textcomp}
-\usepackage[hyphens]{url} % not crucial - just used below for the URL
-\usepackage{hyperref}
+
+$if(verbatim-in-note)$
+% For Pandoc feature verbatim_in_note
+\usepackage{fancyvrb}
+$endif$
 
 %\pdfminorversion=4
 % NOTE: To produce blinded version, replace "0" with "1" below.
@@ -14,10 +22,10 @@
 
 % DON'T change margins - should be 1 inch all around.
 \addtolength{\oddsidemargin}{-.5in}%
-\addtolength{\evensidemargin}{-.5in}%
+\addtolength{\evensidemargin}{-1in}%
 \addtolength{\textwidth}{1in}%
-\addtolength{\textheight}{1.3in}%
-\addtolength{\topmargin}{-.8in}%
+\addtolength{\textheight}{1.7in}%
+\addtolength{\topmargin}{-1in}%
 
 %% load any required packages here
 $preamble$
@@ -85,6 +93,48 @@ $for(header-includes)$
 $header-includes$
 $endfor$
 
+$-- Add missing part from Pandoc for urls
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+$if(links-as-notes)$
+% Make links footnotes instead of hotlinks:
+\DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
+$endif$
+$if(verbatim-in-note)$
+\VerbatimFootnotes % allows verbatim text in footnotes
+$endif$
+\hypersetup{
+$if(title-meta)$
+  pdftitle={$title-meta$},
+$endif$
+$if(author-meta)$
+  pdfauthor={$author-meta$},
+$endif$
+$if(lang)$
+  pdflang={$lang$},
+$endif$
+$if(subject)$
+  pdfsubject={$subject$},
+$endif$
+$if(keywords)$
+  pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
+$endif$
+$if(colorlinks)$
+  colorlinks=true,
+  linkcolor={$if(linkcolor)$$linkcolor$$else$Maroon$endif$},
+  filecolor={$if(filecolor)$$filecolor$$else$Maroon$endif$},
+  citecolor={$if(citecolor)$$citecolor$$else$Blue$endif$},
+  urlcolor={$if(urlcolor)$$urlcolor$$else$Blue$endif$},
+$else$
+$if(boxlinks)$
+$else$
+  hidelinks,
+$endif$
+$endif$
+  pdfcreator={LaTeX via pandoc}}
+
+
+
 \begin{document}
 
 $for(include-before)$
@@ -123,21 +173,32 @@ $endfor$
 } \fi
 
 \bigskip
+$if(abstract)$
 \begin{abstract}
 $abstract$
 \end{abstract}
+$endif$
 
 \noindent%
-{\it Keywords:} $for(keywords)$$keywords$$sep$, $endfor$
+$if(keywords)${\it Keywords:}$endif$ $for(keywords)$$keywords$$sep$, $endfor$
+
 \vfill
 
 \newpage
-\spacingset{1.45} % DON'T change the spacing!
+\spacingset{1.9} % DON'T change the spacing!
 
 $body$
 
-\bibliographystyle{agsm}
+$if(natbib)$
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plain$endif$}
+$if(bibliography)$
+$if(biblio-title)$
+\renewcommand\refname{$biblio-title$}
+$endif$
+$endif$
 \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+
+$endif$
 
 $for(include-after)$
 $include-after$

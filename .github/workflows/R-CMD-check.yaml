@@ -17,6 +17,7 @@ on:
       - '_pkgdown.yml'
       - 'pkgdown/**'
       - '.github/workflows/pkgdown.yaml'
+  workflow_dispatch:
 
 name: R-CMD-check
 
@@ -31,32 +32,29 @@ jobs:
       matrix:
         config:
           # testing R release with last shipped pandoc version in RStudio IDE and new pandoc
-          - {os: windows-latest, pandoc: '2.17.1.1',  r: 'release'}
-          - {os: macOS-latest,   pandoc: '2.17.1.1',  r: 'release'}
-          - {os: ubuntu-20.04,   pandoc: '2.17.1.1',  r: 'release'}
-          - {os: ubuntu-20.04,   pandoc: 'devel',   r: 'release'}
+          - {os: windows-latest, pandoc: '3.1.1',    r: 'release'}
+          - {os: macOS-latest,   pandoc: '3.1.1',    r: 'release'}
+          - {os: ubuntu-latest,  pandoc: 'devel',    r: 'release'}
           # testing older pandoc versions
-          - {os: ubuntu-20.04,   pandoc: '2.14.2',  r: 'release'}
-          - {os: ubuntu-20.04,   pandoc: '2.11.4',  r: 'release'}
-          - {os: ubuntu-20.04,   pandoc: '2.7.3',   r: 'release'}
-          # Does not shipped with pandoc-citeproc so can't test without installing it
-          # - {os: ubuntu-20.04,   pandoc: '2.5',     r: 'release'}
-          # - {os: ubuntu-20.04,   pandoc: '2.0.0.1', r: 'release'}
+          - {os: ubuntu-latest,  pandoc: '2.19.2',   r: 'release'}
+          - {os: ubuntu-latest,  pandoc: '2.18',     r: 'release'}
+          - {os: ubuntu-latest,  pandoc: '2.17.1.1', r: 'release'}
+          - {os: ubuntu-latest,  pandoc: '2.16.2',   r: 'release'}
+          - {os: ubuntu-latest,  pandoc: '2.14.2',   r: 'release'}
+          - {os: ubuntu-latest,  pandoc: '2.11.4',   r: 'release'}
+          - {os: ubuntu-latest,  pandoc: '2.7.3',    r: 'release'}
+          - {os: ubuntu-latest,  pandoc: '2.5',      r: 'release'}
           # testing other R versions
-          - {os: ubuntu-20.04,   pandoc: '2.14.2',  r: 'oldrel'}
-          - {os: ubuntu-20.04,   pandoc: '2.14.2',  r: 'devel', http-user-agent: 'release'}
-          # testing other R versions
-          - {os: ubuntu-20.04,   pandoc: '2.17.1.1',  r: 'devel', http-user-agent: "release" }
-          - {os: ubuntu-20.04,   pandoc: '2.14.2',  r: 'oldrel-1'}
-          - {os: ubuntu-20.04,   pandoc: '2.7.3',  r: 'oldrel-2'}
-          - {os: ubuntu-20.04,   pandoc: '2.7.3',  r: 'oldrel-3'}
-          - {os: ubuntu-20.04,   pandoc: '2.7.3',  r: 'oldrel-4'}
+          - {os: ubuntu-latest,  pandoc: '2.11.4',   r: 'devel', http-user-agent: 'release'}
+          - {os: ubuntu-latest,  pandoc: '2.11.4',   r: 'oldrel-1'}
+          - {os: ubuntu-latest,  pandoc: '2.11.4',   r: 'oldrel-2'}
+          - {os: ubuntu-latest,  pandoc: '2.11.4',   r: 'oldrel-3'}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - uses: r-lib/actions/setup-r@v2
         with:
@@ -75,15 +73,9 @@ jobs:
           cat(readLines("~/.Rprofile"), sep = "\n")
         shell: Rscript {0}
 
-      - uses: r-lib/actions/setup-pandoc@v2
-        if: matrix.config.pandoc != 'devel'
-        with:
-          pandoc-version: ${{ matrix.config.pandoc }}
 
-      - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
-        if: matrix.config.pandoc == 'devel'
-
-      - uses: r-lib/actions/setup-tinytex@v2
+      - uses: r-lib/actions/setup-tinytex@v2-branch 
+        # special branch required for TeX Live 2023 fix
         env:
           # install full prebuilt version
           TINYTEX_INSTALLER: TinyTeX
@@ -91,12 +83,24 @@ jobs:
       - name: preinstall some CTAN packages
         run: |
           tlmgr update --self
-          tlmgr install achemso adobemapping ae algorithmicx algorithms amscls apacite arphic babel-english babel-french beamer biblatex bookmark caption carlisle changepage charter chemgreek cite cjk cjkpunct cns colortbl courier crop ctablestack ctex datetime dblfloatfix draftwatermark endfloat endnotes enumitem environ epsf epstopdf eso-pic esvect etex-pkg everyhook everypage extsizes fancyhdr fandol floatflt fmtcount fontaxes fonts-tlwg footmisc forarray fp fpl garuda-c90 grfext hyphen-french hyphenat ifmtarg jknapltx kastrup lastpage latex-base-dev lettrine lineno listings logreq luatexbase luatexja ly1 marginnote marvosym mathpazo mathspec mdframed mhchem microtype minifp mnras morefloats moreverb mptopdf multirow needspace newfloat newtx norasi-c90 oberdiek palatino parskip pdfsync pgf placeins platex platex-tools preprint psfrag psnfss ptex ptex-base ptex-fonts ragged2e rsfs seqsplit setspace sidecap soul soulutf8 stix sttools subfigure svn-prov symbol tabto-ltx tcolorbox tex-gyre textcase titlesec totcount translator trimspaces ttfutils ucs uhc ulem units uplatex upquote uptex uptex-base uptex-fonts varwidth vruler wadalab wrapfig xcjk2uni xecjk xifthen xpinyin xstring xypic zapfchan zhmetrics zhmetrics-uptex zhnumber zref
+          tlmgr install achemso adobemapping ae algorithmicx algorithms amscls apacite arphic babel-english babel-french beamer biblatex bookmark caption carlisle changepage charter chemgreek cite cjk cjkpunct cns colortbl courier crop ctablestack ctex datetime dblfloatfix draftwatermark endfloat endnotes enumitem environ epsf epstopdf eso-pic esvect etex-pkg everyhook everypage extsizes fancyhdr fandol floatflt fmtcount fontaxes fonts-tlwg footmisc forarray fp fpl garuda-c90 grfext hyphen-french hyphenat ifmtarg jknapltx kastrup lastpage latex-base-dev lettrine lineno listings logreq luatexbase luatexja ly1 marginnote marvosym mathpazo mathspec mdframed mhchem microtype minifp mnras morefloats moreverb mptopdf multirow needspace newfloat newtx norasi-c90 oberdiek palatino parskip pdfsync pgf placeins platex platex-tools preprint psfrag psnfss ptex ptex-base ptex-fonts ragged2e rsfs seqsplit setspace sidecap soul stix sttools subfigure svn-prov symbol tabto-ltx tcolorbox tex-gyre textcase titlesec totcount translator trimspaces ttfutils ucs uhc ulem units uplatex upquote uptex uptex-base uptex-fonts varwidth vruler wadalab wrapfig xcjk2uni xecjk xifthen xpinyin xstring xypic zapfchan zhmetrics zhmetrics-uptex zhnumber zref
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck
           needs: check
+          
+      - name: Remove default installed Pandoc
+        if: runner.os == 'Linux'
+        run: sudo dpkg -r pandoc
+
+      - uses: r-lib/actions/setup-pandoc@v2
+        if: matrix.config.pandoc != 'devel'
+        with:
+          pandoc-version: ${{ matrix.config.pandoc }}
+
+      - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
+        if: matrix.config.pandoc == 'devel'
 
       - name: Install system dependencies
         if: runner.os == 'Linux'
@@ -113,7 +117,7 @@ jobs:
           upload-snapshots: true
 
       - name: Test coverage
-        if: success() && runner.os == 'Linux' && matrix.config.r == 'release' && matrix.config.pandoc == '2.7.3'
+        if: success() && runner.os == 'Linux' && matrix.config.r == 'release' && matrix.config.pandoc == '2.19.2'
         run: |
           pak::pkg_install('covr')
           covr::codecov()

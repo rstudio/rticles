@@ -19,9 +19,18 @@ author:
     footnote: 2
 address:
   - code: Some Institute of Technology
-    address: Department, Street, City, State, Zip
+    organization: Big Wig University
+    addressline: 1 main street
+    city: Gotham
+    state: State
+    postcode: 123456
+    country: United States
   - code: Another University
-    address: Department, Street, City, State, Zip
+    organization: Department
+    addressline: A street 29
+    postcode: 2054 NX
+    city: Manchester,
+    country: The Netherlands
 footnote:
   - code: 1
     text: "This is the first author footnote."
