@@ -616,18 +616,20 @@ springer_article <- function(..., keep_tex = TRUE,  citation_package = "natbib",
     # for backward compatibility as we changed the template in
     # https://github.com/rstudio/rticles/pull/494
     options <- rmarkdown::yaml_front_matter(input)
+    new_template_msg <- c("If you are rendering an old Rmd, be advise that the template has changed in version '0.24'\n",
+    " and you should start from a fresh template to get latest resources and new YAML header format.")
     if (is.null(options[["classoptions"]])) {
       stop("`springer_article()` now requires the 'classoptions' field in YAML front matter. ",
-           "If you are rendering an old Rmd, be advise that the template has changed in version '0.24'.", call. = FALSE)
+           new_template_msg, call. = FALSE)
     }
     if (!is.null(options[["biblio-style"]])) {
       warning("`springer_article()` now ignores the 'biblio-style' field in YAML front matter. ",
       "Reference style for 'natbib' is now set using the 'classoptions' field.\n",
-      "If you are rendering an old Rmd, be advise that the template has changed in version '0.24'.")
+      new_template_msg)
     }
     if (!is.null(options[["PACS"]])) {
       warning("`springer_article()` now ignores the 'PACS' field in YAML front matter to use `pacs.jel` and `pacs.msc`. ",
-              "If you are rendering an old Rmd, be advise that the template has changed in version '0.24'.")
+              new_template_msg)
     }
     return(invisible(NULL))
   }
