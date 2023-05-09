@@ -358,19 +358,19 @@ end
 \end{algorithm}
 ```
 
-::: {.minipage latex="{\hsize}"}
+:::: {.minipage latex="{\hsize}"}
 \lstset{frame=single,framexleftmargin=-1pt,framexrightmargin=-17pt,framesep=12pt,linewidth=0.98\textwidth,language=pascal}
 <!-- Set your language (you can change the language for each code-block optionally) -->
 <!-- Start your code-block -->
-\begin{lstlisting}
+::: {.lstlisting latex=true}
 for i:=maxint to 0 do
 begin
 { do nothing }
 end;
 Write('Case insensitive ');
 Write('Pascal keywords.');
-\end{lstlisting}
 :::
+::::
 
 # Cross referencing {#sec8}
 
@@ -460,10 +460,6 @@ Example for proof text. Example for proof text. Example for proof text. Example 
 
 Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text.
 
-::: {.proof latex="[Proof of Theorem~{\upshape\ref{thm1}}"]
-Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. 
-:::
-
 # Methods {#sec11}
 
 Topical subheadings are allowed. Authors must ensure that their Methods section includes adequate experimental and characterization data necessary for others in the field to reproduce their work. Authors are encouraged to include RIIDs where appropriate.
@@ -526,16 +522,16 @@ If any of the sections are not relevant to your manuscript, please include the h
 Editorial Policies for:
 
 \noindent
-Springer journals and proceedings: \url{https://www.springer.com/gp/editorial-policies}
+Springer journals and proceedings: <https://www.springer.com/gp/editorial-policies>
 
 \noindent
-Nature Portfolio journals: \url{https://www.nature.com/nature-research/editorial-policies}
+Nature Portfolio journals: <https://www.nature.com/nature-research/editorial-policies>
 
 \noindent
-\textit{Scientific Reports}: \url{https://www.nature.com/srep/journal-policies/editorial-policies}
+\textit{Scientific Reports}: <https://www.nature.com/srep/journal-policies/editorial-policies>
 
 \noindent
-BMC journals: \url{https://www.biomedcentral.com/getpublished/editorial-policies}
+BMC journals: <https://www.biomedcentral.com/getpublished/editorial-policies>
 :::
 
 
@@ -546,6 +542,5 @@ BMC journals: \url{https://www.biomedcentral.com/getpublished/editorial-policies
 An appendix contains supplementary information that is not an essential part of the text itself but which may be helpful in providing a more comprehensive understanding of the research problem or it is information that is too cumbersome to be included in the body of the paper.
 
 For submissions to Nature Portfolio Journals please use the heading "Extended Data".  
-
 
 :::
