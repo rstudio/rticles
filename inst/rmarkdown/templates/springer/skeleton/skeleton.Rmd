@@ -85,6 +85,25 @@ abstract: |
 
 bibliography: bibliography.bib
 
+header-includes: |
+  %% Per the spinger doc, new theorem styles can be included using built in style, 
+  %% but it seems the don't work so commented below
+  %\theoremstyle{thmstyleone}%
+  \newtheorem{theorem}{Theorem}%  meant for continuous numbers
+  %%\newtheorem{theorem}{Theorem}[section]% meant for sectionwise numbers
+  %% optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
+  \newtheorem{proposition}[theorem]{Proposition}%
+  %%\newtheorem{proposition}{Proposition}% to get separate numbers for theorem and proposition etc.
+
+  %% \theoremstyle{thmstyletwo}%
+  \theoremstyle{remark}
+  \newtheorem{example}{Example}%
+  \newtheorem{remark}{Remark}%
+
+  %% \theoremstyle{thmstylethree}%
+  \theoremstyle{definition}
+  \newtheorem{definition}{Definition}%
+
 output: rticles::springer_article
 ---
 
@@ -372,7 +391,21 @@ For citations of references, use\ @bib1 or [@bib2].
 
 # Examples for theorem like environments {#sec10}
 
-For mathematics journals, theorem styles can be included as shown in the following examples:
+The documentclass for springer `sn-jnl.cls` contains 3 styling that you can use to set new default for theorems and proofs type 
+
+`thmstyleone`
+
+: Numbered, theorem head in bold font and theorem text in italic style
+
+`thmstyletwo`
+
+: Numbered, theorem head in roman font and theorem text in italic style
+
+`thmstylethree`
+
+: Numbered, theorem head in bold font and theorem text in roman style 
+
+For mathematics journals, theorem styles can be included as shown in the following examples.
 
 ::: {.theorem latex=true}
 Example theorem text. Example theorem text. Example theorem text. Example theorem text. Example theorem text.
@@ -380,7 +413,7 @@ Example theorem text. Example theorem text. Example theorem text. Example theore
 Example theorem text.
 :::
 
-To add labels and subheadings, use LaTeX notation
+To add labels and subheadings, use LaTeX notation  
 
 ::: {.theorem latex="[Theorem subhead]\label{thm1}"}
 Example theorem text. Example theorem text. Example theorem text. Example theorem text. Example theorem text.
@@ -388,8 +421,48 @@ Example theorem text. Example theorem text. Example theorem text. Example theore
 Example theorem text.
 :::
 
+Other environments are proposition, example, remark, definition, proof and quote  
 
-Other environments are proposition, example, remark, definition, proof and quote
+Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text.  
+
+::: {.proposition latex=true}
+Example proposition text. Example proposition text. Example proposition text. Example proposition text. Example proposition text. 
+Example proposition text. Example proposition text. Example proposition text. Example proposition text. Example proposition text. 
+:::
+
+Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text.
+
+::: {.example latex=true}
+Phasellus adipiscing semper elit. Proin fermentum massa
+ac quam. Sed diam turpis, molestie vitae, placerat a, molestie nec, leo. Maecenas lacinia. Nam ipsum ligula, eleifend
+at, accumsan nec, suscipit a, ipsum. Morbi blandit ligula feugiat magna. Nunc eleifend consequat lorem. 
+:::
+
+Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text.
+
+::: {.remark latex=true}
+Phasellus adipiscing semper elit. Proin fermentum massa
+ac quam. Sed diam turpis, molestie vitae, placerat a, molestie nec, leo. Maecenas lacinia. Nam ipsum ligula, eleifend
+at, accumsan nec, suscipit a, ipsum. Morbi blandit ligula feugiat magna. Nunc eleifend consequat lorem. 
+:::
+
+Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text.
+
+::: {.definition latex="[Definition sub head]"}
+Example definition text. Example definition text. Example definition text. Example definition text. Example definition text. Example definition text. Example definition text. Example definition text. 
+:::
+
+Additionally a predefined "proof" environment is available. This prints a "Proof" head in italic font style and the "body text" in roman font style with an open square at the end of each proof environment. 
+
+::: {.proof latex=true}
+Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. 
+:::
+
+Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text.
+
+::: {.proof latex="[Proof of Theorem~{\upshape\ref{thm1}}"]
+Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. 
+:::
 
 # Methods {#sec11}
 
