@@ -594,11 +594,11 @@ springer_article <- function(..., keep_tex = TRUE,  citation_package = "natbib",
   # to compile with pdflatex/xelatex
   # use pdflatex option in the pandoc's template for the document class
   if(latex_engine %in% c("pdflatex", "xelatex")) {
-    pandoc_args <- c(pandoc_args, rmarkdown::pandoc_variable_arg("pdflatex", "pdflatex"))
+    pandoc_args <- c(pandoc_args, rmarkdown::pandoc_variable_arg("pdflatex"))
   }
 
   if(!number_sections) {
-    pandoc_args <- c(pandoc_args, rmarkdown::pandoc_variable_arg("unnumbered", TRUE))
+    pandoc_args <- c(pandoc_args, rmarkdown::pandoc_variable_arg("unnumbered"))
   }
 
   format <- pdf_document_format(
