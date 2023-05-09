@@ -625,6 +625,10 @@ springer_article <- function(..., keep_tex = TRUE,  citation_package = "natbib",
       "Reference style for 'natbib' is now set using the 'classoptions' field.\n",
       "If you are rendering an old Rmd, be advise that the template has changed in version '0.24'.")
     }
+    if (!is.null(options[["PACS"]])) {
+      warning("`springer_article()` now ignores the 'PACS' field in YAML front matter to use `pacs.jel` and `pacs.msc`. ",
+              "If you are rendering an old Rmd, be advise that the template has changed in version '0.24'.")
+    }
     return(invisible(NULL))
   }
   format
