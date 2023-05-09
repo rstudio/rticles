@@ -516,13 +516,16 @@ springer_article <- function(..., keep_tex = TRUE,  citation_package = "natbib",
     pandoc_args = pandoc_args, ...
   )
 
+  pre_knit_fun <- format$pre_knit
   format$pre_knit <-  function(input, ...) {
+    if (is.function(pre_knit_fun)) pre_knit_fun(input, ...)
+    # for backward compatibility as we changed the template in
+    # https://github.com/rstudio/rticles/pull/494
     options <- rmarkdown::yaml_front_matter(input)
     if (is.null(options[["classoptions"]])) {
-      stop("springer_article() now requires the classoptions field. ",
-           "If you are rendering an old Rmd, be advise that the template has changed.")
+      stop("`springer_article()` now requires the 'classoptions' field in YAML front matter. ",
+           "If you are rendering an old Rmd, be advise that the template has changed in version '0.24'.")
     }
-
     return(invisible(NULL))
   }
   format
