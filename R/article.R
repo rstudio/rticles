@@ -631,6 +631,10 @@ springer_article <- function(..., keep_tex = TRUE,  citation_package = "natbib",
       warning("`springer_article()` now ignores the 'PACS' field in YAML front matter to use `pacs.jel` and `pacs.msc`. ",
               new_template_msg)
     }
+    if (!is.null(options[["authors"]][["name"]])) {
+      stop("`springer_article()` now uses different authors and affiliations fields.\n",
+              new_template_msg, call. = FALSE)
+    }
     return(invisible(NULL))
   }
   format
