@@ -1,63 +1,546 @@
 ---
-title: Title here
-subtitle: Do you have a subtitle? If so, write it here
-titlerunning: Short form of title (if too long for head)
-authorrunning: Short form of author list if too long for running head
-thanks: | 
-    Grants or other notes about the article that should go on the front 
-    page should be placed here. General acknowledgments should be placed at the
-    end of the article.
+# Supported options: 
+#   sn-nature:       Style for submissions to Nature Portfolio journals
+#   sn-basic:        Basic Springer Nature Reference Style/Chemistry Reference Style
+#   sn-mathphys:     Math and Physical Sciences Reference Style
+#   sn-aps:          American Physical Society (APS) Reference Style
+#   sn-vancouver:    Vancouver Reference Style
+#   sn-apa:          APA Reference Style 
+#   sn-chicago:      Chicago-based Humanities Reference Style
+#   default:         Default
+
+classoptions: 
+  - sn-basic      
+  # - Numbered      # Optional: Use numbered references instead of namedate references (only for sn-nature, sn-basic, sn-vancouver, sn-chicago, sn-mathphys or sn-nature)
+  # - referee       # Optional: Use double line spacing 
+  # - lineno        # Optional: Add line numbers
+  # - iicol         # Optional: Double column layour
+
+title: Article Title
+titlerunning: Article Title runing
 
 authors: 
-- name: Äüthör 1
-  address: Department of YYY, University of XXX
-  email: abc@def
-  
-- name: Âuthóř 2
-  address: Department of ZZZ, University of WWW
-  email: djf@wef
-
-keywords:
-- key
-- dictionary
-- word
-
-#PACS: 
-#- PAC1
-#- superPAC
+  - prefix: Dr.
+    firstname: Leading
+    particle: van 
+    lastname: Author
+    suffix: III
+    naturename: Poet Laureate
+    degrees: MSc, PhD
+    email: abc@def
+    affiliation: [1,2]
+    corresponding: TRUE
+    equalcont: These authors contributed equally to this work.
     
-MSC:
-- MSC code 1
-- MSC code 2
+  - firstname: Second
+    lastname: Author
+    affiliation: 2
+    equalcont: These authors contributed equally to this work.
 
+
+affiliations:
+  - number: 1
+    corresponding: TRUE
+    info:
+      orgdiv: Department
+      orgname: Organization
+    address:
+        street: Street
+        city: City
+        postcode: 100190
+        state: State
+        country: Country
+  - number: 2
+    corresponding: TRUE
+    info:
+      orgname: Other Organisation
+    
+  
+keywords:
+  - key
+  - dictionary
+  - word
+  
+pacs: 
+  jel:
+    - "D8"
+    - "H51"
+  msc:
+    - "35A01"
+    - "65L10"
+
+# Sample for unstructured abstract 
+# abstract: |
+#   The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. Authors are advised to check the author instructions for the journal they are submitting to for word limits and if structural elements like subheadings, citations, or equations are permitted.
+
+# Sample for structured abstract
 abstract: |
-  The text of your abstract.  150 -- 250 words.
+  **Purpose**: The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+
+  **Methods:** The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+
+  **Results:** The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+
+  **Conclusion:** The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.}
 
 bibliography: bibliography.bib
-biblio-style: spphys
-# bibstyle options spbasic(default), spphys, spmpsci
+
+header-includes: |
+  %% Per the spinger doc, new theorem styles can be included using built in style, 
+  %% but it seems the don't work so commented below
+  %\theoremstyle{thmstyleone}%
+  \newtheorem{theorem}{Theorem}%  meant for continuous numbers
+  %%\newtheorem{theorem}{Theorem}[section]% meant for sectionwise numbers
+  %% optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
+  \newtheorem{proposition}[theorem]{Proposition}%
+  %%\newtheorem{proposition}{Proposition}% to get separate numbers for theorem and proposition etc.
+
+  %% \theoremstyle{thmstyletwo}%
+  \theoremstyle{remark}
+  \newtheorem{example}{Example}%
+  \newtheorem{remark}{Remark}%
+
+  %% \theoremstyle{thmstylethree}%
+  \theoremstyle{definition}
+  \newtheorem{definition}{Definition}%
+
 output: rticles::springer_article
 ---
 
-# Introduction {#intro}
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      out.extra = "")  # This forces knitr to label all figures.
+```
 
-Your text comes here. Separate text sections with \cite{Mislevy06Cog}.
+# Introduction {#sec1}
 
-# Section title {#sec:1}
+The Introduction section, of referenced text @bib1 expands on the background of the work (some overlap with the Abstract is acceptable). The introduction should not include subheadings.
 
-Text with citations by \cite{Galyardt14mmm}.
+Springer Nature does not impose a strict layout as standard however authors are advised to check the individual requirements for the journal they are planning to submit to as there may be journal-level preferences. 
+When preparing your text please also be aware that some stylistic choices are not supported in full text XML (publication version), including coloured font. 
+These will not be replicated in the typeset article if it is accepted.
 
-## Subsection title {#sec:2}
+# Results {#sec2}
 
-as required. Don't forget to give each section
-and subsection a unique label (see Sect. \ref{sec:1}).
+Sample body text. 
+Sample body text. 
+Sample body text. 
+Sample body text.
+Sample body text.
+Sample body text.
+Sample body text. 
+Sample body text.
 
-#### Paragraph headings 
+# This is an example for first level head---section head {#sec3}
 
-Use paragraph headings as needed.
+## This is an example for second level head---subsection head {#subsec2}
 
+### This is an example for third level head---subsubsection head {#subsubsec2}
+
+Sample body text. 
+Sample body text. 
+Sample body text.
+Sample body text.
+Sample body text.
+Sample body text. 
+Sample body text.
+
+# Equations {#sec4}
+
+Equations in \LaTeX\ can either be inline or on-a-line by itself ("display equations"). For
+inline equations use the `$...$` commands. E.g.: The equation
+$H\psi = E \psi$ is written via the command `$H \psi = E \psi$`.
+
+For display equations (with auto generated equation numbers)
+one can use the equation or align environments:
+
+\begin{equation}
+\|\tilde{X}(k)\|^2 \leq\frac{\sum\limits_{i=1}^{p}\left\|\tilde{Y}_i(k)\right\|^2+\sum\limits_{j=1}^{q}\left\|\tilde{Z}_j(k)\right\|^2 }{p+q}.\label{eq1}
+\end{equation}
+
+
+where,
 \begin{align}
-a^2+b^2=c^2
+D_\mu &=  \partial_\mu - ig \frac{\lambda^a}{2} A^a_\mu \nonumber \\
+F^a_{\mu\nu} &= \partial_\mu A^a_\nu - \partial_\nu A^a_\mu + g f^{abc} A^b_\mu A^a_\nu \label{eq2}
 \end{align}
 
+Notice the use of `\nonumber` in the align environment at the end
+of each line, except the last, so as not to produce equation numbers on
+lines where no equation numbers are required. The `\label{}` command
+should only be used at the last line of an align environment where
+`\nonumber` is not used.
 
+\begin{equation}
+Y_\infty = \left( \frac{m}{\textrm{GeV}} \right)^{-3}
+    \left[ 1 + \frac{3 \ln(m/\textrm{GeV})}{15}
+    + \frac{\ln(c_2/5)}{15} \right]
+\end{equation}
+
+The class file also supports the use of `\mathbb{}`, `\mathscr{}` and
+`\mathcal{}` commands. As such `\mathbb{R}`, `\mathscr{R}`
+and `\mathcal{R}` produces $\mathbb{R}$, $\mathscr{R}$ and $\mathcal{R}$
+respectively (refer Subsubsection\ \ref{subsubsec2}).
+
+# Tables {#sec5}
+
+Tables can be inserted via the normal `knitr::kable()` function or other table-generating packages. 
+
+```{r tab1}
+knitr::kable(head(pressure), 
+             format = "latex", 
+             caption = "Caption text")
+```
+
+Tables can also be inserted via the normal table and tabular environment. To put
+footnotes inside tables you should use `\footnotetext[]{...}` tag.
+The footnote appears just below the table itself (refer Tables~\ref{tab1} and \ref{tab2}).
+For the corresponding footnotemark use `\footnotemark[...]`
+
+\begin{table}[h]
+\caption{Caption text}\label{tab1}%
+\begin{tabular}{@{}llll@{}}
+\toprule
+Column 1 & Column 2  & Column 3 & Column 4\\
+\midrule
+row 1    & data 1   & data 2  & data 3  \\
+row 2    & data 4   & data 5\footnotemark[1]  & data 6  \\
+row 3    & data 7   & data 8  & data 9\footnotemark[2]  \\
+\botrule
+\end{tabular}
+\footnotetext{Source: This is an example of table footnote. This is an example of table footnote.}
+\footnotetext[1]{Example for a first table footnote. This is an example of table footnote.}
+\footnotetext[2]{Example for a second table footnote. This is an example of table footnote.}
+\end{table}
+
+\noindent
+The input format for the above table is as follows:
+
+
+```
+\begin{table}[<placement-specifier>]
+\caption{<table-caption>}\label{<table-label>}%
+\begin{tabular}{@{}llll@{}}
+\toprule
+Column 1 & Column 2 & Column 3 & Column 4\\
+\midrule
+row 1 & data 1 & data 2	 & data 3 \\
+row 2 & data 4 & data 5\footnotemark[1] & data 6 \\
+row 3 & data 7 & data 8	 & data 9\footnotemark[2]\\
+\botrule
+\end{tabular}
+\footnotetext{Source: This is an example of table footnote.
+This is an example of table footnote.}
+\footnotetext[1]{Example for a first table footnote.
+This is an example of table footnote.}
+\footnotetext[2]{Example for a second table footnote.
+This is an example of table footnote.}
+\end{table}
+```
+
+\begin{table}[h]
+\caption{Example of a lengthy table which is set to full textwidth}\label{tab2}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lcccccc}
+\toprule%
+& \multicolumn{3}{@{}c@{}}{Element 1\footnotemark[1]} & \multicolumn{3}{@{}c@{}}{Element 2\footnotemark[2]} \\\cmidrule{2-4}\cmidrule{5-7}%
+Project & Energy & $\sigma_{calc}$ & $\sigma_{expt}$ & Energy & $\sigma_{calc}$ & $\sigma_{expt}$ \\
+\midrule
+Element 3  & 990 A & 1168 & $1547\pm12$ & 780 A & 1166 & $1239\pm100$\\
+Element 4  & 500 A & 961  & $922\pm10$  & 900 A & 1268 & $1092\pm40$\\
+\botrule
+\end{tabular*}
+\footnotetext{Note: This is an example of table footnote. This is an example of table footnote this is an example of table footnote this is an example of~table footnote this is an example of table footnote.}
+\footnotetext[1]{Example for a first table footnote.}
+\footnotetext[2]{Example for a second table footnote.}
+\end{table}
+
+\vfill\eject
+
+In case of double column layout, tables which do not fit in single column width should be set to full text width. 
+For this, you need to use `\begin{table*}` `...` `\end{table*}` instead of `\begin{table}` `...` `\end{table}` environment. Lengthy tables which do not fit in textwidth should be set as rotated table. For this, you need to use `\begin{sidewaystable}` `...` `\end{sidewaystable}` instead of `\begin{table*}` `...` `\end{table*}` environment. This environment puts tables rotated to single column width. For tables rotated to double column width, use `\begin{sidewaystable*}` `...` `\end{sidewaystable*}`.
+
+\begin{sidewaystable}
+\caption{Tables which are too long to fit, should be written using the "sidewaystable" environment as shown here}\label{tab3}
+\begin{tabular*}{\textheight}{@{\extracolsep\fill}lcccccc}
+\toprule%
+& \multicolumn{3}{@{}c@{}}{Element 1\footnotemark[1]}& \multicolumn{3}{@{}c@{}}{Element\footnotemark[2]} \\\cmidrule{2-4}\cmidrule{5-7}%
+Projectile & Energy	& $\sigma_{calc}$ & $\sigma_{expt}$ & Energy & $\sigma_{calc}$ & $\sigma_{expt}$ \\
+\midrule
+Element 3 & 990 A & 1168 & $1547\pm12$ & 780 A & 1166 & $1239\pm100$ \\
+Element 4 & 500 A & 961  & $922\pm10$  & 900 A & 1268 & $1092\pm40$ \\
+Element 5 & 990 A & 1168 & $1547\pm12$ & 780 A & 1166 & $1239\pm100$ \\
+Element 6 & 500 A & 961  & $922\pm10$  & 900 A & 1268 & $1092\pm40$ \\
+\botrule
+\end{tabular*}
+\footnotetext{Note: This is an example of table footnote this is an example of table footnote this is an example of table footnote this is an example of~table footnote this is an example of table footnote.}
+\footnotetext[1]{This is an example of table footnote.}
+\end{sidewaystable}
+
+# Figures {#sec6}
+
+As per the \LaTeX\ standards you need to use eps images for \LaTeX\ compilation and `pdf/jpg/png` images for `PDFLaTeX` compilation. 
+Use the `dev` knitr option to use the approrpate format. 
+This is one of the major difference between \LaTeX\ and `PDFLaTeX`.
+Each image should be from a single input .eps/vector image file. 
+Avoid using subfigures.
+The command for inserting images for \LaTeX\ and `PDFLaTeX` can be generalized. 
+The package used to insert images in `LaTeX/PDFLaTeX` is the graphicx package. 
+Figures can be inserted via the normal figure environment as shown in the below example:
+
+```{r fig1, fig.cap = "This is an example of a caption", fig.width = 5}
+plot(pressure)
+```
+
+# Algorithms, Program codes and Listings {#sec7}
+
+Packages `algorithm`, `algorithmicx` and `algpseudocode` are used for setting algorithms in \LaTeX\ using the format:
+
+```
+\begin{algorithm}
+\caption{<alg-caption>}\label{<alg-label>}
+\begin{algorithmic}[1]
+. . .
+\end{algorithmic}
+\end{algorithm}
+```
+
+You may refer above listed package documentations for more details before setting `algorithm` environment. For program codes, the "program" package is required and the command to be used is `\begin{program}` `...` `\end{program}`. A fast exponentiation procedure:
+
+Similarly, for `listings`, use the `listings` package. `\begin{lstlisting}` `...` `\end{lstlisting}` is used to set environments similar to `verbatim` environment. Refer to the `lstlisting` package documentation for more details.
+
+A fast exponentiation procedure:
+
+```{=latex}
+\lstset{texcl=true,basicstyle=\small\sf,commentstyle=\small\rm,mathescape=true,escapeinside={(*}{*)}}
+\begin{lstlisting}
+begin
+  for $i:=1$ to $10$ step $1$ do
+      expt($2,i$);  
+      newline() od                (*\textrm{Comments will be set flush to the right margin}*)
+where
+proc expt($x,n$) $\equiv$
+  $z:=1$;
+  do if $n=0$ then exit fi;
+     do if odd($n$) then exit fi;                 
+        comment: (*\textrm{This is a comment statement;}*)
+        $n:=n/2$; $x:=x*x$ od;
+     { $n>0$ };
+     $n:=n-1$; $z:=z*x$ od;
+  print($z$). 
+end
+\end{lstlisting}
+```
+
+```{=latex}
+\begin{algorithm}
+\caption{Calculate $y = x^n$}\label{algo1}
+\begin{algorithmic}[1]
+\Require $n \geq 0 \vee x \neq 0$
+\Ensure $y = x^n$ 
+\State $y \Leftarrow 1$
+\If{$n < 0$}\label{algln2}
+        \State $X \Leftarrow 1 / x$
+        \State $N \Leftarrow -n$
+\Else
+        \State $X \Leftarrow x$
+        \State $N \Leftarrow n$
+\EndIf
+\While{$N \neq 0$}
+        \If{$N$ is even}
+            \State $X \Leftarrow X \times X$
+            \State $N \Leftarrow N / 2$
+        \Else[$N$ is odd]
+            \State $y \Leftarrow y \times X$
+            \State $N \Leftarrow N - 1$
+        \EndIf
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
+```
+
+:::: {.minipage latex="{\hsize}"}
+\lstset{frame=single,framexleftmargin=-1pt,framexrightmargin=-17pt,framesep=12pt,linewidth=0.98\textwidth,language=pascal}
+<!-- Set your language (you can change the language for each code-block optionally) -->
+<!-- Start your code-block -->
+::: {.lstlisting latex=true}
+for i:=maxint to 0 do
+begin
+{ do nothing }
+end;
+Write('Case insensitive ');
+Write('Pascal keywords.');
+:::
+::::
+
+# Cross referencing {#sec8}
+
+Figures and tables are labeled with a prefix (fig or tab, respectively) plus the chunk label. 
+Other environments such as equation and align can be labelled via the `\label{#label}` command inside or just below the `\caption{}` command.
+You can then use the label for cross-reference. As an example, consider
+the chunk label declared for Figure\ \ref{fig:fig1} which is
+fig1. 
+To cross-reference it, use the command
+`Figure \ref{fig:fig1}`, for which it comes up as
+"Figure\ \ref{fig:fig1}".
+
+To reference line numbers in an algorithm, consider the label declared for the line number 2 of Algorithm\ \ref{algo1} is `\label{algln2}`. To cross-reference it, use the command `\ref{algln2}` for which it comes up as line\ \ref{algln2} of Algorithm\ \ref{algo1}.
+
+## Details on reference citations {#subsec7}
+
+For citations of references, use\ @bib1 or [@bib2]. 
+
+# Examples for theorem like environments {#sec10}
+
+The documentclass for springer `sn-jnl.cls` contains 3 styling that you can use to set new default for theorems and proofs type 
+
+`thmstyleone`
+
+: Numbered, theorem head in bold font and theorem text in italic style
+
+`thmstyletwo`
+
+: Numbered, theorem head in roman font and theorem text in italic style
+
+`thmstylethree`
+
+: Numbered, theorem head in bold font and theorem text in roman style 
+
+For mathematics journals, theorem styles can be included as shown in the following examples.
+
+::: {.theorem latex=true}
+Example theorem text. Example theorem text. Example theorem text. Example theorem text. Example theorem text.
+Example theorem text. Example theorem text. Example theorem text. Example theorem text. Example theorem text.
+Example theorem text.
+:::
+
+To add labels and subheadings, use LaTeX notation  
+
+::: {.theorem latex="[Theorem subhead]\label{thm1}"}
+Example theorem text. Example theorem text. Example theorem text. Example theorem text. Example theorem text.
+Example theorem text. Example theorem text. Example theorem text. Example theorem text. Example theorem text.
+Example theorem text.
+:::
+
+Other environments are proposition, example, remark, definition, proof and quote  
+
+Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text.  
+
+::: {.proposition latex=true}
+Example proposition text. Example proposition text. Example proposition text. Example proposition text. Example proposition text. 
+Example proposition text. Example proposition text. Example proposition text. Example proposition text. Example proposition text. 
+:::
+
+Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text.
+
+::: {.example latex=true}
+Phasellus adipiscing semper elit. Proin fermentum massa
+ac quam. Sed diam turpis, molestie vitae, placerat a, molestie nec, leo. Maecenas lacinia. Nam ipsum ligula, eleifend
+at, accumsan nec, suscipit a, ipsum. Morbi blandit ligula feugiat magna. Nunc eleifend consequat lorem. 
+:::
+
+Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text.
+
+::: {.remark latex=true}
+Phasellus adipiscing semper elit. Proin fermentum massa
+ac quam. Sed diam turpis, molestie vitae, placerat a, molestie nec, leo. Maecenas lacinia. Nam ipsum ligula, eleifend
+at, accumsan nec, suscipit a, ipsum. Morbi blandit ligula feugiat magna. Nunc eleifend consequat lorem. 
+:::
+
+Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text.
+
+::: {.definition latex="[Definition sub head]"}
+Example definition text. Example definition text. Example definition text. Example definition text. Example definition text. Example definition text. Example definition text. Example definition text. 
+:::
+
+Additionally a predefined "proof" environment is available. This prints a "Proof" head in italic font style and the "body text" in roman font style with an open square at the end of each proof environment. 
+
+::: {.proof latex=true}
+Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. 
+:::
+
+Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text.
+
+# Methods {#sec11}
+
+Topical subheadings are allowed. Authors must ensure that their Methods section includes adequate experimental and characterization data necessary for others in the field to reproduce their work. Authors are encouraged to include RIIDs where appropriate.
+
+**Ethical approval declarations** (only required where applicable) Any article reporting experiment/s carried out on (i)~live vertebrate (or higher invertebrates), (ii)~humans or (iii)~human samples must include an unambiguous statement within the methods section that meets the following requirements:
+
+1. Approval: a statement which confirms that all experimental protocols were approved by a named institutional and/or licensing committee. Please identify the approving body in the methods section
+
+2. Accordance: a statement explicitly saying that the methods were carried out in accordance with the relevant guidelines and regulations
+
+3. Informed consent (for experiments involving humans or human tissue samples): include a statement confirming that informed consent was obtained from all participants and/or their legal guardian/s
+
+
+If your manuscript includes potentially identifying patient/participant information, or if it describes human transplantation research, or if it reports results of a clinical trial then  additional information will be required. Please visit (<https://www.nature.com/nature-research/editorial-policies>) for Nature Portfolio journals, (<https://www.springer.com/gp/authors-editors/journal-author/journal-author-helpdesk/publishing-ethics/14214>) for Springer Nature journals, or (<https://www.biomedcentral.com/getpublished/editorial-policies\#ethics+and+consent>) for BMC.
+
+# Discussion {#sec12}
+
+Discussions should be brief and focused. In some disciplines use of Discussion or 'Conclusion' is interchangeable. It is not mandatory to use both. Some journals prefer a section 'Results and Discussion' followed by a section 'Conclusion'. Please refer to Journal-level guidance for any specific requirements.
+
+# Conclusion {#sec13}
+
+Conclusions may be used to restate your hypothesis or research question, restate your major findings, explain the relevance and the added value of your work, highlight any limitations of your study, describe future directions for research and recommendations.
+
+In some disciplines use of Discussion or 'Conclusion' is interchangeable. It is not mandatory to use both. Please refer to Journal-level guidance for any specific requirements.
+
+\backmatter
+
+\bmhead{Supplementary information}
+
+If your article has accompanying supplementary file/s please state so here.
+
+Authors reporting data from electrophoretic gels and blots should supply the full unprocessed scans for key as part of their Supplementary information. This may be requested by the editorial team/s if it is missing.
+
+Please refer to Journal-level guidance for any specific requirements.
+
+\bmhead{Acknowledgments}
+
+Acknowledgments are not compulsory. Where included they should be brief. Grant or contribution numbers may be acknowledged.
+
+Please refer to Journal-level guidance for any specific requirements.
+
+# Declarations {.unnumbered}
+
+Some journals require declarations to be submitted in a standardised format. Please check the Instructions for Authors of the journal to which you are submitting to see if you need to complete this section. If yes, your manuscript must contain the following sections under the heading `Declarations':
+
+* Funding
+* Conflict of interest/Competing interests (check journal-specific guidelines for which heading to use)
+* Ethics approval
+* Consent to participate
+* Consent for publication
+* Availability of data and materials
+* Code availability
+* Authors' contributions
+
+\noindent
+If any of the sections are not relevant to your manuscript, please include the heading and write `Not applicable' for that section.
+
+
+::: {.flushleft latex=true}
+Editorial Policies for:
+
+\noindent
+Springer journals and proceedings: <https://www.springer.com/gp/editorial-policies>
+
+\noindent
+Nature Portfolio journals: <https://www.nature.com/nature-research/editorial-policies>
+
+\noindent
+\textit{Scientific Reports}: <https://www.nature.com/srep/journal-policies/editorial-policies>
+
+\noindent
+BMC journals: <https://www.biomedcentral.com/getpublished/editorial-policies>
+:::
+
+
+::: {.appendices latex=true}
+
+# Section title of first appendix {#secA1}
+
+An appendix contains supplementary information that is not an essential part of the text itself but which may be helpful in providing a more comprehensive understanding of the research problem or it is information that is too cumbersome to be included in the body of the paper.
+
+For submissions to Nature Portfolio Journals please use the heading "Extended Data".  
+
+:::

@@ -1,32 +1,61 @@
-% !TeX program = pdfLaTeX
-\documentclass[smallextended]{svjour3}       % onecolumn (second format)
-%\documentclass[twocolumn]{svjour3}          % twocolumn
+%Version 2.1 April 2023
+% See section 11 of the User Manual for version history
 %
-\smartqed  % flush right qed marks, e.g. at end of proof
-%
-\usepackage{amsmath}
-\usepackage{graphicx}
-\usepackage[utf8]{inputenc}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[hyphens]{url} % not crucial - just used below for the URL
-\usepackage{hyperref}
+\documentclass[$for(classoptions)$$classoptions$$sep$,$endfor$$if(pdflatex)$,pdflatex$endif$]{sn-jnl}
 
-%
-% \usepackage{mathptmx}      % use Times fonts if available on your TeX system
-%
-% insert here the call for the packages your document requires
-%\usepackage{latexsym}
-% etc.
-%
-% please place your own definitions here and don't use \def but
-% \newcommand{}{}
-%
-% Insert the name of "your journal" with
-% \journalname{myjournal}
-%
+%%%% Standard Packages
+%%<additional latex packages if required can be included here>
 
-%% load any required packages here
-$preamble$
+\usepackage{graphicx}%
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage{mathrsfs}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs}%
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\usepackage{listings}%
+%%%%
+
+%%%%%=============================================================================%%%%
+%%%%  Remarks: This template is provided to aid authors with the preparation
+%%%%  of original research articles intended for submission to journals published
+%%%%  by Springer Nature. The guidance has been prepared in partnership with
+%%%%  production teams to conform to Springer Nature technical requirements.
+%%%%  Editorial and presentation requirements differ among journal portfolios and
+%%%%  research disciplines. You may find sections in this template are irrelevant
+%%%%  to your work and are empowered to omit any such section if allowed by the
+%%%%  journal you intend to submit to. The submission guidelines and policies
+%%%%  of the journal take precedence. A detailed User Manual is available in the
+%%%%  template package for technical guidance.
+%%%%%=============================================================================%%%%
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+
+\raggedbottom
+
+$if(unnumbered)$
+\unnumbered
+$endif$
+
 
 $if(highlighting-macros)$
 % Pandoc syntax highlighting
@@ -87,9 +116,8 @@ $if(csl-refs)$
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
 
-$for(header-includes)$
-$header-includes$
-$endfor$
+
+
 \begin{document}
 
 $for(include-before)$
@@ -97,71 +125,56 @@ $include-before$
 
 $endfor$
 
-\title{$title$ $if(thanks)$\thanks{$thanks$} $endif$}
-$if(subtitle)$ \subtitle{$subtitle$} $endif$
+\title[$if(titlerunning)$$titlerunning$$endif$]{$title$}
 
-$if(titlerunning)$
-    \titlerunning{$titlerunning$}
+%%=============================================================%%
+%% Prefix	-> \pfx{Dr}
+%% GivenName	-> \fnm{Joergen W.}
+%% Particle	-> \spfx{van der} -> surname prefix
+%% FamilyName	-> \sur{Ploeg}
+%% Suffix	-> \sfx{IV}
+%% NatureName	-> \tanm{Poet Laureate} -> Title after name
+%% Degrees	-> \dgr{MSc, PhD}
+%% \author*[1,2]{\pfx{Dr} \fnm{Joergen W.} \spfx{van der} \sur{Ploeg} \sfx{IV} \tanm{Poet Laureate}
+%%                 \dgr{MSc, PhD}}\email{iauthor@gmail.com}
+%%=============================================================%%
+
+$for(authors)$
+\author$if(authors.corresponding)$*$endif$[$for(authors.affiliation)$$authors.affiliation$$sep$,$endfor$]{$if(authors.prefix)$\pfx{$authors.prefix$} $endif$$if(authors.firstname)$\fnm{$authors.firstname$} $endif$$if(authors.particle)$\spfx{$authors.particle$} $endif$$if(authors.lastname)$\sur{$authors.lastname$} $endif$$if(authors.suffix)$\sfx{$authors.suffix$} $endif$$if(authors.naturename)$\tanm{$authors.naturename$} $endif$$if(authors.degrees)$\dgr{$authors.degrees$}$endif$}$if(authors.email)$\email{$authors.email$}$endif$
+$if(authors.equal_contribution)$\equalcont{authors.equal_contribution}$endif$
+$endfor$
+
+
+$for(affiliations)$
+  \affil$if(affiliations.corresponding)$*$endif$[$affiliations.number$]{$for(affiliations.info/pairs)$\$it.key${$it.value$}$sep$, $endfor$$if(affiliations.address)$, \orgaddress{$for(affiliations.address/pairs)$\$it.key${$it.value$}$sep$, $endfor$}$endif$}
+$endfor$
+
+\abstract{$abstract$}
+
+\keywords{$for(keywords)$$keywords$$sep$, $endfor$}
+
+
+$if(pacs)$
+$if(pacs.jel)$
+\pacs[JEL Classification]{$for(pacs.jel)$$pacs.jel$$sep$, $endfor$}
 $endif$
-
-\author{ $for(authors)$ $authors.name$ \and $endfor$ }
-
-$if(authorrunning)$
-    \authorrunning{ $authorrunning$ }
+$if(pacs.msc)$
+\pacs[MSC Classification]{$for(pacs.msc)$$pacs.msc$$sep$, $endfor$}
 $endif$
-
-\institute{
-    $for(authors)$
-    $authors.name$ \at
-    $if(authors.address)$ $authors.address$ $endif$\\
-    $if(authors.email)$ \email{$authors.email$} $endif$ %  \\
-%             \emph{Present address:} of F. Author  %  if needed
-    \and
-    $endfor$
-}
-
-\date{Received: date / Accepted: date}
-% The correct dates will be entered by the editor
-
+$endif$
 
 \maketitle
 
-\begin{abstract}
-$abstract$
-\\
-\keywords{
-    $for(keywords)$
-    $keywords$ \and
-    $endfor$
-}
-$if(PACS)$
-    \PACS{
-        $for(PACS)$
-            $PACS$ \and
-        $endfor$
-    }
-$endif$
-
-$if(MSC)$
-    \subclass{
-        $for(MSC)$
-            $MSC$ \and
-        $endfor$
-    }
-$endif$
-
-\end{abstract}
-
-
-\def\spacingset#1{\renewcommand{\baselinestretch}%
-{#1}\small\normalsize} \spacingset{1}
-
-
 $body$
 
-
-\bibliographystyle{$if(biblio-style)$$biblio-style$$else$$if(bibstyle)$$bibstyle$$else$spbasic$endif$$endif$}
+$if(natbib)$
+$if(bibliography)$
+$if(biblio-title)$
+\renewcommand\refname{$biblio-title$}
+$endif$
 \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+$endif$
 
 $for(include-after)$
 $include-after$

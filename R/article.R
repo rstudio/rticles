@@ -579,12 +579,65 @@ sim_article <- function(..., highlight = NULL, citation_package = "natbib") {
 #'   Macro package for Springer Journals.
 #' @export
 #' @rdname article
-springer_article <- function(..., keep_tex = TRUE,
-                             citation_package = "default") {
-  pdf_document_format(
+springer_article <- function(..., keep_tex = TRUE,  citation_package = "natbib",
+                             number_sections = TRUE, latex_engine = "pdflatex",
+                             pandoc_args = NULL) {
+
+  if (!rmarkdown::pandoc_available("2.11.4")) {
+    stop("`springer_article()` now requires a minimum of pandoc 2.11.4")
+  }
+
+  if (citation_package == "biblatex") {
+    stop("'springer_article' does not support `biblatex` for citation processing. Use 'natbib' instead.")
+  }
+
+  # to compile with pdflatex/xelatex
+  # use pdflatex option in the pandoc's template for the document class
+  if(latex_engine %in% c("pdflatex", "xelatex")) {
+    pandoc_args <- c(pandoc_args, rmarkdown::pandoc_variable_arg("pdflatex"))
+  }
+
+  if(!number_sections) {
+    pandoc_args <- c(pandoc_args, rmarkdown::pandoc_variable_arg("unnumbered"))
+  }
+
+  format <- pdf_document_format(
     "springer",
-    keep_tex = keep_tex, citation_package = citation_package, ...
+    keep_tex = keep_tex,
+    citation_package = citation_package,
+    number_sections = number_sections,
+    latex_engine = latex_engine,
+    pandoc_args = pandoc_args, ...
   )
+
+  pre_knit_fun <- format$pre_knit
+  format$pre_knit <-  function(input, ...) {
+    if (is.function(pre_knit_fun)) pre_knit_fun(input, ...)
+    # for backward compatibility as we changed the template in
+    # https://github.com/rstudio/rticles/pull/494
+    options <- rmarkdown::yaml_front_matter(input)
+    new_template_msg <- c("If you are rendering an old Rmd, be advise that the template has changed in version '0.25'\n",
+    " and you should start from a fresh template to get latest resources and new YAML header format.")
+    if (is.null(options[["classoptions"]])) {
+      stop("`springer_article()` now requires the 'classoptions' field in YAML front matter. ",
+           new_template_msg, call. = FALSE)
+    }
+    if (!is.null(options[["biblio-style"]])) {
+      warning("`springer_article()` now ignores the 'biblio-style' field in YAML front matter. ",
+      "Reference style for 'natbib' is now set using the 'classoptions' field.\n",
+      new_template_msg)
+    }
+    if (!is.null(options[["PACS"]])) {
+      warning("`springer_article()` now ignores the 'PACS' field in YAML front matter to use `pacs.jel` and `pacs.msc`. ",
+              new_template_msg)
+    }
+    if (!is.null(options[["authors"]][["name"]])) {
+      stop("`springer_article()` now uses different authors and affiliations fields.\n",
+              new_template_msg, call. = FALSE)
+    }
+    return(invisible(NULL))
+  }
+  format
 }
 
 #' @section `tf_article`: Format for creating submissions to a Taylor & Francis journal. Adapted from

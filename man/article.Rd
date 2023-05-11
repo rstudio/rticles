@@ -149,7 +149,14 @@ sage_article(..., highlight = NULL, citation_package = "natbib")
 
 sim_article(..., highlight = NULL, citation_package = "natbib")
 
-springer_article(..., keep_tex = TRUE, citation_package = "default")
+springer_article(
+  ...,
+  keep_tex = TRUE,
+  citation_package = "natbib",
+  number_sections = TRUE,
+  latex_engine = "pdflatex",
+  pandoc_args = NULL
+)
 
 tf_article(..., keep_tex = TRUE, citation_package = "natbib")
 

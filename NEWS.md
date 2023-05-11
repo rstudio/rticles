@@ -6,6 +6,13 @@
 
 - `rjournal_article()` is now soft deprecated in favor of `rjtools::rjournal_pdf_article()` as **rjtools** package is now the recommended workflow at <https://rjournal.github.io/submissions.html>. A warning will be thrown when rticles' function is used.
 
+- `springer_article()` has been updated to new LaTeX templates and CTAN package (thanks, @eliocamp, #494). **we really advice to start new article from scratch by creating new document using lates RMakrdown template**. Among changes:
+  - New `.tex` templates derived from [https://www.springernature.com](https://www.springernature.com/gp/authors/campaigns/latex-author-support) using `sn-jnl.cls`
+  - In the format function, `natbib` is now the default citation processing package used (previous it was pandoc citeproc) and `number_sections` is TRUE by default now. Set to `FALSE` for unnumbered headers.
+  - In the YAML header options, `biblio-style` is now ignored as references styling happens with document class option, so using `classoptions` is now required. `PACS` and `MSC` is also ignored in favor of `pacs.jel` and `pacs.msc`. 
+  - The whole authors and affiliation fields has been rewritten - please see template for new format.
+  - Pandoc 2.11.4 and above is now required for this format.
+
 ## NEW FEATURES
 
 - `ieee_article()` now supports several affiliations per `authors` when using the `wide: true` mode (thanks, @phamdn, #500).

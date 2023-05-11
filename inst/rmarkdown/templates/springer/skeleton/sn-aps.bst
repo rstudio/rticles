@@ -55,6 +55,7 @@ ENTRY
     institution
     journal
     key
+    keywords
     month
     note
     number
@@ -68,6 +69,13 @@ ENTRY
     url
     volume
     year
+    eprint
+    archive
+    archivePrefix
+    primaryClass
+    adsurl
+    adsnote
+    version
   }
   {}
   { label }
@@ -580,7 +588,7 @@ FUNCTION {n.separate}
 }
 FUNCTION {n.dashify}
 {
-  n.separate
+%%  n.separate
   't :=
   ""
     { t empty$ not }
@@ -804,7 +812,7 @@ FUNCTION {format.journal.pages}
         {
           ", " *
           swap$
-          first.page
+          n.dashify
           "pages" bibinfo.check
           *
         }
@@ -1056,11 +1064,62 @@ FUNCTION {format.organization.address}
 { organization "organization" bibinfo.check format.org.or.pub
 }
 
+FUNCTION {format.softmisc.archive}
+{
+  archivePrefix empty$
+      { "" }
+      { "" }
+  if$           
+}
+
+FUNCTION {format.archive}
+{
+  archivePrefix empty$
+      { "" }
+      { archivePrefix ":" *}
+  if$           
+}
+
+FUNCTION {format.primaryClass}
+{
+  primaryClass empty$
+      { "" }
+      { "{[" primaryClass * "]}" *}
+  if$           
+}
+
+FUNCTION {format.eprint}
+{ eprint empty$
+     { ""}
+     { archive empty$
+          {"{\href{https://arxiv.org/abs/" eprint * "}" *
+             "{{" * format.archive * eprint * "}}}" *}
+          {"{\href{https://arxiv.org/abs/" eprint * "}" *
+             "{{" * format.archive * eprint * "}}}" *}
+       if$
+     }
+     if$
+}
+
+FUNCTION {format.softmisc.eprint}
+{ eprint empty$
+     { ""}
+     { archive empty$
+          {"{\href{https://ascl.net/" format.softmisc.archive * eprint * "}" *
+             "{{" * format.archive * eprint * "}}}" *}
+          {"{\href{https://ascl.net/" format.softmisc.archive * eprint * "}" *
+             "{{" * format.archive * eprint * "}}}" *}
+       if$
+     }
+     if$
+}
+
 FUNCTION {article}
 { output.bibitem
   format.authors "author" output.check
   add.comma
   format.title "title" output.check
+  new.block
   crossref missing$
     {
       journal
@@ -1079,8 +1138,13 @@ FUNCTION {article}
   format.url output
   new.block
   format.note output
+  new.block
+  format.eprint output
+  add.blank
+  format.primaryClass output
   fin.entry
 }
+
 FUNCTION {book}
 { output.bibitem
   author empty$
@@ -1102,6 +1166,7 @@ FUNCTION {book}
       format.number.series output
       new.sentence
       format.publisher.address output
+      format.pages output
     }
     {
       new.block
@@ -1208,7 +1273,6 @@ FUNCTION {inproceedings}
           format.publisher.address output
         }
       if$
-      format.bvolume output
       format.number.series output
       format.pages output
     }
@@ -1298,6 +1362,27 @@ FUNCTION {misc}
   fin.entry
   empty.misc.check
 }
+
+FUNCTION {softmisc}
+{ output.bibitem
+  format.authors output
+  title howpublished new.block.checkb
+  format.title output
+  version output
+  howpublished new.block.checka
+  howpublished "howpublished" bibinfo.check output
+  format.date output
+  format.doi output
+  new.block
+  format.url output
+  new.block
+  format.note output
+  new.block
+  format.softmisc.eprint output
+  fin.entry
+  empty.misc.check
+}
+
 FUNCTION {phdthesis}
 { output.bibitem
   format.authors "author" output.check
@@ -1422,12 +1507,14 @@ FUNCTION {begin.bib}
   write$ newline$
   "\providecommand{\urlprefix}{URL }"
   write$ newline$
-  "\expandafter\ifx\csname urlstyle\endcsname\relax"
+  %%"\expandafter\ifx\csname urlstyle\endcsname\relax"
+  %% write$ newline$
+  %%"  \providecommand{\doi}[1]{\discretionary{}{}{}#1}\else"
+  %%write$ newline$
+  %%"  \providecommand{\doi}{\discretionary{}{}{}\begingroup \urlstyle{rm}\Url}\fi"
+  "\providecommand{\doi}[1]{\url{https://doi.org/#1}}"
   write$ newline$
-  "  \providecommand{\doi}[1]{DOI \discretionary{}{}{}#1}\else"
-  write$ newline$
-  "  \providecommand{\doi}{DOI \discretionary{}{}{}\begingroup \urlstyle{rm}\Url}\fi"
-  write$ newline$
+  "\bibcommenthead" write$ newline$
 }
 EXECUTE {begin.bib}
 EXECUTE {init.state.consts}
