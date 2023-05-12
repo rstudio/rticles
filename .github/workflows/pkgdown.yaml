@@ -48,9 +48,9 @@ jobs:
             vignettes/articles/resources/*.gif
             vignettes/articles/resources/*.pdf
             vignettes/articles/cache/*.rds
-          key: ${{ hashFiles('vignettes/articles/_child_examples.Rmd') }}-1-${{ github.sha }}
+          key: ${{ hashFiles('vignettes/articles/_child_examples.Rmd') }}-2-${{ github.sha }}
           restore-keys: |
-            ${{ hashFiles('vignettes/articles/_child_examples.Rmd') }}-1-
+            ${{ hashFiles('vignettes/articles/_child_examples.Rmd') }}-2-
 
       - name: Build pkgdown site
         run: pkgdown::build_site(new_process = FALSE, install = FALSE)
@@ -58,7 +58,7 @@ jobs:
 
       - name: Deploy to Netlify
         id: netlify-deploy
-        uses: nwtgck/actions-netlify@v1.1
+        uses: nwtgck/actions-netlify@v2.0
         with:
           publish-dir: 'reference'
           production-branch: main
