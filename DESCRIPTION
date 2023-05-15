@@ -92,11 +92,11 @@ Imports:
     rmarkdown (>= 2.14),
     tinytex (>= 0.30),
     utils,
-    withr,
     xfun,
     yaml
 Suggests: 
     bookdown,
+    withr,
     covr,
     testit,
     testthat (>= 3.0.0),
