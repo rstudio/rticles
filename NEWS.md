@@ -1,4 +1,4 @@
-# rticles (development version)
+# rticles 0.25
 
 ## BREAKING CHANGES
 
