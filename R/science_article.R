@@ -5,7 +5,7 @@
 #'
 #' @inheritParams rmarkdown::pdf_document
 #' @param ... Additional arguments to [rmarkdown::pdf_document()]
-#' @param move_figures set to \code{TRUE} to move figures to end. Default is \code{TRUE}. Only
+#' @param move_figures set to `TRUE` to move figures to end. Default is `TRUE`. Only
 #' works when `draft == TRUE`.
 #' @param move_tables set to `TRUE` to move tables to end. Default is `TRUE`. Only
 #' works when `draft == TRUE`.
