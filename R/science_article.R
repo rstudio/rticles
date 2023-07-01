@@ -9,8 +9,8 @@
 #' works when `draft == TRUE`.
 #' @param move_tables set to `TRUE` to move tables to end. Default is `TRUE`. Only
 #' works when `draft == TRUE`.
-#' @param draft set to \code{TRUE} for the draft version or \code{FALSE} for a
-#' final submission version. \code{TRUE} creates a sub directory in the document
+#' @param draft set to `TRUE` for the draft version or `FALSE` for a
+#' final submission version. `TRUE` creates a sub directory in the document
 #' directory and saves each figure to its own PDF there. It also moves the supplemental
 #' materials to its own file.
 #' @md
