@@ -4,7 +4,7 @@
 #' [class](https://www.sciencemag.org/site/feature/contribinfo/prep/TeX_help/#downloads).
 #'
 #' @inheritParams rmarkdown::pdf_document
-#' @param ... Additional arguments to \code{rmarkdown::pdf_document}
+#' @param ... Additional arguments to [rmarkdown::pdf_document()]
 #' @param move_figures set to \code{TRUE} to move figures to end. Default is \code{TRUE}. Only
 #' works when `draft == TRUE`.
 #' @param move_tables set to \code{TRUE} to move tables to end. Default is \code{TRUE}. Only
