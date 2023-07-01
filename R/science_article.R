@@ -1,7 +1,7 @@
 #' Science Journal Format
 #'
 #' Format for creating submissions to Science. Based on the Science
-#' \href{https://www.sciencemag.org/site/feature/contribinfo/prep/TeX_help/#downloads}{class}.
+#' [class](https://www.sciencemag.org/site/feature/contribinfo/prep/TeX_help/#downloads).
 #'
 #' @inheritParams rmarkdown::pdf_document
 #' @param ... Additional arguments to \code{rmarkdown::pdf_document}
