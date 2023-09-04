@@ -16,12 +16,22 @@ if (!dir.exists(hash_db_dir)) dir.create(hash_db_dir)
 out_dir <- "resources"
 if (!dir.exists(out_dir)) dir.create(out_dir)
 
-# exclude ctex for now
-journals <- setdiff(journals(), "ctex")
+# ignore some journals 
+to_ignore <- c(
+  "ctex", # exclude ctex for now (issue to build)
+  "rjournal" # lives in rjtools package now.
+)
 
-for (journal in journals) {
+for (journal in journals()) {
   hash_db_file <- file.path(hash_db_dir, xfun::with_ext(journal, ".rds"))
   out_files <- file.path(out_dir, xfun::with_ext(paste0(journal, "_article"), c("gif", "pdf")))
+  # clean for ignored journal
+  if (journal %in% to_ignore) {
+    # clean files
+    to_remove <- xfun::existing_files(c(out_files, hash_db_file))
+    if (length(to_remove)) unlink(to_remove)
+    next
+  }
   # clean cache if no more files
   if (!all(file.exists(out_files))) unlink(hash_db_file)
   # Should we render new resource ? 
