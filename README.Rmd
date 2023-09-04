@@ -87,51 +87,412 @@ output format and all the assets required by this format.
 
 Currently included templates and their contributors are the following:
 
-| Journal                                                                                                                                                                           | Contributors                                                                                                                                                                   | Pull request                                                                                                                                                                                                                                                                                                               | Output format              |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------|
-| [ACM: Association for Computings Machinery](https://www.acm.org/publications/about-publications)                                                                                  | [\@ramnathv](https://github.com/ramnathv)                                                                                                                                      | [#8](https://github.com/rstudio/rticles/pull/8)                                                                                                                                                                                                                                                                            | `acm_article()`            |
-| ACS `https://pubs.acs.org`                                                                                                                                                        | [\@yufree](https://github.com/yufree)                                                                                                                                          | [#15](https://github.com/rstudio/rticles/pull/15)                                                                                                                                                                                                                                                                          | `acs_article()`            |
-| [AEA: American Economic Association](https://www.aeaweb.org/journals/policies/templates)                                                                                          | [\@sboysel](https://github.com/sboysel)                                                                                                                                        | [#86](https://github.com/rstudio/rticles/pull/86)                                                                                                                                                                                                                                                                          | `aea_articles()`           |
-| AGU `https://agupubs.onlinelibrary.wiley.com/`                                                                                                                                    | [\@eliocamp](https://github.com/eliocamp)                                                                                                                                      | [#199](https://github.com/rstudio/rticles/pull/199)                                                                                                                                                                                                                                                                        | `agu_article()`            |
-| [AJS: Austrian Journal of Statistics](https://www.ajs.or.at)                                                                                                                      | [\@matthias-da](https://github.com/matthias-da)                                                                                                                                | [#437](https://github.com/rstudio/rticles/pull/437)                                                                                                                                                                                                                                                                        | `ajs_article()`            |
-| [AMS: American Meteorological Society](https://www.ametsoc.org/)                                                                                                                  | [\@yufree](https://github.com/yufree)                                                                                                                                          | [#96](https://github.com/rstudio/rticles/pull/96)                                                                                                                                                                                                                                                                          | `ams_article()`            |
-| ASA: American Statistical Association `https://www.amstat.org/`                                                                                                                   |                                                                                                                                                                                | [#111](https://github.com/rstudio/rticles/pull/111)                                                                                                                                                                                                                                                                        | `asa_article()`            |
-| [arXiv](https://arxiv.org/) pre-prints based on George Kour's template                                                                                                            | [\@alexpghayes](https://github.com)                                                                                                                                            | [#236](https://github.com/rstudio/rticles/pull/236)                                                                                                                                                                                                                                                                        | `arxiv_article()`          |
-| [Bioinformatics](https://academic.oup.com/bioinformatics)                                                                                                                         | [\@ShixiangWang](https://github.com/ShixiangWang)                                                                                                                              | [#297](https://github.com/rstudio/rticles/pull/297)                                                                                                                                                                                                                                                                        | `bioinformatics_article()` |
-| [Biometrics](https://biometrics.biometricsociety.org)                                                                                                                             | [\@daltonhance](https://github.com/daltonhance)                                                                                                                                | [#170](https://github.com/rstudio/rticles/pull/170)                                                                                                                                                                                                                                                                        | `biometrics_article()`     |
-| [Bulletin de l'AMQ](https://www.amq.math.ca/bulletin/)                                                                                                                            | [\@desautm](https://github.com/desautm)                                                                                                                                        | [#145](https://github.com/rstudio/rticles/pull/145)                                                                                                                                                                                                                                                                        | `amq_article()`            |
-| [Copernicus Publications](https://publications.copernicus.org)                                                                                                                    | [\@nuest](https://github.com/nuest), [\@RLumSK](https://github.com/RLumSK)                                                                                                     | [#172](https://github.com/rstudio/rticles/pull/172), [#342](https://github.com/rstudio/rticles/pull/342)                                                                                                                                                                                                                   | `copernicus_article()`     |
-| [CTeX](https://ctan.org/pkg/ctex)                                                                                                                                                 |                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                            | `ctex()`                   |
-| [Elsevier](https://www.elsevier.com)                                                                                                                                              | [\@cboettig](https://github.com/cboettig), [\@robjhyndman](https://github.com/robjhyndman)                                                                                     | [#27](https://github.com/rstudio/rticles/pull/27), [#467](https://github.com/rstudio/rticles/pull/467)                                                                                                                                                                                                                     | `elsevier_article()`       |
-| [Frontiers](https://www.frontiersin.org/)                                                                                                                                         | [\@muschellij2](https://github.com/muschellij2)                                                                                                                                | [#211](https://github.com/rstudio/rticles/pull/211)                                                                                                                                                                                                                                                                        | `frontiers_article()`      |
-| [Glossa](https://www.glossa-journal.org)                                                                                                                                          | [\@stefanocoretta](https://github.com/stefanocoretta)                                                                                                                          | [#361](https://github.com/rstudio/rticles/pull/361)                                                                                                                                                                                                                                                                        | `glossa_article()`         |
-| [IEEE Transaction](http://www.ieee.org/publications_standards/publications/authors/author_templates.html)                                                                         | [\@Emaasit](https://github.com/Emaasit), [\@espinielli](https://github.com/espinielli), [\@nathanweeks](https://github.com/nathanweeks), [\@DunLug](https://github.com/DunLug) | [#97](https://github.com/rstudio/rticles/pull/97), [#169](https://github.com/rstudio/rticles/pull/169), [#227](https://github.com/rstudio/rticles/pull/227), [#263](https://github.com/rstudio/rticles/pull/263), [#264](https://github.com/rstudio/rticles/pull/264), [#265](https://github.com/rstudio/rticles/pull/265) | `ieee_article()`           |
-| [IMS: Institute of Mathematical Statistics](https://imstat.org/) [AoAS: Annals of Applied Statistics](https://imstat.org/journals-and-publications/annals-of-applied-statistics/) | [\@auzaheta](https://github.com/auzaheta)                                                                                                                                      | [#372](https://github.com/rstudio/rticles/pull/372)                                                                                                                                                                                                                                                                        | `ims_article()`            |
-| [INFORMS: Institute for Operations Research and the Management Sciences](https://www.informs.org/)                                                                                | [\@robjhyndman](https://github.com/robjhyndman)                                                                                                                                | [#460](https://github.com/rstudio/rticles/pull/460)                                                                                                                                                                                                                                                                        | `informs_article()`        |
-| [ISBA: International Society for Bayesian Analysis](https://bayesian.org/)                                                                                                        | [\@dmi3nko](https://github.com/dmi3kno)                                                                                                                                        | [#461](https://github.com/rstudio/rticles/pull/461)                                                                                                                                                                                                                                                                        | `isba_article()`           |
-| IOP: Institute of Physics (`https://iopscience.iop.org`)                                                                                                                          | [\@robjhyndman](https://github.com/robjhyndman)                                                                                                                                | [#462](https://github.com/rstudio/rticles/pull/462)                                                                                                                                                                                                                                                                        | `iop_article()`            |
-| [JASA: Journal of the Acoustical Society of America](https://pubs.aip.org/asa/jasa)                                                                                               | [\@stefanocoretta](https://github.com/stefanocoretta)                                                                                                                          | [#364](https://github.com/rstudio/rticles/pull/364)                                                                                                                                                                                                                                                                        | `jasa_article()`           |
-| [Journal of Educational Data Mining](https://jedm.educationaldatamining.org/index.php/JEDM/about/submissions) journal submissions                                                 | [\@jooyoungseo](https://github.com/jooyoungseo)                                                                                                                                | [#251](https://github.com/rstudio/rticles/pull/251)                                                                                                                                                                                                                                                                        | `jedm_article()`           |
-| [JOSS: Journal of Open Source Software](https://joss.theoj.org/) [JOSE: Journal of Open Source Education](https://jose.theoj.org/)                                                | [\@noamross](https://github.com/noamross)                                                                                                                                      | [#229](https://github.com/rstudio/rticles/pull/229)                                                                                                                                                                                                                                                                        | `joss_article()`           |
-| [JSS: Journal of Statistical Software](https://www.jstatsoft.org/index)                                                                                                           |                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                            | `jss_article()`            |
-| [LIPIcs](https://www.dagstuhl.de/en/publishing/series/details/lipics)                                                                                                             | [\@nuest](https://github.com/nuest)                                                                                                                                            | [#288](https://github.com/rstudio/rticles/pull/288)                                                                                                                                                                                                                                                                        | `lipics_article()`         |
-| [MDPI](https://www.mdpi.com)                                                                                                                                                      | [\@dleutnant](https://github.com/dleutnant), [\@mps9506](https://github.com/mps9506)                                                                                           | [#147](https://github.com/rstudio/rticles/pull/147), [#515](https://github.com/rstudio/rticles/pull/515)                                                                                                                                                                                                                   | `mdpi_article()`           |
-| [MNRAS: Monthly Notices of the Royal Astronomical Society](https://academic.oup.com/mnras)                                                                                        | [\@oleskiewicz](https://github.com/oleskiewicz)                                                                                                                                | [#175](https://github.com/rstudio/rticles/pull/175)                                                                                                                                                                                                                                                                        | `mnras_article()`          |
-| [OUP: Oxford University Press](https://academic.oup.com/pages/authoring/journals/preparing_your_manuscript)                                                                       | [\@dmkaplan](https://github.com/dmkaplan)                                                                                                                                      | [#284](https://github.com/rstudio/rticles/pull/284)                                                                                                                                                                                                                                                                        | `oup_articles()`           |
-| [PeerJ: Journal of Life and Environmental Sciences](https://peerj.com)                                                                                                            | [\@zkamvar](https://github.com/zkamvar)                                                                                                                                        | [#127](https://github.com/rstudio/rticles/pull/127)                                                                                                                                                                                                                                                                        | `peerj_article()`          |
-| [PiHPh: Papers in Historical Phonology](http://journals.ed.ac.uk/pihph/about/submissions)                                                                                         | [\@stefanocoretta](https://github.com/stefanocoretta)                                                                                                                          | [#362](https://github.com/rstudio/rticles/pull/362)                                                                                                                                                                                                                                                                        | `pihph_article()`          |
-| [PLOS](https://plos.org/#journals)                                                                                                                                                | [\@sjmgarnier](https://github.com/sjmgarnier)                                                                                                                                  | [#12](https://github.com/rstudio/rticles/pull/12)                                                                                                                                                                                                                                                                          | `plos_article()`           |
-| [PNAS: Proceedings of the National Academy of Sciences](https://www.pnas.org/)                                                                                                    | [\@cboettig](https://github.com/cboettig)                                                                                                                                      | [#72](https://github.com/rstudio/rticles/pull/72)                                                                                                                                                                                                                                                                          | `pnas_article()`           |
-| RSOS: Royal Society Open Science `https://www.royalsocietypublishing.org/journal/rsos`                                                                                            | [\@ThierryO](https://github.com/ThierryO)                                                                                                                                      | [#135](https://github.com/rstudio/rticles/pull/135)                                                                                                                                                                                                                                                                        | `rsos_article()`           |
-| [RSS: Royal Statistical Society](https://rss.org.uk/)                                                                                                                             | [\@carlganz](https://github.com/carlganz)                                                                                                                                      | [#110](https://github.com/rstudio/rticles/pull/110)                                                                                                                                                                                                                                                                        | `rss_article()`            |
-| [Sage](https://uk.sagepub.com/en-gb/eur/manuscript-submission-guidelines)                                                                                                         | [\@oguzhanogreden](https://github.com/oguzhanogreden)                                                                                                                          | [#181](https://github.com/rstudio/rticles/pull/181)                                                                                                                                                                                                                                                                        | `sage_article()`           |
-| [Springer](https://www.springernature.com/gp/authors/campaigns/latex-author-support)                                                                                              | [\@strakaps](https://github.com/strakaps)                                                                                                                                      | [#164](https://github.com/rstudio/rticles/pull/164)                                                                                                                                                                                                                                                                        | `springer_article()`       |
-| [Springer Lecture Notes in Computer Science (LCNS)](https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines)                                          | [\@eliocamp](https://github.com/eliocamp/)                                                                                                                                     | [#445](https://github.com/rstudio/rticles/issues/445)                                                                                                                                                                                                                                                                      | `lncs_article()`           |
-| SIM: Statistics in Medicine `https://onlinelibrary.wiley.com/journal/10970258)`                                                                                                   | [\@ellessenne](https://github.com/ellessenne)                                                                                                                                  | [#231](https://github.com/rstudio/rticles/pull/231)                                                                                                                                                                                                                                                                        | `sim_article()`            |
-| [Taylor & Francis](https://www.tandfonline.com/)                                                                                                                                  | [\@dleutnant](https://github.com/dleutnant)                                                                                                                                    | [#218](https://github.com/rstudio/rticles/pull/218)                                                                                                                                                                                                                                                                        | `tf_article()`             |
-| [The R Journal](https://journal.r-project.org/)                                                                                                                                   |                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                            | `rjournal_article()`       |
-| [TRB](https://trb.secure-platform.com/a/page/TRBPaperReview)                                                                                                                      | [\@gregmacfarlane](https://github.com/gregmacfarlane)                                                                                                                          | [#427](https://github.com/rstudio/rticles/pull/427)                                                                                                                                                                                                                                                                        | `trb_article()`            |
-| [Wellcome Open Research](https://wellcomeopenresearch.org)                                                                                                                        | [\@arnold-c](https://github.com/arnold-c)                                                                                                                                      | [#436](https://github.com/rstudio/rticles/pull/436)                                                                                                                                                                                                                                                                        | `wellcomeor_article()`     |
++-------------+-------------+---------------------------+-------------+
+| Journal     | C           | Pull request              | Output      |
+|             | ontributors |                           | format      |
++=============+=============+===========================+=============+
+| [ACM:       | [\@ramna    | [#8](https://github.co    | `acm        |
+| Association | thv](https: | m/rstudio/rticles/pull/8) | _article()` |
+| for         | //github.co |                           |             |
+| Computings  | m/ramnathv) |                           |             |
+| Machiner    |             |                           |             |
+| y](https:// |             |                           |             |
+| www.acm.org |             |                           |             |
+| /publicatio |             |                           |             |
+| ns/about-pu |             |                           |             |
+| blications) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| ACS         | [\@y        | [#15](https://github.com  | `acs        |
+| `https://pu | ufree](http | /rstudio/rticles/pull/15) | _article()` |
+| bs.acs.org` | s://github. |                           |             |
+|             | com/yufree) |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [AEA:       | [\@sbo      | [#86](https://github.com  | `aea_       |
+| American    | ysel](https | /rstudio/rticles/pull/86) | articles()` |
+| Economic    | ://github.c |                           |             |
+| Associati   | om/sboysel) |                           |             |
+| on](https:/ |             |                           |             |
+| /www.aeaweb |             |                           |             |
+| .org/journa |             |                           |             |
+| ls/policies |             |                           |             |
+| /templates) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| AGU         | [\@elioc    | [                         | `agu        |
+| `https://   | amp](https: | #199](https://github.com/ | _article()` |
+| agupubs.onl | //github.co | rstudio/rticles/pull/199) |             |
+| inelibrary. | m/eliocamp) |                           |             |
+| wiley.com/` |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [AJS:       | [\@         | [                         | `ajs        |
+| Austrian    | matthias-da | #437](https://github.com/ | _article()` |
+| Journal of  | ](https://g | rstudio/rticles/pull/437) |             |
+| S           | ithub.com/m |                           |             |
+| tatistics]( | atthias-da) |                           |             |
+| https://www |             |                           |             |
+| .ajs.or.at) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [AMS:       | [\@y        | [#96](https://github.com  | `ams        |
+| American    | ufree](http | /rstudio/rticles/pull/96) | _article()` |
+| Met         | s://github. |                           |             |
+| eorological | com/yufree) |                           |             |
+| S           |             |                           |             |
+| ociety](htt |             |                           |             |
+| ps://www.am |             |                           |             |
+| etsoc.org/) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| ASA:        |             | [                         | `asa        |
+| American    |             | #111](https://github.com/ | _article()` |
+| Statistical |             | rstudio/rticles/pull/111) |             |
+| Association |             |                           |             |
+| `ht         |             |                           |             |
+| tps://www.a |             |                           |             |
+| mstat.org/` |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [arXi       | [\          | [                         | `arxiv      |
+| v](https:// | @alexpghaye | #236](https://github.com/ | _article()` |
+| arxiv.org/) | s](https:// | rstudio/rticles/pull/236) |             |
+| pre-prints  | github.com) |                           |             |
+| based on    |             |                           |             |
+| George      |             |                           |             |
+| Kour's      |             |                           |             |
+| template    |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [B          | [\@Sh       | [                         | `bio        |
+| ioinformati | ixiangWang] | #297](https://github.com/ | informatics |
+| cs](https:/ | (https://gi | rstudio/rticles/pull/297) | _article()` |
+| /academic.o | thub.com/Sh |                           |             |
+| up.com/bioi | ixiangWang) |                           |             |
+| nformatics) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [Biometri   | [\@         | [                         | `biometrics |
+| cs](https:/ | daltonhance | #170](https://github.com/ | _article()` |
+| /biometrics | ](https://g | rstudio/rticles/pull/170) |             |
+| .biometrics | ithub.com/d |                           |             |
+| ociety.org) | altonhance) |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [Bulletin   | [\@des      | [                         | `amq        |
+| de          | autm](https | #145](https://github.com/ | _article()` |
+| l'AMQ](h    | ://github.c | rstudio/rticles/pull/145) |             |
+| ttps://www. | om/desautm) |                           |             |
+| amq.math.ca |             |                           |             |
+| /bulletin/) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [Copernicus | [\@         | [#                        | `copernicus |
+| Public      | nuest](http | 172](https://github.com/r | _article()` |
+| ations](htt | s://github. | studio/rticles/pull/172), |             |
+| ps://public | com/nuest), | [                         |             |
+| ations.cope | [\@R        | #342](https://github.com/ |             |
+| rnicus.org) | LumSK](http | rstudio/rticles/pull/342) |             |
+|             | s://github. |                           |             |
+|             | com/RLumSK) |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [CTeX](http |             |                           | `ctex()`    |
+| s://ctan.or |             |                           |             |
+| g/pkg/ctex) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [El         | [\@cboett   | [#27](https://github.com/ | `elsevier   |
+| sevier](htt | ig](https:/ | rstudio/rticles/pull/27), | _article()` |
+| ps://www.el | /github.com | [                         |             |
+| sevier.com) | /cboettig), | #467](https://github.com/ |             |
+|             | [\@         | rstudio/rticles/pull/467) |             |
+|             | robjhyndman |                           |             |
+|             | ](https://g |                           |             |
+|             | ithub.com/r |                           |             |
+|             | objhyndman) |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [Frontie    | [\@         | [                         | `frontiers  |
+| rs](https:/ | muschellij2 | #211](https://github.com/ | _article()` |
+| /www.fronti | ](https://g | rstudio/rticles/pull/211) |             |
+| ersin.org/) | ithub.com/m |                           |             |
+|             | uschellij2) |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [Glossa     | [\@stefan   | [                         | `glossa     |
+| ](https://w | ocoretta](h | #361](https://github.com/ | _article()` |
+| ww.glossa-j | ttps://gith | rstudio/rticles/pull/361) |             |
+| ournal.org) | ub.com/stef |                           |             |
+|             | anocoretta) |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [IEEE       | [\@Emaa     | [#97](https://github.com/ | `ieee       |
+| Transaction | sit](https: | rstudio/rticles/pull/97), | _article()` |
+| ](http://ww | //github.co | [#                        |             |
+| w.ieee.org/ | m/Emaasit), | 169](https://github.com/r |             |
+| publication | [\          | studio/rticles/pull/169), |             |
+| s_standards | @espinielli | [#                        |             |
+| /publicatio | ](https://g | 227](https://github.com/r |             |
+| ns/authors/ | ithub.com/e | studio/rticles/pull/227), |             |
+| author_temp | spinielli), | [#                        |             |
+| lates.html) | [\@n        | 263](https://github.com/r |             |
+|             | athanweeks] | studio/rticles/pull/263), |             |
+|             | (https://gi | [#                        |             |
+|             | thub.com/na | 264](https://github.com/r |             |
+|             | thanweeks), | studio/rticles/pull/264), |             |
+|             | [\@D        | [                         |             |
+|             | unLug](http | #265](https://github.com/ |             |
+|             | s://github. | rstudio/rticles/pull/265) |             |
+|             | com/DunLug) |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [IMS:       | [\@auzah    | [                         | `ims        |
+| Institute   | eta](https: | #372](https://github.com/ | _article()` |
+| of          | //github.co | rstudio/rticles/pull/372) |             |
+| M           | m/auzaheta) |                           |             |
+| athematical |             |                           |             |
+| Statistics  |             |                           |             |
+| ](https://i |             |                           |             |
+| mstat.org/) |             |                           |             |
+| [AoAS:      |             |                           |             |
+| Annals of   |             |                           |             |
+| Applied     |             |                           |             |
+| Statistics  |             |                           |             |
+| ](https://i |             |                           |             |
+| mstat.org/j |             |                           |             |
+| ournals-and |             |                           |             |
+| -publicatio |             |                           |             |
+| ns/annals-o |             |                           |             |
+| f-applied-s |             |                           |             |
+| tatistics/) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [INFORMS:   | [\@         | [                         | `informs    |
+| Institute   | robjhyndman | #460](https://github.com/ | _article()` |
+| for         | ](https://g | rstudio/rticles/pull/460) |             |
+| Operations  | ithub.com/r |                           |             |
+| Research    | objhyndman) |                           |             |
+| and the     |             |                           |             |
+| Management  |             |                           |             |
+| Sc          |             |                           |             |
+| iences](htt |             |                           |             |
+| ps://www.in |             |                           |             |
+| forms.org/) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [ISBA:      | [\@dmi      | [                         | `isba       |
+| In          | 3nko](https | #461](https://github.com/ | _article()` |
+| ternational | ://github.c | rstudio/rticles/pull/461) |             |
+| Society for | om/dmi3kno) |                           |             |
+| Bayesian    |             |                           |             |
+| Analysis](  |             |                           |             |
+| https://bay |             |                           |             |
+| esian.org/) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| IOP:        | [\@         | [                         | `iop        |
+| Institute   | robjhyndman | #462](https://github.com/ | _article()` |
+| of Physics  | ](https://g | rstudio/rticles/pull/462) |             |
+| (`https:    | ithub.com/r |                           |             |
+| //iopscienc | objhyndman) |                           |             |
+| e.iop.org`) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [JASA:      | [\@stefan   | [                         | `jasa       |
+| Journal of  | ocoretta](h | #364](https://github.com/ | _article()` |
+| the         | ttps://gith | rstudio/rticles/pull/364) |             |
+| Acoustical  | ub.com/stef |                           |             |
+| Society of  | anocoretta) |                           |             |
+| Americ      |             |                           |             |
+| a](https:// |             |                           |             |
+| pubs.aip.or |             |                           |             |
+| g/asa/jasa) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [Journal of | [\@         | [                         | `jedm       |
+| Educational | jooyoungseo | #251](https://github.com/ | _article()` |
+| Data        | ](https://g | rstudio/rticles/pull/251) |             |
+| Min         | ithub.com/j |                           |             |
+| ing](https: | ooyoungseo) |                           |             |
+| //jedm.educ |             |                           |             |
+| ationaldata |             |                           |             |
+| mining.org/ |             |                           |             |
+| index.php/J |             |                           |             |
+| EDM/about/s |             |                           |             |
+| ubmissions) |             |                           |             |
+| journal     |             |                           |             |
+| submissions |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [JOSS:      | [\@noamr    | [                         | `joss       |
+| Journal of  | oss](https: | #229](https://github.com/ | _article()` |
+| Open Source | //github.co | rstudio/rticles/pull/229) |             |
+| S           | m/noamross) |                           |             |
+| oftware](ht |             |                           |             |
+| tps://joss. |             |                           |             |
+| theoj.org/) |             |                           |             |
+| [JOSE:      |             |                           |             |
+| Journal of  |             |                           |             |
+| Open Source |             |                           |             |
+| Ed          |             |                           |             |
+| ucation](ht |             |                           |             |
+| tps://jose. |             |                           |             |
+| theoj.org/) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [JSS:       |             |                           | `jss        |
+| Journal of  |             |                           | _article()` |
+| Statistical |             |                           |             |
+| Software]   |             |                           |             |
+| (https://ww |             |                           |             |
+| w.jstatsoft |             |                           |             |
+| .org/index) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [LI         | [\          | [                         | `lipics     |
+| PIcs](https | @nuest](htt | #288](https://github.com/ | _article()` |
+| ://www.dags | ps://github | rstudio/rticles/pull/288) |             |
+| tuhl.de/en/ | .com/nuest) |                           |             |
+| publishing/ |             |                           |             |
+| series/deta |             |                           |             |
+| ils/lipics) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [MDPI]      | [\@dleutnan | [#                        | `mdpi       |
+| (https://ww | t](https:// | 147](https://github.com/r | _article()` |
+| w.mdpi.com) | github.com/ | studio/rticles/pull/147), |             |
+|             | dleutnant), | [                         |             |
+|             | [\@mps      | #515](https://github.com/ |             |
+|             | 9506](https | rstudio/rticles/pull/515) |             |
+|             | ://github.c |                           |             |
+|             | om/mps9506) |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [MNRAS:     | [\@         | [                         | `mnras      |
+| Monthly     | oleskiewicz | #175](https://github.com/ | _article()` |
+| Notices of  | ](https://g | rstudio/rticles/pull/175) |             |
+| the Royal   | ithub.com/o |                           |             |
+| A           | leskiewicz) |                           |             |
+| stronomical |             |                           |             |
+| Society     |             |                           |             |
+| ](https://a |             |                           |             |
+| cademic.oup |             |                           |             |
+| .com/mnras) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [OUP:       | [\@dmkap    | [                         | `oup_       |
+| Oxford      | lan](https: | #284](https://github.com/ | articles()` |
+| University  | //github.co | rstudio/rticles/pull/284) |             |
+| Press]      | m/dmkaplan) |                           |             |
+| (https://ac |             |                           |             |
+| ademic.oup. |             |                           |             |
+| com/pages/a |             |                           |             |
+| uthoring/jo |             |                           |             |
+| urnals/prep |             |                           |             |
+| aring_your_ |             |                           |             |
+| manuscript) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [PeerJ:     | [\@zka      | [                         | `peerj      |
+| Journal of  | mvar](https | #127](https://github.com/ | _article()` |
+| Life and    | ://github.c | rstudio/rticles/pull/127) |             |
+| En          | om/zkamvar) |                           |             |
+| vironmental |             |                           |             |
+| Scienc      |             |                           |             |
+| es](https:/ |             |                           |             |
+| /peerj.com) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [PiHPh:     | [\@stefan   | [                         | `pihph      |
+| Papers in   | ocoretta](h | #362](https://github.com/ | _article()` |
+| Historical  | ttps://gith | rstudio/rticles/pull/362) |             |
+| Phono       | ub.com/stef |                           |             |
+| logy](http: | anocoretta) |                           |             |
+| //journals. |             |                           |             |
+| ed.ac.uk/pi |             |                           |             |
+| hph/about/s |             |                           |             |
+| ubmissions) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [           | [           | [#12](https://github.com  | `plos       |
+| PLOS](https | \@sjmgarnie | /rstudio/rticles/pull/12) | _article()` |
+| ://plos.org | r](https:// |                           |             |
+| /#journals) | github.com/ |                           |             |
+|             | sjmgarnier) |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [PNAS:      | [\@cboet    | [#72](https://github.com  | `pnas       |
+| Proceedings | tig](https: | /rstudio/rticles/pull/72) | _article()` |
+| of the      | //github.co |                           |             |
+| National    | m/cboettig) |                           |             |
+| Academy of  |             |                           |             |
+| Sciences](  |             |                           |             |
+| https://www |             |                           |             |
+| .pnas.org/) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| RSOS: Royal | [\@Thier    | [                         | `rsos       |
+| Society     | ryO](https: | #135](https://github.com/ | _article()` |
+| Open        | //github.co | rstudio/rticles/pull/135) |             |
+| Science     | m/ThierryO) |                           |             |
+| `https://   |             |                           |             |
+| www.royalso |             |                           |             |
+| cietypublis |             |                           |             |
+| hing.org/jo |             |                           |             |
+| urnal/rsos` |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [RSS: Royal | [\@carlg    | [                         | `rss        |
+| Statistical | anz](https: | #110](https://github.com/ | _article()` |
+| Society     | //github.co | rstudio/rticles/pull/110) |             |
+| ](https://r | m/carlganz) |                           |             |
+| ss.org.uk/) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [Sage](     | [\@oguzha   | [                         | `sage       |
+| https://uk. | nogreden](h | #181](https://github.com/ | _article()` |
+| sagepub.com | ttps://gith | rstudio/rticles/pull/181) |             |
+| /en-gb/eur/ | ub.com/oguz |                           |             |
+| manuscript- | hanogreden) |                           |             |
+| submission- |             |                           |             |
+| guidelines) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [Spring     | [\@strak    | [                         | `springer   |
+| er](https:/ | aps](https: | #164](https://github.com/ | _article()` |
+| /www.spring | //github.co | rstudio/rticles/pull/164) |             |
+| ernature.co | m/strakaps) |                           |             |
+| m/gp/author |             |                           |             |
+| s/campaigns |             |                           |             |
+| /latex-auth |             |                           |             |
+| or-support) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [Springer   | [\@elioca   | [#4                       | `lncs       |
+| Lecture     | mp](https:/ | 45](https://github.com/rs | _article()` |
+| Notes in    | /github.com | tudio/rticles/issues/445) |             |
+| Computer    | /eliocamp/) |                           |             |
+| Science     |             |                           |             |
+| (LCN        |             |                           |             |
+| S)](https:/ |             |                           |             |
+| /www.spring |             |                           |             |
+| er.com/gp/c |             |                           |             |
+| omputer-sci |             |                           |             |
+| ence/lncs/c |             |                           |             |
+| onference-p |             |                           |             |
+| roceedings- |             |                           |             |
+| guidelines) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| SIM:        | [           | [                         | `sim        |
+| Statistics  | \@ellessenn | #231](https://github.com/ | _article()` |
+| in Medicine | e](https:// | rstudio/rticles/pull/231) |             |
+| `https:     | github.com/ |                           |             |
+| //onlinelib | ellessenne) |                           |             |
+| rary.wiley. |             |                           |             |
+| com/journal |             |                           |             |
+| /10970258)` |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [Taylor &   | [\@dleutna  | [                         | `tf         |
+| Franc       | nt](https:/ | #218](https://github.com/ | _article()` |
+| is](https:/ | /github.com | rstudio/rticles/pull/218) |             |
+| /www.tandfo | /dleutnant) |                           |             |
+| nline.com/) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [The R      |             |                           | Use         |
+| Journal     |             |                           | [           |
+| ](https://j |             |                           | **rjtools** |
+| ournal.r-pr |             |                           | ](https://r |
+| oject.org/) |             |                           | journal.git |
+|             |             |                           | hub.io/rjto |
+|             |             |                           | ols/article |
+|             |             |                           | s/create_ar |
+|             |             |                           | ticle.html) |
+|             |             |                           | package now |
+|             |             |                           |             |
+|             |             |                           | `rjournal   |
+|             |             |                           | _article()` |
+|             |             |                           | (           |
+|             |             |                           | deprecated) |
++-------------+-------------+---------------------------+-------------+
+| [TRB]       | [\@gregma   | [                         | `trb        |
+| (https://tr | cfarlane](h | #427](https://github.com/ | _article()` |
+| b.secure-pl | ttps://gith | rstudio/rticles/pull/427) |             |
+| atform.com/ | ub.com/greg |                           |             |
+| a/page/TRBP | macfarlane) |                           |             |
+| aperReview) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
+| [Wellcome   | [\@arnol    | [                         | `wellcomeor |
+| Open        | d-c](https: | #436](https://github.com/ | _article()` |
+| Research](  | //github.co | rstudio/rticles/pull/436) |             |
+| https://wel | m/arnold-c) |                           |             |
+| lcomeopenre |             |                           |             |
+| search.org) |             |                           |             |
++-------------+-------------+---------------------------+-------------+
 
 You can also get the list of available journal names with
 `rticles::journals()`.
