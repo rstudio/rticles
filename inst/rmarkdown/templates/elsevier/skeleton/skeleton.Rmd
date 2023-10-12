@@ -45,10 +45,11 @@ keywords:
   - keyword2
 journal: "An awesome journal"
 date: "`r Sys.Date()`"
-classoption: preprint, 3p, authoryear
-bibliography: mybibfile.bib
 linenumbers: false
 numbersections: true
+bibliography: mybibfile.bib
+biblio-style: elsarticle-harv # author year style for natbib - use 'elsarticle-num' or 'elsarticle-num-names' for numbered scheme
+classoption: preprint, 3p, authoryear # remove authoryear is not using `elsarticle-harv`
 # Use a CSL with `citation_package = "default"`
 # csl: https://www.zotero.org/styles/elsevier-harvard
 output: 
@@ -68,7 +69,8 @@ For detailed instructions regarding the elsevier article class, see   <https://w
 
 Here are two sample references: @Feynman1963118 [@Dirac1953888].
 
-By default, natbib will be used with the `authoryear` style, set in `classoption` variable in YAML. 
+By default, natbib will be used with the `authoryear` style, set in `classoption` variable in YAML and with `elsearticle-harv.bst` which is among provided style by `elsarticle` documentclass. Other available style are `elsarticle-num.bst` and `elsarticle-num-names.bst` — the first one can be used for the numbered scheme, second one for numbered with new options of natbib.sty. 
+
 You can sets extra options with `natbiboptions` variable in YAML header. Example 
 ```yaml
 natbiboptions: longnamesfirst,angle,semicolon
