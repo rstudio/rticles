@@ -1,0 +1,143 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Please note that whilst this template provides a
+% preview of the typeset manuscript for submission, it
+% will not necessarily be the final publication layout.
+%
+\documentclass[$paper$,$reftype$]{$documentclass$}
+
+% declare highlighting-macros if any
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+%%% declare packages to be used
+\usepackage{forarray}
+\usepackage{xstring}
+\usepackage{graphicx}
+\usepackage{siunitx}
+
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+$if(tables)$
+% From pandoc table feature
+\usepackage{longtable,booktabs,array}
+$if(multirow)$
+\usepackage{multirow}
+$endif$
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+$endif$
+
+$if(csl-refs)$
+% Pandoc citation processing
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+% include header-includes if any
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+
+%%% Flushend: You can add this package to automatically balance the final page, but if things go awry (e.g. section contents appearing out-of-order or entire blocks or paragraphs are coloured), remove it!
+% \usepackage{flushend}
+
+
+
+\title{$title$}
+
+%%% Authors
+$for(author)$ \author[$for(author.affiliation)$$author.affiliation$$sep$,$endfor$$for(author.note)$,\authfn{$author.note$}$endfor$]{$author.name$} $sep$
+$endfor$
+
+%%% Author Affiliations
+$for(affiliation)$ \affil[$affiliation.id$]{$affiliation.name$$if(affiliation.address)$, $affiliation.address$$endif$}
+$endfor$
+
+%%% Use the \authfn to add symbols for additional footnotes, if any. 1 is reserved for correspondence emails; then continuing with 2 etc for contributions.
+%%% Author Notes
+$for(authnote)$\authnote{\authfn{$authnote.id$}$authnote.note$}$sep$
+$endfor$
+
+
+%%% Paper category
+\papercat{$papercat$}
+
+%%% "Short" author for running page header
+\runningauthor{$runningauthor$}
+
+%%% Should only be set by an editor
+\jvolume{00}
+\jnumber{0}
+\jyear{2018}
+
+\begin{document}
+\begin{frontmatter}
+\maketitle
+\begin{abstract}
+$abstract$
+\end{abstract}
+
+\begin{keywords}
+$for(keywords)$$keywords$$sep$; $endfor$
+\end{keywords}
+\end{frontmatter}
+
+$for(include-before)$
+$include-before$
+
+$endfor$
+
+\begin{keypoints*}
+\begin{itemize}
+$for(keypoints)$\item{$keypoints$}$sep$
+$endfor$
+\end{itemize}
+\end{keypoints*}
+
+$body$
+
+
+$for(include-after)$
+$include-after$
+
+$endfor$
+%%% The document ends here
+\end{document}

@@ -15,6 +15,7 @@
 \alias{ctex}
 \alias{elsevier_article}
 \alias{frontiers_article}
+\alias{gigascience_article}
 \alias{glossa_article}
 \alias{ims_article}
 \alias{informs_article}
@@ -87,6 +88,12 @@ elsevier_article(
 )
 
 frontiers_article(..., keep_tex = TRUE)
+
+gigascience_article(
+  keep_tex = TRUE,
+  md_extensions = c("-autolink_bare_uris"),
+  ...
+)
 
 glossa_article(..., keep_tex = TRUE, latex_engine = "xelatex")
 
@@ -269,6 +276,12 @@ It requires a minimum version of 2.10 for Pandoc.
  Format for creating Frontiers journal
 articles. Adapted from
 \url{https://www.frontiersin.org/about/author-guidelines}.
+}
+
+\section{\code{gigascience_article}}{
+ Format for creating submissions to the
+GigaScience journal. Adapted from GigaScience Overleaf template
+\url{https://www.overleaf.com/latex/templates/template-for-gigascience-journal-manuscript-submissions/shgtrssvbjhs}.
 }
 
 \section{\code{glossa_article}}{
