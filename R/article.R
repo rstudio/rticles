@@ -547,6 +547,20 @@ sage_article <- function(..., highlight = NULL, citation_package = "natbib") {
   )
 }
 
+#' @section `science_article`: Format for AAAS - Science articles
+#' Based on the official Science Journal LaTeX guidelines
+#' <http://www.sciencemag.org/authors/preparing-manuscripts-using-latex>.
+#'
+#' @export
+#' @rdname article
+science_article <- function(
+  ..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris")
+) {
+  pdf_document_format(
+    "science", md_extensions = md_extensions, ...
+  )
+}
+
 #' @section `sim_article`: Format for creating submissions to Statistics in
 #'   Medicine. Based on the official Statistics in Medicine
 #'   at `https://onlinelibrary.wiley.com/page/journal/10970258/homepage/la_tex_class_file.htm`.

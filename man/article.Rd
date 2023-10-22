@@ -30,6 +30,7 @@
 \alias{plos_article}
 \alias{pnas_article}
 \alias{sage_article}
+\alias{science_article}
 \alias{sim_article}
 \alias{springer_article}
 \alias{tf_article}
@@ -146,6 +147,8 @@ plos_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 pnas_article(..., keep_tex = TRUE)
 
 sage_article(..., highlight = NULL, citation_package = "natbib")
+
+science_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
 sim_article(..., highlight = NULL, citation_package = "natbib")
 
@@ -428,6 +431,12 @@ Possible arguments for the YAML header are:
 \item \code{header-includes}: custom additions to the header, before the \verb{\\begin\{document\}} statement
 \item \code{include-after}: for including additional LaTeX code before the \verb{\\end\\\{document\}} statement
 }
+}
+
+\section{\code{science_article}}{
+ Format for AAAS - Science articles
+Based on the official Science Journal LaTeX guidelines
+\url{http://www.sciencemag.org/authors/preparing-manuscripts-using-latex}.
 }
 
 \section{\code{sim_article}}{
