@@ -267,7 +267,7 @@ FUNCTION {format.title}
 FUNCTION {format.journal}
 { journal empty$
     { "" }
-    { journal "" *}
+    { journal "." *}
   if$
 }
 
@@ -310,10 +310,18 @@ FUNCTION {format.date}
   if$
 }
 
+FUNCTION {bookformat.date}
+{ year empty$
+    { "" }
+    { " " * year }
+  if$
+}
+
+
 FUNCTION {inproformat.date}
 { year empty$
     { "" }
-    { "; " * year }
+    { " " * year }
   if$
 }
 
@@ -408,14 +416,14 @@ FUNCTION {multi.page.check}
 FUNCTION {format.pages}
 { pages empty$
     { "" }
-    {"\string: " pages *}
+    {"\string:" pages *}
   if$
 }
 
 FUNCTION {format.volume}
 { volume empty$
     { "" }
-    { "\string; " volume * }
+    { "\string;" volume * }
   if$
 }
 
@@ -738,7 +746,8 @@ FUNCTION {book}
   if$
   new.block
   format.edition output
-  format.date "year" output.check
+  add.comma
+  bookformat.date "year" output.check
   new.block
   note output
   fin.entry
@@ -808,14 +817,16 @@ FUNCTION {incollection}
   blank.sep
   crossref missing$
     { format.in.ed.booktitle "booktitle" output.check
-    new.block
+     new.block
+	 add.comma add.space
+     format.edition output 
+	 add.comma add.space
       format.number.series add.period$ add.space output
-      format.bvolume add.period$ add.space output
-      format.addr.pub add.period$ add.space "publisher" output.check
-      format.edition output
+      format.bvolume add.period$ add.space output  
+      format.addr.pub add.comma add.space "publisher" output.check
       format.date "year" output.check
-      %%format.chapter.pages output
-      incollecformat.pages output
+      format.chapter.pages output
+%%      incollecformat.pages output
     }
     { format.incoll.inproc.crossref output.nonnull
       format.chapter.pages output

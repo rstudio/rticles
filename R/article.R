@@ -549,7 +549,9 @@ sage_article <- function(..., highlight = NULL, citation_package = "natbib") {
 
 #' @section `sim_article`: Format for creating submissions to Statistics in
 #'   Medicine. Based on the official Statistics in Medicine
-#'   at `https://onlinelibrary.wiley.com/page/journal/10970258/homepage/la_tex_class_file.htm`.
+#'   at `https://authorservices.wiley.com/author-resources/Journal-Authors/Prepare/new-journal-design.html`.
+#'
+#'   This format uses xelatex by default as PDF engine to support the specific NJD fonts, per guideline.
 #'
 #' Possible arguments for the YAML header are:
 #' * `title` title of the manuscript
@@ -568,10 +570,10 @@ sage_article <- function(..., highlight = NULL, citation_package = "natbib") {
 #' * `include-after`: for including additional LaTeX code before the `\end{document}` statement
 #' @export
 #' @rdname article
-sim_article <- function(..., highlight = NULL, citation_package = "natbib") {
+sim_article <- function(..., highlight = NULL, citation_package = "natbib", latex_engine = "xelatex") {
   pdf_document_format(
     "sim",
-    highlight = highlight, citation_package = citation_package, ...
+    highlight = highlight, citation_package = citation_package, latex_engine = latex_engine, ...
   )
 }
 
