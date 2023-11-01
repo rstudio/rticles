@@ -19,12 +19,6 @@ corres: "*Corresponding author name, This is sample corresponding address. \\ema
 presentaddress: This is sample for present address text this is sample for present address text
 authormark: Uthor \emph{et al}.
 articletype: Research article
-received: 2017-01-01
-revised: 2017-02-01
-accepted: 2017-03-01
-journal: Statistics In Medicine
-volume: 0
-copyyear: 2023
 abbreviations:
   - ANA, anti-nuclear antibodies
   - APC, antigen-presenting cells

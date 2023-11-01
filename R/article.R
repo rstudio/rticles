@@ -563,8 +563,9 @@ sage_article <- function(..., highlight = NULL, citation_package = "natbib") {
 #' * `received`, `revised`, `accepted` dates of submission, revision, and acceptance of the manuscript
 #' * `abstract` abstract, limited to 250 words
 #' * `keywords` up to 6 keywords
+#' * `abbreviations`, list of abbreviations and description separated by a comma
 #' * `bibliography` BibTeX `.bib` file
-#' * `classoption` options of the `WileyNJD-v2` class
+#' * `classoption` options of the `WileyNJD` class
 #' * `longtable` set to `true` to include the `longtable` package, used by default from `pandoc` to convert markdown to LaTeX code
 #' * `header-includes`: custom additions to the header, before the `\begin{document}` statement
 #' * `include-after`: for including additional LaTeX code before the `\end{document}` statement
