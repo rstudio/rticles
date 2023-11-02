@@ -99,7 +99,7 @@ Suggests:
     withr,
     covr,
     testit,
-    testthat (>= 3.0.0),
+    testthat (>= 3.2.0),
     xtable
 Config/Needs/website: magick, pdftools, gifski, tidyverse/tidytemplate,
     rstudio/quillt
