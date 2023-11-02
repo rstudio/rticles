@@ -225,7 +225,8 @@ pdf_document_format <- function(format,
 
   ## Set some variables to adapt template based on Pandoc version
   args <- list_to_pandoc_variable_args(list(
-    pandoc3 = rmarkdown::pandoc_available("3")
+    pandoc3 = rmarkdown::pandoc_available("3"),
+    pandoc317 = rmarkdown::pandoc_available("3.1.7") # new citeproc command
   ))
   fmt$pandoc$args <- c(fmt$pandoc$args, args)
   fmt
