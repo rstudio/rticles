@@ -9,6 +9,7 @@
   - LaTeX template is also updated
   - The format is now only compatible with `natbib` citation processor when Pandoc 3.1.7+ is used, because Frontiers documentclass requires usage of `natbib` and it conflicts with pandoc Citeproc.
 
+- Update `mnras_article()` and `lncs_article()` to work with the Pandoc 3.1.7+ citeproc change.
 # rticles 0.25
 
 ## BREAKING CHANGES

@@ -21,7 +21,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Basic setup. Most papers should leave these options alone.
-\documentclass[a4paper,fleqn,usenatbib]{mnras}
+\documentclass[$if(classoptions)$$for(classoptions)$$classoptions$$sep$,$endfor$$else$fleqn,usenatbib$endif$]{mnras}
 
 % MNRAS is set in Times font. If you don't have this installed (most LaTeX
 % installations will be fine) or prefer the old Computer Modern fonts, comment
@@ -246,6 +246,19 @@ $body$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%
+
+% The best way to enter references is to use BibTeX:
+
+$if(natbib)$
+$if(bibliography)$
+$if(biblio-title)$
+\renewcommand\refname{$biblio-title$}
+$endif$
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$mnras$endif$}
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+$endif$
 
 % Don't change these lines
 \bsp	% typesetting comment
