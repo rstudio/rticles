@@ -1,4 +1,7 @@
 ---
+classoptions: # Look at guideline at https://www.ctan.org/tex-archive/macros/latex/contrib/mnras
+  - fleqn
+  - usenatbib
 title: Short Paper
 shorttitle: Short Paper
 shortauthor: K. T. Smith et al.
@@ -25,9 +28,12 @@ abstract: |
   It should be a single paragraph not more than 250 words (200 words for Letters).
   No references should appear in the abstract.
 keywords: ["keyword1", "keyword2", "keyword3"]
+# When pandoc citeproc is prefered
+# csl: mnras.csl
 bibliography: references.bib
-csl: mnras.csl
-output: rticles::mnras_article
+output: 
+  rticles::mnras_article:
+    citation_package: natbib
 ---
 
 
@@ -38,8 +44,8 @@ This is a simple template for authors to write new MNRAS papers.  See
 user guide.
 
 All papers should start with an Introduction section, which sets the work
-in context, cites relevant earlier studies in the field by @Others2013,
-and describes the problem the authors aim to solve @Author2012.
+in context, cites relevant earlier studies in the field by @Author2012,
+and describes the problem the authors aim to solve @Others2013.
 
 # Methods, Observations, Simulations etc.
 

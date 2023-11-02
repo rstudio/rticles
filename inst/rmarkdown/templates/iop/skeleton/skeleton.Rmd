@@ -19,12 +19,13 @@ abstract: |
   Abstract goes here. It should be a single paragraph of around 200 words.
 acknowledgments: |
   We wish to thank...
-bibliography: references.bib
-biblio-style: dcu
-csl: https://www.zotero.org/styles/institute-of-physics-harvard.csl
 msc: AMS classification scheme numbers go here. Delete line to omit them.
 iopams: false
 twocolumn: false
+# Use CSL when not using natbib but pandoc's citeproc
+# csl: https://www.zotero.org/styles/institute-of-physics-harvard.csl
+bibliography: references.bib
+biblio-style: dcu # provided by the harvard CTAN package
 output: 
   rticles::iop_article:
     keep_tex: yes

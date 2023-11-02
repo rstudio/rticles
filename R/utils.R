@@ -140,6 +140,9 @@ render_draft <- function(journal, output_options = NULL, quiet = FALSE) {
 
 # Use to create variables command for Pandoc from a named vector
 list_to_pandoc_variable_args <- function(v_args) {
+  # v_args must be named
+  # stopifnot(length(names(v_args) > 0)
+
   truthy <- which(sapply(v_args, isTRUE))
   truthy_arg <- NULL
   if (length(truthy) > 0) {
@@ -150,6 +153,12 @@ list_to_pandoc_variable_args <- function(v_args) {
       USE.NAMES = FALSE
     )
     v_args <- v_args[-truthy]
+  }
+
+  # remove named args which are false
+  falsy <- sapply(v_args, isFALSE)
+  if (any(falsy)) {
+    v_args <- v_args[-which(falsy)]
   }
 
   # Convert to pandoc arguments
@@ -211,13 +220,23 @@ string_to_table <- function(x, n, split_regex = ", ?") {
 pdf_document_format <- function(format,
                                 template = find_resource(format, "template.tex"),
                                 ...) {
+
   fmt <- rmarkdown::pdf_document(..., template = template)
   fmt$inherits <- "pdf_document"
 
   ## Set some variables to adapt template based on Pandoc version
   args <- list_to_pandoc_variable_args(list(
-    pandoc3 = rmarkdown::pandoc_available("3")
+    pandoc3 = rmarkdown::pandoc_available("3"),
+    pandoc317 = rmarkdown::pandoc_available("3.1.7"), # new citeproc command
+    pandoc318 = rmarkdown::pandoc_available("3.1.8") # revised citeproc command
   ))
   fmt$pandoc$args <- c(fmt$pandoc$args, args)
   fmt
 }
+
+
+is_citeproc_pandoc_args <- function(args) {
+  "--citeproc" %in% args || "--natbib" %notin% args || "--biblatex" %notin% args
+}
+
+`%notin%` <- Negate(`%in%`)

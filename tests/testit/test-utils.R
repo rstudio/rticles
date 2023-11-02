@@ -52,7 +52,12 @@ assert("Named vector is transformed to pandoc variable args", {
       rmarkdown::pandoc_variable_arg("c")
     )
   )
-  (list_to_pandoc_variable_args(list(a = "b", c = TRUE)) %==%
+  (list_to_pandoc_variable_args(list(c = TRUE, d = FALSE)) %==%
+    c(
+      rmarkdown::pandoc_variable_arg("c")
+    )
+  )
+  (list_to_pandoc_variable_args(list(a = "b", c = TRUE, d = FALSE)) %==%
     c(
       rmarkdown::pandoc_variable_arg("a", "b"),
       rmarkdown::pandoc_variable_arg("c")

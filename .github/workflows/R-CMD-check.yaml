@@ -32,10 +32,11 @@ jobs:
       matrix:
         config:
           # testing R release with last shipped pandoc version in RStudio IDE and new pandoc
-          - {os: windows-latest, pandoc: '3.1.1',    r: 'release'}
-          - {os: macOS-latest,   pandoc: '3.1.1',    r: 'release'}
+          - {os: windows-latest, pandoc: '3.1.9',    r: 'release'}
+          - {os: macOS-latest,   pandoc: '3.1.9',    r: 'release'}
           - {os: ubuntu-latest,  pandoc: 'devel',    r: 'release'}
           # testing older pandoc versions
+          - {os: ubuntu-latest,  pandoc: '3.1.7',   r: 'release'} # special citeproc change
           - {os: ubuntu-latest,  pandoc: '2.19.2',   r: 'release'}
           - {os: ubuntu-latest,  pandoc: '2.18',     r: 'release'}
           - {os: ubuntu-latest,  pandoc: '2.17.1.1', r: 'release'}
@@ -74,8 +75,7 @@ jobs:
         shell: Rscript {0}
 
 
-      - uses: r-lib/actions/setup-tinytex@v2-branch 
-        # special branch required for TeX Live 2023 fix
+      - uses: r-lib/actions/setup-tinytex@v2
         env:
           # install full prebuilt version
           TINYTEX_INSTALLER: TinyTeX
@@ -89,7 +89,7 @@ jobs:
         with:
           extra-packages: any::rcmdcheck
           needs: check
-          
+
       - name: Remove default installed Pandoc
         if: runner.os == 'Linux'
         run: sudo dpkg -r pandoc
