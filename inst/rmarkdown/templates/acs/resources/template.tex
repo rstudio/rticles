@@ -127,7 +127,7 @@ $if(pandoc318)$
   % set entry spacing
   \setlength{\itemsep}{#2\baselineskip}}}
  {\end{list}}
-$elseif(pandoc317)$
+$else$$if(pandoc317)$
 % definitions for citeproc citations
 \NewDocumentCommand\citeproctext{}{}
 \NewDocumentCommand\citeproc{mm}{%
@@ -175,7 +175,7 @@ $else$
   \setlength{\parskip}{#2\cslentryspacingunit}
  }%
  {}
-$endif$
+$endif$$endif$
 \usepackage{calc}
 \newcommand{\CSLBlock}[1]{#1\hfill\break}
 \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
