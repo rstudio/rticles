@@ -75,8 +75,7 @@ jobs:
         shell: Rscript {0}
 
 
-      - uses: r-lib/actions/setup-tinytex@v2-branch 
-        # special branch required for TeX Live 2023 fix
+      - uses: r-lib/actions/setup-tinytex@v2
         env:
           # install full prebuilt version
           TINYTEX_INSTALLER: TinyTeX
@@ -90,7 +89,7 @@ jobs:
         with:
           extra-packages: any::rcmdcheck
           needs: check
-          
+
       - name: Remove default installed Pandoc
         if: runner.os == 'Linux'
         run: sudo dpkg -r pandoc
