@@ -3,7 +3,7 @@ title: A demonstration of the \LaTeX class file for Statistical Methods in Medic
 runninghead: Uthor \emph{et al}.
 author:
 - name: A. Uthor*
-  num: 1,2
+  num: "1,2"
 - name: O. Tro
   num: 2
 - name: O. Vriga

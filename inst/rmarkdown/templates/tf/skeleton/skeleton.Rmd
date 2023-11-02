@@ -70,7 +70,7 @@ The following document-class options should _not_ be used with the `interact` cl
 * `10pt`, `11pt`, `12pt` -- unavailable;
 * `oneside`, `twoside` -- not necessary, `oneside` is the default;
 * `leqno`, `titlepage` -- should not be used;
-* `twocolumn` -- should not be used (see Subsection~\ref{class});
+* `twocolumn` -- should not be used;
 * `onecolumn` -- not necessary as it is the default style.
 
 To prepare a manuscript for a journal that is printed in A4 (two column) format, use the `largeformat` document-class option provided by `interact.cls`; otherwise the class file produces pages sized for B5 (single column) format by default. The `geometry` package should not be used to make any further adjustments to the page dimensions.
