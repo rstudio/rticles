@@ -220,14 +220,23 @@ string_to_table <- function(x, n, split_regex = ", ?") {
 pdf_document_format <- function(format,
                                 template = find_resource(format, "template.tex"),
                                 ...) {
+
   fmt <- rmarkdown::pdf_document(..., template = template)
   fmt$inherits <- "pdf_document"
 
   ## Set some variables to adapt template based on Pandoc version
   args <- list_to_pandoc_variable_args(list(
     pandoc3 = rmarkdown::pandoc_available("3"),
-    pandoc317 = rmarkdown::pandoc_available("3.1.7") # new citeproc command
+    pandoc317 = rmarkdown::pandoc_available("3.1.7"), # new citeproc command
+    pandoc318 = rmarkdown::pandoc_available("3.1.8") # revised citeproc command
   ))
   fmt$pandoc$args <- c(fmt$pandoc$args, args)
   fmt
 }
+
+
+is_citeproc_pandoc_args <- function(args) {
+  "--citeproc" %in% args || "--natbib" %notin% args || "--biblatex" %notin% args
+}
+
+`%notin%` <- Negate(`%in%`)
