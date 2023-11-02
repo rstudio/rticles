@@ -86,7 +86,7 @@ elsevier_article(
   citation_package = "natbib"
 )
 
-frontiers_article(..., keep_tex = TRUE)
+frontiers_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 glossa_article(..., keep_tex = TRUE, latex_engine = "xelatex")
 

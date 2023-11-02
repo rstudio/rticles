@@ -120,7 +120,7 @@ knitr::kable(mtcars[1:5, 1:6], format = "latex", table.envir = "table",
 TRB still wants numbered, unsorted citations beginning on a new page. The
 template is configured to use `natbib` with the `unsrtnat` citation style, with
 some additional logic to use parentheses instead of brackets. The YAML key
-`bibliostyle` will allow the authors to select a different citation format, but
+`biblio-style` will allow the authors to select a different citation format, but
 this is not recommended at the moment. Citations use the pandoc logic. Including
 the reference in brackets `[@reference]` will print only the numeric reference;
 e.g. [@Feynman1963118; @Dirac1953888]. Including the reference without brackets

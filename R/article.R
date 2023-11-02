@@ -195,8 +195,12 @@ elsevier_article <- function(..., keep_tex = TRUE,
 #'   <https://www.frontiersin.org/about/author-guidelines>.
 #' @export
 #' @rdname article
-frontiers_article <- function(..., keep_tex = TRUE) {
-  pdf_document_format("frontiers", keep_tex = keep_tex, ...)
+frontiers_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
+  # check all arguments for format's default
+  if (citation_package != "natbib" && rmarkdown::pandoc_available("3.1.7")) {
+    stop("Frontiers template only supports 'natbib' for citation processing. Pandoc citeproc is no more compatible with the Frontier documentclass.")
+  }
+  pdf_document_format("frontiers", keep_tex = keep_tex, citation_package = citation_package,...)
 }
 
 

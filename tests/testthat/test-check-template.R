@@ -53,6 +53,7 @@ test_that("part for Pandoc's tables is defined in all templates", {
 test_that("CSL-ref part for Pandoc's citeproc are in all templates", {
   for (f in temp_file) {
     expect_contains(f, "if(csl-refs)", fixed = TRUE)
+    expect_contains(f, "if(pandoc318)", fixed = TRUE)
   }
 })
 

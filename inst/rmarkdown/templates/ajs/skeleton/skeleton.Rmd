@@ -35,6 +35,7 @@ keywords:
   plain:     [keywords, not capitalized, Java]
 header-includes:
  - \usepackage{amsmath}
+bibliography: ajs-template.bib
 output: rticles::ajs_article
 ---
 
