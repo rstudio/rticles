@@ -1,4 +1,4 @@
-\documentclass[AMA,STIX1COL,$for(classoption)$$classoption$$sep$,$endfor$]{WileyNJD-v2}
+\documentclass[AMA,STIX1COL$for(classoption)$,$classoption$$endfor$]{WileyNJD-v5}
 
 $if(longtable)$
 \usepackage{longtable}
@@ -138,6 +138,20 @@ $if(accepted)$
 \accepted{$accepted$}
 $endif$
 
+$if(journal)$
+\journal{$journal$}
+$endif$
+
+$if(volume)$
+\volume{$volume$}
+$endif$
+
+$if(copyyear)$
+\copyyear{$copyyear$}
+$endif$
+
+\startpage{$if(startpage)$$startpage$$else$1$endif$}
+
 \raggedbottom
 
 \begin{document}
@@ -156,6 +170,10 @@ $endfor$
 $if(authormark)$
 \authormark{$authormark$}
 $endif$
+$if(runningtitle)$
+\titlemark{$runningtitle$}
+$endif$
+
 
 $for(address)$
 \address[$address.num$]{$address.org$}
@@ -177,7 +195,19 @@ $if(keywords)$
 \keywords{$keywords$}
 $endif$
 
+$if(jnlcitation)$ 
+\jnlcitation{$jnlcitation$} 
+$endif$
+
 \maketitle
+
+$if(abbreviations)$ 
+\renewcommand\thefootnote{}
+\footnotetext{\textbf{Abbreviations:} $for(abbreviations)$$abbreviations$$sep$; $endfor$.}
+
+\renewcommand\thefootnote{\fnsymbol{footnote}}
+\setcounter{footnote}{1}
+$endif$
 
 $body$
 

@@ -1,5 +1,11 @@
 # rticles (development version)
 
+## MAJOR CHANGES
+
+- Update WileyNDJ template to V5 for `sim_article()`. This implies new resources files and new available options in template (thanks, @henrikibster, #545).
+
+## MINOR CHANGES
+
 - `elsevier_article()` Rmd skeleton is now updated to show different available bibliostyle file (i.e `*.bst` for _natbib_) with `elsearticle` document class. `biblio-style: elsarticle-harv` is set by default to correctly work with the `authoryear` classoption already set (thanks, @pepijn-devries, #545).
 
 - Update `ajs_article()` resources for the template.
