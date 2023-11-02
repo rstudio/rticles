@@ -2,6 +2,8 @@
 
 - `elsevier_article()` Rmd skeleton is now updated to show different available bibliostyle file (i.e `*.bst` for _natbib_) with `elsearticle` document class. `biblio-style: elsarticle-harv` is set by default to correctly work with the `authoryear` classoption already set (thanks, @pepijn-devries, #545).
 
+- Update `ajs_article()` resources for the template.
+
 # rticles 0.25
 
 ## BREAKING CHANGES
