@@ -49,6 +49,7 @@ test_format("copernicus")
 test_format("ctex", skip = !xfun::is_linux()) # only on linux due to fonts requirements
 test_format("elsevier", skip = !rmarkdown::pandoc_available("2.10"))
 test_format("frontiers")
+test_format("frontiers", output_options = list(citation_package = "default"), skip = rmarkdown::pandoc_available("3.1.7"))
 test_format("glossa")
 test_format("ieee")
 test_format("ims")

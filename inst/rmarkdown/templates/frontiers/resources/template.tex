@@ -1,16 +1,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % This is just an example/guide for you to refer to when submitting manuscripts to Frontiers, it is not mandatory to use Frontiers .cls files nor frontiers.tex  %
-% This will only generate the Manuscript, the final article will be typeset by Frontiers after acceptance.
+% This will only generate the Manuscript, the final article will be typeset by Frontiers after acceptance.   
 %                                              %
 %                                                                                                                                                         %
 % When submitting your files, remember to upload this *tex file, the pdf generated with it, the *bib file (if bibliography is not within the *tex) and all the figures.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%% Version 3.4 Generated 2018/06/15 %%%
+%%% Version 3.4 Generated 2022/06/14 %%%
 %%% You will need to have the following packages installed: datetime, fmtcount, etoolbox, fcprefix, which are normally inlcuded in WinEdt. %%%
 %%% In http://www.ctan.org/ you can find the packages and how to install them, if necessary. %%%
+%%%  NB logo1.jpg is required in the path in order to correctly compile front page header %%%
 
-\documentclass[utf8]{$documentclass$}
+\documentclass[$if(classoption)$$for(classoption)$$classoption$$sep$,$endfor$$else$utf8$endif$]{$documentclass$}
 
 %\setcitestyle{square} % for Physics and Applied Mathematics and Statistics articles
 \usepackage{url,hyperref,lineno,microtype,subcaption}
@@ -50,12 +51,6 @@
 \usepackage{color}
 
 % Below is from frontiers
-%
-\bibliographystyle{frontiersinSCNS}
-% Use doublespacing - comment out for single spacing
-%\usepackage{setspace}
-%\doublespacing
-
 
 % Leave a blank line between paragraphs instead of using \\
 
@@ -207,7 +202,7 @@ $endfor$
 \begin{document}
 
 \onecolumn
-\firstpage{1}
+\firstpage{$if(firstpage)$$firstpage$$else$1$endif$}
 
 $for(include-before)$
 $include-before$
@@ -225,7 +220,26 @@ $endfor$
 
 \maketitle
 
+$if(abstract)$
+\begin{abstract}
+$abstract$
+
+\tiny
+ \keyFont{ \section{Keywords:} $for(keywords)$$keywords$$sep$, $endfor$} %All article types: you may provide up to 8 keywords; at least 5 are mandatory.
+\end{abstract}
+$endif$
+
 $body$
+
+$if(natbib)$
+$if(bibliography)$
+$if(biblio-title)$
+\renewcommand\refname{$biblio-title$}
+$endif$
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plain$endif$}
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+$endif$
 
 $for(include-after)$
 $include-after$
