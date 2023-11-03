@@ -19,7 +19,7 @@
 
 ## BUG FIXES
 
-- Update Copernicus Publications template to version 7.5 from 2023-10-20 (@RLumSK).
+- Update Copernicus Publications template to version 7.5 from 2023-10-20 (@RLumSK, #551).
 
 # rticles 0.25
 
