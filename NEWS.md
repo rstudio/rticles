@@ -16,6 +16,11 @@
   - The format is now only compatible with `natbib` citation processor when Pandoc 3.1.7+ is used, because Frontiers documentclass requires usage of `natbib` and it conflicts with pandoc Citeproc.
 
 - Update `mnras_article()` and `lncs_article()` to work with the Pandoc 3.1.7+ citeproc change.
+
+## BUG FIXES
+
+- Update Copernicus Publications template to version 7.5 from 2023-10-20 (@RLumSK, #551).
+
 # rticles 0.25
 
 ## BREAKING CHANGES

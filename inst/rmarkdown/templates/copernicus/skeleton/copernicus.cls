@@ -12,11 +12,11 @@
 %% This file is part of the copernicus package for papers
 %% published by Copernicus Publications (Copernicus GmbH).
 %% 
-%%       Copyright (C) 2022 by Copernicus Publications
+%%       Copyright (C) 2023 by Copernicus Publications
 %% -----------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{copernicus}
-    [2022/12/05 10.1.4 Copernicus papers]
+    [2023/10/11 10.1.10 Copernicus papers]
 \frenchspacing
 \clubpenalty10000
 \widowpenalty10000
@@ -533,6 +533,7 @@
   \if@noauthor\else\if!\@runauth!\UndefinedError{\string\runningauthor}\fi\fi
   \if!\@runtit!\UndefinedError{\string\runningtitle}\fi}
 \let\ltx@title\title
+\let\@letex@textit\textit
 \ifx\xmltexversion\@undefined
   \ifcopyediting
     \let\title\ltx@title
@@ -672,7 +673,7 @@
        \let\and=\sw@and
        \flushleft
        \@author\\[4pt]
-       \ifx\@corresp\@empty\else\textbf{{\if@sansserifface\sffamily\fi\upshape\noindent\color{textcol} Correspondence:}} \@corresp\ifx\@howtocite\@empty\else\\[4pt]\fi\fi
+       \ifnum\corr@cnt=\z@\relax\else\textbf{{\if@sansserifface\sffamily\fi\upshape\noindent\color{textcol} Correspondence:}} \@corresp\ifx\@howtocite\@empty\else\\[4pt]\fi\fi
        \ifx\@howtocite\@empty\else\textbf{{\if@sansserifface\sffamily\fi\upshape\noindent\color{textcol} How to cite:}} \@howtocite\fi
        \par}%
     \fi
@@ -715,7 +716,7 @@
                   \@author\par}%
                  \vskip-0.5\baselineskip
                \fi
-               \ifx\@corresp\@empty\else\vskip\topsep\centering\textbf{{\if@sansserifface\sffamily\fi\upshape\noindent\color{textcol} Correspondence:}}\space\@corresp\fi
+               \ifnum\corr@cnt=\z@\relax\else\vskip\topsep\centering\textbf{{\if@sansserifface\sffamily\fi\upshape\noindent\color{textcol} Correspondence:}}\space\@corresp\fi
                \ifx\@howtocite\@empty\else\vskip.5\topsep\centering\textbf{{\if@sansserifface\sffamily\fi\upshape\noindent\color{textcol} How to cite:}}\space\@howtocite\fi
                \par\vskip0.33\baselineskip
                {\small
@@ -785,7 +786,7 @@
            \fi
            \@thanks}
            %% NEU:
-           \ifnum\ifx\@corresp\@empty\ifx\@howtocite\@empty\if!\@recvd!\ifx\abstractexists\@undefined\ifx\@published\@undefined0\else1\fi\else1\fi\else1\fi\else1\fi\else1\fi=1\relax
+           \ifnum\ifnum\corr@cnt=\z@\relax\ifx\@howtocite\@empty\if!\@recvd!\ifx\abstractexists\@undefined\ifx\@published\@undefined0\else1\fi\else1\fi\else1\fi\else1\fi\else1\fi=1\relax
              \par\vskip1.5\baselineskip
              \def\labelfont{\bfseries\if@sansserifface\sffamily\fi\upshape\noindent\color{textcol}}%
              \list{}{\labelwidth35mm%
@@ -794,7 +795,7 @@
                         \labelsep\z@
                         \xdef\@indescription{}%
                         \def\makelabel##1{\labelfont##1\hss}}%
-               \ifx\@corresp\@empty\else\item[{Correspondence:}]\@corresp\fi
+               \ifnum\corr@cnt=\z@\relax\else\item[{Correspondence:}]\@corresp\fi
                \ifnum\ifx\@published\@undefined\ifx\specialp@perstring\@undefined\if!\@recvd!0\else1\fi\else0\fi\else1\fi=1\relax
                  \item[{Relevant dates:}]%
                \fi
@@ -856,7 +857,7 @@
               \vskip-0.25\baselineskip
            \fi
            \@thanks
-           \ifx\@corresp\@empty\else\vskip\baselineskip\textbf{{\if@sansserifface\sffamily\fi\upshape\noindent\color{textcol} Correspondence:}}\space\@corresp\fi
+           \ifnum\corr@cnt=\z@\relax\else\vskip\baselineskip\textbf{{\if@sansserifface\sffamily\fi\upshape\noindent\color{textcol} Correspondence:}}\space\@corresp\fi
            \ifx\@howtocite\@empty\else\vskip.75\baselineskip\textbf{{\if@sansserifface\sffamily\fi\upshape\noindent\color{textcol} How to cite:}}\space\@howtocite\fi
            \par\vspace{10pt}%
            \ifx\specialp@perstring\@undefined
@@ -1176,10 +1177,9 @@
       \iflanguage{ngerman}{\@abslang}{\iflanguage{german}{\@abslang}{}}%
       \reset@font\normalsize\par\noindent
       \subpdfbookmark{\abstractname}{abstract}%
-      \textcolor{textcol}{\reset@font\normalsize\if@sansserifface\sffamily\fi\bfseries\abstractname.} \ignorespaces}
-     {%
-       \ifx\second@bstract\@undefined\else\vskip\baselineskip\second@bstract\fi
-       \if!\@keyw!\else
+       \textcolor{textcol}{\reset@font\normalsize\if@sansserifface\sffamily\fi\bfseries\abstractname.} \ignorespaces}
+     {\ifx\second@bstract\@undefined\else\vskip\baselineskip\second@bstract\fi
+      \if!\@keyw!\else
         \par\vspace{1.7mm}\noindent
         \textbf{Keywords.}\enspace\ignorespaces\@keyw
       \fi
@@ -1191,7 +1191,12 @@
         {\iflanguage{german}%
           {\gdef\@abslang{\selectlanguage{english}}}%
           {\gdef\@abslang{\selectlanguage{german}}%
-           \if@manuscript\else\if@noline\else\hrule\fi\fi}}}
+           \if@manuscript\else\if@noline\else
+             \hrule\par% #9055
+             \vskip2\baselineskip\relax% #9055
+             \ifx\xmltexversion\@undefined\else\aftergroup\aftergroup\fi\aftergroup\@afterindentfalse% #9055
+             \ifx\xmltexversion\@undefined\else\aftergroup\aftergroup\fi\aftergroup\@afterheading% #9055
+           \fi\fi}}}
   \fi
 \else%discussions
   \renewenvironment{abstract}
@@ -1293,7 +1298,14 @@
 \if@cop@home
     \RequirePackage{fontawesome5}
     \ifluatex
-      %% TODO
+      \newcommand*{\faicon}[1]{{\csname faicon@#1\endcsname}}
+      \input{fontawesomesymbols-generic.tex}
+      \DeclareRobustCommand\FAone{\fontencoding{U}\fontfamily{fontawesomeone}\selectfont}
+      \DeclareRobustCommand\FAtwo{\fontencoding{U}\fontfamily{fontawesometwo}\selectfont}
+      \DeclareRobustCommand\FAthree{\fontencoding{U}\fontfamily{fontawesomethree}\selectfont}
+      \input{fontawesomesymbols-pdftex.tex}
+      \renewcommand{\faHourglass}[1][]{\faicon{hourglass\if\relax\detokenize{#1}\relax\else-#1\fi}}
+      \renewcommand{\faBattery}[1][4]{\faicon{battery-#1}}
     \else
       \RequirePackage{fontawesome}
     \fi
@@ -1376,7 +1388,7 @@
   \def\copyrightstatementname{Copyright statement}%
   \def\codeavailabilityname{Code availability}%
   \def\dataavailabilityname{Data availability}%
-  \def\ercavailabilityname{Executable research compendium (ERC)}%
+  \def\ercavailabilityname{Interactive computing environment}%
   \def\codedataavailabilityname{Code and data availability}%
   \def\sampleavailabilityname{Sample availability}%
   \def\competinginterestsname{Competing interests}%
@@ -1407,7 +1419,7 @@
   \def\copyrightstatementname{Urheberrechtserklärung}%
   \def\codeavailabilityname{Codeverfügbarkeit}%
   \def\dataavailabilityname{Datenverfügbarkeit}%
-  \def\ercavailabilityname{Executable research compendium (ERC)}%
+  \def\ercavailabilityname{Interactive computing environment}%
   \def\codedataavailabilityname{Code- und Datenverfügbarkeit}%
   \def\sampleavailabilityname{Probenverfügbarkeit}%
   \def\authorcontributionname{Autor:innenmitwirkung}%
@@ -1437,7 +1449,7 @@
   \def\copyrightstatementname{Affirmation du droit d'auteur}%
   \def\codeavailabilityname{Disponibilité du code}%
   \def\dataavailabilityname{Disponibilité des données}%
-  \def\ercavailabilityname{Executable research compendium (ERC)}%
+  \def\ercavailabilityname{Interactive computing environment}%
   \def\sampleavailabilityname{Disponibilité des examples}%
   \def\codedataavailabilityname{Disponibilité du code et des données}%
   \def\authorcontributionname{Collaborateurs}%
@@ -1645,20 +1657,66 @@
   \let\equalcontrib\@gobble
   \let\@deceased\@gobble
 \fi
-\def\Author{\@ifnextchar[\@Author{\@Author[]}}%]
+\newcount\corr@cnt      \corr@cnt\z@\relax
+\newcount\curr@corr@cnt \curr@corr@cnt\z@\relax
+\def\Author{\let\curr@corr\@empty\@ifnextchar[\@Author{\@Author[]}}%]
 \def\@Author[#1]{%
   \def\@tempa{#1}%
-  \@ifnextchar(\@@Author{\@@Author()}}%)}
-\def\@@Author(#1){%
+  \@ifnextchar[\@@Author{\@@Author[]}%]
+}%
+\def\@@Author[#1]{%
+  \if!#1!\else
+    \global\advance\corr@cnt\@ne
+    \parse@corr{#1}%
+  \fi%
+  \@ifnextchar(\@@@Author{\@@@Author()}%)
+}
+\def\parse@corr#1{%
+  \curr@corr@cnt\z@
+  \let\curr@corr\relax
+  \@parse@corr#1,,\@nil
+  \ifnum\curr@corr@cnt=\@ne\relax
+    \edef\curr@corr{\csname curr@corr@1\endcsname}%
+  \else
+    \ifnum\curr@corr@cnt=\tw@\relax
+      \edef\curr@corr{%
+        \csname curr@corr@1\endcsname\Authsep
+        \csname curr@corr@2\endcsname}%
+    \else
+      \@tempcntb\z@
+      \let\curr@corr\@empty%
+      \loop
+        \advance\@tempcntb\@ne
+        \expandafter\edef\expandafter\curr@corr\expandafter{\curr@corr\csname curr@corr@\the\@tempcntb\endcsname}%
+      \ifnum\@tempcntb<\numexpr\curr@corr@cnt+\m@ne\relax\relax
+        \expandafter\edef\expandafter\curr@corr\expandafter{\curr@corr\Authsep}%
+      \repeat
+      \expandafter\edef\expandafter\curr@corr\expandafter{\curr@corr\Authands\csname curr@corr@\the\curr@corr@cnt\endcsname}%
+    \fi
+  \fi
+}
+\def\@parse@corr #1,#2,\@nil{%
+  \if!#1!\else
+    \advance\curr@corr@cnt\@ne
+    \expandafter\def\csname curr@corr@\the\curr@corr@cnt\endcsname{#1}%
+    \if!#2!\else
+      \@parse@corr#2,\@nil%
+    \fi
+  \fi
+}
+\def\@@@Author(#1){%
   \def\@tempb{#1}%
-  \@ifnextchar(\@@@Author{\@@@Author()}}%)}
-\def\@@@Author(#1)#2#3{%
+  \@ifnextchar(\@@@@Author{\@@@@Author()}}%)
+\def\@@@@Author(#1)#2#3{%
   \def\@tempc{#1}%
   \protected@edef\@tempd{%
      \ifx\@tempb\@empty\else\@tempb\noexpand\nobreakspace\fi
      #2\noexpand\nobreakspace
      #3%
      \ifx\@tempc\@empty\else\noexpand\nobreakspace\@tempc\fi}%
+   \ifx\curr@corr\@empty\else
+     \expandafter\expandafter\expandafter\xdef\csname corresp-\the\corr@cnt\expandafter\endcsname\expandafter{\@tempd\noexpand\space(\curr@corr)}%
+   \fi
   \expandafter\expandafter\expandafter\author\expandafter\expandafter\expandafter
     [\expandafter\@tempa\expandafter]\expandafter{\@tempd}}
 \providecommand\appendixname{Appendix}
@@ -2486,7 +2544,25 @@
                                                        \let\@cyear\@pyear
 \def\pubvol#1{\if@cop@home\ifx\specialp@perstring\@undefined\gdef\@pvol{#1}\fi\fi}%+1,+2,+d
 \let\pubnum\@gobble%not for TeX, only for secondary data use
-\def\correspondence#1{\gdef\@corresp{#1}}              \def\@corresp{}%+1,+2,+d
+\def\@corresp{%
+  \ifnum\corr@cnt=\@ne\relax
+    \csname corresp-1\endcsname%
+  \else
+    \ifnum\corr@cnt=\tw@\relax
+      \csname corresp-1\endcsname\Authand\csname corresp-2\endcsname%
+    \else
+      \@tempcnta\z@
+      \loop
+        \advance\@tempcnta\@ne
+        \csname corresp-\the\@tempcnta\endcsname%
+      \ifnum\@tempcnta<\numexpr\corr@cnt+\m@ne\relax\relax
+        \Authsep
+      \repeat
+      \Authands\csname corresp-\the\corr@cnt\endcsname%
+    \fi
+  \fi
+}
+\def\correspondence#1{\gdef\@corresp{#1}}%
 \def\citationstatement#1{%
   \edef\@@doi{https://doi.org/10.5194/\@journalnameshortlower-\@pvol-\@fpage-\@pyear}%
   \def\@tempa{#1}%

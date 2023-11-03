@@ -13,7 +13,7 @@
 #'
 #' An number of required and optional manuscript sections, e.g. `acknowledgements`, `competinginterests`, or `authorcontribution`, must be declared using the respective properties of the R Markdown header - see skeleton file.
 #'
-#' **Version:** Based on `copernicus_package.zip` in the version 7.3, 15 March 2023, using `copernicus.cls` in version 10.1.4, 5 December 2022.
+#' **Version:** Based on `copernicus_package.zip` in the version 7.5, 20 October 2023, using `copernicus.cls` in version 10.1.9, 16 October 2023.
 #'
 #' **Copernicus journal abbreviations:** You can use the function `copernicus_journal_abbreviations()` to get the journal abbreviation for all journals supported by the Copernicus article template.
 #'
