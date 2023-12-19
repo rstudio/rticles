@@ -415,8 +415,8 @@ journals.
 
 \section{\code{sage_article}}{
  Format for creating submissions to Sage
-Journals. Based on the official Sage Journals
-\verb{https://uk.sagepub.com/sites/default/files/sage_latex_template_4.zip}{class}.
+Journals. Based on the official Sage Journals Class.
+Available at \verb{https://uk.sagepub.com/sites/default/files/sage_latex_template_4.zip}.
 
 Possible arguments for the YAML header are:
 \itemize{
