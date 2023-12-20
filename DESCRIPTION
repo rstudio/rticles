@@ -84,7 +84,7 @@ Authors@R: c(
 Description: A suite of custom R Markdown formats and templates for
     authoring journal articles and conference submissions.
 License: GPL-3
-URL: https://github.com/rstudio/rticles
+URL: https://github.com/rstudio/rticles, https://pkgs.rstudio.com/rticles/
 BugReports: https://github.com/rstudio/rticles/issues
 Imports: 
     knitr (>= 1.30),
