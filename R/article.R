@@ -60,7 +60,7 @@ aea_article <- function(..., keep_tex = TRUE,
 
 #' @section `agu_article`: Format for creating a American Geophysical Union
 #'   (AGU) article. Adapted from
-#'   <https://www.agu.org/Publish-with-AGU/Publish/#1>.
+#'   <https://www.agu.org/publish-with-agu/publish#1>.
 #' @export
 #' @rdname article
 agu_article <- function(..., keep_tex = TRUE,
@@ -169,7 +169,7 @@ ctex <- ctex_article
 
 #' @section `elsevier_article`: Format for creating submissions to Elsevier
 #'   journals. Adapted from
-#'   <https://www.elsevier.com/authors/policies-and-guidelines/latex-instructions>.
+#'   <https://www.elsevier.com/researcher/author/policies-and-guidelines/latex-instructions>.
 #'
 #' It requires a minimum version of 2.10 for Pandoc.
 #' @export

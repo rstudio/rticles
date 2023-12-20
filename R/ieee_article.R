@@ -1,7 +1,7 @@
 #' IEEE Transactions journal format.
 #'
 #' Format for creating submissions to IEEE Transaction journals. Adapted from
-#' <http://www.ieee.org/publications_standards/publications/authors/author_templates.html>.
+#' <https://www.ieee.org/publications_standards/publications/authors/author_templates.html>
 #'
 #' Presently, only the `"conference"` paper mode offered by the
 #' `IEEEtran.cls` is supported.

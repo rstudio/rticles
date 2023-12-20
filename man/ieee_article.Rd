@@ -69,7 +69,7 @@ additional details.}
 }
 \description{
 Format for creating submissions to IEEE Transaction journals. Adapted from
-\url{http://www.ieee.org/publications_standards/publications/authors/author_templates.html}.
+\url{https://www.ieee.org/publications_standards/publications/authors/author_templates.html}
 }
 \details{
 Presently, only the \code{"conference"} paper mode offered by the

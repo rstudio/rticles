@@ -218,7 +218,7 @@ Economic Association (AER, AEJ, JEL, PP).
 \section{\code{agu_article}}{
  Format for creating a American Geophysical Union
 (AGU) article. Adapted from
-\url{https://www.agu.org/Publish-with-AGU/Publish/#1}.
+\url{https://www.agu.org/publish-with-agu/publish#1}.
 }
 
 \section{\code{amq_article}}{
@@ -265,7 +265,7 @@ function \code{ctex} is an alias of \code{ctex_article}.
 \section{\code{elsevier_article}}{
  Format for creating submissions to Elsevier
 journals. Adapted from
-\url{https://www.elsevier.com/authors/policies-and-guidelines/latex-instructions}.
+\url{https://www.elsevier.com/researcher/author/policies-and-guidelines/latex-instructions}.
 
 It requires a minimum version of 2.10 for Pandoc.
 }
