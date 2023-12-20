@@ -1,5 +1,5 @@
 # Set Job ID here:
-id <- ""
+id <- "revdepcheck::cloud_check()"
 
 # or see id in utils.R
 
