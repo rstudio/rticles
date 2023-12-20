@@ -47,7 +47,7 @@ Run `revdepcheck::cloud_details(, "fairadapt")` for more info
     ...
     Quitting from lines 154-232 (jss.Rmd) 
     Error: processing vignette 'jss.Rmd' failed with diagnostics:
-    LaTeX failed to compile tikz26b778dbad14.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. See tikz26b778dbad14.log for more info.
+    LaTeX failed to compile tikz259d23ffba3c.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. See tikz259d23ffba3c.log for more info.
     --- failed re-building ‘jss.Rmd’
     
     SUMMARY: processing the following file failed:
@@ -188,10 +188,10 @@ Run `revdepcheck::cloud_details(, "multgee")` for more info
 
 <details>
 
-* Version: 3.0.0
+* Version: 3.0.1
 * GitHub: https://github.com/rgcca-factory/RGCCA
 * Source code: https://github.com/cran/RGCCA
-* Date/Publication: 2023-04-27 09:32:34 UTC
+* Date/Publication: 2023-05-08 08:10:15 UTC
 * Number of recursive dependencies: 187
 
 Run `revdepcheck::cloud_details(, "RGCCA")` for more info
