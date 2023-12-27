@@ -1,5 +1,18 @@
 # rticles (development version)
 
+- Update `tf_article()` template to latest bundle update from `InteractCADLaTeX` v1.04 - May 2023.
+  - `thanks: true` will now show the contact information will all authors. Use 
+    
+    ```yaml
+    thanks:
+      author:
+        - name: Author 1
+          email: email 1
+    ```
+    
+    to add specific authors.
+  - `biblio-style` is now supported. It is set by defauilt to `tfcad.bst` for `T&F standard Chicago author-date` style.
+
 # rticles 0.26
 
 ## MAJOR CHANGES

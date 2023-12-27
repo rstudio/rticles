@@ -25,6 +25,10 @@ affiliation:
       Muenster University of Applied Sciences - 
       Institute for Infrastructure, Water, Resources, Environment,
       Correnstr. 25, 48149 Münster, Germany
+thanks:
+  author:
+  - name: A. N. Author
+    email: latex.helpdesk@tandf.co.uk
 bibliography: interactcadsample.bib
 appendix: appendix.tex
 abstract: |
@@ -380,4 +384,4 @@ If a reference has no author or editor, order by title; if a date of publication
 
 The following list shows some sample references prepared in the Taylor & Francis Chicago author-date style.
 
-[@Ade09; @Alb05]
+[@Blair1977; @Alb05]

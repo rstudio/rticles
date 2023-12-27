@@ -1,5 +1,5 @@
 % interactcadsample.tex
-% v1.03 - April 2017
+% v1.04 - May 2023
 
 \documentclass[$for(classoption)$$classoption$$sep$,$endfor$]{interact}
 
@@ -159,7 +159,12 @@ $endfor$
 \affil{$for(affiliation)$$$^{$affiliation.num$}$$$affiliation.address$$sep$; $endfor$}
 }
 
+$if(thanks)$
+$if(thanks.author)$
+\thanks{CONTACT $for(thanks.author)$$thanks.author.name$. Email: $thanks.author.email$$sep$, $endfor$}
+$endif$
 \thanks{CONTACT $for(author)$$author.name$. Email: $author.email$$sep$, $endfor$}
+$endif$
 
 \maketitle
 
@@ -178,7 +183,7 @@ $endif$
 $body$
 
 $if(bibliography)$
-\bibliographystyle{tfcad}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$tfcad$endif$}
 \bibliography{$bibliography$}
 $endif$
 
