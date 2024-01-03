@@ -4,10 +4,20 @@
 \documentclass[$for(classoption)$$classoption$$sep$,$endfor$]{interact}
 
 \usepackage{epstopdf}% To incorporate .eps illustrations using PDFLaTeX, etc.
-\usepackage{subfigure}% Support for small, `sub' figures and tables
+$if(subfig)$
+\usepackage[$subfigoptions$]{subfig}% Support for small, `sub' figures and tables
+$else$
+\usepackage[$subfigureoptions$]{subfigure}% Support for small, `sub' figures and tables
+$endif$
 %\usepackage[nolists,tablesfirst]{endfloat}% To `separate' figures and tables from text if required
 
-\usepackage{natbib}% Citation support using natbib.sty
+%\usepackage[doublespacing]{setspace}% To produce a `double spaced' document if required
+%\setlength\parindent{24pt}% To increase paragraph indentation when line spacing is doubled
+%\setlength\bibindent{2em}% To increase hanging indent in bibliography when line spacing is doubled
+
+$if(natbib)$
+\usepackage[$natbiboptions$]{natbib}
+$endif$
 \bibpunct[, ]{(}{)}{;}{a}{}{,}% Citation support using natbib.sty
 \renewcommand\bibfont{\fontsize{10}{12}\selectfont}% Bibliography support using natbib.sty
 
