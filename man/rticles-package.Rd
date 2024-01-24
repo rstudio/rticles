@@ -14,6 +14,7 @@ A suite of custom R Markdown formats and templates for authoring journal article
 Useful links:
 \itemize{
   \item \url{https://github.com/rstudio/rticles}
+  \item \url{https://pkgs.rstudio.com/rticles/}
   \item Report bugs at \url{https://github.com/rstudio/rticles/issues}
 }
 
