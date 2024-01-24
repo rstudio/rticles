@@ -16,7 +16,7 @@
 %% -----------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{copernicus}
-    [2023/10/11 10.1.10 Copernicus papers]
+    [2023/12/15 10.1.12 Copernicus papers]
 \frenchspacing
 \clubpenalty10000
 \widowpenalty10000
@@ -1024,6 +1024,9 @@
   \@ifstar
     {\@ssect{#3}{#4}{#5}{#6}}%
     {\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}}
+\def\seclinesep#1{\gdef\@seclinesep{#1}}%
+\seclinesep{1.2}%
+\let\orig@seclinesep\@seclinesep
 \def\@afterheading{%
   \@nobreaktrue
   \everypar{%
@@ -1036,7 +1039,7 @@
       \if@secline
         \if@dolinesec
           \if@sansserifface
-            \rlap{\smash{\expandafter\ifnum\cur@secdepth>\@ne\raise1.2\baselineskip\else\raise1.5\baselineskip\fi\hbox{\vrule width\hsize height\arrayrulewidth\relax}}}%
+            \rlap{\smash{\expandafter\ifnum\cur@secdepth>\@ne\expandafter\raise\@seclinesep\baselineskip\else\raise1.5\baselineskip\fi\hbox{\vrule width\hsize height\arrayrulewidth\relax}}}%
           \else
             \rlap{\smash{\raise1.5\baselineskip\hbox{\vrule width\hsize height\arrayrulewidth\relax}}}%
           \fi
@@ -1044,6 +1047,7 @@
         \@dolinesecfalse
         \global\let\@secline@omitted\@undefined
       \fi
+      \global\let\@seclinesep\orig@seclinesep
     \else
       \clubpenalty \@clubpenalty
       \everypar{}%
@@ -1735,7 +1739,7 @@
   \def\theequation{\thesection\@arabic\c@equation}%
   \def\thereaction{\thesection R\@arabic\c@reaction}%
   \let\c@org@lst\c@listings%
-  \let\c@org@alg\c@algorithms%
+  \let\c@org@alg\c@algorithm%
   \let\c@org@eq\c@equation%
   \let\org@theeq\theequation%
   \if@stage@final
@@ -1748,9 +1752,11 @@
     \@addtoreset{listings}{section}%
     \setcounter{listings}{0}%
     \def\thelistings{\thesection\@arabic\c@listings}%
-    \@addtoreset{algorithm}{section}%
-    \setcounter{algorithm}{0}%
-    \def\thealgorithm{\thesection\@arabic\c@algorithm}
+    \IfFileExists{algorithm.sty}{% #9699
+      \@addtoreset{algorithm}{section}%
+      \setcounter{algorithm}{0}%
+      \def\thealgorithm{\thesection\@arabic\c@algorithm}%
+    }{}%
   \fi
   \global\let\old@sect\@sect
   \def\@sect##1##2##3##4##5##6[##7]##8{%
@@ -1815,7 +1821,7 @@
   \ifx\old@ssect\@undefined\else\global\let\@ssect\old@ssect\fi
   \def\thefigure{\@arabic\c@figure}%
   \def\thelistings{\@arabic\c@listings}%
-  \def\thealgorithms{\@arabic\c@algorithms}%
+  \IfFileExists{algorithm.sty}{\def\thealgorithm{\@arabic\c@algorithm}}{}% #9699
   \def\thetable{\@arabic\c@table}}
 \IfFileExists{url.sty}
   {\RequirePackage{url}\urlstyle{same}}%
