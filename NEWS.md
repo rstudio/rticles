@@ -11,7 +11,11 @@
     ```
     
     to add specific authors.
-  - `biblio-style` is now supported. It is set by defauilt to `tfcad.bst` for `T&F standard Chicago author-date` style.
+  - `biblio-style` is now supported. It is set by default to `tfcad.bst` for `T&F standard Chicago author-date` style.
+
+## MINOR CHANGES
+
+- Update Copernicus Publications template to version 7.7 from 2024-01-03 (@RLumSK).
 
 # rticles 0.26
 
