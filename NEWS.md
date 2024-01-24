@@ -15,7 +15,7 @@
 
 ## MINOR CHANGES
 
-- Update Copernicus Publications template to version 7.7 from 2024-01-03 (@RLumSK).
+- Update Copernicus Publications template to version 7.7 from 2024-01-03 (@RLumSK, #560).
 
 # rticles 0.26
 
