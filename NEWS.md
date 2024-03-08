@@ -1,5 +1,7 @@
 # rticles (development version)
 
+- `oup_article()` now supports also `acknowledgments` in addition to `acknowledgements` as the original OUP LaTeX template (thanks, @dmkaplan2000, #563).
+
 - Update resources for `copernicus_article()` to version 7.7 from 3 January 2024.
 
 - Update `tf_article()` template to latest bundle update from `InteractCADLaTeX` v1.04 - May 2023.

@@ -419,8 +419,11 @@ $if(acknowledgments)$
 \section{Acknowledgments}
 
 $acknowledgments$
-$endif$
+$elseif(acknowledgements)$
+\section{Acknowledgments}
 
+$acknowledgements$
+$endif$
 $if(natbib)$
 $if(bibliography)$
 $if(biblio-title)$
