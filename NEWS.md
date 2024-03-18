@@ -1,5 +1,7 @@
 # rticles (development version)
 
+- `joss_article()` now correctly works as `base_format` for `bookdown::pdf_book()` (thanks, @mlysy, #564).
+
 - `oup_article()` now supports also `acknowledgments` in addition to `acknowledgements` as the original OUP LaTeX template (thanks, @dmkaplan2000, #563).
 
 - Update resources for `copernicus_article()` to version 7.7 from 3 January 2024.
