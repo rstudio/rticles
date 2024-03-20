@@ -7,7 +7,7 @@
 %% merlin.mbs  (with options: `ay,nat,nm-rvx,ed-rev,jnrlst,keyxyr,dt-beg,yr-par,yrp-x,note-yr,volp-sp,pp-last,num-xser,ser-vol,ser-ed,jnm-x,add-pub,pre-edn,isbn,doi,edparxc,in-col,pp,ed,xedn,and-xcom,url,url-blk,nfss,')
 %% ----------------------------------------
 %% *** Sage Harvard reference style ***
-%% 
+%%
 %% Copyright 1994-2011 Patrick W Daly
  % ===============================================================
  % IMPORTANT NOTICE:
@@ -230,10 +230,10 @@ FUNCTION {bbl.etal}
 { "et~al." }
 
 FUNCTION {bbl.editors}
-{ "eds." }
+{ "eds" }
 
 FUNCTION {bbl.editor}
-{ "ed." }
+{ "ed" }
 
 FUNCTION {bbl.edby}
 { "edited by" }
