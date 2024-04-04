@@ -4,7 +4,7 @@
 
 - `oup_article()` now supports also `acknowledgments` in addition to `acknowledgements` as the original OUP LaTeX template (thanks, @dmkaplan2000, #563).
 
-- Update resources for `copernicus_article()` to version 7.8 from 18 March 2024 (RLumSK).
+- Update resources for `copernicus_article()` to version 7.8 from 18 March 2024 (@RLumSK) and fix issue #565 reported by @colinasmith
 
 - Update `tf_article()` template to latest bundle update from `InteractCADLaTeX` v1.04 - May 2023.
   - `thanks: true` will now show the contact information will all authors. Use 
