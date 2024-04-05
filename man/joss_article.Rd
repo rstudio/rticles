@@ -18,7 +18,12 @@ joss_article(
 \item{keep_md}{Whether to retain the intermediate markdown and images.
 Defaults to TRUE.}
 
-\item{latex_engine, ...}{Arguments passed to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}}
+\item{latex_engine}{LaTeX engine for producing PDF output. Options are
+"pdflatex", "lualatex", "xelatex" and "tectonic".}
+
+\item{pandoc_args}{Additional command line options to pass to pandoc}
+
+\item{...}{Arguments passed to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}}
 }
 \description{
 Format for creating a Journal of Open Source Software (JOSS) or Journal of
