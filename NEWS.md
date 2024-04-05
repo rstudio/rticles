@@ -140,7 +140,7 @@
 
 ## BUG FIXES
 
-- `graphicx` LaTeX package has been added to `ieee_article()` format (thanks, Sachin Hebbar, [on RStudio Community](https://community.rstudio.com/t/inserting-figures-in-rticles-ieee-transaction-template/129325)).
+- `graphicx` LaTeX package has been added to `ieee_article()` format (thanks, Sachin Hebbar, [on RStudio Community](https://forum.posit.co/t/inserting-figures-in-rticles-ieee-transaction-template/129325)).
 
 # rticles 0.22
 

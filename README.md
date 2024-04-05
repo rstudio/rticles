@@ -152,9 +152,9 @@ and R code and its output can be seamlessly included using
 There are two main places to get help:
 
 1.  The [RStudio
-    community](https://community.rstudio.com/tags/c/R-Markdown/10/rticles)
-    is a friendly place to ask any questions about **rticles**. Be sure
-    to use the `rticles` tag.
+    community](https://forum.posit.co/tags/c/R-Markdown/10/rticles) is a
+    friendly place to ask any questions about **rticles**. Be sure to
+    use the `rticles` tag.
 
 2.  [Stack Overflow](https://stackoverflow.com/questions/tagged/rticles)
     is a great source of answers to common **bookdown** questions. Use
