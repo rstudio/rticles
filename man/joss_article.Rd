@@ -4,7 +4,13 @@
 \alias{joss_article}
 \title{Journal of Open Source Software (JOSS) format.}
 \usage{
-joss_article(journal = "JOSS", keep_md = TRUE, latex_engine = "xelatex", ...)
+joss_article(
+  journal = "JOSS",
+  keep_md = TRUE,
+  latex_engine = "xelatex",
+  pandoc_args = NULL,
+  ...
+)
 }
 \arguments{
 \item{journal}{one of "JOSS" or"JOSE"}
