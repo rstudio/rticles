@@ -5,3 +5,4 @@
 *.log
 reference
 inst/doc
+.vscode
