@@ -1,3 +1,5 @@
+# rticles (development version)
+
 # rticles 0.27
 
 - `joss_article()` now correctly works as `base_format` for `bookdown::pdf_book()` (thanks, @mlysy, #564).
