@@ -881,8 +881,9 @@ FUNCTION {format.booktitle}
   booktitle "booktitle" bibinfo.check
   emphasize
 }
+
 FUNCTION {format.in.ed.booktitle}
-{ format.booktitle duplicate$ empty$ 'skip$
+{format.booktitle duplicate$ empty$ 'skip$
     {
       format.bvolume duplicate$ empty$ 'pop$
         { ", " swap$ * * }
@@ -1260,11 +1261,13 @@ FUNCTION {incollection}
   format.note output
   fin.entry
 }
+
 FUNCTION {inproceedings}
 { output.bibitem
   format.authors "author" output.check
   add.comma
-  crossref missing$
+  format.btitle "title" output.check
+   crossref missing$
     { format.in.ed.booktitle "booktitle" output.check
       new.sentence
       publisher empty$

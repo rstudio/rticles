@@ -2,16 +2,16 @@
 # Supported options: 
 #   sn-nature:       Style for submissions to Nature Portfolio journals
 #   sn-basic:        Basic Springer Nature Reference Style/Chemistry Reference Style
-#   sn-mathphys:     Math and Physical Sciences Reference Style
+#   sn-mathphys-num: Math and Physical Sciences Reference Style Numbered
+#   ssn-mathphys-ay: Math and Physical Sciences Reference Style Author-Year
 #   sn-aps:          American Physical Society (APS) Reference Style
 #   sn-vancouver:    Vancouver Reference Style
 #   sn-apa:          APA Reference Style 
 #   sn-chicago:      Chicago-based Humanities Reference Style
 #   default:         Default
-
 classoptions: 
   - sn-basic      
-  # - Numbered      # Optional: Use numbered references instead of namedate references (only for sn-nature, sn-basic, sn-vancouver, sn-chicago, sn-mathphys or sn-nature)
+  # - Numbered      # Optional: Use numbered references instead of namedate references (only for sn-nature, sn-basic, sn-vancouver, sn-chicago, or sn-nature)
   # - referee       # Optional: Use double line spacing 
   # - lineno        # Optional: Add line numbers
   # - iicol         # Optional: Double column layour

@@ -623,24 +623,27 @@ springer_article <- function(..., keep_tex = TRUE,  citation_package = "natbib",
     # for backward compatibility as we changed the template in
     # https://github.com/rstudio/rticles/pull/494
     options <- rmarkdown::yaml_front_matter(input)
-    new_template_msg <- c("If you are rendering an old Rmd, be advise that the template has changed in version '0.25'\n",
-    " and you should start from a fresh template to get latest resources and new YAML header format.")
+    new_template_msg <- function(ver) return (c(sprintf("If you are rendering an old Rmd, be advise that the template has changed in version '%s'\n", ver),
+    " and you should check new template or start from a fresh template to get latest resources and new YAML header format.", ver))
     if (is.null(options[["classoptions"]])) {
       stop("`springer_article()` now requires the 'classoptions' field in YAML front matter. ",
-           new_template_msg, call. = FALSE)
+           new_template_msg("0.25"), call. = FALSE)
+    } else if ("sn-mathphys" %in% options[["classoptions"]]) {
+      stop("classoptions `sn-mathphys` detected. `springer_article()` now uses 'sn-mathphys-num' or `sn-mathphys-ay`. ",
+              new_template_msg("0.28"), call. = FALSE)
     }
     if (!is.null(options[["biblio-style"]])) {
       warning("`springer_article()` now ignores the 'biblio-style' field in YAML front matter. ",
       "Reference style for 'natbib' is now set using the 'classoptions' field.\n",
-      new_template_msg)
+      new_template_msg("0.25"))
     }
     if (!is.null(options[["PACS"]])) {
       warning("`springer_article()` now ignores the 'PACS' field in YAML front matter to use `pacs.jel` and `pacs.msc`. ",
-              new_template_msg)
+              new_template_msg("0.25"))
     }
     if (!is.null(options[["authors"]][["name"]])) {
       stop("`springer_article()` now uses different authors and affiliations fields.\n",
-              new_template_msg, call. = FALSE)
+              new_template_msg("0.25"), call. = FALSE)
     }
     return(invisible(NULL))
   }
