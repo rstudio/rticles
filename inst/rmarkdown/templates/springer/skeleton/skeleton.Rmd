@@ -27,15 +27,16 @@ authors:
     suffix: III
     naturename: Poet Laureate
     degrees: MSc, PhD
+    orcid: 0000-0000-0000-0000
     email: abc@def
     affiliation: [1,2]
     corresponding: TRUE
-    equalcont: These authors contributed equally to this work.
+    equal_contribution: These authors contributed equally to this work.
     
   - firstname: Second
     lastname: Author
     affiliation: 2
-    equalcont: These authors contributed equally to this work.
+    equal_contribution: These authors contributed equally to this work.
 
 
 affiliations:

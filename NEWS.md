@@ -1,5 +1,7 @@
 # rticles (development version)
 
+- Fix `springer_article()` skeleton: It now uses `equal_contribution` in author field (thanks, @nielsbock, #568).
+
 # rticles 0.27
 
 - `joss_article()` now correctly works as `base_format` for `bookdown::pdf_book()` (thanks, @mlysy, #564).
