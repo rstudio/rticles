@@ -624,7 +624,7 @@ springer_article <- function(..., keep_tex = TRUE,  citation_package = "natbib",
     # https://github.com/rstudio/rticles/pull/494
     options <- rmarkdown::yaml_front_matter(input)
     new_template_msg <- function(ver) return (c(sprintf("If you are rendering an old Rmd, be advise that the template has changed in version '%s'\n", ver),
-    " and you should check new template or start from a fresh template to get latest resources and new YAML header format.", ver))
+    " and you should check new template or start from a fresh template to get latest resources and new YAML header format."))
     if (is.null(options[["classoptions"]])) {
       stop("`springer_article()` now requires the 'classoptions' field in YAML front matter. ",
            new_template_msg("0.25"), call. = FALSE)
