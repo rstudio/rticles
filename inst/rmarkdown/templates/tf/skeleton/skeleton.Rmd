@@ -42,6 +42,9 @@ header-includes: |
   \usepackage{hyperref}
   \usepackage[utf8]{inputenc}
   \def\tightlist{}
+# Uncommand below to use reference style S instead of CAD with interact layout
+biblio-style: tfs
+natbiboptions: "`numbers,sort&compress`{=latex}"
 output: rticles::tf_article
 ---
 
