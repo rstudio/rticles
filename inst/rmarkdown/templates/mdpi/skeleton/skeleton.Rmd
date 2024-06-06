@@ -46,10 +46,10 @@ abstract: |
   The abstract should be an objective representation of the article, it must not 
   contain results which are not presented and substantiated in the main text and 
   should not exaggerate the main conclusions.
-# back matter
 keywords: |
   keyword 1; keyword 2; keyword 3 (list three to ten pertinent keywords specific 
   to the article, yet reasonably common within the subject discipline.).
+# back matter
 acknowledgement: |
   All sources of funding of the study should be disclosed. Please clearly 
   indicate grants that you have received in support of your research work. 
