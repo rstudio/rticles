@@ -726,25 +726,24 @@ FUNCTION {format.incoll.inproc.crossref}
 FUNCTION {format.website}
 { url empty$
     { "" }
-    { "" url website *
+    { "Available online: " url website *
      urldate empty$
     {"there is url but no urldate in " cite$ * warning$}
-    { ", accessed on " * urldate *}
+    { " (accessed on " * urldate * ")" *}
     if$
     }
   if$
 }
-
 
 %% the following function is modified from kp.bst at http://arxiv.org/hypertex/bibstyles/
 FUNCTION {format.eprint}
 {eprint empty$
 	{ ""}
 	{primaryClass empty$
-		{" \href{http://xxx.lanl.gov/abs/" eprint * "}" *  "{{\normalfont " * "[" * eprint * "]" * "}}" *}
+		{" \href{http://arxiv.org/abs/" eprint * "}" *  "{{\normalfont " * "[" * eprint * "]" * "}}" *}
 		{archivePrefix empty$
-              		  {" \href{http://xxx.lanl.gov/abs/" eprint * "}" * "{{\normalfont " * "[" * "arXiv:" * primaryClass * "/" * eprint * "]" * "}}" *}
-			  {" \href{http://xxx.lanl.gov/abs/" eprint * "}" * "{{\normalfont " * "[" * archivePrefix * ":" * primaryClass * "/" * eprint * "]" * "}}" *}
+              		  {" \href{http://arxiv.org/abs/" eprint * "}" * "{{\normalfont " * "[" * "arXiv:" * primaryClass * "/" * eprint * "]" * "}}" *}
+			  {" \href{http://arxiv.org/abs/" eprint * "}" * "{{\normalfont " * "[" * archivePrefix * ":" * primaryClass * "/" * eprint * "]" * "}}" *}
 		if$
 		}
 	if$
