@@ -127,14 +127,14 @@ $endfor$
 
 \author{
 $for(authors)$
-$authors.name$,\textsuperscript{$authors.affiliation$}$if(authors.corresponding_author)$\textsuperscript{\ast}$endif$
+$authors.name$,\textsuperscript{$authors.affiliation$}$if(authors.corresponding_author)$\textsuperscript{*}$endif$
 $endfor$\\
 \\
 $for(address)$
 \normalsize{\textsuperscript{$address.code$}$address.address$}\\
 $endfor$
 \\
-\textsuperscript{$\textsuperscript{\ast}$}$corresponding_author$
+\textsuperscript{*}$corresponding_author$
 }
 
 % Include the date command, but leave its argument blank.

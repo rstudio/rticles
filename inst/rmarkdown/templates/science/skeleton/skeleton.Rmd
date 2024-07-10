@@ -29,11 +29,12 @@ supplementary-materials:
   - Supplementary Text
   - Figs. S1 to S3
   - Tables S1 to S4
-  - References *(4-10)*
+  - References (4-10)
 bibliography: scibib.bib
-number_sections: false
+#number_sections: false
 output:
-  rticles::science_article
+  rticles::science_article: 
+    keep_tex: true
 ---
 
 # Introduction
@@ -50,14 +51,10 @@ plot(runif(10))
 
 And post uniform distributions text...
 
-\begin{table}[ht]
-\begin{center}
-\begin{tabular}{ll}
-once & 1 \\
-once & 2\\
-\end{tabular}
-\end{center}
-\end{table}
+| title | row |
+| once  |   1 |
+| once  |   2 |
+
 
 With a table.
 
@@ -71,31 +68,23 @@ plot(rpois(10,1))
 
 And post Poisson distributions text...
 
-\begin{table}[ht]
-\begin{center}
-\begin{tabular}{ll}
-twice & 1 \\
-twice & 2\\
-\end{tabular}
-\end{center}
-\end{table}
+| title  | row |
+| twice  |   1 |
+| twice  |   2 |
 
 With a table for something.
 
 # Formatting Citations
 
-\begin{enumerate}
-\item Please cite your references and notes in text {\it only\/} using
+1. Please cite your references and notes in text {\it only\/} using
   the standard \LaTeX\ \verb+\cite+ command, not another command
   driven by outside macros.
-\item Please separate multiple citations within a single \verb+\cite+
+2. Please separate multiple citations within a single \verb+\cite+
   command using commas only; there should be {\it no space\/}
   between reference keynames.  That is, if you are citing two
-  papers whose bibliography keys are \texttt{keyname1} and
-  \texttt{keyname2}, the in-text cite should read
-  \verb+\cite{keyname1,keyname2}+, {\it not\/}
-  \verb+\cite{keyname1, keyname2}+.
-\end{enumerate}
+  papers whose bibliography keys are `@keyname1` and
+  `@keyname2`, the in-text cite should read
+  `[@keyname1; @keyname2]` [@keyname1; @keyname2].
 
 \noindent Failure to follow these guidelines could lead
 to the omission of the references in an accepted paper when the source
