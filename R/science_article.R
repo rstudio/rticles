@@ -18,10 +18,19 @@
 #' @export
 science_article <- function(..., keep_tex = TRUE, move_figures = TRUE,
                             move_tables = TRUE, number_sections = FALSE,
-                            draft = TRUE) {
+                            draft = TRUE, pandoc_args = NULL) {
+
+  if (!number_sections) {
+    pandoc_args <- c(
+      pandoc_args,
+      "--lua-filter", pkg_file("rmarkdown", "lua", "unnumber-sections.lua")
+    )
+  }
+
   base <- pdf_document_format(
     'science',
-    keep_tex = keep_tex, number_sections = number_sections, ...
+    keep_tex = keep_tex, number_sections = number_sections,
+    pandoc_args = pandoc_args, ...
   )
 
   # Build from the rjournal_article post processing
@@ -62,10 +71,6 @@ science_article <- function(..., keep_tex = TRUE, move_figures = TRUE,
           clean = clean
         )
       }
-    }
-
-    if (!number_sections) {
-      temp_tex <- unnumber_sections(temp_tex)
     }
 
     xfun::write_utf8(temp_tex, filename)
@@ -400,10 +405,6 @@ separate_appendix <- function(output_file, text, number_sections) {
   )
 
   appx_text <- remove_authors_affiliations(appx_text)
-
-  if (!number_sections) {
-    appx_text <- unnumber_sections(appx_text)
-  }
 
   # write supplement
   xfun::write_utf8(appx_text, con = paste0('supplement_', output_file))

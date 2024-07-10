@@ -160,15 +160,3 @@ vec_to_pandoc_variable_args <- function(v_args) {
   )
   unlist(pandoc_arg_list)
 }
-
-# Remove numbering from sections
-# @param a character vector where each entry is a line of LaTeX
-unnumber_sections <- function(text) {
-  i <- grep("^\\\\section\\{", text)
-  text[i] <- sub(text[i], pattern = "section", replacement = "section\052")
-  i <- grep("^\\\\subsection\\{", text)
-  text[i] <- sub(text[i], pattern = "subsection", replacement = "subsection\052")
-  i <- grep("^\\\\subsubsection\\{", text)
-  text[i] <- sub(text[i], pattern = "subsubsection", replacement = "subsubsection\052")
-  text
-}
