@@ -24,16 +24,22 @@ abstract: |
   Enter the text of your abstract here.
 acknowledgements: |
   Please include your acknowledgments here, set in a single paragraph.
+supplementary-materials:
+  - Materials and Methods
+  - Supplementary Text
+  - Figs. S1 to S3
+  - Tables S1 to S4
+  - References *(4-10)*
 bibliography: scibib.bib
-output: 
+output:
   rticles::science_article
 ---
 
 # Introduction
 
-This is a basic implementation of the Science template. 
+This is a basic implementation of the Science template.
 
-# Uniform Distributions 
+# Uniform Distributions
 
 Uniform distributions text with Figure.
 
@@ -156,7 +162,7 @@ What you should send to {\it Science\/} will depend on the stage your manuscript
 \item {\bf Important:} If you're sending in the initial submission of
   your manuscript (that is, the copy for evaluation and peer review),
   please send in {\it only\/} a PostScript or PDF version of the
-  compiled file (including figures).  Please do not send in the \TeX\ 
+  compiled file (including figures).  Please do not send in the \TeX\
   source, \texttt{.sty}, \texttt{.bbl}, or other associated files with
   your initial submission.  (For more information, please see the
   instructions at our Web submission site,
@@ -205,6 +211,3 @@ thrice & 2\\
 \end{tabular}
 \end{center}
 \end{table}
-
-
-
