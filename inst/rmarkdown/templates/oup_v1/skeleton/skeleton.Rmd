@@ -54,7 +54,7 @@ competing_interests: |
   There are no competing interest.
 author_contributions: |
   AA did all the work. The others are just freeloaders.
-acknowledgements: |
+acknowledgments: |
   This is an acknowledgement.
 
   It consists of two paragraphs.

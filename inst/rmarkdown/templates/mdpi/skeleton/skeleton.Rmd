@@ -18,6 +18,9 @@ affiliation:
       Your department
       Street, City, Country
     email: mail@mail.com
+# author citation list in chicago format
+authorcitation: |
+  Leutnant, D.; Doe, J.
 # firstnote to eighthnote
 firstnote: |
   Current address: Updated affiliation
@@ -25,11 +28,11 @@ secondnote: |
   These authors contributed equally to this work.
 correspondence: |
   leutnant@fh-muenster.de; Tel.: +XX-000-00-0000.
-journal: water
+# document options
+journal: notspecified
 type: article
 status: submit
-bibliography: mybibfile.bib
-appendix: appendix.tex
+# front matter
 simplesummary: |
   A Simple summary goes here.
 abstract: |
@@ -43,6 +46,7 @@ abstract: |
   The abstract should be an objective representation of the article, it must not 
   contain results which are not presented and substantiated in the main text and 
   should not exaggerate the main conclusions.
+# back matter
 keywords: |
   keyword 1; keyword 2; keyword 3 (list three to ten pertinent keywords specific 
   to the article, yet reasonably common within the subject discipline.).
@@ -58,6 +62,48 @@ authorcontributions: |
   experiments; X.X. and Y.Y. analyzed the data; W.W. contributed 
   reagents/materials/analysis tools; Y.Y. wrote the paper.'' Authorship must be
   limited to those who have contributed substantially to the work reported.
+funding: |
+  Please add: ``This research received no external funding'' or ``This research 
+  was funded by NAME OF FUNDER grant number XXX.'' and  and ``The APC was funded 
+  by XXX''. Check carefully that the details given are accurate and use the 
+  standard spelling of funding agency names at 
+  \url{https://search.crossref.org/funding}, any errors may affect your future 
+  funding.
+institutionalreview: |
+  In this section, you should add the Institutional Review Board Statement and 
+  approval number, if relevant to your study. You might choose to exclude 
+  this statement if the study did not require ethical approval. Please note 
+  that the Editorial Office might ask you for further information. Please add 
+  “The study was conducted in accordance with the Declaration of Helsinki, 
+  and approved by the Institutional Review Board (or Ethics Committee) of 
+  NAME OF INSTITUTE (protocol code XXX and date of approval).” for studies 
+  involving humans. OR “The animal study protocol was approved by the 
+  Institutional Review Board (or Ethics Committee) of NAME OF INSTITUTE 
+  (protocol code XXX and date of approval).” for studies involving animals. 
+  OR “Ethical review and approval were waived for this study due to REASON 
+  (please provide a detailed justification).” OR “Not applicable” for
+   studies not involving humans or animals.
+informedconsent: |
+  Any research article describing a study involving humans should contain this 
+  statement. Please add ``Informed consent was obtained from all subjects 
+  involved in the study.'' OR ``Patient consent was waived due to REASON 
+  (please provide a detailed justification).'' OR ``Not applicable'' for 
+  studies not involving humans. You might also choose to exclude this statement 
+  if the study did not involve humans.
+  
+  Written informed consent for publication must be obtained from participating 
+  patients who can be identified (including by the patients themselves). Please 
+  state ``Written informed consent has been obtained from the patient(s) to 
+  publish this paper'' if applicable.
+dataavailability: |
+  We encourage all authors of articles published in MDPI journals to share 
+  their research data. In this section, please provide details regarding where 
+  data supporting reported results can be found, including links to publicly 
+  archived datasets analyzed or generated during the study. Where no new data 
+  were created, or where data is unavailable due to privacy or ethical 
+  re-strictions, a statement is still required. Suggested Data Availability 
+  Statements are available in section “MDPI Research Data Policies” at 
+  \url{https://www.mdpi.com/ethics}.
 conflictsofinterest: |
   Declare conflicts of interest or state 'The authors declare no conflict of 
   interest.' Authors must identify and declare any personal circumstances or
@@ -71,6 +117,9 @@ conflictsofinterest: |
   manuscript, an in the decision to publish the results'.
 sampleavailability: |
   Samples of the compounds ...... are available from the authors.
+supplementary: |
+ The following supporting information can be downloaded at:  
+ \linksupplementary{s1}, Figure S1: title; Table S1: title; Video S1: title.
 abbreviations:
   - short: MDPI
     long: Multidisciplinary Digital Publishing Institute
@@ -80,33 +129,176 @@ abbreviations:
     long: Three letter acronym
   - short: LD 
     long: linear dichroism
-output: rticles::mdpi_article
+bibliography: mybibfile.bib
+appendix: appendix.tex
+endnotes: false
+output: 
+  rticles::mdpi_article:
+    extra_dependencies: longtable
 ---
 
 # Version
 
-This Rmd-skeleton uses the mdpi Latex template published 2019/02. 
-However, the official template gets more frequently updated than the 'rticles'
+This Rmd-skeleton uses the mdpi Latex template published 2023-03-25. 
+However, the official template gets more frequently updated than the **rticles**
 package. Therefore, please make sure prior to paper submission, that you're 
 using the most recent .cls, .tex and .bst files 
 (available [here](http://www.mdpi.com/authors/latex)).
 
+# Article Header Information
+
+The YAML header includes information needed mainly for formatting the front and 
+back matter of the article. Required elements include:
+
+```yaml
+title: Title of the paper
+author:
+  - name: first and last name
+    affil: |
+      One or more comma seperated numbers corresponding to affilitation
+      and one or more  comma seperated symbols corresponding 
+      optional notes.
+    orcid: optional orcid number
+affiliation:  
+  - num: 1,..., n for each affiliation
+    address: required
+    email: required
+authorcitation: |
+  Lastname, F.
+correspondence: |
+  email@email.com; Tel.: +XX-000-00-0000.
+journal: notspecified
+type: article
+status: submit
+```
+
+Journal options are in Table \ref{tab:mdpinames}. The `status` variable should 
+generally not be changed by authors. The `type` variable describes 
+the type of of submission and defaults to `article` but can be replaced with any of the ones in Table \ref{tab:mdpitype}
+
+```{r mdpitype, echo = FALSE}
+type <- c("abstract, addendum, article, book, bookreview, briefreport, 
+casereport, comment, commentary, communication, conferenceproceedings, 
+correction, conferencereport, entry, expressionofconcern, extendedabstract, 
+datadescriptor, editorial, essay, erratum, hypothesis, interestingimage, 
+obituary, opinion, projectreport, reply, retraction, review, perspective, 
+protocol, shortnote, studyprotocol, systematicreview, supfile, 
+technicalnote, viewpoint, guidelines, registeredreport, tutorial")
+knitr::kable(rticles::string_to_table(type, 3), 
+             col.names = NULL, format = "latex", booktab = TRUE, 
+             caption = "MDPI article types.")
+```
+
+## Journal Specific YAML variables
+
+```yaml
+# for journal Diversity,
+# add the Life Science Identifier using:
+lsid: http://zoobank.org/urn:lsid:zoobank.org:act:nnnn
+
+
+# for journal Applied Sciences
+# add featured application
+featuredapplication: |
+  Authors are encouraged to provide a concise 
+  description of the specific application or 
+  a potential application of the work. This 
+  section is not mandatory.
+
+# for the journal Data
+# add dataset doi and license
+dataset: https://doi.org/10.1000/182
+datasetlicense: CC-BY-4.0
+
+# for the journal Toxins
+# add key contributions
+keycontributions: |
+  The breakthroughs or highlights of the manuscript. 
+  Authors can write one or two sentences to describe 
+  the most important part of the paper.
+
+# for the journal Encyclopedia
+encyclopediadef: |
+  For entry manuscripts only: please provide a brief overview
+  of the entry title instead of an abstract.
+entrylink: The Link to this entry published on the encyclopedia platform.
+
+# for the journal Advances in Respiratory Medicine
+# add highlights
+addhighlights: |
+  This is an obligatory section in “Advances in Respiratory Medicine”, 
+  whose goal is to increase the discoverability and readability of the
+  article via search engines and other scholars. Highlights should not 
+  be a copy of the abstract, but a simple text allowing the reader to 
+  quickly and simplified find out what the article is about and what can 
+  be cited from it. Each of these parts should be devoted up to 2~bullet 
+  points.
+
+```
+
+
+\startlandscape
+```{r, mdpinames, echo=FALSE, results='asis'}
+mdpi_journals <- "acoustics, actuators, addictions, admsci, adolescents, aerobiology, aerospace, agriculture, agriengineering, agrochemicals, agronomy, ai, air, algorithms, allergies, alloys, analytica, analytics, anatomia, animals, antibiotics, antibodies, antioxidants, applbiosci, appliedchem, appliedmath, applmech, applmicrobiol, applnano, applsci, aquacj, architecture, arm, arthropoda, arts, asc, asi, astronomy, atmosphere, atoms, audiolres, automation, axioms, bacteria, batteries, bdcc, behavsci, beverages, biochem, bioengineering, biologics, biology, biomass, biomechanics, biomed, biomedicines, biomedinformatics, biomimetics, biomolecules, biophysica, biosensors, biotech, birds, bloods, blsf, brainsci, breath, buildings, businesses, cancers, carbon, cardiogenetics, catalysts, cells, ceramics, challenges, chemengineering, chemistry, chemosensors, chemproc, children, chips, cimb, civileng, cleantechnol, climate, clinpract, clockssleep, cmd, coasts, coatings, colloids, colorants, commodities, compounds, computation, computers, condensedmatter, conservation, constrmater, cosmetics, covid, crops, cryptography, crystals, csmf, ctn, curroncol, cyber, dairy, data, ddc, dentistry, dermato, dermatopathology, designs, devices, diabetology, diagnostics, dietetics, digital, disabilities, diseases, diversity, dna, drones, dynamics, earth, ebj, ecologies, econometrics, economies, education, ejihpe, electricity, electrochem, electronicmat, electronics, encyclopedia, endocrines, energies, eng, engproc, entomology, entropy, environments, environsciproc, epidemiologia, epigenomes, est, fermentation, fibers, fintech, fire, fishes, fluids, foods, forecasting, forensicsci, forests, foundations, fractalfract, fuels, future, futureinternet, futurepharmacol, futurephys, futuretransp, galaxies, games, gases, gastroent, gastrointestdisord, gels, genealogy, genes, geographies, geohazards, geomatics, geosciences, geotechnics, geriatrics, grasses, gucdd, hazardousmatters, healthcare, hearts, hemato, hematolrep, heritage, higheredu, highthroughput, histories, horticulturae, hospitals, humanities, humans, hydrobiology, hydrogen, hydrology, hygiene, idr, ijerph, ijfs, ijgi, ijms, ijns, ijpb, ijtm, ijtpp, ime, immuno, informatics, information, infrastructures, inorganics, insects, instruments, inventions, iot, j, jal, jcdd, jcm, jcp, jcs, jcto, jdb, jeta, jfb, jfmk, jimaging, jintelligence, jlpea, jmmp, jmp, jmse, jne, jnt, jof, joitmc, jor, journalmedia, jox, jpm, jrfm, jsan, jtaer, jvd, jzbg, kidneydial, kinasesphosphatases, knowledge, land, languages, laws, life, liquids, literature, livers, logics, logistics, lubricants, lymphatics, machines, macromol, magnetism, magnetochemistry, make, marinedrugs, materials, materproc, mathematics, mca, measurements, medicina, medicines, medsci, membranes, merits, metabolites, metals, meteorology, methane, metrology, micro, microarrays, microbiolres, micromachines, microorganisms, microplastics, minerals, mining, modelling, molbank, molecules, mps, msf, mti, muscles, nanoenergyadv, nanomanufacturing, nanomaterials, ncrna, ndt, network, neuroglia, neurolint, neurosci, nitrogen, notspecified, nri, nursrep, nutraceuticals, nutrients, obesities, oceans, ohbm, onco, oncopathology, optics, oral, organics, organoids, osteology, oxygen, parasites, parasitologia, particles, pathogens, pathophysiology, pediatrrep, pharmaceuticals, pharmaceutics, pharmacoepidemiology, pharmacy, philosophies, photochem, photonics, phycology, physchem, physics, physiologia, plants, plasma, platforms, pollutants, polymers, polysaccharides, poultry, powders, preprints, proceedings, processes, prosthesis, proteomes, psf, psych, psychiatryint, psychoactives, publications, quantumrep, quaternary, qubs, radiation, reactions, receptors, recycling, regeneration, religions, remotesensing, reports, reprodmed, resources, rheumato, risks, robotics, ruminants, safety, sci, scipharm, sclerosis, seeds, sensors, separations, sexes, signals, sinusitis, skins, smartcities, sna, societies, socsci, software, soilsystems, solar, solids, spectroscj, sports, standards, stats, std, stresses, surfaces, surgeries, suschem, sustainability, symmetry, synbio, systems, targets, taxonomy, technologies, telecom, test, textiles, thalassrep, thermo, tomography, tourismhosp, toxics, toxins, transplantology, transportation, traumacare, traumas, tropicalmed, universe, urbansci, uro, vaccines, vehicles, venereology, vetsci, vibration, virtualworlds, viruses, vision, waste, water, wem, wevj, wind, women, world, youth, zoonoticdis"
+
+knitr::kable(rticles::string_to_table(mdpi_journals, 8),
+             col.names = NULL,
+             format = "latex",
+             booktabs = TRUE, 
+             caption = "MDPI journal names.",
+             longtable = TRUE)
+
+```
+\finishlandscape
+
+
+
+
 # Introduction
 
-The introduction should briefly place the study in a broad context and highlight why it is important. It should define the purpose of the work and its significance. The current state of the research field should be reviewed carefully and key publications cited. Please highlight controversial and diverging hypotheses when necessary. Finally, briefly mention the main aim of the work and highlight the principal conclusions. As far as possible, please keep the introduction comprehensible to scientists outside your particular field of research. Citing a journal paper [@bertrand-krajewski_distribution_1998; @leutnant_stormwater_2016]. And now citing a book reference @gujer_systems_2008. Please use the command [@leutnant_stormwater_2016] for the following MDPI journals, which use author-date citation: Administrative Sciences, Arts, Econometrics, Economies, Genealogy, Humanities, IJFS, JRFM, Laws, Religions, Risks, Social Sciences.
+The introduction should briefly place the study in a broad context and highlight
+why it is important. It should define the purpose of the work and its
+significance. The current state of the research field should be reviewed
+carefully and key publications cited. Please highlight controversial and
+diverging hypotheses when necessary. Finally, briefly mention the main aim of
+the work and highlight the principal conclusions. As far as possible, please
+keep the introduction comprehensible to scientists outside your particular
+field of research. Citing a journal paper [@bertrand-krajewski_distribution_1998;
+@leutnant_stormwater_2016]. And now citing a book reference @gujer_systems_2008.
+Some MDPI journals use Chicago and others use APA, this template should choose
+the correct citation format for you once you specify the journal in the YAML
+header.
+
+To use endnotes, change `endnotes: true` in the YAML header, then use
+`\endnote{This is an endnote.}`.
 
 
 # Materials and Methods
 
-Materials and Methods should be described with sufficient details to allow others to replicate and build on published results. Please note that publication of your manuscript implicates that you must make all materials, data, computer code, and protocols associated with the publication available to readers. Please disclose at the submission stage any restrictions on the availability of materials or information. New methods and protocols should be described in detail while well-established methods can be briefly described and appropriately cited.
+Materials and Methods should be described with sufficient details to allow 
+others to replicate and build on published results. Please note that publication 
+of your manuscript implicates that you must make all materials, data, computer 
+code, and protocols associated with the publication available to readers. Please
+disclose at the submission stage any restrictions on the availability of 
+materials or information. New methods and protocols should be described in 
+detail while well-established methods can be briefly described and appropriately
+cited.
 
-Research manuscripts reporting large datasets that are deposited in a publicly available database should specify where the data have been deposited and provide the relevant accession numbers. If the accession numbers have not yet been obtained at the time of submission, please state that they will be provided during review. They must be provided prior to publication.
+Research manuscripts reporting large datasets that are deposited in a publicly 
+available database should specify where the data have been deposited and provide
+the relevant accession numbers. If the accession numbers have not yet been
+obtained at the time of submission, please state that they will be provided
+during review. They must be provided prior to publication.
 
-Interventionary studies involving animals or humans, and other studies require ethical approval must list the authority that provided approval and the corresponding ethical approval code.
+Interventionary studies involving animals or humans, and other studies require
+ethical approval must list the authority that provided approval and the
+corresponding ethical approval code.
 
 # Results
 
-This section may be divided by subheadings. It should provide a concise and precise description of the experimental results, their interpretation as well as the experimental conclusions that can be drawn.
+This section may be divided by subheadings. It should provide a concise and
+precise description of the experimental results, their interpretation as well
+as the experimental conclusions that can be drawn.
 
 ## Subsection Heading Here
 
@@ -128,58 +320,120 @@ Numbered lists can be added as follows:
 
 The text continues here.
 
-All figures and tables should be cited in the main text as Figure 1, Table 1, etc.
+## Figures, Tables and Schemes
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=3 cm]{logo-mdpi}
-\caption{This is a figure, Schemes follow the same formatting. If there are multiple panels, they should be listed as: (\textbf{a}) Description of what is contained in the first panel. (\textbf{b}) Description of what is contained in the second panel. Figures should be placed in the main text near to the first time they are cited. A caption on a single line should be centered.}
-\end{figure}
+All figures and tables should be cited in the main text as Figure \ref{fig:fig1}, 
+\ref{tab:tab1}, etc. To get cross-reference to figure generated by R chunks 
+include the `\\label{}` tag in the `fig.cap` attribute of the R chunk: 
+`fig.cap = "Fancy Caption\\label{fig:plot}"`.
+
+```{r fig1, echo=FALSE, fig.width=3, fig.cap="A figure added with a code chunk.\\label{fig:fig1}"}
+x = rnorm(10)
+y = rnorm(10)
+plot(x, y)
+```
 
 
-\begin{table}[H]
-\caption{This is a table caption. Tables should be placed in the main text near to the first time they are cited.}
-\centering
-%% \tablesize{} %% You can specify the fontsize here, e.g.  \tablesize{\footnotesize}. If commented out \small will be used.
-\begin{tabular}{ccc}
-\toprule
-\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}\\
-\midrule
-entry 1		& data			& data\\
-entry 2		& data			& data\\
-\bottomrule
-\end{tabular}
-\end{table}
+When making tables using `kable`, it is suggested to use
+the `format="latex"` and `tabl.envir="table"` arguments
+to ensure table numbering and compatibility with the mdpi
+document class.
+
+```{r tab1, echo=FALSE}
+knitr::kable(mtcars[1:5, 1:3], format = "latex", 
+             booktabs = TRUE, 
+             caption = "This is a table caption. Tables should be placed in the 
+             main text near to the first time they are~cited.", 
+             align = 'ccc', centering = FALSE,
+             table.envir = "table", position = "H")
+```
+
+
+
+For a very wide table, landscape layouts are allowed.
+
+
+\startlandscape
+
+```{r tab2, echo=FALSE}
+df <- data.frame(`Title 1` = c("Entry 1", "Entry 2"),
+                 `Title 2` = c("Data", "Data"),
+                 `Title 3` = c("Data", "Data"),
+                 `Title 4` = c("This cell has some longer content that runs over
+                               two lines",
+                               "Data"))
+knitr::kable(df, format = "latex", 
+             booktabs = TRUE, 
+             caption = "This is a very wide table", 
+             align = 'ccc', centering = FALSE,
+             table.envir = "table", position = "H")
+```
+
+\finishlandscape
+
+## Formatting of Mathematical Components
 
 This is an example of an equation:
 
-\begin{equation}
-\mathbb{S}
-\end{equation}
-<!-- If the documentclass option "submit" is chosen, please insert a blank line before and after any math environment (equation and eqnarray environments). This ensures correct linenumbering. The blank line should be removed when the documentclass option is changed to "accept" because the text following an equation should not be a new paragraph. -->
+$$
+a = 1.
+$$
 
-<!-- Please punctuate equations as regular text. Theorem-type environments (including propositions, lemmas, corollaries etc.) can be formatted as follows: -->
+If you want numbered equations use Latex and wrap in the equation environment:
+
+\begin{equation}
+a = 1,
+\end{equation}
+
+the text following an equation need not be a new paragraph. Please punctuate 
+equations as regular text.
+
+```{comment}
+If the documentclass option "submit" is chosen, please insert a blank line before and after any math environment (equation and eqnarray environments). This ensures correct linenumbering. The blank line should be removed when the documentclass option is changed to "accept" because the text following an equation should not be a new paragraph.
+```
+
+This is the example 2 of equation:
+
+\begin{adjustwidth}{-\extralength}{0cm}
+\begin{equation}
+a = b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + 
+u + v + w + x + y + z
+\end{equation}
+\end{adjustwidth}
+
+Theorem-type environments (including propositions, lemmas, corollaries etc.) 
+can be formatted as follows:
+
 Example of a theorem:
-\begin{Theorem}
-Example text of a theorem.
-\end{Theorem}
+
+::: {.Theorem latex=true}
+Example text of a theorem
+:::
 
 The text continues here. Proofs must be formatted as follows:
 
 Example of a proof:
-\begin{proof}[Proof of Theorem 1]
-Text of the proof. Note that the phrase `of Theorem 1' is optional if it is clear which theorem is being referred to.
-\end{proof}
+
+::: {.proof latex="[Proof of Theorem1]"}
+Text of the proof. Note that the phrase ``of Theorem 1'' is optional if it is 
+clear which theorem is being referred to.
+:::
+
 The text continues here.
 
 # Discussion
 
-Authors should discuss the results and how they can be interpreted in perspective of previous studies and of the working hypotheses. The findings and their implications should be discussed in the broadest context possible. Future research directions may also be highlighted.
+Authors should discuss the results and how they can be interpreted in 
+perspective of previous studies and of the working hypotheses. The findings and 
+their implications should be discussed in the broadest context possible. Future 
+research directions may also be highlighted.
 
 # Conclusion
 
-This section is not mandatory, but can be added to the manuscript if the discussion is unusually long or complex.
+This section is not mandatory, but can be added to the manuscript if the
+discussion is unusually long or complex.
 
 # Patents
 
-This section is not mandatory, but may be added if there are patents resulting from the work reported in this manuscript.
+This section is not mandatory, but may be added if there are patents resulting
+from the work reported in this manuscript.

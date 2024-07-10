@@ -1,7 +1,7 @@
 #' IEEE Transactions journal format.
 #'
 #' Format for creating submissions to IEEE Transaction journals. Adapted from
-#' <http://www.ieee.org/publications_standards/publications/authors/author_templates.html>.
+#' <https://www.ieee.org/publications_standards/publications/authors/author_templates.html>
 #'
 #' Presently, only the `"conference"` paper mode offered by the
 #' `IEEEtran.cls` is supported.
@@ -75,7 +75,7 @@ ieee_article <- function(draftmode = c("final", "draft", "draftcls", "draftclsno
   args <- c(args, plist[plist])
 
   # Convert to pandoc arguments
-  pandoc_arg_list <- vec_to_pandoc_variable_args(args)
+  pandoc_arg_list <- list_to_pandoc_variable_args(args)
 
   pdf_document_format(
     "ieee",

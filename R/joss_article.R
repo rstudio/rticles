@@ -7,25 +7,27 @@
 #' R Markdown and to locally preview how the article will appear as PDF.
 #'
 #' The following variables may be set in YAML metadata to populate fields in the
-#' article PDF, but are only necccessary fo local preview:
+#' article PDF, but are only necessary fo local preview:
 #' `formatted_doi, citation_author, year, volume, issue, page, submitted, published,
 #' review_url, repository`, and `archive_doi`.
 #'
+#' @inheritParams rmarkdown::pdf_document
 #' @param journal one of "JOSS" or"JOSE"
 #' @param keep_md Whether to retain the intermediate markdown and images.
 #'   Defaults to TRUE.
-#' @param latex_engine,... Arguments passed to [rmarkdown::pdf_document()]
+#' @param ... Arguments passed to [rmarkdown::pdf_document()]
 #' @export
 joss_article <- function(journal = "JOSS",
                          keep_md = TRUE,
                          latex_engine = "xelatex",
+                         pandoc_args = NULL,
                          ...) {
   rmarkdown::pandoc_available("2.2", TRUE)
 
-  logo_path <- find_resource("joss", paste0(journal, "-logo.png"))
-  journalname <- ifelse(journal == "JOSS",
-    "Journal of Open Source Software",
-    "Journal of Open Source Education"
+  args <- list(
+    logo_path = find_resource("joss", paste0(journal, "-logo.png")),
+    journal_name = ifelse(journal == "JOSS", "Journal of Open Source Software", "Journal of Open Source Education"),
+    graphics = TRUE
   )
 
   pdf_document_format(
@@ -33,11 +35,6 @@ joss_article <- function(journal = "JOSS",
     latex_engine = latex_engine,
     citation_package = "default",
     keep_md = keep_md,
-    pandoc_args = c(
-      "-V", paste0("logo_path=", logo_path),
-      "-V", paste0("journal_name=", journalname),
-      "-V", "graphics=true"
-    ),
-    ...
-  )
+    pandoc_args = c(pandoc_args, list_to_pandoc_variable_args(args)),
+    ...)
 }

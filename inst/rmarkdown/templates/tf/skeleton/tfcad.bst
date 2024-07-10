@@ -1,12 +1,12 @@
 %%
 %% This is file `tfcad.bst',
 %% generated with the docstrip utility,
-%% modified by DjL 2017/04/18
+%% modified by KWS 2023/05/02
 %% -------------------------------------
 %%
 %% *** BibTeX style for Taylor & Francis Chicago author-date reference style
 %% as described at
-%% http://www.tandf.co.uk/journals/authors/style/reference/tf_ChicagoAD.pdf ***
+%% https://files.taylorandfrancis.com/tf_chicagoad.pdf ***
 %%
  % ===================================================================
  % IMPORTANT NOTICE:
@@ -59,6 +59,7 @@ ENTRY
     booktitle
     chapter
     collaboration
+    doi
     edition
     editor
     eid
@@ -77,6 +78,7 @@ ENTRY
     school
     series
     title
+    translator
     type
     url
     urldate
@@ -307,18 +309,18 @@ FUNCTION {bbl.rd}
 FUNCTION {bbl.th}
 { "th" }
 
-MACRO {jan} {"Jan."}
-MACRO {feb} {"Feb."}
-MACRO {mar} {"Mar."}
-MACRO {apr} {"Apr."}
+MACRO {jan} {"January"}
+MACRO {feb} {"February"}
+MACRO {mar} {"March"}
+MACRO {apr} {"April"}
 MACRO {may} {"May"}
-MACRO {jun} {"Jun."}
-MACRO {jul} {"Jul."}
-MACRO {aug} {"Aug."}
-MACRO {sep} {"Sep."}
-MACRO {oct} {"Oct."}
-MACRO {nov} {"Nov."}
-MACRO {dec} {"Dec."}
+MACRO {jun} {"June"}
+MACRO {jul} {"July"}
+MACRO {aug} {"August"}
+MACRO {sep} {"September"}
+MACRO {oct} {"October"}
+MACRO {nov} {"November"}
+MACRO {dec} {"December"}
 
 FUNCTION {eng.ord}
 { duplicate$ "1" swap$ *
@@ -785,6 +787,14 @@ FUNCTION {convert.edition}
   t
 }
 
+FUNCTION {format.translator}
+{ translator "translator" format.names.ed
+duplicate$ empty$ 'skip$
+{
+"Translated by " swap$ *
+} if$
+}
+
 FUNCTION {format.edition}
 { edition duplicate$ empty$ 'skip$
     {
@@ -1047,6 +1057,13 @@ FUNCTION {format.month}
   if$
 }
 
+FUNCTION {format.doi}
+{ doi empty$
+{ "" }
+{"https://doi.org/{" doi * "}" * }
+if$
+}
+
 FUNCTION {article}
 { output.bibitem
   format.authors "author" output.check
@@ -1070,6 +1087,7 @@ FUNCTION {article}
   if$
   new.block
   format.note output
+  format.doi output
   format.url output
   fin.entry
 }
@@ -1092,7 +1110,9 @@ FUNCTION {book}
   format.btitle "title" output.check
   new.sentence%
   crossref missing$
-    { format.edition output
+    { format.translator output
+      new.sentence%
+      format.edition output
       format.bvolume output
       format.number.series output
       new.sentence
@@ -1169,6 +1189,8 @@ FUNCTION {incollection}
   new.block
   format.title "title" output.check
   end.quote.title
+  format.translator output
+  new.sentence%
   crossref missing$
     { format.in.ed.booktitle "booktitle" output.check
       end.quote.btitle
@@ -1276,6 +1298,20 @@ FUNCTION {misc}
   fin.entry
 }
 
+FUNCTION {online}
+{ output.bibitem
+format.authors output
+author format.key output
+format.date "year" output.check
+new.block
+format.title "title" output.check
+end.quote.title
+organization output
+new.sentence%
+format.url output
+fin.entry
+}
+
 FUNCTION {phdthesis}
 { output.bibitem
   format.authors "author" output.check
@@ -1303,7 +1339,8 @@ FUNCTION {presentation}
   end.quote.title
   organization output
   address output
-  format.month output%
+  format.month output
+  format.date "year" output.check%
   new.sentence
   format.note output
   new.sentence

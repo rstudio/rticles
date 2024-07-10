@@ -1,5 +1,6 @@
 ---
 title: A demonstration of the \LaTeX class file for Statistics in Medicine with Rmarkdown
+runningtitle: How to use
 author:
 - name: A. Uthor*
   num: a,b
@@ -18,9 +19,10 @@ corres: "*Corresponding author name, This is sample corresponding address. \\ema
 presentaddress: This is sample for present address text this is sample for present address text
 authormark: Uthor \emph{et al}.
 articletype: Research article
-received: 2017-01-01
-revised: 2017-02-01
-accepted: 2017-03-01
+abbreviations:
+  - ANA, anti-nuclear antibodies
+  - APC, antigen-presenting cells
+  - IRF, interferon regulatory factor.
 abstract: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut elit odio. Donec fermentum tellus neque, vitae fringilla orci pretium vitae. Fusce maximus finibus facilisis. Donec ut ullamcorper turpis. Donec ut porta ipsum. Nullam cursus mauris a sapien ornare pulvinar. Aenean malesuada molestie erat quis mattis. Praesent scelerisque posuere faucibus. Praesent nunc nulla, ullamcorper ut ullamcorper sed, molestie ut est. Donec consequat libero nisi, non semper velit vulputate et. Quisque eleifend tincidunt ligula, bibendum finibus massa cursus eget. Curabitur aliquet vehicula quam non pulvinar. Aliquam facilisis tortor nec purus finibus, sit amet elementum eros sodales. Ut porta porttitor vestibulum. Integer molestie, leo ut maximus aliquam, velit dui iaculis nibh, eget hendrerit purus risus sit amet dolor. Sed sed tincidunt ex. Curabitur imperdiet egestas tellus in iaculis. Maecenas ante neque, pretium vel nisl at, lobortis lacinia neque. In gravida elit vel volutpat imperdiet. Sed ut nulla arcu. Proin blandit interdum ex sit amet laoreet. Phasellus efficitur, sem hendrerit mattis dapibus, nunc tellus ornare nisi, nec eleifend enim nibh ac ipsum. Aenean tincidunt nisl sit amet facilisis faucibus. Donec odio erat, bibendum eu imperdiet sed, gravida luctus turpis."
 keywords: Class file; \LaTeX; Statist. Med.; Rmarkdown;
 bibliography: bibfile.bib
