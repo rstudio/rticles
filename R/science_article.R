@@ -10,8 +10,7 @@
 #' @param move_tables set to `TRUE` to move tables to end. Default is `TRUE`. Only
 #' works when `draft == TRUE`.
 #' @param draft set to `TRUE` for the draft version or `FALSE` for a
-#' final submission version. `TRUE` creates a sub directory in the document
-#' directory and saves each figure to its own PDF there. It also moves the supplemental
+#' final submission version. `TRUE` moves the supplemental
 #' materials to its own file.
 #' @md
 #' @export
@@ -61,10 +60,6 @@ science_article <- function(..., keep_tex = TRUE, move_figures = TRUE,
 
     if (!number_sections) {
       temp_tex <- unnumber_sections(temp_tex)
-    }
-
-    if (!isTRUE(draft)) {
-      temp_tex <- resave_figs(temp_tex)
     }
 
     xfun::write_utf8(temp_tex, filename)
@@ -421,62 +416,5 @@ remove_authors_affiliations <- function(text) {
 
   text <- text[-empty_lines]
 
-  text
-}
-
-resave_figs <- function(text) {
-  return(text) #TODO fix bug where extracts wrong pieces
-  # locate where the figures are; check count
-  starts <- grep('\\\\begin\\{figure\\}', text)
-  ends <- grep('\\\\end\\{figure\\}', text)
-  if (length(starts) != length(ends)) {
-    warning("It appears that you have a figure that doesn't start and/or end properly",
-            "Moving figures to end is cancelled.", call. = FALSE)
-    return(text)
-  }
-
-  # exit if no figures to move
-  if (length(starts) == 0) {
-    return(text)
-  }
-
-  # Add notes to where things go.
-  for (i in seq_along(starts)) {
-    fig_marker <- paste('(Figure', i, 'goes about here.)')
-    text <- append(text, values = fig_marker, after = starts[i] - 1)
-    starts[seq_along(starts) >= i] <- starts[seq_along(starts) >= i] + 1L
-  }
-
-  # extract figures from tex; add guide to start
-  fig_index <- lapply(seq_along(starts), function(x){starts[x]:ends[x]})
-  fig_tex <- lapply(fig_index, function(x){text[x]})
-
-  # Add a blank line after to use for injecting:
-  fig_tex <- lapply(fig_tex, function(x){c(x, '')})
-
-  # subset
-  text <- text[-unlist(fig_index)]
-
-  if (!dir.exists('figs_resave')) {
-    dir.create('figs_resave')
-  }
-
-  if (length(fig_tex) == 0) {
-    return(text)
-  }
-
-  # TODO: Resave each figure in the 'figs/' dir
-  #saveRDS(text, 'fig_text.Rds')
-
-  text
-}
-
-unnumber_sections <- function(text) {
-  i <- grep("^\\\\section\\{", text)
-  text[i] <- sub(text[i], pattern = "section", replacement = "section\052")
-  i <- grep("^\\\\subsection\\{", text)
-  text[i] <- sub(text[i], pattern = "subsection", replacement = "subsection\052")
-  i <- grep("^\\\\subsubsection\\{", text)
-  text[i] <- sub(text[i], pattern = "subsubsection", replacement = "subsubsection\052")
   text
 }

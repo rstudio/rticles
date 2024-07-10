@@ -31,6 +31,7 @@ supplementary-materials:
   - Tables S1 to S4
   - References *(4-10)*
 bibliography: scibib.bib
+number_sections: false
 output:
   rticles::science_article
 ---
