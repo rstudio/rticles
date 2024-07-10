@@ -178,8 +178,13 @@ $if(acknowledgements)$
 $acknowledgements$
 $endif$
 
+
+$if(supplementary-materials)$
+\hypertarget{supplementary-materials}{%
+\section{Supplementary materials}\label{supplementary-materials}}
+
 $for(supplementary-materials)$
-$supplementary-materials$$sep$\\
+$supplementary-materials$ $sep$\\
 $endfor$
 $endif$
 

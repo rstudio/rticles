@@ -64,7 +64,8 @@ science_article <- function(..., keep_tex = TRUE, move_figures = TRUE,
 
     xfun::write_utf8(temp_tex, filename)
 
-    tinytex::latexmk(filename, base$pandoc$latex_engine, clean = clean)
+    tinytex::latexmk(filename, base$pandoc$latex_engine, clean = clean,
+                     bib_engine = 'bibtex')
   }
 
   base
@@ -124,7 +125,10 @@ relocate_figures <- function(text) {
   fig_tex <- lapply(fig_tex, function(x){c(x, '')})
 
   # subset
-  text <- text[-unlist(fig_index)]
+  fig_index <- unlist(fig_index)
+  if (length(fig_index) > 0) {
+    text <- text[-unlist(fig_index)]
+  }
 
   # locate where the figures should go; check distance
   start_enter <- grep('%%%begfigs---', text)
@@ -173,7 +177,10 @@ relocate_figures <- function(text) {
   fig_tex <- lapply(fig_tex, function(x){c(x, '')})
 
   # subset
-  text <- text[-unlist(fig_index)]
+  fig_index <- unlist(fig_index)
+  if (length(fig_index) > 0) {
+    text <- text[-unlist(fig_index)]
+  }
 
   # relocate reference
   start_enter <- grep('%%%begappxfigs---', text)
@@ -245,7 +252,11 @@ relocate_tables <- function(text) {
   tab_tex <- lapply(tab_tex, function(x){c(x, '')})
 
   # subset
-  text <- text[-unlist(tab_index)]
+  tab_index <- unlist(tab_index)
+  if (length(tab_index) > 0) {
+    text <- text[-tab_index]
+  }
+
 
   # locate where the tables should go; check distance
   start_enter <- grep('%%%begtabs---', text)
@@ -294,7 +305,10 @@ relocate_tables <- function(text) {
   tab_tex <- lapply(tab_tex, function(x){c(x, '')})
 
   # subset
-  text <- text[-unlist(tab_index)]
+  tab_index <- unlist(tab_index)
+  if (length(tab_index) > 0) {
+    text <- text[-tab_index]
+  }
 
   # relocate reference
   start_enter <- grep('%%%begappxtabs---', text)
