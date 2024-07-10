@@ -96,8 +96,9 @@ The environments 'definition', 'lemma', 'proposition', 'corollary', 'remark', an
 Proofs, examples, and remarks have the initial word in italics, while the following text appears in normal font.
 :::
 
-For citations of references, use\ \cite{Nuncio2011}.
-Multiple citations are grouped\ \cite{Levitus2012,Raphael2004}.
+For citations of references, use [@Nuncio2011]
+
+Multiple citations are grouped [@Levitus2012;@Raphael2004].
 
 ### Acknowledgements
 Please place your acknowledgments at the end of the paper, preceded by an unnumbered run-in heading (i.e. 3rd-level heading).

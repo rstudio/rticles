@@ -7,7 +7,8 @@
 #' @export
 jss_article <- function(..., keep_tex = TRUE, citation_package = "natbib",
                         pandoc_args = NULL) {
-  rmarkdown::pandoc_available("2.2", TRUE)
+
+  rmarkdown::pandoc_available("2.7", TRUE)
 
   pandoc_args <- c(
     pandoc_args,
@@ -59,6 +60,9 @@ jss_article <- function(..., keep_tex = TRUE, citation_package = "natbib",
 #' @export
 ajs_article <- function(..., keep_tex = TRUE, citation_package = "natbib",
                         pandoc_args = NULL) {
+
+  rmarkdown::pandoc_available("2.7", TRUE)
+
   # set documentclass to ajs for this template
   pandoc_args <- c(
     pandoc_args,

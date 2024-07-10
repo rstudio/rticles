@@ -9,7 +9,7 @@ author:
       | First line
       | Second line
     email: \email{name@company.com}
-    url: http://rstudio.com
+    url: https://posit.co
   - name: Second Author
     orcid: 0000-0000-0000-0000
     affiliation: 'Affiliation \AND'

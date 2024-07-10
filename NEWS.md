@@ -1,5 +1,104 @@
 # rticles (development version)
 
+- Fix `springer_article()` skeleton: It now uses `equal_contribution` in author field (thanks, @nielsbock, #568).
+- Updaye `springer_aticle()` template to version 3 (December 2023): 
+  - BREAKING CHANGE: sn-mathphys.bst has been split into Numbered and Author year style namely `sn-mathphys-num.bst` and `sn-mathphys-ay.bst` respectively. Skeleton has been updated. 
+    If you have existing article, you need to use `sn-mathphys-num` or `sn-mathphys-ay` option now, instead of `sn-mathphys`.
+
+# rticles 0.27
+
+- `joss_article()` now correctly works as `base_format` for `bookdown::pdf_book()` (thanks, @mlysy, #564).
+
+- `oup_article()` now supports also `acknowledgments` in addition to `acknowledgements` as the original OUP LaTeX template (thanks, @dmkaplan2000, #563).
+
+- Update resources for `copernicus_article()` to version 7.8 from 18 March 2024 (@RLumSK) and fix issue #565 reported by @colinasmith
+
+- Update `tf_article()` template to latest bundle update from `InteractCADLaTeX` v1.04 - May 2023.
+  - `thanks: true` will now show the contact information will all authors. Use 
+    
+    ```yaml
+    thanks:
+      author:
+        - name: Author 1
+          email: email 1
+    ```
+    
+    to add specific authors.
+  - `biblio-style` is now supported. It is set by defauilt to `tfcad.bst` for `T&F standard Chicago author-date` style.
+
+# rticles 0.26
+
+## MAJOR CHANGES
+
+- Update WileyNDJ template to V5 for `sim_article()`. This implies new resources files and new available options in template (thanks, @henrikibster, #545).
+
+## MINOR CHANGES
+
+- `elsevier_article()` Rmd skeleton is now updated to show different available bibliostyle file (i.e `*.bst` for _natbib_) with `elsearticle` document class. `biblio-style: elsarticle-harv` is set by default to correctly work with the `authoryear` classoption already set (thanks, @pepijn-devries, #545).
+
+- Update `ajs_article()` resources for the template.
+
+- Update `frontiers_article()` to version 3.4 from 2022. 
+  - New document class file (.cls) and new bibliography style file (.bst)
+  - LaTeX template is also updated
+  - The format is now only compatible with `natbib` citation processor when Pandoc 3.1.7+ is used, because Frontiers documentclass requires usage of `natbib` and it conflicts with pandoc Citeproc.
+
+- Update `mnras_article()` and `lncs_article()` to work with the Pandoc 3.1.7+ citeproc change.
+
+## BUG FIXES
+
+- Update Copernicus Publications template to version 7.5 from 2023-10-20 (@RLumSK, #551).
+
+# rticles 0.25
+
+## BREAKING CHANGES
+
+- `ajs_article()` and `jss_article()` require Pandoc 2.7+ (possibly required by some changes in `jss.cls`).
+
+- `rjournal_article()` is now soft deprecated in favor of `rjtools::rjournal_pdf_article()` as **rjtools** package is now the recommended workflow at <https://rjournal.github.io/submissions.html>. A warning will be thrown when rticles' function is used.
+
+- `springer_article()` has been updated to new LaTeX templates and CTAN package (thanks, @eliocamp, #494). **we really advice to start new article from scratch by creating new document using lates RMakrdown template**. Among changes:
+  - New `.tex` templates derived from [https://www.springernature.com](https://www.springernature.com/gp/authors/campaigns/latex-author-support) using `sn-jnl.cls`
+  - In the format function, `natbib` is now the default citation processing package used (previous it was pandoc citeproc) and `number_sections` is TRUE by default now. Set to `FALSE` for unnumbered headers.
+  - In the YAML header options, `biblio-style` is now ignored as references styling happens with document class option, so using `classoptions` is now required. `PACS` and `MSC` is also ignored in favor of `pacs.jel` and `pacs.msc`. 
+  - The whole authors and affiliation fields has been rewritten - please see template for new format.
+  - Pandoc 2.11.4 and above is now required for this format.
+
+## NEW FEATURES
+
+- `ieee_article()` now supports several affiliations per `authors` when using the `wide: true` mode (thanks, @phamdn, #500).
+
+- Add a helper function `string_to_table()` for documentating configuration from a list copy pasted from a `.tex` template. 
+
+## MINOR CHANGES
+
+- Update to the `mdpi_article()` format (thanks, @mps9506, #515)
+    - New yaml configuration fields.
+    - Now working with `xelatex`.
+    - New template skeleton to start with.
+    - Compatibility with new resources expectations to be in `Definitions/mdpi` folder.
+
+- Improve `elsevier_article()` affilliations for authors by supporting same fields as in official template. This also fix address with comma not showing (thanks, @gjpstrain, @mps9506, #509).
+
+- Update `RJournal.sty` to latest version to support number sections (thanks, @zeileis, #517).
+
+- Update to the `asa_article()` format (thanks, @ianmtaylor1 #506, @jepusto, #507):
+    - Better support for `natbib` to tweak option and biblio-style using Pandoc's variables,
+    - Update to template following the guidelines,
+    - Better support for links in template to be closer to guidelines.
+
+- Adapt some template supporting strikethrough to new Pandoc 3.0+ usage of **soul** instead of **ulem**.
+
+- Some other minors change to templates to be closer to Pandoc's own LaTeX template.
+    
+## BUG FIXES
+
+- Template internal change: `lineno` CTAN package is now loaded after `amsmath` in `peerj_article()`, `elsevier_article()` and `mdpi_article()` because of a conflict with last version of `lineno` (thanks, @bischrob, #513). 
+
+- Update Copernicus Publications template to version 7.3 from 2023-03-17 (@RLumSK, #508, #514, #519).
+
+# rticles 0.24
+
 ## NEW FEATURES
 
 - New `lncs_article()` template for submissions to Lecture Notes in Computer Science (thanks, @eliocamp, #445).
@@ -21,6 +120,8 @@
 - Update Copernicus Publications template to version 6.8 from 2022-03-28 (@RLumSK, #478, #479).
 
 - Update `rjournal_article()` template to match current style file. Package and task view macros use secure links, and the footer includes the year (@mitchelloharawild)
+
+- Updates to Pandoc's template following recent change with new Pandoc version in relevant templates.
 
 # rticles 0.23
 
@@ -48,7 +149,7 @@
 
 ## BUG FIXES
 
-- `graphicx` LaTeX package has been added to `ieee_article()` format (thanks, Sachin Hebbar, [on RStudio Community](https://community.rstudio.com/t/inserting-figures-in-rticles-ieee-transaction-template/129325)).
+- `graphicx` LaTeX package has been added to `ieee_article()` format (thanks, Sachin Hebbar, [on RStudio Community](https://forum.posit.co/t/inserting-figures-in-rticles-ieee-transaction-template/129325)).
 
 # rticles 0.22
 

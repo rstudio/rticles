@@ -72,5 +72,9 @@ reference:
   - title: Journal templates
     contents:
     - ends_with("article")
+  - title: Utility function
+    desc: Functions useful in templates
+    contents:
+    - string_to_table
 
 

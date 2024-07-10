@@ -1,7 +1,10 @@
 ---
 title: "Article Title"
 runtitle: "Short Title"
-documentclass: frontiersSCNS  # or frontiersHLTH, or frontiersFPHY
+documentclass: FrontiersinHarvard # for articles in journals using the Harvard Referencing Style (Author-Date), for Frontiers Reference Styles by Journal: https://zendesk.frontiersin.org/hc/en-us/articles/360017860337-Frontiers-Reference-Styles-by-Journal
+# documentclass: FrontiersinVancouver # for articles in journals using the Vancouver Reference Style (Numbered), for Frontiers Reference Styles by Journal: https://zendesk.frontiersin.org/hc/en-us/articles/360017860337-Frontiers-Reference-Styles-by-Journal
+# documentclass: frontiersinFPHY_FAMS # Vancouver Reference Style (Numbered) for articles in the journals "Frontiers in Physics" and "Frontiers in Applied Mathematics and Statistics" 
+classoption: utf8
 author:
   - name: First Author
     affiliation: '1'
@@ -36,23 +39,24 @@ affiliation:
     city: City X
     state: State XX # only USA, Australia, Canada
     country: Country X
+# Abstract can also be provided at the 
+abstract: |
+  Abstract length and content varies depending on article type. Refer to 
+  <http://www.frontiersin.org/about/AuthorGuidelines> for abstract requirement
+  and length according to article type.
+keywords: # All article types: you may provide up to 8 keywords; at least 5 are mandatory.
+  - kw1
+  - kw2
+  - kw3
+  - kw4
+  - kw5
 output: rticles::frontiers_article
-csl: frontiers.csl
+# csl: frontiers.csl
 bibliography: test.bib
+# Match bibliostyle with the documentclass
+biblio-style: Frontiers-Harvard # Many Frontiers journals use the Harvard referencing system (Author-date), to find the style and resources for the journal you are submitting to: https://zendesk.frontiersin.org/hc/en-us/articles/360017860337-Frontiers-Reference-Styles-by-Journal. For Humanities and Social Sciences articles please include page numbers in the in-text citations 
+#biblio-style: Frontiers-Vancouver # Many Frontiers journals use the numbered referencing system, to find the style and resources for the journal you are submitting to: https://zendesk.frontiersin.org/hc/en-us/articles/360017860337-Frontiers-Reference-Styles-by-Journal
 ---
-
-\begin{abstract}
-
-Abstract length and content varies depending on article type. Refer to 
-\url{http://www.frontiersin.org/about/AuthorGuidelines} for abstract requirement
-and length according to article type.
-
-%All article types: you may provide up to 8 keywords; at least 5 are mandatory.
-\tiny
- \keyFont{ \section{Keywords:} Text Text Text Text Text Text Text Text } 
-
-\end{abstract}
-
 
 # Introduction {-}
 Cite fancy references [@Neuro2013]. As demonstrated in @Gene2012, citations can
@@ -147,24 +151,10 @@ section.
 
 Funding:
 
-# Supplemental Data 
+# Supplemental Data {-}
 
 Supplementary Material should be uploaded separately on submission, if there are
 Supplementary Figures, please include the caption in the same file as the
 figure. LaTeX Supplementary Material templates can be found in the Frontiers
 LaTeX folder
-
-# References
-
-A Frontier article expect the reference list to be included in this section.
-To make that happens, the below syntax can be used. This [feature is from Pandoc citeproc](https://pandoc.org/MANUAL.html#placement-of-the-bibliography) which is used with `frontier_article()` to handle the bibliography
-
-::: {#refs}
-:::
-
-# Figures {-}
-
-```{r, Figure-1, ref.label = "graph", results = "hide", echo = FALSE, message = FALSE, fig.height=4, fig.width=4, fig.align='center', fig.cap='Figure caption', out.width = "85mm", out.height = "85mm"}
-# You can also refer to code chunks from above to place figures at the bottom.
-```
 

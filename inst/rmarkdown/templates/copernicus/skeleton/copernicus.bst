@@ -1,17 +1,14 @@
 %%
-%% This is file `copernicus.bst', version 1.4 (March 2022),
+%% This is file `copernicus.bst', version 1.6 (October 2023)
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
 %%
-%% merlin.mbs  (with options: `head,ay,nat,seq-key,nm-rev,ed-rev,keyxyr,blkyear,dt-end,note-yr,atit-u,jttl-rm,vnum-x,volp-com,pgsep-s,num-xser,btit-rm,bt-rm,agu-doi,doi,edby,blk-com,au-col,in-col,pp,ed,abr,xedn,jabr,url,url-nt,{}')
-%% physjour.mbs  (with options: `ay,nat,seq-key,nm-rev,ed-rev,keyxyr,blkyear,dt-end,note-yr,atit-u,jttl-rm,vnum-x,volp-com,pgsep-s,num-xser,btit-rm,bt-rm,agu-doi,doi,edby,blk-com,au-col,in-col,pp,ed,abr,xedn,jabr,url,url-nt,{}')
-%% geojour.mbs  (with options: `ay,nat,seq-key,nm-rev,ed-rev,keyxyr,blkyear,dt-end,note-yr,atit-u,jttl-rm,vnum-x,volp-com,pgsep-s,num-xser,btit-rm,bt-rm,agu-doi,doi,edby,blk-com,au-col,in-col,pp,ed,abr,xedn,jabr,url,url-nt,{}')
-%% merlin.mbs  (with options: `tail,ay,nat,seq-key,nm-rev,ed-rev,keyxyr,blkyear,dt-end,note-yr,atit-u,jttl-rm,vnum-x,volp-com,pgsep-s,num-xser,btit-rm,bt-rm,agu-doi,doi,edby,blk-com,au-col,in-col,pp,ed,abr,xedn,jabr,url,url-nt,{}')
+%% merlin.mbs  (with options: `head,ay,nat,seq-key,nm-rev,ed-rev,keyxyr,blkyear,dt-end,note-yr,atit-u,jttl-rm,vnum-x,volp-com,pgsep-s,num-xser,btit-rm,bt-rm,isbn,issn,doi,url-doi,edby,blk-com,au-col,in-col,pp,ed,abr,xedn,jabr,url,url-nt,nfss,')
 %% ----------------------------------------
 %% *** For journals of Copernicus Publications ***
 %% 
-%% Copyright 1994-2006 Patrick W Daly
+%% Copyright 1994-2011 Patrick W Daly
  % ===============================================================
  % IMPORTANT NOTICE:
  % This bibliographic style (bst) file has been generated from one or
@@ -23,7 +20,7 @@
  % version 1 of the License, or any later version.
  % ===============================================================
  % Name and version information of the main mbs file:
- % \ProvidesFile{merlin.mbs}[2006/02/15 4.16 (PWD, AO, DPC)]
+ % \ProvidesFile{merlin.mbs}[2011/11/18 4.33 (PWD, AO, DPC)]
  %   For use with BibTeX version 0.99a or later
  %-------------------------------------------------------------------
  % This bibliography style file is intended for texts in ENGLISH
@@ -48,14 +45,16 @@
  %   \citep*{key} ==>>               (Jones, Baker, and Smith, 1990)
  %   \citep[chap. 2]{key} ==>>       (Jones et al., 1990, chap. 2)
  %   \citep[e.g.][]{key} ==>>        (e.g. Jones et al., 1990)
- %   \citep[e.g.][p. 32]{key} ==>>   (e.g. Jones et al., p. 32)
- %   \citealp{key} ==>>              Jones et al., 1990
+ %   \citep[e.g.][p. 32]{key} ==>>   (e.g. Jones et al., 1990, p. 32)
  %   \citeauthor{key} ==>>           Jones et al.
  %   \citeauthor*{key} ==>>          Jones, Baker, and Smith
  %   \citeyear{key} ==>>             1990
  %---------------------------------------------------------------------
 
-                         
+%% Rolf Sander (2023):
+%% - ISBN also for phdthesis and techreport
+%% - urlprefix is now empty
+
 ENTRY
   { address
     author
@@ -67,6 +66,8 @@ ENTRY
     eid
     howpublished
     institution
+    isbn
+    issn
     journal
     key
     month
@@ -196,7 +197,7 @@ FUNCTION {field.or.null}
 FUNCTION {emphasize}
 { duplicate$ empty$
     { pop$ "" }
-    { "{\em " swap$ * "\/}" * }
+    { "\emph{" swap$ * "}" * }
   if$
 }
 FUNCTION {tie.or.space.prefix}
@@ -502,8 +503,7 @@ MACRO {ww} {"Weatherwise"}
 MACRO {wmob} {"WMO Bull."}
 MACRO {zeitmet} {"Z. Meteorol."}
  % End module: geojour.mbs
-%% Copyright 1994-2006 Patrick W Daly
-MACRO {acmcs} {"ACM Comput. Surv."}
+%% Copyright 1994-2006 Patrick W DalyMACRO {acmcs} {"ACM Comput. Surv."}
 
 MACRO {acta} {"Acta Inf."}
 
@@ -659,6 +659,24 @@ FUNCTION {format.editors}
     }
   if$
 }
+FUNCTION {format.isbn}
+{ isbn "isbn" bibinfo.check
+  duplicate$ empty$ 'skip$
+    {
+      "ISBN " swap$ *
+    }
+  if$
+}
+
+FUNCTION {format.issn}
+{ issn "issn" bibinfo.check
+  duplicate$ empty$ 'skip$
+    {
+      "ISSN " swap$ *
+    }
+  if$
+}
+
 FUNCTION {format.doi}
 { doi "doi" bibinfo.check
   duplicate$ empty$ 'skip$
@@ -1138,7 +1156,7 @@ FUNCTION {article}
       "journal" bibinfo.check
       "journal" output.check
       format.vol.num.pages output
-  format.doi output
+	  format.doi output
     }
     { format.article.crossref output.nonnull
       format.pages output
@@ -1174,6 +1192,7 @@ FUNCTION {book}
     }
   if$
   format.edition output
+  format.isbn output
   format.doi output
   format.note output
   format.date "year" output.check
@@ -1187,6 +1206,7 @@ FUNCTION {booklet}
   format.title "title" output.check
   howpublished "howpublished" bibinfo.check output
   address "address" bibinfo.check output
+  format.isbn output
   format.doi output
   format.note output
   format.date "year" output.check
@@ -1222,6 +1242,10 @@ FUNCTION {inbook}
     }
   if$
   format.edition output
+  crossref missing$
+    { format.isbn output }
+    'skip$
+  if$
   format.doi output
   format.note output
   format.date "year" output.check
@@ -1241,6 +1265,7 @@ FUNCTION {incollection}
       format.chapter.pages output
       format.publisher.address output
       format.edition output
+      format.isbn output
     }
     { format.incoll.inproc.crossref output.nonnull
       format.chapter.pages output
@@ -1268,6 +1293,8 @@ FUNCTION {inproceedings}
           format.publisher.address output
         }
       if$
+      format.isbn output
+      format.issn output
     }
     { format.incoll.inproc.crossref output.nonnull
       format.pages output
@@ -1332,6 +1359,8 @@ FUNCTION {phdthesis}
   bbl.phdthesis format.thesis.type output.nonnull
   school "school" bibinfo.warn output
   address "address" bibinfo.check output
+  format.isbn output
+  format.issn output
   format.doi output
   format.note output
   format.date "year" output.check
@@ -1352,6 +1381,8 @@ FUNCTION {proceedings}
       format.publisher.address output
     }
   if$
+  format.isbn output
+  format.issn output
   format.doi output
   format.note output
   format.date "year" output.check
@@ -1368,6 +1399,8 @@ FUNCTION {techreport}
   format.tr.number output.nonnull
   institution "institution" bibinfo.warn output
   address "address" bibinfo.check output
+  format.isbn output
+  format.issn output
   format.doi output
   format.note output
   format.date "year" output.check
@@ -1504,14 +1537,15 @@ FUNCTION {sort.format.names}
         {
           "   "  *
           namesleft #1 = t "others" = and
-            { "zzzzz" * }
-            { numnames #2 > nameptr #2 = and
-                { "zz" * year field.or.null * "   " * }
-                'skip$
-              if$
-              t sortify *
-            }
+            { "zzzzz" 't := }
+            'skip$
           if$
+          numnames #2 > nameptr #2 = and
+            { "zz" * year field.or.null * "   " *
+            }
+            'skip$
+          if$
+          t sortify *
         }
         { t sortify * }
       if$
@@ -1590,10 +1624,7 @@ FUNCTION {presort}
   'sort.label :=
   sort.label
   *
-  "    "
-  *
-  cite$
-  *
+  "    " * cite$ *
   #1 entry.max$ substring$
   'sort.key$ :=
 }
@@ -1601,17 +1632,30 @@ FUNCTION {presort}
 ITERATE {presort}
 SORT
 STRINGS { last.label next.extra }
-INTEGERS { last.extra.num number.label }
+INTEGERS { last.extra.num last.extra.num.extended last.extra.num.blank number.label }
 FUNCTION {initialize.extra.label.stuff}
 { #0 int.to.chr$ 'last.label :=
   "" 'next.extra :=
   #0 'last.extra.num :=
+  "a" chr.to.int$ #1 - 'last.extra.num.blank :=
+  last.extra.num.blank 'last.extra.num.extended :=
   #0 'number.label :=
 }
 FUNCTION {forward.pass}
 { last.label label =
     { last.extra.num #1 + 'last.extra.num :=
-      last.extra.num int.to.chr$ 'extra.label :=
+      last.extra.num "z" chr.to.int$ >
+       { "a" chr.to.int$ 'last.extra.num :=
+         last.extra.num.extended #1 + 'last.extra.num.extended :=
+       }
+       'skip$
+      if$
+      last.extra.num.extended last.extra.num.blank >
+        { last.extra.num.extended int.to.chr$
+          last.extra.num int.to.chr$
+          * 'extra.label := }
+        { last.extra.num int.to.chr$ 'extra.label := }
+      if$
     }
     { "a" chr.to.int$ 'last.extra.num :=
       "" 'extra.label :=
@@ -1643,10 +1687,7 @@ FUNCTION {bib.sort.order}
   *
   year field.or.null sortify
   *
-  "    "
-  *
-  cite$
-  *
+  "    " * cite$ *
   #1 entry.max$ substring$
   'sort.key$ :=
 }
@@ -1661,9 +1702,9 @@ FUNCTION {begin.bib}
   write$ newline$
   "\providecommand{\natexlab}[1]{#1}"
   write$ newline$
-  "\providecommand{\url}[1]{{\tt #1}}"
+  "\providecommand{\url}[1]{\texttt{#1}}"
   write$ newline$
-  "\providecommand{\urlprefix}{URL }"
+  "\providecommand{\urlprefix}{}"
   write$ newline$
   "\expandafter\ifx\csname urlstyle\endcsname\relax"
   write$ newline$

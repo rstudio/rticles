@@ -33,7 +33,7 @@ acm_article <- function(...) {
 
 #' @section `acs_article`: Format for creating an American Chemical Society
 #'   (ACS) Journal articles. Adapted from
-#'   <https://pubs.acs.org/page/4authors/submission/tex.html>.
+#'   `https://pubs.acs.org/page/4authors/submission/tex.html`
 #' @export
 #' @rdname article
 acs_article <- function(..., keep_tex = TRUE,
@@ -60,7 +60,7 @@ aea_article <- function(..., keep_tex = TRUE,
 
 #' @section `agu_article`: Format for creating a American Geophysical Union
 #'   (AGU) article. Adapted from
-#'   <https://www.agu.org/Publish-with-AGU/Publish/#1>.
+#'   <https://www.agu.org/publish-with-agu/publish#1>.
 #' @export
 #' @rdname article
 agu_article <- function(..., keep_tex = TRUE,
@@ -100,11 +100,14 @@ ams_article <- function(..., keep_tex = TRUE,
 }
 
 #' @section `asa_article`: This format was adapted from The American
-#'   Statistican (TAS) format, but it should be fairly consistent across
+#'   Statistician (TAS) format, but it should be fairly consistent across
 #'   American Statistical Association (ASA) journals.
 #' @export
 #' @rdname article
 asa_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
+  if (citation_package == "biblatex") {
+    stop("ASA template does not support `biblatex` for citation processing.")
+  }
   pdf_document_format(
     "asa",
     keep_tex = keep_tex, citation_package = citation_package, ...
@@ -166,7 +169,7 @@ ctex <- ctex_article
 
 #' @section `elsevier_article`: Format for creating submissions to Elsevier
 #'   journals. Adapted from
-#'   <https://www.elsevier.com/authors/policies-and-guidelines/latex-instructions>.
+#'   <https://www.elsevier.com/researcher/author/policies-and-guidelines/latex-instructions>.
 #'
 #' It requires a minimum version of 2.10 for Pandoc.
 #' @export
@@ -192,8 +195,12 @@ elsevier_article <- function(..., keep_tex = TRUE,
 #'   <https://www.frontiersin.org/about/author-guidelines>.
 #' @export
 #' @rdname article
-frontiers_article <- function(..., keep_tex = TRUE) {
-  pdf_document_format("frontiers", keep_tex = keep_tex, ...)
+frontiers_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
+  # check all arguments for format's default
+  if (citation_package != "natbib" && rmarkdown::pandoc_available("3.1.7")) {
+    stop("Frontiers template only supports 'natbib' for citation processing. Pandoc citeproc is no more compatible with the Frontier documentclass.")
+  }
+  pdf_document_format("frontiers", keep_tex = keep_tex, citation_package = citation_package,...)
 }
 
 
@@ -249,7 +256,7 @@ ims_article <- function(journal = c("aoas", "aap", "aop", "aos", "sts"),
   )
 
   # Convert to pandoc arguments
-  pandoc_arg_list <- vec_to_pandoc_variable_args(args)
+  pandoc_arg_list <- list_to_pandoc_variable_args(args)
 
   pdf_document_format(
     "ims",
@@ -269,6 +276,7 @@ informs_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
   if (citation_package != "natbib") {
     stop("INFORMS template only supports `natbib` for citation processing.")
   }
+
   if (!rmarkdown::pandoc_available("2.10")) {
     stop("informs_article requires a minimum of pandoc 2.10.")
   }
@@ -361,13 +369,99 @@ jedm_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
 #' @section `mdpi_article`: Format for creating submissions to
 #'   Multidisciplinary Digital Publishing Institute (MDPI) journals. Adapted
 #'   from <https://www.mdpi.com/authors/latex>.
+#'
+#' Possible arguments for the YAML header are:
+#' * `title` title of the manuscript
+#' * `author` list of authors, containing `name`, `affil`, and `orcid` (optional)
+#' * `affiliation` list containing `num`, `address`, and `email` for defining `author` affiliations
+#' * `authorcitation` string with last name and first intial of authors as expected to be shown in a reference
+#' * `firstnote` can include `firstnote` through `eightnote` that correspond to footnote marks in `affil`
+#' * `correspondence` contact information of the corresponding author
+#' * `journal` short name (case sensitive) of the journal, see template for options
+#' * `type` usually "article" but see template for options
+#' * `status` usually "submit"
+#' * `simplesummary` optional, may depend on specific journal
+#' * `abstract` abstract, limited to 200 words
+#' * `keywords` 3 to 10 keywords seperated with a semicolon
+#' * `acknowledgement` acknowledgement backmatter (optional)
+#' * `authorcontributions` report authorship contributions (optional)
+#' * `funding` research funding statement
+#' * `institutionalreview` IRB statements (optional)
+#' * `informedconsent` Informed consent statements for human research (optional)
+#' * `dataavailability` Links to datasets or archives (optional)
+#' * `conflictsofinterest` Conflict of interest statement (see journal  instructions)
+#' * `sampleavailability` Sample availability statement (optional)
+#' * `supplementary` Supplementary data statement, see template for example (optional)
+#' * `abbreviations` list of abbreviations containing `short` and `long`
+#' * `bibliography` BibTeX `.bib` file
+#' * `appendix` name of appendix tex file
+#' * `endnote` boolean, if `TRUE` will print list of endnotes if included in text (optional)
+#' * `header-includes`: custom additions to the header, before the `\begin{document}` statement
+#' * `include-after`: for including additional LaTeX code before the `\end{document}` statement
 #' @export
 #' @rdname article
-mdpi_article <- function(..., keep_tex = TRUE) {
-  pdf_document_format(
+mdpi_article <- function(..., keep_tex = TRUE, latex_engine = "pdflatex", pandoc_args = NULL, citation_package = "natbib") {
+
+  # check all arguments for format's default
+  if (citation_package != "natbib") {
+      stop("MDPI template only supports 'natbib' for citation processing.")
+  }
+
+  ## check if latex engine is pdflatex or xelatex
+  if(!latex_engine %in% c("pdflatex", "xelatex")) {
+    stop("`latex_engine` must be one of 'pdflatex' or 'xelatex' when using the MDPI template.")
+  }
+
+  ## check location of mdpi.cls file (new versions are in subfolder)
+  ## to ensure compatibility with old versions
+  cls_loc <- if(file.exists("mdpi.cls")) "mdpi" else "Definitions/mdpi"
+  pandoc_args <- c(pandoc_args, rmarkdown::pandoc_variable_arg("cls", cls_loc))
+
+  ## if latex engine is pdflatex, mdpi class argument must be pdftex
+  if(latex_engine == "pdflatex") {
+    pandoc_args <- c(pandoc_args, rmarkdown::pandoc_variable_arg("pdftex", "pdftex"))
+  }
+
+  base <- pdf_document_format(
     "mdpi",
-    keep_tex = keep_tex, citation_package = "natbib", ...
+    keep_tex = keep_tex,
+    citation_package = "natbib",
+    latex_engine = latex_engine,
+    pandoc_args = pandoc_args,
+    ...
   )
+
+  base_pre_processor <- base$pre_processor
+
+  ## pre_processor checks if author metadata > 1 and uses moreauthors mdpi class
+  ## argument
+  mdpi_pre_processor <- function(metadata,
+                            input_file,
+                            runtime,
+                            knit_meta,
+                            files_dir,
+                            output_dir) {
+    args <- c(
+      # run the base prepocessor of the format
+      if (is.function(base_pre_processor)) {
+        base_pre_processor(
+          metadata, input_file, runtime, knit_meta, files_dir, output_dir
+        )
+      },
+      # Set a variable based on metadata field
+      if (!is.null(metadata$author)) {
+        if (length(metadata$author) > 1) {
+          rmarkdown::pandoc_variable_arg("multipleauthors", "moreauthors")
+        } else {
+          rmarkdown::pandoc_variable_arg("multipleauthors", "oneauthor")
+        }
+      }
+    )
+    args
+  }
+
+  base$pre_processor <- mdpi_pre_processor
+  base
 }
 
 #' @section `mnras_article`: Format for creating an Monthly Notices of
@@ -432,8 +526,8 @@ pnas_article <- function(..., keep_tex = TRUE) {
 }
 
 #' @section `sage_article`: Format for creating submissions to Sage
-#'   Journals. Based on the official Sage Journals
-#'   \verb{https://uk.sagepub.com/sites/default/files/sage_latex_template_4.zip}{class}.
+#'   Journals. Based on the official Sage Journals Class.
+#'   Available at `https://uk.sagepub.com/sites/default/files/sage_latex_template_4.zip`.
 #'
 #' Possible arguments for the YAML header are:
 #' * `title` title of the manuscript
@@ -459,7 +553,9 @@ sage_article <- function(..., highlight = NULL, citation_package = "natbib") {
 
 #' @section `sim_article`: Format for creating submissions to Statistics in
 #'   Medicine. Based on the official Statistics in Medicine
-#'   [class](http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm).
+#'   at `https://authorservices.wiley.com/author-resources/Journal-Authors/Prepare/new-journal-design.html`.
+#'
+#'   This format uses xelatex by default as PDF engine to support the specific NJD fonts, per guideline.
 #'
 #' Possible arguments for the YAML header are:
 #' * `title` title of the manuscript
@@ -471,17 +567,18 @@ sage_article <- function(..., highlight = NULL, citation_package = "natbib") {
 #' * `received`, `revised`, `accepted` dates of submission, revision, and acceptance of the manuscript
 #' * `abstract` abstract, limited to 250 words
 #' * `keywords` up to 6 keywords
+#' * `abbreviations`, list of abbreviations and description separated by a comma
 #' * `bibliography` BibTeX `.bib` file
-#' * `classoption` options of the `WileyNJD-v2` class
+#' * `classoption` options of the `WileyNJD` class
 #' * `longtable` set to `true` to include the `longtable` package, used by default from `pandoc` to convert markdown to LaTeX code
 #' * `header-includes`: custom additions to the header, before the `\begin{document}` statement
 #' * `include-after`: for including additional LaTeX code before the `\end{document}` statement
 #' @export
 #' @rdname article
-sim_article <- function(..., highlight = NULL, citation_package = "natbib") {
+sim_article <- function(..., highlight = NULL, citation_package = "natbib", latex_engine = "xelatex") {
   pdf_document_format(
     "sim",
-    highlight = highlight, citation_package = citation_package, ...
+    highlight = highlight, citation_package = citation_package, latex_engine = latex_engine, ...
   )
 }
 
@@ -489,12 +586,68 @@ sim_article <- function(..., highlight = NULL, citation_package = "natbib") {
 #'   Macro package for Springer Journals.
 #' @export
 #' @rdname article
-springer_article <- function(..., keep_tex = TRUE,
-                             citation_package = "default") {
-  pdf_document_format(
+springer_article <- function(..., keep_tex = TRUE,  citation_package = "natbib",
+                             number_sections = TRUE, latex_engine = "pdflatex",
+                             pandoc_args = NULL) {
+
+  if (!rmarkdown::pandoc_available("2.11.4")) {
+    stop("`springer_article()` now requires a minimum of pandoc 2.11.4")
+  }
+
+  if (citation_package == "biblatex") {
+    stop("'springer_article' does not support `biblatex` for citation processing. Use 'natbib' instead.")
+  }
+
+  # to compile with pdflatex/xelatex
+  # use pdflatex option in the pandoc's template for the document class
+  if(latex_engine %in% c("pdflatex", "xelatex")) {
+    pandoc_args <- c(pandoc_args, rmarkdown::pandoc_variable_arg("pdflatex"))
+  }
+
+  if(!number_sections) {
+    pandoc_args <- c(pandoc_args, rmarkdown::pandoc_variable_arg("unnumbered"))
+  }
+
+  format <- pdf_document_format(
     "springer",
-    keep_tex = keep_tex, citation_package = citation_package, ...
+    keep_tex = keep_tex,
+    citation_package = citation_package,
+    number_sections = number_sections,
+    latex_engine = latex_engine,
+    pandoc_args = pandoc_args, ...
   )
+
+  pre_knit_fun <- format$pre_knit
+  format$pre_knit <-  function(input, ...) {
+    if (is.function(pre_knit_fun)) pre_knit_fun(input, ...)
+    # for backward compatibility as we changed the template in
+    # https://github.com/rstudio/rticles/pull/494
+    options <- rmarkdown::yaml_front_matter(input)
+    new_template_msg <- function(ver) return (c(sprintf("If you are rendering an old Rmd, be advise that the template has changed in version '%s'\n", ver),
+    " and you should check new template or start from a fresh template to get latest resources and new YAML header format."))
+    if (is.null(options[["classoptions"]])) {
+      stop("`springer_article()` now requires the 'classoptions' field in YAML front matter. ",
+           new_template_msg("0.25"), call. = FALSE)
+    } else if ("sn-mathphys" %in% options[["classoptions"]]) {
+      stop("classoptions `sn-mathphys` detected. `springer_article()` now uses 'sn-mathphys-num' or `sn-mathphys-ay`. ",
+              new_template_msg("0.28"), call. = FALSE)
+    }
+    if (!is.null(options[["biblio-style"]])) {
+      warning("`springer_article()` now ignores the 'biblio-style' field in YAML front matter. ",
+      "Reference style for 'natbib' is now set using the 'classoptions' field.\n",
+      new_template_msg("0.25"))
+    }
+    if (!is.null(options[["PACS"]])) {
+      warning("`springer_article()` now ignores the 'PACS' field in YAML front matter to use `pacs.jel` and `pacs.msc`. ",
+              new_template_msg("0.25"))
+    }
+    if (!is.null(options[["authors"]][["name"]])) {
+      stop("`springer_article()` now uses different authors and affiliations fields.\n",
+              new_template_msg("0.25"), call. = FALSE)
+    }
+    return(invisible(NULL))
+  }
+  format
 }
 
 #' @section `tf_article`: Format for creating submissions to a Taylor & Francis journal. Adapted from

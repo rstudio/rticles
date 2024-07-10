@@ -86,7 +86,7 @@ elsevier_article(
   citation_package = "natbib"
 )
 
-frontiers_article(..., keep_tex = TRUE)
+frontiers_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 glossa_article(..., keep_tex = TRUE, latex_engine = "xelatex")
 
@@ -122,7 +122,13 @@ lncs_article(..., keep_tex = TRUE, citation_package = c("default", "natbib"))
 
 jedm_article(..., keep_tex = TRUE, citation_package = "natbib")
 
-mdpi_article(..., keep_tex = TRUE)
+mdpi_article(
+  ...,
+  keep_tex = TRUE,
+  latex_engine = "pdflatex",
+  pandoc_args = NULL,
+  citation_package = "natbib"
+)
 
 mnras_article(..., keep_tex = TRUE, fig_caption = TRUE)
 
@@ -141,9 +147,21 @@ pnas_article(..., keep_tex = TRUE)
 
 sage_article(..., highlight = NULL, citation_package = "natbib")
 
-sim_article(..., highlight = NULL, citation_package = "natbib")
+sim_article(
+  ...,
+  highlight = NULL,
+  citation_package = "natbib",
+  latex_engine = "xelatex"
+)
 
-springer_article(..., keep_tex = TRUE, citation_package = "default")
+springer_article(
+  ...,
+  keep_tex = TRUE,
+  citation_package = "natbib",
+  number_sections = TRUE,
+  latex_engine = "pdflatex",
+  pandoc_args = NULL
+)
 
 tf_article(..., keep_tex = TRUE, citation_package = "natbib")
 
@@ -189,7 +207,7 @@ Machinery (ACM) articles. Adapted from
 \section{\code{acs_article}}{
  Format for creating an American Chemical Society
 (ACS) Journal articles. Adapted from
-\url{https://pubs.acs.org/page/4authors/submission/tex.html}.
+\verb{https://pubs.acs.org/page/4authors/submission/tex.html}
 }
 
 \section{\code{aea_article}}{
@@ -200,7 +218,7 @@ Economic Association (AER, AEJ, JEL, PP).
 \section{\code{agu_article}}{
  Format for creating a American Geophysical Union
 (AGU) article. Adapted from
-\url{https://www.agu.org/Publish-with-AGU/Publish/#1}.
+\url{https://www.agu.org/publish-with-agu/publish#1}.
 }
 
 \section{\code{amq_article}}{
@@ -216,7 +234,7 @@ Society (AMS) Journal articles. Adapted from
 
 \section{\code{asa_article}}{
  This format was adapted from The American
-Statistican (TAS) format, but it should be fairly consistent across
+Statistician (TAS) format, but it should be fairly consistent across
 American Statistical Association (ASA) journals.
 }
 
@@ -247,7 +265,7 @@ function \code{ctex} is an alias of \code{ctex_article}.
 \section{\code{elsevier_article}}{
  Format for creating submissions to Elsevier
 journals. Adapted from
-\url{https://www.elsevier.com/authors/policies-and-guidelines/latex-instructions}.
+\url{https://www.elsevier.com/researcher/author/policies-and-guidelines/latex-instructions}.
 
 It requires a minimum version of 2.10 for Pandoc.
 }
@@ -329,6 +347,37 @@ Data Mining (JEDM) articles. Adapted from
  Format for creating submissions to
 Multidisciplinary Digital Publishing Institute (MDPI) journals. Adapted
 from \url{https://www.mdpi.com/authors/latex}.
+
+Possible arguments for the YAML header are:
+\itemize{
+\item \code{title} title of the manuscript
+\item \code{author} list of authors, containing \code{name}, \code{affil}, and \code{orcid} (optional)
+\item \code{affiliation} list containing \code{num}, \code{address}, and \code{email} for defining \code{author} affiliations
+\item \code{authorcitation} string with last name and first intial of authors as expected to be shown in a reference
+\item \code{firstnote} can include \code{firstnote} through \code{eightnote} that correspond to footnote marks in \code{affil}
+\item \code{correspondence} contact information of the corresponding author
+\item \code{journal} short name (case sensitive) of the journal, see template for options
+\item \code{type} usually "article" but see template for options
+\item \code{status} usually "submit"
+\item \code{simplesummary} optional, may depend on specific journal
+\item \code{abstract} abstract, limited to 200 words
+\item \code{keywords} 3 to 10 keywords seperated with a semicolon
+\item \code{acknowledgement} acknowledgement backmatter (optional)
+\item \code{authorcontributions} report authorship contributions (optional)
+\item \code{funding} research funding statement
+\item \code{institutionalreview} IRB statements (optional)
+\item \code{informedconsent} Informed consent statements for human research (optional)
+\item \code{dataavailability} Links to datasets or archives (optional)
+\item \code{conflictsofinterest} Conflict of interest statement (see journal  instructions)
+\item \code{sampleavailability} Sample availability statement (optional)
+\item \code{supplementary} Supplementary data statement, see template for example (optional)
+\item \code{abbreviations} list of abbreviations containing \code{short} and \code{long}
+\item \code{bibliography} BibTeX \code{.bib} file
+\item \code{appendix} name of appendix tex file
+\item \code{endnote} boolean, if \code{TRUE} will print list of endnotes if included in text (optional)
+\item \code{header-includes}: custom additions to the header, before the \verb{\\begin\{document\}} statement
+\item \code{include-after}: for including additional LaTeX code before the \verb{\\end\{document\}} statement
+}
 }
 
 \section{\code{mnras_article}}{
@@ -366,8 +415,8 @@ journals.
 
 \section{\code{sage_article}}{
  Format for creating submissions to Sage
-Journals. Based on the official Sage Journals
-\verb{https://uk.sagepub.com/sites/default/files/sage_latex_template_4.zip}{class}.
+Journals. Based on the official Sage Journals Class.
+Available at \verb{https://uk.sagepub.com/sites/default/files/sage_latex_template_4.zip}.
 
 Possible arguments for the YAML header are:
 \itemize{
@@ -389,7 +438,9 @@ Possible arguments for the YAML header are:
 \section{\code{sim_article}}{
  Format for creating submissions to Statistics in
 Medicine. Based on the official Statistics in Medicine
-\href{http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1097-0258/homepage/la_tex_class_file.htm}{class}.
+at \verb{https://authorservices.wiley.com/author-resources/Journal-Authors/Prepare/new-journal-design.html}.
+
+This format uses xelatex by default as PDF engine to support the specific NJD fonts, per guideline.
 
 Possible arguments for the YAML header are:
 \itemize{
@@ -402,8 +453,9 @@ Possible arguments for the YAML header are:
 \item \code{received}, \code{revised}, \code{accepted} dates of submission, revision, and acceptance of the manuscript
 \item \code{abstract} abstract, limited to 250 words
 \item \code{keywords} up to 6 keywords
+\item \code{abbreviations}, list of abbreviations and description separated by a comma
 \item \code{bibliography} BibTeX \code{.bib} file
-\item \code{classoption} options of the \code{WileyNJD-v2} class
+\item \code{classoption} options of the \code{WileyNJD} class
 \item \code{longtable} set to \code{true} to include the \code{longtable} package, used by default from \code{pandoc} to convert markdown to LaTeX code
 \item \code{header-includes}: custom additions to the header, before the \verb{\\begin\{document\}} statement
 \item \code{include-after}: for including additional LaTeX code before the \verb{\\end\{document\}} statement

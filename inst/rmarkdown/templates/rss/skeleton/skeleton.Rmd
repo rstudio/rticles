@@ -20,7 +20,7 @@ authors:
 abstract: |
   Abstract goes here
 keywords: keywords
-bibliography: "bibliography"
+# bibliography: bibliography.bib
 output: rticles::rss_article
 ---
 
