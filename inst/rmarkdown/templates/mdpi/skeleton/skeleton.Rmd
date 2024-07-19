@@ -115,8 +115,6 @@ conflictsofinterest: |
   please state 'The founding sponsors had no role in the design of the study; 
   in the collection, analyses, or interpretation of data; in the writing of the 
   manuscript, an in the decision to publish the results'.
-sampleavailability: |
-  Samples of the compounds ...... are available from the authors.
 supplementary: |
  The following supporting information can be downloaded at:  
  \linksupplementary{s1}, Figure S1: title; Table S1: title; Video S1: title.
