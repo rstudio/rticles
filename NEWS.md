@@ -5,7 +5,7 @@
   - BREAKING CHANGE: sn-mathphys.bst has been split into Numbered and Author year style namely `sn-mathphys-num.bst` and `sn-mathphys-ay.bst` respectively. Skeleton has been updated. 
     If you have existing article, you need to use `sn-mathphys-num` or `sn-mathphys-ay` option now, instead of `sn-mathphys`.
 
-- Update Copernicus Publications template to version 7.9 from 2024-10-10 (@RLumSK, ).
+- Update Copernicus Publications template to version 7.9 from 2024-10-10 (@RLumSK, #577).
 
 # rticles 0.27
 
