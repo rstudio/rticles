@@ -1,9 +1,11 @@
 # rticles (development version)
 
 - Fix `springer_article()` skeleton: It now uses `equal_contribution` in author field (thanks, @nielsbock, #568).
-- Updaye `springer_aticle()` template to version 3 (December 2023): 
+- Update `springer_aticle()` template to version 3 (December 2023): 
   - BREAKING CHANGE: sn-mathphys.bst has been split into Numbered and Author year style namely `sn-mathphys-num.bst` and `sn-mathphys-ay.bst` respectively. Skeleton has been updated. 
     If you have existing article, you need to use `sn-mathphys-num` or `sn-mathphys-ay` option now, instead of `sn-mathphys`.
+
+- Update Copernicus Publications template to version 7.9 from 2024-10-10 (@RLumSK, ).
 
 # rticles 0.27
 

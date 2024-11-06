@@ -61,7 +61,7 @@ This was adapted from
 
 An number of required and optional manuscript sections, e.g. \code{acknowledgements}, \code{competinginterests}, or \code{authorcontribution}, must be declared using the respective properties of the R Markdown header - see skeleton file.
 
-\strong{Version:} Based on \code{copernicus_package.zip} in the version 7.8, 18 March 2024, using \code{copernicus.cls} in version 10.1.11, 03 January.
+\strong{Version:} Based on \code{copernicus_package.zip} in the version 7.7, 10 September 2024, using \code{copernicus.cls} in version 10.1.20, 10 September 2024.
 
 \strong{Copernicus journal abbreviations:} You can use the function \code{copernicus_journal_abbreviations()} to get the journal abbreviation for all journals supported by the Copernicus article template.
 
