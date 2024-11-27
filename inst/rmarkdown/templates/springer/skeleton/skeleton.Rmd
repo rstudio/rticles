@@ -27,7 +27,6 @@ authors:
     suffix: III
     naturename: Poet Laureate
     degrees: MSc, PhD
-    orcid: 0000-0000-0000-0000
     email: abc@def
     affiliation: [1,2]
     corresponding: TRUE

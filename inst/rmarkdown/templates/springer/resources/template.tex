@@ -30,7 +30,6 @@
 \usepackage{algorithmicx}%
 \usepackage{algpseudocode}%
 \usepackage{listings}%
-\usepackage{orcidlink}%
 %%%%
 
 %%%%%=============================================================================%%%%
@@ -214,7 +213,7 @@ $endfor$
 %%=============================================================%%
 
 $for(authors)$
-\author$if(authors.corresponding)$*$endif$[$for(authors.affiliation)$$authors.affiliation$$sep$,$endfor$]{$if(authors.prefix)$\pfx{$authors.prefix$} $endif$$if(authors.firstname)$\fnm{$authors.firstname$} $endif$$if(authors.particle)$\spfx{$authors.particle$} $endif$$if(authors.lastname)$\sur{$authors.lastname$} $endif$$if(authors.suffix)$\sfx{$authors.suffix$} $endif$$if(authors.naturename)$\tanm{$authors.naturename$} $endif$$if(authors.degrees)$\dgr{$authors.degrees$}$endif$$if(authors.orcid)$\orcidlink{$authors.orcid$}$endif$}$if(authors.email)$\email{$authors.email$}$endif$
+\author$if(authors.corresponding)$*$endif$[$for(authors.affiliation)$$authors.affiliation$$sep$,$endfor$]{$if(authors.prefix)$\pfx{$authors.prefix$} $endif$$if(authors.firstname)$\fnm{$authors.firstname$} $endif$$if(authors.particle)$\spfx{$authors.particle$} $endif$$if(authors.lastname)$\sur{$authors.lastname$} $endif$$if(authors.suffix)$\sfx{$authors.suffix$} $endif$$if(authors.naturename)$\tanm{$authors.naturename$} $endif$$if(authors.degrees)$\dgr{$authors.degrees$}$endif$}$if(authors.email)$\email{$authors.email$}$endif$
 $if(authors.equal_contribution)$\equalcont{$authors.equal_contribution$}$endif$
 $endfor$
 
