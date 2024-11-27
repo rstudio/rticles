@@ -8,6 +8,8 @@
 
 - Update `mdpi_article()` to latest version of September 2024 (thanks, @nielsbock, #573, #580).
 
+- Update Copernicus Publications template to version 7.9 from 2024-10-10 (@RLumSK, #577).
+
 # rticles 0.27
 
 - `joss_article()` now correctly works as `base_format` for `bookdown::pdf_book()` (thanks, @mlysy, #564).
