@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%	MDPI class for LaTeX files	 20 March 2024
+%%%%	MDPI class for LaTeX files	 12 September 2024
 %% %%	For any information please send an e-mail to:
 %% %%		latex@mdpi.com
 %% %%
@@ -21,7 +21,7 @@
 
 %% IDENTIFICATION
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{Definitions/mdpi}[20/03/2024 MDPI paper class]
+\ProvidesClass{Definitions/mdpi}[12/09/2024 MDPI paper class]
 
  %% PRELIMINARY DECLARATIONS
 \LoadClass[10pt,a4paper]{article}
@@ -82,9 +82,11 @@
 \DeclareOption{benchmark}{\gdef\@arttype{Benchmark}}
 \DeclareOption{book}{\gdef\@arttype{Book}}
 \DeclareOption{bookreview}{\gdef\@arttype{Book Review}}
+\DeclareOption{briefcommunication}{\gdef\@arttype{Brief Communication}}
 \DeclareOption{briefreport}{\gdef\@arttype{Brief Report}}
 \DeclareOption{casereport}{\gdef\@arttype{Case Report}}
 \DeclareOption{changes}{\gdef\@arttype{Changes}}
+\DeclareOption{clinicopathologicalchallenge}{\gdef\@arttype{Clinicopathological Challenge}}
 \DeclareOption{comment}{\gdef\@arttype{Comment}}
 \DeclareOption{commentary}{\gdef\@arttype{Commentary}}
 \DeclareOption{communication}{\gdef\@arttype{Communication}}
@@ -93,14 +95,15 @@
 \DeclareOption{correction}{\gdef\@arttype{Correction}}
 \DeclareOption{conferencereport}{\gdef\@arttype{Conference Report}}
 \DeclareOption{creative}{\gdef\@arttype{Creative}}
+\DeclareOption{datadescriptor}{\gdef\@arttype{Data Descriptor}}
+\DeclareOption{discussion}{\gdef\@arttype{Discussion}}
 \DeclareOption{entry}{\gdef\@arttype{Entry}}
 \DeclareOption{expressionofconcern}{\gdef\@arttype{Expression of Concern}}
 \DeclareOption{extendedabstract}{\gdef\@arttype{Extended Abstract}}
-\DeclareOption{datadescriptor}{\gdef\@arttype{Data Descriptor}}
-\DeclareOption{discussion}{\gdef\@arttype{Discussion}}
 \DeclareOption{editorial}{\gdef\@arttype{Editorial}}
 \DeclareOption{essay}{\gdef\@arttype{Essay}}
 \DeclareOption{erratum}{\gdef\@arttype{Erratum}}
+\DeclareOption{fieldguide}{\gdef\@arttype{Field Guide}}
 \DeclareOption{hypothesis}{\gdef\@arttype{Hypothesis}}
 \DeclareOption{interestingimages}{\gdef\@arttype{Interesting Images}}
 \DeclareOption{letter}{\gdef\@arttype{Letter}}
@@ -788,7 +791,9 @@
   	  	\fontsize{18}{18}\selectfont
 		\hyphenpenalty=10000
 		\tolerance=1000
-   	 	\boldmath\bfseries{\@Title}
+   	 	\ifthenelse{\equal{\@arttype}{Monograph}}{}{
+   	 	       \boldmath\bfseries{\@Title}%
+		       }%
    	 	\par
    	 	\vspace{12pt}
    	 	}%2
@@ -1634,10 +1639,22 @@
 }
 \let\endthebibliography=\endlist
 
-
 %%%% Publisher's note
 \newcommand{\PublishersNote}{
 \null\par\noindent\fontsize{9}{11}\selectfont\textbf{Disclaimer/Publisher's Note:} The statements, opinions and data contained in all publications are solely those of the individual author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to people or property resulting from any ideas, methods, instructions or products referred to in the content.
+}
+
+%%%% Long society owner names
+\newcommand{\longsociety}{
+	\ifthenelse{\equal{\@societyowner}{EUROTURBO}
+		\OR \equal{\@societyowner}{Lithuanian University of Health Sciences}
+		\OR \equal{\@societyowner}{\"{O}sterreichische Pharmazeutische Gesellschaft}
+		\OR \equal{\@societyowner}{International Society for Neonatal Screening}
+		\OR \equal{\@societyowner}{University Association of Education and Psychology}
+		\OR \equal{\@societyowner}{European Society of Dermatopathology}
+		\OR \equal{\@societyowner}{Swiss Federation of Clinical Neuro-Societies}
+		\OR \equal{\@societyowner}{International Society for Photogrammetry and Remote Sensing}
+		}
 }
 
 %%%% Copyright info
@@ -1668,9 +1685,11 @@
 					}
 				}\\
 				{\justifying\textbf{Copyright:} \copyright \ {\@copyrightyear} by the \@authornum.\linebreak%
-				Licensee MDPI, Basel, Switzerland.\linebreak%
+                          \ifthenelse{\equal{\@societyowner}{}}{}{%
+                          Published by MDPI on behalf of the \textls[-15]{\@societyowner}.}
+				Licensee MDPI, Basel, Switzerland.\longsociety{ }{\linebreak}%
 				This article is an open access article %
-				distributed under the terms and \linebreak% 
+				distributed under the terms and \longsociety{}{\linebreak}% 
 				conditions of the Creative Commons Attribution %
 				\ifthenelse{\equal{\@journal}{ijtpp}}{(CC BY-NC-ND)}{(CC BY)} %
 				license %
@@ -1680,7 +1699,10 @@
 				\href{https://creativecommons.org/licenses/by-nc-nd/4.0/}{(https://creativecommons.org/}\linebreak \href{https://creativecommons.org/licenses/by-nc-nd/4.0/}{licenses/by-nc-nd/4.0/}).%
 				}{%
 				\changeurlcolor{black}%
-				(\href{https://creativecommons.org/licenses/by/4.0/}{https://} \href{https://creativecommons.org/licenses/by/4.0/}{creativecommons.org/licenses/by/}\linebreak 4.0/).}%
+				\longsociety{(\url{https://creativecommons.org/licenses/by/4.0/}).}{
+				(\href{https://creativecommons.org/licenses/by/4.0/}{https://} \href{https://creativecommons.org/licenses/by/4.0/}{creativecommons.org/licenses/by/}\linebreak 4.0/).
+				           }
+                                }%
 				}
 			}
 		}

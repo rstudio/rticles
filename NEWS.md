@@ -6,6 +6,8 @@
     If you have existing article, you need to use `sn-mathphys-num` or `sn-mathphys-ay` option now, instead of `sn-mathphys`.
 - Update all templates to work with Pandoc 3.2.1 by adding the definition of new `\pandocbounded` command used by Pandoc's LaTeX writers (see more at https://github.com/jgm/pandoc/releases/tag/3.2.1 and https://github.com/jgm/pandoc/issues/9660) (#571, #576).
 
+- Update `mdpi_article()` to latest version of September 2024 (thanks, @nielsbock, #573, #580).
+
 # rticles 0.27
 
 - `joss_article()` now correctly works as `base_format` for `bookdown::pdf_book()` (thanks, @mlysy, #564).
@@ -293,7 +295,7 @@ fix for the LaTeX problem sanitized with the last `rticles` update (thanks, @RLu
 
 - Fixed `elsevier_article()` template so that chunk option `out.width` can be set (thanks, @EddieItelman, #300).
 
-- Fixed `pnas_journal()` skeleton to show how correctly add `corresponding_author` and `equal_author` (thanks, @EddieItelman, #299).
+- Fixed `pnas_article()` skeleton to show how correctly add `corresponding_author` and `equal_author` (thanks, @EddieItelman, #299).
 
 - Added article template for journal *Bioinformatics* (thanks, @ShixiangWang, #297).
 
