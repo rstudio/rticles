@@ -91,11 +91,9 @@ amq_article <- function(..., latex_engine = "xelatex", keep_tex = TRUE,
 #'   <https://www.ametsoc.org/ams/index.cfm/publications/authors/journal-and-bams-authors/author-resources/latex-author-info/>.
 #' @export
 #' @rdname article
-ams_article <- function(..., keep_tex = TRUE,
-                        md_extensions = c("-autolink_bare_uris")) {
+ams_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris", "-auto_identifiers")) {
   pdf_document_format(
-    "ams",
-    keep_tex = keep_tex, md_extensions = md_extensions, ...
+    "ams", keep_tex = keep_tex, md_extensions = md_extensions, citation_package = 'natbib', ...
   )
 }
 
