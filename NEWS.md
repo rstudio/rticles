@@ -1,9 +1,10 @@
 # rticles (development version)
 
 - Fix `springer_article()` skeleton: It now uses `equal_contribution` in author field (thanks, @nielsbock, #568).
-- Updaye `springer_aticle()` template to version 3 (December 2023): 
+- Update `springer_aticle()` template to version 3 (December 2023): 
   - BREAKING CHANGE: sn-mathphys.bst has been split into Numbered and Author year style namely `sn-mathphys-num.bst` and `sn-mathphys-ay.bst` respectively. Skeleton has been updated. 
     If you have existing article, you need to use `sn-mathphys-num` or `sn-mathphys-ay` option now, instead of `sn-mathphys`.
+- Update all templates to work with Pandoc 3.2.1 by adding the definition of new `\pandocbounded` command used by Pandoc's LaTeX writers (see more at https://github.com/jgm/pandoc/releases/tag/3.2.1 and https://github.com/jgm/pandoc/issues/9660) (#571, #576).
 
 # rticles 0.27
 
