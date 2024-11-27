@@ -228,7 +228,8 @@ pdf_document_format <- function(format,
   args <- list_to_pandoc_variable_args(list(
     pandoc3 = rmarkdown::pandoc_available("3"),
     pandoc317 = rmarkdown::pandoc_available("3.1.7"), # new citeproc command
-    pandoc318 = rmarkdown::pandoc_available("3.1.8") # revised citeproc command
+    pandoc318 = rmarkdown::pandoc_available("3.1.8"), # revised citeproc command
+    pandoc321 = rmarkdown::pandoc_available("3.2.1") # new pandocbounded comment required
   ))
   fmt$pandoc$args <- c(fmt$pandoc$args, args)
   fmt

@@ -8,6 +8,7 @@
 % T1 fonts will be used to generate the final print and online PDFs,
 % so please use T1 fonts in your manuscript whenever possible.
 % Other font encondings may result in incorrect characters.
+\usepackage{graphicx}
 
 $if(highlighting-macros)$
 % Pandoc syntax highlighting
@@ -34,6 +35,24 @@ $endif$
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
 $endif$
+
+% Add imagehandling
+$-- Only needed for pandoc 3.2.1 and above requiring graphics for new command.
+$if(graphics)$$if(pandoc321)$
+% Custom command from Pandoc 3.2.1 to scale images if necessary
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+\makeatother
+$endif$$endif$
 
 $if(csl-refs)$
 % Pandoc citation processing
@@ -128,7 +147,6 @@ $header-includes$
 
 $endfor$
 
-\usepackage{graphicx}
 % Used for displaying a sample figure. If possible, figure files should
 % be included in EPS format.
 %
