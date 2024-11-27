@@ -12,14 +12,25 @@
 %% This file is part of the copernicus package for papers
 %% published by Copernicus Publications (Copernicus GmbH).
 %% 
-%%       Copyright (C) 2020 by Copernicus Publications
+%%       Copyright (C) 2023 by Copernicus Publications
 %% -----------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{copernicus}
-    [2021/07/07 9.32 Copernicus papers]
+    [2023/12/15 10.1.12 Copernicus papers]
 \frenchspacing
 \clubpenalty10000
 \widowpenalty10000
+\RequirePackage{iftex}
+%% protrudechars, \adjustspacing \hypenationmin,
+%% lccode, \hjcode ???, exhyphenchar,\automatichyphenmode, hyphenchar
+\newcommand*\@iflatexlater{\@ifl@t@r\fmtversion}
+\@iflatexlater{2020/10/01}{}{\RequirePackage{ifluatex}\RequirePackage{ifxetex}}
+\ifluatex
+  \let\pdfoutput\outputmode
+  \edef\pdfpageattr{\pdfvariable pageattr}
+  \RequirePackage{newunicodechar}
+\fi
+%% \RequirePackage{fixltx2e}[2006/03/24]
 \protected@edef\CopernicusInfo#1{\protect\ClassInfo{copernicus}{#1}}
 \protected@edef\CopernicusWarningNoLine#1{\protect\ClassWarningNoLine{copernicus}{#1}}
 \protected@edef\CopernicusError#1#2{\protect\ClassError{copernicus}{#1}{#2}}
@@ -30,7 +41,6 @@
  {\CopernicusWarningNoLine{No section #1; proceeding without it}}
 \newcommand\NoSectionError[2]
  {\CopernicusError{You forgot the section: #1}{Add #2 to your document!}}
-\RequirePackage{fixltx2e}[2006/03/24]
 \renewcommand*\and{\@centercr}
 \AtEndOfClass{%
   \DeclareRobustCommand*{\vec}[1]
@@ -39,6 +49,36 @@
                 {\mbox{\boldmath$\textstyle#1$}}
                 {\mbox{\boldmath$\scriptstyle#1$}}
                 {\mbox{\boldmath$\scriptscriptstyle#1$}}}}}
+
+\newcommand{\xmp@keywords}[1]{%
+  \begingroup
+    \let\hack\@gobble
+    \protected@xdef\@xmp@keywords{#1}%
+  \endgroup
+}
+\xmp@keywords{}%
+\newcommand{\xmp@title}[1]{%
+  \begingroup
+    \let\hack\@gobble
+    \let\@xmp@title\Hy@title
+    %\protected@xdef\@xmp@title{#1}%
+  \endgroup
+}
+\xmp@title{}%
+\let\@xmp@authors\@empty
+\let\@pdf@authors\@empty
+\begingroup\obeyspaces
+\gdef\xmp@author#1{%
+  \begingroup
+  \def~{ }%
+  \let\hack\@gobble
+  \def\nobreakspace{ }%
+  \protected@edef\@tempx{#1}%
+  \protected@xdef\@pdf@authors{\@pdf@authors\ifx\@pdf@authors\@empty\else, \fi\@tempx}%
+  \protected@xdef\@xmp@authors{\@xmp@authors              <rdf:li>\@tempx</rdf:li>^^J}%
+  \endgroup
+}
+\endgroup
 \thinmuskip=2mu
 \medmuskip=3mu minus 3mu
 \thickmuskip=4mu
@@ -70,12 +110,14 @@
 \newif\if@noauthor       \DeclareOption{noauthor}{\@noauthortrue}
 \newif\if@nolastpage     \DeclareOption{nolastpage}{\@nolastpagetrue}
 \newif\if@noref          \DeclareOption{noref}{\@noreftrue}
+\newif\if@copDebug       \DeclareOption{debug}{\@copDebugtrue}
 \newif\if@nohyperref     \DeclareOption{nohyperref}{\@nohyperreftrue}
 \newif\if@cop@home       \IfFileExists{copernicuslogo.pdf}{\@cop@hometrue}{\@cop@homefalse}
 \newif\ifonline          \DeclareOption{online}{\onlinetrue}
 \newif\if@twostagejnl
 \newif\if@forHTML
 \newif\if@manuscript     \DeclareOption{manuscript}{\@manuscripttrue}
+\newif\if@proof          \DeclareOption{proof}{\@prooftrue}
 \newif\if@noline         \DeclareOption{noline}{\@nolinetrue}%classical
 \DeclareOption{corrigendum}  {\def\specialp@perstring{Corrigendum}}
 \DeclareOption{editorialnote}{\def\specialp@perstring{Editorial note}}
@@ -96,11 +138,13 @@
 \newif\if@secline% Underlined Sections, lup 2017-11-06
 \newif\if@dolinesec\@dolinesecfalse
 \newif\if@bar            %only used under \if@stage@final and \@cop@hometrue; for modern layout as well as for the classically layouted sub-journal "angeocom"
+\newif\if@firstbar       %only used under \if@stage@final and \@cop@hometrue; for modern layout as well as for the classically layouted sub-journal "angeocom"
 \newif\if@hvmath         \DeclareOption{hvmath}{\@hvmathtrue}%only used for discussions and only under \@cop@hometrue
 \InputIfFileExists{copernicus.cfg}%
   {\typeout{Additional configuration file copernicus.cfg used}}%
   {\CopernicusError{No additional configuration file copernicus.cfg}
                    {Please provide copernicus.cfg with the journal configurations.}}
+
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions
 \if@stage@final\else\@twostagejnltrue\fi
@@ -346,13 +390,14 @@
 \if@stage@final
   \def\ps@plain{%only used for manuscript
      \let\@mkboth\@gobbletwo
-     \let\@oddhead\@empty
-     \let\@evenhead\@empty
+     \def\@oddhead{\if@proof\watermark\fi}
+     \let\@evenhead\@oddhead
      \def\@oddfoot{\reset@font\bfseries\hfil\thepage\hfil}%
      \let\@evenfoot\@oddfoot}
   \def\ps@headings{%
     \def\@oddhead{%
       \runningheaderfont
+      \if@proof\watermark\fi
       \@runhd\hfil\llap{\thepage}%
       \if@cop@home\if@bar
           \textcolor{barcol}{\@ddsidemarginbar}%
@@ -360,24 +405,27 @@
           \textcolor{rulecol}{\@ddsidemarginrule}%
       \fi\fi}
     \def\@evenhead{%
+      \if@firstbar\global\@barfalse\fi
+      \if@proof\watermark\fi
       \if@cop@home\if@bar
           \textcolor{barcol}{\@vensidemarginbar}%
           %\textcolor{textcol}{\@vensidemarginrule}%
           \textcolor{rulecol}{\@vensidemarginrule}%
       \fi\fi
       \runningheaderfont
-      \rlap{\thepage}\hfil\@runhd}
+      \rlap{\thepage}\hfil\@runhd}%
+    \let\@oddfoot\@empty
+    \let\@evenfoot\@empty
     \if@cop@home
-      \def\@oddfoot{\edit@rnotereminder\runningheaderfont\if@preface \@journalurlInfo\hfil Preface\else\@journalurlInfo\hfil\ifx\specialp@perstring\@undefined\@journalInfo\else\specialp@perstring\fi\fi}
-      \def\@evenfoot{\edit@rnotereminder\runningheaderfont\if@preface Preface\hfil\@journalurlInfo\else\ifx\specialp@perstring\@undefined\@journalInfo\else\specialp@perstring\fi\hfil\@journalurlInfo\fi}
-    \else
-      \let\@oddfoot\@empty
-      \let\@evenfoot\@empty
+      \def\@oddfoot{\if@proof\else\edit@rnotereminder\runningheaderfont\if@preface \@journalurlInfo\hfil Preface\else\@journalurlInfo\hfil\ifx\specialp@perstring\@undefined\@journalInfo\else\specialp@perstring\fi\fi\fi}
+      \def\@evenfoot{\if@proof\else\edit@rnotereminder\runningheaderfont\if@preface Preface\hfil\@journalurlInfo\else\ifx\specialp@perstring\@undefined\@journalInfo\else\specialp@perstring\fi\hfil\@journalurlInfo\fi\fi}
     \fi
     \let\@mkboth\@gobbletwo}
 \else%discussions
   \def\ps@headings{%
     \def\@oddhead{%
+      \if@firstbar\global\@barfalse\fi
+      \if@proof\watermark\fi
       \hfil
       \rlap{%
         \kern5mm
@@ -397,6 +445,7 @@
     \let\@evenfoot\@oddfoot}
 \fi
 \if@stage@final
+  \if@firstbar\@bartrue\fi
   \if@bar
     \def\@titlebar{%
       \textcolor{barcol}{\@ddsidemarginbar}%
@@ -459,13 +508,18 @@
       \def\@oddhead{\parbox[t]{0.6\textwidth}{\@manuscriptInfo}}
       \let\@oddfoot\@empty
     \fi
-    \let\@mkboth\@gobbletwo}
+    \let\@mkboth\@gobbletwo
+  }
 \fi
 \AtEndDocument{%
   \clearpage
   \addtocounter{page}{-1}%
   \immediate\write\@auxout{\string\newlabel{LastPage}{{}{\thepage}{}{}{}}}%
-  \addtocounter{page}{1}}
+  \addtocounter{page}{1}%
+  %\@create@xmp{\@xmp@preamble \@xmp@postamble}%
+}
+\AtBeginDocument{%
+}
 \if@stage@final
   \def\@lpage{\hypersetup{linkcolor=textcol}\pageref{LastPage}}
 \else
@@ -478,6 +532,17 @@
 \def\@runtest{%
   \if@noauthor\else\if!\@runauth!\UndefinedError{\string\runningauthor}\fi\fi
   \if!\@runtit!\UndefinedError{\string\runningtitle}\fi}
+\let\ltx@title\title
+\let\@letex@textit\textit
+\ifx\xmltexversion\@undefined
+  \ifcopyediting
+    \let\title\ltx@title
+  \else
+    \def\title#1{\ltx@title{#1}\hypersetup{pdftitle=\@title}\xmp@title{#1}}
+  \fi
+\else
+  \def\title#1{\ltx@title{#1}\xmp@title{#1}}
+\fi
 \def\maketitle{%
   \gdef\supplement##1{%
     \href{https://doi.org/10.5194/\@journalnameshortlower-\@pvol-\@fpage-\@pyear-supplement}%
@@ -496,7 +561,7 @@
     \fi
   \fi
   \setcounter{footnote}{0}%
-  \if@stage@final\if@manuscript\else\thispagestyle{titlepage}\fi\fi
+  \if@stage@final\if@manuscript\else\if@proof\thispagestyle{plain}\else\thispagestyle{titlepage}\fi\fi\fi
   \begingroup
     \parindent=\z@
     \@maketitle
@@ -608,7 +673,7 @@
        \let\and=\sw@and
        \flushleft
        \@author\\[4pt]
-       \ifx\@corresp\@empty\else\textbf{{\if@sansserifface\sffamily\fi\upshape\noindent\color{textcol} Correspondence:}} \@corresp\ifx\@howtocite\@empty\else\\[4pt]\fi\fi
+       \ifnum\corr@cnt=\z@\relax\else\textbf{{\if@sansserifface\sffamily\fi\upshape\noindent\color{textcol} Correspondence:}} \@corresp\ifx\@howtocite\@empty\else\\[4pt]\fi\fi
        \ifx\@howtocite\@empty\else\textbf{{\if@sansserifface\sffamily\fi\upshape\noindent\color{textcol} How to cite:}} \@howtocite\fi
        \par}%
     \fi
@@ -651,7 +716,7 @@
                   \@author\par}%
                  \vskip-0.5\baselineskip
                \fi
-               \ifx\@corresp\@empty\else\vskip\topsep\centering\textbf{{\if@sansserifface\sffamily\fi\upshape\noindent\color{textcol} Correspondence:}}\space\@corresp\fi
+               \ifnum\corr@cnt=\z@\relax\else\vskip\topsep\centering\textbf{{\if@sansserifface\sffamily\fi\upshape\noindent\color{textcol} Correspondence:}}\space\@corresp\fi
                \ifx\@howtocite\@empty\else\vskip.5\topsep\centering\textbf{{\if@sansserifface\sffamily\fi\upshape\noindent\color{textcol} How to cite:}}\space\@howtocite\fi
                \par\vskip0.33\baselineskip
                {\small
@@ -721,7 +786,7 @@
            \fi
            \@thanks}
            %% NEU:
-           \ifnum\ifx\@corresp\@empty\ifx\@howtocite\@empty\if!\@recvd!\ifx\abstractexists\@undefined\ifx\@published\@undefined0\else1\fi\else1\fi\else1\fi\else1\fi\else1\fi=1\relax
+           \ifnum\ifnum\corr@cnt=\z@\relax\ifx\@howtocite\@empty\if!\@recvd!\ifx\abstractexists\@undefined\ifx\@published\@undefined0\else1\fi\else1\fi\else1\fi\else1\fi\else1\fi=1\relax
              \par\vskip1.5\baselineskip
              \def\labelfont{\bfseries\if@sansserifface\sffamily\fi\upshape\noindent\color{textcol}}%
              \list{}{\labelwidth35mm%
@@ -730,7 +795,7 @@
                         \labelsep\z@
                         \xdef\@indescription{}%
                         \def\makelabel##1{\labelfont##1\hss}}%
-               \ifx\@corresp\@empty\else\item[{Correspondence:}]\@corresp\fi
+               \ifnum\corr@cnt=\z@\relax\else\item[{Correspondence:}]\@corresp\fi
                \ifnum\ifx\@published\@undefined\ifx\specialp@perstring\@undefined\if!\@recvd!0\else1\fi\else0\fi\else1\fi=1\relax
                  \item[{Relevant dates:}]%
                \fi
@@ -792,7 +857,7 @@
               \vskip-0.25\baselineskip
            \fi
            \@thanks
-           \ifx\@corresp\@empty\else\vskip\baselineskip\textbf{{\if@sansserifface\sffamily\fi\upshape\noindent\color{textcol} Correspondence:}}\space\@corresp\fi
+           \ifnum\corr@cnt=\z@\relax\else\vskip\baselineskip\textbf{{\if@sansserifface\sffamily\fi\upshape\noindent\color{textcol} Correspondence:}}\space\@corresp\fi
            \ifx\@howtocite\@empty\else\vskip.75\baselineskip\textbf{{\if@sansserifface\sffamily\fi\upshape\noindent\color{textcol} How to cite:}}\space\@howtocite\fi
            \par\vspace{10pt}%
            \ifx\specialp@perstring\@undefined
@@ -818,8 +883,10 @@
     \global\@topnum\z@
     \if@cop@home\ifonline
       \hypertarget{title}{}%
-      \hypersetup{pdfauthor={\@runauth}}%
-      \hypersetup{pdftitle={\@runtit}}%
+      \hypersetup{pdftitle={\@xmp@title}}%
+      \hypersetup{pdfauthor={\@pdf@authors}}%
+      % \hypersetup{pdfauthor={\@runauth}}%
+      % \hypersetup{pdftitle={\@runtit}}%
     \fi\fi
     \begin{nolinenumbers}%
     \if@cop@home
@@ -957,6 +1024,9 @@
   \@ifstar
     {\@ssect{#3}{#4}{#5}{#6}}%
     {\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}}
+\def\seclinesep#1{\gdef\@seclinesep{#1}}%
+\seclinesep{1.2}%
+\let\orig@seclinesep\@seclinesep
 \def\@afterheading{%
   \@nobreaktrue
   \everypar{%
@@ -969,7 +1039,7 @@
       \if@secline
         \if@dolinesec
           \if@sansserifface
-            \rlap{\smash{\expandafter\ifnum\cur@secdepth>\@ne\raise1.2\baselineskip\else\raise1.5\baselineskip\fi\hbox{\vrule width\hsize height\arrayrulewidth\relax}}}%
+            \rlap{\smash{\expandafter\ifnum\cur@secdepth>\@ne\expandafter\raise\@seclinesep\baselineskip\else\raise1.5\baselineskip\fi\hbox{\vrule width\hsize height\arrayrulewidth\relax}}}%
           \else
             \rlap{\smash{\raise1.5\baselineskip\hbox{\vrule width\hsize height\arrayrulewidth\relax}}}%
           \fi
@@ -977,6 +1047,7 @@
         \@dolinesecfalse
         \global\let\@secline@omitted\@undefined
       \fi
+      \global\let\@seclinesep\orig@seclinesep
     \else
       \clubpenalty \@clubpenalty
       \everypar{}%
@@ -999,7 +1070,7 @@
 \def\labelitemii{\bfseries\textendash}
 \def\labelitemiii{$\m@th\bullet$}
 \def\labelitemiv{$\m@th\cdot$}
-\def\itemize{%
+\def\copstartlist{%
   \if@secline
     \ifx\@secline@omitted\relax
       \leavevmode
@@ -1008,6 +1079,10 @@
       \global\let\@secline@omitted\@undefined
     \fi
   \fi
+}
+
+\def\itemize{%
+  \copstartlist
   \ifnum \@itemdepth >\thr@@\@toodeep\else
     \advance\@itemdepth\@ne
     \edef\@itemitem{labelitem\romannumeral\the\@itemdepth}%
@@ -1016,6 +1091,46 @@
       \csname\@itemitem\endcsname
       {\def\makelabel##1{\hss\llap{##1}}}%
   \fi}
+
+\newenvironment{itemizewithoutindent}{%
+  \copstartlist
+  \ifnum \@itemdepth >\thr@@\@toodeep\else
+    \advance\@itemdepth\@ne
+    \edef\@itemitem{labelitem\romannumeral\the\@itemdepth}%
+    \expandafter
+    \list
+      \csname\@itemitem\endcsname
+      {\leftmargin\z@
+       \itemindent\z@
+       \labelwidth\z@
+       \labelsep\z@
+       \def\makelabel##1{\if!##1!\else##1\enskip\fi}}%
+  \fi
+}{\endlist}
+
+\newenvironment{plainlistindent}{%
+  \copstartlist
+  \ifnum \@itemdepth >\thr@@\@toodeep\else
+    \advance\@itemdepth\@ne
+    \edef\@itemitem{labelitem\romannumeral\the\@itemdepth}%
+    \expandafter
+    \list
+      \csname\@itemitem\endcsname
+      {\itemsep\z@
+       \topsep\z@
+       \parsep\z@
+       \itemindent=\dimexpr-\labelwidth-\itemsep\relax
+       \def\makelabel##1{%##1%
+         \edef\@tempa{##1}%
+         \ifx\@tempa\@empty
+           \hspace*{\labelwidth}%
+         \else
+           \hspace*{\dimexpr\labelwidth+\labelsep\relax}##1
+         \fi\ignorespaces
+       }}%
+  \fi
+}{\endlist}
+
 \let\@abslang\relax
 \long\def\secondabstract#1{%
   \subpdfbookmark{\secabstractname.}{\secabstractname.}%
@@ -1066,10 +1181,9 @@
       \iflanguage{ngerman}{\@abslang}{\iflanguage{german}{\@abslang}{}}%
       \reset@font\normalsize\par\noindent
       \subpdfbookmark{\abstractname}{abstract}%
-      \textcolor{textcol}{\reset@font\normalsize\if@sansserifface\sffamily\fi\bfseries\abstractname.} \ignorespaces}
-     {%
-       \ifx\second@bstract\@undefined\else\vskip\baselineskip\second@bstract\fi
-       \if!\@keyw!\else
+       \textcolor{textcol}{\reset@font\normalsize\if@sansserifface\sffamily\fi\bfseries\abstractname.} \ignorespaces}
+     {\ifx\second@bstract\@undefined\else\vskip\baselineskip\second@bstract\fi
+      \if!\@keyw!\else
         \par\vspace{1.7mm}\noindent
         \textbf{Keywords.}\enspace\ignorespaces\@keyw
       \fi
@@ -1081,7 +1195,12 @@
         {\iflanguage{german}%
           {\gdef\@abslang{\selectlanguage{english}}}%
           {\gdef\@abslang{\selectlanguage{german}}%
-           \if@manuscript\else\if@noline\else\hrule\fi\fi}}}
+           \if@manuscript\else\if@noline\else
+             \hrule\par% #9055
+             \vskip2\baselineskip\relax% #9055
+             \ifx\xmltexversion\@undefined\else\aftergroup\aftergroup\fi\aftergroup\@afterindentfalse% #9055
+             \ifx\xmltexversion\@undefined\else\aftergroup\aftergroup\fi\aftergroup\@afterheading% #9055
+           \fi\fi}}}
   \fi
 \else%discussions
   \renewenvironment{abstract}
@@ -1181,8 +1300,19 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage{textcomp}
 \if@cop@home
-  \RequirePackage{fontawesome5}
-  \RequirePackage{fontawesome}
+    \RequirePackage{fontawesome5}
+    \ifluatex
+      \newcommand*{\faicon}[1]{{\csname faicon@#1\endcsname}}
+      \input{fontawesomesymbols-generic.tex}
+      \DeclareRobustCommand\FAone{\fontencoding{U}\fontfamily{fontawesomeone}\selectfont}
+      \DeclareRobustCommand\FAtwo{\fontencoding{U}\fontfamily{fontawesometwo}\selectfont}
+      \DeclareRobustCommand\FAthree{\fontencoding{U}\fontfamily{fontawesomethree}\selectfont}
+      \input{fontawesomesymbols-pdftex.tex}
+      \renewcommand{\faHourglass}[1][]{\faicon{hourglass\if\relax\detokenize{#1}\relax\else-#1\fi}}
+      \renewcommand{\faBattery}[1][4]{\faicon{battery-#1}}
+    \else
+      \RequirePackage{fontawesome}
+    \fi
 \fi
 \usepackage{upquote}%% #7510
 \usepackage{regexpatch}
@@ -1198,7 +1328,9 @@
   \else
     \expandafter\active@text@prime
   \fi}
-\AtBeginDocument{\catcode`\'=\active}
+\AtBeginDocument{% 0821: \AtBeginDocument is applied AFTER the .aux is read… If '' is in aux, it will throw an error.
+  \immediate\write\@auxout{\string\catcode\string`\string\'\string=\string\active}%
+  \catcode`\'=\active}
 \ifx\xmltexversion\@undefined
 \begingroup
 \obeylines\obeyspaces%
@@ -1209,12 +1341,21 @@
 \endgroup
 \fi
 \ifx\xmltexversion\@undefined
-  \RequirePackage[utf8]{inputenc}
+  \ifluatex\else\RequirePackage[utf8]{inputenc}\fi
   \def\strip@x#1x#2\@nil{#1}%
   \IfFileExists{ucharacters.sty}{%
-    \def\DefineCharacter##1##2##3{\expandafter\def\expandafter\@argii\expandafter{\strip@x##2x\@nil}\DeclareUnicodeCharacter{\@argii}{##3}}%
-    \usepackage{ucharacters}%
-  }{}%
+    \ifluatex
+      % \RequirePackage{luacode}
+      % \def\DefineCharacter##1##2##3{%
+      %   \expandafter\def\expandafter\@argii\expandafter{\strip@x##2x\@nil}%
+      %   \begingroup\lccode`|=\string"\@argii\relax
+      %     \lowercase{\endgroup\newunicodechar{|}}{##3}}%
+      % \usepackage{ucharacters}%
+    \else
+      \def\DefineCharacter##1##2##3{\expandafter\def\expandafter\@argii\expandafter{\strip@x##2x\@nil}\DeclareUnicodeCharacter{\@argii}{##3}}%
+      \usepackage{ucharacters}%
+    \fi
+    }{}%
 \fi
 \def\cmrng{{\fontfamily{cmr}\selectfont\ng}}
 \let\old@classoptionslist\@classoptionslist
@@ -1251,7 +1392,7 @@
   \def\copyrightstatementname{Copyright statement}%
   \def\codeavailabilityname{Code availability}%
   \def\dataavailabilityname{Data availability}%
-  \def\ercavailabilityname{Executable research compendium (ERC)}%
+  \def\ercavailabilityname{Interactive computing environment}%
   \def\codedataavailabilityname{Code and data availability}%
   \def\sampleavailabilityname{Sample availability}%
   \def\competinginterestsname{Competing interests}%
@@ -1282,10 +1423,10 @@
   \def\copyrightstatementname{Urheberrechtserklärung}%
   \def\codeavailabilityname{Codeverfügbarkeit}%
   \def\dataavailabilityname{Datenverfügbarkeit}%
-  \def\ercavailabilityname{Executable research compendium (ERC)}%
+  \def\ercavailabilityname{Interactive computing environment}%
   \def\codedataavailabilityname{Code- und Datenverfügbarkeit}%
   \def\sampleavailabilityname{Probenverfügbarkeit}%
-  \def\authorcontributionname{Autorenmitwirkung}%
+  \def\authorcontributionname{Autor:innenmitwirkung}%
   \def\competinginterestsname{Interessenkonflikt}%
   \def\videosupplementname{Videoanhang}%
   \def\dosupplementname{Supplement}%
@@ -1312,7 +1453,7 @@
   \def\copyrightstatementname{Affirmation du droit d'auteur}%
   \def\codeavailabilityname{Disponibilité du code}%
   \def\dataavailabilityname{Disponibilité des données}%
-  \def\ercavailabilityname{Executable research compendium (ERC)}%
+  \def\ercavailabilityname{Interactive computing environment}%
   \def\sampleavailabilityname{Disponibilité des examples}%
   \def\codedataavailabilityname{Disponibilité du code et des données}%
   \def\authorcontributionname{Collaborateurs}%
@@ -1321,7 +1462,7 @@
   \def\dosupplementname{Supplement}%
   \def\teamlistname{Liste d'auteurs}%
   \def\disclaimername{Clause de non-responsabilité}%
-  \def\sistatementname{Déclaration de la numéro special}%
+  \def\sistatementname{Déclaration du numéro spécial}%
   %% TBD
   \def\financialsupportname{Financement}%
   \def\reviewstatementname{Contr\^{o}le par les pairs}%
@@ -1418,7 +1559,11 @@
 
 \renewcommand\author[2][]%
       {\ifnewaffil\addtocounter{affil}{1}%
-       \xdef\AB@thenote{\arabic{affil}}\fi
+          \xdef\AB@thenote{\arabic{affil}}%
+       \fi
+       \ifcopyediting\else
+         \xmp@author{#2}%
+       \fi
        \global\advance\c@authnum\@ne
        \if@cop@home
          \expandafter\ifx\csname deceased@\the\c@authnum\endcsname\true\relax\def\@@deceased{$^{,\text{\faCross}}$}\fi
@@ -1516,20 +1661,66 @@
   \let\equalcontrib\@gobble
   \let\@deceased\@gobble
 \fi
-\def\Author{\@ifnextchar[\@Author{\@Author[]}}%]
+\newcount\corr@cnt      \corr@cnt\z@\relax
+\newcount\curr@corr@cnt \curr@corr@cnt\z@\relax
+\def\Author{\let\curr@corr\@empty\@ifnextchar[\@Author{\@Author[]}}%]
 \def\@Author[#1]{%
   \def\@tempa{#1}%
-  \@ifnextchar(\@@Author{\@@Author()}}%)}
-\def\@@Author(#1){%
+  \@ifnextchar[\@@Author{\@@Author[]}%]
+}%
+\def\@@Author[#1]{%
+  \if!#1!\else
+    \global\advance\corr@cnt\@ne
+    \parse@corr{#1}%
+  \fi%
+  \@ifnextchar(\@@@Author{\@@@Author()}%)
+}
+\def\parse@corr#1{%
+  \curr@corr@cnt\z@
+  \let\curr@corr\relax
+  \@parse@corr#1,,\@nil
+  \ifnum\curr@corr@cnt=\@ne\relax
+    \edef\curr@corr{\csname curr@corr@1\endcsname}%
+  \else
+    \ifnum\curr@corr@cnt=\tw@\relax
+      \edef\curr@corr{%
+        \csname curr@corr@1\endcsname\Authsep
+        \csname curr@corr@2\endcsname}%
+    \else
+      \@tempcntb\z@
+      \let\curr@corr\@empty%
+      \loop
+        \advance\@tempcntb\@ne
+        \expandafter\edef\expandafter\curr@corr\expandafter{\curr@corr\csname curr@corr@\the\@tempcntb\endcsname}%
+      \ifnum\@tempcntb<\numexpr\curr@corr@cnt+\m@ne\relax\relax
+        \expandafter\edef\expandafter\curr@corr\expandafter{\curr@corr\Authsep}%
+      \repeat
+      \expandafter\edef\expandafter\curr@corr\expandafter{\curr@corr\Authands\csname curr@corr@\the\curr@corr@cnt\endcsname}%
+    \fi
+  \fi
+}
+\def\@parse@corr #1,#2,\@nil{%
+  \if!#1!\else
+    \advance\curr@corr@cnt\@ne
+    \expandafter\def\csname curr@corr@\the\curr@corr@cnt\endcsname{#1}%
+    \if!#2!\else
+      \@parse@corr#2,\@nil%
+    \fi
+  \fi
+}
+\def\@@@Author(#1){%
   \def\@tempb{#1}%
-  \@ifnextchar(\@@@Author{\@@@Author()}}%)}
-\def\@@@Author(#1)#2#3{%
+  \@ifnextchar(\@@@@Author{\@@@@Author()}}%)
+\def\@@@@Author(#1)#2#3{%
   \def\@tempc{#1}%
   \protected@edef\@tempd{%
-     \ifx\@tempb\@empty\else\@tempb\nobreakspace\fi
-     #2\nobreakspace
+     \ifx\@tempb\@empty\else\@tempb\noexpand\nobreakspace\fi
+     #2\noexpand\nobreakspace
      #3%
-     \ifx\@tempc\@empty\else\nobreakspace\@tempc\fi}%
+     \ifx\@tempc\@empty\else\noexpand\nobreakspace\@tempc\fi}%
+   \ifx\curr@corr\@empty\else
+     \expandafter\expandafter\expandafter\xdef\csname corresp-\the\corr@cnt\expandafter\endcsname\expandafter{\@tempd\noexpand\space(\curr@corr)}%
+   \fi
   \expandafter\expandafter\expandafter\author\expandafter\expandafter\expandafter
     [\expandafter\@tempa\expandafter]\expandafter{\@tempd}}
 \providecommand\appendixname{Appendix}
@@ -1548,6 +1739,7 @@
   \def\theequation{\thesection\@arabic\c@equation}%
   \def\thereaction{\thesection R\@arabic\c@reaction}%
   \let\c@org@lst\c@listings%
+  \let\c@org@alg\c@algorithm%
   \let\c@org@eq\c@equation%
   \let\org@theeq\theequation%
   \if@stage@final
@@ -1560,6 +1752,11 @@
     \@addtoreset{listings}{section}%
     \setcounter{listings}{0}%
     \def\thelistings{\thesection\@arabic\c@listings}%
+    \IfFileExists{algorithm.sty}{% #9699
+      \@addtoreset{algorithm}{section}%
+      \setcounter{algorithm}{0}%
+      \def\thealgorithm{\thesection\@arabic\c@algorithm}%
+    }{}%
   \fi
   \global\let\old@sect\@sect
   \def\@sect##1##2##3##4##5##6[##7]##8{%
@@ -1624,13 +1821,14 @@
   \ifx\old@ssect\@undefined\else\global\let\@ssect\old@ssect\fi
   \def\thefigure{\@arabic\c@figure}%
   \def\thelistings{\@arabic\c@listings}%
+  \IfFileExists{algorithm.sty}{\def\thealgorithm{\@arabic\c@algorithm}}{}% #9699
   \def\thetable{\@arabic\c@table}}
 \IfFileExists{url.sty}
   {\RequirePackage{url}\urlstyle{same}}%
   {\CopernicusWarningNoLine{Cannot find url.sty; proceeding without it}%
    \def\url#1{%
      \CopernicusError{To use \string\url, you must have url.sty}{Install url.sty}}}
-\newcommand\doitext{https://doi.org/}
+\newcommand\doitext{\hbox{https://doi.org/}}
 \newcommand*\doi{%
   \begingroup
   \lccode`\~=`\#\relax
@@ -1733,7 +1931,8 @@
        \let\@endfloatbox\relax\orig@end@float}
    \fi
    \RequirePackage{algorithm}
-   \def\theHalgorithm{\@arabic\c@algorithm}}
+   \def\theHalgorithm{\@arabic\c@algorithm}
+ }
   {\CopernicusWarningNoLine{Cannot find algorithm.sty; proceeding without it}}
 \let\cop@makecaption\@makecaption
 \let\c@org@fig\c@figure
@@ -1762,6 +1961,52 @@
     {\CopernicusWarningNoLine{Cannot find subfig.sty; proceeding without it}}
 \fi
 \let\@makecaption\cop@makecaption
+\RequirePackage{listings}
+\newdimen\listingnumwidth \listingnumwidth=1.25em\relax
+\renewcommand*\thelstnumber{\hb@xt@\listingnumwidth{\hss\the\c@lstnumber:}}
+\lstset{%
+  basicstyle=\small,%
+  numbers=left,%
+  numbersep=0.5em,%
+  numberstyle=\footnotesize,%
+  frame=lines,%
+  xleftmargin=\dimexpr\listingnumwidth+0.5em\relax,%
+  %showspaces=true,
+  keepspaces=true,
+  framexleftmargin=\dimexpr\listingnumwidth+0.5em\relax,
+}
+\newenvironment{listing}[1][]
+ {\edef\@argi{#1}%
+  \ifx\@argi\@empty\def\@argi{htbp}\fi
+  \setlistings
+  \lstset{aboveskip=0pt,belowskip=0pt}%
+  \def\@tempa{\begin{figure}}%
+    \expandafter\@tempa\expandafter[\@argi]}
+ {\end{figure}%
+  \setfigures}
+
+ % \gdef\xml@preformat@content#1{%
+ %   \begingroup
+ %     \utfeight@protect@internal
+ %     \nfss@catcodes
+ %     \xdef\x{\endgroup\noexpand\gdef\noexpand\xml@@preformat@content{#1}}\x
+ % }
+
+ % \begingroup
+ %   \XML@reset
+ %   \gdef\xml@lstlisting#1{%
+ %     \xml@preformat@content{#1}%
+ %     \message{^^J==> xml@preformat@content: \meaning\xml@@preformat@content}%
+ %     \begingroup
+ %       \XML@reset
+ %       \edef\@tempa{\noexpand\lstlisting[\@lstlistingArgument]}%
+ %       \expandafter\@tempa\xml@@preformat@content
+ %       \endlstlisting
+ %     \endgroup
+ %   }
+ % \endgroup
+
+
 \IfFileExists{subfloat.sty}
   {\RequirePackage{subfloat}%
    \protected@xdef\themainfigure{\thefigure}%
@@ -1785,6 +2030,7 @@
      \let\NAT@set@cites\relax
    \fi
    \AtBeginDocument{\let\@citex\NAT@citex}
+   \ifx\AddToHook\@undefined\else\AddToHook{begindocument/end}[copernicus/natbib]{\let\@citex\NAT@citex}\fi
    \newcommand\urlprefix{}
    \renewenvironment{thebibliography}[1]
    {\bibsection
@@ -1898,9 +2144,11 @@
     \provide@orig@symbol{Phi}
     \provide@orig@symbol{Psi}
     \provide@orig@symbol{Omega}
-    %% Fix fuer #6924, vgl https://tex.stackexchange.com/questions/561236/setmathalphabet-messes-with-rm
     \usepackage{etoolbox}%
-    \patchcmd\document@select@group{#1{#4}}{\expandafter#1\ifx\math@bgroup\bgroup{#4}\else#4\fi}{}{\fail}%
+    \ifluatex\else
+      %% Fix fuer #6924, vgl https://tex.stackexchange.com/questions/561236/setmathalphabet-messes-with-rm
+      \@iflatexlater{2020/10/01}{}{\patchcmd\document@select@group{#1{#4}}{\expandafter#1\ifx\math@bgroup\bgroup{#4}\else#4\fi}{}{}}%
+    \fi
     \RequirePackage[mtbold]{mathtime}
     \DeclareSymbolFont{largesymbolsA}{U}{esint}{m}{n}%from esint.sty
     \DeclareMathSymbol{\oiintop}{\mathop}{largesymbolsA}{'015}%from esint.sty
@@ -1987,7 +2235,23 @@
     \DeclareMathAlphabet{\mathbf}{OT1}{cmss}{bx}{n}
   \fi
 \fi
+\DeclareMathAlphabet{\mathbbs}{U}{BOONDOX-ds}{m}{n}
 \DeclareMathAlphabet{\mathblackbold}{U}{dsrom}{m}{n}
+\let\ltx@mathbb\mathbb
+
+\def\mathbb#1{%
+  \sbox\z@{\@tempcnta 0#1}%
+  \ifdim\wd\z@>\z@\relax
+    \edef\@tempb{#1}\@tempcnta=\expandafter`\@tempb\relax%
+    \ifnum\@tempcnta>96\relax
+      \mathbbs{#1}%% Kleinbuchstabe
+    \else
+      \ltx@mathbb{#1}%% Großbuchstabe
+    \fi
+  \else
+    \mathblackbold{#1}%% Zahl
+  \fi}
+
 \RequirePackage{pifont}
 \if@cop@home
   \if@nohyperref
@@ -1995,19 +2259,52 @@
     \if@stage@final\else
       \PassOptionsToPackage{pagebackref,pdffitwindow}{hyperref}
     \fi
-    \usepackage[\ifcopyediting bookmarks=false\else bookmarks=true\fi,colorlinks]{hyperref}
-    \hypersetup{anchorcolor=black,citecolor=black,filecolor=black,linkcolor=black,%
-      menucolor=black,pagecolor=black,urlcolor=black}
+    %\@pdfa@pre@hyper
+    \@iflatexlater{2020/10/01}{%
+      \usepackage[bookmarks=true,colorlinks]{hyperref}
+      \hypersetup{anchorcolor=black,citecolor=black,filecolor=black,linkcolor=black,unicode,%
+        menucolor=black,urlcolor=black}%%
+    }{%
+      \usepackage[\ifcopyediting bookmarks=false\else bookmarks=true\fi,colorlinks]{hyperref}
+      \hypersetup{anchorcolor=black,citecolor=black,filecolor=black,linkcolor=black,%
+        menucolor=black,pagecolor=black,urlcolor=black}
+    }%
     \let\old@Hy@backout\Hy@backout\def\Hy@backout{\leavevmode\old@Hy@backout}%bug-fixing, to be checked
     \ifnum\pdfoutput=\z@\RequirePackage{breakurl}\fi
     \pdfstringdefDisableCommands{\let\boldsymbol\relax\let\vec\relax}
   \fi
   \edef\@pdfcreator{%
     copernicus.cls%
-    \space version \csname ver@copernicus.cls\endcsname
+    \space Version \csname ver@copernicus.cls\endcsname
     \ifx\xmltexversion\@undefined\else, produced from XML\fi}
-  \if@nohyperref\pdfinfo{/Creator (\@pdfcreator)}\fi
+  % \if@nohyperref
+  \AtEndDocument{%
+    \ifx\xmltexversion\@undefined
+      \ifluatex
+        \def\Hy@tempx{\pdfextension info}
+      \else
+        \def\Hy@tempx{\pdfinfo}
+      \fi%
+      \let\Hy@author\@pdf@authors\Hy@UseMaketitleString{author}%
+      \let\Hy@title\@xmp@title\Hy@UseMaketitleString{title}%
+      \ifx\@xmp@keywords\@empty\else
+        \let\Hy@keywords\@xmp@keywords\Hy@UseMaketitleString{keywords}%
+      \fi
+      \Hy@tempx{%
+        /Title (\@pdftitle)
+        /Author (\@pdfauthor)
+        \ifx\@pdfkeywords\@empty\else/Keywords (\@pdfkeywords)\fi
+        /Creator (\@pdfcreator)
+      }%
+    \else
+      % \protected@edef\@pdftitle{\xml@pdftitle}%
+      % \protected@edef\@pdfauthor{\@pdf@authors}%
+      % \ifx\@keywords\@undefined\else\protected@edef\@pdfkeywords{\@keywords}\fi%
+    \fi
+  }%
+  % \fi
 \else
+  %\@pdfa@pre@hyper
   \usepackage[bookmarks=false,pdfborder={0 0 0}]{hyperref}
   \pdfstringdefDisableCommands{\let\boldsymbol\relax\let\vec\relax}
 \fi
@@ -2099,10 +2396,16 @@
       \setlength\footskip{5mm}%because pdfscreencop overwrites it
       \def\addButton#1#2{\begingroup\normalsfcodes\fboxsep\z@
         \sffamily\colorbox{buttonbackground}{\hbox to#1{\hfil\Black\st#2\hfil}}\endgroup}
-      \hypersetup{anchorcolor=black,citecolor=black,filecolor=black,linkcolor=black,%
-                  menucolor=black,pagecolor=black,urlcolor=black,%
-                  pdfcenterwindow=false,pdfmenubar=true,pdftoolbar=true,pdfwindowui=true}
-                 %because pdfscreencop overwrites it
+      \@iflatexlater{2020/10/01}{%
+        \hypersetup{anchorcolor=black,citecolor=black,filecolor=black,linkcolor=black,%
+                    menucolor=black,urlcolor=black,%
+                    pdfcenterwindow=false,pdfmenubar=true,pdftoolbar=true,pdfwindowui=true}%%
+      }{%
+        \hypersetup{anchorcolor=black,citecolor=black,filecolor=black,linkcolor=black,%
+                    menucolor=black,pagecolor=black,urlcolor=black,%
+                    pdfcenterwindow=false,pdfmenubar=true,pdftoolbar=true,pdfwindowui=true}
+      }%
+      % because pdfscreencop overwrites it
       \def\PDFSCR@Warning#1{}% no more "No overlay specified" warnings
       \setlength\panelwidth{5cm}%
       \newlength\bigbutton\setlength\bigbutton{0.75\panelwidth}%
@@ -2247,7 +2550,25 @@
                                                        \let\@cyear\@pyear
 \def\pubvol#1{\if@cop@home\ifx\specialp@perstring\@undefined\gdef\@pvol{#1}\fi\fi}%+1,+2,+d
 \let\pubnum\@gobble%not for TeX, only for secondary data use
-\def\correspondence#1{\gdef\@corresp{#1}}              \def\@corresp{}%+1,+2,+d
+\def\@corresp{%
+  \ifnum\corr@cnt=\@ne\relax
+    \csname corresp-1\endcsname%
+  \else
+    \ifnum\corr@cnt=\tw@\relax
+      \csname corresp-1\endcsname\Authand\csname corresp-2\endcsname%
+    \else
+      \@tempcnta\z@
+      \loop
+        \advance\@tempcnta\@ne
+        \csname corresp-\the\@tempcnta\endcsname%
+      \ifnum\@tempcnta<\numexpr\corr@cnt+\m@ne\relax\relax
+        \Authsep
+      \repeat
+      \Authands\csname corresp-\the\corr@cnt\endcsname%
+    \fi
+  \fi
+}
+\def\correspondence#1{\gdef\@corresp{#1}}%
 \def\citationstatement#1{%
   \edef\@@doi{https://doi.org/10.5194/\@journalnameshortlower-\@pvol-\@fpage-\@pyear}%
   \def\@tempa{#1}%
@@ -2292,10 +2613,14 @@
   \def\@pvol{0}
 \fi
 \if@stage@final
-  \def\keywords#1{\def\@keyw{#1}}
+  \def\keywords#1{%
+    \ifcopyediting\else\xmp@keywords{#1}\fi%
+    \def\@keyw{#1}%
+  }
   \def\@keyw{}
 \else
   \def\keywords#1{%
+    \ifcopyediting\else\xmp@keywords{#1}\fi%
     \CopernicusWarningNoLine{Keywords are not supported.}%
     \vspace{1.7mm}\par\noindent\textbf{Keywords.}\enspace\ignorespaces#1}
 \fi
@@ -2579,7 +2904,8 @@
     \else
       \clearpage
     \fi
-    \thispagestyle{empty}%
+    \if@proof\@prooffalse\fi
+    \thispagestyle{plain}%
     \parindent\z@
     \begin{nolinenumbers}%
     \expandafter\def\expandafter\@tempa\expandafter{\the\CEnotes}%
@@ -2632,7 +2958,13 @@
 \newcommand\@journallogo{Journallogo}
 \newcommand\@sentence{Sentence.}
 \newcommand\@sentenceDisc{Sentence.}
+\def\watermark{%
+  \smash{\rlap{%
+      \lower\dimexpr\paperheight-\headheight-\topmargin\relax\hbox{\hskip-\oddsidemargin\includegraphics{cop_watermark.pdf}}%
+    }}
+}
 \if@stage@final
+  \definecolor{watermark}{gray}{.85}
   \definecolor{textcol}{rgb}{0,0,0}
   \definecolor{bgcol}{rgb}{1,1,1}
   \definecolor{barcol}{rgb}{1,1,1}
@@ -2656,27 +2988,78 @@
   \edef\@journalnameshort{\@journalnameshort D}
   \edef\@journalnameshortlower{\@journalnameshortlower d}
 \fi
-\def\Etal#1{#1}
-\def\Issue#1{#1}
-\def\Particle#1{#1}
-\def\Link#1{#1}
-\def\Year#1{#1}
-\def\Lpage#1{#1}
-\def\Fpage#1{#1}
-\def\Volume#1{#1}
-\def\Source#1{#1}
-\def\Articletitle#1{#1}
-\def\Givennames#1{#1}
-\def\Surname#1{#1}
-\def\FirstName#1{#1}
-\def\Stringname#1{#1}
-\def\Persongroup#1{#1}
-\def\Journal#1{#1}
-\def\Uri#1{#1}
-\def\Content#1{#1}
-\def\Book#1{#1}
-\def\PublisherName#1{#1}
-\def\PublisherLoc#1{#1}
+\def\bElementCitation{}
+\def\bUri#1{#1}
+\def\bDate#1{#1}
+\def\bYear#1{#1}
+\def\bMonth#1{#1}
+\def\bDay#1{#1}
+\def\bPubId{}
+\def\bLpage#1{#1}
+\def\bFpage#1{#1}
+\def\bPersonGroup#1{#1}
+\def\bPersonGroup#1{#1}
+\def\bName#1{#1}
+\def\bName#1{#1}
+\def\bCollab#1{#1}
+\def\bCollab#1{#1}
+\def\bSurname#1{#1}
+\def\bSurname#1{#1}
+\def\bGivenNames#1{#1}
+\def\bSuffix#1{#1}
+\def\bSuffix#1{#1}
+\def\bParticle#1{#1}
+\def\bParticle#1{#1}
+\def\bVolume#1{#1}
+\def\bIssue#1{#1}
+\def\bSource#1{#1}
+\def\bSource#1{#1}
+\def\bChapterTitle#1{#1}
+\def\bComment#1{#1}
+\def\bArticleTitle#1{#1}
+\def\bSource#1{#1}
+\def\bChapterTitle#1{#1}
+\def\bSource#1{#1}
+\def\bEtal#1{#1}
+\def\bEtal#1{#1}
+\def\bPublisherName#1{#1}
+\def\bPublisherLoc#1{#1}
+\def\bIsbn#1{#1}
+\def\bDateInCitation#1{#1}
+\def\bDateInCitation#1{#1}
+\def\bEdition#1{#1}
+\def\bConfName#1{#1}
+\def\bConfLoc#1{#1}
+\def\bConfDate#1{#1}
+\def\bComment#1{#1}
+\def\bPatent#1{#1}
+\def\bSeries#1{#1}
+\def\bStd#1{#1}
+\def\bELocationID#1{#1}
+\def\bAttribute#1#2{}
+ %% LEGACY
+ \def\Etal#1{#1}
+ \def\Issue#1{#1}
+ \def\Particle#1{#1}
+ \def\Link#1{#1}
+ \def\Year#1{#1}
+ \def\Lpage#1{#1}
+ \def\Fpage#1{#1}
+ \def\Volume#1{#1}
+ \def\Source#1{#1}
+ \def\Articletitle#1{#1}
+ \def\Givennames#1{#1}
+ \def\Surname#1{#1}
+ \def\FirstName#1{#1}
+ \def\Stringname#1{#1}
+ \def\Persongroup#1{#1}
+ \def\Journal#1{#1}
+ \def\Uri#1{#1}
+ \def\Content#1{#1}
+ \def\Book#1{#1}
+ \def\PublisherName#1{#1}
+ \def\PublisherLoc#1{#1}
+ %% /LEGACY
 \def\mathring{\mathaccent6}
 
 \newenvironment{plainlist}
@@ -2693,6 +3076,11 @@
 }
 {\endlist}
 
+\if@copDebug
+  \ifx\xmltexversion\@undefined
+    \DeclareUnicodeCharacter{200B}{{\unskip\;\color{red}\vrule \@width1ex \@height1ex}}
+  \fi
+\fi
 \endinput
 %%
 %% End of file `copernicus.cls'.

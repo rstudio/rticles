@@ -15,16 +15,35 @@ library(rticles)
 ```{r, include = FALSE}
 # We generate the YAML file on the fly to render the gallery
 
+# helper
+gen_fun <- function(journal) {
+  # generic case
+  fun_name <- sprintf("%s_article", journal)
+  out_opts <- NULL
+  
+  # handles special case
+  if (grepl("oup_", journal)) {
+    fun_name <- sprintf("oup_article")
+    out_opts <- sprintf("oup_version = %s", gsub("oup_v(\\d)", "\\1", journal))
+  }
+  
+  list(fun_name = fun_name, out_opts = out_opts)
+  
+}
+
 # list of sites
 articles <- lapply(journals(), function(journal) {
   name <- yaml::read_yaml(rticles:::pkg_file_template(journal, "template.yaml"))$name
-  img = file.path("resources", paste0(journal, "_article.gif"))
-  href = file.path("resources", paste0(journal, "_article.pdf"))
-  repo_url = "https://github.com/rstudio/rticles/tree/master/inst/rmarkdown/templates/"
+  img <- file.path("resources", paste0(journal, "_article.gif"))
+  href <- file.path("resources", paste0(journal, "_article.pdf"))
+  repo_url <- "https://github.com/rstudio/rticles/tree/main/inst/rmarkdown/templates/"
   if (!file.exists(img) || !file.exists(href)) return(list())
+  fun <- gen_fun(journal)
   list(
     title = sprintf("%s - %s", journal, name),
-    fun = sprintf("%s_article", journal),
+    yaml_format_opts = if (is.null(fun$out_opts)) "default" else c("", strwrap(sub(" = ", ": ", fun$out_opts), indent = 4)),
+    yaml_format_name = fun$fun_name,
+    fun = sprintf("%s()", fun$fun),
     img = img, 
     href = href,
     source = paste0(repo_url, journal)
@@ -42,13 +61,14 @@ src <- lapply(articles, function(article) {
     "## {{title}}",
     "",
     "```yaml",
-    "output: {{fun}}",
+    "output: ",
+    "  {{yaml_format_name}}: {{glue::glue_collapse(yaml_format_opts, sep = '\n')}}",
     "```",
     "",
     "::: {.two-columns}",
     "[![]({{img}})]({{href}})",
     "",
-    "* Format function: `{{paste0(fun, '()')}}`",
+    "* Format function: `{{fun}}`",
     "",
     "* [Template Sources]({{source}})",
     "",
@@ -64,7 +84,7 @@ res <- knitr::knit_child(text = unlist(src), quiet = TRUE)
 `r res`
 
 ```{css, echo = FALSE}
-img {
+a > img {
 	border: unset;
   border-style: solid;
   border-color: #FEDB00;

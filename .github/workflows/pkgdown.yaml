@@ -1,61 +1,50 @@
+# Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    branches:
-     - main
-     - master
+    branches: [main, master]
   pull_request:
-    branches:
-     - main
-     - master
+    branches: [main, master]
+  release:
+    types: [published]
+  workflow_dispatch:
 
 name: pkgdown
 
 jobs:
   pkgdown:
-    if: ${{ github.event_name == 'push' || startsWith(github.head_ref, 'pkgdown') }}
-    runs-on: macos-latest
+    if: ${{ github.event_name != 'pull_request' || startsWith(github.head_ref, 'pkgdown/') }}
+    runs-on: ubuntu-latest
+    # Only restrict concurrency for non-PR jobs
+    concurrency:
+      group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - uses: r-lib/actions/setup-r@v1
-        id: install-r
-
-      - uses: r-lib/actions/setup-pandoc@v1
-
-      - uses: r-lib/actions/setup-tinytex@v1
+      - uses: r-lib/actions/setup-tinytex@v2
         env:
           # install full prebuilt version
           TINYTEX_INSTALLER: TinyTeX
 
-      - name: Install pak and query dependencies
-        run: |
-          install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
-          saveRDS(pak::pkg_deps(".", dependencies = TRUE), ".github/r-depends.rds")
-        shell: Rscript {0}
+      - uses: r-lib/actions/setup-pandoc@v2
 
-      - name: Cache R packages
-        uses: actions/cache@v2
+      - uses: r-lib/actions/setup-r@v2
         with:
-          path: |
-            ${{ env.R_LIBS_USER }}/*
-            !${{ env.R_LIBS_USER }}/pak
-          key: macos-latest-${{ steps.install-r.outputs.installed-r-version }}-1-${{ hashFiles('.github/r-depends.rds') }}
-          restore-keys: macos-latest-${{ steps.install-r.outputs.installed-r-version }}-1-
+          use-public-rspm: true
 
-      - name: Install package and dependencies
-        run: |
-          pak::local_install_dev_deps(upgrade = TRUE, dependencies = c("all", "Config/Needs/website"))
-          pak::pkg_install("r-lib/pkgdown")
-          pak::pkg_install("rstudio/quillt")
-        shell: Rscript {0}
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::pkgdown, local::.
+          needs: website
 
-      - name: Install package
-        run: R CMD INSTALL .
+      - name: Install system dependencies
+        if: runner.os == 'Linux'
+        run: sudo apt-get install -y ghostscript
 
       - name: Cache some pkgdown assets
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             vignettes/articles/resources/*.gif
@@ -65,17 +54,16 @@ jobs:
           restore-keys: |
             ${{ hashFiles('vignettes/articles/_child_examples.Rmd') }}-1-
 
-
       - name: Build pkgdown site
-        run: pkgdown::build_site(new_process = FALSE)
+        run: pkgdown::build_site(new_process = FALSE, install = FALSE)
         shell: Rscript {0}
 
       - name: Deploy to Netlify
         id: netlify-deploy
-        uses: nwtgck/actions-netlify@v1.1
+        uses: nwtgck/actions-netlify@v2.0
         with:
           publish-dir: 'reference'
-          production-branch: master
+          production-branch: main
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message:
             'Deploy from GHA: ${{ github.event.head_commit.message }} (${{ github.sha }})'

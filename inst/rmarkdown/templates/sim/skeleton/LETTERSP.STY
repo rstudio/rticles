@@ -1,0 +1,293 @@
+% Self-documenting file
+
+\ifx  \Comment \Undefined
+      \long \def \Comment #1\EndComment {}
+\else
+      \ifx  \EndComment \Undefined
+            \def \EndComment
+                {\message {Error: \noexpand \EndComment encountered
+                                without preceding \noexpand \Comment}}
+      \else %%% both defined; let's hope they're the right definitions!
+      \fi
+\fi
+
+\Comment
+This file, "letterspacing.tex", created by Philip Taylor of RHBNC
+(P.Taylor@Mail.Rhbnc.Ac.Uk) for Kaveh Bazargan of Focal Image
+(Kaveh@Focal.Demon.Co.Uk) may be freely distributed provided that
+no changes whatsoever are made to its contents
+\EndComment
+
+\Comment
+As far as is possible, `inaccessible' control sequences (i.e.~control sequences
+containing one or more commercial-at$\,$s) are used to minimise the risk of
+accidental collision with user-defined macros; however, the control sequences
+used to access the natural dimensions of the text are required to be user
+accessible, and therefore must contain only letters.
+\EndComment
+
+%%% Open control sequences
+
+\newdimen \naturalwidth
+\newdimen \naturaldepth
+\newdimen \naturalheight
+
+\Comment
+All control sequences defined hereafter are inaccessible to the casual user,
+including the control sequence used to store the category code of commercial-at;
+this catcode must be saved in order to be able to re-instate it at end of
+module, as we have no idea in what context the module will be |\input|. Having
+saved the catcode of commercial-at, we then change it to |11| (i.e.~that of a
+letter) in order to allow it to be used in the cs-names which follow.
+\EndComment
+
+%%% Concealed control sequences
+
+%\expandafter \chardef
+%        \csname \string @code\endcsname =
+%                \the \catcode `\@
+%\catcode `\@ = 11
+
+\Comment
+We will need a a box register in order to measure the natural dimensions of
+the text, and a token-list register in which to save the tokens to be
+letter-spaced.
+\EndComment
+
+\newbox \l@tterspacebox
+\newtoks \l@tterspacetoks
+
+\Comment
+We will need to test whether a particular macro expands to a space, so we will
+need another macro which does so expand with which to compare it; we will
+also need a `more infinite' variant of |\hss|.
+\EndComment
+
+\def \sp@ce { }
+\def \hsss
+    {\hskip 0 pt plus 1 fill minus 1 fill\relax}
+
+\Comment
+Many of the macros will used delimited parameter structures, typically
+terminated by the reserved control sequence |\@nd|; we make this a synonym
+for the empty macro (which expands to nothing), so that should it accidentally
+get expanded there will be no side effects.  We also define a brief synonym
+for |\expandafter|, just to keep the individual lines of code reasonably short.
+\EndComment
+
+\let \@nd = \empty
+\let \@x = \expandafter
+
+\Comment
+We will also need to compare a token which has been peeked at by |\futurelet|
+with a space token; because of the difficulty of accessing such a space
+token (which would usually be absorbed by a preceding control word), we
+establish |\sp@cetoken| as a synonym.  The code to achieve this is messy,
+because of the very difficulty just outlined, and so we `waste' a control
+sequence |\t@mp|; we then return this to the pool of undefined tokens.
+\EndComment
+
+\let \sp@cetoken = \relax
+\edef \t@mp {\let \sp@cetoken = \sp@ce}
+\t@mp \let \t@mp = \undefined
+
+\Comment
+The user-level macro |\letterspace| has exactly the same syntax as that for
+|\hbox| and |\vbox|, as explained in the introduction; the delimited parameter
+structure for this macro ensures that everything up to the open brace which
+delimits the beginning of the text to be letter-spaced is absorbed as parameter
+to the macro, and the brace-delimited text which follows is then assigned to the
+token-list register |\l@tterspacetoks|; |\afterassignment| is used to regain
+control once the assignment is complete.
+\EndComment
+
+%%% Primary (user-level) macro
+
+\def \letterspace #1#%
+    {\def \hb@xmodifier {#1}%
+     \afterassignment \l@tterspace
+     \l@tterspacetoks =
+    }
+
+\Comment
+Control then passes to |\l@tterspace|, which starts by setting an |\hbox|
+containing the text to be typeset; the dimensions of this box (and therefore
+of the text) are then saved in the open control sequences previously declared,
+and the |\hbox| becomes of no further interest.
+
+A new |\hbox| is now created, in which the same text, but this time
+letter-spaced, will be set; the box starts and ends with |\hss| glue so that if
+only a single character is to be letter-spaced, it will be centered in the box.
+If two or more characters are to be letter-spaced, they will be separated by
+|\hsss| glue, previously declared, which by virtue of its greater degree of
+infinity will completely override the |\hss| glue at the beginning and end;
+thus the first and last characters will be set flush with the edges of the box.
+
+The actual mechanism by which letter-spacing takes place is not yet apparent,
+but it will be seen that it is crucially dependent on the definition of
+|\l@tt@rspace|, which is expanded as the box is being set; the |\@x|
+(|\expandafter|) causes the actual tokens stored in |\l@tterspacetoks| to be
+made available as parameter to |\l@tt@rspace| rather than the token-list
+register itself, as it is these tokens on which |\l@tt@rspace| will operate.
+The |\@nd| terminates the parameter list, and the |{}| which immediately
+precedes it ensures that that there is always a null element at the end of the
+list: without this, the braces which are needed to protect an accent/character
+pair would be lost if such a pair formed the final element of the list, at the
+point where they are passed as the second (delimited) parameter to |\p@rtiti@n|;
+by definition, <TeX> removes the outermost pair of braces from both simple and
+delimited parameters during parameter substitution if such braces form the first
+and last tokens of the parameter, and thus if a brace-delimited group ever
+becomes the second element of a two-element list, the braces will be irrevocably
+lost.  The |{}| ensure that such a situation can never occur.
+\EndComment
+
+%%% Secondary (implementation-level) macro
+
+\def \l@tterspace
+    {\setbox \l@tterspacebox = \hbox
+                {\the \l@tterspacetoks}%
+     \naturalwidth =  \wd \l@tterspacebox
+     \naturaldepth =  \dp \l@tterspacebox
+     \naturalheight = \ht \l@tterspacebox
+     \hbox \hb@xmodifier
+     \bgroup
+           \hss
+           \@x \l@tt@rspace
+           \the \l@tterspacetoks {}\@nd
+           \hss
+     \egroup
+    }
+
+\Comment
+The next macro is |\l@tt@rspace|, which forms the crux of the entire operation.
+The text to be letter-spaced is passed as parameter to this macro, and the
+first step is to check whether there is, in fact, any such text; this is
+necessary both to cope with pathological usage (e.g.~|\letterspace {}|), and to
+provide an exit route, as the macro uses tail-recursion to apply itself
+iteratively to the `tail' of the text to be letter-spaced; when no elements
+remain, the macro must exit.
+
+Once the presence of text has been ensured, the token-list representing
+this text is partitioned into a head (the first element), and the tail
+(the remainder);  at each iteration, only the head is considered, although
+if the tail is empty (i.e.~the end of the list has been reached), special
+action is taken.
+
+If the first element is a space, it is treated specially by surrounding it
+with two globs of |\hsss| glue, to provide extra stretchability when compared
+to the single glob of |\hsss| glue which will separate consecutive non-space
+tokens; otherwise, the element itself is yielded, followed by a single glob
+of |\hsss| glue.  This glue is suppressed if the element is the last of the
+list, to ensure that the last token aligns with the edge of the box.
+
+When the first element has been dealt with, the macro uses tail
+recursion to apply itself to the remaining elements (i.e.~to the tail);
+|\@x| (|\expandafter|) is again used to ensure that the tail is expanded
+into its component tokens before being passed as parameter.
+\EndComment
+
+%%% Tertiary (implementation-level) macro
+
+\def \l@tt@rspace #1\@nd
+    {\ifx  \@nd #1\@nd
+           \let \n@xt = \relax
+     \else
+           \p@rtition #1\@nd
+           \ifx \h@ad \sp@ce \hsss \h@ad \hsss
+           \else
+                \h@ad
+                \ifx \t@il \@nd \else \hsss \fi
+           \fi
+           \@x \def \@x \n@xt \@x
+                {\@x \l@tt@rspace \t@il \@nd}%
+     \fi
+     \n@xt
+    }
+
+\Comment
+The operation of token-list partitioning is conceptually simple: one passes the
+token list as parameter text to a macro defined to take two parameters, the
+first simple and the second delimited; the first element of the list will be
+split off as parameter-1, and the remaining material passed as parameter-2.
+Unfortunately this na\"\i ve approach fails when the first element is a bare
+space, as the semantics of <TeX> prevent such a space from ever being passed as
+a simple parameter (it could be passed as a delimited parameter, but as one
+does not know what token follows the space, defining an appropriate delimiter
+structure would be tricky if not impossible).  The technique used here relies
+upon the adjunct macro |\m@kespacexplicit|, which replaces a leading bare space
+by a space protected by braces; such spaces may legitimately be passed as simple
+parameters.  Once that operation has been completed, the re-constructed token
+list is passed to |\p@rtiti@n|, which actually performs the partitioning as
+above; again |\@x| (|\expandafter|) is used to expand |\b@dy| (the
+re-constructed token list) into its component elements before being passed as
+parameter text.
+\EndComment
+
+%%% Adjunct macros -- list partitioning
+
+\def \p@rtition #1\@nd
+    {\m@kespacexplicit #1\@nd
+     \@x \p@rtiti@n \b@dy \@nd
+    }
+
+\def \p@rtiti@n #1#2\@nd
+    {\def \h@ad {#1}%
+     \def \t@il {#2}%
+    }
+
+\Comment
+The operation of making a space explicit relies on prescience: the code needs
+to know what token starts the token list before it knows how to proceed.
+Prescience in <TeX> is usually accomplished by |\futurelet|, and this code
+is no exception: |\futurelet| here causes |\h@ad| to be |\let| equal to
+the leading token, and control is then ceded to |\m@kesp@cexplicit|.
+
+The latter compares |\h@ad| with |\sp@cetoken| (remember the convolutions we
+had to go through to get |\sp@cetoken| correctly defined in the first place),
+and if they match (i.e.~if the leading token is a space), then |\b@dy|
+(the control sequence through which the results of this operation will
+be returned) is defined to expand to a protected space (a space surrounded by
+braces), followed by the remainder of the elements; if they do not match
+(i.e.~if the leading token is \stress {not} a space), then |\b@dy| is simply
+defined to be the original token list, unmodified.  If the leading token
+\stress {was} a space, it must be replaced by a protected space: this is
+accomplished by |\pr@tectspace|.
+
+The |\pr@tectspace| macro uses a delimited parameter structure, as do most
+of the other macros in this suite, but the structure used here is unique,
+in that the initial delimiter is a space.  Thus, when a token-list starting
+with a space is passed as parameter text, that space is regarded as matching
+the space in the delimiter structure and removed; the expansion of the macro
+is therefore the tokens remaining once the leading space has been removed,
+preceded by a protected space |{ }|.
+\EndComment
+
+%%% Adjunct macros -- <space>... -> {<space>}...
+
+\def \m@kespacexplicit #1\@nd
+    {\futurelet \h@ad \m@kesp@cexplicit #1\@nd}
+
+\def \m@kesp@cexplicit #1\@nd
+    {\ifx \h@ad \sp@cetoken
+          \@x \def \@x \b@dy
+                     \@x {\pr@tectspace #1\@nd}%
+     \else
+          \def \b@dy {#1}%
+     \fi
+    }%
+
+\@x \def \@x \pr@tectspace \sp@ce #1\@nd {{ }#1}
+
+\Comment
+The final step is to re-instate the category code of commercial-at.
+\EndComment
+
+%%% re-instate category code of commercial-at
+
+%\catcode `\@ = \the \@code
+
+\Comment
+Thus letter-spacing is accomplished.  The author hopes both that the code will
+be found useful and that the explanation which accompanies it will be found
+informative and interesting.
+\EndComment

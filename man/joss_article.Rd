@@ -4,7 +4,13 @@
 \alias{joss_article}
 \title{Journal of Open Source Software (JOSS) format.}
 \usage{
-joss_article(journal = "JOSS", keep_md = TRUE, latex_engine = "xelatex", ...)
+joss_article(
+  journal = "JOSS",
+  keep_md = TRUE,
+  latex_engine = "xelatex",
+  pandoc_args = NULL,
+  ...
+)
 }
 \arguments{
 \item{journal}{one of "JOSS" or"JOSE"}
@@ -12,7 +18,12 @@ joss_article(journal = "JOSS", keep_md = TRUE, latex_engine = "xelatex", ...)
 \item{keep_md}{Whether to retain the intermediate markdown and images.
 Defaults to TRUE.}
 
-\item{latex_engine, ...}{Arguments passed to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}}
+\item{latex_engine}{LaTeX engine for producing PDF output. Options are
+"pdflatex", "lualatex", "xelatex" and "tectonic".}
+
+\item{pandoc_args}{Additional command line options to pass to pandoc}
+
+\item{...}{Arguments passed to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}}
 }
 \description{
 Format for creating a Journal of Open Source Software (JOSS) or Journal of
@@ -23,6 +34,6 @@ R Markdown and to locally preview how the article will appear as PDF.
 }
 \details{
 The following variables may be set in YAML metadata to populate fields in the
-article PDF, but are only necccessary fo local preview:
+article PDF, but are only necessary fo local preview:
 \verb{formatted_doi, citation_author, year, volume, issue, page, submitted, published, review_url, repository}, and \code{archive_doi}.
 }

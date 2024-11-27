@@ -5,7 +5,12 @@ destination: reference
 url: https://pkgs.rstudio.com/rticles/
 
 template:
-  package: quillt
+  package: tidytemplate
+  bootstrap: 5
+  bslib:
+    primary: "#096B72"
+    navbar-background: "#e6f3fc"
+  trailing_slash_redirect: true
   opengraph:
     image:
       src: man/figures/logo.png
@@ -18,37 +23,40 @@ development:
   version_tooltip: "Development version"
 
 home:
-  strip_header: false
+  links:
+  - text: Learn more about R Markdown
+    href: "https://rmarkdown.rstudio.com"
 
-# structure of website themed with quillt
-navbar:
-  title: ~
-  type: default
+# custom footer for rmarkdown ecosystem
+footer:
   structure:
-    left:  [intro, examples]
-    right: [reference, news, github]
+    left: [rmd]
+    right: [developed_by, p, built_with]
   components:
-    home: ~
+      p: "\n\n"
+      rmd: |
+        **rticles** is a part of the **R Markdown** ecosystem of packages for creating
+        computational documents in R.<br>Learn more at
+        [rmarkdown.rstudio.com](https://rmarkdown.rstudio.com/).
+
+# structure of website themed for R Markdown ecosystem
+navbar:
+  structure:
+    left:  [intro, examples, articles, reference, news]
+  components:
     examples:
       text: Examples
-      href: articles/articles/examples.html
-    reference:
-      text: Reference
-      href: reference/index.html
-    github:
-      icon: fab fa-github fa-lg
-      href: https://github.com/rstudio/rticles
-    news:
-      text: News
-      menu:
-        - text: "Changelog"
-          href: news/index.html
-        - text: "------------------"
-        - text: "Blog posts"
-        # Add blog post where a released version is mentioned.
-        - text: "No blog post"
-        # - text: Version 0.2
-        #   href: <url>
+      href: articles/examples.html
+
+# Add articles menu using
+# https://pkgdown.r-lib.org/dev/reference/build_articles.html#index-and-navbar
+# aticles:
+
+news:
+  releases:
+  - text: "No blog post"
+  # - text: Version 0.2
+  #   href: <url>
 
 authors:
   footer:
@@ -64,5 +72,9 @@ reference:
   - title: Journal templates
     contents:
     - ends_with("article")
+  - title: Utility function
+    desc: Functions useful in templates
+    contents:
+    - string_to_table
 
 

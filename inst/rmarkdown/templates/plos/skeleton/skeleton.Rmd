@@ -23,7 +23,8 @@ author_summary: |
 
 bibliography: mybibfile.bib
 output: rticles::plos_article
-csl: plos.csl
+# plos.csl can be download and used locally
+csl: http://www.zotero.org/styles/plos
 ---
 
 _Text based on plos sample manuscript, see <https://journals.plos.org/ploscompbiol/s/latex>_

@@ -55,7 +55,7 @@
 %% required packages
 % This fixes https://github.com/matthias-da/ajs-public/issues/2.
 % Retrieved from https://github.com/rstudio/rticles/issues/329
-\RequirePackage[2020/02/02]{latexrelease}
+%\RequirePackage[2020/02/02]{latexrelease}
 \RequirePackage{graphicx,color,xcolor,ae,fancyvrb}
 \usepackage{orcidlink}
 \RequirePackage[T1]{fontenc}
@@ -69,6 +69,9 @@
 \fi
 \bibpunct{(}{)}{;}{a}{}{,}
 \bibliographystyle{ajs}
+
+
+
 %% page layout
 %\topmargin 0pt
 \topmargin -50pt
@@ -520,4 +523,15 @@
 \newcommand{\Prob}{\mathsf{P}}
 \endinput
 %%
+
+%% references
+\makeatletter
+ \DeclareRobustCommand\ref{%
+    \@ifstar\@refstar\T@ref
+  }%
+  \DeclareRobustCommand\pageref{%
+    \@ifstar\@pagerefstar\T@pageref
+  }%
+ \makeatother
+
 %% End of file `jss.cls'.

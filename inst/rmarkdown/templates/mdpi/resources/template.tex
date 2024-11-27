@@ -1,23 +1,16 @@
 %  LaTeX support: latex@mdpi.com
-%  In case you need support, please attach all files that are necessary for compiling as well as the log file, and specify the details of your LaTeX setup (which operating system and LaTeX version / tools you are using).
+%  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
 
 %=================================================================
-\documentclass[$journal$,$type$,$status$,moreauthors,pdftex]{mdpi}
+% pandoc conditionals added to preserve backwards compatibility with previous versions of rticles
 
-% If you would like to post an early version of this manuscript as a preprint, you may use preprint as the journal and change 'submit' to 'accept'. The document class line would be, e.g., \documentclass[preprints,article,accept,moreauthors,pdftex]{mdpi}. This is especially recommended for submission to arXiv, where line numbers should be removed before posting. For preprints.org, the editorial staff will make this change immediately prior to posting.
+\documentclass[$journal$,$type$,$status$,$multipleauthors$$if(pdftex)$,pdftex$endif$]{$cls$}
+
 
 %% Some pieces required from the pandoc template
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{4pt}}
 \setlist[itemize]{leftmargin=*,labelsep=5.8mm}
 \setlist[enumerate]{leftmargin=*,labelsep=4.9mm}
 
-\usepackage{longtable}
-
-% see https://stackoverflow.com/a/47122900
-$if(highlighting-macros)$
-$highlighting-macros$
-$endif$
 
 %--------------------
 % Class Options:
@@ -26,13 +19,14 @@ $endif$
 % journal
 %----------
 % Choose between the following MDPI journals:
-% acoustics, actuators, addictions, admsci, aerospace, agriculture, agriengineering, agronomy, algorithms, animals, antibiotics, antibodies, antioxidants, applsci, arts, asc, asi, atmosphere, atoms, axioms, batteries, bdcc, behavsci , beverages, bioengineering, biology, biomedicines, biomimetics, biomolecules, biosensors, brainsci , buildings, cancers, carbon , catalysts, cells, ceramics, challenges, chemengineering, chemistry, chemosensors, children, cleantechnol, climate, clockssleep, cmd, coatings, colloids, computation, computers, condensedmatter, cosmetics, cryptography, crystals, dairy, data, dentistry, designs , diagnostics, diseases, diversity, drones, econometrics, economies, education, electrochem, electronics, energies, entropy, environments, epigenomes, est, fermentation, fibers, fire, fishes, fluids, foods, forecasting, forests, fractalfract, futureinternet, futurephys, galaxies, games, gastrointestdisord, gels, genealogy, genes, geohazards, geosciences, geriatrics, hazardousmatters, healthcare, heritage, highthroughput, horticulturae, humanities, hydrology, ijerph, ijfs, ijgi, ijms, ijns, ijtpp, informatics, information, infrastructures, inorganics, insects, instruments, inventions, iot, j, jcdd, jcm, jcp, jcs, jdb, jfb, jfmk, jimaging, jintelligence, jlpea, jmmp, jmse, jnt, jof, joitmc, jpm, jrfm, jsan, land, languages, laws, life, literature, logistics, lubricants, machines, magnetochemistry, make, marinedrugs, materials, mathematics, mca, medicina, medicines, medsci, membranes, metabolites, metals, microarrays, micromachines, microorganisms, minerals, modelling, molbank, molecules, mps, mti, nanomaterials, ncrna, neuroglia, nitrogen, notspecified, nutrients, ohbm, particles, pathogens, pharmaceuticals, pharmaceutics, pharmacy, philosophies, photonics, physics, plants, plasma, polymers, polysaccharides, preprints , proceedings, processes, proteomes, psych, publications, quantumrep, quaternary, qubs, reactions, recycling, religions, remotesensing, reports, resources, risks, robotics, safety, sci, scipharm, sensors, separations, sexes, signals, sinusitis, smartcities, sna, societies, socsci, soilsystems, sports, standards, stats, surfaces, surgeries, sustainability, symmetry, systems, technologies, test, toxics, toxins, tropicalmed, universe, urbansci, vaccines, vehicles, vetsci, vibration, viruses, vision, water, wem, wevj
+% acoustics, actuators, addictions, admsci, adolescents, aerobiology, aerospace, agriculture, agriengineering, agrochemicals, agronomy, ai, air, algorithms, allergies, alloys, analytica, analytics, anatomia, animals, antibiotics, antibodies, antioxidants, applbiosci, appliedchem, appliedmath, applmech, applmicrobiol, applnano, applsci, aquacj, architecture, arm, arthropoda, arts, asc, asi, astronomy, atmosphere, atoms, audiolres, automation, axioms, bacteria, batteries, bdcc, behavsci, beverages, biochem, bioengineering, biologics, biology, biomass, biomechanics, biomed, biomedicines, biomedinformatics, biomimetics, biomolecules, biophysica, biosensors, biotech, birds, bloods, blsf, brainsci, breath, buildings, businesses, cancers, carbon, cardiogenetics, catalysts, cells, ceramics, challenges, chemengineering, chemistry, chemosensors, chemproc, children, chips, cimb, civileng, cleantechnol, climate, clinpract, clockssleep, cmd, coasts, coatings, colloids, colorants, commodities, compounds, computation, computers, condensedmatter, conservation, constrmater, cosmetics, covid, crops, cryptography, crystals, csmf, ctn, curroncol, cyber, dairy, data, ddc, dentistry, dermato, dermatopathology, designs, devices, diabetology, diagnostics, dietetics, digital, disabilities, diseases, diversity, dna, drones, dynamics, earth, ebj, ecologies, econometrics, economies, education, ejihpe, electricity, electrochem, electronicmat, electronics, encyclopedia, endocrines, energies, eng, engproc, entomology, entropy, environments, environsciproc, epidemiologia, epigenomes, est, fermentation, fibers, fintech, fire, fishes, fluids, foods, forecasting, forensicsci, forests, foundations, fractalfract, fuels, future, futureinternet, futurepharmacol, futurephys, futuretransp, galaxies, games, gases, gastroent, gastrointestdisord, gels, genealogy, genes, geographies, geohazards, geomatics, geosciences, geotechnics, geriatrics, grasses, gucdd, hazardousmatters, healthcare, hearts, hemato, hematolrep, heritage, higheredu, highthroughput, histories, horticulturae, hospitals, humanities, humans, hydrobiology, hydrogen, hydrology, hygiene, idr, ijerph, ijfs, ijgi, ijms, ijns, ijpb, ijtm, ijtpp, ime, immuno, informatics, information, infrastructures, inorganics, insects, instruments, inventions, iot, j, jal, jcdd, jcm, jcp, jcs, jcto, jdb, jeta, jfb, jfmk, jimaging, jintelligence, jlpea, jmmp, jmp, jmse, jne, jnt, jof, joitmc, jor, journalmedia, jox, jpm, jrfm, jsan, jtaer, jvd, jzbg, kidneydial, kinasesphosphatases, knowledge, land, languages, laws, life, liquids, literature, livers, logics, logistics, lubricants, lymphatics, machines, macromol, magnetism, magnetochemistry, make, marinedrugs, materials, materproc, mathematics, mca, measurements, medicina, medicines, medsci, membranes, merits, metabolites, metals, meteorology, methane, metrology, micro, microarrays, microbiolres, micromachines, microorganisms, microplastics, minerals, mining, modelling, molbank, molecules, mps, msf, mti, muscles, nanoenergyadv, nanomanufacturing,\gdef\@continuouspages{yes}} nanomaterials, ncrna, ndt, network, neuroglia, neurolint, neurosci, nitrogen, notspecified, %%nri, nursrep, nutraceuticals, nutrients, obesities, oceans, ohbm, onco, %oncopathology, optics, oral, organics, organoids, osteology, oxygen, parasites, parasitologia, particles, pathogens, pathophysiology, pediatrrep, pharmaceuticals, pharmaceutics, pharmacoepidemiology,\gdef\@ISSN{2813-0618}\gdef\@continuous pharmacy, philosophies, photochem, photonics, phycology, physchem, physics, physiologia, plants, plasma, platforms, pollutants, polymers, polysaccharides, poultry, powders, preprints, proceedings, processes, prosthesis, proteomes, psf, psych, psychiatryint, psychoactives, publications, quantumrep, quaternary, qubs, radiation, reactions, receptors, recycling, regeneration, religions, remotesensing, reports, reprodmed, resources, rheumato, risks, robotics, ruminants, safety, sci, scipharm, sclerosis, seeds, sensors, separations, sexes, signals, sinusitis, skins, smartcities, sna, societies, socsci, software, soilsystems, solar, solids, spectroscj, sports, standards, stats, std, stresses, surfaces, surgeries, suschem, sustainability, symmetry, synbio, systems, targets, taxonomy, technologies, telecom, test, textiles, thalassrep, thermo, tomography, tourismhosp, toxics, toxins, transplantology, transportation, traumacare, traumas, tropicalmed, universe, urbansci, uro, vaccines, vehicles, venereology, vetsci, vibration, virtualworlds, viruses, vision, waste, water, wem, wevj, wind, women, world, youth, zoonoticdis 
+% For posting an early version of this manuscript as a preprint, you may use "preprints" as the journal. Changing "submit" to "accept" before posting will remove line numbers.
 
 %---------
 % article
 %---------
-% The default type of manuscript is "article", but can be replaced by:
-% abstract, addendum, article, benchmark, book, bookreview, briefreport, casereport, changes, comment, commentary, communication, conceptpaper, conferenceproceedings, correction, conferencereport, expressionofconcern, extendedabstract, meetingreport, creative, datadescriptor, discussion, editorial, essay, erratum, hypothesis, interestingimages, letter, meetingreport, newbookreceived, obituary, opinion, projectreport, reply, retraction, review, perspective, protocol, shortnote, supfile, technicalnote, viewpoint
+% The default type of manuscript is "article", but can be replaced by: 
+% abstract, addendum, article, book, bookreview, briefreport, casereport, comment, commentary, communication, conferenceproceedings, correction, conferencereport, entry, expressionofconcern, extendedabstract, datadescriptor, editorial, essay, erratum, hypothesis, interestingimage, obituary, opinion, projectreport, reply, retraction, review, perspective, protocol, shortnote, studyprotocol, systematicreview, supfile, technicalnote, viewpoint, guidelines, registeredreport, tutorial
 % supfile = supplementary materials
 
 %----------
@@ -48,45 +42,72 @@ $endif$
 %---------
 % pdftex
 %---------
-% The option pdftex is for use with pdfLaTeX. If eps figures are used, remove the option pdftex and use LaTeX and dvi2pdf.
+% The option pdftex is for use with pdfLaTeX. Remove "pdftex" for (1) compiling with LaTeX & dvi2pdf (if eps figures are used) or for (2) compiling with XeLaTeX.
 
 %=================================================================
-\firstpage{1}
-\makeatletter
-\setcounter{page}{\@firstpage}
+% MDPI internal commands - do not modify
+\firstpage{1} 
+\makeatletter 
+\setcounter{page}{\@firstpage} 
 \makeatother
-\pubvolume{xx}
+\pubvolume{1}
 \issuenum{1}
-\articlenumber{5}
-\pubyear{2019}
-\copyrightyear{2019}
-%\externaleditor{Academic Editor: name}
-\history{Received: date; Accepted: date; Published: date}
-\updates{yes} % If there is an update available, un-comment this line
+\articlenumber{0}
+\pubyear{2024}
+\copyrightyear{2024}
+%\externaleditor{Academic Editor: Firstname Lastname}
+\datereceived{ } 
+\daterevised{ } % Comment out if no revised date
+\dateaccepted{ } 
+\datepublished{ } 
+%\datecorrected{} % For corrected papers: "Corrected: XXX" date in the original paper.
+%\dateretracted{} % For corrected papers: "Retracted: XXX" date in the original paper.
+\hreflink{https://doi.org/} % If needed use \linebreak
+%\doinum{}
+%\pdfoutput=1 % Uncommented for upload to arXiv.org
+%\CorrStatement{yes}  % For updates
 
-%% MDPI internal command: uncomment if new journal that already uses continuous page numbers
-%\continuouspages{yes}
-
-%------------------------------------------------------------------
-% The following line should be uncommented if the LaTeX file is uploaded to arXiv.org
-%\pdfoutput=1
 
 %=================================================================
-% Add packages and commands here. The following packages are loaded in our class file: fontenc, calc, indentfirst, fancyhdr, graphicx, lastpage, ifthen, lineno, float, amsmath, setspace, enumitem, mathpazo, booktabs, titlesec, etoolbox, amsthm, hyphenat, natbib, hyperref, footmisc, geometry, caption, url, mdframed, tabto, soul, multirow, microtype, tikz
+% Add packages and commands here. The following packages are loaded in our class file: fontenc, inputenc, calc, indentfirst, fancyhdr, graphicx, epstopdf, lastpage, ifthen, float, amsmath, amssymb, lineno, setspace, enumitem, mathpazo, booktabs, titlesec, etoolbox, tabto, xcolor, colortbl, soul, multirow, microtype, tikz, totcount, changepage, attrib, upgreek, array, tabularx, pbox, ragged2e, tocloft, marginnote, marginfix, enotez, amsthm, natbib, hyperref, cleveref, scrextend, url, geometry, newfloat, caption, draftwatermark, seqsplit
+% cleveref: load \crefname definitions after \begin{document}
 
 %=================================================================
-%% Please use the following mathematics environments: Theorem, Lemma, Corollary, Proposition, Characterization, Property, Problem, Example, ExamplesandDefinitions, Hypothesis, Remark, Definition
+% Please use the following mathematics environments: Theorem, Lemma, Corollary, Proposition, Characterization, Property, Problem, Example, ExamplesandDefinitions, Hypothesis, Remark, Definition, Notation, Assumption
 %% For proofs, please use the proof environment (the amsthm package is loaded by the MDPI class).
 
 %=================================================================
 % Full title of the paper (Capitalized)
 \Title{$title$}
 
-% Authors, for the paper (add full first names)
-\Author{$for(author)$$author.name$$$^{$author.affil$}$$$if(author.orcid)$\href{https://orcid.org/$author.orcid$}{\orcidicon}$endif$$sep$, $endfor$}
+% MDPI internal command: Title for citation in the left column
+\TitleCitation{$title$}
 
-% Authors, for metadata in PDF
+% Author Orchid ID: enter ID or remove command
+%\newcommand{\orcidauthorA}{0000-0000-0000-000X} % Add \orcidA{} behind the author's name
+%\newcommand{\orcidauthorB}{0000-0000-0000-000X} % Add \orcidB{} behind the author's name
+
+
+% Authors, for the paper (add full first names)
+\Author{$for(author)$$author.name$$$^{$author.affil$}$$$if(author.orcid)$\href{https://orcid.org/$author.orcid$}
+{\orcidicon}$endif$$sep$, $endfor$}
+
+
+%\longauthorlist{yes}
+$if(longauthorlist)$
+\longauthorlist{$longauthorlist$}
+$endif$
+
+
+% MDPI internal command: Authors, for metadata in PDF
 \AuthorNames{$for(author)$$author.name$$sep$, $endfor$}
+
+% MDPI internal command: Authors, for citation in the left column
+$if(authorcitation)$
+%\AuthorCitation{Lastname, F.; Lastname, F.; Lastname, F.}
+% If this is a Chicago style journal: Lastname, Firstname, Firstname Lastname, and Firstname Lastname.
+\AuthorCitation{$authorcitation$}
+$endif$
 
 % Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
 \address{%
@@ -94,6 +115,7 @@ $for(affiliation)$
 $$^{$affiliation.num$}$$ \quad $affiliation.address$; $affiliation.email$\\
 $endfor$
 }
+
 % Contact information of the corresponding author
 \corres{Correspondence: $correspondence$}
 
@@ -113,10 +135,13 @@ $if(simplesummary)$
 \simplesumm{$simplesummary$}
 $endif$
 
+%\conference{} % An extended version of a conference paper
+
 % Abstract (Do not insert blank lines, i.e. \\)
 $if(abstract)$
 \abstract{$abstract$}
 $endif$
+
 
 % Keywords
 $if(keywords)$
@@ -131,31 +156,165 @@ $endif$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Only for the journal Diversity
 %\LSID{\url{http://}}
+$if(lsid)$
+\LSID{$lsid$}
+$endif$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Only for the journal Applied Sciences:
-%\featuredapplication{Authors are encouraged to provide a concise description of the specific application or a potential application of the work. This section is not mandatory.}
+% Only for the journal Applied Sciences
+$if(featuredapplication)$\featuredapplication{$featuredapplication$}$endif$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Only for the journal Data:
-%\dataset{DOI number or link to the deposited data set in cases where the data set is published or set to be published separately. If the data set is submitted and will be published as a supplement to this paper in the journal Data, this field will be filled by the editors of the journal. In this case, please make sure to submit the data set as a supplement when entering your manuscript into our manuscript editorial system.}
-
-%\datasetlicense{license under which the data set is made available (CC0, CC-BY, CC-BY-SA, CC-BY-NC, etc.)}
+% Only for the journal Data
+$if(dataset)$\dataset{$dataset$}$endif$
+$if(datasetlicense)$\datasetlicense{$datasetlicense$}$endif$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Only for the journal Toxins
-%\keycontribution{The breakthroughs or highlights of the manuscript. Authors can write one or two sentences to describe the most important part of the paper.}
+$if(keycontributions)$\keycontributions{$keycontributions$}$endif$
 
-%\setcounter{secnumdepth}{4}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Encyclopedia
+$if(encycloperdiadef)$\encyclopediadef{$encyclopediadef$}$endif$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Advances in Respiratory Medicine
+%\addhighlights{yes}
+%\renewcommand{\addhighlights}{%
+
+%\noindent This is an obligatory section in “Advances in Respiratory Medicine”, whose goal is to increase the discoverability and readability of the article via search engines and other scholars. Highlights should not be a copy of the abstract, but a simple text allowing the reader to quickly and simplified find out what the article is about and what can be cited from it. Each of these parts should be devoted up to 2~bullet points.\vspace{3pt}\\
+%\textbf{What are the main findings?}
+% \begin{itemize}[labelsep=2.5mm,topsep=-3pt]
+% \item First bullet.
+% \item Second bullet.
+% \end{itemize}\vspace{3pt}
+%\textbf{What is the implication of the main finding?}
+% \begin{itemize}[labelsep=2.5mm,topsep=-3pt]
+% \item First bullet.
+% \item Second bullet.
+% \end{itemize}
+%}
+$if(mainfindings)$
+$mainfindings$
+$endif$
+
+$if(addhighlights)$
+\addhighlights{yes}
+\renewcommand{addhighlights}{
+$addhighlights$
+}
+$endif$
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Pandoc citation processing
+$if(highlighting-macros)$
+% Pandoc syntax highlighting
+$highlighting-macros$
+$endif$
+
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+$if(tables)$
+% From pandoc table feature
+\usepackage{longtable,booktabs,array}
+$if(multirow)$
+\usepackage{multirow}
+$endif$
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+$endif$
+
+% Add imagehandling
+$-- Only needed for pandoc 3.2.1 and above requiring graphics for new command.
+$if(graphics)$$if(pandoc321)$
+% Custom command from Pandoc 3.2.1 to scale images if necessary
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+\makeatother
+$endif$$endif$
+
 $if(csl-refs)$
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
+% Pandoc citation processing
+$if(pandoc318)$
+%From Pandoc 3.1.8
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+$else$$if(pandoc317)$
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+% avoid brackets around text for \cite:
+\makeatletter
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacing}
+\setlength{\cslentryspacing}{0em}
+\usepackage{enumitem}
+\newlist{CSLReferences}{itemize}{1}
+\setlist[CSLReferences]{label={},
+  leftmargin=\cslhangindent,
+  itemindent=-1\cslhangindent,
+  parsep=\parskip,
+  itemsep=\cslentryspacing}
+$else$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
 % for Pandoc 2.8 to 2.10.1
 \newenvironment{cslreferences}%
   {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
@@ -166,14 +325,16 @@ $if(csl-refs)$
  {% don't indent paragraphs
   \setlength{\parindent}{0pt}
   % turn on hanging indent if param 1 is 1
-  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
-  % set entry spacing
-  \ifnum #2 > 0
-  \setlength{\parskip}{#2\baselineskip}
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
   \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
  }%
  {}
-\usepackage{calc} % for calculating minipage widths
+$endif$$endif$
+\usepackage{calc}
 \newcommand{\CSLBlock}[1]{#1\hfill\break}
 \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
@@ -185,94 +346,160 @@ $header-includes$
 $endfor$
 
 \begin{document}
+
+
+$for(include-before)$
+$include-before$
+
+$endfor$
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 $body$
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %% optional
-% \supplementary{The following are available online at www.mdpi.com/link, Figure S1: title, Table S1: title, Video S1: title.}
-%
-% % Only for the journal Methods and Protocols:
-% % If you wish to submit a video article, please do so with any other supplementary material.
-% % \supplementary{The following are available at www.mdpi.com/link: Figure S1: title, Table S1: title, Video S1: title. A supporting video article is available at doi: link.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \vspace{6pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-$if(acknowledgement)$
-\acknowledgments{$acknowledgement$}
+%% optional
+$if(supplementary)$
+\supplementary{$supplementary$}
 $endif$
+
+% Only for the journal Methods and Protocols:
+% If you wish to submit a video article, please do so with any other supplementary material.
+% \supplementary{The following supporting information can be downloaded at: \linksupplementary{s1}, Figure S1: title; Table S1: title; Video S1: title. A supporting video article is available at doi: link.}
+
+% Only for journal Hardware:
+% If you wish to submit a video article, please do so with any other supplementary material.
+% \supplementary{The following supporting information can be downloaded at: \linksupplementary{s1}, Figure S1: title; Table S1: title; Video S1: title.\vspace{6pt}\\
+%\begin{tabularx}{\textwidth}{lll}
+%\toprule
+%\textbf{Name} & \textbf{Type} & \textbf{Description} \\
+%\midrule
+%S1 & Python script (.py) & Script of python source code used in XX \\
+%S2 & Text (.txt) & Script of modelling code used to make Figure X \\
+%S3 & Text (.txt) & Raw data from experiment X \\
+%S4 & Video (.mp4) & Video demonstrating the hardware in use \\
+%... & ... & ... \\
+%\bottomrule
+%\end{tabularx}
+%}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 $if(authorcontributions)$
 \authorcontributions{$authorcontributions$}
 $endif$
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(funding)$
+\funding{$funding$}
+$endif$
+
+$if(institutionalreview)$
+\institutionalreview{$institutionalreview$}
+$endif$
+
+$if(informedconsent)$
+\informedconsent{$informedconsent$}
+$endif$
+
+$if(dataavailability)$
+\dataavailability{$dataavailability$}
+$endif$
+
+% Only for journal Nursing Reports
+%\publicinvolvement{Please describe how the public (patients, consumers, carers) were involved in the research. Consider reporting against the GRIPP2 (Guidance for Reporting Involvement of Patients and the Public) checklist. If the public were not involved in any aspect of the research add: ``No public involvement in any aspect of this research''.}
+$if(publicinvolvement)$
+\publicinvolvement{$publicinvolvement$}
+$endif$
+
+% Only for journal Nursing Reports
+%\guidelinesstandards{Please add a statement indicating which reporting guideline was used when drafting the report. For example, ``This manuscript was drafted against the XXX (the full name of reporting guidelines and citation) for XXX (type of research) research''. A complete list of reporting guidelines can be accessed via the equator network: \url{https://www.equator-network.org/}.}
+$if(guidelinesstandards)$
+\guidelinesstandards{$guidelinesstandards$}
+$endif$
+
+% Only for journal Nursing Reports
+%\guidelinesstandards{Please add a statement indicating which reporting guideline was used when drafting the report. For example, ``This manuscript was drafted against the XXX (the full name of reporting guidelines and citation) for XXX (type of research) research''. A complete list of reporting guidelines can be accessed via the equator network: \url{https://www.equator-network.org/}.}
+$if(useofartificialintelligence)$
+\useofartificialintelligence{$useofartificialintelligence$}
+$endif$
+
+$if(acknowledgement)$
+\acknowledgments{$acknowledgement$}
+$endif$
+
 $if(conflictsofinterest)$
 \conflictsofinterest{$conflictsofinterest$}
 $endif$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% optional
+%% Optional
+
+%% Only for journal Encyclopedia
+%\entrylink{The Link to this entry published on the encyclopedia platform.}
+$if(entrylink)$
+\entrylink{$entrylink$}
+$endif$
+
 $if(abbreviations)$
-\abbreviations{The following abbreviations are used in this manuscript:\\
+\abbreviations{Abbreviations}{
+The following abbreviations are used in this manuscript:\\
 
 \noindent
 \begin{tabular}{@{}ll}
 $for(abbreviations)$
 $abbreviations.short$ & $abbreviations.long$ \\
 $endfor$
-\end{tabular}}
+\end{tabular}
+}
 $endif$
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Optional
 $if(appendix)$
 \input{"$appendix$"}
 $endif$
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Citations and References in Supplementary files are permitted provided that they also appear in the reference list here.
+\begin{adjustwidth}{-\extralength}{0cm}
 
-%=====================================
-% References, variant A: internal bibliography
-%=====================================
-%\reftitle{References}
-%\begin{thebibliography}{999}
-% Reference 1
-%\bibitem[Author1(year)]{ref-journal}
-%Author1, T. The title of the cited article. {\em Journal Abbreviation} {\bf 2008}, {\em 10}, 142--149.
-% Reference 2
-%\bibitem[Author2(year)]{ref-book}
-%Author2, L. The title of the cited contribution. In {\em The Book Title}; Editor1, F., Editor2, A., Eds.; Publishing House: City, Country, 2007; pp. 32--58.
-%\end{thebibliography}
+%\printendnotes[custom] % Un-comment to print a list of endnotes
+$if(endnotes)$
+\printendnotes[custom]
+$endif$
 
-% The following MDPI journals use author-date citation: Arts, Econometrics, Economies, Genealogy, Humanities, IJFS, JRFM, Laws, Religions, Risks, Social Sciences. For those journals, please follow the formatting guidelines on http://www.mdpi.com/authors/references
-% To cite two works by the same author: \citeauthor{ref-journal-1a} (\citeyear{ref-journal-1a}, \citeyear{ref-journal-1b}). This produces: Whittaker (1967, 1975)
-% To cite two works by the same author with specific pages: \citeauthor{ref-journal-3a} (\citeyear{ref-journal-3a}, p. 328; \citeyear{ref-journal-3b}, p.475). This produces: Wong (1999, p. 328; 2000, p. 475)
 
-%=====================================
-% References, variant B: external bibliography
-%=====================================
 $if(bibliography)$
 \reftitle{References}
-\externalbibliography{yes}
 \bibliography{$bibliography$}
 $endif$
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% optional
-$if(sampleavailability)$
-\sampleavailability{$sampleavailability$}
-$endif$
+% If authors have biography, please use the format below
+%\section*{Short Biography of Authors}
+%\bio
+%{\raisebox{-0.35cm}{\includegraphics[width=3.5cm,height=5.3cm,clip,keepaspectratio]{Definitions/author1.pdf}}}
+%{\textbf{Firstname Lastname} Biography of first author}
+%
+%\bio
+%{\raisebox{-0.35cm}{\includegraphics[width=3.5cm,height=5.3cm,clip,keepaspectratio]{Definitions/author2.jpg}}}
+%{\textbf{Firstname Lastname} Biography of second author}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% for journal Sci
 %\reviewreports{\\
 %Reviewer 1 comments and authors’ response\\
 %Reviewer 2 comments and authors’ response\\
 %Reviewer 3 comments and authors’ response
 %}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PublishersNote{}
+\end{adjustwidth}
+
+$for(include-after)$
+$include-after$
+
+$endfor$
+
 \end{document}
 

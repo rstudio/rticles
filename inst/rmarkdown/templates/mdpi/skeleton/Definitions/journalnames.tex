@@ -1,0 +1,4230 @@
+% Updated 4 September 2024
+%% --------------------------------------------------------------------
+%\DeclareOption{}{%
+%	\gdef\@journal{}
+%	\gdef\@journalfull{}
+%	\gdef\@journalshort{}
+%	\gdef\@doiabbr{}
+%	\gdef\@ISSN{}
+%	\gdef\@continuouspages{yes}
+%	\gdef\@societyowner{}
+%}
+%% --------------------------------------------------------------------
+%% Fields meanings:
+%% - Option name: Journal website name (used in URL)
+%% - @journal: Journal website name (used in URL)
+%% - @journalfull: Journal full name
+%% - @journalshort: Short Name (ISO4)
+%% - @doiabbr: DOI abbreviation of the journal used in DOI numbers 10.3390/journalnameXXXX
+%% - @ISSN: Journal E-ISSN number
+%% - @continuouspages: use \gdef\@continuouspages{yes} for journals that use pagination
+%% - @societyowner: Name of society owning the journal (for society journals)
+%% --------------------------------------------------------------------
+\DeclareOption{acoustics}{%
+	\gdef\@journal{acoustics}
+	\gdef\@journalfull{Acoustics}
+	\gdef\@journalshort{Acoustics}
+	\gdef\@doiabbr{acoustics}
+	\gdef\@ISSN{2624-599X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{actuators}{%
+	\gdef\@journal{actuators}
+	\gdef\@journalfull{Actuators}
+	\gdef\@journalshort{Actuators}
+	\gdef\@doiabbr{act}
+	\gdef\@ISSN{2076-0825}
+	\gdef\@societyowner{}
+}
+\DeclareOption{addictions}{%
+	\gdef\@journal{addictions}
+	\gdef\@journalfull{Addictions}
+	\gdef\@journalshort{Addictions}
+	\gdef\@doiabbr{addictions}
+	\gdef\@ISSN{0006-0006}
+	\gdef\@societyowner{}
+}
+\DeclareOption{adhesives}{%
+	\gdef\@journal{adhesives}
+	\gdef\@journalfull{Adhesives}
+	\gdef\@journalshort{Adhesives}
+	\gdef\@doiabbr{adhesives}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{admsci}{%
+	\gdef\@journal{admsci}
+	\gdef\@journalfull{Administrative Sciences}
+	\gdef\@journalshort{Adm. Sci.}
+	\gdef\@doiabbr{admsci}
+	\gdef\@ISSN{2076-3387}
+	\gdef\@societyowner{}
+}
+\DeclareOption{adolescents}{%
+	\gdef\@journal{adolescents}
+	\gdef\@journalfull{Adolescents}
+	\gdef\@journalshort{Adolescents}
+	\gdef\@doiabbr{adolescents}
+	\gdef\@ISSN{2673-7051}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{aerobiology}{%
+	\gdef\@journal{aerobiology}
+	\gdef\@journalfull{Aerobiology}
+	\gdef\@journalshort{Aerobiology}
+	\gdef\@doiabbr{aerobiology}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{aerospace}{%
+	\gdef\@journal{aerospace}
+	\gdef\@journalfull{Aerospace}
+	\gdef\@journalshort{Aerospace}
+	\gdef\@doiabbr{aerospace}
+	\gdef\@ISSN{2226-4310}
+	\gdef\@societyowner{}
+}
+\DeclareOption{agriculture}{%
+	\gdef\@journal{agriculture}
+	\gdef\@journalfull{Agriculture}
+	\gdef\@journalshort{Agriculture}
+	\gdef\@doiabbr{agriculture}
+	\gdef\@ISSN{2077-0472}
+	\gdef\@societyowner{}
+}
+\DeclareOption{agriengineering}{%
+	\gdef\@journal{agriengineering}
+	\gdef\@journalfull{AgriEngineering}
+	\gdef\@journalshort{AgriEngineering}
+	\gdef\@doiabbr{agriengineering}
+	\gdef\@ISSN{2624-7402}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{agrochemicals}{%
+	\gdef\@journal{agrochemicals}
+	\gdef\@journalfull{Agrochemicals}
+	\gdef\@journalshort{Agrochemicals}
+	\gdef\@doiabbr{agrochemicals}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{agronomy}{%
+	\gdef\@journal{agronomy}
+	\gdef\@journalfull{Agronomy}
+	\gdef\@journalshort{Agronomy}
+	\gdef\@doiabbr{agronomy}
+	\gdef\@ISSN{2073-4395}
+	\gdef\@societyowner{}
+}
+\DeclareOption{ai}{%
+	\gdef\@journal{ai}
+	\gdef\@journalfull{AI}
+	\gdef\@journalshort{AI}
+	\gdef\@doiabbr{ai}
+	\gdef\@ISSN{2673-2688}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{air}{%
+	\gdef\@journal{air}
+	\gdef\@journalfull{Air}
+	\gdef\@journalshort{Air}
+	\gdef\@doiabbr{air}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{algorithms}{%
+	\gdef\@journal{algorithms}
+	\gdef\@journalfull{Algorithms}
+	\gdef\@journalshort{Algorithms}
+	\gdef\@doiabbr{a}
+	\gdef\@ISSN{1999-4893}
+	\gdef\@societyowner{}
+}
+\DeclareOption{allergies}{%
+	\gdef\@journal{allergies}
+	\gdef\@journalfull{Allergies}
+	\gdef\@journalshort{Allergies}
+	\gdef\@doiabbr{allergies}
+	\gdef\@ISSN{2313-5786}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{alloys}{%
+	\gdef\@journal{alloys}
+	\gdef\@journalfull{Alloys}
+	\gdef\@journalshort{Alloys}
+	\gdef\@doiabbr{alloys}
+	\gdef\@ISSN{2674-063X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{amh}{%
+	\gdef\@journal{amh}
+	\gdef\@journalfull{Acta Microbiologica Hellenica}
+	\gdef\@journalshort{Acta Microbiol. Hell.}
+	\gdef\@doiabbr{amh}
+	\gdef\@ISSN{0438-9573}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{Hellenic Society for Microbiology}
+}
+\DeclareOption{analytica}{%
+	\gdef\@journal{analytica}
+	\gdef\@journalfull{Analytica}
+	\gdef\@journalshort{Analytica}
+	\gdef\@doiabbr{analytica}
+	\gdef\@ISSN{2673-4532}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{analytics}{%
+	\gdef\@journal{analytics}
+	\gdef\@journalfull{Analytics}
+	\gdef\@journalshort{Analytics}
+	\gdef\@doiabbr{analytics}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{anatomia}{%
+	\gdef\@journal{anatomia}
+	\gdef\@journalfull{Anatomia}
+	\gdef\@journalshort{Anatomia}
+	\gdef\@doiabbr{anatomia}
+	\gdef\@ISSN{2813-0545}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{anesthres}{%
+	\gdef\@journal{anesthres}
+	\gdef\@journalfull{Anesthesia Research}
+	\gdef\@journalshort{Anesth. Res.}
+	\gdef\@doiabbr{anesthres}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{animals}{%
+	\gdef\@journal{animals}
+	\gdef\@journalfull{Animals}
+	\gdef\@journalshort{Animals}
+	\gdef\@doiabbr{ani}
+	\gdef\@ISSN{2076-2615}
+	\gdef\@societyowner{}
+}
+\DeclareOption{antibiotics}{%
+	\gdef\@journal{antibiotics}
+	\gdef\@journalfull{Antibiotics}
+	\gdef\@journalshort{Antibiotics}
+	\gdef\@doiabbr{antibiotics}
+	\gdef\@ISSN{2079-6382}
+	\gdef\@societyowner{}
+}
+\DeclareOption{antibodies}{%
+	\gdef\@journal{antibodies}
+	\gdef\@journalfull{Antibodies}
+	\gdef\@journalshort{Antibodies}
+	\gdef\@doiabbr{antib}
+	\gdef\@ISSN{2073-4468}
+	\gdef\@societyowner{}
+}
+\DeclareOption{antioxidants}{%
+	\gdef\@journal{antioxidants}
+	\gdef\@journalfull{Antioxidants}
+	\gdef\@journalshort{Antioxidants}
+	\gdef\@doiabbr{antiox}
+	\gdef\@ISSN{2076-3921}
+	\gdef\@societyowner{}
+}
+\DeclareOption{applbiosci}{%
+	\gdef\@journal{applbiosci}
+	\gdef\@journalfull{Applied Biosciences}
+	\gdef\@journalshort{Appl. Biosci.}
+	\gdef\@doiabbr{applbiosci}
+	\gdef\@ISSN{2813-0464}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{appliedchem}{%
+	\gdef\@journal{appliedchem}
+	\gdef\@journalfull{AppliedChem}
+	\gdef\@journalshort{AppliedChem}
+	\gdef\@doiabbr{appliedchem}
+	\gdef\@ISSN{2673-9623}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{appliedmath}{%
+	\gdef\@journal{appliedmath}
+	\gdef\@journalfull{AppliedMath}
+	\gdef\@journalshort{AppliedMath}
+	\gdef\@doiabbr{appliedmath}
+	\gdef\@ISSN{2673-9909}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{appliedphys}{%
+	\gdef\@journal{appliedphys}
+	\gdef\@journalfull{AppliedPhys}
+	\gdef\@journalshort{AppliedPhys}
+	\gdef\@doiabbr{appliedphys}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{applmech}{%
+	\gdef\@journal{applmech}
+	\gdef\@journalfull{Applied Mechanics}
+	\gdef\@journalshort{Appl. Mech.}
+	\gdef\@doiabbr{applmech}
+	\gdef\@ISSN{2673-3161}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{applmicrobiol}{%
+	\gdef\@journal{applmicrobiol}
+	\gdef\@journalfull{Applied Microbiology}
+	\gdef\@journalshort{Appl. Microbiol.}
+	\gdef\@doiabbr{applmicrobiol}
+	\gdef\@ISSN{2673-8007}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{applnano}{%
+	\gdef\@journal{applnano}
+	\gdef\@journalfull{Applied Nano}
+	\gdef\@journalshort{Appl. Nano}
+	\gdef\@doiabbr{applnano}
+	\gdef\@ISSN{2673-3501}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{applsci}{%
+	\gdef\@journal{applsci}
+	\gdef\@journalfull{Applied Sciences}
+	\gdef\@journalshort{Appl. Sci.}
+	\gdef\@doiabbr{app}
+	\gdef\@ISSN{2076-3417}
+	\gdef\@societyowner{}
+}
+\DeclareOption{aquacj}{%
+	\gdef\@journal{aquacj}
+	\gdef\@journalfull{Aquaculture Journal}
+	\gdef\@journalshort{Aquac. J.}
+	\gdef\@doiabbr{aquacj}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{architecture}{%
+	\gdef\@journal{architecture}
+	\gdef\@journalfull{Architecture}
+	\gdef\@journalshort{Architecture}
+	\gdef\@doiabbr{architecture}
+	\gdef\@ISSN{2673-8945}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{arm}{%
+	\gdef\@journal{arm}
+	\gdef\@journalfull{Advances in Respiratory Medicine}
+	\gdef\@journalshort{Adv. Respir. Med.}
+	\gdef\@doiabbr{arm}
+	\gdef\@ISSN{2543-6031}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{Polish Respiratory Society}
+}
+\DeclareOption{arthropoda}{%
+	\gdef\@journal{arthropoda}
+	\gdef\@journalfull{Arthropoda}
+	\gdef\@journalshort{Arthropoda}
+	\gdef\@doiabbr{arthropoda}
+	\gdef\@ISSN{2813-3323}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{arts}{%
+	\gdef\@journal{arts}
+	\gdef\@journalfull{Arts}
+	\gdef\@journalshort{Arts}
+	\gdef\@doiabbr{arts}
+	\gdef\@ISSN{2076-0752}
+	\gdef\@societyowner{}
+}
+\DeclareOption{asc}{%
+	\gdef\@journal{asc}
+	\gdef\@journalfull{Automatic Systems and Control}
+	\gdef\@journalshort{Autom. Syst. Control}
+	\gdef\@doiabbr{}
+	\gdef\@ISSN{}
+	\gdef\@societyowner{}
+}
+\DeclareOption{asi}{%
+	\gdef\@journal{asi}
+	\gdef\@journalfull{Applied System Innovation}
+	\gdef\@journalshort{Appl. Syst. Innov.}
+	\gdef\@doiabbr{asi}
+	\gdef\@ISSN{2571-5577}
+	\gdef\@societyowner{International Institute of Knowledge Innovation and Invention}
+}
+\DeclareOption{astronomy}{%
+	\gdef\@journal{astronomy}
+	\gdef\@journalfull{Astronomy}
+	\gdef\@journalshort{Astronomy}
+	\gdef\@doiabbr{astronomy}
+	\gdef\@ISSN{2674-0346}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{atmosphere}{%
+	\gdef\@journal{atmosphere}
+	\gdef\@journalfull{Atmosphere}
+	\gdef\@journalshort{Atmosphere}
+	\gdef\@doiabbr{atmos}
+	\gdef\@ISSN{2073-4433}
+	\gdef\@societyowner{}
+}
+\DeclareOption{atoms}{%
+	\gdef\@journal{atoms}
+	\gdef\@journalfull{Atoms}
+	\gdef\@journalshort{Atoms}
+	\gdef\@doiabbr{atoms}
+	\gdef\@ISSN{2218-2004}
+	\gdef\@societyowner{}
+}
+\DeclareOption{audiolres}{%
+	\gdef\@journal{audiolres}
+	\gdef\@journalfull{Audiology Research}
+	\gdef\@journalshort{Audiol. Res.}
+	\gdef\@doiabbr{audiolres}
+	\gdef\@ISSN{2039-4349}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{automation}{%
+	\gdef\@journal{automation}
+	\gdef\@journalfull{Automation}
+	\gdef\@journalshort{Automation}
+	\gdef\@doiabbr{automation}
+	\gdef\@ISSN{2673-4052}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{axioms}{%
+	\gdef\@journal{axioms}
+	\gdef\@journalfull{Axioms}
+	\gdef\@journalshort{Axioms}
+	\gdef\@doiabbr{axioms}
+	\gdef\@ISSN{2075-1680}
+	\gdef\@societyowner{}
+}
+\DeclareOption{bacteria}{%
+	\gdef\@journal{bacteria}
+	\gdef\@journalfull{Bacteria}
+	\gdef\@journalshort{Bacteria}
+	\gdef\@doiabbr{bacteria}
+	\gdef\@ISSN{2674-1334}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{batteries}{%
+	\gdef\@journal{batteries}
+	\gdef\@journalfull{Batteries}
+	\gdef\@journalshort{Batteries}
+	\gdef\@doiabbr{batteries}
+	\gdef\@ISSN{2313-0105}
+	\gdef\@societyowner{}
+}
+\DeclareOption{bdcc}{%
+	\gdef\@journal{bdcc}
+	\gdef\@journalfull{Big Data and Cognitive Computing}
+	\gdef\@journalshort{Big Data Cogn. Comput.}
+	\gdef\@doiabbr{bdcc}
+	\gdef\@ISSN{2504-2289}
+	\gdef\@societyowner{}
+}
+\DeclareOption{behavsci}{%
+	\gdef\@journal{behavsci}
+	\gdef\@journalfull{Behavioral Sciences}
+	\gdef\@journalshort{Behav. Sci.}
+	\gdef\@doiabbr{bs}
+	\gdef\@ISSN{2076-328X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{beverages}{%
+	\gdef\@journal{beverages}
+	\gdef\@journalfull{Beverages}
+	\gdef\@journalshort{Beverages}
+	\gdef\@doiabbr{beverages}
+	\gdef\@ISSN{2306-5710}
+	\gdef\@societyowner{}
+}
+\DeclareOption{biochem}{%
+	\gdef\@journal{biochem}
+	\gdef\@journalfull{BioChem}
+	\gdef\@journalshort{BioChem}
+	\gdef\@doiabbr{biochem}
+	\gdef\@ISSN{2673-6411}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{bioengineering}{%
+	\gdef\@journal{bioengineering}
+	\gdef\@journalfull{Bioengineering}
+	\gdef\@journalshort{Bioengineering}
+	\gdef\@doiabbr{bioengineering}
+	\gdef\@ISSN{2306-5354}
+	\gdef\@societyowner{}
+}
+\DeclareOption{biologics}{%
+	\gdef\@journal{biologics}
+	\gdef\@journalfull{Biologics}
+	\gdef\@journalshort{Biologics}
+	\gdef\@doiabbr{biologics}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{biology}{%
+	\gdef\@journal{biology}
+	\gdef\@journalfull{Biology}
+	\gdef\@journalshort{Biology}
+	\gdef\@doiabbr{biology}
+	\gdef\@ISSN{2079-7737}
+	\gdef\@societyowner{}
+}
+\DeclareOption{biomass}{%
+	\gdef\@journal{biomass}
+	\gdef\@journalfull{Biomass}
+	\gdef\@journalshort{Biomass}
+	\gdef\@doiabbr{biomass}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{biomechanics}{%
+	\gdef\@journal{biomechanics}
+	\gdef\@journalfull{Biomechanics}
+	\gdef\@journalshort{Biomechanics}
+	\gdef\@doiabbr{biomechanics}
+	\gdef\@ISSN{2673-7078}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{biomed}{%
+	\gdef\@journal{biomed}
+	\gdef\@journalfull{BioMed}
+	\gdef\@journalshort{BioMed}
+	\gdef\@doiabbr{biomed}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{biomedicines}{%
+	\gdef\@journal{biomedicines}
+	\gdef\@journalfull{Biomedicines}
+	\gdef\@journalshort{Biomedicines}
+	\gdef\@doiabbr{biomedicines}
+	\gdef\@ISSN{2227-9059}
+	\gdef\@societyowner{}
+}
+\DeclareOption{biomedinformatics}{%
+	\gdef\@journal{biomedinformatics}
+	\gdef\@journalfull{BioMedInformatics}
+	\gdef\@journalshort{BioMedInformatics}
+	\gdef\@doiabbr{biomedinformatics}
+	\gdef\@ISSN{2673-7426}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{biomimetics}{%
+	\gdef\@journal{biomimetics}
+	\gdef\@journalfull{Biomimetics}
+	\gdef\@journalshort{Biomimetics}
+	\gdef\@doiabbr{biomimetics}
+	\gdef\@ISSN{2313-7673}
+	\gdef\@societyowner{}
+}
+\DeclareOption{biomolecules}{%
+	\gdef\@journal{biomolecules}
+	\gdef\@journalfull{Biomolecules}
+	\gdef\@journalshort{Biomolecules}
+	\gdef\@doiabbr{biom}
+	\gdef\@ISSN{2218-273X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{biophysica}{%
+	\gdef\@journal{biophysica}
+	\gdef\@journalfull{Biophysica}
+	\gdef\@journalshort{Biophysica}
+	\gdef\@doiabbr{biophysica}
+	\gdef\@ISSN{2673-4125}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{biosensors}{%
+	\gdef\@journal{biosensors}
+	\gdef\@journalfull{Biosensors}
+	\gdef\@journalshort{Biosensors}
+	\gdef\@doiabbr{bios}
+	\gdef\@ISSN{2079-6374}
+	\gdef\@societyowner{}
+}
+\DeclareOption{biotech}{%
+	\gdef\@journal{biotech}
+	\gdef\@journalfull{BioTech}
+	\gdef\@journalshort{BioTech}
+	\gdef\@doiabbr{biotech}
+	\gdef\@ISSN{2673-6284}
+	\gdef\@societyowner{}
+}
+\DeclareOption{birds}{%
+	\gdef\@journal{birds}
+	\gdef\@journalfull{Birds}
+	\gdef\@journalshort{Birds}
+	\gdef\@doiabbr{birds}
+	\gdef\@ISSN{2673-6004}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{blockchains}{%
+	\gdef\@journal{blockchains}
+	\gdef\@journalfull{Blockchains}
+	\gdef\@journalshort{Blockchains}
+	\gdef\@doiabbr{blockchains}
+	\gdef\@ISSN{2813-5288}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{bloods}{%
+	\gdef\@journal{bloods}
+	\gdef\@journalfull{Bloods}
+	\gdef\@journalshort{Bloods}
+	\gdef\@doiabbr{bloods}
+	\gdef\@ISSN{2673-415X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{blsf}{%
+	\gdef\@journal{blsf}
+	\gdef\@journalfull{Biology and Life Sciences Forum}
+	\gdef\@journalshort{Biol. Life Sci. Forum}
+	\gdef\@doiabbr{blsf}
+	\gdef\@ISSN{2673-9976}
+	\gdef\@societyowner{}
+}
+\DeclareOption{brainsci}{%
+	\gdef\@journal{brainsci}
+	\gdef\@journalfull{Brain Sciences}
+	\gdef\@journalshort{Brain Sci.}
+	\gdef\@doiabbr{brainsci}
+	\gdef\@ISSN{2076-3425}
+	\gdef\@societyowner{}
+}
+\DeclareOption{breath}{%
+	\gdef\@journal{breath}
+	\gdef\@journalfull{Breath}
+	\gdef\@journalshort{Breath}
+	\gdef\@doiabbr{breath}
+	\gdef\@ISSN{}
+	\gdef\@societyowner{}
+}
+\DeclareOption{buildings}{%
+	\gdef\@journal{buildings}
+	\gdef\@journalfull{Buildings}
+	\gdef\@journalshort{Buildings}
+	\gdef\@doiabbr{buildings}
+	\gdef\@ISSN{2075-5309}
+	\gdef\@societyowner{}
+}
+\DeclareOption{businesses}{%
+	\gdef\@journal{businesses}
+	\gdef\@journalfull{Businesses}
+	\gdef\@journalshort{Businesses}
+	\gdef\@doiabbr{businesses}
+	\gdef\@ISSN{2673-7116}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{cancers}{%
+	\gdef\@journal{cancers}
+	\gdef\@journalfull{Cancers}
+	\gdef\@journalshort{Cancers}
+	\gdef\@doiabbr{cancers}
+	\gdef\@ISSN{2072-6694}
+	\gdef\@societyowner{}
+}
+\DeclareOption{carbon}{%
+	\gdef\@journal{carbon}
+	\gdef\@journalfull{C}
+	\gdef\@journalshort{C}
+	\gdef\@doiabbr{c}
+	\gdef\@ISSN{2311-5629}
+	\gdef\@societyowner{}
+}
+\DeclareOption{cardiogenetics}{%
+	\gdef\@journal{cardiogenetics}
+	\gdef\@journalfull{Cardiogenetics}
+	\gdef\@journalshort{Cardiogenetics}
+	\gdef\@doiabbr{cardiogenetics}
+	\gdef\@ISSN{2035-8148}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{catalysts}{%
+	\gdef\@journal{catalysts}
+	\gdef\@journalfull{Catalysts}
+	\gdef\@journalshort{Catalysts}
+	\gdef\@doiabbr{catal}
+	\gdef\@ISSN{2073-4344}
+	\gdef\@societyowner{}
+}
+\DeclareOption{cells}{%
+	\gdef\@journal{cells}
+	\gdef\@journalfull{Cells}
+	\gdef\@journalshort{Cells}
+	\gdef\@doiabbr{cells}
+	\gdef\@ISSN{2073-4409}
+	\gdef\@societyowner{}
+}
+\DeclareOption{ceramics}{%
+	\gdef\@journal{ceramics}
+	\gdef\@journalfull{Ceramics}
+	\gdef\@journalshort{Ceramics}
+	\gdef\@doiabbr{ceramics}
+	\gdef\@ISSN{2571-6131}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{challenges}{%
+	\gdef\@journal{challenges}
+	\gdef\@journalfull{Challenges}
+	\gdef\@journalshort{Challenges}
+	\gdef\@doiabbr{challe}
+	\gdef\@ISSN{2078-1547}
+	\gdef\@societyowner{}
+}
+\DeclareOption{chemengineering}{%
+	\gdef\@journal{chemengineering}
+	\gdef\@journalfull{ChemEngineering}
+	\gdef\@journalshort{ChemEngineering}
+	\gdef\@doiabbr{chemengineering}
+	\gdef\@ISSN{2305-7084}
+	\gdef\@societyowner{}
+}
+\DeclareOption{chemistry}{%
+	\gdef\@journal{chemistry}
+	\gdef\@journalfull{Chemistry}
+	\gdef\@journalshort{Chemistry}
+	\gdef\@doiabbr{chemistry}
+	\gdef\@ISSN{2624-8549}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{chemosensors}{%
+	\gdef\@journal{chemosensors}
+	\gdef\@journalfull{Chemosensors}
+	\gdef\@journalshort{Chemosensors}
+	\gdef\@doiabbr{chemosensors}
+	\gdef\@ISSN{2227-9040}
+	\gdef\@societyowner{}
+}
+\DeclareOption{chemproc}{%
+	\gdef\@journal{chemproc}
+	\gdef\@journalfull{Chemistry Proceedings}
+	\gdef\@journalshort{Chem. Proc.}
+	\gdef\@doiabbr{chemproc}
+	\gdef\@ISSN{2673-4583}
+	\gdef\@societyowner{}
+}
+\DeclareOption{children}{%
+	\gdef\@journal{children}
+	\gdef\@journalfull{Children}
+	\gdef\@journalshort{Children}
+	\gdef\@doiabbr{children}
+	\gdef\@ISSN{2227-9067}
+	\gdef\@societyowner{}
+}
+\DeclareOption{chips}{%
+	\gdef\@journal{chips}
+	\gdef\@journalfull{Chips}
+	\gdef\@journalshort{Chips}
+	\gdef\@doiabbr{chips}
+	\gdef\@ISSN{2674-0729}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{cimb}{%
+	\gdef\@journal{cimb}
+	\gdef\@journalfull{Current Issues in Molecular Biology}
+	\gdef\@journalshort{Curr. Issues Mol. Biol.}
+	\gdef\@doiabbr{cimb}
+	\gdef\@ISSN{1467-3045}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{civileng}{%
+	\gdef\@journal{civileng}
+	\gdef\@journalfull{CivilEng}
+	\gdef\@journalshort{CivilEng}
+	\gdef\@doiabbr{civileng}
+	\gdef\@ISSN{2673-4109}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{cleantechnol}{%
+	\gdef\@journal{cleantechnol}
+	\gdef\@journalfull{Clean Technologies}
+	\gdef\@journalshort{Clean Technol.}
+	\gdef\@doiabbr{cleantechnol}
+	\gdef\@ISSN{2571-8797}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{climate}{%
+	\gdef\@journal{climate}
+	\gdef\@journalfull{Climate}
+	\gdef\@journalshort{Climate}
+	\gdef\@doiabbr{cli}
+	\gdef\@ISSN{2225-1154}
+	\gdef\@societyowner{}
+}
+\DeclareOption{clinpract}{%
+	\gdef\@journal{clinpract}
+	\gdef\@journalfull{Clinics and Practice}
+	\gdef\@journalshort{Clin. Pract.}
+	\gdef\@doiabbr{clinpract}
+	\gdef\@ISSN{2039-7283}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{clockssleep}{%
+	\gdef\@journal{clockssleep}
+	\gdef\@journalfull{Clocks \& Sleep}
+	\gdef\@journalshort{Clocks\&Sleep}
+	\gdef\@doiabbr{clockssleep}
+	\gdef\@ISSN{2624-5175}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{cmd}{%
+	\gdef\@journal{cmd}
+	\gdef\@journalfull{Corrosion and Materials Degradation}
+	\gdef\@journalshort{Corros. Mater. Degrad.}
+	\gdef\@doiabbr{cmd}
+	\gdef\@ISSN{2624-5558}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{coasts}{%
+	\gdef\@journal{coasts}
+	\gdef\@journalfull{Coasts}
+	\gdef\@journalshort{Coasts}
+	\gdef\@doiabbr{coasts}
+	\gdef\@ISSN{2673-964X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{coatings}{%
+	\gdef\@journal{coatings}
+	\gdef\@journalfull{Coatings}
+	\gdef\@journalshort{Coatings}
+	\gdef\@doiabbr{coatings}
+	\gdef\@ISSN{2079-6412}
+	\gdef\@societyowner{}
+}
+\DeclareOption{colloids}{%
+	\gdef\@journal{colloids}
+	\gdef\@journalfull{Colloids and Interfaces}
+	\gdef\@journalshort{Colloids Interfaces}
+	\gdef\@doiabbr{colloids}
+	\gdef\@ISSN{2504-5377}
+	\gdef\@societyowner{}
+}
+\DeclareOption{colorants}{%
+	\gdef\@journal{colorants}
+	\gdef\@journalfull{Colorants}
+	\gdef\@journalshort{Colorants}
+	\gdef\@doiabbr{colorants}
+	\gdef\@ISSN{2079-6447}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{commodities}{%
+	\gdef\@journal{commodities}
+	\gdef\@journalfull{Commodities}
+	\gdef\@journalshort{Commodities}
+	\gdef\@doiabbr{commodities}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{complications}{%
+       \gdef\@journal{complications}
+       \gdef\@journalfull{Complications}
+       \gdef\@journalshort{Complications}
+       \gdef\@doiabbr{complications}
+       \gdef\@ISSN{}
+       \gdef\@continuouspages{yes}
+       \gdef\@societyowner{}
+}
+\DeclareOption{compounds}{%
+	\gdef\@journal{compounds}
+	\gdef\@journalfull{Compounds}
+	\gdef\@journalshort{Compounds}
+	\gdef\@doiabbr{compounds}
+	\gdef\@ISSN{2673-6918}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{computation}{%
+	\gdef\@journal{computation}
+	\gdef\@journalfull{Computation}
+	\gdef\@journalshort{Computation}
+	\gdef\@doiabbr{computation}
+	\gdef\@ISSN{2079-3197}
+	\gdef\@societyowner{}
+}
+\DeclareOption{computers}{%
+	\gdef\@journal{computers}
+	\gdef\@journalfull{Computers}
+	\gdef\@journalshort{Computers}
+	\gdef\@doiabbr{computers}
+	\gdef\@ISSN{2073-431X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{condensedmatter}{%
+	\gdef\@journal{condensedmatter}
+	\gdef\@journalfull{Condensed Matter}
+	\gdef\@journalshort{Condens. Matter}
+	\gdef\@doiabbr{condmat}
+	\gdef\@ISSN{2410-3896}
+	\gdef\@societyowner{}
+}
+\DeclareOption{conservation}{%
+	\gdef\@journal{conservation}
+	\gdef\@journalfull{Conservation}
+	\gdef\@journalshort{Conservation}
+	\gdef\@doiabbr{conservation}
+	\gdef\@ISSN{2673-7159}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{constrmater}{%
+	\gdef\@journal{constrmater}
+	\gdef\@journalfull{Construction Materials}
+	\gdef\@journalshort{Constr. Mater.}
+	\gdef\@doiabbr{constrmater}
+	\gdef\@ISSN{2673-7108}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{cosmetics}{%
+	\gdef\@journal{cosmetics}
+	\gdef\@journalfull{Cosmetics}
+	\gdef\@journalshort{Cosmetics}
+	\gdef\@doiabbr{cosmetics}
+	\gdef\@ISSN{2079-9284}
+	\gdef\@societyowner{}
+}
+\DeclareOption{covid}{%
+	\gdef\@journal{covid}
+	\gdef\@journalfull{COVID}
+	\gdef\@journalshort{COVID}
+	\gdef\@doiabbr{covid}
+	\gdef\@ISSN{2673-8112}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{crops}{%
+	\gdef\@journal{crops}
+	\gdef\@journalfull{Crops}
+	\gdef\@journalshort{Crops}
+	\gdef\@doiabbr{crops}
+	\gdef\@ISSN{2673-7655}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{cryo}{%
+	\gdef\@journal{cryo}
+	\gdef\@journalfull{Cryo}
+	\gdef\@journalshort{Cryo}
+	\gdef\@doiabbr{cryo}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{cryptography}{%
+	\gdef\@journal{cryptography}
+	\gdef\@journalfull{Cryptography}
+	\gdef\@journalshort{Cryptography}
+	\gdef\@doiabbr{cryptography}
+	\gdef\@ISSN{2410-387X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{crystals}{%
+	\gdef\@journal{crystals}
+	\gdef\@journalfull{Crystals}
+	\gdef\@journalshort{Crystals}
+	\gdef\@doiabbr{cryst}
+	\gdef\@ISSN{2073-4352}
+	\gdef\@societyowner{}
+}
+\DeclareOption{csmf}{%
+	\gdef\@journal{csmf}
+	\gdef\@journalfull{Computer Sciences \& Mathematics Forum}
+	\gdef\@journalshort{Comput. Sci. Math. Forum}
+	\gdef\@doiabbr{csmf}
+	\gdef\@ISSN{2813-0324}
+	\gdef\@societyowner{}
+}
+\DeclareOption{ctn}{%
+	\gdef\@journal{ctn}
+	\gdef\@journalfull{Clinical and Translational Neuroscience}
+	\gdef\@journalshort{Clin. Transl. Neurosci.}
+	\gdef\@doiabbr{ctn}
+	\gdef\@ISSN{2514-183X}
+	\gdef\@societyowner{Swiss Federation of Clinical Neuro-Societies}
+}
+\DeclareOption{curroncol}{%
+	\gdef\@journal{curroncol}
+	\gdef\@journalfull{Current Oncology}
+	\gdef\@journalshort{Curr. Oncol.}
+	\gdef\@doiabbr{curroncol}
+	\gdef\@ISSN{1718-7729}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{cyber}{%
+	\gdef\@journal{cyber}
+	\gdef\@journalfull{Cyber}
+	\gdef\@journalshort{Cyber}
+	\gdef\@doiabbr{cyber}
+	\gdef\@ISSN{2624-800X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{dairy}{%
+	\gdef\@journal{dairy}
+	\gdef\@journalfull{Dairy}
+	\gdef\@journalshort{Dairy}
+	\gdef\@doiabbr{dairy}
+	\gdef\@ISSN{2624-862X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{data}{%
+	\gdef\@journal{data}
+	\gdef\@journalfull{Data}
+	\gdef\@journalshort{Data}
+	\gdef\@doiabbr{data}
+	\gdef\@ISSN{2306-5729}
+	\gdef\@societyowner{}
+}
+\DeclareOption{ddc}{%
+	\gdef\@journal{ddc}
+	\gdef\@journalfull{Drugs and Drug Candidates}
+	\gdef\@journalshort{Drugs Drug Candidates}
+	\gdef\@doiabbr{ddc}
+	\gdef\@ISSN{2813-2998}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{dentistry}{%
+	\gdef\@journal{dentistry}
+	\gdef\@journalfull{Dentistry Journal}
+	\gdef\@journalshort{Dent. J.}
+	\gdef\@doiabbr{dj}
+	\gdef\@ISSN{2304-6767}
+	\gdef\@societyowner{}
+}
+\DeclareOption{dermato}{%
+	\gdef\@journal{dermato}
+	\gdef\@journalfull{Dermato}
+	\gdef\@journalshort{Dermato}
+	\gdef\@doiabbr{dermato}
+	\gdef\@ISSN{2673-6179}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{dermatopathology}{%
+	\gdef\@journal{dermatopathology}
+	\gdef\@journalfull{Dermatopathology}
+	\gdef\@journalshort{Dermatopathology}
+	\gdef\@doiabbr{dermatopathology}
+	\gdef\@ISSN{2296-3529}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{European Society of Dermatopathology}
+}
+\DeclareOption{designs}{%
+	\gdef\@journal{designs}
+	\gdef\@journalfull{Designs}
+	\gdef\@journalshort{Designs}
+	\gdef\@doiabbr{designs}
+	\gdef\@ISSN{2411-9660}
+	\gdef\@societyowner{}
+}
+\DeclareOption{devices}{%
+	\gdef\@journal{devices}
+	\gdef\@journalfull{Devices}
+	\gdef\@journalshort{Devices}
+	\gdef\@doiabbr{devices}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{diabetology}{%
+	\gdef\@journal{diabetology}
+	\gdef\@journalfull{Diabetology}
+	\gdef\@journalshort{Diabetology}
+	\gdef\@doiabbr{diabetology}
+	\gdef\@ISSN{2673-4540}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{diagnostics}{%
+	\gdef\@journal{diagnostics}
+	\gdef\@journalfull{Diagnostics}
+	\gdef\@journalshort{Diagnostics}
+	\gdef\@doiabbr{diagnostics}
+	\gdef\@ISSN{2075-4418}
+	\gdef\@societyowner{}
+}
+\DeclareOption{dietetics}{%
+	\gdef\@journal{dietetics}
+	\gdef\@journalfull{Dietetics}
+	\gdef\@journalshort{Dietetics}
+	\gdef\@doiabbr{dietetics}
+	\gdef\@ISSN{2674-0311}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{digital}{%
+	\gdef\@journal{digital}
+	\gdef\@journalfull{Digital}
+	\gdef\@journalshort{Digital}
+	\gdef\@doiabbr{digital}
+	\gdef\@ISSN{2673-6470}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{disabilities}{%
+	\gdef\@journal{disabilities}
+	\gdef\@journalfull{Disabilities}
+	\gdef\@journalshort{Disabilities}
+	\gdef\@doiabbr{disabilities}
+	\gdef\@ISSN{2673-7272}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{diseases}{%
+	\gdef\@journal{diseases}
+	\gdef\@journalfull{Diseases}
+	\gdef\@journalshort{Diseases}
+	\gdef\@doiabbr{diseases}
+	\gdef\@ISSN{2079-9721}
+	\gdef\@societyowner{}
+}
+\DeclareOption{diversity}{%
+	\gdef\@journal{diversity}
+	\gdef\@journalfull{Diversity}
+	\gdef\@journalshort{Diversity}
+	\gdef\@doiabbr{d}
+	\gdef\@ISSN{1424-2818}
+	\gdef\@societyowner{}
+}
+\DeclareOption{dna}{%
+	\gdef\@journal{dna}
+	\gdef\@journalfull{DNA}
+	\gdef\@journalshort{DNA}
+	\gdef\@doiabbr{dna}
+	\gdef\@ISSN{2673-8856}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{drones}{%
+	\gdef\@journal{drones}
+	\gdef\@journalfull{Drones}
+	\gdef\@journalshort{Drones}
+	\gdef\@doiabbr{drones}
+	\gdef\@ISSN{2504-446X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{dynamics}{%
+	\gdef\@journal{dynamics}
+	\gdef\@journalfull{Dynamics}
+	\gdef\@journalshort{Dynamics}
+	\gdef\@doiabbr{dynamics}
+	\gdef\@ISSN{2673-8716}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{earth}{%
+	\gdef\@journal{earth}
+	\gdef\@journalfull{Earth}
+	\gdef\@journalshort{Earth}
+	\gdef\@doiabbr{earth}
+	\gdef\@ISSN{2673-4834}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{ebj}{%
+	\gdef\@journal{ebj}
+	\gdef\@journalfull{European Burn Journal}
+	\gdef\@journalshort{Eur. Burn J.}
+	\gdef\@doiabbr{ebj}
+	\gdef\@ISSN{2673-1991}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{European Burns Association}
+}
+\DeclareOption{ecm}{%
+	\gdef\@journal{ecm}
+	\gdef\@journalfull{Emergency Care and Medicine}
+	\gdef\@journalshort{Emerg. Care Med.}
+	\gdef\@doiabbr{ecm}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{ecologies}{%
+	\gdef\@journal{ecologies}
+	\gdef\@journalfull{Ecologies}
+	\gdef\@journalshort{Ecologies}
+	\gdef\@doiabbr{ecologies}
+	\gdef\@ISSN{2673-4133}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{econometrics}{%
+	\gdef\@journal{econometrics}
+	\gdef\@journalfull{Econometrics}
+	\gdef\@journalshort{Econometrics}
+	\gdef\@doiabbr{econometrics}
+	\gdef\@ISSN{2225-1146}
+	\gdef\@societyowner{}
+}
+\DeclareOption{economies}{%
+	\gdef\@journal{economies}
+	\gdef\@journalfull{Economies}
+	\gdef\@journalshort{Economies}
+	\gdef\@doiabbr{economies}
+	\gdef\@ISSN{2227-7099}
+	\gdef\@societyowner{}
+}
+\DeclareOption{education}{%
+	\gdef\@journal{education}
+	\gdef\@journalfull{Education Sciences}
+	\gdef\@journalshort{Educ. Sci.}
+	\gdef\@doiabbr{educsci}
+	\gdef\@ISSN{2227-7102}
+	\gdef\@societyowner{}
+}
+\DeclareOption{ejihpe}{%
+	\gdef\@journal{ejihpe}
+	\gdef\@journalfull{European Journal of Investigation in Health, Psychology and Education}
+	\gdef\@journalshort{Eur. J. Investig. Health Psychol. Educ.}
+	\gdef\@doiabbr{ejihpe}
+	\gdef\@ISSN{2254-9625}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{University Association of Education and Psychology}
+}
+\DeclareOption{electricity}{%
+	\gdef\@journal{electricity}
+	\gdef\@journalfull{Electricity}
+	\gdef\@journalshort{Electricity}
+	\gdef\@doiabbr{electricity}
+	\gdef\@ISSN{2673-4826}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{electrochem}{%
+	\gdef\@journal{electrochem}
+	\gdef\@journalfull{Electrochem}
+	\gdef\@journalshort{Electrochem}
+	\gdef\@doiabbr{electrochem}
+	\gdef\@ISSN{2673-3293}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{electronicmat}{%
+	\gdef\@journal{electronicmat}
+	\gdef\@journalfull{Electronic Materials}
+	\gdef\@journalshort{Electron. Mater.}
+	\gdef\@doiabbr{electronicmat}
+	\gdef\@ISSN{2673-3978}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{electronics}{%
+	\gdef\@journal{electronics}
+	\gdef\@journalfull{Electronics}
+	\gdef\@journalshort{Electronics}
+	\gdef\@doiabbr{electronics}
+	\gdef\@ISSN{2079-9292}
+	\gdef\@societyowner{}
+}
+\DeclareOption{encyclopedia}{%
+	\gdef\@journal{encyclopedia}
+	\gdef\@journalfull{Encyclopedia}
+	\gdef\@journalshort{Encyclopedia}
+	\gdef\@doiabbr{encyclopedia}
+	\gdef\@ISSN{2673-8392}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{endocrines}{%
+	\gdef\@journal{endocrines}
+	\gdef\@journalfull{Endocrines}
+	\gdef\@journalshort{Endocrines}
+	\gdef\@doiabbr{endocrines}
+	\gdef\@ISSN{2673-396X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{energies}{%
+	\gdef\@journal{energies}
+	\gdef\@journalfull{Energies}
+	\gdef\@journalshort{Energies}
+	\gdef\@doiabbr{en}
+	\gdef\@ISSN{1996-1073}
+	\gdef\@societyowner{}
+}
+\DeclareOption{eng}{%
+	\gdef\@journal{eng}
+	\gdef\@journalfull{Eng}
+	\gdef\@journalshort{Eng}
+	\gdef\@doiabbr{eng}
+	\gdef\@ISSN{2673-4117}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{engproc}{%
+	\gdef\@journal{engproc}
+	\gdef\@journalfull{Engineering Proceedings}
+	\gdef\@journalshort{Eng. Proc.}
+	\gdef\@doiabbr{engproc}
+	\gdef\@ISSN{2673-4591}
+	\gdef\@societyowner{}
+}
+%\DeclareOption{ent}{%
+%	\gdef\@journal{ent}
+%	\gdef\@journalfull{}
+%	\gdef\@journalshort{}
+%	\gdef\@doiabbr{}
+%	\gdef\@ISSN{}
+%	\gdef\@continuouspages{yes}
+%	\gdef\@societyowner{}
+%}
+\DeclareOption{entomology}{%
+	\gdef\@journal{entomology}
+	\gdef\@journalfull{Entomology}
+	\gdef\@journalshort{Entomology}
+	\gdef\@doiabbr{entomology}
+	\gdef\@ISSN{2813-0502}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{entropy}{%
+	\gdef\@journal{entropy}
+	\gdef\@journalfull{Entropy}
+	\gdef\@journalshort{Entropy}
+	\gdef\@doiabbr{e}
+	\gdef\@ISSN{1099-4300}
+	\gdef\@societyowner{}
+}
+\DeclareOption{environments}{%
+	\gdef\@journal{environments}
+	\gdef\@journalfull{Environments}
+	\gdef\@journalshort{Environments}
+	\gdef\@doiabbr{environments}
+	\gdef\@ISSN{2076-3298}
+	\gdef\@societyowner{}
+}
+\DeclareOption{environsciproc}{%
+	\gdef\@journal{environsciproc}
+	\gdef\@journalfull{Environmental Sciences Proceedings}
+	\gdef\@journalshort{Environ. Sci. Proc.}
+	\gdef\@doiabbr{environsciproc}
+	\gdef\@ISSN{2673-4931}
+	\gdef\@societyowner{}
+}
+\DeclareOption{epidemiologia}{%
+	\gdef\@journal{epidemiologia}
+	\gdef\@journalfull{Epidemiologia}
+	\gdef\@journalshort{Epidemiologia}
+	\gdef\@doiabbr{epidemiologia}
+	\gdef\@ISSN{2673-3986}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{epigenomes}{%
+	\gdef\@journal{epigenomes}
+	\gdef\@journalfull{Epigenomes}
+	\gdef\@journalshort{Epigenomes}
+	\gdef\@doiabbr{epigenomes}
+	\gdef\@ISSN{2075-4655}
+	\gdef\@societyowner{}
+}
+\DeclareOption{esa}{%
+	\gdef\@journal{esa}
+	\gdef\@journalfull{Energy Storage and Applications}
+	\gdef\@journalshort{Energy Storage Appl.}
+	\gdef\@doiabbr{esa}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{est}{%
+	\gdef\@journal{est}
+	\gdef\@journalfull{Electrochemical Science and Technology}
+	\gdef\@journalshort{Electrochem. Sci. Technol.}
+	\gdef\@doiabbr{}
+	\gdef\@ISSN{}
+	\gdef\@societyowner{}
+}
+\DeclareOption{fermentation}{%
+	\gdef\@journal{fermentation}
+	\gdef\@journalfull{Fermentation}
+	\gdef\@journalshort{Fermentation}
+	\gdef\@doiabbr{fermentation}
+	\gdef\@ISSN{2311-5637}
+	\gdef\@societyowner{}
+}
+\DeclareOption{fibers}{%
+	\gdef\@journal{fibers}
+	\gdef\@journalfull{Fibers}
+	\gdef\@journalshort{Fibers}
+	\gdef\@doiabbr{fib}
+	\gdef\@ISSN{2079-6439}
+	\gdef\@societyowner{}
+}
+\DeclareOption{fintech}{%
+	\gdef\@journal{fintech}
+	\gdef\@journalfull{FinTech}
+	\gdef\@journalshort{FinTech}
+	\gdef\@doiabbr{fintech}
+	\gdef\@ISSN{2674-1032}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{fire}{%
+	\gdef\@journal{fire}
+	\gdef\@journalfull{Fire}
+	\gdef\@journalshort{Fire}
+	\gdef\@doiabbr{fire}
+	\gdef\@ISSN{2571-6255}
+	\gdef\@societyowner{}
+}
+\DeclareOption{fishes}{%
+	\gdef\@journal{fishes}
+	\gdef\@journalfull{Fishes}
+	\gdef\@journalshort{Fishes}
+	\gdef\@doiabbr{fishes}
+	\gdef\@ISSN{2410-3888}
+	\gdef\@societyowner{}
+}
+\DeclareOption{fluids}{%
+	\gdef\@journal{fluids}
+	\gdef\@journalfull{Fluids}
+	\gdef\@journalshort{Fluids}
+	\gdef\@doiabbr{fluids}
+	\gdef\@ISSN{2311-5521}
+	\gdef\@societyowner{}
+}
+\DeclareOption{foods}{%
+	\gdef\@journal{foods}
+	\gdef\@journalfull{Foods}
+	\gdef\@journalshort{Foods}
+	\gdef\@doiabbr{foods}
+	\gdef\@ISSN{2304-8158}
+	\gdef\@societyowner{}
+}
+\DeclareOption{forecasting}{%
+	\gdef\@journal{forecasting}
+	\gdef\@journalfull{Forecasting}
+	\gdef\@journalshort{Forecasting}
+	\gdef\@doiabbr{forecast}
+	\gdef\@ISSN{2571-9394}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{forensicsci}{%
+	\gdef\@journal{forensicsci}
+	\gdef\@journalfull{Forensic Sciences}
+	\gdef\@journalshort{Forensic Sci.}
+	\gdef\@doiabbr{forensicsci}
+	\gdef\@ISSN{2673-6756}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{forests}{%
+	\gdef\@journal{forests}
+	\gdef\@journalfull{Forests}
+	\gdef\@journalshort{Forests}
+	\gdef\@doiabbr{f}
+	\gdef\@ISSN{1999-4907}
+	\gdef\@societyowner{}
+}
+\DeclareOption{fossstud}{%
+	\gdef\@journal{fossstud}
+	\gdef\@journalfull{Fossil Studies}
+	\gdef\@journalshort{Foss. Stud.}
+	\gdef\@doiabbr{fossils}
+	\gdef\@ISSN{2813-6284}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{foundations}{%
+	\gdef\@journal{foundations}
+	\gdef\@journalfull{Foundations}
+	\gdef\@journalshort{Foundations}
+	\gdef\@doiabbr{foundations}
+	\gdef\@ISSN{2673-9321}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{fractalfract}{%
+	\gdef\@journal{fractalfract}
+	\gdef\@journalfull{Fractal and Fractional}
+	\gdef\@journalshort{Fractal Fract.}
+	\gdef\@doiabbr{fractalfract}
+	\gdef\@ISSN{2504-3110}
+	\gdef\@societyowner{}
+}
+\DeclareOption{fuels}{%
+	\gdef\@journal{fuels}
+	\gdef\@journalfull{Fuels}
+	\gdef\@journalshort{Fuels}
+	\gdef\@doiabbr{fuels}
+	\gdef\@ISSN{2673-3994}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{future}{%
+	\gdef\@journal{future}
+	\gdef\@journalfull{Future}
+	\gdef\@journalshort{Future}
+	\gdef\@doiabbr{future}
+	\gdef\@ISSN{2813-2882}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{futureinternet}{%
+	\gdef\@journal{futureinternet}
+	\gdef\@journalfull{Future Internet}
+	\gdef\@journalshort{Future Internet}
+	\gdef\@doiabbr{fi}
+	\gdef\@ISSN{1999-5903}
+	\gdef\@societyowner{}
+}
+%\DeclareOption{futureparasites}{%
+%	\gdef\@journal{futureparasites}
+%	\gdef\@journalfull{}
+%	\gdef\@journalshort{}
+%	\gdef\@doiabbr{}
+%	\gdef\@ISSN{}
+%	\gdef\@continuouspages{yes}
+%	\gdef\@societyowner{}
+%}
+\DeclareOption{futurepharmacol}{%
+	\gdef\@journal{futurepharmacol}
+	\gdef\@journalfull{Future Pharmacology}
+	\gdef\@journalshort{Future Pharmacol.}
+	\gdef\@doiabbr{futurepharmacol}
+	\gdef\@ISSN{2673-9879}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{futurephys}{%
+	\gdef\@journal{futurephys}
+	\gdef\@journalfull{Future Physics}
+	\gdef\@journalshort{Future Phys.}
+	\gdef\@doiabbr{futurephys}
+	\gdef\@ISSN{2624-6503}
+	\gdef\@societyowner{}
+}
+\DeclareOption{futuretransp}{%
+	\gdef\@journal{futuretransp}
+	\gdef\@journalfull{Future Transportation}
+	\gdef\@journalshort{Future Transp.}
+	\gdef\@doiabbr{futuretransp}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{galaxies}{%
+	\gdef\@journal{galaxies}
+	\gdef\@journalfull{Galaxies}
+	\gdef\@journalshort{Galaxies}
+	\gdef\@doiabbr{galaxies}
+	\gdef\@ISSN{2075-4434}
+	\gdef\@societyowner{}
+}
+\DeclareOption{games}{%
+	\gdef\@journal{games}
+	\gdef\@journalfull{Games}
+	\gdef\@journalshort{Games}
+	\gdef\@doiabbr{g}
+	\gdef\@ISSN{2073-4336}
+	\gdef\@societyowner{}
+}
+\DeclareOption{gases}{%
+	\gdef\@journal{gases}
+	\gdef\@journalfull{Gases}
+	\gdef\@journalshort{Gases}
+	\gdef\@doiabbr{gases}
+	\gdef\@ISSN{2673-5628}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{gastroent}{%
+	\gdef\@journal{gastroent}
+	\gdef\@journalfull{Gastroenterology Insights}
+	\gdef\@journalshort{Gastroenterol. Insights}
+	\gdef\@doiabbr{gastroent}
+	\gdef\@ISSN{2036-7422}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{gastrointestdisord}{%
+	\gdef\@journal{gastrointestdisord}
+	\gdef\@journalfull{Gastrointestinal Disorders}
+	\gdef\@journalshort{Gastrointest. Disord.}
+	\gdef\@doiabbr{gidisord}
+	\gdef\@ISSN{2624-5647}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{gastronomy}{%
+	\gdef\@journal{gastronomy}
+	\gdef\@journalfull{Gastronomy}
+	\gdef\@journalshort{Gastronomy}
+	\gdef\@doiabbr{gastronomy}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{gels}{%
+	\gdef\@journal{gels}
+	\gdef\@journalfull{Gels}
+	\gdef\@journalshort{Gels}
+	\gdef\@doiabbr{gels}
+	\gdef\@ISSN{2310-2861}
+	\gdef\@societyowner{}
+}
+\DeclareOption{genealogy}{%
+	\gdef\@journal{genealogy}
+	\gdef\@journalfull{Genealogy}
+	\gdef\@journalshort{Genealogy}
+	\gdef\@doiabbr{genealogy}
+	\gdef\@ISSN{2313-5778}
+	\gdef\@societyowner{}
+}
+\DeclareOption{genes}{%
+	\gdef\@journal{genes}
+	\gdef\@journalfull{Genes}
+	\gdef\@journalshort{Genes}
+	\gdef\@doiabbr{genes}
+	\gdef\@ISSN{2073-4425}
+	\gdef\@societyowner{}
+}
+\DeclareOption{geographies}{%
+	\gdef\@journal{geographies}
+	\gdef\@journalfull{Geographies}
+	\gdef\@journalshort{Geographies}
+	\gdef\@doiabbr{geographies}
+	\gdef\@ISSN{2673-7086}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{geohazards}{%
+	\gdef\@journal{geohazards}
+	\gdef\@journalfull{GeoHazards}
+	\gdef\@journalshort{GeoHazards}
+	\gdef\@doiabbr{geohazards}
+	\gdef\@ISSN{2624-795X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{geomatics}{%
+	\gdef\@journal{geomatics}
+	\gdef\@journalfull{Geomatics}
+	\gdef\@journalshort{Geomatics}
+	\gdef\@doiabbr{geomatics}
+	\gdef\@ISSN{2673-7418}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{geometry}{%
+	\gdef\@journal{geometry}
+	\gdef\@journalfull{Geometry}
+	\gdef\@journalshort{Geometry}
+	\gdef\@doiabbr{geometry}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{geosciences}{%
+	\gdef\@journal{geosciences}
+	\gdef\@journalfull{Geosciences}
+	\gdef\@journalshort{Geosciences}
+	\gdef\@doiabbr{geosciences}
+	\gdef\@ISSN{2076-3263}
+	\gdef\@societyowner{}
+}
+\DeclareOption{geotechnics}{%
+	\gdef\@journal{geotechnics}
+	\gdef\@journalfull{Geotechnics}
+	\gdef\@journalshort{Geotechnics}
+	\gdef\@doiabbr{geotechnics}
+	\gdef\@ISSN{2673-7094}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{geriatrics}{%
+	\gdef\@journal{geriatrics}
+	\gdef\@journalfull{Geriatrics}
+	\gdef\@journalshort{Geriatrics}
+	\gdef\@doiabbr{geriatrics}
+	\gdef\@ISSN{2308-3417}
+	\gdef\@societyowner{}
+}
+\DeclareOption{glacies}{%
+	\gdef\@journal{glacies}
+	\gdef\@journalfull{Glacies}
+	\gdef\@journalshort{Glacies}
+	\gdef\@doiabbr{glacies}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{grasses}{%
+	\gdef\@journal{grasses}
+	\gdef\@journalfull{Grasses}
+	\gdef\@journalshort{Grasses}
+	\gdef\@doiabbr{grasses}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{gucdd}{%
+	\gdef\@journal{gucdd}
+	\gdef\@journalfull{Gout, Urate, and Crystal Deposition Disease}
+	\gdef\@journalshort{Gout Urate Cryst. Depos. Dis.}
+	\gdef\@doiabbr{gucdd}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{Gout, Hyperuricemia and Crystal Associated Disease Network}
+}
+\DeclareOption{hardware}{%
+	\gdef\@journal{hardware}
+	\gdef\@journalfull{Hardware}
+	\gdef\@journalshort{Hardware}
+	\gdef\@doiabbr{hardware}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{hazardousmatters}{%
+	\gdef\@journal{hazardousmatters}
+	\gdef\@journalfull{Hazardous Matters}
+	\gdef\@journalshort{Hazard. Matters}
+	\gdef\@doiabbr{}
+	\gdef\@ISSN{0014-0014}
+	\gdef\@societyowner{}
+}
+\DeclareOption{healthcare}{%
+	\gdef\@journal{healthcare}
+	\gdef\@journalfull{Healthcare}
+	\gdef\@journalshort{Healthcare}
+	\gdef\@doiabbr{healthcare}
+	\gdef\@ISSN{2227-9032}
+	\gdef\@societyowner{}
+}
+\DeclareOption{hearts}{%
+	\gdef\@journal{hearts}
+	\gdef\@journalfull{Hearts}
+	\gdef\@journalshort{Hearts}
+	\gdef\@doiabbr{hearts}
+	\gdef\@ISSN{2673-3846}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{hemato}{%
+	\gdef\@journal{hemato}
+	\gdef\@journalfull{Hemato}
+	\gdef\@journalshort{Hemato}
+	\gdef\@doiabbr{hemato}
+	\gdef\@ISSN{2673-6357}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{hematolrep}{%
+	\gdef\@journal{hematolrep}
+	\gdef\@journalfull{Hematology Reports}
+	\gdef\@journalshort{Hematol. Rep.}
+	\gdef\@doiabbr{hematolrep}
+	\gdef\@ISSN{2038-8330}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{heritage}{%
+	\gdef\@journal{heritage}
+	\gdef\@journalfull{Heritage}
+	\gdef\@journalshort{Heritage}
+	\gdef\@doiabbr{heritage}
+	\gdef\@ISSN{2571-9408}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{higheredu}{%
+	\gdef\@journal{higheredu}
+	\gdef\@journalfull{Trends in Higher Education}
+	\gdef\@journalshort{Trends High. Educ.}
+	\gdef\@doiabbr{higheredu}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{highthroughput}{%
+	\gdef\@journal{highthroughput}
+	\gdef\@journalfull{High-Throughput}
+	\gdef\@journalshort{High-Throughput}
+	\gdef\@doiabbr{ht}
+	\gdef\@ISSN{2571-5135}
+	\gdef\@societyowner{}
+}
+\DeclareOption{histories}{%
+	\gdef\@journal{histories}
+	\gdef\@journalfull{Histories}
+	\gdef\@journalshort{Histories}
+	\gdef\@doiabbr{histories}
+	\gdef\@ISSN{2409-9252}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{horticulturae}{%
+	\gdef\@journal{horticulturae}
+	\gdef\@journalfull{Horticulturae}
+	\gdef\@journalshort{Horticulturae}
+	\gdef\@doiabbr{horticulturae}
+	\gdef\@ISSN{2311-7524}
+	\gdef\@societyowner{}
+}
+\DeclareOption{hospitals}{%
+	\gdef\@journal{hospitals}
+	\gdef\@journalfull{Hospitals}
+	\gdef\@journalshort{Hospitals}
+	\gdef\@doiabbr{hospitals}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{humanities}{%
+	\gdef\@journal{humanities}
+	\gdef\@journalfull{Humanities}
+	\gdef\@journalshort{Humanities}
+	\gdef\@doiabbr{h}
+	\gdef\@ISSN{2076-0787}
+	\gdef\@societyowner{}
+}
+\DeclareOption{humans}{%
+	\gdef\@journal{humans}
+	\gdef\@journalfull{Humans}
+	\gdef\@journalshort{Humans}
+	\gdef\@doiabbr{humans}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{hydrobiology}{%
+	\gdef\@journal{hydrobiology}
+	\gdef\@journalfull{Hydrobiology}
+	\gdef\@journalshort{Hydrobiology}
+	\gdef\@doiabbr{hydrobiology}
+	\gdef\@ISSN{2673-9917}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{hydrogen}{%
+	\gdef\@journal{hydrogen}
+	\gdef\@journalfull{Hydrogen}
+	\gdef\@journalshort{Hydrogen}
+	\gdef\@doiabbr{hydrogen}
+	\gdef\@ISSN{2673-4141}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{hydrology}{%
+	\gdef\@journal{hydrology}
+	\gdef\@journalfull{Hydrology}
+	\gdef\@journalshort{Hydrology}
+	\gdef\@doiabbr{hydrology}
+	\gdef\@ISSN{2306-5338}
+	\gdef\@societyowner{}
+}
+\DeclareOption{hygiene}{%
+	\gdef\@journal{hygiene}
+	\gdef\@journalfull{Hygiene}
+	\gdef\@journalshort{Hygiene}
+	\gdef\@doiabbr{hygiene}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{idr}{%
+	\gdef\@journal{idr}
+	\gdef\@journalfull{Infectious Disease Reports}
+	\gdef\@journalshort{Infect. Dis. Rep.}
+	\gdef\@doiabbr{idr}
+	\gdef\@ISSN{2036-7449}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{iic}{%
+	\gdef\@journal{iic}
+	\gdef\@journalfull{Intelligent Infrastructure and Construction}
+	\gdef\@journalshort{Intell. Infrastruct. Constr.}
+	\gdef\@doiabbr{iic}
+	\gdef\@ISSN{3042-4720}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{ijerph}{%
+	\gdef\@journal{ijerph}
+	\gdef\@journalfull{International Journal of Environmental Research and Public Health}
+	\gdef\@journalshort{Int. J. Environ. Res. Public Health}
+	\gdef\@doiabbr{ijerph}
+	\gdef\@ISSN{1660-4601}
+	\gdef\@societyowner{}
+}
+\DeclareOption{ijfs}{%
+	\gdef\@journal{ijfs}
+	\gdef\@journalfull{International Journal of Financial Studies}
+	\gdef\@journalshort{Int. J. Financial Stud.}
+	\gdef\@doiabbr{ijfs}
+	\gdef\@ISSN{2227-7072}
+	\gdef\@societyowner{}
+}
+\DeclareOption{ijgi}{%
+	\gdef\@journal{ijgi}
+	\gdef\@journalfull{ISPRS International Journal of Geo-Information}
+	\gdef\@journalshort{ISPRS Int. J. Geo-Inf.}
+	\gdef\@doiabbr{ijgi}
+	\gdef\@ISSN{2220-9964}
+	\gdef\@societyowner{International Society for Photogrammetry and Remote Sensing}
+}
+\DeclareOption{ijmd}{%
+	\gdef\@journal{ijmd}
+	\gdef\@journalfull{International Journal of Medical Devices}
+	\gdef\@journalshort{Int. J. Med. Devices}
+	\gdef\@doiabbr{ijmd}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{ijms}{%
+	\gdef\@journal{ijms}
+	\gdef\@journalfull{International Journal of Molecular Sciences}
+	\gdef\@journalshort{Int. J. Mol. Sci.}
+	\gdef\@doiabbr{ijms}
+	\gdef\@ISSN{1422-0067}
+	\gdef\@societyowner{}
+}
+\DeclareOption{ijns}{%
+	\gdef\@journal{ijns}
+	\gdef\@journalfull{International Journal of Neonatal Screening}
+	\gdef\@journalshort{Int. J. Neonatal Screen.}
+	\gdef\@doiabbr{ijns}
+	\gdef\@ISSN{2409-515X}
+	\gdef\@societyowner{International Society for Neonatal Screening}
+}
+\DeclareOption{ijpb}{%
+	\gdef\@journal{ijpb}
+	\gdef\@journalfull{International Journal of Plant Biology}
+	\gdef\@journalshort{Int. J. Plant Biol.}
+	\gdef\@doiabbr{ijpb}
+	\gdef\@ISSN{2037-0164}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{ijt}{%
+	\gdef\@journal{ijt}
+	\gdef\@journalfull{International Journal of Topology}
+	\gdef\@journalshort{Int. J. Topol.}
+	\gdef\@doiabbr{ijt}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{ijtm}{%
+	\gdef\@journal{ijtm}
+	\gdef\@journalfull{International Journal of Translational Medicine}
+	\gdef\@journalshort{Int. J. Transl. Med.}
+	\gdef\@doiabbr{ijtm}
+	\gdef\@ISSN{2673-8937}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{ijtpp}{%
+	\gdef\@journal{ijtpp}
+	\gdef\@journalfull{International Journal of Turbomachinery, Propulsion and Power}
+	\gdef\@journalshort{Int. J. Turbomach. Propuls. Power}
+	\gdef\@doiabbr{ijtpp}
+	\gdef\@ISSN{2504-186X}
+	\gdef\@societyowner{EUROTURBO European turbomachinery society}
+}
+\DeclareOption{ime}{%
+	\gdef\@journal{ime}
+	\gdef\@journalfull{International Medical Education}
+	\gdef\@journalshort{Int. Med. Educ.}
+	\gdef\@doiabbr{ime}
+	\gdef\@ISSN{2813-141X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{Academic Society for International Medical Education}
+}
+\DeclareOption{immuno}{%
+	\gdef\@journal{immuno}
+	\gdef\@journalfull{Immuno}
+	\gdef\@journalshort{Immuno}
+	\gdef\@doiabbr{immuno}
+	\gdef\@ISSN{2673-5601}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{informatics}{%
+	\gdef\@journal{informatics}
+	\gdef\@journalfull{Informatics}
+	\gdef\@journalshort{Informatics}
+	\gdef\@doiabbr{informatics}
+	\gdef\@ISSN{2227-9709}
+	\gdef\@societyowner{}
+}
+\DeclareOption{information}{%
+	\gdef\@journal{information}
+	\gdef\@journalfull{Information}
+	\gdef\@journalshort{Information}
+	\gdef\@doiabbr{info}
+	\gdef\@ISSN{2078-2489}
+	\gdef\@societyowner{}
+}
+\DeclareOption{infrastructures}{%
+	\gdef\@journal{infrastructures}
+	\gdef\@journalfull{Infrastructures}
+	\gdef\@journalshort{Infrastructures}
+	\gdef\@doiabbr{infrastructures}
+	\gdef\@ISSN{2412-3811}
+	\gdef\@societyowner{}
+}
+\DeclareOption{inorganics}{%
+	\gdef\@journal{inorganics}
+	\gdef\@journalfull{Inorganics}
+	\gdef\@journalshort{Inorganics}
+	\gdef\@doiabbr{inorganics}
+	\gdef\@ISSN{2304-6740}
+	\gdef\@societyowner{}
+}
+\DeclareOption{insects}{%
+	\gdef\@journal{insects}
+	\gdef\@journalfull{Insects}
+	\gdef\@journalshort{Insects}
+	\gdef\@doiabbr{insects}
+	\gdef\@ISSN{2075-4450}
+	\gdef\@societyowner{}
+}
+\DeclareOption{instruments}{%
+	\gdef\@journal{instruments}
+	\gdef\@journalfull{Instruments}
+	\gdef\@journalshort{Instruments}
+	\gdef\@doiabbr{instruments}
+	\gdef\@ISSN{2410-390X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{inventions}{%
+	\gdef\@journal{inventions}
+	\gdef\@journalfull{Inventions}
+	\gdef\@journalshort{Inventions}
+	\gdef\@doiabbr{inventions}
+	\gdef\@ISSN{2411-5134}
+	\gdef\@societyowner{}
+}
+\DeclareOption{iot}{%
+	\gdef\@journal{iot}
+	\gdef\@journalfull{IoT}
+	\gdef\@journalshort{IoT}
+	\gdef\@doiabbr{iot}
+	\gdef\@ISSN{2624-831X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{j}{%
+	\gdef\@journal{j}
+	\gdef\@journalfull{J}
+	\gdef\@journalshort{J}
+	\gdef\@doiabbr{j}
+	\gdef\@ISSN{2571-8800}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jal}{%
+	\gdef\@journal{jal}
+	\gdef\@journalfull{Journal of Ageing and Longevity}
+	\gdef\@journalshort{J. Ageing Longev.}
+	\gdef\@doiabbr{jal}
+	\gdef\@ISSN{2673-9259}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jcdd}{%
+	\gdef\@journal{jcdd}
+	\gdef\@journalfull{Journal of Cardiovascular Development and Disease}
+	\gdef\@journalshort{J. Cardiovasc. Dev. Dis.}
+	\gdef\@doiabbr{jcdd}
+	\gdef\@ISSN{2308-3425}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jcm}{%
+	\gdef\@journal{jcm}
+	\gdef\@journalfull{Journal of Clinical Medicine}
+	\gdef\@journalshort{J. Clin. Med.}
+	\gdef\@doiabbr{jcm}
+	\gdef\@ISSN{2077-0383}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jcp}{%
+	\gdef\@journal{jcp}
+	\gdef\@journalfull{Journal of Cybersecurity and Privacy}
+	\gdef\@journalshort{J. Cybersecur. Priv.}
+	\gdef\@doiabbr{jcp}
+	\gdef\@ISSN{2624-800X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jcs}{%
+	\gdef\@journal{jcs}
+	\gdef\@journalfull{Journal of Composites Science}
+	\gdef\@journalshort{J. Compos. Sci.}
+	\gdef\@doiabbr{jcs}
+	\gdef\@ISSN{2504-477X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jcto}{%
+	\gdef\@journal{jcto}
+	\gdef\@journalfull{Journal of Clinical \& Translational Ophthalmology}
+	\gdef\@journalshort{J. Clin. Transl. Ophthalmol.}
+	\gdef\@doiabbr{jcto}
+	\gdef\@ISSN{2813-1053}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jdad}{%
+	\gdef\@journal{jdad}
+	\gdef\@journalfull{Journal of Dementia and Alzheimer’s Disease}
+	\gdef\@journalshort{J. Dement. Alzheimer's Dis.}
+	\gdef\@doiabbr{jdad}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jdb}{%
+	\gdef\@journal{jdb}
+	\gdef\@journalfull{Journal of Developmental Biology}
+	\gdef\@journalshort{J. Dev. Biol.}
+	\gdef\@doiabbr{jdb}
+	\gdef\@ISSN{2221-3759}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jeta}{%
+	\gdef\@journal{jeta}
+	\gdef\@journalfull{Journal of Experimental and Theoretical Analyses}
+	\gdef\@journalshort{J. Exp. Theor. Anal.}
+	\gdef\@doiabbr{jeta}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jfb}{%
+	\gdef\@journal{jfb}
+	\gdef\@journalfull{Journal of Functional Biomaterials}
+	\gdef\@journalshort{J. Funct. Biomater.}
+	\gdef\@doiabbr{jfb}
+	\gdef\@ISSN{2079-4983}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jfmk}{%
+	\gdef\@journal{jfmk}
+	\gdef\@journalfull{Journal of Functional Morphology and Kinesiology}
+	\gdef\@journalshort{J. Funct. Morphol. Kinesiol.}
+	\gdef\@doiabbr{jfmk}
+	\gdef\@ISSN{2411-5142}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jimaging}{%
+	\gdef\@journal{jimaging}
+	\gdef\@journalfull{Journal of Imaging}
+	\gdef\@journalshort{J. Imaging}
+	\gdef\@doiabbr{jimaging}
+	\gdef\@ISSN{2313-433X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jintelligence}{%
+	\gdef\@journal{jintelligence}
+	\gdef\@journalfull{Journal of Intelligence}
+	\gdef\@journalshort{J. Intell.}
+	\gdef\@doiabbr{jintelligence}
+	\gdef\@ISSN{2079-3200}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jlpea}{%
+	\gdef\@journal{jlpea}
+	\gdef\@journalfull{Journal of Low Power Electronics and Applications}
+	\gdef\@journalshort{J. Low Power Electron. Appl.}
+	\gdef\@doiabbr{jlpea}
+	\gdef\@ISSN{2079-9268}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jmahp}{%
+	\gdef\@journal{jmahp}
+	\gdef\@journalfull{Journal of Market Access \& Health Policy}
+	\gdef\@journalshort{J. Mark. Access Health Policy}
+	\gdef\@doiabbr{jmahp}
+	\gdef\@ISSN{2001-6689}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{Market Access Society}
+}
+\DeclareOption{jmmp}{%
+	\gdef\@journal{jmmp}
+	\gdef\@journalfull{Journal of Manufacturing and Materials Processing}
+	\gdef\@journalshort{J. Manuf. Mater. Process.}
+	\gdef\@doiabbr{jmmp}
+	\gdef\@ISSN{2504-4494}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jmp}{%
+	\gdef\@journal{jmp}
+	\gdef\@journalfull{Journal of Molecular Pathology}
+	\gdef\@journalshort{J. Mol. Pathol.}
+	\gdef\@doiabbr{jmp}
+	\gdef\@ISSN{2673-5261}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jmse}{%
+	\gdef\@journal{jmse}
+	\gdef\@journalfull{Journal of Marine Science and Engineering}
+	\gdef\@journalshort{J. Mar. Sci. Eng.}
+	\gdef\@doiabbr{jmse}
+	\gdef\@ISSN{2077-1312}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jne}{%
+	\gdef\@journal{jne}
+	\gdef\@journalfull{Journal of Nuclear Engineering}
+	\gdef\@journalshort{J. Nucl. Eng.}
+	\gdef\@doiabbr{jne}
+	\gdef\@ISSN{2673-4362}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jnt}{%
+	\gdef\@journal{jnt}
+	\gdef\@journalfull{Journal of Nanotheranostics}
+	\gdef\@journalshort{J. Nanotheranostics}
+	\gdef\@doiabbr{jnt}
+	\gdef\@ISSN{2624-845X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+} 
+\DeclareOption{jof}{%
+	\gdef\@journal{jof}
+	\gdef\@journalfull{Journal of Fungi}
+	\gdef\@journalshort{J. Fungi}
+	\gdef\@doiabbr{jof}
+	\gdef\@ISSN{2309-608X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{joitmc}{%
+	\gdef\@journal{joitmc}
+	\gdef\@journalfull{Journal of Open Innovation: Technology, Market, and Complexity}
+	\gdef\@journalshort{J. Open Innov. Technol. Mark. Complex.}
+	\gdef\@doiabbr{joitmc}
+	\gdef\@ISSN{2199-8531}
+	\gdef\@societyowner{}
+}
+\DeclareOption{joma}{%
+	\gdef\@journal{joma}
+	\gdef\@journalfull{Journal of the Oman Medical Association}
+	\gdef\@journalshort{J. Oman Med. Assoc.}
+	\gdef\@doiabbr{joma}
+	\gdef\@ISSN{2813-8759}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{Oman Medical Association}
+}
+\DeclareOption{jor}{%
+	\gdef\@journal{jor}
+	\gdef\@journalfull{Journal of Respiration}
+	\gdef\@journalshort{J. Respir.}
+	\gdef\@doiabbr{jor}
+	\gdef\@ISSN{2673-527X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{journalmedia}{%
+	\gdef\@journal{journalmedia}
+	\gdef\@journalfull{Journalism and Media}
+	\gdef\@journalshort{Journal. Media}
+	\gdef\@doiabbr{journalmedia}
+	\gdef\@ISSN{2673-5172}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jox}{%
+	\gdef\@journal{jox}
+	\gdef\@journalfull{Journal of Xenobiotics}
+	\gdef\@journalshort{J. Xenobiot.}
+	\gdef\@doiabbr{jox}
+	\gdef\@ISSN{2039-4713}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jpbi}{%
+	\gdef\@journal{jpbi}
+	\gdef\@journalfull{Journal of Pharmaceutical and BioTech Industry}
+	\gdef\@journalshort{J. Pharm. BioTech Ind.}
+	\gdef\@doiabbr{jpbi}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jpm}{%
+	\gdef\@journal{jpm}
+	\gdef\@journalfull{Journal of Personalized Medicine}
+	\gdef\@journalshort{J. Pers. Med.}
+	\gdef\@doiabbr{jpm}
+	\gdef\@ISSN{2075-4426}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jrfm}{%
+	\gdef\@journal{jrfm}
+	\gdef\@journalfull{Journal of Risk and Financial Management}
+	\gdef\@journalshort{J. Risk Financial Manag.}
+	\gdef\@doiabbr{jrfm}
+	\gdef\@ISSN{1911-8074}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jsan}{%
+	\gdef\@journal{jsan}
+	\gdef\@journalfull{Journal of Sensor and Actuator Networks}
+	\gdef\@journalshort{J. Sens. Actuator Netw.}
+	\gdef\@doiabbr{jsan}
+	\gdef\@ISSN{2224-2708}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jtaer}{%
+	\gdef\@journal{jtaer}
+	\gdef\@journalfull{Journal of Theoretical and Applied Electronic Commerce Research}
+	\gdef\@journalshort{J. Theor. Appl. Electron. Commer. Res.}
+	\gdef\@doiabbr{jtaer}
+	\gdef\@ISSN{0718-1876}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jvd}{%
+	\gdef\@journal{jvd}
+	\gdef\@journalfull{Journal of Vascular Diseases}
+	\gdef\@journalshort{J. Vasc. Dis.}
+	\gdef\@doiabbr{jvd}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{jzbg}{%
+	\gdef\@journal{jzbg}
+	\gdef\@journalfull{Journal of Zoological and Botanical Gardens}
+	\gdef\@journalshort{J. Zool. Bot. Gard.}
+	\gdef\@doiabbr{jzbg}
+	\gdef\@ISSN{2673-5636}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+%\DeclareOption{kidney}{%
+%	\gdef\@journal{kidney}
+%	\gdef\@journalfull{}
+%	\gdef\@journalshort{}
+%	\gdef\@doiabbr{}
+%	\gdef\@ISSN{}
+%	\gdef\@continuouspages{yes}
+%	\gdef\@societyowner{}
+%}
+\DeclareOption{kidneydial}{%
+	\gdef\@journal{kidneydial}
+	\gdef\@journalfull{Kidney and Dialysis}
+	\gdef\@journalshort{Kidney Dial.}
+	\gdef\@doiabbr{kidneydial}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{kinasesphosphatases}{%
+	\gdef\@journal{kinasesphosphatases}
+	\gdef\@journalfull{Kinases and Phosphatases}
+	\gdef\@journalshort{Kinases Phosphatases}
+	\gdef\@doiabbr{kinasesphosphatases}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{knowledge}{%
+	\gdef\@journal{knowledge}
+	\gdef\@journalfull{Knowledge}
+	\gdef\@journalshort{Knowledge}
+	\gdef\@doiabbr{knowledge}
+	\gdef\@ISSN{2673-9585}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{labmed}{%
+	\gdef\@journal{labmed}
+	\gdef\@journalfull{LabMed}
+	\gdef\@journalshort{LabMed}
+	\gdef\@doiabbr{labmed}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{laboratories}{%
+	\gdef\@journal{laboratories}
+	\gdef\@journalfull{Laboratories}
+	\gdef\@journalshort{Laboratories}
+	\gdef\@doiabbr{laboratories}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{land}{%
+	\gdef\@journal{land}
+	\gdef\@journalfull{Land}
+	\gdef\@journalshort{Land}
+	\gdef\@doiabbr{land}
+	\gdef\@ISSN{2073-445X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{languages}{%
+	\gdef\@journal{languages}
+	\gdef\@journalfull{Languages}
+	\gdef\@journalshort{Languages}
+	\gdef\@doiabbr{languages}
+	\gdef\@ISSN{2226-471X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{laws}{%
+	\gdef\@journal{laws}
+	\gdef\@journalfull{Laws}
+	\gdef\@journalshort{Laws}
+	\gdef\@doiabbr{laws}
+	\gdef\@ISSN{2075-471X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{life}{%
+	\gdef\@journal{life}
+	\gdef\@journalfull{Life}
+	\gdef\@journalshort{Life}
+	\gdef\@doiabbr{life}
+	\gdef\@ISSN{2075-1729}
+	\gdef\@societyowner{}
+}
+\DeclareOption{lights}{%
+	\gdef\@journal{lights}
+	\gdef\@journalfull{Lights}
+	\gdef\@journalshort{Lights}
+	\gdef\@doiabbr{lights}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{limnolrev}{%
+	\gdef\@journal{limnolrev}
+	\gdef\@journalfull{Limnological Review}
+	\gdef\@journalshort{Limnol. Rev.}
+	\gdef\@doiabbr{limnolrev}
+	\gdef\@ISSN{2300-7575}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{lipidology}{%
+	\gdef\@journal{lipidology}
+	\gdef\@journalfull{Lipidology}
+	\gdef\@journalshort{Lipidology}
+	\gdef\@doiabbr{lipidology}
+	\gdef\@ISSN{2813-7086}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{liquids}{%
+	\gdef\@journal{liquids}
+	\gdef\@journalfull{Liquids}
+	\gdef\@journalshort{Liquids}
+	\gdef\@doiabbr{liquids}
+	\gdef\@ISSN{2673-8015}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{literature}{%
+	\gdef\@journal{literature}
+	\gdef\@journalfull{Literature}
+	\gdef\@journalshort{Literature}
+	\gdef\@doiabbr{literature}
+	\gdef\@ISSN{2410-9789}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{livers}{%
+	\gdef\@journal{livers}
+	\gdef\@journalfull{Livers}
+	\gdef\@journalshort{Livers}
+	\gdef\@doiabbr{livers}
+	\gdef\@ISSN{2673-4389}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{logics}{%
+	\gdef\@journal{logics}
+	\gdef\@journalfull{Logics}
+	\gdef\@journalshort{Logics}
+	\gdef\@doiabbr{logics}
+	\gdef\@ISSN{2813-0405}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{logistics}{%
+	\gdef\@journal{logistics}
+	\gdef\@journalfull{Logistics}
+	\gdef\@journalshort{Logistics}
+	\gdef\@doiabbr{logistics}
+	\gdef\@ISSN{2305-6290}
+	\gdef\@societyowner{}
+}
+\DeclareOption{lubricants}{%
+	\gdef\@journal{lubricants}
+	\gdef\@journalfull{Lubricants}
+	\gdef\@journalshort{Lubricants}
+	\gdef\@doiabbr{lubricants}
+	\gdef\@ISSN{2075-4442}
+	\gdef\@societyowner{}
+}
+\DeclareOption{lymphatics}{%
+	\gdef\@journal{lymphatics}
+	\gdef\@journalfull{Lymphatics}
+	\gdef\@journalshort{Lymphatics}
+	\gdef\@doiabbr{lymphatics}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{machines}{%
+	\gdef\@journal{machines}
+	\gdef\@journalfull{Machines}
+	\gdef\@journalshort{Machines}
+	\gdef\@doiabbr{machines}
+	\gdef\@ISSN{2075-1702}
+	\gdef\@societyowner{}
+}
+\DeclareOption{macromol}{%
+	\gdef\@journal{macromol}
+	\gdef\@journalfull{Macromol}
+	\gdef\@journalshort{Macromol}
+	\gdef\@doiabbr{macromol}
+	\gdef\@ISSN{2673-6209}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{magnetism}{%
+	\gdef\@journal{magnetism}
+	\gdef\@journalfull{Magnetism}
+	\gdef\@journalshort{Magnetism}
+	\gdef\@doiabbr{magnetism}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{magnetochemistry}{%
+	\gdef\@journal{magnetochemistry}
+	\gdef\@journalfull{Magnetochemistry}
+	\gdef\@journalshort{Magnetochemistry}
+	\gdef\@doiabbr{magnetochemistry}
+	\gdef\@ISSN{2312-7481}
+	\gdef\@societyowner{}
+}
+\DeclareOption{make}{%
+	\gdef\@journal{make}
+	\gdef\@journalfull{Machine Learning and Knowledge Extraction}
+	\gdef\@journalshort{Mach. Learn. Knowl. Extr.}
+	\gdef\@doiabbr{make}
+	\gdef\@ISSN{2504-4990}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{marinedrugs}{%
+	\gdef\@journal{marinedrugs}
+	\gdef\@journalfull{Marine Drugs}
+	\gdef\@journalshort{Mar. Drugs}
+	\gdef\@doiabbr{md}
+	\gdef\@ISSN{1660-3397}
+	\gdef\@societyowner{}
+}
+\DeclareOption{materials}{%
+	\gdef\@journal{materials}
+	\gdef\@journalfull{Materials}
+	\gdef\@journalshort{Materials}
+	\gdef\@doiabbr{ma}
+	\gdef\@ISSN{1996-1944}
+	\gdef\@societyowner{}
+}
+\DeclareOption{materproc}{%
+	\gdef\@journal{materproc}
+	\gdef\@journalfull{Materials Proceedings}
+	\gdef\@journalshort{Mater. Proc.}
+	\gdef\@doiabbr{materproc}
+	\gdef\@ISSN{2673-4605}
+	\gdef\@societyowner{}
+}
+\DeclareOption{mathematics}{%
+	\gdef\@journal{mathematics}
+	\gdef\@journalfull{Mathematics}
+	\gdef\@journalshort{Mathematics}
+	\gdef\@doiabbr{math}
+	\gdef\@ISSN{2227-7390}
+	\gdef\@societyowner{}
+}
+\DeclareOption{mca}{%
+	\gdef\@journal{mca}
+	\gdef\@journalfull{Mathematical and Computational Applications}
+	\gdef\@journalshort{Math. Comput. Appl.}
+	\gdef\@doiabbr{mca}
+	\gdef\@ISSN{2297-8747}
+	\gdef\@societyowner{}
+}
+\DeclareOption{measurements}{%
+	\gdef\@journal{measurements}
+	\gdef\@journalfull{Measurements}
+	\gdef\@journalshort{Measurements}
+	\gdef\@doiabbr{measurements}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{medicina}{%
+	\gdef\@journal{medicina}
+	\gdef\@journalfull{Medicina}
+	\gdef\@journalshort{Medicina}
+	\gdef\@doiabbr{medicina}
+	\gdef\@ISSN{1648-9144}
+	\gdef\@societyowner{Lithuanian University of Health Sciences}
+}
+\DeclareOption{medicines}{%
+	\gdef\@journal{medicines}
+	\gdef\@journalfull{Medicines}
+	\gdef\@journalshort{Medicines}
+	\gdef\@doiabbr{medicines}
+	\gdef\@ISSN{2305-6320}
+	\gdef\@societyowner{}
+}
+\DeclareOption{medsci}{%
+	\gdef\@journal{medsci}
+	\gdef\@journalfull{Medical Sciences}
+	\gdef\@journalshort{Med. Sci.}
+	\gdef\@doiabbr{medsci}
+	\gdef\@ISSN{2076-3271}
+	\gdef\@societyowner{}
+}
+\DeclareOption{membranes}{%
+	\gdef\@journal{membranes}
+	\gdef\@journalfull{Membranes}
+	\gdef\@journalshort{Membranes}
+	\gdef\@doiabbr{membranes}
+	\gdef\@ISSN{2077-0375}
+	\gdef\@societyowner{}
+}
+\DeclareOption{merits}{%
+	\gdef\@journal{merits}
+	\gdef\@journalfull{Merits}
+	\gdef\@journalshort{Merits}
+	\gdef\@doiabbr{merits}
+	\gdef\@ISSN{2673-8104}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{metabolites}{%
+	\gdef\@journal{metabolites}
+	\gdef\@journalfull{Metabolites}
+	\gdef\@journalshort{Metabolites}
+	\gdef\@doiabbr{metabo}
+	\gdef\@ISSN{2218-1989}
+	\gdef\@societyowner{}
+}
+\DeclareOption{metals}{%
+	\gdef\@journal{metals}
+	\gdef\@journalfull{Metals}
+	\gdef\@journalshort{Metals}
+	\gdef\@doiabbr{met}
+	\gdef\@ISSN{2075-4701}
+	\gdef\@societyowner{}
+}
+\DeclareOption{meteorology}{%
+	\gdef\@journal{meteorology}
+	\gdef\@journalfull{Meteorology}
+	\gdef\@journalshort{Meteorology}
+	\gdef\@doiabbr{meteorology}
+	\gdef\@ISSN{2674-0494}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{methane}{%
+	\gdef\@journal{methane}
+	\gdef\@journalfull{Methane}
+	\gdef\@journalshort{Methane}
+	\gdef\@doiabbr{methane}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{metrics}{%
+	\gdef\@journal{metrics}
+	\gdef\@journalfull{Metrics}
+	\gdef\@journalshort{Metrics}
+	\gdef\@doiabbr{metrics}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{metrology}{%
+	\gdef\@journal{metrology}
+	\gdef\@journalfull{Metrology}
+	\gdef\@journalshort{Metrology}
+	\gdef\@doiabbr{metrology}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{micro}{%
+	\gdef\@journal{micro}
+	\gdef\@journalfull{Micro}
+	\gdef\@journalshort{Micro}
+	\gdef\@doiabbr{micro}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{microarrays}{%
+	\gdef\@journal{microarrays}
+	\gdef\@journalfull{Microarrays}
+	\gdef\@journalshort{Microarrays}
+	\gdef\@doiabbr{microarrays}
+	\gdef\@ISSN{2076-3905}
+	\gdef\@societyowner{}
+}
+\DeclareOption{microbiolres}{%
+	\gdef\@journal{microbiolres}
+	\gdef\@journalfull{Microbiology Research}
+	\gdef\@journalshort{Microbiol. Res.}
+	\gdef\@doiabbr{microbiolres}
+	\gdef\@ISSN{2036-7481}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{microelectronics}{%
+       \gdef\@journal{microelectronics}
+       \gdef\@journalfull{Microelectronics}
+       \gdef\@journalshort{Microelectronics}
+       \gdef\@doiabbr{microelectronics}
+       \gdef\@ISSN{}
+       \gdef\@continuouspages{yes}
+       \gdef\@societyowner{}
+}
+\DeclareOption{micromachines}{%
+	\gdef\@journal{micromachines}
+	\gdef\@journalfull{Micromachines}
+	\gdef\@journalshort{Micromachines}
+	\gdef\@doiabbr{mi}
+	\gdef\@ISSN{2072-666X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{microorganisms}{%
+	\gdef\@journal{microorganisms}
+	\gdef\@journalfull{Microorganisms}
+	\gdef\@journalshort{Microorganisms}
+	\gdef\@doiabbr{microorganisms}
+	\gdef\@ISSN{2076-2607}
+	\gdef\@societyowner{}
+}
+\DeclareOption{microplastics}{%
+	\gdef\@journal{microplastics}
+	\gdef\@journalfull{Microplastics}
+	\gdef\@journalshort{Microplastics}
+	\gdef\@doiabbr{microplastics}
+	\gdef\@ISSN{2673-8929}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{microwave}{%
+	\gdef\@journal{microwave}
+	\gdef\@journalfull{Microwave}
+	\gdef\@journalshort{Microwave}
+	\gdef\@doiabbr{microwave}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{minerals}{%
+	\gdef\@journal{minerals}
+	\gdef\@journalfull{Minerals}
+	\gdef\@journalshort{Minerals}
+	\gdef\@doiabbr{min}
+	\gdef\@ISSN{2075-163X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{mining}{%
+	\gdef\@journal{mining}
+	\gdef\@journalfull{Mining}
+	\gdef\@journalshort{Mining}
+	\gdef\@doiabbr{mining}
+	\gdef\@ISSN{2673-6489}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{mmphys}{%
+        \gdef\@journal{mmphys}
+        \gdef\@journalfull{Modern Mathematical Physics}
+        \gdef\@journalshort{Mod. Math. Phys.}
+        \gdef\@doiabbr{mmphys}\gdef\@ISSN{3042-5034}
+        \gdef\@continuouspages{yes}
+       \gdef\@societyowner{}
+}
+\DeclareOption{modelling}{%
+	\gdef\@journal{modelling}
+	\gdef\@journalfull{Modelling}
+	\gdef\@journalshort{Modelling}
+	\gdef\@doiabbr{modelling}
+	\gdef\@ISSN{2673-3951}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{molbank}{%
+	\gdef\@journal{molbank}
+	\gdef\@journalfull{Molbank}
+	\gdef\@journalshort{Molbank}
+	\gdef\@doiabbr{M}
+	\gdef\@ISSN{1422-8599}
+	\gdef\@societyowner{}
+}
+\DeclareOption{molecules}{%
+	\gdef\@journal{molecules}
+	\gdef\@journalfull{Molecules}
+	\gdef\@journalshort{Molecules}
+	\gdef\@doiabbr{molecules}
+	\gdef\@ISSN{1420-3049}
+	\gdef\@societyowner{}
+}
+\DeclareOption{mps}{%
+	\gdef\@journal{mps}
+	\gdef\@journalfull{Methods and Protocols}
+	\gdef\@journalshort{Methods Protoc.}
+	\gdef\@doiabbr{mps}
+	\gdef\@ISSN{2409-9279}
+	\gdef\@societyowner{}
+}
+\DeclareOption{msf}{%
+	\gdef\@journal{msf}
+	\gdef\@journalfull{Medical Sciences Forum}
+	\gdef\@journalshort{Med. Sci. Forum}
+	\gdef\@doiabbr{msf}
+	\gdef\@ISSN{2673-9992}
+	\gdef\@societyowner{}
+}
+\DeclareOption{mti}{%
+	\gdef\@journal{mti}
+	\gdef\@journalfull{Multimodal Technologies and Interaction}
+	\gdef\@journalshort{Multimodal Technol. Interact.}
+	\gdef\@doiabbr{mti}
+	\gdef\@ISSN{2414-4088}
+	\gdef\@societyowner{}
+}
+\DeclareOption{multimedia}{%
+       \gdef\@journal{multimedia}
+       \gdef\@journalfull{Multimedia}
+       \gdef\@journalshort{Multimedia}
+       \gdef\@doiabbr{multimedia}
+       \gdef\@ISSN{}
+       \gdef\@continuouspages{yes}
+       \gdef\@societyowner{}
+}
+\DeclareOption{muscles}{%
+	\gdef\@journal{muscles}
+	\gdef\@journalfull{Muscles}
+	\gdef\@journalshort{Muscles}
+	\gdef\@doiabbr{muscles}
+	\gdef\@ISSN{2813-0413}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{nanoenergyadv}{%
+	\gdef\@journal{nanoenergyadv}
+	\gdef\@journalfull{Nanoenergy Advances}
+	\gdef\@journalshort{Nanoenergy Adv.}
+	\gdef\@doiabbr{nanoenergyadv}
+	\gdef\@ISSN{2673-706X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{nanomanufacturing}{%
+	\gdef\@journal{nanomanufacturing}
+	\gdef\@journalfull{Nanomanufacturing}
+	\gdef\@journalshort{Nanomanufacturing}
+	\gdef\@doiabbr{nanomanufacturing}
+	\gdef\@ISSN{2673-687X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{nanomaterials}{%
+	\gdef\@journal{nanomaterials}
+	\gdef\@journalfull{Nanomaterials}
+	\gdef\@journalshort{Nanomaterials}
+	\gdef\@doiabbr{nano}
+	\gdef\@ISSN{2079-4991}
+	\gdef\@societyowner{}
+}
+\DeclareOption{ncrna}{%
+	\gdef\@journal{ncrna}
+	\gdef\@journalfull{Non-Coding RNA}
+	\gdef\@journalshort{Non-Coding RNA}
+	\gdef\@doiabbr{ncrna}
+	\gdef\@ISSN{2311-553X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{ndt}{%
+	\gdef\@journal{ndt}
+	\gdef\@journalfull{NDT}
+	\gdef\@journalshort{NDT}
+	\gdef\@doiabbr{ndt}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{network}{%
+	\gdef\@journal{network}
+	\gdef\@journalfull{Network}
+	\gdef\@journalshort{Network}
+	\gdef\@doiabbr{network}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{neuroglia}{%
+	\gdef\@journal{neuroglia}
+	\gdef\@journalfull{Neuroglia}
+	\gdef\@journalshort{Neuroglia}
+	\gdef\@doiabbr{neuroglia}
+	\gdef\@ISSN{2571-6980}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{neurolint}{%
+	\gdef\@journal{neurolint}
+	\gdef\@journalfull{Neurology International}
+	\gdef\@journalshort{Neurol. Int.}
+	\gdef\@doiabbr{neurolint}
+	\gdef\@ISSN{2035-8377}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{neurosci}{%
+	\gdef\@journal{neurosci}
+	\gdef\@journalfull{NeuroSci}
+	\gdef\@journalshort{NeuroSci}
+	\gdef\@doiabbr{neurosci}
+	\gdef\@ISSN{2673-4087}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{nitrogen}{%
+	\gdef\@journal{nitrogen}
+	\gdef\@journalfull{Nitrogen}
+	\gdef\@journalshort{Nitrogen}
+	\gdef\@doiabbr{nitrogen}
+	\gdef\@ISSN{2504-3129}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{notspecified}{%
+	\gdef\@journal{notspecified}
+	\gdef\@journalfull{Journal Not Specified}
+	\gdef\@journalshort{Journal Not Specified}
+	\gdef\@doiabbr{}
+	\gdef\@ISSN{}
+	\gdef\@societyowner{}
+}
+\DeclareOption{nri}{%
+	\gdef\@journal{nri}
+	\gdef\@journalfull{Natural Resources Informatics}
+	\gdef\@journalshort{Nat. Resour. Inform.}
+	\gdef\@doiabbr{nri}
+	\gdef\@ISSN{2673-981X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{nursrep}{%
+	\gdef\@journal{nursrep}
+	\gdef\@journalfull{Nursing Reports}
+	\gdef\@journalshort{Nurs. Rep.}
+	\gdef\@doiabbr{nursrep}
+	\gdef\@ISSN{2039-4403}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{nutraceuticals}{%
+	\gdef\@journal{nutraceuticals}
+	\gdef\@journalfull{Nutraceuticals}
+	\gdef\@journalshort{Nutraceuticals}
+	\gdef\@doiabbr{nutraceuticals}
+	\gdef\@ISSN{1661-3821}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{nutrients}{%
+	\gdef\@journal{nutrients}
+	\gdef\@journalfull{Nutrients}
+	\gdef\@journalshort{Nutrients}
+	\gdef\@doiabbr{nu}
+	\gdef\@ISSN{2072-6643}
+	\gdef\@societyowner{}
+}
+\DeclareOption{obesities}{%
+	\gdef\@journal{obesities}
+	\gdef\@journalfull{Obesities}
+	\gdef\@journalshort{Obesities}
+	\gdef\@doiabbr{obesities}
+	\gdef\@ISSN{2673-4168}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{oceans}{%
+	\gdef\@journal{oceans}
+	\gdef\@journalfull{Oceans}
+	\gdef\@journalshort{Oceans}
+	\gdef\@doiabbr{oceans}
+	\gdef\@ISSN{2673-1924}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{ohbm}{%
+	\gdef\@journal{ohbm}
+	\gdef\@journalfull{Journal of Otorhinolaryngology, Hearing and Balance Medicine}
+	\gdef\@journalshort{J. Otorhinolaryngol. Hear. Balance Med.}
+	\gdef\@doiabbr{ohbm}
+	\gdef\@ISSN{2504-463X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{onco}{%
+	\gdef\@journal{onco}
+	\gdef\@journalfull{Onco}
+	\gdef\@journalshort{Onco}
+	\gdef\@doiabbr{onco}
+	\gdef\@ISSN{2673-7523}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+%\DeclareOption{oncopathology}{%
+%	\gdef\@journal{oncopathology}
+%	\gdef\@journalfull{}
+%	\gdef\@journalshort{}
+%	\gdef\@doiabbr{}
+%	\gdef\@ISSN{}
+%	\gdef\@continuouspages{yes}
+%	\gdef\@societyowner{}
+%}
+\DeclareOption{optics}{%
+	\gdef\@journal{optics}
+	\gdef\@journalfull{Optics}
+	\gdef\@journalshort{Optics}
+	\gdef\@doiabbr{opt}
+	\gdef\@ISSN{2673-3269}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{oral}{%
+	\gdef\@journal{oral}
+	\gdef\@journalfull{Oral}
+	\gdef\@journalshort{Oral}
+	\gdef\@doiabbr{oral}
+	\gdef\@ISSN{2673-6373}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{organics}{%
+	\gdef\@journal{organics}
+	\gdef\@journalfull{Organics}
+	\gdef\@journalshort{Organics}
+	\gdef\@doiabbr{org}
+	\gdef\@ISSN{2673-401X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{organoids}{%
+	\gdef\@journal{organoids}
+	\gdef\@journalfull{Organoids}
+	\gdef\@journalshort{Organoids}
+	\gdef\@doiabbr{organoids}
+	\gdef\@ISSN{2674-1172}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{osteology}{%
+	\gdef\@journal{osteology}
+	\gdef\@journalfull{Osteology}
+	\gdef\@journalshort{Osteology}
+	\gdef\@doiabbr{osteology}
+	\gdef\@ISSN{2673-4036}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{oxygen}{%
+	\gdef\@journal{oxygen}
+	\gdef\@journalfull{Oxygen}
+	\gdef\@journalshort{Oxygen}
+	\gdef\@doiabbr{oxygen}
+	\gdef\@ISSN{2673-9801}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{parasites}{%
+	\gdef\@journal{parasites}
+	\gdef\@journalfull{Parasites}
+	\gdef\@journalshort{Parasites}
+	\gdef\@doiabbr{parasites}
+	\gdef\@ISSN{2673-5946}
+	\gdef\@societyowner{}
+}
+\DeclareOption{parasitologia}{%
+	\gdef\@journal{parasitologia}
+	\gdef\@journalfull{Parasitologia}
+	\gdef\@journalshort{Parasitologia}
+	\gdef\@doiabbr{parasitologia}
+	\gdef\@ISSN{2673-6772}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{particles}{%
+	\gdef\@journal{particles}
+	\gdef\@journalfull{Particles}
+	\gdef\@journalshort{Particles}
+	\gdef\@doiabbr{particles}
+	\gdef\@ISSN{2571-712X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{pathogens}{%
+	\gdef\@journal{pathogens}
+	\gdef\@journalfull{Pathogens}
+	\gdef\@journalshort{Pathogens}
+	\gdef\@doiabbr{pathogens}
+	\gdef\@ISSN{2076-0817}
+	\gdef\@societyowner{}
+}
+\DeclareOption{pathophysiology}{%
+	\gdef\@journal{pathophysiology}
+	\gdef\@journalfull{Pathophysiology}
+	\gdef\@journalshort{Pathophysiology}
+	\gdef\@doiabbr{pathophysiology}
+	\gdef\@ISSN{0928-4680}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{pediatrrep}{%
+	\gdef\@journal{pediatrrep}
+	\gdef\@journalfull{Pediatric Reports}
+	\gdef\@journalshort{Pediatr. Rep.}
+	\gdef\@doiabbr{pediatric}
+	\gdef\@ISSN{2036-7503}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{pets}{%
+	\gdef\@journal{pets}
+	\gdef\@journalfull{Pets}
+	\gdef\@journalshort{Pets}
+	\gdef\@doiabbr{pets}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{pharmaceuticals}{%
+	\gdef\@journal{pharmaceuticals}
+	\gdef\@journalfull{Pharmaceuticals}
+	\gdef\@journalshort{Pharmaceuticals}
+	\gdef\@doiabbr{ph}
+	\gdef\@ISSN{1424-8247}
+	\gdef\@societyowner{}
+}
+\DeclareOption{pharmaceutics}{%
+	\gdef\@journal{pharmaceutics}
+	\gdef\@journalfull{Pharmaceutics}
+	\gdef\@journalshort{Pharmaceutics}
+	\gdef\@doiabbr{pharmaceutics}
+	\gdef\@ISSN{1999-4923}
+	\gdef\@societyowner{}
+}
+\DeclareOption{pharmacoepidemiology}{%
+	\gdef\@journal{pharmacoepidemiology}
+	\gdef\@journalfull{Pharmacoepidemiology}
+	\gdef\@journalshort{Pharmacoepidemiology}
+	\gdef\@doiabbr{pharma}
+	\gdef\@ISSN{2813-0618}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{pharmacy}{%
+	\gdef\@journal{pharmacy}
+	\gdef\@journalfull{Pharmacy}
+	\gdef\@journalshort{Pharmacy}
+	\gdef\@doiabbr{pharmacy}
+	\gdef\@ISSN{2226-4787}
+	\gdef\@societyowner{}
+}
+\DeclareOption{philosophies}{%
+	\gdef\@journal{philosophies}
+	\gdef\@journalfull{Philosophies}
+	\gdef\@journalshort{Philosophies}
+	\gdef\@doiabbr{philosophies}
+	\gdef\@ISSN{2409-9287}
+	\gdef\@societyowner{}
+}
+\DeclareOption{photochem}{%
+	\gdef\@journal{photochem}
+	\gdef\@journalfull{Photochem}
+	\gdef\@journalshort{Photochem}
+	\gdef\@doiabbr{photochem}
+	\gdef\@ISSN{2673-7256}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{photonics}{%
+	\gdef\@journal{photonics}
+	\gdef\@journalfull{Photonics}
+	\gdef\@journalshort{Photonics}
+	\gdef\@doiabbr{photonics}
+	\gdef\@ISSN{2304-6732}
+	\gdef\@societyowner{}
+}
+\DeclareOption{phycology}{%
+	\gdef\@journal{phycology}
+	\gdef\@journalfull{Phycology}
+	\gdef\@journalshort{Phycology}
+	\gdef\@doiabbr{phycology}
+	\gdef\@ISSN{2673-9410}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{physchem}{%
+	\gdef\@journal{physchem}
+	\gdef\@journalfull{Physchem}
+	\gdef\@journalshort{Physchem}
+	\gdef\@doiabbr{physchem}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{physics}{%
+	\gdef\@journal{physics}
+	\gdef\@journalfull{Physics}
+	\gdef\@journalshort{Physics}
+	\gdef\@doiabbr{physics}
+	\gdef\@ISSN{2624-8174}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{physiologia}{%
+	\gdef\@journal{physiologia}
+	\gdef\@journalfull{Physiologia}
+	\gdef\@journalshort{Physiologia}
+	\gdef\@doiabbr{physiologia}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{plants}{%
+	\gdef\@journal{plants}
+	\gdef\@journalfull{Plants}
+	\gdef\@journalshort{Plants}
+	\gdef\@doiabbr{plants}
+	\gdef\@ISSN{2223-7747}
+	\gdef\@societyowner{}
+}
+\DeclareOption{plasma}{%
+	\gdef\@journal{plasma}
+	\gdef\@journalfull{Plasma}
+	\gdef\@journalshort{Plasma}
+	\gdef\@doiabbr{plasma}
+	\gdef\@ISSN{2571-6182}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{platforms}{%
+	\gdef\@journal{platforms}
+	\gdef\@journalfull{Platforms}
+	\gdef\@journalshort{Platforms}
+	\gdef\@doiabbr{platforms}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{pollutants}{%
+	\gdef\@journal{pollutants}
+	\gdef\@journalfull{Pollutants}
+	\gdef\@journalshort{Pollutants}
+	\gdef\@doiabbr{pollutants}
+	\gdef\@ISSN{2673-4672}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{polymers}{%
+	\gdef\@journal{polymers}
+	\gdef\@journalfull{Polymers}
+	\gdef\@journalshort{Polymers}
+	\gdef\@doiabbr{polym}
+	\gdef\@ISSN{2073-4360}
+	\gdef\@societyowner{}
+}
+\DeclareOption{polysaccharides}{%
+	\gdef\@journal{polysaccharides}
+	\gdef\@journalfull{Polysaccharides}
+	\gdef\@journalshort{Polysaccharides}
+	\gdef\@doiabbr{polysaccharides}
+	\gdef\@ISSN{2673-4176}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{populations}{%
+	\gdef\@journal{populations}
+	\gdef\@journalfull{Populations}
+	\gdef\@journalshort{Populations}
+	\gdef\@doiabbr{populations}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{poultry}{%
+	\gdef\@journal{poultry}
+	\gdef\@journalfull{Poultry}
+	\gdef\@journalshort{Poultry}
+	\gdef\@doiabbr{poultry}
+	\gdef\@ISSN{2674-1164}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{powders}{%
+	\gdef\@journal{powders}
+	\gdef\@journalfull{Powders}
+	\gdef\@journalshort{Powders}
+	\gdef\@doiabbr{powders}
+	\gdef\@ISSN{2674-0516}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{preprints}{%
+	\gdef\@journal{preprints}
+	\gdef\@journalfull{Preprints}
+	\gdef\@journalshort{Preprints}
+	\gdef\@doiabbr{}
+	\gdef\@ISSN{}
+	\gdef\@societyowner{}
+}
+\DeclareOption{proceedings}{%
+	\gdef\@journal{proceedings}
+	\gdef\@journalfull{Proceedings}
+	\gdef\@journalshort{Proceedings}
+	\gdef\@doiabbr{proceedings}
+	\gdef\@ISSN{2504-3900}
+	\gdef\@societyowner{}
+}
+\DeclareOption{processes}{%
+	\gdef\@journal{processes}
+	\gdef\@journalfull{Processes}
+	\gdef\@journalshort{Processes}
+	\gdef\@doiabbr{pr}
+	\gdef\@ISSN{2227-9717}
+	\gdef\@societyowner{}
+}
+\DeclareOption{prosthesis}{%
+	\gdef\@journal{prosthesis}
+	\gdef\@journalfull{Prosthesis}
+	\gdef\@journalshort{Prosthesis}
+	\gdef\@doiabbr{prosthesis}
+	\gdef\@ISSN{2673-1592}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{proteomes}{%
+	\gdef\@journal{proteomes}
+	\gdef\@journalfull{Proteomes}
+	\gdef\@journalshort{Proteomes}
+	\gdef\@doiabbr{proteomes}
+	\gdef\@ISSN{2227-7382}
+	\gdef\@societyowner{}
+}
+\DeclareOption{psf}{%
+	\gdef\@journal{psf}
+	\gdef\@journalfull{Physical Sciences Forum}
+	\gdef\@journalshort{Phys. Sci. Forum}
+	\gdef\@doiabbr{psf}
+	\gdef\@ISSN{2673-9984}
+	\gdef\@societyowner{}
+}
+%\DeclareOption{psych}{%
+%	\gdef\@journal{psych}
+%	\gdef\@journalfull{Psych}
+%   \gdef\@journalshort{Psych}
+%	\gdef\@doiabbr{psych}
+%	\gdef\@ISSN{2624-8611}
+%	\gdef\@continuouspages{yes}
+%	\gdef\@societyowner{}
+%}
+\DeclareOption{psychiatryint}{%
+	\gdef\@journal{psychiatryint}
+	\gdef\@journalfull{Psychiatry International}
+	\gdef\@journalshort{Psychiatry Int.}
+	\gdef\@doiabbr{psychiatryint}
+	\gdef\@ISSN{2673-5318}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{psychoactives}{%
+	\gdef\@journal{psychoactives}
+	\gdef\@journalfull{Psychoactives}
+	\gdef\@journalshort{Psychoactives}
+	\gdef\@doiabbr{psychoactives}
+	\gdef\@ISSN{2813-1851}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{psycholint}{%
+	\gdef\@journal{psycholint}
+	\gdef\@journalfull{Psychology International}
+	\gdef\@journalshort{Psychol. Int.}
+	\gdef\@doiabbr{psycholint}
+	\gdef\@ISSN{2813-9844}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{publications}{%
+	\gdef\@journal{publications}
+	\gdef\@journalfull{Publications}
+	\gdef\@journalshort{Publications}
+	\gdef\@doiabbr{publications}
+	\gdef\@ISSN{2304-6775}
+	\gdef\@societyowner{}
+}
+\DeclareOption{purification}{%
+	\gdef\@journal{purification}
+	\gdef\@journalfull{Purification}
+	\gdef\@journalshort{Purification}
+	\gdef\@doiabbr{purification}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{quantumrep}{%
+	\gdef\@journal{quantumrep}
+	\gdef\@journalfull{Quantum Reports}
+	\gdef\@journalshort{Quantum Rep.}
+	\gdef\@doiabbr{quantum}
+	\gdef\@ISSN{2624-960X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{quaternary}{%
+	\gdef\@journal{quaternary}
+	\gdef\@journalfull{Quaternary}
+	\gdef\@journalshort{Quaternary}
+	\gdef\@doiabbr{quat}
+	\gdef\@ISSN{2571-550X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{qubs}{%
+	\gdef\@journal{qubs}
+	\gdef\@journalfull{Quantum Beam Science}
+	\gdef\@journalshort{Quantum Beam Sci.}
+	\gdef\@doiabbr{qubs}
+	\gdef\@ISSN{2412-382X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{radiation}{%
+	\gdef\@journal{radiation}
+	\gdef\@journalfull{Radiation}
+	\gdef\@journalshort{Radiation}
+	\gdef\@doiabbr{radiation}
+	\gdef\@ISSN{2673-592X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{reactions}{%
+	\gdef\@journal{reactions}
+	\gdef\@journalfull{Reactions}
+	\gdef\@journalshort{Reactions}
+	\gdef\@doiabbr{reactions}
+	\gdef\@ISSN{2624-781X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{realestate}{%
+	\gdef\@journal{realestate}
+	\gdef\@journalfull{Real Estate}
+	\gdef\@journalshort{Real Estate}
+	\gdef\@doiabbr{realestate}
+	\gdef\@ISSN{2813-8090}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{receptors}{%
+	\gdef\@journal{receptors}
+	\gdef\@journalfull{Receptors}
+	\gdef\@journalshort{Receptors}
+	\gdef\@doiabbr{receptors}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{recycling}{%
+	\gdef\@journal{recycling}
+	\gdef\@journalfull{Recycling}
+	\gdef\@journalshort{Recycling}
+	\gdef\@doiabbr{recycling}
+	\gdef\@ISSN{2313-4321}
+	\gdef\@societyowner{}
+}
+\DeclareOption{regeneration}{%
+	\gdef\@journal{regeneration}
+	\gdef\@journalfull{Regeneration}
+	\gdef\@journalshort{Regeneration}
+	\gdef\@doiabbr{regeneration}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{religions}{%
+	\gdef\@journal{religions}
+	\gdef\@journalfull{Religions}
+	\gdef\@journalshort{Religions}
+	\gdef\@doiabbr{rel}
+	\gdef\@ISSN{2077-1444}
+	\gdef\@societyowner{}
+}
+\DeclareOption{remotesensing}{%
+	\gdef\@journal{remotesensing}
+	\gdef\@journalfull{Remote Sensing}
+	\gdef\@journalshort{Remote Sens.}
+	\gdef\@doiabbr{rs}
+	\gdef\@ISSN{2072-4292}
+	\gdef\@societyowner{}
+}
+\DeclareOption{reports}{%
+	\gdef\@journal{reports}
+	\gdef\@journalfull{Reports}
+	\gdef\@journalshort{Reports}
+	\gdef\@doiabbr{reports}
+	\gdef\@ISSN{2571-841X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{reprodmed}{%
+	\gdef\@journal{reprodmed}
+	\gdef\@journalfull{Reproductive Medicine}
+	\gdef\@journalshort{Reprod. Med.}
+	\gdef\@doiabbr{reprodmed}
+	\gdef\@ISSN{2673-3897}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{resources}{%
+	\gdef\@journal{resources}
+	\gdef\@journalfull{Resources}
+	\gdef\@journalshort{Resources}
+	\gdef\@doiabbr{resources}
+	\gdef\@ISSN{2079-9276}
+	\gdef\@societyowner{}
+}
+\DeclareOption{rheumato}{%
+	\gdef\@journal{rheumato}
+	\gdef\@journalfull{Rheumato}
+	\gdef\@journalshort{Rheumato}
+	\gdef\@doiabbr{rheumato}
+	\gdef\@ISSN{2674-0621}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{risks}{%
+	\gdef\@journal{risks}
+	\gdef\@journalfull{Risks}
+	\gdef\@journalshort{Risks}
+	\gdef\@doiabbr{risks}
+	\gdef\@ISSN{2227-9091}
+	\gdef\@societyowner{}
+}
+\DeclareOption{robotics}{%
+	\gdef\@journal{robotics}
+	\gdef\@journalfull{Robotics}
+	\gdef\@journalshort{Robotics}
+	\gdef\@doiabbr{robotics}
+	\gdef\@ISSN{2218-6581}
+	\gdef\@societyowner{}
+}
+\DeclareOption{rsee}{%
+	\gdef\@journal{rsee}
+	\gdef\@journalfull{Regional Science and Environmental Economics}
+	\gdef\@journalshort{Reg. Sci. Environ. Econ.}
+	\gdef\@doiabbr{rsee}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{ruminants}{%
+	\gdef\@journal{ruminants}
+	\gdef\@journalfull{Ruminants}
+	\gdef\@journalshort{Ruminants}
+	\gdef\@doiabbr{ruminants}
+	\gdef\@ISSN{2673-933X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{safety}{%
+	\gdef\@journal{safety}
+	\gdef\@journalfull{Safety}
+	\gdef\@journalshort{Safety}
+	\gdef\@doiabbr{safety}
+	\gdef\@ISSN{2313-576X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{sci}{%
+	\gdef\@journal{sci}
+	\gdef\@journalfull{Sci}
+	\gdef\@journalshort{Sci}
+	\gdef\@doiabbr{sci}
+	\gdef\@ISSN{2413-4155}
+	\gdef\@societyowner{}
+}
+\DeclareOption{scipharm}{%
+	\gdef\@journal{scipharm}
+	\gdef\@journalfull{Scientia Pharmaceutica}
+	\gdef\@journalshort{Sci. Pharm.}
+	\gdef\@doiabbr{scipharm}
+	\gdef\@ISSN{2218-0532}
+	\gdef\@societyowner{\"{O}sterreichische Pharmazeutische Gesellschaft}
+}
+\DeclareOption{sclerosis}{%
+	\gdef\@journal{sclerosis}
+	\gdef\@journalfull{Sclerosis}
+	\gdef\@journalshort{Sclerosis}
+	\gdef\@doiabbr{sclerosis}
+	\gdef\@ISSN{2813-3064}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{seeds}{%
+	\gdef\@journal{seeds}
+	\gdef\@journalfull{Seeds}
+	\gdef\@journalshort{Seeds}
+	\gdef\@doiabbr{seeds}
+	\gdef\@ISSN{2674-1024}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{sensors}{%
+	\gdef\@journal{sensors}
+	\gdef\@journalfull{Sensors}
+	\gdef\@journalshort{Sensors}
+	\gdef\@doiabbr{s}
+	\gdef\@ISSN{1424-8220}
+	\gdef\@societyowner{}
+}
+\DeclareOption{separations}{%
+	\gdef\@journal{separations}
+	\gdef\@journalfull{Separations}
+	\gdef\@journalshort{Separations}
+	\gdef\@doiabbr{separations}
+	\gdef\@ISSN{2297-8739}
+	\gdef\@societyowner{}
+}
+\DeclareOption{sexes}{%
+	\gdef\@journal{sexes}
+	\gdef\@journalfull{Sexes}
+	\gdef\@journalshort{Sexes}
+	\gdef\@doiabbr{sexes}
+	\gdef\@ISSN{2411-5118}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{signals}{%
+	\gdef\@journal{signals}
+	\gdef\@journalfull{Signals}
+	\gdef\@journalshort{Signals}
+	\gdef\@doiabbr{signals}
+	\gdef\@ISSN{2624-6120}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{sinusitis}{%
+	\gdef\@journal{sinusitis}
+	\gdef\@journalfull{Sinusitis}
+	\gdef\@journalshort{Sinusitis}
+	\gdef\@doiabbr{sinusitis}
+	\gdef\@ISSN{2309-107X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{siuj}{%
+	\gdef\@journal{siuj}
+	\gdef\@journalfull{Soci\'{e}t\'{e} Internationale d'Urologie Journal}
+	\gdef\@journalshort{Soc. Int. Urol. J.}
+	\gdef\@doiabbr{siuj}
+	\gdef\@ISSN{2563-6499}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{Soci\'{e}t\'{e} Internationale d'Urologie}
+}
+\DeclareOption{skins}{%
+	\gdef\@journal{skins}
+	\gdef\@journalfull{Skins}
+	\gdef\@journalshort{Skins}
+	\gdef\@doiabbr{skins}
+	\gdef\@ISSN{}
+	\gdef\@societyowner{}
+}
+\DeclareOption{smartcities}{%
+	\gdef\@journal{smartcities}
+	\gdef\@journalfull{Smart Cities}
+	\gdef\@journalshort{Smart Cities}
+	\gdef\@doiabbr{smartcities}
+	\gdef\@ISSN{2624-6511}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{sna}{%
+	\gdef\@journal{sna}
+	\gdef\@journalfull{Sinusitis and Asthma}
+	\gdef\@journalshort{Sinusitis Asthma}
+	\gdef\@doiabbr{sna}
+	\gdef\@ISSN{2624-7003}
+	\gdef\@societyowner{}
+}
+\DeclareOption{societies}{%
+	\gdef\@journal{societies}
+	\gdef\@journalfull{Societies}
+	\gdef\@journalshort{Societies}
+	\gdef\@doiabbr{soc}
+	\gdef\@ISSN{2075-4698}
+	\gdef\@societyowner{}
+}
+\DeclareOption{socsci}{%
+	\gdef\@journal{socsci}
+	\gdef\@journalfull{Social Sciences}
+	\gdef\@journalshort{Soc. Sci.}
+	\gdef\@doiabbr{socsci}
+	\gdef\@ISSN{2076-0760}
+	\gdef\@societyowner{}
+}
+\DeclareOption{software}{%
+	\gdef\@journal{software}
+	\gdef\@journalfull{Software}
+	\gdef\@journalshort{Software}
+	\gdef\@doiabbr{software}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{soilsystems}{%
+	\gdef\@journal{soilsystems}
+	\gdef\@journalfull{Soil Systems}
+	\gdef\@journalshort{Soil Syst.}
+	\gdef\@doiabbr{soilsystems}
+	\gdef\@ISSN{2571-8789}
+	\gdef\@societyowner{}
+}
+\DeclareOption{solar}{%
+	\gdef\@journal{solar}
+	\gdef\@journalfull{Solar}
+	\gdef\@journalshort{Solar}
+	\gdef\@doiabbr{solar}
+	\gdef\@ISSN{2673-9941}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{solids}{%
+	\gdef\@journal{solids}
+	\gdef\@journalfull{Solids}
+	\gdef\@journalshort{Solids}
+	\gdef\@doiabbr{solids}
+	\gdef\@ISSN{2673-6497}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{spectroscj}{%
+	\gdef\@journal{spectroscj}
+	\gdef\@journalfull{Spectroscopy Journal}
+	\gdef\@journalshort{Spectrosc. J.}
+	\gdef\@doiabbr{spectroscj}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{sports}{%
+	\gdef\@journal{sports}
+	\gdef\@journalfull{Sports}
+	\gdef\@journalshort{Sports}
+	\gdef\@doiabbr{sports}
+	\gdef\@ISSN{2075-4663}
+	\gdef\@societyowner{}
+}
+\DeclareOption{standards}{%
+	\gdef\@journal{standards}
+	\gdef\@journalfull{Standards}
+	\gdef\@journalshort{Standards}
+	\gdef\@doiabbr{standards}
+	\gdef\@ISSN{2305-6703}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{stats}{%
+	\gdef\@journal{stats}
+	\gdef\@journalfull{Stats}
+	\gdef\@journalshort{Stats}
+	\gdef\@doiabbr{stats}
+	\gdef\@ISSN{2571-905X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{std}{%
+	\gdef\@journal{std}
+	\gdef\@journalfull{Surgical Techniques Development}
+	\gdef\@journalshort{Surg. Tech. Dev.}
+	\gdef\@doiabbr{std}
+	\gdef\@ISSN{2038-9582}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{stresses}{%
+	\gdef\@journal{stresses}
+	\gdef\@journalfull{Stresses}
+	\gdef\@journalshort{Stresses}
+	\gdef\@doiabbr{stresses}
+	\gdef\@ISSN{2673-7140}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{surfaces}{%
+	\gdef\@journal{surfaces}
+	\gdef\@journalfull{Surfaces}
+	\gdef\@journalshort{Surfaces}
+	\gdef\@doiabbr{surfaces}
+	\gdef\@ISSN{2571-9637}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{surgeries}{%
+	\gdef\@journal{surgeries}
+	\gdef\@journalfull{Surgeries}
+	\gdef\@journalshort{Surgeries}
+	\gdef\@doiabbr{surgeries}
+	\gdef\@ISSN{2017-2017}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{suschem}{%
+	\gdef\@journal{suschem}
+	\gdef\@journalfull{Sustainable Chemistry}
+	\gdef\@journalshort{Sustain. Chem.}
+	\gdef\@doiabbr{suschem}
+	\gdef\@ISSN{2673-4079}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{sustainability}{%
+	\gdef\@journal{sustainability}
+	\gdef\@journalfull{Sustainability}
+	\gdef\@journalshort{Sustainability}
+	\gdef\@doiabbr{su}
+	\gdef\@ISSN{2071-1050}
+	\gdef\@societyowner{}
+}
+\DeclareOption{symmetry}{%
+	\gdef\@journal{symmetry}
+	\gdef\@journalfull{Symmetry}
+	\gdef\@journalshort{Symmetry}
+	\gdef\@doiabbr{sym}
+	\gdef\@ISSN{2073-8994}
+	\gdef\@societyowner{}
+}
+\DeclareOption{synbio}{%
+	\gdef\@journal{synbio}
+	\gdef\@journalfull{SynBio}
+	\gdef\@journalshort{SynBio}
+	\gdef\@doiabbr{synbio}
+	\gdef\@ISSN{2674-0583}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{systems}{%
+	\gdef\@journal{systems}
+	\gdef\@journalfull{Systems}
+	\gdef\@journalshort{Systems}
+	\gdef\@doiabbr{systems}
+	\gdef\@ISSN{2079-8954}
+	\gdef\@societyowner{}
+}
+\DeclareOption{targets}{%
+	\gdef\@journal{targets}
+	\gdef\@journalfull{Targets}
+	\gdef\@journalshort{Targets}
+	\gdef\@doiabbr{targets}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{taxonomy}{%
+	\gdef\@journal{taxonomy}
+	\gdef\@journalfull{Taxonomy}
+	\gdef\@journalshort{Taxonomy}
+	\gdef\@doiabbr{taxonomy}
+	\gdef\@ISSN{2673-6500}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{technologies}{%
+	\gdef\@journal{technologies}
+	\gdef\@journalfull{Technologies}
+	\gdef\@journalshort{Technologies}
+	\gdef\@doiabbr{technologies}
+	\gdef\@ISSN{2227-7080}
+	\gdef\@societyowner{}
+}
+\DeclareOption{telecom}{%
+	\gdef\@journal{telecom}
+	\gdef\@journalfull{Telecom}
+	\gdef\@journalshort{Telecom}
+	\gdef\@doiabbr{telecom}
+	\gdef\@ISSN{2673-4001}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{test}{%
+	\gdef\@journal{test}
+	\gdef\@journalfull{Test}
+	\gdef\@journalshort{Test}
+	\gdef\@doiabbr{}
+	\gdef\@ISSN{}
+	\gdef\@societyowner{}
+}
+\DeclareOption{textiles}{%
+	\gdef\@journal{textiles}
+	\gdef\@journalfull{Textiles}
+	\gdef\@journalshort{Textiles}
+	\gdef\@doiabbr{textiles}
+	\gdef\@ISSN{2673-7248}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{thalassrep}{%
+	\gdef\@journal{thalassrep}
+	\gdef\@journalfull{Thalassemia Reports}
+	\gdef\@journalshort{Thalass. Rep.}
+	\gdef\@doiabbr{thalassrep}
+	\gdef\@ISSN{2039-4365}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{therapeutics}{%
+	\gdef\@journal{therapeutics}
+	\gdef\@journalfull{Therapeutics}
+	\gdef\@journalshort{Therapeutics}
+	\gdef\@doiabbr{therapeutics}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{thermo}{%
+	\gdef\@journal{thermo}
+	\gdef\@journalfull{Thermo}
+	\gdef\@journalshort{Thermo}
+	\gdef\@doiabbr{thermo}
+	\gdef\@ISSN{2673-7264}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{timespace}{%
+	\gdef\@journal{timespace}
+	\gdef\@journalfull{Time and Space}
+	\gdef\@journalshort{Time Space}
+	\gdef\@doiabbr{timespace}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{tomography}{%
+	\gdef\@journal{tomography}
+	\gdef\@journalfull{Tomography}
+	\gdef\@journalshort{Tomography}
+	\gdef\@doiabbr{tomography}
+	\gdef\@ISSN{2379-139X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{tourismhosp}{%
+	\gdef\@journal{tourismhosp}
+	\gdef\@journalfull{Tourism and Hospitality}
+	\gdef\@journalshort{Tour. Hosp.}
+	\gdef\@doiabbr{tourhosp}
+	\gdef\@ISSN{2673-5768}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{toxics}{%
+	\gdef\@journal{toxics}
+	\gdef\@journalfull{Toxics}
+	\gdef\@journalshort{Toxics}
+	\gdef\@doiabbr{toxics}
+	\gdef\@ISSN{2305-6304}
+	\gdef\@societyowner{}
+}
+\DeclareOption{toxins}{%
+	\gdef\@journal{toxins}
+	\gdef\@journalfull{Toxins}
+	\gdef\@journalshort{Toxins}
+	\gdef\@doiabbr{toxins}
+	\gdef\@ISSN{2072-6651}
+	\gdef\@societyowner{}
+}
+\DeclareOption{transplantology}{%
+	\gdef\@journal{transplantology}
+	\gdef\@journalfull{Transplantology}
+	\gdef\@journalshort{Transplantology}
+	\gdef\@doiabbr{transplantology}
+	\gdef\@ISSN{2673-3943}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{transportation}{%
+	\gdef\@journal{transportation}
+	\gdef\@journalfull{Transportation}
+	\gdef\@journalshort{Transportation}
+	\gdef\@doiabbr{transportation}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{traumacare}{%
+	\gdef\@journal{traumacare}
+	\gdef\@journalfull{Trauma Care}
+	\gdef\@journalshort{Trauma Care}
+	\gdef\@doiabbr{traumacare}
+	\gdef\@ISSN{2673-866X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{traumas}{%
+	\gdef\@journal{traumas}
+	\gdef\@journalfull{Traumas}
+	\gdef\@journalshort{Traumas}
+	\gdef\@doiabbr{traumas}
+	\gdef\@ISSN{2673-7477}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{tropicalmed}{%
+	\gdef\@journal{tropicalmed}
+	\gdef\@journalfull{Tropical Medicine and Infectious Disease}
+	\gdef\@journalshort{Trop. Med. Infect. Dis.}
+	\gdef\@doiabbr{tropicalmed}
+	\gdef\@ISSN{2414-6366}
+	\gdef\@societyowner{}
+}
+\DeclareOption{universe}{%
+	\gdef\@journal{universe}
+	\gdef\@journalfull{Universe}
+	\gdef\@journalshort{Universe}
+	\gdef\@doiabbr{universe}
+	\gdef\@ISSN{2218-1997}
+	\gdef\@societyowner{}
+}
+\DeclareOption{urbansci}{%
+	\gdef\@journal{urbansci}
+	\gdef\@journalfull{Urban Science}
+	\gdef\@journalshort{Urban Sci.}
+	\gdef\@doiabbr{urbansci}
+	\gdef\@ISSN{2413-8851}
+	\gdef\@societyowner{}
+}
+\DeclareOption{uro}{%
+	\gdef\@journal{uro}
+	\gdef\@journalfull{Uro}
+	\gdef\@journalshort{Uro}
+	\gdef\@doiabbr{uro}
+	\gdef\@ISSN{2673-4397}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{vaccines}{%
+	\gdef\@journal{vaccines}
+	\gdef\@journalfull{Vaccines}
+	\gdef\@journalshort{Vaccines}
+	\gdef\@doiabbr{vaccines}
+	\gdef\@ISSN{2076-393X}
+	\gdef\@societyowner{}
+}
+\DeclareOption{vehicles}{%
+	\gdef\@journal{vehicles}
+	\gdef\@journalfull{Vehicles}
+	\gdef\@journalshort{Vehicles}
+	\gdef\@doiabbr{vehicles}
+	\gdef\@ISSN{2624-8921}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{venereology}{%
+	\gdef\@journal{venereology}
+	\gdef\@journalfull{Venereology}
+	\gdef\@journalshort{Venereology}
+	\gdef\@doiabbr{venereology}
+	\gdef\@ISSN{2674-0710}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{vetsci}{%
+	\gdef\@journal{vetsci}
+	\gdef\@journalfull{Veterinary Sciences}
+	\gdef\@journalshort{Vet. Sci.}
+	\gdef\@doiabbr{vetsci}
+	\gdef\@ISSN{2306-7381}
+	\gdef\@societyowner{}
+}
+\DeclareOption{vibration}{%
+	\gdef\@journal{vibration}
+	\gdef\@journalfull{Vibration}
+	\gdef\@journalshort{Vibration}
+	\gdef\@doiabbr{vibration}
+	\gdef\@ISSN{2571-631X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{virtualworlds}{%
+	\gdef\@journal{virtualworlds}
+	\gdef\@journalfull{Virtual Worlds}
+	\gdef\@journalshort{Virtual Worlds}
+	\gdef\@doiabbr{virtualworlds}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{viruses}{%
+	\gdef\@journal{viruses}
+	\gdef\@journalfull{Viruses}
+	\gdef\@journalshort{Viruses}
+	\gdef\@doiabbr{v}
+	\gdef\@ISSN{1999-4915}
+	\gdef\@societyowner{}
+}
+\DeclareOption{vision}{%
+	\gdef\@journal{vision}
+	\gdef\@journalfull{Vision}
+	\gdef\@journalshort{Vision}
+	\gdef\@doiabbr{vision}
+	\gdef\@ISSN{2411-5150}
+	\gdef\@societyowner{}
+}
+\DeclareOption{waste}{%
+	\gdef\@journal{waste}
+	\gdef\@journalfull{Waste}
+	\gdef\@journalshort{Waste}
+	\gdef\@doiabbr{waste}
+	\gdef\@ISSN{2813-0391}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{water}{%
+	\gdef\@journal{water}
+	\gdef\@journalfull{Water}
+	\gdef\@journalshort{Water}
+	\gdef\@doiabbr{w}
+	\gdef\@ISSN{2073-4441}
+	\gdef\@societyowner{}
+}
+\DeclareOption{wem}{%
+	\gdef\@journal{wem}
+	\gdef\@journalfull{Wildlife Ecology and Management}
+	\gdef\@journalshort{Wildl. Ecol. Manag.}
+	\gdef\@doiabbr{}
+	\gdef\@ISSN{1234-4321}
+	\gdef\@societyowner{}
+}
+\DeclareOption{wevj}{%
+	\gdef\@journal{wevj}
+	\gdef\@journalfull{World Electric Vehicle Journal}
+	\gdef\@journalshort{World Electr. Veh. J.}
+	\gdef\@doiabbr{wevj}
+	\gdef\@ISSN{2032-6653}
+	\gdef\@societyowner{World Electric Vehicle Association}
+}
+\DeclareOption{wild}{%
+	\gdef\@journal{wild}
+	\gdef\@journalfull{Wild}
+	\gdef\@journalshort{Wild}
+	\gdef\@doiabbr{wild}
+	\gdef\@ISSN{}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{wind}{%
+	\gdef\@journal{wind}
+	\gdef\@journalfull{Wind}
+	\gdef\@journalshort{Wind}
+	\gdef\@doiabbr{wind}
+	\gdef\@ISSN{2674-032X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{women}{%
+	\gdef\@journal{women}
+	\gdef\@journalfull{Women}
+	\gdef\@journalshort{Women}
+	\gdef\@doiabbr{women}
+	\gdef\@ISSN{2673-4184}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{world}{%
+	\gdef\@journal{world}
+	\gdef\@journalfull{World}
+	\gdef\@journalshort{World}
+	\gdef\@doiabbr{world}
+	\gdef\@ISSN{2673-4060}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{youth}{%
+	\gdef\@journal{youth}
+	\gdef\@journalfull{Youth}
+	\gdef\@journalshort{Youth}
+	\gdef\@doiabbr{youth}
+	\gdef\@ISSN{2673-995X}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}
+\DeclareOption{zoonoticdis}{%
+	\gdef\@journal{zoonoticdis}
+	\gdef\@journalfull{Zoonotic Diseases}
+	\gdef\@journalshort{Zoonotic Dis.}
+	\gdef\@doiabbr{zoonoticdis}
+	\gdef\@ISSN{2813-0227}
+	\gdef\@continuouspages{yes}
+	\gdef\@societyowner{}
+}

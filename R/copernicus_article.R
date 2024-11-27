@@ -13,7 +13,7 @@
 #'
 #' An number of required and optional manuscript sections, e.g. `acknowledgements`, `competinginterests`, or `authorcontribution`, must be declared using the respective properties of the R Markdown header - see skeleton file.
 #'
-#' **Version:** Based on `copernicus_package.zip` in the version 6.3, 8 July 2021, using `copernicus.cls` in version 9.32, 7 July 2021.
+#' **Version:** Based on `copernicus_package.zip` in the version 7.8, 18 March 2024, using `copernicus.cls` in version 10.1.11, 03 January.
 #'
 #' **Copernicus journal abbreviations:** You can use the function `copernicus_journal_abbreviations()` to get the journal abbreviation for all journals supported by the Copernicus article template.
 #'
@@ -48,21 +48,23 @@
 #' render("MyArticle/MyArticle.Rmd")
 #' }
 #' @export
-copernicus_article <- function(
-  ..., keep_tex = TRUE, highlight = NULL, citation_package = "natbib", md_extensions = c(
-    "-autolink_bare_uris", # disables automatic links, needed for plain email in \correspondence
-    "-auto_identifiers"    # disables \hypertarget commands
-  )
-) {
-  if ("extra_dependencies" %in% names(list(...)))
+copernicus_article <- function(..., keep_tex = TRUE, highlight = NULL,
+                               citation_package = "natbib",
+                               md_extensions = c(
+                                 "-autolink_bare_uris", # disables automatic links, needed for plain email in \correspondence
+                                 "-auto_identifiers" # disables \hypertarget commands
+                               )) {
+  if ("extra_dependencies" %in% names(list(...))) {
     warning(
       "Copernicus does not support additional LaTeX packages and options!
           >> Please remove 'extra_dependencies' from your YAML header!",
       call. = FALSE
     )
+  }
 
   pdf_document_format(
-    "copernicus", citation_package = citation_package,
+    "copernicus",
+    citation_package = citation_package,
     keep_tex = keep_tex, highlight = highlight, md_extensions = md_extensions, ...
   )
 }
@@ -75,20 +77,20 @@ copernicus_journals <- list(
   "Advances in Radio Science" = "ars",
   "Advances in Science and Research" = "asr",
   "Advances in Statistical Climatology, Meteorology and Oceanography" = "ascmo",
+  "Aerosol Research" = "ar",
   "Annales Geophysicae" = "angeo",
   "Archives Animal Breeding" = "aab",
-  "ASTRA Proceedings" = "ap",
   "Atmospheric Chemistry and Physics" = "acp",
   "Atmospheric Measurement Techniques" = "amt",
   "Biogeosciences" = "bg",
   "Climate of the Past" = "cp",
   "DEUQUA Special Publications" = "deuquasp",
-  "Drinking Water Engineering and Science" = "dwes",
-  "European Journal of Mineralogy" = "ejm",
   "Earth Surface Dynamics" = "esurf",
   "Earth System Dynamics" = "esd",
   "Earth System Science Data" = "essd",
   "E&G Quaternary Science Journal" = "egqsj",
+  "EGUsphere" = "egusphere",
+  "European Journal of Mineralogy" = "ejm",
   "Fossil Record" = "fr",
   "Geochronology" = "gchron",
   "Geographica Helvetica" = "gh",
@@ -107,12 +109,15 @@ copernicus_journals <- list(
   "Ocean Science" = "os",
   "Primate Biology" = "pb",
   "Proceedings of the International Association of Hydrological Sciences" = "piahs",
+  "Safety of Nuclear Waste Disposal" = "sand",
   "Scientific Drilling" = "sd",
   "SOIL" = "soil",
   "Solid Earth" = "se",
+  "State of the Planet" = "sp",
   "The Cryosphere" = "tc",
   "Web Ecology" = "we",
   "Weather and Climate Dynamics" = "wcd",
+  "Web Ecology" = "we",
   "Wind Energy Science" = "wes"
 )
 
@@ -120,6 +125,7 @@ copernicus_journals <- list(
 #' @export
 copernicus_journal_abbreviations <- function(journal_name = "*") {
   unlist(copernicus_journals[grep(
-    journal_name, names(copernicus_journals), ignore.case = TRUE
+    journal_name, names(copernicus_journals),
+    ignore.case = TRUE
   )])
 }

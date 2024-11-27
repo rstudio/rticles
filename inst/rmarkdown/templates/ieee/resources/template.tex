@@ -158,9 +158,7 @@ $endif$
 % You can find documentation about the pdfTeX application at:
 % http://www.tug.org/applications/pdftex
 
-
-
-
+\usepackage{graphicx}
 
 % *** MATH PACKAGES ***
 %
@@ -331,32 +329,14 @@ $endif$
 %% BEGIN MY ADDITIONS %%
 
 $if(natbib)$
-\usepackage{natbib}
+\usepackage[$natbiboptions$]{natbib}
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $endif$
 $if(biblatex)$
-\usepackage[backend=bibtex,citestyle=ieee,style=numeric$if(citation_sorting)$,sorting=$citation_sorting$$endif$]{biblatex}
-$if(bibliography)$
+\usepackage[citestyle=ieee,$if(biblio-style)$style=$biblio-style$,$endif$$if(citation_sorting)$sorting=$citation_sorting$$endif$,$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
 $for(bibliography)$
 \addbibresource{$bibliography$}
 $endfor$
-$endif$
-$endif$
-
-$if(tables)$
-\usepackage{longtable,booktabs}
-$endif$
-$if(graphics)$
-\usepackage{graphicx}
-% We will generate all images so they have a width \maxwidth. This means
-% that they will get their normal width if they fit onto the page, but
-% are scaled down if they would overflow the margins.
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
-\else\Gin@nat@width\fi}
-\makeatother
-\let\Oldincludegraphics\includegraphics
-\renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
 $endif$
 
 \usepackage[unicode=true]{hyperref}
@@ -389,17 +369,112 @@ $else$
 \setcounter{secnumdepth}{0}
 $endif$
 
-% Pandoc syntax highlighting
 $if(highlighting-macros)$
+% Pandoc syntax highlighting
 $highlighting-macros$
 $endif$
 
-% Pandoc citation processing
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+$if(tables)$
+% From pandoc table feature
+\usepackage{longtable,booktabs,array}
+$if(multirow)$
+\usepackage{multirow}
+$endif$
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+$endif$
+
+% Add imagehandling
+$-- Only needed for pandoc 3.2.1 and above requiring graphics for new command.
+$if(graphics)$$if(pandoc321)$
+% Custom command from Pandoc 3.2.1 to scale images if necessary
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+\makeatother
+$endif$$endif$
+
 $if(csl-refs)$
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
+% Pandoc citation processing
+$if(pandoc318)$
+%From Pandoc 3.1.8
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+$else$$if(pandoc317)$
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+% avoid brackets around text for \cite:
+\makeatletter
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacing}
+\setlength{\cslentryspacing}{0em}
+\usepackage{enumitem}
+\newlist{CSLReferences}{itemize}{1}
+\setlist[CSLReferences]{label={},
+  leftmargin=\cslhangindent,
+  itemindent=-1\cslhangindent,
+  parsep=\parskip,
+  itemsep=\cslentryspacing}
+$else$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
 % for Pandoc 2.8 to 2.10.1
 \newenvironment{cslreferences}%
   {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
@@ -410,27 +485,25 @@ $if(csl-refs)$
  {% don't indent paragraphs
   \setlength{\parindent}{0pt}
   % turn on hanging indent if param 1 is 1
-  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
-  % set entry spacing
-  \ifnum #2 > 0
-  \setlength{\parskip}{#2\baselineskip}
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
   \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
  }%
  {}
-\usepackage{calc} % for calculating minipage widths
+$endif$$endif$
+\usepackage{calc}
 \newcommand{\CSLBlock}[1]{#1\hfill\break}
 \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
 
-% Pandoc header
 $for(header-includes)$
 $header-includes$
 $endfor$
-
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 %% END MY ADDITIONS %%
 
@@ -457,32 +530,22 @@ $if(affiliation)$
 %% ---- classic IEEETrans wide authors' list ----------------
 $if(affiliation.wide)$
 \IEEEauthorblockN{
-$if(affiliation.author)$
-$for(affiliation.author)$
-$affiliation.author.name$\IEEEauthorrefmark{$affiliation.author.mark$}$sep$,
-$endfor$
-$else$
-$if(affiliation.author_multiline)$
-$for(affiliation.author_multiline)$
+$if(affiliation.author)$$for(affiliation.author)$
+$affiliation.author.name$$for(affiliation.author.mark)$\IEEEauthorrefmark{$affiliation.author.mark$}$endfor$$sep$,$endfor$
+$else$%% $-- else affiliation.author
+$if(affiliation.author_multiline)$$for(affiliation.author_multiline)$
 $for(affiliation.author_multiline.line)$
-$affiliation.author_multiline.line.name$\IEEEauthorrefmark{$affiliation.author_multiline.line.mark$}
-$sep$,
-$endfor$
-$sep$}\IEEEauthorblockN{
-$endfor$
-$else$
-$for(affiliation.institution)$ %% -- beg for/affiliation.institution
-$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
-$affiliation.institution.author.name$\IEEEauthorrefmark{$affiliation.institution.mark$}
-$sep$,
-$endfor$ %% -- end for/affiliation.institution.author
-$sep$,
-$endfor$ %% -- end for/affiliation.institution
-$endif$
-$endif$
+$affiliation.author_multiline.line.name$$for(affiliation.author_multiline.line.mark)$\IEEEauthorrefmark{$affiliation.author_multiline.line.mark$}$endfor$$sep$,
+$endfor$$-- end affiliation.author_multiline.line
+$sep$}
+\IEEEauthorblockN{
+$endfor$$else$%%$-- end for affiliation.author_multiline and else affiliation.author_multiline
+$for(affiliation.institution)$$for(affiliation.institution.author)$
+$affiliation.institution.author.name$\IEEEauthorrefmark{$affiliation.institution.mark$}$sep$,$endfor$$-- end for/affiliation.institution.author
+$sep$,$endfor$$endif$$endif$%%$-- end for/affiliation.institution and end if affiliation.author_multiline and affiliation.author
 }
 
-$for(affiliation.institution)$ %% -- beg for/affiliation.institution
+$for(affiliation.institution)$
 \IEEEauthorblockA{\IEEEauthorrefmark{$affiliation.institution.mark$}
 $if(affiliation.institution.department)$
 $affiliation.institution.department$\\
@@ -493,38 +556,23 @@ $if(affiliation.institution.email)$
 \\ $affiliation.institution.email$
 $endif$
 }
-$endfor$ %% -- end for/affiliation.institution
-$endif$ % -- end affiliation.wide
+$endfor$$endif$$-- end for/affiliation.institution and end if affiliation.wide
 %% ----------------------------------------------------------
 
-
-
 %% ---- classic IEEETrans one column per institution --------
-$if(affiliation.institution-columnar)$ %% -- beg if/affiliation.institution-columnar
+$if(affiliation.institution-columnar)$
 $for(affiliation.institution)$
-\IEEEauthorblockN{
-$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
-$affiliation.institution.author.name$$sep$,
-$endfor$ %% -- end for/affiliation.institution.author
-}
-\IEEEauthorblockA{$if(affiliation.institution.department)$
-$affiliation.institution.department$\\
-$endif$
+\IEEEauthorblockN{$for(affiliation.institution.author)$$affiliation.institution.author.name$$sep$, $endfor$}
+\IEEEauthorblockA{
+$if(affiliation.institution.department)$$affiliation.institution.department$\\$endif$%%
 $affiliation.institution.name$\\
 $affiliation.institution.location$
-$if(affiliation.institution.email)$
-\\$affiliation.institution.email$
-$else$
-$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
-$if(affiliation.institution.author.email)$
-\\$affiliation.institution.author.email$
-$endif$
-$endfor$ %% -- end for/affiliation.institution.author
-$endif$
+$if(affiliation.institution.email)$\\$affiliation.institution.email$$else$$for(affiliation.institution.author)$$if(affiliation.institution.author.email)$\\$affiliation.institution.author.email$$endif$$endfor$%%
+$endif$%%$-- end for/affiliation.institution.author
 }
 $sep$\and
-$endfor$ %% -- end for/affiliation.institution
-$endif$ %% -- end if/affiliation.institution-columnar
+$endfor$ %%$-- end for/affiliation.institution
+$endif$ %%$-- end if/affiliation.institution-columnar
 %% ----------------------------------------------------------
 
 
@@ -532,12 +580,10 @@ $endif$ %% -- end if/affiliation.institution-columnar
 
 
 %% ---- one column per author, classic/default IEEETrans ----
-$if(affiliation.author-columnar)$ % -- beg affiliation.author-columnar
+$if(affiliation.author-columnar)$
 $for(affiliation.institution)$
-$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
-\IEEEauthorblockN{
-$affiliation.institution.author.name$
-}
+$for(affiliation.institution.author)$
+\IEEEauthorblockN{$affiliation.institution.author.name$}
 \IEEEauthorblockA{$affiliation.institution.name$\\
 $if(affiliation.institution.department)$
 $affiliation.institution.department$\\
@@ -546,18 +592,18 @@ $affiliation.institution.location$
 $if(affiliation.institution.email)$
 \\$affiliation.institution.email$
 $else$
-$for(affiliation.institution.author)$  %% -- beg for/affiliation.institution.author
+$for(affiliation.institution.author)$
 $if(affiliation.institution.author.email)$
 \\$affiliation.institution.author.email$
 $endif$
-$endfor$ %% -- end for/affiliation.institution.author
+$endfor$%%$-- end for/affiliation.institution.author
 $endif$
 }
 $sep$\and
-$endfor$ %% -- end for/affiliation.institution.author
+$endfor$$-- end for/affiliation.institution.author
 $sep$\and
-$endfor$ %% -- end for/affiliation.institution
-$endif$ %% -- end if/affiliation.institution-columnar
+$endfor$$-- end for/affiliation.institution
+$endif$$-- end if/affiliation.institution-columnar
 %% ----------------------------------------------------------
 
 $endif$
@@ -640,16 +686,15 @@ $endfor$
 $body$
 
 $if(natbib)$
-$if(biblio-files)$
+$if(bibliography)$
 $if(biblio-title)$
-$if(book-class)$
+$if(has-chapters)$
 \renewcommand\bibname{$biblio-title$}
 $else$
 \renewcommand\refname{$biblio-title$}
 $endif$
 $endif$
-\bibliography{$biblio-files$}
-
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 $endif$
 $endif$
 $if(biblatex)$
