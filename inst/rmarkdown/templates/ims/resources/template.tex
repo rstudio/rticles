@@ -154,8 +154,11 @@ $endif$
 
 % Garantees bookdown compilation
 %\usepackage{lmodern}
-
+% Add imagehandling
+$-- Only needed for pandoc 3.2.1 and above requiring graphics for new command.
+$if(graphics)$
 $if(pandoc321)$
+% Custom command from Pandoc 3.2.1 to scale images if necessary
 \makeatletter
 \newsavebox\pandoc@box
 \newcommand*\pandocbounded[1]{% scales image to fit in text height/width
@@ -177,10 +180,11 @@ $else$
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 \makeatletter
-$end$
+$endif$
 % Set default figure placement to htbp
 \def\fps@figure{htbp}
 \makeatother
+$endif$
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 
 % alternative version to the shaded problem

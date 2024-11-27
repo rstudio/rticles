@@ -50,6 +50,14 @@ test_that("part for Pandoc's tables is defined in all templates", {
   }
 })
 
+test_that("part for Pandoc's \\pandocbounded command is defined in all templates", {
+  for (f in temp_file) {
+    expect_contains(f, "if(graphics)", fixed = TRUE)
+    expect_contains(f, "if(pandoc321)", fixed = TRUE)
+    expect_contains(f, "\\pandocbounded", fixed = TRUE)
+  }
+})
+
 test_that("CSL-ref part for Pandoc's citeproc are in all templates", {
   for (f in temp_file) {
     expect_contains(f, "if(csl-refs)", fixed = TRUE)
