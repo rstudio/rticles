@@ -7,7 +7,7 @@
 %% merlin.mbs  (with options: `seq-no,nm-rvx,ed-rev,jnrlst,nmlm,x3,m3,mcite,mct-3,mct-x3,dt-jnl,xmth,jxper,volp-sp,pp-last,num-xser,numser,ser-vol,ser-ed,jnm-x,add-pub,pre-edn,isbn,doi,edparxc,pp,ed,xedn,and-xcom,eprint,url,url-blk,nfss,')
 %% ----------------------------------------
 %% *** Sage Vancouver reference style ***
-%% 
+%%
 %% Copyright 1994-2011 Patrick W Daly
  % ===============================================================
  % IMPORTANT NOTICE:
@@ -243,10 +243,10 @@ FUNCTION {bbl.etal}
 { "et~al." }
 
 FUNCTION {bbl.editors}
-{ "eds." }
+{ "eds" }
 
 FUNCTION {bbl.editor}
-{ "ed." }
+{ "ed" }
 
 FUNCTION {bbl.edby}
 { "edited by" }
