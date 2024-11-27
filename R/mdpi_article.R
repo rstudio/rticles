@@ -32,6 +32,8 @@
 #' * `header-includes`: custom additions to the header, before the `\begin{document}` statement
 #' * `include-after`: for including additional LaTeX code before the `\end{document}` statement
 #' @name mdpi
+#' @inheritParams rmarkdown::pdf_document
+#' @param ... Additional arguments to [rmarkdown::pdf_document()]
 #' @export
 mdpi_article <- function(..., keep_tex = TRUE, latex_engine = "pdflatex", pandoc_args = NULL, citation_package = "natbib") {
 
