@@ -8,6 +8,7 @@
 % T1 fonts will be used to generate the final print and online PDFs,
 % so please use T1 fonts in your manuscript whenever possible.
 % Other font encondings may result in incorrect characters.
+\usepackage{graphicx}
 
 $if(highlighting-macros)$
 % Pandoc syntax highlighting
@@ -37,9 +38,7 @@ $endif$
 
 % Add imagehandling
 $-- Only needed for pandoc 3.2.1 and above requiring graphics for new command.
-$if(graphics)$
-\usepackage{graphicx}
-$if(pandoc321)$
+$if(graphics)$$if(pandoc321)$
 % Custom command from Pandoc 3.2.1 to scale images if necessary
 \makeatletter
 \newsavebox\pandoc@box
