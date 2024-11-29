@@ -343,49 +343,91 @@ and \citep{MeixnerEA2002,Kuji_Nakajima2002,EmeryEA1986}.
 
 \clearpage
 
-\acknowledgments
+::: acknowledgments
 We thank two anonymous reviewers for their comments, which helped
 to improve the manuscript.
+:::
 
-\datastatement
+::: datastatement
 Start data availability statement here.
+:::
 
-\appendix[A]
-\appendixtitle{Appendix Title}
+::: appendix
 
-\subsection*{Appendix section head}
+# Appendix Title
 
-Here is a sample appendix with an equation [see Eq. \eqref{eqA1}]. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+## Appendix section head  {.unnumbered}
+
+Here is a sample appendix with an equation [see Eq. \eqref{eqA1}]. Lorem ipsum
+dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+```{=latex}
 \begin{equation}
 \frac{
 pf \cos\phi}
 {p^0|\nabla h\bar q|(d\theta_0/dz)}\label{eqA1}
 \end{equation}
+```
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+culpa qui officia deserunt mollit anim id est laborum.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Here is an example appendix figure (see Fig. \ref{figA1}).
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Here is an example appendix figure (see Fig. \ref{figA1}).
+```{=latex}
 \begin{figure}
  \centerline{\includegraphics[width=19pc]{figure01.pdf}}
 \caption{Here is an appendix, single column figure caption.}\label{figA1}
 \end{figure}
+```
 
-\appendix[B]
-\appendixtitle{Second Appendix Title}
-\subsection{Sample appendix section head}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat [see Eq. \eqref{eqB1}]]. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+# Second Appendix Title
 
+## Sample appendix section head
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+[see Eq. \eqref{eqB1}]]. Duis aute irure dolor in reprehenderit in voluptate
+velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+laborum.
+
+```{=latex}
 \begin{equation}\label{eqB1}
 \left(\frac{\partial\bar q}{\partial x}
 \overline{U'\theta'} +
 \frac{\partial\bar q}{\partial y}
 \overline{V'\theta'}\right) 
 \end{equation}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+```
 
-\subsection{Sample appendix section head}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit
+amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+deserunt mollit anim id est laborum.
+
+## Sample appendix section head
+
 Second appendix example. Here an example appendix table (see Table \ref{tB1}).
 
+```{=latex}
 \begin{table}[h]
 \centering
 \begin{tabular}{lc}
@@ -409,5 +451,6 @@ Month& Yr of positive phase\\
 \caption{Years selected for anomaly composites for the positive
 phase of $B^x$ EOF1.}\label{tB1}
 \end{table}
-
+```
+:::
 

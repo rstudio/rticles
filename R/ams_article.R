@@ -23,12 +23,18 @@
 #' render("MyArticle/MyArticle.Rmd")
 #' }
 #' @export
-ams_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris", "-auto_identifiers")) {
+ams_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris", "-auto_identifiers"), pandoc_args = NULL) {
   
   rmarkdown::pandoc_available('2.10', TRUE)
 
+  pandoc_args <- c(
+    pandoc_args,
+    "--lua-filter", find_resource("ams", "ams.lua")
+  )
+
   base <- pdf_document_format(
-    "ams", keep_tex = keep_tex, md_extensions = md_extensions, citation_package = 'natbib', ...
+    "ams", keep_tex = keep_tex, md_extensions = md_extensions, citation_package = 'natbib', 
+    pandoc_args = pandoc_args, ...
   )
   pre_knit <- base$pre_knit
   base$pre_knit <- function(input, metadata, ...) {
