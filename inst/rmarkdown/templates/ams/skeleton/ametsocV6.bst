@@ -1,4 +1,4 @@
-%%  Updated 1 August 2021
+%%  Updated 12 July 2023
 %%
 %% This is file `ametsocV6.bst',
 %% generated with the docstrip utility.
@@ -10,7 +10,7 @@
 %% *** Bibliography style for all AMS Journals and BAMS ***
 %% 
 %% Copyright 1994-2005 Patrick W Daly
-%% Updated 2021 Nicole Rietmann
+%% Updated 2021, 2023 Nicole Rietmann
  % ===============================================================
  % IMPORTANT NOTICE:
  % This bibliographic style (bst) file has been generated from one or
@@ -1110,7 +1110,7 @@ FUNCTION {article}
       format.pages output
     }
   if$
-  format.note output
+%  format.note output
   format.eprint output
   fin.entry
 }
