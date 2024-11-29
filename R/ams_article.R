@@ -3,6 +3,7 @@
 #' Format for creating submissions to American Meteorological Society journals.
 #'
 #' @inheritParams rmarkdown::pdf_document
+#' @param citation_package only natbib is supported with this template.
 #' @param ... Additional arguments to [rmarkdown::pdf_document()]. **Note**: `extra_dependencies` are not
 #' allowed as Copernicus does not support additional packages included via \code{\\usepackage{}}.
 #'
@@ -23,9 +24,13 @@
 #' render("MyArticle/MyArticle.Rmd")
 #' }
 #' @export
-ams_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris", "-auto_identifiers"), pandoc_args = NULL) {
+ams_article <- function(..., keep_tex = TRUE, citation_package = "natbib", md_extensions = c("-autolink_bare_uris", "-auto_identifiers"), pandoc_args = NULL) {
   
   rmarkdown::pandoc_available('2.10', TRUE)
+
+  if (citation_package != "natbib") {
+    stop("AMS template supports only `natbib` for citation processing.")
+  }
 
   pandoc_args <- c(
     pandoc_args,
