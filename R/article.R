@@ -92,6 +92,16 @@ amq_article <- function(..., latex_engine = "xelatex", keep_tex = TRUE,
 #' @export
 #' @rdname article
 ams_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris", "-auto_identifiers")) {
+  
+  rmarkdown::pandoc_available('2.10', TRUE)
+
+  new_version_msg <- function() {
+    xfun:::do_once(
+      warning("you are probably using an old version of the template - please update or keep using rticles 0.27."),
+      hint = ""
+    )
+  }
+
   base <- pdf_document_format(
     "ams", keep_tex = keep_tex, md_extensions = md_extensions, citation_package = 'natbib', ...
   )
@@ -100,7 +110,8 @@ ams_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_
     if (is.function(pre_knit)) pre_knit(input, metadata, ...)
     # check old arg
     if (metadata$layout) {
-      warning("`layout` is no more used in new AMS template")
+      new_version_msg()
+      warning("`layout` is no more used in new AMS template.")
     }
   }
   return(base)
