@@ -18,96 +18,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 $if(highlighting-macros)$
-% For Pandoc highlighting needs
-$highlighting-macros$
-$endif$
-
-$if(csl-refs)$
-% Pandoc citation processing
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
-\newlength{\cslhangindent}
-\setlength{\cslhangindent}{1.5em}
-% for Pandoc 2.8 to 2.10.1
-\newenvironment{cslreferences}%
-  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
-  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
-  {\par}
-% For Pandoc 2.11+
-\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
- {% don't indent paragraphs
-  \setlength{\parindent}{0pt}
-  % turn on hanging indent if param 1 is 1
-  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
-  % set entry spacing
-  \ifnum #2 > 0
-  \setlength{\parskip}{#2\baselineskip}
-  \fi
- }%
- {}
-\usepackage{calc} % for calculating minipage widths
-\newcommand{\CSLBlock}[1]{#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
-\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
-$endif$
-
-$for(header-includes)$
-$header-includes$
-$endfor$
-
-%%% To be entered by author:
-
-%% May use \\ to break lines in title:
-
-\title{$title$}
-
-%% Enter authors' names and affiliations as you see in the examples below.
-%
-%% Use \correspondingauthor{} and \thanks{} (\thanks command to be used for affiliations footnotes,
-%% such as current affiliation, additional affiliation, deceased, co-first authors, etc.)
-%% immediately following the appropriate author.
-%
-%% Note that the \correspondingauthor{} command is NECESSARY.
-%% The \thanks{} commands are OPTIONAL.
-%
-%% Enter affiliations within the \affiliation{} field. Use \aff{#} to indicate the affiliation letter at both the
-%% affiliation and at each author's name. Use \\ to insert line breaks to place each affiliation on its own line.
-
-%\authors{Author One,\aff{a}\correspondingauthor{Author One, email@email.com}
-%Author Two,\aff{a}
-%Author Three,\aff{b}
-%Author Four,\aff{a}
-%Author Five\thanks{Author Five's current affiliation: NCAR, Boulder, Colorado},\aff{c}
-%Author Six,\aff{c}
-%Author Seven,\aff{d}
-% and Author Eight\aff{a,d}
-%}
-%
-%\affiliation{\aff{a}{First Affiliation}\\
-%\aff{b}{Second Affiliation}\\
-%\aff{c}{Third Affiliation}\\
-%\aff{d}{Fourth Affiliation}
-%}
-
-% Credit to https://stackoverflow.com/a/67609365 for different last-author case.
-\authors{
-$for(authors/allbutlast)$
-$it.name$$if(it.current)$\thanks{$it.current$}$endif$,\aff{$it.aff$}$if(it.email)$\correspondingauthor{$it.name$, $it.email$}$endif$
-$endfor$
-$for(authors/last)$
-and~
-$it.name$$if(it.current)$\thanks{$it.current$}$endif$\aff{$it.aff$}$if(it.email)$\correspondingauthor{$it.name$, $it.email$}$endif$
-$endfor$
-}
-
-% Credit to https://stackoverflow.com/a/67609365 for different last-affiliation case.
-\affiliation{
-$for(affiliations/allbutlast)$\aff{$it.aff$}{$it.name$}$sep$\\
-$endfor$
-}
-
-$if(highlighting-macros)$
 % Pandoc syntax highlighting
 $highlighting-macros$
 $endif$
@@ -243,6 +153,57 @@ $endif$
 $for(header-includes)$
 $header-includes$
 $endfor$
+
+%%% To be entered by author:
+
+%% May use \\ to break lines in title:
+
+\title{$title$}
+
+%% Enter authors' names and affiliations as you see in the examples below.
+%
+%% Use \correspondingauthor{} and \thanks{} (\thanks command to be used for affiliations footnotes,
+%% such as current affiliation, additional affiliation, deceased, co-first authors, etc.)
+%% immediately following the appropriate author.
+%
+%% Note that the \correspondingauthor{} command is NECESSARY.
+%% The \thanks{} commands are OPTIONAL.
+%
+%% Enter affiliations within the \affiliation{} field. Use \aff{#} to indicate the affiliation letter at both the
+%% affiliation and at each author's name. Use \\ to insert line breaks to place each affiliation on its own line.
+
+%\authors{Author One,\aff{a}\correspondingauthor{Author One, email@email.com}
+%Author Two,\aff{a}
+%Author Three,\aff{b}
+%Author Four,\aff{a}
+%Author Five\thanks{Author Five's current affiliation: NCAR, Boulder, Colorado},\aff{c}
+%Author Six,\aff{c}
+%Author Seven,\aff{d}
+% and Author Eight\aff{a,d}
+%}
+%
+%\affiliation{\aff{a}{First Affiliation}\\
+%\aff{b}{Second Affiliation}\\
+%\aff{c}{Third Affiliation}\\
+%\aff{d}{Fourth Affiliation}
+%}
+
+% Credit to https://stackoverflow.com/a/67609365 for different last-author case.
+\authors{
+$for(authors/allbutlast)$
+$it.name$$if(it.current)$\thanks{$it.current$}$endif$,\aff{$it.aff$}$if(it.email)$\correspondingauthor{$it.name$, $it.email$}$endif$
+$endfor$
+$for(authors/last)$
+and~
+$it.name$$if(it.current)$\thanks{$it.current$}$endif$\aff{$it.aff$}$if(it.email)$\correspondingauthor{$it.name$, $it.email$}$endif$
+$endfor$
+}
+
+% Credit to https://stackoverflow.com/a/67609365 for different last-affiliation case.
+\affiliation{
+$for(affiliations/allbutlast)$\aff{$it.aff$}{$it.name$}$sep$\\
+$endfor$
+}
 
 %%% To be entered by author:
 
