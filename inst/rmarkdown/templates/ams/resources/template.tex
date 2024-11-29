@@ -222,7 +222,6 @@ $endfor$
 %% Necessary!
 \maketitle
 
-\bibliographystyle{ametsocV6}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SIGNIFICANCE STATEMENT/CAPSULE SUMMARY
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -268,6 +267,16 @@ $endfor$
 %
 
 $body$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% REFERENCES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Make your BibTeX bibliography by using these commands:
+% \bibliographystyle{ametsocV6}
+% \bibliography{references}
+
+\bibliographystyle{ametsocV6}
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 
 $for(include-after)$
 $include-after$
