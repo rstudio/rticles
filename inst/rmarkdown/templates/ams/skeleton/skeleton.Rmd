@@ -38,11 +38,6 @@ bibliography: references.bib
 output: rticles::ams_article
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(fig.path = "",     # AMS required
-                      out.extra = "",    # To force figure labels
-                      echo = FALSE)      # Don't show R code   
-```
 
 \section{Introduction}
 
