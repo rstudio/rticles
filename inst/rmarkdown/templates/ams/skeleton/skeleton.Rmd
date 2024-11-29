@@ -2,19 +2,32 @@
 twocol: FALSE  #  Use FALSE for submission. 
 title: Title here
 authors:
-  - {name: Author One, aff: a}
-  - {name: Author Two, aff: a} 
-  - {name: Author Three, aff: b}   
-  - {name: Author Four, aff: a} 
-  - {name: Author Five, current: "Author Five's current affiliation: NCAR, Boulder, Colorado", aff: c} 
-  - {name: Author Six, aff: d} 
-  - {name: Author Seven, aff: d} 
-  - {name: Author Eight, aff: "a,d"}
+  - name: Author One
+    aff: a
+  - name: Author Two
+    aff: a
+  - name: Author Three
+    aff: b
+  - name: Author Four
+    aff: a
+  - name: Author Five 
+    current: "Author Five's current affiliation: NCAR, Boulder, Colorado"
+    aff: c
+  - name: Author Six
+    aff: d
+  - name: Author Seven 
+    aff: d
+  - name: Author Eight
+    aff: a,d
 affiliations: # Match aff to aff in authors
-  - {aff: a, name: First Affiliation}
-  - {aff: b, name: Second Affiliation}
-  - {aff: c, name: Third Affiliation}
-  - {aff: d, name: Fourth Affiliation}
+  - aff: a
+    name: First Affiliation
+  - aff: b
+    name: Second Affiliation
+  - aff: c
+    name: Third Affiliation
+  - aff: d
+    name: Fourth Affiliation
 abstract: |
   Enter the text of your abstract here. This is a sample American Meteorological Society (AMS) \LaTeX\ template.  This document provides authors with instructions on the use of the AMS \LaTeX\ template.  Authors should refer to the file amspaper.tex to review the actual \LaTeX\ code used to create this document. The template.tex file should be modified by authors for their own manuscript.
 statement: |
