@@ -8,7 +8,7 @@ end
 
 local function process_div(div)
   if div.classes:includes("acknowledgments") then
-    if #div.content and #div.content[1] then
+    if #div.content and #div.content[1].content then
       div.content[1].content:insert(1, pandoc.RawInline("latex", "\\acknowledgments\n"))
     elseif #div.content then
       div.content:insert(1, pandoc.RawInline("latex", "\\acknowledgments\n"))
@@ -16,7 +16,7 @@ local function process_div(div)
     return div.content
   end
   if div.classes:includes("datastatement") then
-    if #div.content and #div.content[1] then
+    if #div.content and #div.content[1].content then
       div.content[1].content:insert(1, pandoc.RawInline("latex", "\\datastatement\n"))
     elseif #div.content then
       div.content:insert(1, pandoc.RawInline("latex", "\\datastatement\n"))
