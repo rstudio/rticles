@@ -95,23 +95,18 @@ ams_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_
   
   rmarkdown::pandoc_available('2.10', TRUE)
 
-  new_version_msg <- function() {
-    xfun:::do_once(
-      warning("you are probably using an old version of the template - please update or keep using rticles 0.27."),
-      hint = ""
-    )
-  }
-
   base <- pdf_document_format(
     "ams", keep_tex = keep_tex, md_extensions = md_extensions, citation_package = 'natbib', ...
   )
   pre_knit <- base$pre_knit
   base$pre_knit <- function(input, metadata, ...) {
     if (is.function(pre_knit)) pre_knit(input, metadata, ...)
+    old_meta <- c("journal", "layout", "exauthors", "author1", "author2", "currentaddress", "affiliation")
     # check old arg
-    if (metadata$layout) {
-      new_version_msg()
-      warning("`layout` is no more used in new AMS template.")
+    metadata_used <- old_meta %in% names(metadata)
+    if (any(metadata_used)) {
+      warning("You are probably using an old version of the template - please update to new skeleton or keep using rticles 0.27.")
+      warning("Some metadata are no more used in new AMS template: ", knitr::combine_words(old_meta[metadata_used]), ".")
     }
   }
   return(base)
