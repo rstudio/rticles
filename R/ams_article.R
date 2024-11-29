@@ -11,8 +11,8 @@
 #' @details This was adapted from
 #' <https://www.ametsoc.org/index.cfm/ams/publications/author-information/latex-author-info/>.
 #'
-#' The template require some default knitr option to be change: 
-#' 
+#' The template require some default knitr option to be change:
+#'
 #' * `echo = FALSE` as no R code should be shown
 #' * `fig.path = ""` as all directory paths need to be removed from figure names
 #' * `out.extra = ""` to force figure labels with knitr
@@ -25,7 +25,7 @@
 #' }
 #' @export
 ams_article <- function(..., keep_tex = TRUE, citation_package = "natbib", md_extensions = c("-autolink_bare_uris", "-auto_identifiers"), pandoc_args = NULL) {
-  
+
   rmarkdown::pandoc_available('2.10', TRUE)
 
   if (citation_package != "natbib") {
@@ -38,7 +38,7 @@ ams_article <- function(..., keep_tex = TRUE, citation_package = "natbib", md_ex
   )
 
   base <- pdf_document_format(
-    "ams", keep_tex = keep_tex, md_extensions = md_extensions, citation_package = 'natbib', 
+    "ams", keep_tex = keep_tex, md_extensions = md_extensions, citation_package = 'natbib',
     pandoc_args = pandoc_args, ...
   )
   pre_knit <- base$pre_knit
@@ -48,8 +48,8 @@ ams_article <- function(..., keep_tex = TRUE, citation_package = "natbib", md_ex
     # check old arg
     metadata_used <- old_meta %in% names(metadata)
     if (any(metadata_used)) {
-      warning("You are probably using an old version of the template - please update to new skeleton or keep using rticles 0.27.")
-      warning("Some metadata are no more used in new AMS template: ", knitr::combine_words(old_meta[metadata_used]), ".")
+      warning("You are probably using an old version of the template - please update to new skeleton or keep using rticles 0.27.", immediate. = TRUE, call. = FALSE)
+      warning("Some metadata are no more used in new AMS template: ", knitr::combine_words(old_meta[metadata_used]), ". They will be ignored.", immediate. = TRUE, call. = FALSE)
     }
   }
   base$knitr$opts_chunk <- merge_list(base$knitr$opts_chunk, list(
