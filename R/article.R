@@ -92,9 +92,18 @@ amq_article <- function(..., latex_engine = "xelatex", keep_tex = TRUE,
 #' @export
 #' @rdname article
 ams_article <- function(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris", "-auto_identifiers")) {
-  pdf_document_format(
+  base <- pdf_document_format(
     "ams", keep_tex = keep_tex, md_extensions = md_extensions, citation_package = 'natbib', ...
   )
+  pre_knit <- base$pre_knit
+  base$pre_knit <- function(input, metadata, ...) {
+    if (is.function(pre_knit)) pre_knit(input, metadata, ...)
+    # check old arg
+    if (metadata$layout) {
+      warning("`layout` is no more used in new AMS template")
+    }
+  }
+  return(base)
 }
 
 #' @section `asa_article`: This format was adapted from The American
