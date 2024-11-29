@@ -40,31 +40,24 @@ output: rticles::ams_article
 ---
 
 
-\section{Introduction}
+# Introduction
 
-It has now become our basic
-knowledge that the extratropical
-atmosphere is driven strongly by the horizontal
-potential temperature gradient that arises from the
-differential solar heating (e.g., Lorenz 1955). The horizontal
-gradient in the potential temperature, often referred
-to as baroclinicity, is a measure of upper-level wind
-steering via thermal wind and a measure of baroclinic
-instability in the atmosphere. Baroclinicity in the lower
-atmosphere in classic theories of atmospheric stability is
-measured by a combination of the static stability and
-horizontal temperature gradient, the latter of which is
-equivalent to vertical shear in the horizontal wind through
-the thermal wind balance (Charney 1947; Eady 1949). In
-its original form, the Eady's maximum growth rate for
-baroclinic instability $B_{GRMax}$ is defined by $B_{GRMax} =
-0.31(|f|/N)(\partial U/\partial_z)$ in a zonally homogeneous steady
-mean state, where $U$ is the mean zonal flow, $f$ is the
-Coriolis parameter, and $N$ is the Brunt--V\"ais\"al\"a frequency.
-Charney's formula is slightly different from the Eady's,
-but still incorporates the same effects (Table \ref{t1}).
+It has now become our basic knowledge that the extratropical atmosphere is
+driven strongly by the horizontal potential temperature gradient that arises
+from the differential solar heating (e.g., Lorenz 1955). The horizontal gradient
+in the potential temperature, often referred to as baroclinicity, is a measure
+of upper-level wind steering via thermal wind and a measure of baroclinic
+instability in the atmosphere. Baroclinicity in the lower atmosphere in classic
+theories of atmospheric stability is measured by a combination of the static
+stability and horizontal temperature gradient, the latter of which is equivalent
+to vertical shear in the horizontal wind through the thermal wind balance
+(Charney 1947; Eady 1949). In its original form, the Eady's maximum growth rate
+for baroclinic instability $B_{GRMax}$ is defined by $B_{GRMax} = 0.31(|f|/N)(\partial U/\partial_z)$ 
+in a zonally homogeneous steady mean state, where $U$ is the mean zonal flow, $f$ is the Coriolis parameter, and $N$ is the
+`Brunt--V\"ais\"al\"a`{=latex} frequency. Charney's formula is slightly different from the
+Eady's, but still incorporates the same effects (Table \ref{t1}).
 
-
+```{=latex}
 \begin{table}
 \begin{tabular*}{\hsize}{@{\extracolsep\fill}lcccccc@{}}
 \topline
@@ -90,127 +83,105 @@ EOF1 and EOF2 and EOF2 and EOF3, based on the North et al.
 (1982) criterion, is indicated by good (GD) and not good or marginal
 (NG).}\label{t1}
 \end{table}
+```
 
-Lindzen and Farrell (1980) first applied the Eady's parameter
-to atmospheric data to successfully estimate the
-maximum growth rate of baroclinic instability in the troposphere.
-Hoskins and Valdes (1990) used its localized
-version (i.e., $U$, $N$, and $f$ are all local Eulerian mean values)
-as the central parameter in their study of the Northern
-Hemispheric storm tracks. This local version, or its simplified
-version, has been used successfully as an indicator
-of baroclinic wave generation in diagnostic studies of
-stormtracks in recent years as well (Nakamura and Sampe
-2002; Nakamura and Shimpo 2004; Nakamura et al. 2004).
-In our study, the North Atlantic part of which was reported
-in Nakamura and Yamane (2009, hereafter Part I), we
-define the near-surface baroclinic vector, $\mathbf{B}=B^x\mathbf{i} + 
-B^y\mathbf{j}$,
-where $B^x= -(g/\theta N)(\partial\theta/\partial y)$ 
-and $B^y = (g/\theta N)(\partial\theta/\partial x)$  with
-$\theta$ being the monthly-mean potential temperature at 2 m
-above the surface, and use it as the central quantity of the
-diagnoses. Unless stated otherwise, ``anomalies'' refer to
-deviations from the climatology hereafter. Though its meridional
-component does not appear in any classic theory of
-baroclinic instability, a theory that does incorporate the
-effect of $B^y$ shows its important role in enhancing baroclinic
-wave generation locally to the east of the mean trough
-(Niehaus 1980). In the North Atlantic storm track region,
-we indeed found that the substantial zonal gradient in the
-surface temperature in and around the Labrador Sea plays
-a major role in the large-scale atmospheric state.
+Lindzen and Farrell (1980) first applied the Eady's parameter to atmospheric
+data to successfully estimate the maximum growth rate of baroclinic instability
+in the troposphere. Hoskins and Valdes (1990) used its localized version (i.e.,
+$U$, $N$, and $f$ are all local Eulerian mean values) as the central parameter
+in their study of the Northern Hemispheric storm tracks. This local version, or
+its simplified version, has been used successfully as an indicator of baroclinic
+wave generation in diagnostic studies of stormtracks in recent years as well
+(Nakamura and Sampe 2002; Nakamura and Shimpo 2004; Nakamura et al. 2004). In
+our study, the North Atlantic part of which was reported in Nakamura and Yamane
+(2009, hereafter Part I), we define the near-surface baroclinic vector,
+$\mathbf{B}=B^x\mathbf{i} + B^y\mathbf{j}$, where 
+$B^x= -(g/\theta N)(\partial\theta/\partial y)$ and $B^y = (g/\theta N)(\partial\theta/\partial x)$
+with $\theta$ being the monthly-mean potential temperature at 2 m above the
+surface, and use it as the central quantity of the diagnoses. Unless stated
+otherwise, ``anomalies'' refer to deviations from the climatology hereafter.
+Though its meridional component does not appear in any classic theory of
+baroclinic instability, a theory that does incorporate the effect of $B^y$ shows
+its important role in enhancing baroclinic wave generation locally to the east
+of the mean trough (Niehaus 1980). In the North Atlantic storm track region, we
+indeed found that the substantial zonal gradient in the surface temperature in
+and around the Labrador Sea plays a major role in the large-scale atmospheric
+state.
 
-\section{The sea surface temperature}
-The sea surface temperature
- (SST) is an important factor
-in determining $\mathbf{B}$ in the storm-track regions (e.g.,
-Hoskins and Valdes 1990; Nakamura et al. 2004; Part I).
-SST anomalies (SSTAs) around an oceanic front along the
-Gulf Stream (GS), Kuroshio Extension (KE), or Oyashio
-Extension (OE) can have a profound impact on $\mathbf{B}$ along
-the storm tracks. 
+# The sea surface temperature
 
-\subsection{A subtle point}
-A subtle but important point that has to
-be considered carefully in this regard is the spatial scale
-and the location of SSTAs with respect to the climatology,
-since it is the anomalous surface temperature
-gradient whose structure has a spatial scale of the atmospheric
-Rossby deformation radius that can exert significant
-influence on the large-scale atmospheric flow. 
+The sea surface temperature (SST) is an important factor in determining
+$\mathbf{B}$ in the storm-track regions (e.g., Hoskins and Valdes 1990; Nakamura
+et al. 2004; Part I). SST anomalies (SSTAs) around an oceanic front along the
+Gulf Stream (GS), Kuroshio Extension (KE), or Oyashio Extension (OE) can have a
+profound impact on $\mathbf{B}$ along the storm tracks.
 
-\subsubsection{Changes in the temperature}
-The
-high sensitivity of $\mathbf{B}$ to changes in the temperature contrast
-across the front and changes in the width of the front, and
-the uncertainty in the impact of SSTAs of small spatial
-scales on $\mathbf{B}$ make it difficult to assess the effective B
-anomalies that are attributable to the SSTAs from the
-available data. Moreover, it is uncertain exactly how the
-SSTAs in the presence or absence of the land surface
-temperature anomalies may or may not produce $\mathbf{B}$ anomalies
-that are significant to the atmosphere. 
+## A subtle point
 
-\paragraph{Complicating factor}The complicating
-factor introduced by the land surface must be taken
-into account when studying potential roles of extratropical
-SSTAs in the extratropical atmospheric anomalies.
+A subtle but important point that has to be considered carefully in this regard
+is the spatial scale and the location of SSTAs with respect to the climatology,
+since it is the anomalous surface temperature gradient whose structure has a
+spatial scale of the atmospheric Rossby deformation radius that can exert
+significant influence on the large-scale atmospheric flow.
 
-Lau (1988) investigated patterns of anomalous storm
-track activity and associated low-frequency flow anomalies
-by computing empirical orthogonal functions (EOFs)
-for high-frequency 500-hPa geopotential height for the
-Northern Hemisphere winters. He found that both North
-Atlantic and North Pacific storm tracks have a pattern of
-meridional shift and a pattern of increased or decreased
-eddy activity in the first two EOFs.He also found that these
-changes in the storm tracks have symbiotic relationships
-with the background flows and have substantial impacts on
-the mean flow. Part I approached the issue of the stormtrack
-and low-frequency flow variability in connection with
-SSTAs in the extratropics, focusing on $\mathbf{B}$ as the key parameter
-of diagnoses, and found similar patterns of variability
-in the eddy activity and low-frequency flow in the
-North Atlantic basin. Much of this variability was connected
-to SSTAs in the vicinity of the Gulf Stream in cold
-months (Part I). Since the winter North Pacific basin has a
-storm track andmean flow that appear to be related to the
-oceanic fronts, Kuroshio--Oyashio Extensions (KOE) in
-this case, in a manner essentially the same as those in the
-North Atlantic basin related to the GS,we have attempted
-to find similar results for the North Pacific basin. In this
-regard, we have chosen not to project our results onto the
-major mode of variability in the extratropical North Pacific
-basin, the North Pacific decadal variability (PDV), so
-that our presentation and discussion are mostly confined
-to the wave--mean flow dynamics of monthly time scale or
-shorter.
+### Changes in the temperature
+
+The high sensitivity of $\mathbf{B}$ to changes in the temperature contrast
+across the front and changes in the width of the front, and the uncertainty in
+the impact of SSTAs of small spatial scales on $\mathbf{B}$ make it difficult to
+assess the effective B anomalies that are attributable to the SSTAs from the
+available data. Moreover, it is uncertain exactly how the SSTAs in the presence
+or absence of the land surface temperature anomalies may or may not produce
+$\mathbf{B}$ anomalies that are significant to the atmosphere.
+
+#### Complicating factor
+
+The complicating factor introduced by the land surface must be taken into
+account when studying potential roles of extratropical SSTAs in the
+extratropical atmospheric anomalies.
+Lau (1988) investigated patterns of anomalous storm track activity and
+associated low-frequency flow anomalies by computing empirical orthogonal
+functions (EOFs) for high-frequency 500-hPa geopotential height for the Northern
+Hemisphere winters. He found that both North Atlantic and North Pacific storm
+tracks have a pattern of meridional shift and a pattern of increased or
+decreased eddy activity in the first two EOFs.He also found that these changes
+in the storm tracks have symbiotic relationships with the background flows and
+have substantial impacts on the mean flow. Part I approached the issue of the
+stormtrack and low-frequency flow variability in connection with SSTAs in the
+extratropics, focusing on $\mathbf{B}$ as the key parameter of diagnoses, and
+found similar patterns of variability in the eddy activity and low-frequency
+flow in the North Atlantic basin. Much of this variability was connected to
+SSTAs in the vicinity of the Gulf Stream in cold months (Part I). Since the
+winter North Pacific basin has a storm track andmean flow that appear to be
+related to the oceanic fronts, Kuroshio--Oyashio Extensions (KOE) in this case,
+in a manner essentially the same as those in the North Atlantic basin related to
+the GS,we have attempted to find similar results for the North Pacific basin. In
+this regard, we have chosen not to project our results onto the major mode of
+variability in the extratropical North Pacific basin, the North Pacific decadal
+variability (PDV), so that our presentation and discussion are mostly confined
+to the wave--mean flow dynamics of monthly time scale or shorter.
 
 
-Our approach to the search for a link between anomalies
-in the KOE and the overlying atmosphere is as follows:
-(i) identify dominant patterns in anomalous $\mathbf{B}$ in the
-storm track for each calendarmonth and identify years in
-which the anomaly fits the pattern well, (ii) composite
-anomalies in the monthly-mean circulation and highfrequency
-transients in the atmosphere to obtain a typical
-atmospheric state that accompanies the patterns of
-anomalous $\mathbf B$, (iii) composite SSTA to obtain a typical
-oceanic state that accompanies and precedes the patterns
-of anomalous $\mathbf B$, and (iv) composite anomalous net surface
-heat flux that accompanies and precedes the pattern of
-anomalous $\mathbf B$. With this approach, we obtain typical pictures
-of anomalous states in the atmosphere and oceans
-with anomalous $\mathbf{B}$ as their connecting interface.
-Section 2 describes the data and procedure to compute
-$\mathbf B$. Section 3 describes the climatology and variance of $\mathbf B$.
-Dominant patterns of $\mathbf B$ are shown in section 4, followed by
-composited anomalies in various atmospheric fields and
-SST in section 5. Finally, we present our discussion on the
-results, examining a potential cause--effect relationship
-between anomalies in the SST and atmosphere in section 6.
+Our approach to the search for a link between anomalies in the KOE and the
+overlying atmosphere is as follows: (i) identify dominant patterns in anomalous
+$\mathbf{B}$ in the storm track for each calendarmonth and identify years in
+which the anomaly fits the pattern well, (ii) composite anomalies in the
+monthly-mean circulation and highfrequency transients in the atmosphere to
+obtain a typical atmospheric state that accompanies the patterns of anomalous
+$\mathbf B$, (iii) composite SSTA to obtain a typical oceanic state that
+accompanies and precedes the patterns of anomalous $\mathbf B$, and (iv)
+composite anomalous net surface heat flux that accompanies and precedes the
+pattern of anomalous $\mathbf B$. With this approach, we obtain typical pictures
+of anomalous states in the atmosphere and oceans with anomalous $\mathbf{B}$ as
+their connecting interface. Section 2 describes the data and procedure to
+compute $\mathbf B$. Section 3 describes the climatology and variance of
+$\mathbf B$. Dominant patterns of $\mathbf B$ are shown in section 4, followed
+by composited anomalies in various atmospheric fields and SST in section 5.
+Finally, we present our discussion on the results, examining a potential
+cause--effect relationship between anomalies in the SST and atmosphere in
+section 6.
 
+```{=latex}
 \begin{figure*}[t]
 \centerline{\includegraphics[width=\textwidth]{FigOne.pdf}}
 
@@ -225,129 +196,106 @@ and SST (K, color) and $F_h$ [10$^5$ J m$^{-2}$ (6 h)$^{-1}$] for (g)
 February and (h) August. Red rectangles indicate the domain of EOF
 calculations.} \label{fig1} 
 \end{figure*}
+```
 
 Figure \ref{fig1} shows the climatology of $Bx$, $U^{200}$,
-$\overline{V'\theta'}^{850}$, $\overline{V'\theta'}^{200}$, 
-$MR^{z850}$, $U^{1000}$, SST, and $F_h$ for February and
-August as examples of the reference state in the winter
-and summer. The numeric superscript indicates the pressure
-level in hPa. The seasonal mean is visibly more
-diffused in structure, particularly for Bx, than those
-shown in Fig.~\ref{fig1}. There are no surprises in the overall
-picture of Bx. The regions of large land--sea temperature
-contrast and the oceanic fronts show very large Bx in cold
-months. The position of Bx maximum in the storm track
-region is found along theKOEregion throughout the year.
-The zonally elongated band of large Bx in the storm track
-is generally wider in cold months than in warm months.
-In fact, large Bx values that presumably accompany the
-Kuroshio and its extension in the cold months vanish in
-the summer (Figs. \ref{fig1}a,b). The seasonal variation in the Bx
-values in the storm track basically follows that of the
-north--south differential heating--largest in the winter and
-smallest in the summer. As reported by Nakamura et al.
-(2004), the $U^{200}$ maximum is displaced southward from the
-Bx maximum visibly in winter months (Fig. \ref{fig2}a), although
-U200 is generally large over the area of large Bx in the core
-of the storm track. The southward displacement of the
-U200 maximum from the Bx maximum in the storm track
-is less pronounced or even reversed in warmer months
-(Fig. \ref{fig2}b). We note that the structure of the climatological
-Bx generally reflects those of ($\partial{\theta^{2{\textrm m}}}/\partial{y}$) with some exceptions where
-the surface slope contributes significantly to Bx
-in isolated areas over the land, most notably around the
-Himalayas.
+$\overline{V'\theta'}^{850}$, $\overline{V'\theta'}^{200}$, $MR^{z850}$,
+$U^{1000}$, SST, and $F_h$ for February and August as examples of the reference
+state in the winter and summer. The numeric superscript indicates the pressure
+level in hPa. The seasonal mean is visibly more diffused in structure,
+particularly for Bx, than those shown in Fig.~\ref{fig1}. There are no surprises
+in the overall picture of Bx. The regions of large land--sea temperature
+contrast and the oceanic fronts show very large Bx in cold months. The position
+of Bx maximum in the storm track region is found along theKOEregion throughout
+the year. The zonally elongated band of large Bx in the storm track is generally
+wider in cold months than in warm months. In fact, large Bx values that
+presumably accompany the Kuroshio and its extension in the cold months vanish in
+the summer (Figs. \ref{fig1}a,b). The seasonal variation in the Bx values in the
+storm track basically follows that of the north--south differential
+heating--largest in the winter and smallest in the summer. As reported by
+Nakamura et al. (2004), the $U^{200}$ maximum is displaced southward from the Bx
+maximum visibly in winter months (Fig. \ref{fig2}a), although U200 is generally
+large over the area of large Bx in the core of the storm track. The southward
+displacement of the U200 maximum from the Bx maximum in the storm track is less
+pronounced or even reversed in warmer months (Fig. \ref{fig2}b). We note that
+the structure of the climatological Bx generally reflects those of
+($\partial{\theta^{2{\textrm m}}}/\partial{y}$) with some exceptions where the
+surface slope contributes significantly to Bx in isolated areas over the land,
+most notably around the Himalayas.
 
+```{=latex}
 \begin{figure*}[p]
 \centerline{\includegraphics{FigTwo.pdf}}
 \caption{As in Fig.~10, but for (a),(b) September EOF1; (c),(d) September EOF2; (e),(f) October EOF1; (g),(h) October EOF2; and
 (i),(j) December EOF2.}\label{fig2}
 \end{figure*}
+```
 
-The position and structure of the storm track as indicated
-by $\overline{V'\theta'}^{850}$
-and $\overline{V'V'}^{200}$
-are, at least for the winter,
-essentially the same as those reported in earlier studies on
-the storm tracks (e.g., Chang et al. 2002). The maxima in
-$\overline{V'\theta'}^{850}$
-and $\overline{V'V'}^{200}$ are located in the band of large Bx.
+The position and structure of the storm track as indicated by
+$\overline{V'\theta'}^{850}$ and $\overline{V'V'}^{200}$ are, at least for the
+winter, essentially the same as those reported in earlier studies on the storm
+tracks (e.g., Chang et al. 2002). The maxima in $\overline{V'\theta'}^{850}$ and
+$\overline{V'V'}^{200}$ are located in the band of large Bx.
 
 
-\section{Data and calculation procedures}
-The data used to calculate $\mathbf{B}$ are the monthly-mean
-temperature at 2 m above the surface ($T^{2m}$) and temperature
-at pressure levels available from the 40-yr European
-Centre for Medium-Range Weather Forecasts (ECMWF)
-Re-Analysis (ERA-40; Uppala et al.~2005). We chose
-the ERA-40 $T^{2m}$ data rather than the National Centers
-for Environmental Prediction--National Center for Atmospheric
-Research (NCEP--NCAR) reanalysis products
-for its explicit inclusion of the observed near-surface temperature
-in producing the $T^{2m}$ data. The monthly-mean
-surface pressure data from the NCEP--NCAR reanalyses
-(Kalnay et al. 1996) were used to determine the pressure
-levels to be used for $\mathbf B$ calculation, and to calculate $\theta$ 
-at 2 m
-above the surface from $T^{2m}$. We used the NCEP--NCAR
-surface pressure data for convenience, since we had already
-compiled the dataset for calculating transient eddy
-fluxes to be mentioned later and the ERA-40 surface
-pressure data are not readily available. We later compared
-the NCEP--NCAR monthly-mean sea level pressure with
-that of ERA-40, and found the difference between the two
-products to be immaterial for the purpose of the current
-study. We also used ERA-40 monthly-mean horizontal
-wind and geopotential height at pressure levels, net surface
-heat flux, Fh (the sum of latent heat flux, sensible heat flux,
-solar radiation, and the thermal radiation), and Hadley
-Centre sea surface temperature data (Rayner et al. 2003)
-to compile anomaly composites accompanying anomalous
-patterns in $\mathbf B$. In addition, we used 6-hourly temperature
-and wind data from the NCEP--NCAR reanalyses to
-compute various eddy fields. The accuracy of the Fh data
-used here is, as true for other reanalyses surface heat flux
-products, may not be so high to produce reliable anomaly
-composites.
+# Data and calculation procedures
+
+The data used to calculate $\mathbf{B}$ are the monthly-mean temperature at 2 m
+above the surface ($T^{2m}$) and temperature at pressure levels available from
+the 40-yr European Centre for Medium-Range Weather Forecasts (ECMWF) Re-Analysis
+(ERA-40; Uppala et al.~2005). We chose the ERA-40 $T^{2m}$ data rather than the
+National Centers for Environmental Prediction--National Center for Atmospheric
+Research (NCEP--NCAR) reanalysis products for its explicit inclusion of the
+observed near-surface temperature in producing the $T^{2m}$ data. The
+monthly-mean surface pressure data from the NCEP--NCAR reanalyses (Kalnay et al.
+1996) were used to determine the pressure levels to be used for $\mathbf B$
+calculation, and to calculate $\theta$ at 2 m above the surface from $T^{2m}$.
+We used the NCEP--NCAR surface pressure data for convenience, since we had
+already compiled the dataset for calculating transient eddy fluxes to be
+mentioned later and the ERA-40 surface pressure data are not readily available.
+We later compared the NCEP--NCAR monthly-mean sea level pressure with that of
+ERA-40, and found the difference between the two products to be immaterial for
+the purpose of the current study. We also used ERA-40 monthly-mean horizontal
+wind and geopotential height at pressure levels, net surface heat flux, Fh (the
+sum of latent heat flux, sensible heat flux, solar radiation, and the thermal
+radiation), and Hadley Centre sea surface temperature data (Rayner et al. 2003)
+to compile anomaly composites accompanying anomalous patterns in $\mathbf B$. In
+addition, we used 6-hourly temperature and wind data from the NCEP--NCAR
+reanalyses to compute various eddy fields. The accuracy of the Fh data used here
+is, as true for other reanalyses surface heat flux products, may not be so high
+to produce reliable anomaly composites.
 
 
-We computed $\mathbf{B}$ near the surface by calculating the
-horizontal gradient in $\theta^{2{\textrm m}}$, using the centered finite differencing,
-and calculating $N$ from the lowest three vertical
-pressure levels that are location dependent because of
-topography. Both $\nabla\theta^{2{\textrm m}}$ and $N$ were calculated locally as in
-Hoskins and Valdes (1990) and Nakamura and Shimpo
-(2004). The entire 45 yr from September 1957 to August
-2002 were used for the Northern Hemisphere. To resolve
-the dominant modes in $\mathbf{B}$ arising from the land--sea temperature
-contrast, one may need much higher horizontal
-resolution in the data. The relatively coarse horizontal
-resolution of the data may artificially suppress the significance
-of the variability associated with the land--sea temperature
-contrast.One should keep this limitation in mind.
-The 6-hourly bandpassed (period of 2--7 days) eddy
-fields and ultra-low-frequency (period of 30 days and longer)
-background fields were computed from the NCEP--
-NCAR reanalyses, using simple time filters (Lau and Lau
-1984) first. The filtered time series were then visually examined
-against the raw time series and, then, used to calculate
-the slowly evolving bandpassed meridional velocity
-variance ($\overline{V'V'}$), meridional temperature flux ($\overline{V'\theta'}$), and
-the three-dimensional transient wave activity flux defined
-on a zonally varying basic state by Plumb (1986). The wave
-activity flux consists of the zonal and meridional advective
-fluxes (MU and MV), the zonal and meridional
-radiative fluxes (MRx and MRy), and the radiative vertical
-flux (MRz). The flux is essentially the Eliassen--Palm
-flux (Eliassen and Palm 1961) in a zonally inhomogeneous
-mean flow (Plumb 1986). The wave activity flux was calculated
-from February 1948 to November 2004 only for
-the extratropics poleward of 208 latitude. Also, it was
-calculated only from 850 to 30 hPa because of the double
-differentiation with respect to pressure required for the
-calculation. The flux of particular interest in this study is
-the vertical component. Here MR$^z$ is defined by
-\[
+We computed $\mathbf{B}$ near the surface by calculating the horizontal gradient
+in $\theta^{2{\textrm m}}$, using the centered finite differencing, and
+calculating $N$ from the lowest three vertical pressure levels that are location
+dependent because of topography. Both $\nabla\theta^{2{\textrm m}}$ and $N$ were
+calculated locally as in Hoskins and Valdes (1990) and Nakamura and Shimpo
+(2004). The entire 45 yr from September 1957 to August 2002 were used for the
+Northern Hemisphere. To resolve the dominant modes in $\mathbf{B}$ arising from
+the land--sea temperature contrast, one may need much higher horizontal
+resolution in the data. The relatively coarse horizontal resolution of the data
+may artificially suppress the significance of the variability associated with
+the land--sea temperature contrast.One should keep this limitation in mind. The
+6-hourly bandpassed (period of 2--7 days) eddy fields and ultra-low-frequency
+(period of 30 days and longer) background fields were computed from the NCEP--
+NCAR reanalyses, using simple time filters (Lau and Lau 1984) first. The
+filtered time series were then visually examined against the raw time series
+and, then, used to calculate the slowly evolving bandpassed meridional velocity
+variance ($\overline{V'V'}$), meridional temperature flux
+($\overline{V'\theta'}$), and the three-dimensional transient wave activity flux
+defined on a zonally varying basic state by Plumb (1986). The wave activity flux
+consists of the zonal and meridional advective fluxes (MU and MV), the zonal and
+meridional radiative fluxes (MRx and MRy), and the radiative vertical flux
+(MRz). The flux is essentially the Eliassen--Palm flux (Eliassen and Palm 1961)
+in a zonally inhomogeneous mean flow (Plumb 1986). The wave activity flux was
+calculated from February 1948 to November 2004 only for the extratropics
+poleward of 208 latitude. Also, it was calculated only from 850 to 30 hPa
+because of the double differentiation with respect to pressure required for the
+calculation. The flux of particular interest in this study is the vertical
+component. Here MR$^z$ is defined by
+
+$$
 MR^z=
 \frac{
 pf \cos\phi}
@@ -356,49 +304,44 @@ pf \cos\phi}
 \overline{U'\theta'} +
 \frac{\partial\bar q}{\partial y}
 \overline{V'\theta'}\right), 
-\]
-where $q$ is quasigeostrophic potential vorticity, $p$ is the
-pressure, $p^0$ is the reference surface pressure set to
-1000 hPa here, $\theta_0$ is the area-weighted ultra-low-frequency
-hemispheric mean potential temperature at each height,
-u9 is the bandpassed potential temperature, and z is the
-geopotential height. An overbar denotes an ultra-low frequency
-component and a prime denotes bandpassed
-component. The 6-hourly time series of wave fluxes was
-computed by using the time series of ultra-low-frequency
-fields as the basic-state and high-frequency fields as eddies.
-In short, the time series was calculated by changing the
-meaning of an overbar from the time mean state to an
-ultra-low-frequency state, and changing the meaning of a
-prime from a departure from the mean to a high-frequency
-state. The 6-hourly eddy time series was averaged over each
-month to produce monthly-mean time series. This dataset
-allows us to examine anomalous eddy fields accompanying
-anomalous $\mathbf B$ in specific months. The climatology for
-the eddy fields was computed from 46 yr, January 1958 to
-December 2003. The calculation of the wave activity and
-its flux is described in detail by Nakamura et al. (2010).
+$$
+
+where $q$ is quasigeostrophic potential vorticity, $p$ is the pressure, $p^0$ is
+the reference surface pressure set to 1000 hPa here, $\theta_0$ is the
+area-weighted ultra-low-frequency hemispheric mean potential temperature at each
+height, u9 is the bandpassed potential temperature, and z is the geopotential
+height. An overbar denotes an ultra-low frequency component and a prime denotes
+bandpassed component. The 6-hourly time series of wave fluxes was computed by
+using the time series of ultra-low-frequency fields as the basic-state and
+high-frequency fields as eddies. In short, the time series was calculated by
+changing the meaning of an overbar from the time mean state to an
+ultra-low-frequency state, and changing the meaning of a prime from a departure
+from the mean to a high-frequency state. The 6-hourly eddy time series was
+averaged over each month to produce monthly-mean time series. This dataset
+allows us to examine anomalous eddy fields accompanying anomalous $\mathbf B$ in
+specific months. The climatology for the eddy fields was computed from 46 yr,
+January 1958 to December 2003. The calculation of the wave activity and its flux
+is described in detail by Nakamura et al. (2010).
 
 
-\section{Climatology and variance}
-The climatology and variance of $Bx$ and $By$ were computed
-for each calendar month and examined closely for
-their spatial and temporal structures. The monthly climatology,
-rather than the seasonal climatology, is used as the
-reference in our study, to avoid contamination of the diagnostic
-results arising from differences in the climatology
-between two successive months. Unlike in the North Atlantic
-basin reported in Part I, we found the impact of $By$
-variations on the large-scale atmospheric state in the
-North Pacific basin much weaker than that of Bx variations,
-presumably because of themore zonal orientation of
-the KOE in comparison to the Gulf Stream and North
-Atlantic Current. In the following, thus, we focus our
-presentation on the climatology and variations of $Bx$ and
-their impact on the large-scale atmospheric state.
+# Climatology and variance
+
+The climatology and variance of $Bx$ and $By$ were computed for each calendar
+month and examined closely for their spatial and temporal structures. The
+monthly climatology, rather than the seasonal climatology, is used as the
+reference in our study, to avoid contamination of the diagnostic results arising
+from differences in the climatology between two successive months. Unlike in the
+North Atlantic basin reported in Part I, we found the impact of $By$ variations
+on the large-scale atmospheric state in the North Pacific basin much weaker than
+that of Bx variations, presumably because of themore zonal orientation of the
+KOE in comparison to the Gulf Stream and North Atlantic Current. In the
+following, thus, we focus our presentation on the climatology and variations of
+$Bx$ and their impact on the large-scale atmospheric state.
 
 Sample citations: \citet{Becker+Schmitz2003}, \citet{Knutti2008},
 and \citep{MeixnerEA2002,Kuji_Nakajima2002,EmeryEA1986}.
+
+\clearpage
 
 \acknowledgments
 We thank two anonymous reviewers for their comments, which helped
@@ -466,6 +409,5 @@ Month& Yr of positive phase\\
 \caption{Years selected for anomaly composites for the positive
 phase of $B^x$ EOF1.}\label{tB1}
 \end{table}
-\pagebreak
 
 
