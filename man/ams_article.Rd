@@ -7,7 +7,8 @@
 ams_article(
   ...,
   keep_tex = TRUE,
-  md_extensions = c("-autolink_bare_uris", "-auto_identifiers")
+  md_extensions = c("-autolink_bare_uris", "-auto_identifiers"),
+  pandoc_args = NULL
 )
 }
 \arguments{
@@ -23,6 +24,8 @@ FALSE)}.}
 \item{md_extensions}{Markdown extensions to be added or removed from the
 default definition of R Markdown. See the \code{\link[rmarkdown]{rmarkdown_format}} for
 additional details.}
+
+\item{pandoc_args}{Additional command line options to pass to pandoc}
 }
 \value{
 An R Markdown output format.
