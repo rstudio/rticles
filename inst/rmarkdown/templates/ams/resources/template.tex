@@ -57,25 +57,18 @@ $endfor$
 
 % Credit to https://stackoverflow.com/a/67609365 for different last-author case.
 \authors{
-$if(authors/allbutlast)$
 $for(authors/allbutlast)$
 $it.name$$if(it.current)$\thanks{$it.current$}$endif$,\aff{$it.aff$}$if(it.email)$\correspondingauthor{$it.name$, $it.email$}$endif$
 $endfor$
-and~
-$endif$
 $for(authors/last)$
+and~
 $it.name$$if(it.current)$\thanks{$it.current$}$endif$\aff{$it.aff$}$if(it.email)$\correspondingauthor{$it.name$, $it.email$}$endif$
 $endfor$
 }
 
 % Credit to https://stackoverflow.com/a/67609365 for different last-affiliation case.
 \affiliation{
-$if(affiliations/allbutlast)$
-$for(affiliations/allbutlast)$
-\aff{$it.aff$}{$it.name$}\\
-$endfor$
-$for(affiliations/last)$
-\aff{$it.aff$}{$it.name$}
+$for(affiliations/allbutlast)$\aff{$it.aff$}{$it.name$}$sep$\\
 $endfor$
 }
 
