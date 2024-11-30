@@ -3,13 +3,40 @@
 
 \documentclass[$for(classoption)$$classoption$$sep$,$endfor$]{interact}
 
+\usepackage{etoolbox}
 \usepackage{epstopdf}% To incorporate .eps illustrations using PDFLaTeX, etc.
 \usepackage{subfigure}% Support for small, `sub' figures and tables
 %\usepackage[nolists,tablesfirst]{endfloat}% To `separate' figures and tables from text if required
 
-\usepackage{natbib}% Citation support using natbib.sty
-\bibpunct[, ]{(}{)}{;}{a}{}{,}% Citation support using natbib.sty
-\renewcommand\bibfont{\fontsize{10}{12}\selectfont}% Bibliography support using natbib.sty
+\newcommand{\BiblioStyleErrorMessage}{%
+  \errmessage{%
+    Invalid biblio-style in Taylor and Francis template. Allowed values are APA, CAD, NLM, TFP, TFQ, and TFS}}
+
+\ifstrequal{$biblio-style$}{APA}%
+  {\usepackage[natbibapa]{apacite}% Citation support using apacite.sty. Commands using natbib.sty MUST be deactivated first!
+   \setlength\bibhang{12pt}% To set the indentation in the list of references using apacite.sty. Commands using natbib.sty MUST be deactivated first!
+   \renewcommand\bibliographytypesize{\fontsize{10}{12}\selectfont}}% To set the list of references in 10 point font using apacite.sty. Commands using natbib.sty MUST be deactivated first!
+  {\ifboolexpr{%
+    test {\ifstrequal{$biblio-style$}{CAD}}%
+    or test {\ifstrequal{$biblio-style$}{}}}% Default
+    {\usepackage{natbib}}% Citation support using natbib.sty
+    {\ifboolexpr{%
+      test {\ifstrequal{$biblio-style$}{NLM}}%
+      or test {\ifstrequal{$biblio-style$}{TFQ}}%
+      or test {\ifstrequal{$biblio-style$}{TFS}}}%
+      {\usepackage[numbers,sort&compress]{natbib}% Citation support using natbib.sty
+       \ifstrequal{$biblio-style$}{NLM}%
+        {\makeatletter% @ becomes a letter
+         \def\NAT@def@citea{\def\@citea{\NAT@separator}}% Suppress spaces between citations using natbib.sty
+         \makeatother}
+        {}}% @ becomes a symbol again
+      {\ifstrequal{$biblio-style$}{TFP}%
+        {\usepackage[numbers,sort&compress,merge]{natbib}% Citation support using natbib.sty
+         \renewcommand\citenumfont[1]{\textit{#1}}% Citation numbers in italic font using natbib.sty
+         \renewcommand\bibnumfmt[1]{(#1)}}% Parentheses enclose ref. numbers in list using natbib.sty
+        {\BiblioStyleErrorMessage}}}
+   \bibpunct[, ]{[}{]}{,}{n}{,}{,}% Citation support using natbib.sty
+   \renewcommand\bibfont{\fontsize{10}{12}\selectfont}}% Bibliography support using natbib.sty
 
 \theoremstyle{plain}% Theorem-like structures provided by amsthm.sty
 \newtheorem{theorem}{Theorem}[section]
@@ -202,7 +229,20 @@ $endif$
 $body$
 
 $if(bibliography)$
-\bibliographystyle{$if(biblio-style)$$biblio-style$$else$tfcad$endif$}
+\ifboolexpr{test {\ifstrequal{$biblio-style$}{CAD}}
+           or test {\ifstrequal{$biblio-style$}{}}}%
+  {\bibliographystyle{tfcad}}%
+  {\ifstrequal{$biblio-style$}{APA}%
+    {\bibliographystyle{apacite}}%
+    {\ifstrequal{$biblio-style$}{NLM}%
+      {\bibliographystyle{tfnlm}}%
+      {\ifstrequal{$biblio-style$}{TFP}%
+        {\bibliographystyle{tfp}}%
+        {\ifstrequal{$biblio-style$}{TFQ}%
+          {\bibliographystyle{tfq}}%
+          {\ifstrequal{$biblio-style$}{TFS}%
+            {\bibliographystyle{tfs}}%
+            {\BiblioStyleErrorMessage}}}}}}% Chigago Author-Date for backward compatibility
 \bibliography{$bibliography$}
 $endif$
 

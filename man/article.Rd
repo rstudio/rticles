@@ -423,7 +423,7 @@ Macro package for Springer Journals.
 
 \section{\code{tf_article}}{
  Format for creating submissions to a Taylor & Francis journal. Adapted from
-\samp{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
+\samp{https://www.tandf.co.uk/journals/authors/Interact<BIBLIO-STYLE>LaTeX.zip}, where <BIBLIO-STYLE> is one of APA (American Psychological Association), CAD (Chicago Author-Date), NLM (National Library of Medicine), TFP (Reference Style P), TFQ (Reference Style Q), and TFS (Reference Style S). Authors must specify one of these options in the field biblio-style of the YAML header, according to the reference style required by the concerned journal.
 }
 
 \section{\code{trb_article}}{
