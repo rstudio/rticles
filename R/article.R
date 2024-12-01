@@ -556,24 +556,32 @@ springer_article <- function(..., keep_tex = TRUE,  citation_package = "natbib",
 #' \samp{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
 #' @export
 #' @rdname article
-tf_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
-  format <- pdf_document_format(
-    "tf",
-    keep_tex = keep_tex, citation_package = citation_package, ...
+tf_article <- function(..., keep_tex = TRUE, citation_package = "natbib",
+                       biblio_style = "CAD", pandoc_args = NULL) {
+  styles <- list(APA = "apacite",
+                 CAD = "tfcad",
+                 NLM = "tfnlm",
+                 TFP = "tfp",
+                 TFQ = "tfq",
+                 TFS = "tfs")
+  if (! biblio_style %in% names(styles))
+    stop(
+      paste(
+        "Invalid biblio_style in Taylor and Francis article. Allowed values are:",
+        paste(names(styles), collapse = ", ")
+      )
+    )
+  pandoc_args <- c(
+    pandoc_args,
+    rmarkdown::pandoc_variable_arg("bst-name", styles[[biblio_style]])
   )
-  pre_knit_fun <- format$pre_knit
-  format$pre_knit <-  function(input, ...) {
-    if (is.function(pre_knit_fun)) pre_knit_fun(input, ...)
-    allowed_styles <- c("APA", "CAD", "NLM", "TFP", "TFQ", "TFS")
-    options <- rmarkdown::yaml_front_matter(input)
-    if ("biblio-style" %in% names(options))
-      if (! options[["biblio-style"]] %in% allowed_styles)
-        stop(paste(
-          "Invalid biblio-style in Taylor and Francis article. Allowed values are",
-          paste(allowed_styles, collapse = ", ")
-        ))
-  }
-  format
+  pdf_document_format(
+    "tf",
+    keep_tex = keep_tex,
+    citation_package = citation_package,
+    pandoc_args = pandoc_args,
+    ...
+  )
 }
 
 #' @section \code{trb_article}: Format for creating submissions to the Transportation
