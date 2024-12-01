@@ -566,12 +566,12 @@ tf_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
     if (is.function(pre_knit_fun)) pre_knit_fun(input, ...)
     allowed_styles <- c("APA", "CAD", "NLM", "TFP", "TFQ", "TFS")
     options <- rmarkdown::yaml_front_matter(input)
-    if (! options[["biblio-style"]] %in% allowed_styles) {
-      stop(paste(
-        "Invalid biblio-style in Taylor and Francis article. Allowed values are",
-        paste(allowed_styles, collapse = ", ")
-      ))
-    }
+    if ("biblio-style" %in% names(options))
+      if (! options[["biblio-style"]] %in% allowed_styles)
+        stop(paste(
+          "Invalid biblio-style in Taylor and Francis article. Allowed values are",
+          paste(allowed_styles, collapse = ", ")
+        ))
   }
   format
 }
