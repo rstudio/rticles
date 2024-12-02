@@ -16,7 +16,8 @@
   {\ifboolexpr{%
     test {\ifstrequal{$bst-name$}{tfcad}}%
     or test {\ifstrequal{$bst-name$}{}}}% Default
-    {\usepackage{natbib}}% Citation support using natbib.sty
+    {\usepackage{natbib}% Citation support using natbib.sty
+     \bibpunct[, ]{(}{)}{;}{a}{}{,}}% Citation support using natbib.sty
     {\ifboolexpr{%
       test {\ifstrequal{$bst-name$}{tfnlm}}%
       or test {\ifstrequal{$bst-name$}{tfq}}%
@@ -31,8 +32,8 @@
         {\usepackage[numbers,sort&compress,merge]{natbib}% Citation support using natbib.sty
          \renewcommand\citenumfont[1]{\textit{#1}}% Citation numbers in italic font using natbib.sty
          \renewcommand\bibnumfmt[1]{(#1)}}% Parentheses enclose ref. numbers in list using natbib.sty
-        {\BiblioStyleErrorMessage}}}
-   \bibpunct[, ]{[}{]}{,}{n}{,}{,}% Citation support using natbib.sty
+        {\BiblioStyleErrorMessage}}%
+     \bibpunct[, ]{[}{]}{,}{n}{,}{,}}% Citation support using natbib.sty
    \renewcommand\bibfont{\fontsize{10}{12}\selectfont}}% Bibliography support using natbib.sty
 
 \theoremstyle{plain}% Theorem-like structures provided by amsthm.sty
