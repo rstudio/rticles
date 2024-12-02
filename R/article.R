@@ -556,10 +556,31 @@ springer_article <- function(..., keep_tex = TRUE,  citation_package = "natbib",
 #' \samp{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
 #' @export
 #' @rdname article
-tf_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
+tf_article <- function(..., keep_tex = TRUE, citation_package = "natbib",
+                       biblio_style = "CAD", pandoc_args = NULL) {
+  styles <- list(APA = "apacite",
+                 CAD = "tfcad",
+                 NLM = "tfnlm",
+                 TFP = "tfp",
+                 TFQ = "tfq",
+                 TFS = "tfs")
+  if (! biblio_style %in% names(styles))
+    stop(
+      paste(
+        "Invalid biblio_style in Taylor and Francis article. Allowed values are:",
+        paste(names(styles), collapse = ", ")
+      )
+    )
+  pandoc_args <- c(
+    pandoc_args,
+    rmarkdown::pandoc_variable_arg("bst-name", styles[[biblio_style]])
+  )
   pdf_document_format(
     "tf",
-    keep_tex = keep_tex, citation_package = citation_package, ...
+    keep_tex = keep_tex,
+    citation_package = citation_package,
+    pandoc_args = pandoc_args,
+    ...
   )
 }
 
