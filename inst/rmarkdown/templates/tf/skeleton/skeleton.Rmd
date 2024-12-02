@@ -403,7 +403,7 @@ output:
 
 ## References cited in the text
 
-[CAVEAT: In the subsections below, the only one that will be typeset correctly that that corresponding to the value specified in the `biblio_style` field of the YAML header in this file.]
+[CAVEAT: The only subsection below that will be correctly typeset is the one corresponding to the  value specified in the `biblio_style` field of the YAML header.]
 
 ### American Psychological Association reference style (APA)
 
