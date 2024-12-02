@@ -387,9 +387,9 @@ An unnumbered `Notes` section may be included before the References (if using th
 
 Different journals from Taylor & Francis have different requirements for formatting the list of references. The reference style will be one those:
 
-- American Psychological Association (APA)
-- Chicago Author-Date refrence style (CAD)
-- National Library of Medicine (NLM)
+- American Psychological Association reference style (APA)
+- Chicago Author-Date reference style (CAD)
+- National Library of Medicine reference style (NLM)
 - Reference Style-P (TFP)
 - Reference Style-Q (TFQ)
 - Reference Style-S (TFS)
@@ -401,19 +401,60 @@ output:
     biblio_style: CAD
 ```
 
-[**FIXME: The following two subsections must be adapted for the different reference styles!**]
-
 ## References cited in the text
+
+[CAVEAT: In the subsections below, the only one that will be typeset correctly that that corresponding to the value specified in the `biblio_style` field of the YAML header in this file.]
+
+### American Psychological Association reference style (APA)
+
+References should be cited in accordance with \citeauthor{APA10} (APA) style, i.e. in alphabetical order separated by semicolons, e.g. ‘\citep{Ban77,Pia88,VL07}’ or ‘\ldots see Smith (1985, p.&nbsp;75)’. If there are two or more authors with the same surname, use the first author's initials with the surnames, e.g. ‘\citep{Lig08,Lig06}’. If there are three to five authors, list all the authors in the first citation, e.g. ‘\citep{GSSM91}’. In subsequent citations, use only the first author's surname followed by et al., e.g. ‘\citep{GSSM91}’. For six or more authors, cite the first author's name followed by et al. For two or more sources by the same author(s) in the same year, use lower-case letters (a,&nbsp;b,&nbsp;c, \ldots) with the year to order the entries in the reference list and use these lower-case letters with the year in the in-text citations, e.g. ‘(Green, 1981a,b)’. For further details on this reference style, see the Instructions for Authors on the Taylor & Francis website.
+
+Each bibliographic entry has a key, which is assigned by the author and is used to refer to that entry in the text. In this document, the key `Nas93` in the citation form `\citep{Nas93}` produces ‘\citep{Nas93}’, and the keys `Koc59`, `Han04` and `Cla08` in the citation form `\citep{Koc59,Han04,Cla08}` produce ‘\citep{Koc59,Han04,Cla08}’. The citation `\citep{Cha08}` produces ‘\citep{Cha08}’ where the citation first appears in the text, and ‘\citep{Cha08}’ in any subsequent citation. The appropriate citation style for different situations can be obtained, for example, by `\citet{Ovi95}` for ‘\citet{Ovi95}’, `\citealp{MPW08}` for ‘\citealp{MPW08}’, and `\citealt{Sch93}` for ‘\citealt{Sch93}’. Citation of the year alone may be produced by `\citeyear{Sch00}`, i.e. ‘\citeyear{Sch00}’, or `\citeyearpar{Gra05}`, i.e. ‘\citeyearpar{Gra05}’, or of the author(s) alone by `\citeauthor{Rit74}`, i.e. ‘\citeauthor{Rit74}’. Optional notes may be included at the beginning and/or end of a citation by the use of square brackets, e.g. `\citep[p.~31]{Hay08}` produces ‘\citep[p. 31]{Hay08}’; `\citep[see][pp.~73-77]{PI51}` produces ‘\citep[see][pp. 73--77]{PI51}’; `\citep[e.g.][]{Fel81}` produces ‘\citep[e.g.][]{Fel81}’. A ‘plain’ `\cite` command will produce the same results as a `\citet`, i.e. `\cite{BriIP}` will produce ‘\cite{BriIP}’.
+
+### Chicago Author-Date reference style (CAD)
+
+References should be cited in Chicago author-date style, e.g. ‘\citep{Alb05,Gre08,Sch87}’ or ‘\ldots~see Smith (1985,~75)’. If there are three authors, list them all in every citation, e.g. ‘\citep{Nowacki20}’. For more than three authors, cite the first author's name followed by et al. For two or more sources by the same author(s) in the same year, use lower-case letters (a, b, c, ...) with the year to order the entries in the References list and use these letters with the year in the in-text citations, e.g. ‘\citep{FogEHPD04,FogJEE04}’. If two or more authors have the same surname, use their initials with the surnames, e.g. ‘(C.&nbsp;Doershuk 2010; J.&nbsp;Doershuk 2009)’. If the first author's names and the years of publication are identical for several references, include enough co-author names to eliminate ambiguity, e.g. `(Schonen, Baker, et&nbsp;al. 2009; Schonen, Brooks, et&nbsp;al. 2009)'. For further details on this reference style, see the Instructions for Authors on the Taylor \& Francis website.
+
+Each bibliographic entry has a key, which is assigned by the author and is used to refer to that entry in the text. In this document, the key `Fow89` in the citation form `\citep{Fow89}` produces ‘\citep{Fow89}’, and the keys `{Bro86,Bro02,Roh08}` in the citation form `\citep{Bro86,Bro02,Prinzie09}` produce ‘\citep{Bro86,Bro02,Prinzie09}’. The appropriate citation style for different situations can be obtained, for example, by `\citet{Draper1987}` for ‘\citet{Draper1987}’, `\citealt{Lev05}` for ‘\citealt{Lev05}’, or `\citealp{Mor08}` for ‘\citealp{Mor08}’. Citation of the year alone may be produced by `\citeyear{Cho08}`, i.e. ‘\citeyear{Cho08}’, or `\citeyearpar{ChoGul08}`, i.e. ‘\citeyearpar{ChoGul08}’, or of the author(s) alone by `\citeauthor{Wittgenstein2009}`, i.e. ‘\citeauthor{Wittgenstein2009}’. Optional notes may be included at the beginning and/or end of a citation by the use of square brackets, e.g. `\citep[see][275]{Ell1968}` produces ‘\citep[see][275]{Ell1968}’; `\citep[e.g.][]{Wau50}` produces ‘\citep[e.g.][]{Wau50}’; `\citet[chap.~2]{Str00}` produces ‘\citet[chap.~2]{Str00}’. A ‘plain’ `\cite` command will produce the same result as a `\citet`, i.e. `\cite{Wei02}` will produce ‘\cite{Wei02}’.
+
+### National Library of Medicine reference style (NLM)
+
+References should be cited in accordance with US National Library of Medicine (NLM) style. References are cited in the text by a number in square brackets (e.g. [1], [2,4,10], [11--15], _not_ [11]--[15]), in the order in which they first appear. For further details on this reference style, see the Instructions for Authors on the Taylor \& Francis website.
+
+Each bibliographic entry has a key, which is assigned by the author and is used to refer to that entry in the text. In this document, the key `Jen05` in the citation form `\cite{Jen05}` produces ‘\cite{Jen05}’, and the keys `{Sch02,Wen95}` in the citation form `\cite{Sch02,Wen95}` produce ‘\cite{Sch02,Wen95}’. The citation for a range of bibliographic entries (e.g.\ ‘\cite{Sha78,AG98,Smi75,Men05,DCK03,Hor98,Ant03,Zha05,Rog05,SRW05}’) will automatically be produced by  `\cite{Sha78,AG98,Smi75,Men05,DCK03,Hor98,Ant03,Zha05,Rog05,SRW05}`. Optional notes may be included at the beginning and/or end of a citation by the use of square brackets, e.g.\ `\cite[cf.][]{Gau05}` produces ‘\cite[cf.][]{Gau05}’, `\cite[p.356]{BGC04}` produces ‘\cite[p.356]{BGC04}’, and `\cite[see][p.73--77]{PI51}` produces ‘\cite[see][p.73--77]{PI51}’.
+
+### Reference Style-P (TFP)
+
+References cited in the text should be quoted by italic numbers in parentheses (e.g.\ (_1_), (_2_, _4_, _10_), (_11_--_15_), _not_ (_11_)--(_15_)), in the order in which they first appear. For further details on this reference style, see the Instructions for Authors on the Taylor \& Francis website.
+
+Each bibliographic entry has a key, which is assigned by the author and used to refer to that entry in the text. In this document, the key `Gou02` in the citation form `\cite{Gou02}` produces ‘\cite{Gou02}’, and the keys `LeC03` and `Ban75` in the citation form `\cite{LeC03,Ban75}` produce ‘\cite{LeC03,Ban75}’. The citation for a range of bibliographic entries such as ‘\cite{Sah04,Hil90,Pul04,Kli04,Leo05,Wib74,McG02,Gar88,Zie03,Cha94,Moh04,ACSPD,Car01,Pus05,Mul05,Tay05,Squ05,Len04,Pet99,She04,Tsc04,Cha04}’ will automatically be produced by `\cite{Sah04,Hil90,Pul04,Kli04,Leo05,Wib74,McG02,Gar88,Zie03,Cha94,Moh04,` `ACSPD,Car01,Pus05,Mul05,Tay05,Squ05,Len04,Pet99,She04,Tsc04,Cha04}`. By using the `merge` option to `natbib`, citation keys within a multiple `\cite` command may contain a leading `*` that causes them to be merged in the bibliography together with the previous citation as a single entry with a single reference number. For example, `\cite{LP02,*LP04}` produces ‘\cite{LP02,*LP04}’, and both references are listed in the bibliography under one entry with that number.
+
+
+### Reference Style-Q (TFQ)
+
+References should be cited in the text by a number in square brackets (e.g. [1], [2,4,10], [11--15], not [11]--[15]) in the order in which they first appear. For further details on this reference style, see the Instructions for Authors on the Taylor & Francis website.
+
+Each bibliographical entry has a key, which is assigned by the author and is used to refer to that entry in the text. In this document, the key `Ali95` in the citation form `\cite{Ali95}` produces ‘\cite{Ali95}’, and the keys `Wei95` and `GMW81` in the citation form `\cite{Wei95,GMW81}` produce ‘\cite{Wei95,GMW81}’. The citation for a range of bibliographic entries (e.g. ‘\cite{Bow76,Hor96,Con96,Har97,FGK03,Fle80,Ste98,Ell98,Str97,Coo03,BGP02,Kih01,Hol03,Hai01,Hag03}’) will automatically be produced by `\cite{Bow76,Hor96,Con96,Har97,FGK03,Fle80,Ste98,Ell98,Str97,Coo03,BGP02,` `Kih01,Hol03,Hai01,Hag03}`. Optional notes may be included at the end of a citation by the use of square brackets, e.g. `\cite[cf.][]{GHGsoft}` produces ‘\cite[cf.][]{GHGsoft}’, and `\cite[see][and references therein]{Pow00}` produces ‘\cite[see][and references therein]{Pow00}’.
+
+### Reference Style-S (TFS)
+
+References should be cited in the text by numbers in square brackets based on the order in which they appear in an alphabetical list of references at the end of the document (not the order of citation), so the first reference cited in the text might be [23]. For example, these may take the forms [32], [5,,6,,14], [21--55] (\emph{not} [21]--[55]). For further details on this reference style, see the Instructions for Authors on the Taylor \& Francis website.
+
+Each bibliographic entry has a key, which is assigned by the author and is used to refer to that entry in the text. In this document, the key `Ali95` in the citation form `\cite{Ali95}` produces ‘\cite{Ali95}’, and the keys `Bow76` and `BGP02` in the citation form `\cite{Bow76,BGP02}` produce ‘\cite{Bow76,BGP02}’. The citation for a range of bibliographic entries (e.g. ‘\cite{GMW81,Hor96,Con96,Har97,FGK03,Fle80,Ste98,Ell98,Str97,Coo03,Kih01,Hol03,Hai01,Hag03,Hov03,Mul00,GHGsoft,Pow00}’) will automatically be produced by `\cite{GMW81,Hor96,Con96,Har97,FGK03,Fle80,Ste98,Ell98,Str97,Coo03,Kih01,` `Hol03,Hai01,Hag03,Hov03,Mul00,GHGsoft,Pow00}`.
+Optional notes may be included at the beginning and/or end of a citation by the use of square brackets, e.g. `\cite[cf.][]{Tay03}` produces ‘\cite[cf.][]{Tay03}’, and `\cite[see][and references therein]{Wei95}` produces ‘\cite[see][and references therein]{Wei95}’.
+
 
 ## The list of references
 
-References should be listed at the end of the main text in alphabetical order by authors' surnames, then chronologically (earliest first). If references have the same author(s), editor(s), etc., arrange by year of publication, with undated works at the end.
-A single-author entry precedes a multi-author entry that begins with the same name.
-If the reference list contains two or more items by the same author(s) in the same year, add a, b, etc. and list them alphabetically by title.
-Successive entries by two or more authors when only the first author is the same are alphabetized by co-authors' surnames.
-If a reference has more than ten named authors, list only the first seven, followed by 'et al.'.
-If a reference has no author or editor, order by title; if a date of publication is impossible to find, use `n.d.' in its place.
+Authors should create the list of references using a \textsc{Bib}\TeX\ database. \LaTeX/\textsc{Bib}\TeX\ will extract from your .bib file only those references that are cited in your text and list them in the References section. According to the chosen reference style, one of the following .bst files will be automatically used:
 
-The following list shows some sample references prepared in the Taylor & Francis Chicago author-date style.
+- APA: `apacite.bst`
+- CAD: `tfcad.bst`
+- NLM: `tfnlm.bst`
+- TFP: `tfp.bst`
+- TFQ: `tfq.bst`
+- TFS: `tfs.bst`
 
-[@Blair1977; @Alb05]
+Besides from `apacite.bst`, which is part of standard \LaTeX\ distributions, the files listed below should have been installed in the same directory of this skeleton file. You may delete the ones that are not needed.
+
+Please include a copy of your .bib file and/or the final generated .bbl file among your source files.
