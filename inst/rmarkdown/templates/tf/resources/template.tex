@@ -1,40 +1,10 @@
 \documentclass[$for(classoption)$$classoption$$sep$,$endfor$]{interact}
 
-\usepackage{etoolbox}
 \usepackage{epstopdf}% To incorporate .eps illustrations using PDFLaTeX, etc.
 \usepackage{subfigure}% Support for small, `sub' figures and tables
 %\usepackage[nolists,tablesfirst]{endfloat}% To `separate' figures and tables from text if required
 
-\newcommand{\BiblioStyleErrorMessage}{%
-  \errmessage{%
-    Invalid biblio_style in Taylor and Francis template. Allowed values are APA, CAD, NLM, TFP, TFQ, and TFS}}
-
-\ifstrequal{$bst-name$}{apacite}%
-  {\usepackage[natbibapa]{apacite}% Citation support using apacite.sty. Commands using natbib.sty MUST be deactivated first!
-   \setlength\bibhang{12pt}% To set the indentation in the list of references using apacite.sty. Commands using natbib.sty MUST be deactivated first!
-   \renewcommand\bibliographytypesize{\fontsize{10}{12}\selectfont}}% To set the list of references in 10 point font using apacite.sty. Commands using natbib.sty MUST be deactivated first!
-  {\ifboolexpr{%
-    test {\ifstrequal{$bst-name$}{tfcad}}%
-    or test {\ifstrequal{$bst-name$}{}}}% Default
-    {\usepackage{natbib}% Citation support using natbib.sty
-     \bibpunct[, ]{(}{)}{;}{a}{}{,}}% Citation support using natbib.sty
-    {\ifboolexpr{%
-      test {\ifstrequal{$bst-name$}{tfnlm}}%
-      or test {\ifstrequal{$bst-name$}{tfq}}%
-      or test {\ifstrequal{$bst-name$}{tfs}}}%
-      {\usepackage[numbers,sort&compress]{natbib}% Citation support using natbib.sty
-       \ifstrequal{$bst-name$}{tfnlm}%
-        {\makeatletter% @ becomes a letter
-         \def\NAT@def@citea{\def\@citea{\NAT@separator}}% Suppress spaces between citations using natbib.sty
-         \makeatother}
-        {}}% @ becomes a symbol again
-      {\ifstrequal{$bst-name$}{tfp}%
-        {\usepackage[numbers,sort&compress,merge]{natbib}% Citation support using natbib.sty
-         \renewcommand\citenumfont[1]{\textit{#1}}% Citation numbers in italic font using natbib.sty
-         \renewcommand\bibnumfmt[1]{(#1)}}% Parentheses enclose ref. numbers in list using natbib.sty
-        {\BiblioStyleErrorMessage}}%
-     \bibpunct[, ]{[}{]}{,}{n}{,}{,}}% Citation support using natbib.sty
-   \renewcommand\bibfont{\fontsize{10}{12}\selectfont}}% Bibliography support using natbib.sty
+$biblio-commands$
 
 \theoremstyle{plain}% Theorem-like structures provided by amsthm.sty
 \newtheorem{theorem}{Theorem}[section]
