@@ -8,6 +8,15 @@
 
 - Update `mdpi_article()` to latest version of September 2024 (thanks, @nielsbock, #573, #580).
 
+- Update `ams_article()` to latest version 6.1 with some breaking changes:
+  - Pandoc v2.10 is required with the template now
+  - Removed metadata no more used : 
+    - `journal`, `layout`, `exauthors`, `author1`, `author2`, `currentaddress`, `affiliation`)
+  - Authors related variable are now `authors` and `affiliations` fields which accept multi authors. See the new skeleton by creating new template with `rmarkdown::draft("Untiltle.Rmd", "ams", "rticles")`.
+  - Only `natbib` is supported now in `citation_package`
+  - Some knitr options are made default in the format: `fig.path = ""`, `out.extra = ""`, `echo = FALSE`. They can be overriden in the document. 
+  - Specific markdown syntax are available in template for `acknowledgments`, `datastatement`, `appendix`. See the new skeleton by creating new template with `rmarkdown::draft("Untiltle.Rmd", "ams", "rticles")`.
+
 # rticles 0.27
 
 - `joss_article()` now correctly works as `base_format` for `bookdown::pdf_book()` (thanks, @mlysy, #564).
