@@ -1,68 +1,21 @@
-\documentclass[$layout$]{ametsoc}
-\usepackage{color}
-\usepackage{hyperref}
-\journal{$journal$}
-%  Please choose a journal abbreviation to use above from the following list:
+%% Version 6.1, 1 September 2021
 %
-%   jamc     (Journal of Applied Meteorology and Climatology)
-%   jtech     (Journal of Atmospheric and Oceanic Technology)
-%   jhm      (Journal of Hydrometeorology)
-%   jpo     (Journal of Physical Oceanography)
-%   jas      (Journal of Atmospheric Sciences)
-%   jcli      (Journal of Climate)
-%   mwr      (Monthly Weather Review)
-%   wcas      (Weather, Climate, and Society)
-%   waf       (Weather and Forecasting)
-%   bams (Bulletin of the American Meteorological Society)
-%   ei    (Earth Interactions)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TemplateV6.1.tex --  LaTeX-based blank template for submissions to the
+% American Meteorological Society
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PREAMBLE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Start with one of the following:
+% 1.5-SPACED VERSION FOR SUBMISSION TO THE AMS
+\documentclass[$if(twocol)$twocol$endif$]{ametsocV6.1}
+
+% TWO-COLUMN JOURNAL PAGE LAYOUT---FOR AUTHOR USE ONLY
+% \documentclass[twocol]{ametsocV6.1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Citations should be of the form ``author year''  not ``author, year''
-\bibpunct{(}{)}{;}{a}{}{,}
-\title{$title$}
-
-$if(author1)$
-\authors{$author1$
-$if(correspondingauthor)$
-\correspondingauthor{$author1$,$correspondingauthor$}
-$endif$
-$if(author2)$
-and $author2$
-$if(currentaddress)$
-\thanks{$currentaddress$}
-$endif$
-$endif$
-}
-$endif$
-$if(affiliation)$
-\affiliation{$affiliation$}
-$endif$
-$if(extraauthor)$
-    \extraauthor{Extra Author}
-$endif$
-$if(exaffiliation)$
-    \extraaffil{$exaffiliation$}
-$endif$
-
-$if(email)$
-$email$
-$endif$
-
-$for(exauthors)$
-\extraauthor{$exauthors.name$
-$if(exauthors.correspondingauthor)$
-\correspondingauthor{$exauthors.name$,$exauthors.correspondingauthor$}
-$endif$
-$if(exauthors.currentaddress)$
-\thanks{$exauthors.currentaddress$}
-$endif$}
-$if(exauthors.exaffiliation)$
-\extraaffil{$exauthors.exaffiliation$}
-$endif$
-$if(exauthors.email)$
-$exauthors.email$
-$endif$
-$endfor$
 
 $if(highlighting-macros)$
 % Pandoc syntax highlighting
@@ -89,6 +42,25 @@ $endif$
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
 $endif$
+
+% Add imagehandling
+$-- Only needed for pandoc 3.2.1 and above requiring graphics for new command.
+$if(graphics)$$if(pandoc321)$
+% Custom command from Pandoc 3.2.1 to scale images if necessary
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+\makeatother
+$endif$$endif$
 
 $if(csl-refs)$
 % Pandoc citation processing
@@ -182,16 +154,180 @@ $for(header-includes)$
 $header-includes$
 $endfor$
 
+%%% To be entered by author:
+
+%% May use \\ to break lines in title:
+
+\title{$title$}
+
+%% Enter authors' names and affiliations as you see in the examples below.
+%
+%% Use \correspondingauthor{} and \thanks{} (\thanks command to be used for affiliations footnotes,
+%% such as current affiliation, additional affiliation, deceased, co-first authors, etc.)
+%% immediately following the appropriate author.
+%
+%% Note that the \correspondingauthor{} command is NECESSARY.
+%% The \thanks{} commands are OPTIONAL.
+%
+%% Enter affiliations within the \affiliation{} field. Use \aff{#} to indicate the affiliation letter at both the
+%% affiliation and at each author's name. Use \\ to insert line breaks to place each affiliation on its own line.
+
+%\authors{Author One,\aff{a}\correspondingauthor{Author One, email@email.com}
+%Author Two,\aff{a}
+%Author Three,\aff{b}
+%Author Four,\aff{a}
+%Author Five\thanks{Author Five's current affiliation: NCAR, Boulder, Colorado},\aff{c}
+%Author Six,\aff{c}
+%Author Seven,\aff{d}
+% and Author Eight\aff{a,d}
+%}
+%
+%\affiliation{\aff{a}{First Affiliation}\\
+%\aff{b}{Second Affiliation}\\
+%\aff{c}{Third Affiliation}\\
+%\aff{d}{Fourth Affiliation}
+%}
+
+% Credit to https://stackoverflow.com/a/67609365 for different last-author case.
+\authors{
+$for(authors/allbutlast)$
+$it.name$$if(it.current)$\thanks{$it.current$}$endif$,\aff{$it.aff$}$if(it.email)$\correspondingauthor{$it.name$, $it.email$}$endif$
+$endfor$
+$for(authors/last)$
+and~
+$it.name$$if(it.current)$\thanks{$it.current$}$endif$\aff{$it.aff$}$if(it.email)$\correspondingauthor{$it.name$, $it.email$}$endif$
+$endfor$
+}
+
+% Credit to https://stackoverflow.com/a/67609365 for different last-affiliation case.
+\affiliation{
+$for(affiliations/allbutlast)$\aff{$it.aff$}{$it.name$}$sep$\\
+$endfor$
+}
+
+%%% To be entered by author:
+
+%% May use \\ to break lines in title:
+
+\title{$title$}
+
+%% Enter authors' names and affiliations as you see in the examples below.
+%
+%% Use \correspondingauthor{} and \thanks{} (\thanks command to be used for affiliations footnotes,
+%% such as current affiliation, additional affiliation, deceased, co-first authors, etc.)
+%% immediately following the appropriate author.
+%
+%% Note that the \correspondingauthor{} command is NECESSARY.
+%% The \thanks{} commands are OPTIONAL.
+%
+%% Enter affiliations within the \affiliation{} field. Use \aff{#} to indicate the affiliation letter at both the
+%% affiliation and at each author's name. Use \\ to insert line breaks to place each affiliation on its own line.
+
+%\authors{Author One,\aff{a}\correspondingauthor{Author One, email@email.com}
+%Author Two,\aff{a}
+%Author Three,\aff{b}
+%Author Four,\aff{a}
+%Author Five\thanks{Author Five's current affiliation: NCAR, Boulder, Colorado},\aff{c}
+%Author Six,\aff{c}
+%Author Seven,\aff{d}
+% and Author Eight\aff{a,d}
+%}
+%
+%\affiliation{\aff{a}{First Affiliation}\\
+%\aff{b}{Second Affiliation}\\
+%\aff{c}{Third Affiliation}\\
+%\aff{d}{Fourth Affiliation}
+%}
+
+% Credit to https://stackoverflow.com/a/67609365 for different last-author case.
+\authors{
+$for(authors/allbutlast)$
+$it.name$$if(it.current)$\thanks{$it.current$}$endif$,\aff{$it.aff$}$if(it.email)$\correspondingauthor{$it.name$, $it.email$}$endif$
+$endfor$
+$for(authors/last)$
+and~
+$it.name$$if(it.current)$\thanks{$it.current$}$endif$\aff{$it.aff$}$if(it.email)$\correspondingauthor{$it.name$, $it.email$}$endif$
+$endfor$
+}
+
+% Credit to https://stackoverflow.com/a/67609365 for different last-affiliation case.
+\affiliation{
+$for(affiliations)$\aff{$it.aff$}{$it.name$}$sep$\\
+$endfor$
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ABSTRACT
+%
+% Enter your abstract here
+% Abstracts should not exceed 250 words in length!
+%
 \abstract{$abstract$}
+
 \begin{document}
+
+%% Necessary!
 \maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SIGNIFICANCE STATEMENT/CAPSULE SUMMARY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% If you are including an optional significance statement for a journal article or a required capsule summary for BAMS
+% (see www.ametsoc.org/ams/index.cfm/publications/authors/journal-and-bams-authors/formatting-and-manuscript-components for details),
+% please apply the necessary command as shown below:
+%
+% Significance Statement (all journals except BAMS)
+%
+%\statement
+%	 Enter significance statement here, no more than 120 words. See \url{www.ametsoc.org/index.cfm/ams/publications/author-information/significance-statements/} for details.
+%
+
+$if(statement)$
+%$if(twocol)$\twocolsig$else$\statement$endif$
+$statement$
+$endif$ % FIXME, AMS template says to use twocolsig instead of sig for twocol, but there is no sig, is two col twocolstatement or twocolsig?
+
+%% Capsule (BAMS only)
+%%
+%\capsule
+%       Enter BAMS capsule here, no more than 30 words. See \url{www.ametsoc.org/index.cfm/ams/publications/author-information/formatting-and-manuscript-components/#capsule} for details.
+%
+
+$if(capsule)$
+%$if(twocol)$\twocolcapsule$else$\capsule$endif$
+$capsule$
+$endif$
+
+%% * * If using twocol mode, you will need to use the commands "twocolsig" and "twocolcapsule" in place of "sig" and "capsule"
+%%      to ensure that the text box correctly spans across both columns.
+%
+
 $for(include-before)$
 $include-before$
 
 $endfor$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MAIN BODY OF PAPER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+
 $body$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% REFERENCES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Make your BibTeX bibliography by using these commands:
+% \bibliographystyle{ametsocV6}
+% \bibliography{references}
+
+\bibliographystyle{ametsocV6}
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+
 $for(include-after)$
 $include-after$
 
 $endfor$
+
 \end{document}

@@ -4,6 +4,18 @@
 - Update `springer_aticle()` template to version 3 (December 2023): 
   - BREAKING CHANGE: sn-mathphys.bst has been split into Numbered and Author year style namely `sn-mathphys-num.bst` and `sn-mathphys-ay.bst` respectively. Skeleton has been updated. 
     If you have existing article, you need to use `sn-mathphys-num` or `sn-mathphys-ay` option now, instead of `sn-mathphys`.
+- Update all templates to work with Pandoc 3.2.1 by adding the definition of new `\pandocbounded` command used by Pandoc's LaTeX writers (see more at https://github.com/jgm/pandoc/releases/tag/3.2.1 and https://github.com/jgm/pandoc/issues/9660) (#571, #576).
+
+- Update `mdpi_article()` to latest version of September 2024 (thanks, @nielsbock, #573, #580).
+
+- Update `ams_article()` to latest version 6.1 with some breaking changes:
+  - Pandoc v2.10 is required with the template now
+  - Removed metadata no more used : 
+    - `journal`, `layout`, `exauthors`, `author1`, `author2`, `currentaddress`, `affiliation`)
+  - Authors related variable are now `authors` and `affiliations` fields which accept multi authors. See the new skeleton by creating new template with `rmarkdown::draft("Untiltle.Rmd", "ams", "rticles")`.
+  - Only `natbib` is supported now in `citation_package`
+  - Some knitr options are made default in the format: `fig.path = ""`, `out.extra = ""`, `echo = FALSE`. They can be overriden in the document. 
+  - Specific markdown syntax are available in template for `acknowledgments`, `datastatement`, `appendix`. See the new skeleton by creating new template with `rmarkdown::draft("Untiltle.Rmd", "ams", "rticles")`.
 
 - Update Copernicus Publications template to version 7.9 from 2024-10-10 (@RLumSK, #577).
 
@@ -294,7 +306,7 @@ fix for the LaTeX problem sanitized with the last `rticles` update (thanks, @RLu
 
 - Fixed `elsevier_article()` template so that chunk option `out.width` can be set (thanks, @EddieItelman, #300).
 
-- Fixed `pnas_journal()` skeleton to show how correctly add `corresponding_author` and `equal_author` (thanks, @EddieItelman, #299).
+- Fixed `pnas_article()` skeleton to show how correctly add `corresponding_author` and `equal_author` (thanks, @EddieItelman, #299).
 
 - Added article template for journal *Bioinformatics* (thanks, @ShixiangWang, #297).
 

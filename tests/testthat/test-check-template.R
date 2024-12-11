@@ -6,12 +6,18 @@ temp_file <- list.files(pkg_file_template(), recursive = TRUE, pattern = "templa
 # Rjournal template has another name
 temp_file[grep("rjournal", temp_file)] <- pkg_file_template("rjournal", "resources", "RJwrapper.tex")
 
-expect_contains <- function(file, pattern, nb = 1, ...) {
+expect_contains <- function(file, pattern, nb = 1, at_least = NULL, ...) {
   content <- xfun::read_utf8(file)
   matched <- grepl(pattern, content, ...)
-  if (any(matched) && sum(matched) == nb) {
-    succeed()
-    return(invisible(file))
+  if (any(matched)) {
+    nb_match <- sum(matched)
+    if (is.null(at_least) && nb_match == nb) {
+      succeed()
+      return(invisible(file))
+    } else if (!is.null(at_least) && nb_match >= at_least) {
+      succeed()
+      return(invisible(file))
+    }
   }
   msg <- if (!any(matched)) {
     sprintf(
@@ -23,7 +29,7 @@ expect_contains <- function(file, pattern, nb = 1, ...) {
     sprintf(
       "%s template contains %s instead of %s",
       sQuote(basename(dirname(dirname(file)))),
-      sum(matched),
+      if (is.null(at_least)) nb_match else sprintf("at least %s", at_least),
       nb
     )
   }
@@ -47,6 +53,15 @@ test_that("tightlist is defined in all templates", {
 test_that("part for Pandoc's tables is defined in all templates", {
   for (f in temp_file) {
     expect_contains(f, "if(tables)", fixed = TRUE)
+  }
+})
+
+test_that("part for Pandoc's \\pandocbounded command is defined in all templates", {
+  for (f in temp_file) {
+    expect_contains(f, "if(graphics)", fixed = TRUE)
+    expect_contains(f, "graphicx", fixed = TRUE, at_least = 1)
+    expect_contains(f, "if(pandoc321)", fixed = TRUE)
+    expect_contains(f, "\\pandocbounded", fixed = TRUE)
   }
 })
 

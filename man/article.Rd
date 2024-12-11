@@ -6,7 +6,6 @@
 \alias{aea_article}
 \alias{agu_article}
 \alias{amq_article}
-\alias{ams_article}
 \alias{asa_article}
 \alias{arxiv_article}
 \alias{bioinformatics_article}
@@ -23,7 +22,6 @@
 \alias{lipics_article}
 \alias{lncs_article}
 \alias{jedm_article}
-\alias{mdpi_article}
 \alias{mnras_article}
 \alias{peerj_article}
 \alias{pihph_article}
@@ -64,8 +62,6 @@ amq_article(
   fig_caption = TRUE,
   md_extensions = c("-autolink_bare_uris")
 )
-
-ams_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
 asa_article(..., keep_tex = TRUE, citation_package = "natbib")
 
@@ -121,14 +117,6 @@ lipics_article(
 lncs_article(..., keep_tex = TRUE, citation_package = c("default", "natbib"))
 
 jedm_article(..., keep_tex = TRUE, citation_package = "natbib")
-
-mdpi_article(
-  ...,
-  keep_tex = TRUE,
-  latex_engine = "pdflatex",
-  pandoc_args = NULL,
-  citation_package = "natbib"
-)
 
 mnras_article(..., keep_tex = TRUE, fig_caption = TRUE)
 
@@ -224,12 +212,6 @@ Economic Association (AER, AEJ, JEL, PP).
 \section{\code{amq_article}}{
  Ce format a été adapté du format du bulletin de
 l'AMQ.
-}
-
-\section{\code{ams_article}}{
- Format for creating an American Meteorological
-Society (AMS) Journal articles. Adapted from
-\url{https://www.ametsoc.org/ams/index.cfm/publications/authors/journal-and-bams-authors/author-resources/latex-author-info/}.
 }
 
 \section{\code{asa_article}}{
@@ -341,43 +323,6 @@ with version tag 2.21.
  Format for creating Journal of Educational
 Data Mining (JEDM) articles. Adapted from
 \url{https://jedm.educationaldatamining.org/index.php/JEDM/information/authors}.
-}
-
-\section{\code{mdpi_article}}{
- Format for creating submissions to
-Multidisciplinary Digital Publishing Institute (MDPI) journals. Adapted
-from \url{https://www.mdpi.com/authors/latex}.
-
-Possible arguments for the YAML header are:
-\itemize{
-\item \code{title} title of the manuscript
-\item \code{author} list of authors, containing \code{name}, \code{affil}, and \code{orcid} (optional)
-\item \code{affiliation} list containing \code{num}, \code{address}, and \code{email} for defining \code{author} affiliations
-\item \code{authorcitation} string with last name and first intial of authors as expected to be shown in a reference
-\item \code{firstnote} can include \code{firstnote} through \code{eightnote} that correspond to footnote marks in \code{affil}
-\item \code{correspondence} contact information of the corresponding author
-\item \code{journal} short name (case sensitive) of the journal, see template for options
-\item \code{type} usually "article" but see template for options
-\item \code{status} usually "submit"
-\item \code{simplesummary} optional, may depend on specific journal
-\item \code{abstract} abstract, limited to 200 words
-\item \code{keywords} 3 to 10 keywords seperated with a semicolon
-\item \code{acknowledgement} acknowledgement backmatter (optional)
-\item \code{authorcontributions} report authorship contributions (optional)
-\item \code{funding} research funding statement
-\item \code{institutionalreview} IRB statements (optional)
-\item \code{informedconsent} Informed consent statements for human research (optional)
-\item \code{dataavailability} Links to datasets or archives (optional)
-\item \code{conflictsofinterest} Conflict of interest statement (see journal  instructions)
-\item \code{sampleavailability} Sample availability statement (optional)
-\item \code{supplementary} Supplementary data statement, see template for example (optional)
-\item \code{abbreviations} list of abbreviations containing \code{short} and \code{long}
-\item \code{bibliography} BibTeX \code{.bib} file
-\item \code{appendix} name of appendix tex file
-\item \code{endnote} boolean, if \code{TRUE} will print list of endnotes if included in text (optional)
-\item \code{header-includes}: custom additions to the header, before the \verb{\\begin\{document\}} statement
-\item \code{include-after}: for including additional LaTeX code before the \verb{\\end\{document\}} statement
-}
 }
 
 \section{\code{mnras_article}}{
