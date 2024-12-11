@@ -1,0 +1,223 @@
+% Use only LaTeX2e, calling the article.cls class and 12-point type.
+\documentclass[$if(fontsize)$$fontsize$,$endif$]{article}
+
+% Users of the {thebibliography} environment or BibTeX should use the
+% scicite.sty package, downloadable from *Science* at
+% www.sciencemag.org/about/authors/prep/TeX_help/ .
+% This package should properly format in-text
+% reference calls and reference-list numbers.
+
+% Science template required packages
+\usepackage{scicite}
+
+\usepackage{times}
+
+% add-ons for rticles
+% based on arxiv.sty
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage[hidelinks]{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}
+\usepackage{graphicx}
+
+% the basics
+\usepackage{amsmath}
+\usepackage{calc}
+\usepackage{tabularx}
+
+% for figure adjustment
+\usepackage{placeins}
+\usepackage{flafter}
+
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+$if(tables)$
+% From pandoc table feature
+\usepackage{longtable,booktabs,array}
+$if(multirow)$
+\usepackage{multirow}
+$endif$
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+$endif$
+
+% Pandoc citation processing
+$if(csl-refs)$
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc} % for calculating minipage widths
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+
+% The following parameters seem to provide a reasonable page setup.
+
+\topmargin 0.0cm
+\oddsidemargin 0.2cm
+\textwidth 16cm
+\textheight 21cm
+\footskip 1.0cm
+
+
+%The next command sets up an environment for the abstract to your paper.
+\usepackage{setspace}
+
+\newenvironment{sciabstract}{%
+\begin{quote} \singlespacing}
+{\end{quote}}
+
+\renewcommand\refname{References and Notes}
+
+% Include your paper's title here
+
+\title{$title$}
+
+
+% Place the author information here.  Please hand-code the contact
+% information and notecalls; do *not* use \footnote commands.  Let the
+% author contact information appear immediately below the author names
+% as shown.  We would also prefer that you don't change the type-size
+% settings shown here.
+
+
+\author{
+$for(authors)$
+$authors.name$,\textsuperscript{$authors.affiliation$}$if(authors.corresponding_author)$\textsuperscript{*}$endif$
+$endfor$\\
+\\
+$for(address)$
+\normalsize{\textsuperscript{$address.code$}$address.address$}\\
+$endfor$
+\\
+\textsuperscript{*}$corresponding_author$
+}
+
+% Include the date command, but leave its argument blank.
+
+\date{}
+
+
+
+%%%%%%%%%%%%%%%%% END OF PREAMBLE %%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+$for(include-before)$
+$include-before$
+
+$endfor$
+% Double-space the manuscript.
+
+\baselineskip24pt
+
+% Make the title.
+
+\maketitle
+
+% Place your abstract within the special {sciabstract} environment.
+
+\begin{sciabstract}
+$abstract$
+\end{sciabstract}
+
+$body$
+
+$if(bibliography)$
+\bibliography{$bibliography$}
+\bibliographystyle{Science}
+$endif$
+
+$if(acknowledgements)$
+\section*{Acknowledgments}
+$acknowledgements$
+$endif$
+
+
+$if(supplementary-materials)$
+\hypertarget{supplementary-materials}{%
+\section{Supplementary materials}\label{supplementary-materials}}
+
+$for(supplementary-materials)$
+$supplementary-materials$ $sep$\\
+$endfor$
+$endif$
+
+$for(include-after)$
+$include-after$
+
+$endfor$
+
+\renewcommand{\thetable}{\arabic{table}}
+\renewcommand{\thefigure}{\arabic{figure}}
+\setcounter{table}{0}
+\setcounter{figure}{0}
+
+%%%begfigs---
+
+%%%endfigs---
+
+%%%begtabs---
+
+%%%endtabs---
+
+% Needs a bit of work on the \ref{} TODO  before uncommenting
+%\renewcommand{\thetable}{A\arabic{table}}
+%\renewcommand{\thefigure}{A\arabic{figure}}
+%\setcounter{table}{0}
+%\setcounter{figure}{0}
+
+%%%begappxfigs---
+
+%%%endappxfigs---
+
+%%%begappxtabs---
+
+%%%endappxtabs---
+
+\end{document}

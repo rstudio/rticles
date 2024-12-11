@@ -151,6 +151,8 @@
 
 - New `isba_article()` template for submissions to Bayesian Analysis journal (thanks, @dmi3kno, #461).
 
+- New `science_article()` template for submissions to Science journal (thanks, @christopherkenny, @kuriwaki, #486).
+
 ## MINOR CHANGES
 
 - Update Copernicus Publications template to version 6.6 from 2022-01-18 (@RLumSK, #463, #464).
