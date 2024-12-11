@@ -17,6 +17,8 @@
   - Some knitr options are made default in the format: `fig.path = ""`, `out.extra = ""`, `echo = FALSE`. They can be overriden in the document. 
   - Specific markdown syntax are available in template for `acknowledgments`, `datastatement`, `appendix`. See the new skeleton by creating new template with `rmarkdown::draft("Untiltle.Rmd", "ams", "rticles")`.
 
+- Update Copernicus Publications template to version 7.9 from 2024-10-10 (@RLumSK, #577).
+
 # rticles 0.27
 
 - `joss_article()` now correctly works as `base_format` for `bookdown::pdf_book()` (thanks, @mlysy, #564).
