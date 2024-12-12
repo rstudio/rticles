@@ -29,43 +29,55 @@ tf_article <- function(..., keep_tex = TRUE, citation_package = "natbib",
   styles <- list(
     APA = list(
       bst = "apacite",
-      cmd = "\\usepackage[natbibapa]{apacite}
-\\setlength\\bibhang{12pt}
-\\renewcommand\\bibliographytypesize{\\fontsize{10}{12}\\selectfont}"
+      cmd = c(
+        "\\usepackage[natbibapa]{apacite}",
+        "\\setlength\\bibhang{12pt}",
+        "\\renewcommand\\bibliographytypesize{\\fontsize{10}{12}\\selectfont}"
+      )
     ),
     CAD = list(
       bst = "tfcad",
-      cmd = "\\usepackage{natbib}
-\\bibpunct[, ]{(}{)}{;}{a}{}{,}"
+      cmd = c(
+        "\\usepackage{natbib}",
+        "\\bibpunct[, ]{(}{)}{;}{a}{}{,}"
+      )
     ),
     NLM = list(
       bst = "tfnlm",
-      cmd = "\\usepackage[numbers,sort&compress]{natbib}
-\\makeatletter
-\\def\\NAT@def@citea{\\def\\@citea{\\NAT@separator}}
-\\makeatother
-\\bibpunct[, ]{[}{]}{,}{n}{,}{,}
-\\renewcommand\\bibfont{\\fontsize{10}{12}\\selectfont}"
+      cmd = c(
+        "\\usepackage[numbers,sort&compress]{natbib}",
+        "\\makeatletter",
+        "\\def\\NAT@def@citea{\\def\\@citea{\\NAT@separator}}",
+        "\\makeatother",
+        "\\bibpunct[, ]{[}{]}{,}{n}{,}{,}",
+        "\\renewcommand\\bibfont{\\fontsize{10}{12}\\selectfont}"
+      )
     ),
     TFP = list(
       bst = "tfp",
-      cmd = "\\usepackage[numbers,sort&compress,merge]{natbib}
-\\bibpunct[, ]{(}{)}{,}{n}{,}{,}
-\\renewcommand\\bibfont{\\fontsize{10}{12}\\selectfont}
-\\renewcommand\\citenumfont[1]{\\textit{#1}}
-\\renewcommand\\bibnumfmt[1]{(#1)}"
+      cmd = c(
+        "\\usepackage[numbers,sort&compress,merge]{natbib}",
+        "\\bibpunct[, ]{(}{)}{,}{n}{,}{,}",
+        "\\renewcommand\\bibfont{\\fontsize{10}{12}\\selectfont}",
+        "\\renewcommand\\citenumfont[1]{\\textit{#1}}",
+        "\\renewcommand\\bibnumfmt[1]{(#1)}"
+      )
     ),
     TFQ = list(
       bst = "tfq",
-      cmd = "\\usepackage[numbers,sort&compress]{natbib}
-\\bibpunct[, ]{[}{]}{,}{n}{,}{,}
-\\renewcommand\\bibfont{\\fontsize{10}{12}\\selectfont}"
+      cmd = c(
+        "\\usepackage[numbers,sort&compress]{natbib}",
+        "\bibpunct[, ]{[}{]}{,}{n}{,}{,}",
+        "\renewcommand\\bibfont{\\fontsize{10}{12}\\selectfont}"
+      )
     ),
     TFS = list(
       bst = "tfs",
-      cmd = "\\usepackage[numbers,sort&compress]{natbib}
-\\bibpunct[, ]{[}{]}{,}{n}{,}{,}
-\\renewcommand\\bibfont{\\fontsize{10}{12}\\selectfont}"
+      cmd = c(
+        "\\usepackage[numbers,sort&compress]{natbib}",
+        "\bibpunct[, ]{[}{]}{,}{n}{,}{,}",
+        "\renewcommand\\bibfont{\\fontsize{10}{12}\\selectfont}"
+      )
     )
   )
   biblio_style <- match.arg(biblio_style)
@@ -80,7 +92,10 @@ tf_article <- function(..., keep_tex = TRUE, citation_package = "natbib",
   pandoc_args <- c(
     pandoc_args,
     rmarkdown::pandoc_variable_arg("bst-name", sty$bst),
-    rmarkdown::pandoc_variable_arg("biblio-commands", sty$cmd)
+    rmarkdown::pandoc_variable_arg(
+      "biblio-commands",
+      paste(sty$cmd, collapse = "\n")
+    )
   )
   pdf_document_format(
     "tf",
