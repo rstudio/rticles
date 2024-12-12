@@ -24,7 +24,8 @@
 #' @importFrom rmarkdown pandoc_variable_arg
 #' @export
 tf_article <- function(..., keep_tex = TRUE, citation_package = "natbib",
-                       biblio_style = "CAD", pandoc_args = NULL) {
+                       biblio_style = c("CAD", "APA", "NLM", "TFP", "TFQ", "TFS"),
+                       pandoc_args = NULL) {
   styles <- list(
     APA = list(
       bst = "apacite",
@@ -67,6 +68,7 @@ tf_article <- function(..., keep_tex = TRUE, citation_package = "natbib",
 \\renewcommand\\bibfont{\\fontsize{10}{12}\\selectfont}"
     )
   )
+  biblio_style <- match.arg(biblio_style)
   if (! biblio_style %in% names(styles))
     stop(
       paste(

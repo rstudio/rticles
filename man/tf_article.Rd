@@ -8,7 +8,7 @@ tf_article(
   ...,
   keep_tex = TRUE,
   citation_package = "natbib",
-  biblio_style = "CAD",
+  biblio_style = c("CAD", "APA", "NLM", "TFP", "TFQ", "TFS"),
   pandoc_args = NULL
 )
 }
