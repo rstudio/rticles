@@ -1,15 +1,10 @@
-% interactcadsample.tex
-% v1.04 - May 2023
-
 \documentclass[$for(classoption)$$classoption$$sep$,$endfor$]{interact}
 
 \usepackage{epstopdf}% To incorporate .eps illustrations using PDFLaTeX, etc.
 \usepackage{subfigure}% Support for small, `sub' figures and tables
 %\usepackage[nolists,tablesfirst]{endfloat}% To `separate' figures and tables from text if required
 
-\usepackage{natbib}% Citation support using natbib.sty
-\bibpunct[, ]{(}{)}{;}{a}{}{,}% Citation support using natbib.sty
-\renewcommand\bibfont{\fontsize{10}{12}\selectfont}% Bibliography support using natbib.sty
+$biblio-commands$
 
 \theoremstyle{plain}% Theorem-like structures provided by amsthm.sty
 \newtheorem{theorem}{Theorem}[section]
@@ -202,7 +197,7 @@ $endif$
 $body$
 
 $if(bibliography)$
-\bibliographystyle{$if(biblio-style)$$biblio-style$$else$tfcad$endif$}
+\bibliographystyle{$bst-name$}
 \bibliography{$bibliography$}
 $endif$
 
