@@ -18,7 +18,7 @@
 #' @param ... Additional arguments to [rmarkdown::pdf_document()]
 #'
 #' @examples \dontrun{
-#' rmarkdown::draft("MyArticle.Rmd", template = "tf", package = "rticles", reference_style = "APA")
+#' rmarkdown::draft("MyArticle.Rmd", template = "tf", package = "rticles")
 #' rmarkdown::render("MyArticle.Rmd")
 #' }
 #' @importFrom rmarkdown pandoc_variable_arg
