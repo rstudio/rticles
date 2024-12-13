@@ -8,7 +8,7 @@ tf_article(
   ...,
   keep_tex = TRUE,
   citation_package = "natbib",
-  biblio_style = c("CAD", "APA", "NLM", "TFP", "TFQ", "TFS"),
+  reference_style = c("CAD", "APA", "NLM", "TFP", "TFQ", "TFS"),
   pandoc_args = NULL
 )
 }
@@ -26,7 +26,7 @@ or \code{biblatex}. Use \code{default} if neither package is to be used,
 which means citations will be processed via the command
 \command{pandoc-citeproc}.}
 
-\item{biblio_style}{should be set according to the specific Taylor & Francis
+\item{reference_style}{should be set according to the specific Taylor & Francis
 journal. Possibles values: "APA" (American Psychological Association
 reference style), "CAD" (Chicago Author-Date reference style), "NLM"
 (National Library of Medicine reference style), "TFP" (Reference
@@ -48,7 +48,7 @@ Adapted from:
 }
 \examples{
 \dontrun{
-rmarkdown::draft("MyArticle.Rmd", template = "tf", package = "rticles", biblio_style = "APA")
+rmarkdown::draft("MyArticle.Rmd", template = "tf", package = "rticles", reference_style = "APA")
 rmarkdown::render("MyArticle.Rmd")
 }
 }

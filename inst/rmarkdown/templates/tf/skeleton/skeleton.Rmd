@@ -44,7 +44,7 @@ header-includes: |
   \def\tightlist{}
 output:
   rticles::tf_article:
-    biblio_style: CAD
+    reference_style: CAD
 ---
 
 # Introduction
@@ -398,12 +398,12 @@ Authors must specify the required reference style in the YAML header of this fil
 ```
 output:
   rticles::tf_article:
-    biblio_style: CAD
+    reference_style: CAD
 ```
 
 ## References cited in the text
 
-[CAVEAT: The only subsection below that will be correctly typeset is the one corresponding to the  value specified in the `biblio_style` field of the YAML header.]
+[CAVEAT: The only subsection below that will be correctly typeset is the one corresponding to the value specified in the `reference_style` field of the YAML header.]
 
 ### American Psychological Association reference style (APA)
 

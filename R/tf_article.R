@@ -10,7 +10,7 @@
 #' * <https://www.tandf.co.uk/journals/authors/InteractTFSLaTeX.zip>
 #'
 #' @inheritParams rmarkdown::pdf_document
-#' @param biblio_style should be set according to the specific Taylor & Francis
+#' @param reference_style should be set according to the specific Taylor & Francis
 #'   journal. Possibles values: "APA" (American Psychological Association
 #'   reference style), "CAD" (Chicago Author-Date reference style), "NLM"
 #'   (National Library of Medicine reference style), "TFP" (Reference
@@ -18,13 +18,13 @@
 #' @param ... Additional arguments to [rmarkdown::pdf_document()]
 #'
 #' @examples \dontrun{
-#' rmarkdown::draft("MyArticle.Rmd", template = "tf", package = "rticles", biblio_style = "APA")
+#' rmarkdown::draft("MyArticle.Rmd", template = "tf", package = "rticles", reference_style = "APA")
 #' rmarkdown::render("MyArticle.Rmd")
 #' }
 #' @importFrom rmarkdown pandoc_variable_arg
 #' @export
 tf_article <- function(..., keep_tex = TRUE, citation_package = "natbib",
-                       biblio_style = c("CAD", "APA", "NLM", "TFP", "TFQ", "TFS"),
+                       reference_style = c("CAD", "APA", "NLM", "TFP", "TFQ", "TFS"),
                        pandoc_args = NULL) {
   styles <- list(
     APA = list(
@@ -80,29 +80,41 @@ tf_article <- function(..., keep_tex = TRUE, citation_package = "natbib",
       )
     )
   )
-  biblio_style <- match.arg(biblio_style)
-  if (! biblio_style %in% names(styles))
+  reference_style <- match.arg(reference_style)
+  if (! reference_style %in% names(styles))
     stop(
       paste(
-        "Invalid biblio_style in Taylor and Francis article. Allowed values are:",
+        "Invalid reference_style in Taylor and Francis article. Allowed values are:",
         paste(names(styles), collapse = ", ")
       )
     )
-  sty <- styles[[biblio_style]]
+  sty <- styles[[reference_style]]
   pandoc_args <- c(
     pandoc_args,
-    rmarkdown::pandoc_variable_arg("bst-name", sty$bst),
+    rmarkdown::pandoc_variable_arg("biblio-style", sty$bst),
     rmarkdown::pandoc_variable_arg(
       "biblio-commands",
       paste(sty$cmd, collapse = "\n")
     )
   )
-  pdf_document_format(
+
+  base <- pdf_document_format(
     "tf",
     keep_tex = keep_tex,
     citation_package = citation_package,
     pandoc_args = pandoc_args,
     ...
   )
-}
+  pre_knit <- base$pre_knit
 
+  # Alert the user about deprecation of the biblio_style field in the YAML header
+  base$pre_knit <- function(input, metadata, ...) {
+    if (is.function(pre_knit)) pre_knit(input, metadata, ...)
+    if (!is.null(metadata$biblio_style))
+      warning("`tf_article()` now ignores the 'biblio_style' field in YAML header. ",
+              " Use the 'reference_style' option of 'output:tf_article', instead.",
+              call. = FALSE)
+  }
+
+  base
+}
