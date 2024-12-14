@@ -48,7 +48,7 @@ Adapted from:
 }
 \examples{
 \dontrun{
-rmarkdown::draft("MyArticle.Rmd", template = "tf", package = "rticles", reference_style = "APA")
+rmarkdown::draft("MyArticle.Rmd", template = "tf", package = "rticles")
 rmarkdown::render("MyArticle.Rmd")
 }
 }
