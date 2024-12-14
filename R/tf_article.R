@@ -68,16 +68,16 @@ tf_article <- function(..., keep_tex = TRUE, citation_package = "natbib",
       bst = "tfq",
       cmd = c(
         "\\usepackage[numbers,sort&compress]{natbib}",
-        "\bibpunct[, ]{[}{]}{,}{n}{,}{,}",
-        "\renewcommand\\bibfont{\\fontsize{10}{12}\\selectfont}"
+        "\\bibpunct[, ]{[}{]}{,}{n}{,}{,}",
+        "\\renewcommand\\bibfont{\\fontsize{10}{12}\\selectfont}"
       )
     ),
     TFS = list(
       bst = "tfs",
       cmd = c(
         "\\usepackage[numbers,sort&compress]{natbib}",
-        "\bibpunct[, ]{[}{]}{,}{n}{,}{,}",
-        "\renewcommand\\bibfont{\\fontsize{10}{12}\\selectfont}"
+        "\\bibpunct[, ]{[}{]}{,}{n}{,}{,}",
+        "\\renewcommand\\bibfont{\\fontsize{10}{12}\\selectfont}"
       )
     )
   )
