@@ -455,6 +455,6 @@ Authors should create the list of references using a \textsc{Bib}\TeX\ database.
 - TFQ: `tfq.bst`
 - TFS: `tfs.bst`
 
-Besides from `apacite.bst`, which is part of standard \LaTeX\ distributions, the files listed below should have been installed in the same directory of this skeleton file. You may delete the ones that are not needed.
+Besides from `apacite.bst`, which is part of standard \LaTeX\ distributions, the files listed above should have been installed in the same directory of this skeleton file. You may delete the ones that are not needed.
 
 Please include a copy of your .bib file and/or the final generated .bbl file among your source files.
