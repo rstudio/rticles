@@ -19,6 +19,7 @@
 #'
 #' @examples \dontrun{
 #' rmarkdown::draft("MyArticle.Rmd", template = "tf", package = "rticles")
+#' setwd("MyArticle")
 #' rmarkdown::render("MyArticle.Rmd")
 #' }
 #' @importFrom rmarkdown pandoc_variable_arg
