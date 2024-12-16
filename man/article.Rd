@@ -6,7 +6,6 @@
 \alias{aea_article}
 \alias{agu_article}
 \alias{amq_article}
-\alias{ams_article}
 \alias{asa_article}
 \alias{arxiv_article}
 \alias{bioinformatics_article}
@@ -62,8 +61,6 @@ amq_article(
   fig_caption = TRUE,
   md_extensions = c("-autolink_bare_uris")
 )
-
-ams_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 
 asa_article(..., keep_tex = TRUE, citation_package = "natbib")
 
@@ -212,12 +209,6 @@ Economic Association (AER, AEJ, JEL, PP).
 \section{\code{amq_article}}{
  Ce format a été adapté du format du bulletin de
 l'AMQ.
-}
-
-\section{\code{ams_article}}{
- Format for creating an American Meteorological
-Society (AMS) Journal articles. Adapted from
-\url{https://www.ametsoc.org/ams/index.cfm/publications/authors/journal-and-bams-authors/author-resources/latex-author-info/}.
 }
 
 \section{\code{asa_article}}{

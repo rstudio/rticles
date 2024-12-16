@@ -40,7 +40,7 @@ test_format("aea")
 test_format("agu")
 test_format("ajs", skip = !rmarkdown::pandoc_available("2.7"))
 test_format("amq")
-test_format("ams", output_options = list(citation_package = "default"), skip = rmarkdown::pandoc_available("3.1.7")) # ISSUE TO SOLVE WITH NATBIB / CITEPROC - See #444
+test_format("ams", skip = !rmarkdown::pandoc_available("2.10"))
 test_format("arxiv")
 test_format("asa")
 test_format("bioinformatics")
