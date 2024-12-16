@@ -4,12 +4,12 @@
 %%
 %% This file is part of a Taylor & Francis 'Interact' LaTeX bundle.
 %%
-%% v1.03 - 2016/10/17
+%% v1.05 - 2017/07/31
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{interact}[2016/10/17 v1.03 Interact LaTeX document class]
+\ProvidesClass{interact}[2017/07/31 v1.05 Interact LaTeX document class]
 %
 \newif\iflargeformat
 \newif\ifsuppldata
@@ -228,6 +228,35 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Fonts %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page styles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\def\endpage#1{\gdef\@endpage{#1}}
+\endpage{}%
+\def\jname#1{\gdef\@jname{#1}}
+\gdef\@jname{}
+\def\jvol#1{\gdef\@jvol{#1}}
+\gdef\@jvol{00}
+\def\jnum#1{\gdef\@jnum{#1}}
+\gdef\@jnum{00}
+\def\jmonth#1{\gdef\@jmonth{#1}}
+\gdef\@jmonth{Month}
+\def\jyear#1{\gdef\@jyear{#1}}
+\gdef\@jyear{20XX}
+\def\doi#1{\gdef\@doi{#1}}
+\gdef\@doi{}
+%
+\def\ps@title{%
+    \let\@oddfoot\@empty
+    \let\@evenfoot\@empty
+    \def\@evenhead{}%
+    \def\@oddhead{}%
+    \let\@mkboth\@gobbletwo
+    \let\sectionmark\@gobble
+    \let\subsectionmark\@gobble
+    }
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Page styles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 \def\articletype#1{\gdef\@articletype{{#1}}\MakeUppercase}
@@ -277,48 +306,6 @@
     \fi
     \vskip13pt
   \egroup}
-%
-\renewenvironment{abstract}{%
-        \par\addvspace{0pt plus2pt minus1pt}
-  \abstractfont\noindent{\bfseries \abstractname\\}\ignorespaces%
-}{%
-        \par\addvspace{13pt plus2pt minus1pt}
-  \@endparenv}
-%
-\newenvironment{abbreviations}{%
-        \par\addvspace{13pt plus2pt minus1pt}
-  \abstractfont\noindent{\bfseries \abbreviationsname: }\ignorespaces%
-}{%
-        \par\addvspace{13pt plus2pt minus1pt}
-  \@endparenv}
-%
-\newenvironment{keywords}{%
-        \par\addvspace{13pt plus2pt minus1pt}
-  \keywordfont\noindent{\bfseries \keywordsname\\}\ignorespaces%
-}{%
-        \par\addvspace{13pt plus2pt minus1pt}
-  \@endparenv}
-%
-\newenvironment{amscode}{%
-        \par\addvspace{13pt plus2pt minus1pt}
-  \keywordfont\noindent{\bfseries{AMS CLASSIFICATION}\\}\ignorespaces%
-}{%
-        \par\addvspace{13pt plus2pt minus1pt}
-  \@endparenv}
-%
-\newenvironment{jelcode}{%
-        \par\addvspace{13pt plus2pt minus1pt}
-  \keywordfont\noindent{\bfseries{JEL CLASSIFICATION}\\}\ignorespaces%
-}{%
-        \par\addvspace{13pt plus2pt minus1pt}
-  \@endparenv}
-%
-\newenvironment{pacscode}{%
-        \par\addvspace{13pt plus2pt minus1pt}
-  \keywordfont\noindent{\bfseries{PACS CLASSIFICATION}\\}\ignorespaces%
-}{%
-        \par\addvspace{13pt plus2pt minus1pt}
-  \@endparenv}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Title commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -378,9 +365,9 @@
     {\@ssect{#3}{#4}{#5}{#6}}%
     {\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}}
 %
-\def\@sseccntformat#1{\csname the#1\endcsname.\quad}
+\def\@sseccntformat#1{\csname the#1\endcsname.\hskip 0.5em}
 \def\@appseccntformat#1{\appendixname\ \csname the#1\endcsname.\ }
-\def\@seccntformat#1{\csname the#1\endcsname.\quad}
+\def\@seccntformat#1{\csname the#1\endcsname.\hskip 0.5em}
 \def\@sect#1#2#3#4#5#6[#7]#8{\ifnum #2>\c@secnumdepth
      \let\@svsec\@empty\else
      \refstepcounter{#1}%
@@ -396,7 +383,7 @@
                          {\interlinepenalty \@M {#8}\par}%
           \else
                 \ifnum#2=2
-                    \@hangfrom{\hskip #3\relax{\em\@svsec}}%
+                    \@hangfrom{\hskip #3\relax\@svsec}%
                              {\interlinepenalty \@M #8\par}%
                 \else
                         \@hangfrom{\hskip #3\relax\@svsec}%
@@ -418,130 +405,8 @@
                                      \fi
                        #7}}\fi
      \@xsect{#5}}
-
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%% End Sectioning commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Appendix %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\renewcommand\appendix{%
-  \let\@seccntformat\@appseccntformat
-  \setcounter{equation}{0}\renewcommand\theequation{\thesection\arabic{equation}}%
-  \setcounter{section}{0}\renewcommand\thesection{\Alph{section}}%
-  \setcounter{subsection}{0}\renewcommand\thesubsection{\thesection.\arabic{subsection}}%
-  \setcounter{table}{0}\renewcommand\thetable{\thesection\@arabic\c@table}%
-  \setcounter{figure}{0}\renewcommand\thefigure{\thesection\@arabic\c@figure}%
-  \@addtoreset{equation}{section}
-  \@addtoreset{table}{section}
-  \@addtoreset{figure}{section}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Appendix %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Figures %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-\def\fnum@figure{\figurename\nobreakspace\thefigure.}%
-\renewenvironment{figure}%
-               {\figcaptionfont\@float{figure}}
-               {\end@float}
-\renewenvironment{figure*}%
-               {\figcaptionfont\@dblfloat{figure}}
-               {\end@dblfloat}
-
-\def\ArtDir{art/}%
-\def\ArtPiece{\@ifnextchar[{\@ArtPiece}{\@ArtPiece[]}}%
-\def\@ArtPiece[#1]#2{\def\@tempa{#1}%
-                     \hbox{\ifx\@tempa\@empty\else\epsfscale#1\fi
-                     \noindent{\epsfbox{\ArtDir#2}}}}%
-%
-\newdimen\figheight
-\newdimen\figwidth
-%
-\let\figformat\centerline
-%
-\def\figurebox#1#2#3#4{%
-  \global\figheight#1\global\figwidth#2
-  \def\@tempa{#4}%
-  \leavevmode
-  \ifx\@tempa\empty
-    \figformat{\figbox}%
-  \else
-    \figformat{\ArtPiece[#3]{#4}}%
-  \fi\par}
-%
-\def\figbox{\hbox{\vbox{\hsize\figwidth
-            \hrule
-            \hbox to\figwidth{\vrule\hss
-            \vbox to \figheight{\vfill}%
-            \vrule}\hrule}}}%
-%
-\def\figformat#1{\footnotesize#1}%
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Figures %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Tables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-\def\fnum@table{\tablename\nobreakspace\thetable.}%
-\renewenvironment{table}%
-               {\@float{table}}
-               {\vskip5pt\end@float}
-\renewenvironment{table*}%
-               {\@dblfloat{table}}
-               {\end@dblfloat}
-%
-\newdimen\tabledim
-%
-\long\def\tbl#1#2{%
- \setbox\@tempboxa\hbox{\tablefont #2}%
- \tabledim\hsize\advance\tabledim by -\wd\@tempboxa
-    \global\divide\tabledim\tw@
- \caption{#1}
-    \centerline{\box\@tempboxa}
-  }%
-%
-\newenvironment{tabnote}{%
-\par\vskip5pt\tabnotefont
-\@ifnextchar[{\@tabnote}{\@tabnote[]}}{%
-\par\vskip-5pt}
-\def\@tabnote[#1]{\def\@Tempa{#1}\leftskip\tabledim\rightskip\leftskip%\hspace*{9pt}%
-\ifx\@Tempa\@empty\else{\itshape #1:}\ \fi\ignorespaces}
-%
-\def\x{@{\extracolsep{\fill}}}
-\renewcommand\toprule{\\[-5.5pt]\hline\\[-5pt]}
-\renewcommand\midrule{\\[-7.5pt]\hline\\[-5pt]}
-\renewcommand\bottomrule{\\[-7.5pt]\hline}
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Tables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Captions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-\setlength\abovecaptionskip{7\p@}
-\setlength\belowcaptionskip{\z@}
-%
-\def\FigName{figure}
-%
-\long\def\@caption#1[#2]#3{\par\begingroup
-    \@parboxrestore
-    \normalsize
-    \@makecaption{\csname fnum@#1\endcsname}{\ignorespaces #3}\par
-  \endgroup}
-%
-\long\def\@makecaption#1#2{%
-  \ifx\FigName\@captype
-  \vskip\abovecaptionskip
-    \setbox\@tempboxa\hbox{\figcaptionfont{\fignumfont#1}\hskip4pt#2}%
-  \ifdim \wd\@tempboxa >\hsize
-    {\figcaptionfont\noindent{\fignumfont#1}\hskip7pt\ignorespaces#2\par}%
-  \else
-    \global \@minipagefalse
-    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
-  \fi
- \else
-    {\tablecaptionfont
-    {\tablenumfont#1}\hskip7pt\ignorespaces{#2}\par}%
-  \vskip\belowcaptionskip
-  \fi}
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Captions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Lists %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -611,12 +476,54 @@
 \renewcommand\labelitemiii{\normalfont\textendash}
 \renewcommand\labelitemiv{$\m@th\ast$}
 %
-\renewenvironment{description}%
-               {\list{}{\labelwidth\z@ \itemindent-\leftmargin
-                        \let\makelabel\descriptionlabel}}
-               {\endlist}
-\renewcommand*\descriptionlabel[1]{\hspace\labelsep%
-                                \normalfont\bfseries #1}
+%\renewenvironment{description}%
+%               {\list{}{\labelwidth\z@ \itemindent-\leftmargin
+%                        \let\makelabel\descriptionlabel}}
+%               {\endlist}
+%\renewcommand*\descriptionlabel[1]{\hspace\labelsep
+%                                \normalfont\bfseries #1}
+%
+\renewenvironment{abstract}{%
+        \par\addvspace{0pt plus2pt minus1pt}
+  \abstractfont\noindent{\bfseries \abstractname\\}\ignorespaces%
+}{%
+        \par\addvspace{13pt plus2pt minus1pt}
+  \@endparenv}
+%
+\newenvironment{abbreviations}{%
+        \par\addvspace{13pt plus2pt minus1pt}
+  \abstractfont\noindent{\bfseries \abbreviationsname: }\ignorespaces%
+}{%
+        \par\addvspace{13pt plus2pt minus1pt}
+  \@endparenv}
+%
+\newenvironment{keywords}{%
+        \par\addvspace{13pt plus2pt minus1pt}
+  \keywordfont\noindent{\bfseries \keywordsname\\}\ignorespaces%
+}{%
+        \par\addvspace{13pt plus2pt minus1pt}
+  \@endparenv}
+%
+\newenvironment{amscode}{%
+        \par\addvspace{13pt plus2pt minus1pt}
+  \keywordfont\noindent{\bfseries \amscodename\\}\ignorespaces%
+}{%
+        \par\addvspace{13pt plus2pt minus1pt}
+  \@endparenv}
+%
+\newenvironment{jelcode}{%
+        \par\addvspace{13pt plus2pt minus1pt}
+  \keywordfont\noindent{\bfseries \jelcodename\\}\ignorespaces%
+}{%
+        \par\addvspace{13pt plus2pt minus1pt}
+  \@endparenv}
+%
+\newenvironment{pacscode}{%
+        \par\addvspace{13pt plus2pt minus1pt}
+  \keywordfont\noindent{\bfseries \pacscodename\\}\ignorespaces%
+}{%
+        \par\addvspace{13pt plus2pt minus1pt}
+  \@endparenv}
 %
 \renewenvironment{quote}{%
         \par\addvspace{13pt plus2pt minus1pt}
@@ -648,6 +555,128 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Lists %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Appendix %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\renewcommand\appendix{%
+  \let\@seccntformat\@appseccntformat
+  \setcounter{equation}{0}\renewcommand\theequation{\thesection\arabic{equation}}%
+  \setcounter{section}{0}\renewcommand\thesection{\Alph{section}}%
+  \setcounter{subsection}{0}\renewcommand\thesubsection{\thesection.\arabic{subsection}}%
+  \setcounter{table}{0}\renewcommand\thetable{\thesection\@arabic\c@table}%
+  \setcounter{figure}{0}\renewcommand\thefigure{\thesection\@arabic\c@figure}%
+  \@addtoreset{equation}{section}
+  \@addtoreset{table}{section}
+  \@addtoreset{figure}{section}
+}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Appendix %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Figures %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\def\fnum@figure{\figurename\nobreakspace\thefigure.}%
+\renewenvironment{figure}%
+               {\figcaptionfont\@float{figure}}
+               {\end@float}
+\renewenvironment{figure*}%
+               {\figcaptionfont\@dblfloat{figure}}
+               {\end@dblfloat}
+%
+\def\ArtDir{art/}%
+\def\ArtPiece{\@ifnextchar[{\@ArtPiece}{\@ArtPiece[]}}%
+\def\@ArtPiece[#1]#2{\def\@tempa{#1}%
+                     \hbox{\ifx\@tempa\@empty\else\epsfscale#1\fi
+                     \noindent{\epsfbox{\ArtDir#2}}}}%
+%
+\newdimen\figheight
+\newdimen\figwidth
+%
+\let\figformat\centerline
+%
+\def\figurebox#1#2#3#4{%
+  \global\figheight#1\global\figwidth#2
+  \def\@tempa{#4}%
+  \leavevmode
+  \ifx\@tempa\empty
+    \figformat{\figbox}%
+  \else
+    \figformat{\ArtPiece[#3]{#4}}%
+  \fi\par}
+%
+\def\figbox{\hbox{\vbox{\hsize\figwidth
+            \hrule
+            \hbox to\figwidth{\vrule\hss
+            \vbox to \figheight{\vfill}%
+            \vrule}\hrule}}}%
+%
+\def\figformat#1{\footnotesize#1}%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Figures %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Tables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\def\fnum@table{\tablename\nobreakspace\thetable.}%
+\renewenvironment{table}%
+               {\@float{table}}
+               {\vskip5pt\end@float}
+\renewenvironment{table*}%
+               {\@dblfloat{table}}
+               {\end@dblfloat}
+%
+\newdimen\tabledim
+%
+\long\def\tbl#1#2{%
+ \setbox\@tempboxa\hbox{\tablefont #2}%
+ \tabledim\hsize\advance\tabledim by -\wd\@tempboxa
+    \global\divide\tabledim\tw@
+ \caption{#1}
+    \centerline{\box\@tempboxa}
+  }%
+%
+\newenvironment{tabnote}{%
+\par\vskip5pt\tabnotefont
+\@ifnextchar[{\@tabnote}{\@tabnote[]}}{%
+\par\vskip-5pt}
+\def\@tabnote[#1]{\def\@Tempa{#1}\leftskip\tabledim\rightskip\leftskip%\hspace*{9pt}%
+\ifx\@Tempa\@empty\else{\itshape #1:}\ \fi\ignorespaces}
+%
+\def\x{@{\extracolsep{\fill}}}
+\renewcommand\toprule{\\[-5.5pt]\hline\\[-5pt]}
+\renewcommand\midrule{\\[-7.5pt]\hline\\[-5pt]}
+\renewcommand\bottomrule{\\[-7.5pt]\hline}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Tables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Captions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\setlength\abovecaptionskip{12\p@}
+\setlength\belowcaptionskip{0\p@}
+%
+\def\FigName{figure}
+%
+\long\def\@caption#1[#2]#3{\par\begingroup
+    \@parboxrestore
+    \normalsize
+    \@makecaption{\csname fnum@#1\endcsname}{\ignorespaces #3}\par
+  \endgroup}
+%
+\long\def\@makecaption#1#2{%
+  \ifx\FigName\@captype
+  \vskip\abovecaptionskip
+    \setbox\@tempboxa\hbox{\figcaptionfont{\fignumfont#1}\hskip4pt#2}%
+  \ifdim \wd\@tempboxa >\hsize
+    {\figcaptionfont\noindent{\fignumfont#1}\hskip7pt\ignorespaces#2\par}%
+  \else
+    \global \@minipagefalse
+    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+ \else
+    {\tablecaptionfont
+    {\tablenumfont#1}\hskip7pt\ignorespaces{#2}\par}%
+  \vskip\belowcaptionskip
+  \fi}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Captions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Footnotes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 \renewcommand\footnoterule{%
@@ -660,35 +689,6 @@
   \hb@xt@1em{\hss\@makefnmark}#1}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Footnotes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page styles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-\def\endpage#1{\gdef\@endpage{#1}}
-\endpage{}%
-\def\jname#1{\gdef\@jname{#1}}
-\gdef\@jname{}
-\def\jvol#1{\gdef\@jvol{#1}}
-\gdef\@jvol{00}
-\def\jnum#1{\gdef\@jnum{#1}}
-\gdef\@jnum{00}
-\def\jmonth#1{\gdef\@jmonth{#1}}
-\gdef\@jmonth{Month}
-\def\jyear#1{\gdef\@jyear{#1}}
-\gdef\@jyear{20XX}
-\def\doi#1{\gdef\@doi{#1}}
-\gdef\@doi{}
-%
-\def\ps@title{%
-    \let\@oddfoot\@empty
-    \let\@evenfoot\@empty
-    \def\@evenhead{}%
-    \def\@oddhead{}%
-    \let\@mkboth\@gobbletwo
-    \let\sectionmark\@gobble
-    \let\subsectionmark\@gobble
-    }
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Page styles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% Theorem-like structures %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -712,9 +712,12 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%% End Theorem-like structures %%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\newcommand\abbreviationsname{Abbreviations}
 \renewcommand\abstractname{ABSTRACT}
+\newcommand\abbreviationsname{Abbreviations}
 \newcommand\keywordsname{KEYWORDS}
+\newcommand\amscodename{AMS CLASSIFICATION}
+\newcommand\jelcodename{JEL CLASSIFICATION}
+\newcommand\pacscodename{PACS CLASSIFICATION}
 %
 \setlength\parskip{0\p@}
 \setlength\columnsep{12\p@}

@@ -1,7 +1,7 @@
 ---
 title: |
   Taylor & Francis Rmarkdown template for authors (\LaTeX\-based 
-  \textsf{Interact} layout + Chicago author-date reference style)
+  \textsf{Interact} layout)
 type: ARTICLE TEMPLATE
 author:
   - name: A. N. Author
@@ -29,12 +29,12 @@ thanks:
   author:
   - name: A. N. Author
     email: latex.helpdesk@tandf.co.uk
-bibliography: interactcadsample.bib
+bibliography: interactsample.bib
 appendix: appendix.tex
 abstract: |
   This template is for authors who are preparing a manuscript for a Taylor & 
   Francis journal using the \LaTeX\ document preparation system and the 
-  `interact} class file, which is available via selected journals' home 
+  `interact` class file, which is available via selected journals' home
   pages on the Taylor & Francis website.
 keywords: |
   Sections; lists; figures; tables; mathematics; fonts; references; appendices
@@ -42,16 +42,18 @@ header-includes: |
   \usepackage{hyperref}
   \usepackage[utf8]{inputenc}
   \def\tightlist{}
-output: rticles::tf_article
+output:
+  rticles::tf_article:
+    reference_style: CAD
 ---
 
 # Introduction
 
-In order to assist authors in the process of preparing a manuscript for a journal, the Taylor & Francis '\textsf{Interact}' layout style has been implemented as a \LaTeXe\ class file based on the `article` document class. A \textsc{Bib}\TeX\ bibliography style file and a sample bibliography are also provided in order to assist with the formatting of your references.
+In order to assist authors in the process of preparing a manuscript for a journal, the Taylor & Francis ‘\textsf{Interact}’ layout style has been implemented as a \LaTeXe\ class file based on the `article` document class. A \textsc{Bib}\TeX\ bibliography style file and a sample bibliography are also provided in order to assist with the formatting of your references.
 
 Commands that differ from or are provided in addition to standard \LaTeXe\ are described in this document, which is _not_ a substitute for a \LaTeXe\ tutorial.
 
-The `interactcadsample.tex` file can be used as a template for a manuscript by cutting, pasting, inserting and deleting text as appropriate, using the preamble and the \LaTeX\ environments provided (e.g.\ `\begin{abstract}`, `\begin{keywords}`).
+The present file can be used as a template for a manuscript by cutting, pasting, inserting and deleting text as appropriate, using the preamble and the \LaTeX\ environments provided (e.g.\ `\begin{abstract}`, `\begin{keywords}`).
 
 ## The \textsf{Interact} class file
 
@@ -84,6 +86,18 @@ To prepare a manuscript for a journal that is printed in A4 (two column) format,
 # Additional features of the `interact` class file
 
 ## Title, authors' names and affiliations, abstracts and article types
+
+The title is generated automatically from the information in the YAML header. The `type` field is also provided as an _optional_ element which should _only_ be included if your article actually needs it.
+
+An additional abstract in another language (preceded by a translation of the article title) may be included within the `abstract` environment if required.
+
+A graphical abstract may also be included if required. Within the `abstract` environment you can include the code
+```
+\\\resizebox{25pc}{!}{\includegraphics{abstract.eps}}
+
+```
+where the graphical abstract is to appear, where `abstract.eps` is the name of the file containing the graphic (note that `25pc` is the recommended maximum width, expressed in pica, for the graphical abstract in your manuscript).
+
 
 ## Abbreviations
 
@@ -158,9 +172,9 @@ Bulleted lists are produced using the `itemize` environment. For example,
 plot(pressure)
 ```
 
-The `interact` class file will deal with positioning your figures in the same way as standard \LaTeX. It should not normally be necessary to use the optional `[htb]` location specifiers of the `figure` environment in your manuscript; you may, however, find the `[p]` placement option or the `endfloat` package useful if a journal insists on the need to separate figures from the text.
+The `interact` class file will deal with positioning your figures in the same way as standard \LaTeX. It should not normally be necessary to use the optional `[htb]` location specifiers of the `figure` environment in your manuscript; you may, however, find the `[p]` placement option -- i.e. `\begin{figure}[p]` -- or the `endfloat` package useful if a journal insists on the need to separate figures from the text.
 
-Figure captions appear below the figures themselves, therefore the `\caption` command should appear after the body of the figure. For example, Figure~\ref{sample-figure} with caption and sub-captions is produced using the following commands:
+Figure captions appear below the figures themselves, therefore the `\caption` command should appear after the body of the figure. For example, Figure&nbsp;\ref{sample-figure} with caption and sub-captions is produced using the following commands:
 ```
 \begin{figure}
 \centering
@@ -197,7 +211,7 @@ The `epstopdf` package can be used to incorporate encapsulated PostScript (.eps)
 
 The `interact` class file will deal with positioning your tables in the same way as standard \LaTeX. It should not normally be necessary to use the optional `[htb]` location specifiers of the `table` environment in your manuscript; you may, however, find the `[p]` placement option or the `endfloat` package useful if a journal insists on the need to separate tables from the text.
 
-The `tabular` environment can be used as shown to create tables with single horizontal rules at the head, foot and elsewhere as appropriate. The captions appear above the tables in the \textsf{Interact} style, therefore the `\tbl` command should be used before the body of the table. For example, Table~\ref{sample-table} is produced using the following commands:
+The `tabular` environment can be used as shown to create tables with single horizontal rules at the head, foot and elsewhere as appropriate. The captions appear above the tables in the \textsf{Interact} style, therefore the `\tbl` command should be used before the body of the table. For example, Table&nbsp;\ref{sample-table} is produced using the following commands:
 \begin{table}
 \tbl{Example of a table showing that its caption is as wide as
  the table itself and justified.}
@@ -371,17 +385,76 @@ An unnumbered `Notes` section may be included before the References (if using th
 
 # References
 
+Different journals from Taylor & Francis have different requirements for formatting the list of references. The reference style will be one those:
+
+- American Psychological Association reference style (APA)
+- Chicago Author-Date reference style (CAD)
+- National Library of Medicine reference style (NLM)
+- Reference Style-P (TFP)
+- Reference Style-Q (TFQ)
+- Reference Style-S (TFS)
+
+Authors must specify the required reference style in the YAML header of this file. For instance, this must be included when using the Chicago Author-Date reference style:
+```
+output:
+  rticles::tf_article:
+    reference_style: CAD
+```
+
 ## References cited in the text
+
+[CAVEAT: The only subsection below that will be correctly typeset is the one corresponding to the value specified in the `reference_style` field of the YAML header.]
+
+### American Psychological Association reference style (APA)
+
+References should be cited in accordance with \citeauthor{APA10} (APA) style, i.e. in alphabetical order separated by semicolons, e.g. ‘\citep{Ban77,Pia88,VL07}’ or ‘\ldots see Smith (1985, p.&nbsp;75)’. If there are two or more authors with the same surname, use the first author's initials with the surnames, e.g. ‘\citep{Lig08,Lig06}’. If there are three to five authors, list all the authors in the first citation, e.g. ‘\citep{GSSM91}’. In subsequent citations, use only the first author's surname followed by et al., e.g. ‘\citep{GSSM91}’. For six or more authors, cite the first author's name followed by et al. For two or more sources by the same author(s) in the same year, use lower-case letters (a,&nbsp;b,&nbsp;c, \ldots) with the year to order the entries in the reference list and use these lower-case letters with the year in the in-text citations, e.g. ‘\citep{FogEHPD04,FogJEE04}’. For further details on this reference style, see the Instructions for Authors on the Taylor & Francis website.
+
+Each bibliographic entry has a key, which is assigned by the author and is used to refer to that entry in the text. In this document, the key `Nas93` in the citation form `\citep{Nas93}` produces ‘\citep{Nas93}’, and the keys `Koc59`, `Han04` and `Cla08` in the citation form `\citep{Koc59,Han04,Cla08}` produce ‘\citep{Koc59,Han04,Cla08}’. The citation `\citep{Cha08}` produces ‘\citep{Cha08}’ where the citation first appears in the text, and ‘\citep{Cha08}’ in any subsequent citation. The appropriate citation style for different situations can be obtained, for example, by `\citet{Ovi95}` for ‘\citet{Ovi95}’, `\citealp{MPW08}` for ‘\citealp{MPW08}’, and `\citealt{Sch93}` for ‘\citealt{Sch93}’. Citation of the year alone may be produced by `\citeyear{Sch00}`, i.e. ‘\citeyear{Sch00}’, or `\citeyearpar{Gra05}`, i.e. ‘\citeyearpar{Gra05}’, or of the author(s) alone by `\citeauthor{Rit74}`, i.e. ‘\citeauthor{Rit74}’. Optional notes may be included at the beginning and/or end of a citation by the use of square brackets, e.g. `\citep[p.~31]{Hay08}` produces ‘\citep[p. 31]{Hay08}’; `\citep[see][pp.~73-77]{PI51}` produces ‘\citep[see][pp. 73--77]{PI51}’; `\citep[e.g.][]{Fel81}` produces ‘\citep[e.g.][]{Fel81}’. A ‘plain’ `\cite` command will produce the same results as a `\citet`, i.e. `\cite{BriIP}` will produce ‘\cite{BriIP}’.
+
+### Chicago Author-Date reference style (CAD)
+
+References should be cited in Chicago author-date style, e.g. ‘\citep{Ban77,Pia88,VL07}’ or ‘\ldots&nbsp;see Smith (1985,&nbsp;75)’. If there are three authors, list them all in every citation, e.g. ‘\citep{GSSM91}’. For more than three authors, cite the first author's name followed by et al. For two or more sources by the same author(s) in the same year, use lower-case letters (a, b, c, ...) with the year to order the entries in the References list and use these letters with the year in the in-text citations, e.g. ‘\citep{FogEHPD04,FogJEE04}’. If two or more authors have the same surname, use their initials with the surnames, e.g. ‘\citep{Lig08,Lig06}’. If the first author's names and the years of publication are identical for several references, include enough co-author names to eliminate ambiguity, e.g. `(Schonen, Baker, et&nbsp;al. 2009; Schonen, Brooks, et&nbsp;al. 2009)'. For further details on this reference style, see the Instructions for Authors on the Taylor \& Francis website.
+
+Each bibliographic entry has a key, which is assigned by the author and is used to refer to that entry in the text. In this document, the key `Nas93` in the citation form `\citep{Nas93}` produces ‘\citep{Nas93}’, and the keys `{Koc59,Han04,Cla08}` in the citation form `\citep{Koc59,Han04,Cla08}` produce ‘\citep{Koc59,Han04,Cla08}’. The appropriate citation style for different situations can be obtained, for example, by `\citet{Ovi95}` for ‘\citet{Ovi95}’, `\citealt{Sch93}` for ‘\citealt{Sch93}’, or `\citealp{MPW08}` for ‘\citealp{MPW08}’. Citation of the year alone may be produced by `\citeyear{Sch00}`, i.e. ‘\citeyear{Sch00}’, or `\citeyearpar{Gra05}`, i.e. ‘\citeyearpar{Gra05}’, or of the author(s) alone by `\citeauthor{Rit74}`, i.e. ‘\citeauthor{Rit74}’. Optional notes may be included at the beginning and/or end of a citation by the use of square brackets, e.g. `\citep[see][275]{PI51}` produces ‘\citep[see][275]{PI51}’; `\citep[e.g.][]{Fel81}` produces ‘\citep[e.g.][]{Fel81}’; `\citet[chap.~2]{Str00}` produces ‘\citet[chap. 2]{Str00}’. A ‘plain’ `\cite` command will produce the same result as a `\citet`, i.e. `\cite{BriIP}` will produce ‘\cite{BriIP}’.
+
+### National Library of Medicine reference style (NLM)
+
+References should be cited in accordance with US National Library of Medicine (NLM) style. References are cited in the text by a number in square brackets (e.g. [1], [2,4,10], [11--15], _not_ [11]--[15]), in the order in which they first appear. For further details on this reference style, see the Instructions for Authors on the Taylor \& Francis website.
+
+Each bibliographic entry has a key, which is assigned by the author and is used to refer to that entry in the text. In this document, the key `Ban77` in the citation form `\cite{Ban77}` produces ‘\cite{Ban77}’, and the keys `{Pia88,VL07}` in the citation form `\cite{Pia88,VL07}` produce ‘\cite{Pia88,VL07}’. The citation for a range of bibliographic entries (e.g.\ ‘\cite{Koc59,Han04,Cla08,Cha08,Ovi95,Sch93,MPW08,Sch00,Gra05,Rit74,PI51}’) will automatically be produced by  `\cite{Koc59,Han04,Cla08,Cha08,Ovi95,Sch93,MPW08,Sch00,Gra05,Rit74,PI51}`. Optional notes may be included at the beginning and/or end of a citation by the use of square brackets, e.g.\ `\cite[cf.][]{Fel81}` produces ‘\cite[cf.][]{Fel81}’, `\cite[p.356]{Str00}` produces ‘\cite[p.356]{Str00}’, and `\cite[see][p.73--77]{BriIP}` produces ‘\cite[see][p.73--77]{BriIP}’.
+
+### Reference Style-P (TFP)
+
+References cited in the text should be quoted by italic numbers in parentheses (e.g.\ (_1_), (_2_, _4_, _10_), (_11_--_15_), _not_ (_11_)--(_15_)), in the order in which they first appear. For further details on this reference style, see the Instructions for Authors on the Taylor \& Francis website.
+
+Each bibliographic entry has a key, which is assigned by the author and used to refer to that entry in the text. In this document, the key `Ban77` in the citation form `\cite{Ban77}` produces ‘\cite{Ban77}’, and the keys `Pia88` and `VL07` in the citation form `\cite{Pia88,VL07}` produce ‘\cite{Pia88,VL07}’. The citation for a range of bibliographic entries such as ‘\cite{Nas93,Koc59,Han04,Cla08,Cha08,Ovi95,Sch93,MPW08,Sch00,Gra05,Rit74,Hay08,PI51,Fel81,BriIP}’ will automatically be produced by `\cite{Nas93,Koc59,Han04,Cla08,Cha08,Ovi95,Sch93,MPW08,Sch00,Gra05,Rit74,Hay08,PI51,Fel81,BriIP}`. By using the `merge` option to `natbib`, citation keys within a multiple `\cite` command may contain a leading `*` that causes them to be merged in the bibliography together with the previous citation as a single entry with a single reference number. For example, `\cite{LP02,*LP04}` produces ‘\cite{LP02,*LP04}’, and both references are listed in the bibliography under one entry with that number.
+
+
+### Reference Style-Q (TFQ)
+
+References should be cited in the text by a number in square brackets (e.g. [1], [2,4,10], [11--15], not [11]--[15]) in the order in which they first appear. For further details on this reference style, see the Instructions for Authors on the Taylor & Francis website.
+
+Each bibliographical entry has a key, which is assigned by the author and is used to refer to that entry in the text. In this document, the key `Ban77` in the citation form `\cite{Ban77}` produces ‘\cite{Ban77}’, and the keys `Pia88` and `VL07` in the citation form `\cite{Pia88,VL07}` produce ‘\cite{Pia88,VL07}’. The citation for a range of bibliographic entries (e.g. ‘\cite{Nas93,Koc59,Han04,Cla08,Cha08,Ovi95,Sch93,MPW08,Sch00,Gra05,Rit74,Hay08,PI51,Fel81,BriIP}’) will automatically be produced by `\cite{Nas93,Koc59,Han04,Cla08,Cha08,Ovi95,Sch93,MPW08,Sch00,Gra05,Rit74,Hay08,PI51,Fel81,BriIP}`. Optional notes may be included at the end of a citation by the use of square brackets, e.g. `\cite[cf.][]{Lig08}` produces ‘\cite[cf.][]{Lig08}’, and `\cite[see][and references therein]{GSSM91}` produces ‘\cite[see][and references therein]{GSSM91}’.
+
+### Reference Style-S (TFS)
+
+References should be cited in the text by numbers in square brackets based on the order in which they appear in an alphabetical list of references at the end of the document (not the order of citation), so the first reference cited in the text might be [23]. For example, these may take the forms [32], [5,,6,,14], [21--55] (\emph{not} [21]--[55]). For further details on this reference style, see the Instructions for Authors on the Taylor \& Francis website.
+
+Each bibliographic entry has a key, which is assigned by the author and is used to refer to that entry in the text. In this document, the key `Ban77` in the citation form `\cite{Ban77}` produces ‘\cite{Ban77}’, and the keys `Pia88` and `VL07` in the citation form `\cite{Pia88,VL07}` produce ‘\cite{Pia88,VL07}’. The citation for a range of bibliographic entries (e.g. ‘\cite{Nas93,Koc59,Han04,Cla08,Cha08,Ovi95,Sch93,MPW08,Sch00,Gra05,Rit74,Hay08,PI51,Fel81,BriIP}’) will automatically be produced by `\cite{Nas93,Koc59,Han04,Cla08,Cha08,Ovi95,Sch93,MPW08,Sch00,Gra05,Rit74,Hay08,PI51,Fel81,BriIP}`.
+Optional notes may be included at the beginning and/or end of a citation by the use of square brackets, e.g. `\cite[cf.][]{Lig08}` produces ‘\cite[cf.][]{Lig08}’, and `\cite[see][and references therein]{GSSM91}` produces ‘\cite[see][and references therein]{GSSM91}’.
+
 
 ## The list of references
 
-References should be listed at the end of the main text in alphabetical order by authors' surnames, then chronologically (earliest first). If references have the same author(s), editor(s), etc., arrange by year of publication, with undated works at the end.
-A single-author entry precedes a multi-author entry that begins with the same name.
-If the reference list contains two or more items by the same author(s) in the same year, add a, b, etc. and list them alphabetically by title.
-Successive entries by two or more authors when only the first author is the same are alphabetized by co-authors' surnames.
-If a reference has more than ten named authors, list only the first seven, followed by 'et al.'.
-If a reference has no author or editor, order by title; if a date of publication is impossible to find, use `n.d.' in its place.
+Authors should create the list of references using a \textsc{Bib}\TeX\ database. \LaTeX/\textsc{Bib}\TeX\ will extract from your .bib file only those references that are cited in your text and list them in the References section. According to the chosen reference style, one of the following .bst files will be automatically used:
 
-The following list shows some sample references prepared in the Taylor & Francis Chicago author-date style.
+- APA: `apacite.bst`
+- CAD: `tfcad.bst`
+- NLM: `tfnlm.bst`
+- TFP: `tfp.bst`
+- TFQ: `tfq.bst`
+- TFS: `tfs.bst`
 
-[@Blair1977; @Alb05]
+Besides from `apacite.bst`, which is part of standard \LaTeX\ distributions, the files listed above should have been installed in the same directory of this skeleton file. You may delete the ones that are not needed.
+
+Please include a copy of your .bib file and/or the final generated .bbl file among your source files.

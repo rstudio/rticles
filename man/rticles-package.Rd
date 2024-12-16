@@ -78,6 +78,7 @@ Other contributors:
   \item Callum Arnold \email{cal.rk.arnold@gmail.com} (arnold-c) [contributor]
   \item Dmytro Perepolkin \email{dperepolkin@gmail.com} (\href{https://orcid.org/0000-0001-8558-6183}{ORCID}) (dmi3kno) [contributor]
   \item Tom Palmer \email{remlapmot@hotmail.com} (\href{https://orcid.org/0000-0003-4655-4511}{ORCID}) (remlapmot) [contributor]
+  \item Rafael Laboissière \email{rafael@laboissiere.net} (\href{https://orcid.org/0000-0002-2180-9250}{ORCID}) (rlaboiss) [contributor]
 }
 
 }

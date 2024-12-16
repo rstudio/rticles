@@ -539,17 +539,6 @@ springer_article <- function(..., keep_tex = TRUE,  citation_package = "natbib",
   format
 }
 
-#' @section `tf_article`: Format for creating submissions to a Taylor & Francis journal. Adapted from
-#' \samp{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
-#' @export
-#' @rdname article
-tf_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {
-  pdf_document_format(
-    "tf",
-    keep_tex = keep_tex, citation_package = citation_package, ...
-  )
-}
-
 #' @section \code{trb_article}: Format for creating submissions to the Transportation
 #'   Research Board Annual Meeting. Adapted from
 #'   \samp{https://www.overleaf.com/latex/templates/transportation-research-board-trb-latex-template/jkfndnnkkksw},

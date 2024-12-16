@@ -30,7 +30,6 @@
 \alias{sage_article}
 \alias{sim_article}
 \alias{springer_article}
-\alias{tf_article}
 \alias{trb_article}
 \alias{wellcomeor_article}
 \alias{isba_article}
@@ -150,8 +149,6 @@ springer_article(
   latex_engine = "pdflatex",
   pandoc_args = NULL
 )
-
-tf_article(..., keep_tex = TRUE, citation_package = "natbib")
 
 trb_article(..., keep_tex = TRUE, citation_package = "natbib")
 
@@ -410,11 +407,6 @@ Possible arguments for the YAML header are:
 \section{\code{springer_article}}{
  This format was adapted from the Springer
 Macro package for Springer Journals.
-}
-
-\section{\code{tf_article}}{
- Format for creating submissions to a Taylor & Francis journal. Adapted from
-\samp{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}.
 }
 
 \section{\code{trb_article}}{

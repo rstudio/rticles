@@ -1,5 +1,12 @@
-% interactcadsample.tex
-% v1.04 - May 2023
+% Template for Taylor & Francis journals
+%
+% Based on the original files distributed by T&F:
+% * interactapasample.tex: v1.05 - August 2017
+% * interactcadsample.tex: v1.04 - May 2023
+% * interactnlmsample.tex: v1.05 - August 2017
+% * interacttfpsample.tex: v1.01 - June 2016
+% * interacttfqsample.tex: v1.05 - August 2017
+% * interacttfssample.tex: v1.05 - August 2017
 
 \documentclass[$for(classoption)$$classoption$$sep$,$endfor$]{interact}
 
@@ -7,9 +14,7 @@
 \usepackage{subfigure}% Support for small, `sub' figures and tables
 %\usepackage[nolists,tablesfirst]{endfloat}% To `separate' figures and tables from text if required
 
-\usepackage{natbib}% Citation support using natbib.sty
-\bibpunct[, ]{(}{)}{;}{a}{}{,}% Citation support using natbib.sty
-\renewcommand\bibfont{\fontsize{10}{12}\selectfont}% Bibliography support using natbib.sty
+$biblio-commands$
 
 \theoremstyle{plain}% Theorem-like structures provided by amsthm.sty
 \newtheorem{theorem}{Theorem}[section]
@@ -202,7 +207,7 @@ $endif$
 $body$
 
 $if(bibliography)$
-\bibliographystyle{$if(biblio-style)$$biblio-style$$else$tfcad$endif$}
+\bibliographystyle{$biblio-style$}
 \bibliography{$bibliography$}
 $endif$
 
