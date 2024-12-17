@@ -19,9 +19,9 @@
 
 - Update Copernicus Publications template to version 7.9 from 2024-10-10 (@RLumSK, #577).
 
-- Update `tf_article()` to support updated template and more journal's style (thanks, @rlaboiss, #581)
-  - Setting `biblio-style` as metadata is now ignore in favor of `reference_style` argument of `tf_article()`. This will use the associated `.bst` file and insert the right command in the `.tex` template expected by T&F Journal's template.
-  - Support styles are
+- Update `tf_article()` to support updated template and more Taylor & Francis' journal styles (thanks, @rlaboiss, #581)
+  - Setting `biblio-style` as metadata is now ignored in favor of `reference_style` argument of `tf_article()`. This will use the associated `.bst` file and insert the right commands in the `.tex` template for the specific T&F journal.
+  - Supported styles are:
     - American Psychological Association reference style (`tf_article(reference_style = "APA")`)
     - Chicago Author-Date reference style (`tf_article(reference_style = "CAD")`)
     - National Library of Medicine reference style (`tf_article(reference_style = "NLM")`)
