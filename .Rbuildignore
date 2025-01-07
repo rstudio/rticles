@@ -18,3 +18,4 @@
 ^CRAN-SUBMISSION$
 ^cran-comments\.md$
 ^\.vscode/
+^\.luarc\.json$
