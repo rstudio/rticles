@@ -2,12 +2,12 @@
 #'
 #' Format for creating submissions to many Taylor & Francis journals.
 #' Adapted from:
-#' * <https://www.tandf.co.uk/journals/authors/InteractAPALaTeX.zip>
-#' * <https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip>
-#' * <https://www.tandf.co.uk/journals/authors/InteractNLMLaTeX.zip>
-#' * <https://www.tandf.co.uk/journals/authors/InteractTFPLaTeX.zip>
-#' * <https://www.tandf.co.uk/journals/authors/InteractTFQLaTeX.zip>
-#' * <https://www.tandf.co.uk/journals/authors/InteractTFSLaTeX.zip>
+#' * <https://files.taylorandfrancis.com/InteractAPALaTeX.zip>
+#' * <https://files.taylorandfrancis.com/InteractCADLaTeX.zip>
+#' * <https://files.taylorandfrancis.com/InteractNLMLaTeX.zip>
+#' * <https://files.taylorandfrancis.com/InteractTFPLaTeX.zip>
+#' * <https://files.taylorandfrancis.com/InteractTFQLaTeX.zip>
+#' * <https://files.taylorandfrancis.com/InteractTFSLaTeX.zip>
 #'
 #' @inheritParams rmarkdown::pdf_document
 #' @param reference_style should be set according to the specific Taylor & Francis

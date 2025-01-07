@@ -60,7 +60,7 @@ aea_article <- function(..., keep_tex = TRUE,
 
 #' @section `agu_article`: Format for creating a American Geophysical Union
 #'   (AGU) article. Adapted from
-#'   <https://www.agu.org/publish-with-agu/publish#1>.
+#'   <https://www.agu.org/publications>.
 #' @export
 #' @rdname article
 agu_article <- function(..., keep_tex = TRUE,
