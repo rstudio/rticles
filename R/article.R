@@ -114,7 +114,7 @@ arxiv_article <- function(..., keep_tex = TRUE) {
 }
 
 #' @section `bioinformatics_article`: Format for creating submissions to a Bioinformatics journal. Adapted from
-#' <https://academic.oup.com/bioinformatics/pages/submission_online>.
+#' `https://academic.oup.com/bioinformatics/pages/submission_online`.
 #' @export
 #' @rdname article
 bioinformatics_article <- function(..., keep_tex = TRUE, citation_package = "natbib") {

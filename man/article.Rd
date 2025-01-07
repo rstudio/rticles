@@ -225,7 +225,7 @@ unofficial but still a staple.
 
 \section{\code{bioinformatics_article}}{
  Format for creating submissions to a Bioinformatics journal. Adapted from
-\url{https://academic.oup.com/bioinformatics/pages/submission_online}.
+\verb{https://academic.oup.com/bioinformatics/pages/submission_online}.
 }
 
 \section{\code{biometrics_article}}{

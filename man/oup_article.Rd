@@ -70,8 +70,8 @@ additional details.}
 \description{
 Format for creating submissions to many Oxford University Press journals.
 Adapted from
-\url{https://academic.oup.com/pages/for-authors/journals/preparing-and-submitting-your-manuscript}
-and \url{https://academic.oup.com/icesjms/pages/General_Instructions}. and the
+\verb{https://academic.oup.com/pages/for-authors/journals/preparing-and-submitting-your-manuscript}
+and \verb{https://academic.oup.com/icesjms/pages/General_Instructions}. and the
 \code{oup-authoring-template} available on CTAN at
 \url{https://www.ctan.org/pkg/oup-authoring-template}.
 }
