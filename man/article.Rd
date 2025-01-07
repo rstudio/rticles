@@ -203,7 +203,7 @@ Economic Association (AER, AEJ, JEL, PP).
 \section{\code{agu_article}}{
  Format for creating a American Geophysical Union
 (AGU) article. Adapted from
-\url{https://www.agu.org/publish-with-agu/publish#1}.
+\url{https://www.agu.org/publications}.
 }
 
 \section{\code{amq_article}}{
@@ -337,7 +337,7 @@ Journal. This was adapted from the
 \section{\code{pihph_article}}{
  Format for creating submissions to the Papers
 in Historical Phonology
-(\url{http://journals.ed.ac.uk/pihph/about/submissions}). Adapted from
+(\url{https://journals.ed.ac.uk/pihph/about/submissions}). Adapted from
 \url{https://github.com/pihph/templates}. This format works well with
 \code{latex_engine = "xelatex"} and \code{citation_package="biblatex"},
 which are the default. It may not work correctly if you change these value.

@@ -377,7 +377,7 @@ peerj_article <- function(..., keep_tex = TRUE) {
 
 #' @section `pihph_article`: Format for creating submissions to the Papers
 #'   in Historical Phonology
-#'   (<http://journals.ed.ac.uk/pihph/about/submissions>). Adapted from
+#'   (<https://journals.ed.ac.uk/pihph/about/submissions>). Adapted from
 #'   <https://github.com/pihph/templates>. This format works well with
 #'   `latex_engine = "xelatex"` and `citation_package="biblatex"`,
 #'   which are the default. It may not work correctly if you change these value.

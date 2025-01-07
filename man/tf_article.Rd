@@ -38,12 +38,12 @@ Style-P), "TFQ" (Reference Style-Q), and "TFS" (Reference Style-S).}
 Format for creating submissions to many Taylor & Francis journals.
 Adapted from:
 \itemize{
-\item \url{https://www.tandf.co.uk/journals/authors/InteractAPALaTeX.zip}
-\item \url{https://www.tandf.co.uk/journals/authors/InteractCADLaTeX.zip}
-\item \url{https://www.tandf.co.uk/journals/authors/InteractNLMLaTeX.zip}
-\item \url{https://www.tandf.co.uk/journals/authors/InteractTFPLaTeX.zip}
-\item \url{https://www.tandf.co.uk/journals/authors/InteractTFQLaTeX.zip}
-\item \url{https://www.tandf.co.uk/journals/authors/InteractTFSLaTeX.zip}
+\item \url{https://files.taylorandfrancis.com/InteractAPALaTeX.zip}
+\item \url{https://files.taylorandfrancis.com/InteractCADLaTeX.zip}
+\item \url{https://files.taylorandfrancis.com/InteractNLMLaTeX.zip}
+\item \url{https://files.taylorandfrancis.com/InteractTFPLaTeX.zip}
+\item \url{https://files.taylorandfrancis.com/InteractTFQLaTeX.zip}
+\item \url{https://files.taylorandfrancis.com/InteractTFSLaTeX.zip}
 }
 }
 \examples{
