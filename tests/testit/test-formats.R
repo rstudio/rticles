@@ -86,5 +86,4 @@ test_format("tf", output_options = list(reference_style = "TFP"))
 test_format("tf", output_options = list(reference_style = "TFQ"))
 test_format("tf", output_options = list(reference_style = "TFS"))
 test_format("trb")
-# Deactivate because of https://github.com/rstudio/rticles/issues/523
-# test_format("wellcomeor")
+test_format("wellcomeor")
