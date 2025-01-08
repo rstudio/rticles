@@ -18,7 +18,7 @@ NULL
 
 #' @section `acm_article`: Format for creating an Association for Computing
 #'   Machinery (ACM) articles. Adapted from
-#'   <https://www.acm.org/publications/proceedings-template>.
+#'   `https://www.acm.org/publications/proceedings-template`
 
 #' @return An R Markdown output format.
 #' @examples \dontrun{

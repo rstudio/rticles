@@ -186,7 +186,7 @@ custom Pandoc LaTeX template and different default values for other arguments
 \section{\code{acm_article}}{
  Format for creating an Association for Computing
 Machinery (ACM) articles. Adapted from
-\url{https://www.acm.org/publications/proceedings-template}.
+\verb{https://www.acm.org/publications/proceedings-template}
 }
 
 \section{\code{acs_article}}{
