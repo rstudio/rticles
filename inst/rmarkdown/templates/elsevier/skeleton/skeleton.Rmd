@@ -49,7 +49,7 @@ linenumbers: false
 numbersections: true
 bibliography: mybibfile.bib
 biblio-style: elsarticle-harv # author year style for natbib - use 'elsarticle-num' or 'elsarticle-num-names' for numbered scheme
-classoption: preprint, 3p, authoryear # remove authoryear is not using `elsarticle-harv`
+classoption: preprint, 3p, authoryear # remove authoryear if not using `elsarticle-harv`
 # Use a CSL with `citation_package = "default"`
 # csl: https://www.zotero.org/styles/elsevier-harvard
 output: 
