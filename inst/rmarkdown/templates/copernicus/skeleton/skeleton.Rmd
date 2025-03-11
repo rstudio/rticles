@@ -84,6 +84,7 @@ appendix: |
   `\appendixtables` needs to be added in front of appendix tables
   
   Please add `\clearpage` between each table and/or figure. Further guidelines on figures and tables can be found below.
+language: english # set the manuscript language. The copernicus.cls supports: english, german, and french
 output:
   rticles::copernicus_article: 
     highlight: NULL

@@ -16,10 +16,11 @@
 %% -----------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{copernicus}
-    [2024/08/28 10.1.20 Copernicus papers]
+    [2025/03/03 10.1.26 Copernicus papers]
 \frenchspacing
 \clubpenalty10000
 \widowpenalty10000
+\RequirePackage{etoolbox}%
 \RequirePackage{iftex}
 %% protrudechars, \adjustspacing \hypenationmin,
 %% lccode, \hjcode ???, exhyphenchar,\automatichyphenmode, hyphenchar
@@ -140,6 +141,7 @@
 \newif\if@bar            %only used under \if@stage@final and \@cop@hometrue; for modern layout as well as for the classically layouted sub-journal "angeocom"
 \newif\if@firstbar       %only used under \if@stage@final and \@cop@hometrue; for modern layout as well as for the classically layouted sub-journal "angeocom"
 \newif\if@hvmath         \DeclareOption{hvmath}{\@hvmathtrue}%only used for discussions and only under \@cop@hometrue
+\newif\ifproofreadingchanges
 \InputIfFileExists{copernicus.cfg}%
   {\typeout{Additional configuration file copernicus.cfg used}}%
   {\CopernicusError{No additional configuration file copernicus.cfg}
@@ -548,16 +550,23 @@
 \ifx\xmltexversion\@undefined
   \ifcopyediting
     \let\title\ltx@title
-  \else
-    \def\title#1{\ltx@title{#1}\hypersetup{pdftitle=\@title}\xmp@title{#1}}
-  \fi
+    \else
+      \ifproofreadingchanges
+        \let\title\ltx@title
+      \else
+        \def\title#1{\ltx@title{#1}\hypersetup{pdftitle=\@title}\xmp@title{#1}}
+  \fi\fi
 \else
   \def\title#1{\ltx@title{#1}\xmp@title{#1}}
 \fi
 \def\maketitle{%
   \gdef\supplement##1{%
-    \href{https://doi.org/10.5194/\@journalnameshortlower-\@pvol-\@fpage-\@pyear-supplement}%
-         {https://doi.org/10.5194/\@journalnameshortlower-\@pvol-\@fpage-\@pyear-supplement}}%
+    \if@proof
+      [the link will be implemented upon publication]%
+    \else
+      \href{https://doi.org/10.5194/\@journalnameshortlower-\@pvol-\@fpage-\@pyear-supplement}%
+           {https://doi.org/10.5194/\@journalnameshortlower-\@pvol-\@fpage-\@pyear-supplement}%
+    \fi}%
   \ifnum\@fpage<0
     \CopernicusError{No article number given but citation by article number required}
                     {Please provide \string\articlenumber.}
@@ -1308,7 +1317,7 @@
   \fi
 \fi
 \RequirePackage[normalem]{ulem}%
-\RequirePackage[T3,T1]{fontenc}
+\RequirePackage[T5,T3,T1]{fontenc}
 \RequirePackage[warn]{textcomp}
 \if@cop@home
     \RequirePackage{fontawesome5}
@@ -1370,7 +1379,10 @@
 \fi
 \def\cmrng{{\fontfamily{cmr}\selectfont\ng}}
 \let\old@classoptionslist\@classoptionslist
-\edef\@classoptionslist{english,\old@classoptionslist}
+\preto\@classoptionslist{english,}
+\ifdefined\@raw@classoptionslist
+  \preto\@raw@classoptionslist{english,}
+\fi
 \RequirePackage{babel}
 \let\@classoptionslist\old@classoptionslist
 \ifx\StandardLayout\@undefined\let\StandardLayout\relax\fi
@@ -1573,11 +1585,12 @@
           \xdef\AB@thenote{\arabic{affil}}%
        \fi
        \ifcopyediting\else
+         \ifproofreadingchanges\else
          \xmp@author{#2}%
-       \fi
+       \fi\fi
        \global\advance\c@authnum\@ne
        \if@cop@home
-         \expandafter\ifx\csname deceased@\the\c@authnum\endcsname\true\relax\def\@@deceased{$^{,\text{\faCross}}$}\fi
+         \expandafter\ifx\csname deceased@\the\c@authnum\endcsname\true\relax\def\@@deceased{$^{,\text{\faRibbon}}$}\fi
          \expandafter\ifx\csname econtrib@\the\c@authnum\endcsname\true\relax\def\@@econtrib{$^{,\text{\faStar}}$}\fi
        \fi
        \def\@tempa{#1}\ifx\@tempa\@empty\def\AB@note{\AB@thenote}\else\def\AB@note{#1}%
@@ -1659,7 +1672,7 @@
    \deceased@sep#1,\@nil
    \@temptokena=\expandafter{\AB@affillist}%
    \protected@xdef\AB@affillist{\the\@temptokena \AB@affilsep
-     \AB@affilnote{\faCross}\protect\Affilfont\@deceasedNote}%
+     \AB@affilnote{\faRibbon}\protect\Affilfont\@deceasedNote}%
   }
 \newcommand\equalcontrib[1]{%
   \gdef\@econtribNote{These authors contributed equally to this work.}%
@@ -2155,7 +2168,6 @@
     \provide@orig@symbol{Phi}
     \provide@orig@symbol{Psi}
     \provide@orig@symbol{Omega}
-    \usepackage{etoolbox}%
     \ifluatex\else
       %% Fix fuer #6924, vgl https://tex.stackexchange.com/questions/561236/setmathalphabet-messes-with-rm
       \@iflatexlater{2020/10/01}{}{\patchcmd\document@select@group{#1{#4}}{\expandafter#1\ifx\math@bgroup\bgroup{#4}\else#4\fi}{}{}}%
@@ -2287,7 +2299,7 @@
       \hypersetup{anchorcolor=black,citecolor=black,filecolor=black,linkcolor=black,unicode,%
         menucolor=black,urlcolor=black}%%
     }{%
-      \usepackage[\ifcopyediting bookmarks=false\else bookmarks=true\fi,colorlinks]{hyperref}
+      \usepackage[bookmarks=\ifcopyediting false\else\ifproofreadingchanges false\else true\fi\fi,colorlinks]{hyperref}%
       \hypersetup{anchorcolor=black,citecolor=black,filecolor=black,linkcolor=black,%
         menucolor=black,pagecolor=black,urlcolor=black}
     }%
@@ -2599,9 +2611,12 @@
   \else
     \ifcopyediting
       \gdef\@howtocite{}%
-    \else
-      \gdef\@howtocite{#1, \@journalnameabbreviation, \@pvol, \@fpage--\@lpage, \expandafter\url{\@@doi}, \@pyear.}%
-    \fi
+      \else
+        \ifproofreadingchanges
+          \gdef\@howtocite{}%
+        \else
+          \gdef\@howtocite{#1, \@journalnameabbreviation, \@pvol, \@fpage--\@lpage, \expandafter\url{\@@doi}, \@pyear.}%
+    \fi\fi
   \fi
 }\def\@howtocite{}%+1,+2,+d
 \def\msnumber#1{\if@cop@home\gdef\@msnumber{#1}\fi}
@@ -2636,13 +2651,13 @@
 \fi
 \if@stage@final
   \def\keywords#1{%
-    \ifcopyediting\else\xmp@keywords{#1}\fi%
+    \ifcopyediting\else\ifproofreadingchanges\else\xmp@keywords{#1}\fi\fi%
     \def\@keyw{#1}%
   }
   \def\@keyw{}
 \else
   \def\keywords#1{%
-    \ifcopyediting\else\xmp@keywords{#1}\fi%
+    \ifcopyediting\else\ifproofreadingchanges\else\xmp@keywords{#1}\fi\fi%
     \CopernicusWarningNoLine{Keywords are not supported.}%
     \vspace{1.7mm}\par\noindent\textbf{Keywords.}\enspace\ignorespaces#1}
 \fi
@@ -2781,7 +2796,7 @@
   \fi
   \let\do@skip\relax
   \def\@argi{#1}\ifx\@argi\@empty\else\let\do@skip\space\fi%
-  \item \dosupplement{#1\do@skip The supplement related to this article is available online at:
+  \item \dosupplement{#1\do@skip The supplement related to this article is available online at
     \if@stage@final\else\\\fi
     \supplement{#2}.}%
   \end{trivlist}%
@@ -3105,6 +3120,11 @@
 \fi
 
 \def\invbreve#1{\def\x##1{\fontencoding{T3}\selectfont\textroundcap{{\fontencoding{T1}\selectfont##1}}}\ifmmode \x{$#1$}\else\x{#1}\fi}
+\let\texthookabove\h
+\let\textdotbelow\d
+\def\h#1{{\fontencoding{T5}\selectfont\texthookabove{#1}}}
+\def\d#1{{\fontencoding{T5}\selectfont\textdotbelow{#1}}}
+\hypersetup{pdfencoding=auto}
 
 \endinput
 %%
