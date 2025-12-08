@@ -353,12 +353,10 @@
 \LoadClass[twoside,fleqn,onecolumn]{article}%
 
 \usepackage{etex}
-%\ Modification by as etex is not used anymore in modern LaTeX
-\makeatletter
+% Modification by as etex is not used anymore in modern LaTeX
 \@ifundefined{reserveinserts}{}{%
   \reserveinserts{28}%
 }
-\makeatother
 \RequirePackage{graphicx,multicol}%
 \RequirePackage{multirow}%
 \RequirePackage{cuted}%
