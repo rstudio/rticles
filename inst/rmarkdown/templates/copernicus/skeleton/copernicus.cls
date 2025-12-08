@@ -5,18 +5,18 @@
 %% The original source files were:
 %%
 %% copernicus.dtx  (with options: `class')
-%% 
+%%
 %% -----------------------------------------------------------------
 %% Author:     copernicus.org and le-tex publishing services
-%% 
+%%
 %% This file is part of the copernicus package for papers
 %% published by Copernicus Publications (Copernicus GmbH).
-%% 
+%%
 %%       Copyright (C) 2023 by Copernicus Publications
 %% -----------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{copernicus}
-    [2025/03/03 10.1.26 Copernicus papers]
+    [2025/10/30 10.1.30 Copernicus papers]
 \frenchspacing
 \clubpenalty10000
 \widowpenalty10000
@@ -1319,20 +1319,18 @@
 \RequirePackage[normalem]{ulem}%
 \RequirePackage[T5,T3,T1]{fontenc}
 \RequirePackage[warn]{textcomp}
-\if@cop@home
-    \RequirePackage{fontawesome5}
-    \ifluatex
-      \newcommand*{\faicon}[1]{{\csname faicon@#1\endcsname}}
-      \input{fontawesomesymbols-generic.tex}
-      \DeclareRobustCommand\FAone{\fontencoding{U}\fontfamily{fontawesomeone}\selectfont}
-      \DeclareRobustCommand\FAtwo{\fontencoding{U}\fontfamily{fontawesometwo}\selectfont}
-      \DeclareRobustCommand\FAthree{\fontencoding{U}\fontfamily{fontawesomethree}\selectfont}
-      \input{fontawesomesymbols-pdftex.tex}
-      \renewcommand{\faHourglass}[1][]{\faicon{hourglass\if\relax\detokenize{#1}\relax\else-#1\fi}}
-      \renewcommand{\faBattery}[1][4]{\faicon{battery-#1}}
-    \else
-      \RequirePackage{fontawesome}
-    \fi
+\RequirePackage{fontawesome5}
+\ifluatex
+  \newcommand*{\faicon}[1]{{\csname faicon@#1\endcsname}}
+  \input{fontawesomesymbols-generic.tex}
+  \DeclareRobustCommand\FAone{\fontencoding{U}\fontfamily{fontawesomeone}\selectfont}
+  \DeclareRobustCommand\FAtwo{\fontencoding{U}\fontfamily{fontawesometwo}\selectfont}
+  \DeclareRobustCommand\FAthree{\fontencoding{U}\fontfamily{fontawesomethree}\selectfont}
+  \input{fontawesomesymbols-pdftex.tex}
+  \renewcommand{\faHourglass}[1][]{\faicon{hourglass\if\relax\detokenize{#1}\relax\else-#1\fi}}
+  \renewcommand{\faBattery}[1][4]{\faicon{battery-#1}}
+\else
+  \RequirePackage{fontawesome5}
 \fi
 \usepackage{upquote}%% #7510
 \usepackage{regexpatch}
@@ -1589,10 +1587,8 @@
          \xmp@author{#2}%
        \fi\fi
        \global\advance\c@authnum\@ne
-       \if@cop@home
-         \expandafter\ifx\csname deceased@\the\c@authnum\endcsname\true\relax\def\@@deceased{$^{,\text{\faRibbon}}$}\fi
-         \expandafter\ifx\csname econtrib@\the\c@authnum\endcsname\true\relax\def\@@econtrib{$^{,\text{\faStar}}$}\fi
-       \fi
+       \expandafter\ifx\csname deceased@\the\c@authnum\endcsname\true\relax\def\@@deceased{$^{,\text{\faRibbon}}$}\fi
+       \expandafter\ifx\csname econtrib@\the\c@authnum\endcsname\true\relax\def\@@econtrib{$^{,\text{\faStar}}$}\fi
        \def\@tempa{#1}\ifx\@tempa\@empty\def\AB@note{\AB@thenote}\else\def\AB@note{#1}%
         \setcounter{Maxaffil}{0}\fi
       \ifnum\value{authors}>1\relax
@@ -1666,7 +1662,6 @@
   \if!#2!\else\econtrib@sep#2\@nil\fi}
 
 \newcommand\deceased[2][]{\gdef\@deceasedtext{#1}\@deceased{#2}}
-\if@cop@home
 \def\@deceased#1{%
   \ifx\@deceasedtext\@empty\gdef\@deceasedNote{deceased}\else\gdef\@deceasedNote{deceased, \@deceasedtext}\fi
    \deceased@sep#1,\@nil
@@ -1681,10 +1676,6 @@
    \protected@xdef\AB@affillist{\the\@temptokena \AB@affilsep
      \AB@affilnote{\faStar}\protect\Affilfont\@econtribNote}%
  }
-\else
-  \let\equalcontrib\@gobble
-  \let\@deceased\@gobble
-\fi
 \newcount\corr@cnt      \corr@cnt\z@\relax
 \newcount\curr@corr@cnt \curr@corr@cnt\z@\relax
 \def\Author{\let\curr@corr\@empty\@ifnextchar[\@Author{\@Author[]}}%]
@@ -2139,6 +2130,7 @@
      \patchBothAmsMathEnvironmentsForLinenoX{multline}}}
   {\CopernicusWarningNoLine{Cannot find lineno.sty; proceeding without it}%
    \let\nolinenumbers\bgroup\let\endnolinenumbers\egroup}
+\usepackage{tikz}
 \IfFileExists{times.sty}
   {\RequirePackage{times}
    \def\Hv@scale{0.95}}
@@ -2176,6 +2168,17 @@
     \DeclareSymbolFont{largesymbolsA}{U}{esint}{m}{n}%from esint.sty
     \DeclareMathSymbol{\oiintop}{\mathop}{largesymbolsA}{'015}%from esint.sty
     \def\oiint{\oiintop\nolimits}%from esint.sty
+    %%%% Ticket 5093, Dreifachintegrale.
+    \DeclareFontEncoding{LS2}{}{\noaccents@}
+    \DeclareFontSubstitution{LS2}{stix}{m}{n}
+    \DeclareSymbolFont{integrals}{LS2}{stixcal}{m}{n}
+    \DeclareMathSymbol{\smalloiiintsl}{\mathop}{integrals}{"05}
+    \DeclareMathSymbol{\smalloiiintup}{\mathop}{integrals}{"20}
+    \DeclareMathSymbol{\oiiintslop}{\mathop}{integrals}{"99}
+    \DeclareMathSymbol{\oiiintupop}{\mathop}{integrals}{"B4}
+    \let\oiiintop=\oiiintslop
+    \def\oiiint{\DOTSI\oiiintop\ilimits@}
+    %%%%%%
     \DeclareMathSymbol{\fintop}{\mathop}{largesymbolsA}{'037}%from esint.sty
     \def\fint{\fintop\nolimits}%from esint.sty
     \ifx\xmltexversion\@undefined\else{\catcode`\_=\active\global\let_\xmltexUndersc@re}\fi
@@ -2854,7 +2857,13 @@
     \csname specialsection-#1\endcsname{#2}%
   \fi}
 
-\generateCommand{acknowledgement}   {}        \def\endacknowledgement{\endlist\egroup}
+\newenvironment{acknowledgement}{%
+  \PackageError{copernicus}{%
+    Environment `acknowledgement` (singular) is deprecated. Please use environment `acknowledgements` (plural)%
+  }{%
+    \string\begin{acknowledgements} Text. \string\end{acknowledgements}%
+  }%
+}{}
 \generateCommand{acknowledgements}  {}        \def\endacknowledgements{\endlist\egroup}
 \iffalse %instead of \if@stage@final, to check what they want
   \def\appendixfigures{%

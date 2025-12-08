@@ -13,7 +13,7 @@
 #'
 #' An number of required and optional manuscript sections, e.g. `acknowledgements`, `competinginterests`, or `authorcontribution`, must be declared using the respective properties of the R Markdown header - see skeleton file.
 #'
-#' **Version:** Based on `copernicus_package.zip` in the version 7.10, 4 March 2025, using `copernicus.cls` in Version 10.1.26, 14 March 2025.
+#' **Version:** Based on `copernicus_package.zip` in the version 7.12, 24 November 2025.
 #'
 #' **Copernicus journal abbreviations:** You can use the function `copernicus_journal_abbreviations()` to get the journal abbreviation for all journals supported by the Copernicus article template.
 #'
@@ -91,7 +91,6 @@ copernicus_journals <- list(
   "E&G Quaternary Science Journal" = "egqsj",
   "EGUsphere" = "egusphere",
   "European Journal of Mineralogy" = "ejm",
-  "Fossil Record" = "fr",
   "Geochronology" = "gchron",
   "Geographica Helvetica" = "gh",
   "Geoscience Communication" = "gc",
@@ -100,6 +99,7 @@ copernicus_journals <- list(
   "History of Geo- and Space Sciences" = "hgss",
   "Hydrology and Earth System Sciences" = "hess",
   "Journal of Bone and Joint Infection" = "jbji",
+  "Journal of Environmentally Compatible Air Transport System" = "jecats",
   "Journal of Micropalaeontology" = "jm",
   "Journal of Sensors and Sensor Systems" = "jsss",
   "Magnetic Resonance" = "mr",
@@ -107,8 +107,8 @@ copernicus_journals <- list(
   "Natural Hazards and Earth System Sciences" = "nhess",
   "Nonlinear Processes in Geophysics" = "npg",
   "Ocean Science" = "os",
-  "Primate Biology" = "pb",
   "Proceedings of the International Association of Hydrological Sciences" = "piahs",
+  "Proceedings of the International Ocean Drilling Programme" = "piodp",
   "Safety of Nuclear Waste Disposal" = "sand",
   "Scientific Drilling" = "sd",
   "SOIL" = "soil",
