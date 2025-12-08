@@ -10,8 +10,7 @@ test_format <- function(name, output_options = NULL, skip = NULL) {
   # work in a temp directory
   dir <- tempfile()
   dir.create(dir)
-  oldwd <- setwd(dir)
-  on.exit(setwd(oldwd), add = TRUE)
+  withr::local_dir(dir)
 
   # create a draft of the format
   testdoc <- paste0(name, "_article", ".Rmd")
@@ -24,7 +23,7 @@ test_format <- function(name, output_options = NULL, skip = NULL) {
     "Rendering the ", name, " format...",
     if (!is.null(output_options)) " (with output options)"
   )
-  output_file <- rmarkdown::render(testdoc, output_options = output_options, quiet = TRUE)
+  output_file <- rmarkdown::render(testdoc, output_options = output_options, quiet = !interactive())
   assert(paste(name, "format works"), {
     file.exists(output_file)
   })
@@ -77,7 +76,7 @@ test_format("rjournal")
 test_format("rsos")
 test_format("rss")
 test_format("sage")
-test_format("sim", skip = TRUE) # sim format currently broken
+test_format("sim")
 test_format("springer", skip = !rmarkdown::pandoc_available("2.11.4"))
 test_format("tf", output_options = list(reference_style = "CAD"))
 test_format("tf", output_options = list(reference_style = "APA"))

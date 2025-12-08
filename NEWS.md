@@ -36,6 +36,8 @@ supported by the `copernicus.cls`, and fix an issue where the section headers we
 
 ## MINOR CHANGES
 
+- Patch `WileyNDJ` template used in `sim_article()` to fix an issue with `etex` package not being useful anymore in recent LaTeX distributions (#593).
+
 - Update all templates to work with Pandoc 3.2.1 by adding the definition of new `\pandocbounded` command used by Pandoc's LaTeX writers (see more at https://github.com/jgm/pandoc/releases/tag/3.2.1 and https://github.com/jgm/pandoc/issues/9660) (#571, #576).
 
 # rticles 0.27
