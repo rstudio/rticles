@@ -352,8 +352,13 @@
 \ProcessOptions
 \LoadClass[twoside,fleqn,onecolumn]{article}%
 
-\usepackage{etex}%
-\reserveinserts{28}% included etex package and \reserveinserts{...} to avoid no room for \newinserts, \newcounts or \newskips etc.
+\usepackage{etex}
+%\ Modification by as etex is not used anymore in modern LaTeX
+\makeatletter
+\@ifundefined{reserveinserts}{}{%
+  \reserveinserts{28}%
+}
+\makeatother
 \RequirePackage{graphicx,multicol}%
 \RequirePackage{multirow}%
 \RequirePackage{cuted}%
