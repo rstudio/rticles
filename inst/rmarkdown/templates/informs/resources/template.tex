@@ -25,6 +25,8 @@ $endif$
 $if(tables)$
 % From pandoc table feature
 \usepackage{longtable,booktabs,array}
+$if(pandoc3821)$\newcounter{none} % for unnumbered tables
+$endif$
 $if(multirow)$
 \usepackage{multirow}
 $endif$
