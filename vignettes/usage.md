@@ -11,9 +11,6 @@ If you are not using RStudio, you'll also need to install [Pandoc](https://pando
 rmarkdown::draft(
     "MyJSSArticle.Rmd", template = "jss", package = "rticles"
 )
-rmarkdown::draft(
-    "MyRJournalArticle", template = "rjournal", package = "rticles"
-)
 ```
    
    This will create a folder containing a Rmd file using the corresponding output format and all the assets required by this format. 
