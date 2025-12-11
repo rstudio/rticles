@@ -32,12 +32,13 @@ jobs:
       matrix:
         config:
           # testing R release with last shipped pandoc version in RStudio IDE and new pandoc
-          - {os: windows-latest, pandoc: '3.5',    r: 'release'}
-          - {os: macOS-latest,   pandoc: '3.5',    r: 'release'}
+          - {os: windows-latest, pandoc: '3.6.3',    r: 'release'}
+          - {os: macOS-latest,   pandoc: '3.6.3',    r: 'release'}
           - {os: ubuntu-latest,  pandoc: 'devel',    r: 'release'}
           # testing older pandoc versions
-          - {os: ubuntu-latest,  pandoc: '3.2.1',   r: 'release'} # special \pandocbounded change
-          - {os: ubuntu-latest,  pandoc: '3.1.7',   r: 'release'} # special citeproc change
+          - {os: ubuntu-latest,  pandoc: '3.8.2.1',  r: 'release'} # special counter table addition
+          - {os: ubuntu-latest,  pandoc: '3.2.1',    r: 'release'} # special \pandocbounded change
+          - {os: ubuntu-latest,  pandoc: '3.1.7',    r: 'release'} # special citeproc change
           - {os: ubuntu-latest,  pandoc: '2.19.2',   r: 'release'}
           - {os: ubuntu-latest,  pandoc: '2.18',     r: 'release'}
           - {os: ubuntu-latest,  pandoc: '2.17.1.1', r: 'release'}

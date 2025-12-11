@@ -53,6 +53,9 @@ test_that("tightlist is defined in all templates", {
 test_that("part for Pandoc's tables is defined in all templates", {
   for (f in temp_file) {
     expect_contains(f, "if(tables)", fixed = TRUE)
+    # including change from pandoc 3.8.2.1 about new counter
+    expect_contains(f, "if(pandoc3821)", fixed = TRUE)
+    expect_contains(f, "$\\newcounter{none}", fixed = TRUE)
   }
 })
 
