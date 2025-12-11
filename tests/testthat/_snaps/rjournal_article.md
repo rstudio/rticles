@@ -1,10 +1,10 @@
-# rjournal_article() is deprecated
+# rjournal_article() is defunct
 
     Code
       x <- rjournal_article()
     Condition
-      Warning:
-      `rjournal_article()` was deprecated in rticles 0.25.
+      Error:
+      ! `rjournal_article()` was deprecated in rticles 0.25 and is now defunct.
       i Please use `rjtools::rjournal_pdf_article()` instead.
       i See official recommandation at https://rjournal.github.io/submissions.html
 
