@@ -12,3 +12,4 @@ rjournal_article(..., keep_tex = TRUE, citation_package = "natbib")
 This function is now defunct in favor of the \href{https://rjournal.github.io/rjtools/}{\strong{rjtools}} package
 which is now officialy recommanded by R Journal \url{https://rjournal.github.io/submissions.html}.
 }
+\keyword{internal}

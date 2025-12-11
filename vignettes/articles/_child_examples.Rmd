@@ -64,11 +64,6 @@ for (journal in journals()) {
     path = xfun::with_ext(out_pdf, "gif"),
     delay = 1)
   message("Retrieving built files.")
-  # specific treatment for rjournal name
-  if (journal == "rjournal") {
-    file.rename(out_pdf, out_pdf <- file.path(dirname(out_pdf), "rjournal_article.pdf"))
-    file.rename(out_gif, out_gif <- file.path(dirname(out_gif), "rjournal_article.gif"))
-  }
   file.copy(out_pdf, out_dir)
   file.copy(out_gif, out_dir)
   # clean temp dir

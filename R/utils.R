@@ -5,7 +5,7 @@
 #' These names can be useful in two ways:
 #'
 #' * You can add `_article` suffix to get the name of the output format (e.g.,
-#' [rjournal_article()]).
+#' [jss_article()]).
 #'
 #' * You can use the name directly in the `template` argument of
 #' [rmarkdown::draft()].
