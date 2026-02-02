@@ -5,7 +5,7 @@
 #' These names can be useful in two ways:
 #'
 #' * You can add `_article` suffix to get the name of the output format (e.g.,
-#' [rjournal_article()]).
+#' [jss_article()]).
 #'
 #' * You can use the name directly in the `template` argument of
 #' [rmarkdown::draft()].
@@ -47,13 +47,6 @@ merge_list <- function(x, y) {
 #' @param output Path to save output.
 #' @param in_header Paths to files to include in the header.
 #' @return (Invisibly) The path of the generate file.
-#' @examples
-#' x <- rticles:::template_pandoc(
-#'   list(preamble = "%abc", filename = "wickham"),
-#'   rticles:::find_resource("rjournal", "RJwrapper.tex"),
-#'   tempfile()
-#' )
-#' if (interactive()) file.show(x)
 #' @noRd
 template_pandoc <- function(metadata, template, output,
                             in_header = NULL, verbose = FALSE) {

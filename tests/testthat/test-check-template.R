@@ -3,9 +3,6 @@ skip_on_cran()
 
 temp_file <- list.files(pkg_file_template(), recursive = TRUE, pattern = "template.tex$", full.names = TRUE)
 
-# Rjournal template has another name
-temp_file[grep("rjournal", temp_file)] <- pkg_file_template("rjournal", "resources", "RJwrapper.tex")
-
 expect_contains <- function(file, pattern, nb = 1, at_least = NULL, ...) {
   content <- xfun::read_utf8(file)
   matched <- grepl(pattern, content, ...)
