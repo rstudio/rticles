@@ -6,7 +6,7 @@
 %%
 %% merlin.mbs  (with options: `ay,nat,nm-rvx,keyxyr,dt-beg,yr-par,note-yr,tit-qq,atit-u,trnum-it,vol-bf,volp-com,num-xser,pre-edn,isbn,issn,edpar,pp,ed,xedn,xand,etal-it,revdata,eprint,url,url-blk,doi,nfss')
 %%
-%% ** BibTeX style file for JSS publications (http://www.jstatsoft.org/)
+%% ** BibTeX style file for JSS publications (https://www.jstatsoft.org/)
 %%
 %% License: GPL-2 | GPL-3
  % ===============================================================

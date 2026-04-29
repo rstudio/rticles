@@ -1,13 +1,7 @@
-\documentclass[
-$for(classoption)$
-  $classoption$$sep$,
-$endfor$
-]{$documentclass$}
+\documentclass[$if(classoption)$$for(classoption)$$classoption$$sep$,$endfor$$else$article$endif$]{$documentclass$}
 
 %% recommended packages
 \usepackage{orcidlink,thumbpdf,lmodern}
-
-\usepackage[utf8]{inputenc}
 
 \author{
 $for(author)$$author.name$$if(author.orcid)$~\orcidlink{$author.orcid$}$endif$\\$author.affiliation$$sep$ \And $endfor$
@@ -66,6 +60,8 @@ $endif$
 % tightlist command for lists without linebreak
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
 
 $if(tables)$
 % From pandoc table feature
@@ -187,9 +183,9 @@ $else$
  {}
 $endif$$endif$
 \usepackage{calc}
-\newcommand{\CSLBlock}[1]{#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
 

@@ -36,6 +36,12 @@ supported by the `copernicus.cls`, and fix an issue where the section headers we
 
 ## MINOR CHANGES
 
+- Update `jss_article()` template to align with new JSS example from `jss.cls` v3.6 (2026-04-28):
+  - `\documentclass` now defaults to `[article]` class option when none is specified in YAML.
+  - Removed `\usepackage[utf8]{inputenc}` (handled by modern LaTeX and `jss.cls`).
+  - Added `\setlength{\emergencystretch}{3em}` to prevent overfull lines.
+  - Updated CSL citation helper commands (`\CSLBlock`, `\CSLLeftMargin`, `\CSLRightInline`) to match current Pandoc defaults, improving bibliography spacing and baseline alignment.
+
 - Adapt all templates to new Pandoc 3.8.2.1 change regarding table counter definition (#595).
 
 - Patch `WileyNDJ` template used in `sim_article()` to fix an issue with `etex` package not being useful anymore in recent LaTeX distributions (#593).
