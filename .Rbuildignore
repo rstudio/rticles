@@ -19,3 +19,6 @@
 ^cran-comments\.md$
 ^\.vscode/
 ^\.luarc\.json$
+^SIZE_OPTIMIZATION_PLAN\.md$
+^\.positai$
+^\.claude$
