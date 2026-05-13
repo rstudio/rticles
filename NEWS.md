@@ -32,7 +32,7 @@
 - Update `mdpi_article()` to latest version of September 2024 (thanks, @nielsbock, #573, #580).
 
 - Update Copernicus Publications template to version 7.14 from 2026-05-13, add support for the languages
-supported by the `copernicus.cls`, and fix an issue where the section headers were not shown due to a missing language flag. (@RLumSK, #577, #588, #591)  
+supported by the `copernicus.cls`, and fix an issue where the section headers were not shown due to a missing language flag. (@RLumSK, #577, #588, #591, #601)  
 
 ## MINOR CHANGES
 
