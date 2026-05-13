@@ -5,18 +5,18 @@
 %% The original source files were:
 %%
 %% copernicus.dtx  (with options: `class')
-%%
+%% 
 %% -----------------------------------------------------------------
 %% Author:     copernicus.org and le-tex publishing services
-%%
+%% 
 %% This file is part of the copernicus package for papers
 %% published by Copernicus Publications (Copernicus GmbH).
-%%
+%% 
 %%       Copyright (C) 2023 by Copernicus Publications
 %% -----------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{copernicus}
-    [2025/10/30 10.1.30 Copernicus papers]
+    [2026/02/03 10.1.31 Copernicus papers]
 \frenchspacing
 \clubpenalty10000
 \widowpenalty10000
@@ -127,9 +127,14 @@
                               \def\specialp@perstring{Editorial note}%
                               \@noreftrue
                               \AtEndOfClass{%
-                                \edef\@journalnameabbreviation{\@journalnameabbreviation\space Discuss.}%
-                                \expandafter\jurl@splitter\@journalurl\@nil
-                                \edef\@journalurl{\jurl@first-discuss.net}}}
+                                \def\@tempa{https://egusphere.copernicus.org}%
+                                \ifx\@journalurl\@tempa
+                                \else
+                                  \edef\@journalnameabbreviation{\@journalnameabbreviation\space Discuss.}%
+                                  \expandafter\jurl@splitter\@journalurl\@nil
+                                  \edef\@journalurl{\jurl@first-discuss.net}%
+                                \fi
+                              }}
 \newif\if@preface%ask Lupino
 \DeclareOption{preface}  {\@prefacetrue}
 \DeclareOption{forHTML}  {\@forHTMLtrue}
@@ -1320,18 +1325,14 @@
 \RequirePackage[T5,T3,T1]{fontenc}
 \RequirePackage[warn]{textcomp}
 \RequirePackage{fontawesome5}
-\ifluatex
-  \newcommand*{\faicon}[1]{{\csname faicon@#1\endcsname}}
-  \input{fontawesomesymbols-generic.tex}
-  \DeclareRobustCommand\FAone{\fontencoding{U}\fontfamily{fontawesomeone}\selectfont}
-  \DeclareRobustCommand\FAtwo{\fontencoding{U}\fontfamily{fontawesometwo}\selectfont}
-  \DeclareRobustCommand\FAthree{\fontencoding{U}\fontfamily{fontawesomethree}\selectfont}
-  \input{fontawesomesymbols-pdftex.tex}
-  \renewcommand{\faHourglass}[1][]{\faicon{hourglass\if\relax\detokenize{#1}\relax\else-#1\fi}}
-  \renewcommand{\faBattery}[1][4]{\faicon{battery-#1}}
-\else
-  \RequirePackage{fontawesome5}
-\fi
+\newcommand*{\faicon}[1]{{\csname faicon@#1\endcsname}}
+\input{fontawesomesymbols-generic.tex}
+\DeclareRobustCommand\FAone{\fontencoding{U}\fontfamily{fontawesomeone}\selectfont}
+\DeclareRobustCommand\FAtwo{\fontencoding{U}\fontfamily{fontawesometwo}\selectfont}
+\DeclareRobustCommand\FAthree{\fontencoding{U}\fontfamily{fontawesomethree}\selectfont}
+\input{fontawesomesymbols-pdftex.tex}
+\renewcommand{\faHourglass}[1][]{\faicon{hourglass\if\relax\detokenize{#1}\relax\else-#1\fi}}
+\renewcommand{\faBattery}[1][4]{\faicon{battery-#1}}
 \usepackage{upquote}%% #7510
 \usepackage{regexpatch}
 \def\active@text@prime{\ifin@texttt\textquotesingle\else'\fi}
