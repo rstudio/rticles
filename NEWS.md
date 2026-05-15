@@ -42,6 +42,8 @@ supported by the `copernicus.cls`, and fix an issue where the section headers we
   - Added `\setlength{\emergencystretch}{3em}` to prevent overfull lines.
   - Updated CSL citation helper commands (`\CSLBlock`, `\CSLLeftMargin`, `\CSLRightInline`) to match current Pandoc defaults, improving bibliography spacing and baseline alignment.
 
+- Fix `oup_article(oup_version = 1)` rendering with the November 2025 update of `oup-authoring-template.cls` (v1.2) on CTAN, which removed the `\authormark` macro definition but still references it from the class' own `\@@title`. The template now defines a no-op `\authormark` fallback so documents render whether or not the upstream macro is available (#603).
+
 - Adapt all templates to new Pandoc 3.8.2.1 change regarding table counter definition (#595).
 
 - Patch `WileyNDJ` template used in `sim_article()` to fix an issue with `etex` package not being useful anymore in recent LaTeX distributions (#593).
