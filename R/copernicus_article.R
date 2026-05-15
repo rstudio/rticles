@@ -13,7 +13,7 @@
 #'
 #' An number of required and optional manuscript sections, e.g. `acknowledgements`, `competinginterests`, or `authorcontribution`, must be declared using the respective properties of the R Markdown header - see skeleton file.
 #'
-#' **Version:** Based on `copernicus_package.zip` in the version 7.12, 24 November 2025.
+#' **Version:** Based on `copernicus_package.zip` in the version 7.14, 12 March 2026.
 #'
 #' **Copernicus journal abbreviations:** You can use the function `copernicus_journal_abbreviations()` to get the journal abbreviation for all journals supported by the Copernicus article template.
 #'
@@ -90,6 +90,7 @@ copernicus_journals <- list(
   "Earth System Science Data" = "essd",
   "E&G Quaternary Science Journal" = "egqsj",
   "EGUsphere" = "egusphere",
+  "Earth Observation" = "eo",
   "European Journal of Mineralogy" = "ejm",
   "Geochronology" = "gchron",
   "Geographica Helvetica" = "gh",

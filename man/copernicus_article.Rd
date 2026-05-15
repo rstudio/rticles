@@ -61,7 +61,7 @@ This was adapted from
 
 An number of required and optional manuscript sections, e.g. \code{acknowledgements}, \code{competinginterests}, or \code{authorcontribution}, must be declared using the respective properties of the R Markdown header - see skeleton file.
 
-\strong{Version:} Based on \code{copernicus_package.zip} in the version 7.12, 24 November 2025.
+\strong{Version:} Based on \code{copernicus_package.zip} in the version 7.14, 12 March 2026.
 
 \strong{Copernicus journal abbreviations:} You can use the function \code{copernicus_journal_abbreviations()} to get the journal abbreviation for all journals supported by the Copernicus article template.
 
@@ -83,7 +83,7 @@ Therefore, please keep the following in mind:
 }
 }
 \note{
-If you use \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}, all internal references (i.e. tables and figures) must use \verb{\\ref\{\}} whereas with \code{\link[bookdown:html_document2]{bookdown::pdf_document2()}}, you can additionally use \verb{\\@ref()}.
+If you use \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}, all internal references (i.e. tables and figures) must use \verb{\\ref\{\}} whereas with \code{\link[bookdown:pdf_document2]{bookdown::pdf_document2()}}, you can additionally use \verb{\\@ref()}.
 }
 \examples{
 names(copernicus_journal_abbreviations())
