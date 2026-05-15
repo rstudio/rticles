@@ -1,4 +1,5 @@
 test_that("oup_article(oup_version = 1) warns when `authormark` is set in YAML", {
+  skip_if_not_pandoc("2.10")
   fmt <- oup_article(oup_version = 1)
   expect_warning(
     fmt$pre_knit(input = "", metadata = list(authormark = "Anonymous et al.")),
@@ -7,6 +8,7 @@ test_that("oup_article(oup_version = 1) warns when `authormark` is set in YAML",
 })
 
 test_that("oup_article(oup_version = 1) does not warn for unrelated metadata", {
+  skip_if_not_pandoc("2.10")
   fmt <- oup_article(oup_version = 1)
   expect_no_warning(
     fmt$pre_knit(input = "", metadata = list(title = "A title"))
@@ -20,17 +22,20 @@ test_that("rmarkdown::render() actually invokes the pre_knit hook", {
   skip_if_not_installed("rmarkdown")
   skip_if_not(rmarkdown::pandoc_available("2.10"))
   rmd <- withr::local_tempfile(fileext = ".Rmd")
-  xfun::write_utf8(c(
-    "---",
-    "title: t",
-    "authormark: \"X et al.\"",
-    "output:",
-    "  rticles::oup_article:",
-    "    oup_version: 1",
-    "---",
-    "",
-    "Body."
-  ), rmd)
+  xfun::write_utf8(
+    c(
+      "---",
+      "title: t",
+      "authormark: \"X et al.\"",
+      "output:",
+      "  rticles::oup_article:",
+      "    oup_version: 1",
+      "---",
+      "",
+      "Body."
+    ),
+    rmd
+  )
   expect_warning(
     rmarkdown::render(rmd, quiet = TRUE, run_pandoc = FALSE),
     regexp = "authormark"
