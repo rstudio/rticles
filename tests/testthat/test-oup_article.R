@@ -19,8 +19,7 @@ test_that("rmarkdown::render() actually invokes the pre_knit hook", {
   # Guards against regressions where pre_knit stops being wired into the
   # format returned by oup_article(): asserts the warning surfaces from a
   # real (knit-only, no LaTeX) render of an Rmd whose YAML sets `authormark`.
-  skip_if_not_installed("rmarkdown")
-  skip_if_not(rmarkdown::pandoc_available("2.10"))
+  skip_if_not_pandoc("2.10")
   rmd <- withr::local_tempfile(fileext = ".Rmd")
   xfun::write_utf8(
     c(
