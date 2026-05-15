@@ -281,11 +281,6 @@ $endif$
 % Add missing \city command mentioned in documentation but absent from cls
 \providecommand\city[1]{#1}
 
-% \authormark was removed from oup-authoring-template.cls (v1.2, 2025/11/17)
-% but is still referenced in the class' own \@@title. Define a no-op fallback
-% so documents render whether or not the upstream macro is available.
-\providecommand\authormark[1]{}
-
 % Create labels for Addresses if the are given in Elsevier format
 $for(address)$
  $if(address.code)$
@@ -383,15 +378,6 @@ $for(author.footnote)$
 $endfor$
 
 $endfor$
-
-% Add author mark
-$if(authormark)$
-\authormark{$authormark$}
-$elseif(author)$
-\authormark{$for(author/first)$$it.name$$endfor$$if(author/rest/rest)$ et al.$else$$for(author/rest)$ \and $author.name$$endfor$$endif$}
-$elseif(authors)$
-\authormark{$for(authors/first)$$it.name$$endfor$$if(authors/rest/rest)$ et al.$else$$for(authors/rest)$ \and $authors.name$$endfor$$endif$}
-$endif$
 
 \received{Date}{0}{Year}
 \revised{Date}{0}{Year}
