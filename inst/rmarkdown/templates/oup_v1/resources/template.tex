@@ -281,6 +281,11 @@ $endif$
 % Add missing \city command mentioned in documentation but absent from cls
 \providecommand\city[1]{#1}
 
+% \authormark was removed from oup-authoring-template.cls (v1.2, 2025/11/17)
+% but is still referenced in the class' own \@@title. Define a no-op fallback
+% so documents render whether or not the upstream macro is available.
+\providecommand\authormark[1]{}
+
 % Create labels for Addresses if the are given in Elsevier format
 $for(address)$
  $if(address.code)$
