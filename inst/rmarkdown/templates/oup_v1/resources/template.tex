@@ -379,15 +379,6 @@ $endfor$
 
 $endfor$
 
-% Add author mark
-$if(authormark)$
-\authormark{$authormark$}
-$elseif(author)$
-\authormark{$for(author/first)$$it.name$$endfor$$if(author/rest/rest)$ et al.$else$$for(author/rest)$ \and $author.name$$endfor$$endif$}
-$elseif(authors)$
-\authormark{$for(authors/first)$$it.name$$endfor$$if(authors/rest/rest)$ et al.$else$$for(authors/rest)$ \and $authors.name$$endfor$$endif$}
-$endif$
-
 \received{Date}{0}{Year}
 \revised{Date}{0}{Year}
 \accepted{Date}{0}{Year}
