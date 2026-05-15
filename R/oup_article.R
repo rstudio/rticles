@@ -126,7 +126,7 @@ oup_article <- function( # Controls template to use. 1 for newer template.
     }
   }
 
-  pdf_document_format(
+  base <- pdf_document_format(
     "oup_v1",
     keep_tex = keep_tex,
     md_extensions = md_extensions,
@@ -135,4 +135,20 @@ oup_article <- function( # Controls template to use. 1 for newer template.
     number_sections = number_sections,
     ...
   )
+
+  # Warn if YAML metadata still sets the removed `authormark` field
+  # (oup-authoring-template.cls v1.2, 2025-11-17, dropped the \authormark macro)
+  pre_knit <- base$pre_knit
+  base$pre_knit <- function(input, metadata, ...) {
+    if (is.function(pre_knit)) pre_knit(input, metadata, ...)
+    if ("authormark" %in% names(metadata)) {
+      warning(
+        "`oup_article(oup_version = 1)` now ignores the 'authormark' field in YAML header. ",
+        "The \\authormark macro was removed from oup-authoring-template.cls v1.2 (2025-11-17); ",
+        "running heads are now set from the optional short title argument of \\title.",
+        immediate. = TRUE, call. = FALSE
+      )
+    }
+  }
+  base
 }
