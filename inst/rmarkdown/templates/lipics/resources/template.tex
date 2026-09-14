@@ -1,3 +1,16 @@
+$if(thm-restate)$
+% Work around https://github.com/muzimuzhi/thmtools/issues/75.
+% Remove after https://github.com/muzimuzhi/thmtools/pull/76 is released.
+\makeatletter
+\@ifundefined{newcounteralias}{}{%
+  \AddToHook{package/thm-restate/after}{%
+    \renewcommand\thmt@autorefsetup{%
+      \@xa\def\csname\thmt@envname autorefname\@xa\endcsname\@xa{\thmt@thmname}%
+    }%
+  }%
+}
+\makeatother
+$endif$
 \documentclass[$format$ ,$hyphenation$ $if(authorcolumns)$ ,authorcolumns $endif$ $if(cleveref)$,cleveref$endif$ $if(autoref)$,autoref$endif$ $if(thm-restate)$,thm-restate$endif$ $if(anonymous)$,anonymous$endif$ $if(numberwithinsect)$,numberwithinsect$endif$ ]{lipics-v2019}
 %This is a template for producing LIPIcs articles.
 %See lipics-manual.pdf for further information.

@@ -8,7 +8,7 @@ numberwithinsect: false # for section-numbered lemmas etc.
 cleveref: true # for enabling cleveref support
 autoref: true # for enabling autoref support
 anonymous: false # for anonymousing the authors (e.g. for double-blind review)
-thm-restate: true # for enabling thm-restate support
+thm-restate: false # opt in only when needed; incompatible with LaTeX 2026
 author:
   # mandatory, please use full name; only 1 author per \author macro; first two parameters are mandatory, other parameters can be empty. Please provide at least the name of the affiliation and the country. The full address is optional
   - name: John Q. Public
