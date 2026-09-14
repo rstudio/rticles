@@ -1096,6 +1096,8 @@
 \arrayrulewidth .5pt
 \doublerulesep 1.5pt
 
+% Preserve the kernel's matching \endtabular for LaTeX 2026 compatibility.
+\let\biom@endtabular\endtabular
 \def\tabular{\def\@halignto{}
  \def\Hline{\noalign{\ifnum0=`}\fi
   \vskip 3pt
@@ -1124,7 +1126,7 @@
                                   \hskip .5\arrayrulewidth}}
 \centering\@tabular
 }
-\def\endtabular{\crcr\egroup\egroup $\egroup\par\vspace*{-20pt}}
+\def\endtabular{\biom@endtabular\par\vspace*{-20pt}}
 \expandafter \let \csname endtabular*\endcsname = \endtabular
 % TABBING
 %
