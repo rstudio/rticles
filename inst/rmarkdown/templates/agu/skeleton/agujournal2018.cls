@@ -813,7 +813,11 @@ Corresponding author: #1,
 \ifx\@captype\xtable\hskip-\tabcolsep\fi  %% <==== Changed
 \tabskip\z@ \cr}%
 \let\@startpbox\@@startpbox \let\@endpbox\@@endpbox%
-  \if #1t\vtop \else \if#1b\vbox \else \vcenter \fi\fi%
+  % Recent LaTeX kernels no longer enter math mode before \@array.
+  % Use their text-mode helper while retaining the older behavior.
+  \if #1t\vtop \else \if#1b\vbox \else
+    \ifdefined\vcenter@text\vcenter@text\else\vcenter\fi
+  \fi\fi%
   \bgroup\let\par\relax%
   \let\@sharp##\let\protect\relax \lineskip\z@\baselineskip\z@\@preamble}
 
