@@ -36,6 +36,8 @@ supported by the `copernicus.cls`, and fix an issue where the section headers we
 
 ## MINOR CHANGES
 
+- Fix `agu_article()` table rendering with recent LaTeX distributions by using the text-mode table centering helper when available (#606).
+
 - Update `jss_article()` template to align with new JSS example from `jss.cls` v3.6 (2026-04-28):
   - `\documentclass` now defaults to `[article]` class option when none is specified in YAML.
   - Removed `\usepackage[utf8]{inputenc}` (handled by modern LaTeX and `jss.cls`).
