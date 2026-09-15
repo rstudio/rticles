@@ -47,3 +47,13 @@ test_that("oup_v1 template no longer emits \\authormark", {
   )
   expect_false(any(grepl("\\authormark", tex, fixed = TRUE)))
 })
+
+test_that("oup_v1 template defines an empty society logo", {
+  tex <- xfun::read_utf8(
+    pkg_file_template("oup_v1", "resources", "template.tex")
+  )
+  expect_identical(
+    sum(grepl("\\newcommand{\\societylogo}{}", tex, fixed = TRUE)),
+    1L
+  )
+})

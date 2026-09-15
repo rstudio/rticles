@@ -2,6 +2,8 @@
 
 ## BREAKING CHANGES
 
+- rticles now requires rmarkdown 2.32 or later and Pandoc 2.8 or later, matching rmarkdown's updated minimum Pandoc version ([rstudio/rmarkdown#2623](https://github.com/rstudio/rmarkdown/pull/2623)).
+
 - Update `springer_article()` template to version 3 (December 2023): 
   - BREAKING CHANGE: sn-mathphys.bst has been split into Numbered and Author year style namely `sn-mathphys-num.bst` and `sn-mathphys-ay.bst` respectively. Skeleton has been updated. 
     If you have existing article, you need to use `sn-mathphys-num` or `sn-mathphys-ay` option now, instead of `sn-mathphys`.
@@ -38,11 +40,17 @@ supported by the `copernicus.cls`, and fix an issue where the section headers we
 
 - Fix `agu_article()` table rendering with recent LaTeX distributions by using the text-mode table centering helper when available (#606).
 
+- Fix `biometrics_article()` rendering with LaTeX 2026 by preserving the LaTeX kernel's matching `\endtabular` implementation.
+
 - Update `jss_article()` template to align with new JSS example from `jss.cls` v3.6 (2026-04-28):
   - `\documentclass` now defaults to `[article]` class option when none is specified in YAML.
   - Removed `\usepackage[utf8]{inputenc}` (handled by modern LaTeX and `jss.cls`).
   - Added `\setlength{\emergencystretch}{3em}` to prevent overfull lines.
   - Updated CSL citation helper commands (`\CSLBlock`, `\CSLLeftMargin`, `\CSLRightInline`) to match current Pandoc defaults, improving bibliography spacing and baseline alignment.
+
+- The `lipics_article()` skeleton now makes theorem restatement support opt-in to avoid an incompatibility between `thmtools` and LaTeX 2026. Existing documents that enable it use a temporary compatibility workaround while the upstream fix remains unreleased (#607).
+
+- Fix `oup_article(oup_version = 1)` rendering with `oup-authoring-template` v1.5 on CTAN by supplying the empty society logo default expected by OUP's sample article (#610).
 
 - Fix `oup_article(oup_version = 1)` rendering with the November 2025 update of `oup-authoring-template.cls` (v1.2) on CTAN, which removed the (undocumented) `\authormark` macro that the template was emitting for the running head. The block is now dropped from the template, matching OUP's own example file and current author manual: the running head is set via the optional argument of `\title` (`\title[short]{long}`), which is the documented mechanism in v1.2. Setting `authormark` in YAML is now ignored and emits a warning at render time (#603).
 

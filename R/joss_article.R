@@ -22,7 +22,7 @@ joss_article <- function(journal = "JOSS",
                          latex_engine = "xelatex",
                          pandoc_args = NULL,
                          ...) {
-  rmarkdown::pandoc_available("2.2", TRUE)
+  rmarkdown::pandoc_available("2.8", TRUE)
 
   args <- list(
     logo_path = find_resource("joss", paste0(journal, "-logo.png")),
