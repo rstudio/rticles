@@ -300,16 +300,31 @@ jasa_article <- function(..., keep_tex = TRUE, latex_engine = "xelatex",
 }
 
 #' @section `lipics_article`: Format for creating submissions to
-#'   LIPIcs - Leibniz International Proceedings Informatics - articles.
-#'   Adapted from the official Instructions for Authors at
-#'   <https://submission.dagstuhl.de/documentation/authors> and the
-#'   template from the archive `authors-lipics-v2019.zip` downloaded
-#'   with version tag v2019.2. The template is provided under The LaTeX
-#'   Project Public License (LPPL), Version 1.3c.
+#'   LIPIcs - Leibniz International Proceedings in Informatics - articles.
+#'   Adapted from the official [Instructions for
+#'   Authors](https://submission.dagstuhl.de/documentation/authors) and the
+#'   tagged LIPIcs author kit v2021.1.3, which contains `lipics-v2021.cls`
+#'   v3.1.3. The kit is provided under The LaTeX Project Public License
+#'   (LPPL), Version 1.3c.
+#'
+#'   Dagstuhl's official bibliography workflow uses BibTeX, raw LaTeX
+#'   citations such as `\cite{key}`, and the fixed `plainurl` bibliography
+#'   style. The `citation_package` argument remains user-selectable: `"natbib"`
+#'   makes Pandoc translate Markdown citations to natbib commands, but this
+#'   custom template does not load the unsupported natbib package; `"default"`
+#'   uses Pandoc citeproc and is not the official BibTeX workflow. With citeproc,
+#'   keys used only by structured related-version or supplement metadata must
+#'   also be listed in the YAML `nocite` field. Other rmarkdown citation settings
+#'   may require user-supplied LaTeX configuration. The template keeps `plainurl`
+#'   fixed regardless of this argument.
+#'
+#'   pdfLaTeX is the default and XeLaTeX remains selectable. With the tagged
+#'   class, the `pdfa` class option works with pdfLaTeX but not XeLaTeX. Existing
+#'   drafts retain their local v2019 class and legacy thin-space metadata is
+#'   normalized when rendering with pdfLaTeX.
 #' @export
 #' @rdname article
-lipics_article <- function(..., latex_engine = "xelatex", # xelatex used for 'thin space' Unicode
-                           # character, see YAML field 'authorrunning'
+lipics_article <- function(..., latex_engine = "pdflatex",
                            keep_tex = TRUE, citation_package = "natbib",
                            md_extensions = c(
                              "-autolink_bare_uris", # disables automatic links

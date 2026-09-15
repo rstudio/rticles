@@ -2,7 +2,8 @@ test_format <- function(
   name,
   output_options = NULL,
   skip = NULL,
-  transform = NULL
+  transform = NULL,
+  validate = NULL
 ) {
   withr::local_options(lifecycle_verbosity = "quiet")
 
@@ -45,6 +46,74 @@ test_format <- function(
   )
   assert(paste(name, "format works"), {
     file.exists(output_file)
+  })
+  if (is.function(validate)) {
+    validate(output_file, testdoc)
+  }
+}
+
+prepare_lipics_features <- function(path) {
+  rmd <- xfun::read_utf8(path)
+  pdfa <- grepl("^pdfa: false", rmd)
+  oldauthorstyle <- grepl("^oldauthorstyle: false", rmd)
+  stopifnot(sum(pdfa) == 1, sum(oldauthorstyle) == 1)
+  rmd[pdfa] <- "pdfa: true # v2021 feature smoke test"
+  rmd[oldauthorstyle] <- "oldauthorstyle: true # v2021 feature smoke test"
+  xfun::write_utf8(rmd, path)
+}
+
+prepare_lipics_citeproc <- function(path) {
+  rmd <- xfun::read_utf8(path)
+  bibliography <- grepl("^bibliography: bibliography$", rmd)
+  citation <- grepl("^Lorem ipsum", rmd) &
+    grepl(
+      "\\\\cite\\{DBLP:journals/cacm/Knuth74\\}",
+      rmd
+    )
+  stopifnot(sum(bibliography) == 1, sum(citation) == 1)
+  rmd[bibliography] <- "bibliography: bibliography.bib"
+  rmd[citation] <- sub(
+    "\\\\cite\\{DBLP:journals/cacm/Knuth74\\}",
+    "[@DBLP:journals/cacm/Knuth74]",
+    rmd[citation]
+  )
+  xfun::write_utf8(rmd, path)
+}
+
+prepare_lipics_legacy <- function(path) {
+  rmd <- xfun::read_utf8(path)
+  authorrunning <- grepl("^authorrunning:", rmd)
+  stopifnot(sum(authorrunning) == 1)
+  rmd[authorrunning] <- paste0(
+    "authorrunning: \"J.&thinsp;Q. Public and J.&thinsp;R. Public\" ",
+    "# legacy metadata"
+  )
+  v2021_body <- grepl(
+    paste(
+      "^\\\\proofsubparagraph",
+      "^The v2021 class provides",
+      "^\\\\begin\\{(conjecture|observation)\\}",
+      "^This is (a conjecture|an observation)[.]",
+      "^\\\\end\\{(conjecture|observation)\\}",
+      sep = "|"
+    ),
+    rmd
+  )
+  rmd <- rmd[!v2021_body]
+  rmd <- sub(" \\\\claimqedhere\\{\\}", "", rmd)
+  xfun::write_utf8(rmd, path)
+
+  stopifnot(file.remove("lipics-v2021.cls"))
+  stopifnot(file.copy(
+    pkg_file_template("lipics", "legacy", "lipics-v2019.cls"),
+    "lipics-v2019.cls"
+  ))
+}
+
+validate_lipics_citeproc <- function(output_file, path) {
+  tex <- xfun::read_utf8(sub("[.]pdf$", ".tex", output_file))
+  assert("structured citation is included by citeproc", {
+    any(grepl("ref-DBLP:books", tex, fixed = TRUE))
   })
 }
 
@@ -106,6 +175,18 @@ test_format("jss", skip = !rmarkdown::pandoc_available("2.8"))
 test_format("lncs")
 test_format("lncs", output_options = list(citation_package = "natbib"))
 test_format("lipics")
+test_format(
+  "lipics",
+  output_options = list(latex_engine = "xelatex")
+)
+test_format("lipics", transform = prepare_lipics_features)
+test_format("lipics", transform = prepare_lipics_legacy)
+test_format(
+  "lipics",
+  output_options = list(citation_package = "default"),
+  transform = prepare_lipics_citeproc,
+  validate = validate_lipics_citeproc
+)
 test_format("lipics", transform = prepare_lipics_restatement)
 test_format("mdpi")
 test_format("mnras")

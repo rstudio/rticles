@@ -1,10 +1,59 @@
 LIPICS Style - CHANGELOG
 
+* 11/05/2023 lipics-v2021 v3.1.3
+  * Bugfix
+      * changed order of loading hyperxmp and hyperref to avoid minor bug when using lastest version of hyperxmp
+
+* 04/05/2021 lipics-v2021 v3.1.2
+  * New feature
+        * added optional \subtitle
+        * revised displaying of swhids (hid contextual information)
+  * Bugfix
+        * fixed problem with numberwithinsect in combination with thm-restate,cleveref, autoref (This fixes #15)
+        * Fixing "supplemenatary" typo #14
+
+* 25/02/2021 lipics-v2021 v3.1.1
+  * Bugfix
+        * corrected typo
+
+* 04/01/2021 lipics-v2021 v3.1.0
+    * New feature
+        * added documentclass option pdfa to explicitly enable generation of PDF according PDF/A standard
+    * Bugfix
+        * fixed problems when using old versions of hyperxmp package (This fixes #11)
+
+* 09/12/2020 LIPIcs-v2021 v3.0.1
+    * Bugfix
+        * fixed bug related to unavailable sRGB.icc (This fixes #10)
+
+* 01/12/2020 LIPIcs-v2021 v3.0
+    * New Feature
+        * more compact presentation of author information (email address and homepage URL only as logo)
+        * adjustment of document licence to CC-BY 4.0
+        * added anonymization (documentclass option "anonymous") also for \relatedversion and \supplement macros; resolves #9
+        * added \claimqedhere to be used in claimproof environments (similar to qedhere in proof environments); resolves #4
+        * added new macro \flag to display a flag or logo near the funding information as requested by some funding agencies (e.g. ERC grant)
+        * added \proofsubparagraph to allow structuring of proofs
+        * added new macros \relatedversiondetails and \supplementdetails to collect information regarding related version/supplementary material in a more structured way
+        * added new theorem-like environments 'conjecture' and 'observation'
+        * added support to produce PDFs according PDF/A-3B standard
+    * Minor changes
+        * revised style of procedure environment provided by algorithm2e package
+    * Bugfix
+        * fixed bug related to loaded but unused algorithm package (This fixes #2)
+        * fixed bug related to outdated algorithm2e package (This fixes #3)
+        * minor issues related to cleveref package (n-dash, oxford comma)
+
+* 29/04/2020 LIPIcs-v2019 v2.2.1
+    * Minor changes
+        * export of several page numbers (end top matter, start/end bibliography, start appendix) into aux-file
+        * renamed heading of \supplement macro to "Supplementary Material"
+
 * 19/07/2019 LIPIcs-v2019 v2.2
     * New Feature
         * explicitly defined/named colors used in style to ease reusing them (requires load of package xcolor instead of color)
         * added document option "authorcolumns" to activate displaying author details in two columns (only allowed for more than 6 authors)
-        * revised style of algorithm environments provided by algorithm or algorithm2e packages 
+        * revised style of algorithm environments provided by algorithm or algorithm2e packages
         * added qed-like symbol to mark end of e.g. definitions (command \lipicsEnd)
     * Bugfix
         * fixed problem caused by "\\" in title macro
@@ -22,7 +71,7 @@ LIPICS Style - CHANGELOG
 
 * 10/12/2018 LIPIcs-v2019 v2.0
     * New Features
-        * support of metadata in PDF file (e.g. author, title, keywords) 
+        * support of metadata in PDF file (e.g. author, title, keywords)
         * revised displaying of author-related funding acknowledgements (now displayed as part of the funding block instead of footnotes)
         * added support for cleveref package (new document option 'cleveref')
         * added support for using autoref for theorem-like environments (new document option 'autoref')
@@ -58,7 +107,7 @@ LIPICS Style - CHANGELOG
 
 * 06/02/2018 LIPIcs-v2018 v1.2
     * Release of LIPIcs-v2018
-        * revised author macro \author{name}{affil}{email}{orcid}{funding} 
+        * revised author macro \author{name}{affil}{email}{orcid}{funding}
         * added support for ORCIDs
         * switched to ACM 2012 classification system
         * added new macros for extended metadata \category, \relatedversion, \supplement, \funding, \acknowledgements
