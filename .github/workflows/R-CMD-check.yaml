@@ -35,7 +35,7 @@ jobs:
           - {os: windows-latest, pandoc: '3.6.3',    r: 'release'}
           - {os: macOS-latest,   pandoc: '3.6.3',    r: 'release'}
           - {os: ubuntu-latest,  pandoc: 'devel',    r: 'release'}
-          # testing older pandoc versions
+          # testing older pandoc versions (rmarkdown requires Pandoc >= 2.8)
           - {os: ubuntu-latest,  pandoc: '3.8.2.1',  r: 'release'} # special counter table addition
           - {os: ubuntu-latest,  pandoc: '3.2.1',    r: 'release'} # special \pandocbounded change
           - {os: ubuntu-latest,  pandoc: '3.1.7',    r: 'release'} # special citeproc change
@@ -45,8 +45,7 @@ jobs:
           - {os: ubuntu-latest,  pandoc: '2.16.2',   r: 'release'}
           - {os: ubuntu-latest,  pandoc: '2.14.2',   r: 'release'}
           - {os: ubuntu-latest,  pandoc: '2.11.4',   r: 'release'}
-          - {os: ubuntu-latest,  pandoc: '2.7.3',    r: 'release'}
-          - {os: ubuntu-latest,  pandoc: '2.5',      r: 'release'}
+          - {os: ubuntu-latest,  pandoc: '2.8',      r: 'release'}
           # testing other R versions
           - {os: ubuntu-latest,  pandoc: '2.11.4',   r: 'devel', http-user-agent: 'release'}
           - {os: ubuntu-latest,  pandoc: '2.11.4',   r: 'oldrel-1'}

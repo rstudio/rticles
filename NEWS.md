@@ -2,6 +2,8 @@
 
 ## BREAKING CHANGES
 
+- rticles now requires rmarkdown 2.32 or later and Pandoc 2.8 or later, matching rmarkdown's updated minimum Pandoc version ([rstudio/rmarkdown#2623](https://github.com/rstudio/rmarkdown/pull/2623)).
+
 - Update `springer_article()` template to version 3 (December 2023): 
   - BREAKING CHANGE: sn-mathphys.bst has been split into Numbered and Author year style namely `sn-mathphys-num.bst` and `sn-mathphys-ay.bst` respectively. Skeleton has been updated. 
     If you have existing article, you need to use `sn-mathphys-num` or `sn-mathphys-ay` option now, instead of `sn-mathphys`.
