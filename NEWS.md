@@ -50,6 +50,8 @@ supported by the `copernicus.cls`, and fix an issue where the section headers we
 
 - The `lipics_article()` skeleton now makes theorem restatement support opt-in to avoid an incompatibility between `thmtools` and LaTeX 2026. Existing documents that enable it use a temporary compatibility workaround while the upstream fix remains unreleased (#607).
 
+- Fix `oup_article(oup_version = 1)` rendering with `oup-authoring-template` v1.5 on CTAN by supplying the empty society logo default expected by OUP's sample article (#610).
+
 - Fix `oup_article(oup_version = 1)` rendering with the November 2025 update of `oup-authoring-template.cls` (v1.2) on CTAN, which removed the (undocumented) `\authormark` macro that the template was emitting for the running head. The block is now dropped from the template, matching OUP's own example file and current author manual: the running head is set via the optional argument of `\title` (`\title[short]{long}`), which is the documented mechanism in v1.2. Setting `authormark` in YAML is now ignored and emits a warning at render time (#603).
 
 - Adapt all templates to new Pandoc 3.8.2.1 change regarding table counter definition (#595).
