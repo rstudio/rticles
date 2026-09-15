@@ -9,3 +9,5 @@ inst/doc
 
 /.luarc.json
 .positai
+# roborev snapshots
+/.roborev/
