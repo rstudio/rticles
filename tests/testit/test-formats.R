@@ -96,7 +96,11 @@ test_format(
   output_options = list(latex_engine = "xelatex")
 )
 test_format("lipics", transform = prepare_lipics_features)
-test_format("lipics", transform = prepare_lipics_legacy)
+test_format(
+  "lipics",
+  transform = prepare_lipics_legacy,
+  validate = validate_lipics_legacy
+)
 test_format(
   "lipics",
   output_options = list(citation_package = "default"),

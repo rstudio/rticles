@@ -312,11 +312,11 @@ jasa_article <- function(..., keep_tex = TRUE, latex_engine = "xelatex",
 #'   style. The `citation_package` argument remains user-selectable: `"natbib"`
 #'   makes Pandoc translate Markdown citations to natbib commands, but this
 #'   custom template does not load the unsupported natbib package; `"default"`
-#'   uses Pandoc citeproc and is not the official BibTeX workflow. With citeproc,
-#'   keys used only by structured related-version or supplement metadata must
-#'   also be listed in the YAML `nocite` field. Other rmarkdown citation settings
-#'   may require user-supplied LaTeX configuration. The template keeps `plainurl`
-#'   fixed regardless of this argument.
+#'   uses Pandoc citeproc and is not the official BibTeX workflow. Structured
+#'   related-version and supplement `cite` fields emit raw LaTeX citations and
+#'   therefore require the BibTeX route; omit them when using citeproc. Other
+#'   rmarkdown citation settings may require user-supplied LaTeX configuration.
+#'   The template keeps `plainurl` fixed regardless of this argument.
 #'
 #'   pdfLaTeX is the default and XeLaTeX remains selectable. With the tagged
 #'   class, the `pdfa` class option works with pdfLaTeX but not XeLaTeX. Existing

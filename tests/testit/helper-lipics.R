@@ -11,17 +11,28 @@ prepare_lipics_features <- function(path) {
 prepare_lipics_citeproc <- function(path) {
   rmd <- xfun::read_utf8(path)
   bibliography <- grepl("^bibliography: bibliography$", rmd)
-  citation <- grepl("^Lorem ipsum", rmd) &
-    grepl(
-      "\\\\cite\\{DBLP:journals/cacm/Knuth74\\}",
-      rmd
-    )
-  stopifnot(sum(bibliography) == 1, sum(citation) == 1)
+  raw_citations <- grepl("\\\\cite\\{DBLP:", rmd)
+  structured_citation <- grepl(
+    '    cite: "DBLP:books/mk/GrayR93"',
+    rmd,
+    fixed = TRUE
+  )
+  stopifnot(
+    sum(bibliography) == 1,
+    any(raw_citations),
+    sum(structured_citation) == 1
+  )
   rmd[bibliography] <- "bibliography: bibliography.bib"
-  rmd[citation] <- sub(
-    "\\\\cite\\{DBLP:journals/cacm/Knuth74\\}",
-    "[@DBLP:journals/cacm/Knuth74]",
-    rmd[citation]
+  rmd[raw_citations] <- gsub(
+    "\\\\cite\\{([^}]+)\\}",
+    "[@\\1]",
+    rmd[raw_citations]
+  )
+  rmd[structured_citation] <- sub(
+    "    cite:",
+    "    # cite:",
+    rmd[structured_citation],
+    fixed = TRUE
   )
   xfun::write_utf8(rmd, path)
 }
@@ -60,6 +71,13 @@ prepare_lipics_legacy <- function(path) {
       '  concept_desc: "General and reference"',
       'keywords: "legacy, compatibility"',
       'abstract: "A legacy draft using the v2019 class."',
+      "supplementdetails:",
+      '  - classification: "Software"',
+      '    url: "https://example.org/software"',
+      '    linktext: "Source code"',
+      '    swhid: "swh:1:dir:legacy"',
+      '    swhlinktext: "Archived source"',
+      "    swhdelimiter: '\\quad '",
       "output:",
       "  rticles::lipics_article: default",
       "---",
@@ -78,10 +96,26 @@ prepare_lipics_legacy <- function(path) {
   ))
 }
 
+validate_lipics_legacy <- function(output_file, path) {
+  tex <- xfun::read_utf8(sub("[.]pdf$", ".tex", output_file))
+  assert("legacy fallback preserves Software Heritage metadata", {
+    all(c(
+      any(grepl("\\quad archived at", tex, fixed = TRUE)),
+      any(grepl(
+        "https://archive.softwareheritage.org/swh:1:dir:legacy",
+        tex,
+        fixed = TRUE
+      )),
+      any(grepl("\\nolinkurl{Archived source}", tex, fixed = TRUE))
+    ))
+  })
+}
+
 validate_lipics_citeproc <- function(output_file, path) {
   tex <- xfun::read_utf8(sub("[.]pdf$", ".tex", output_file))
-  assert("structured citation is included by citeproc", {
-    any(grepl("ref-DBLP:books", tex, fixed = TRUE))
+  assert("citeproc emits exactly one reference list", {
+    sum(grepl("\\begin{CSLReferences}", tex, fixed = TRUE)) == 1 &&
+      !any(grepl("\\bibliography{", tex, fixed = TRUE))
   })
 }
 

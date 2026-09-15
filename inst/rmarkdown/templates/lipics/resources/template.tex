@@ -103,7 +103,7 @@ $for(supplementdetails)$
 $endfor$
 \else
 $if(supplementdetails)$
-\supplement{$if(supplement)$$supplement$; $endif$$for(supplementdetails)$\textit{$supplementdetails.classification$$if(supplementdetails.subcategory)$ ($supplementdetails.subcategory$)$endif$}: $if(supplementdetails.linktext)$\href{$supplementdetails.url$}{$supplementdetails.linktext$}$else$\url{$supplementdetails.url$}$endif$$if(supplementdetails.cite)$ \cite{$supplementdetails.cite$}$endif$$sep$; $endfor$}
+\supplement{$if(supplement)$$supplement$; $endif$$for(supplementdetails)$\textit{$supplementdetails.classification$$if(supplementdetails.subcategory)$ ($supplementdetails.subcategory$)$endif$}: $if(supplementdetails.linktext)$\href{$supplementdetails.url$}{$supplementdetails.linktext$}$else$\url{$supplementdetails.url$}$endif$$if(supplementdetails.cite)$ \cite{$supplementdetails.cite$}$endif$$if(supplementdetails.swhid)$ $if(supplementdetails.swhdelimiter)$$supplementdetails.swhdelimiter$$endif$archived at \href{https://archive.softwareheritage.org/$supplementdetails.swhid$}{\nolinkurl{$if(supplementdetails.swhlinktext)$$supplementdetails.swhlinktext$$else$$supplementdetails.swhid$$endif$}}$endif$$sep$; $endfor$}
 $else$
 $if(supplement)$
 \supplement{$supplement$}
@@ -299,7 +299,9 @@ $body$
 
 %% Please use bibtex,
 
+$if(natbib)$$if(bibliography)$
 \bibliography{$bibliography$}
+$endif$$endif$
 
 $if(appendix)$
 \appendix
