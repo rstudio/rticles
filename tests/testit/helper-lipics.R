@@ -56,6 +56,7 @@ prepare_lipics_legacy <- function(path) {
     c(
       "---",
       'title: "Legacy LIPIcs draft"',
+      'subtitle: "Legacy subtitle"',
       'titlerunning: "Legacy LIPIcs draft"',
       'format: "a4paper"',
       'hyphenation: "UKenglish"',
@@ -71,6 +72,11 @@ prepare_lipics_legacy <- function(path) {
       '  concept_desc: "General and reference"',
       'keywords: "legacy, compatibility"',
       'abstract: "A legacy draft using the v2019 class."',
+      'relatedversion: "Legacy related version"',
+      "relatedversiondetails:",
+      '  - classification: "Full Version"',
+      '    url: "https://example.org/full-version"',
+      '    linktext: "Full version"',
       "supplementdetails:",
       '  - classification: "Software"',
       '    url: "https://example.org/software"',
@@ -98,8 +104,36 @@ prepare_lipics_legacy <- function(path) {
 
 validate_lipics_legacy <- function(output_file, path) {
   tex <- xfun::read_utf8(sub("[.]pdf$", ".tex", output_file))
-  assert("legacy fallback preserves Software Heritage metadata", {
+  assert("legacy fallback flattens the subtitle", {
+    any(grepl(
+      "\\title{Legacy LIPIcs draft: Legacy subtitle}",
+      tex,
+      fixed = TRUE
+    ))
+  })
+  assert("legacy fallback flattens related-version metadata", {
+    any(grepl(
+      paste0(
+        "\\relatedversion{Legacy related version; ",
+        "\\textit{Full Version}: ",
+        "\\href{https://example.org/full-version}{Full version}}"
+      ),
+      tex,
+      fixed = TRUE
+    ))
+  })
+  assert("legacy fallback preserves supplement metadata", {
     all(c(
+      any(grepl(
+        "\\textit{Software}: ",
+        tex,
+        fixed = TRUE
+      )),
+      any(grepl(
+        "\\href{https://example.org/software}{Source code}",
+        tex,
+        fixed = TRUE
+      )),
       any(grepl("\\quad archived at", tex, fixed = TRUE)),
       any(grepl(
         "https://archive.softwareheritage.org/swh:1:dir:legacy",
