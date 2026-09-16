@@ -33,6 +33,19 @@ knitr_fun <- function(name) utils::getFromNamespace(name, "knitr")
 
 output_asis <- knitr_fun("output_asis")
 
+warn_once <- function(option, ...) {
+  xfun::do_once(
+    warning(
+      ...,
+      "\nThis warning is shown once per R session.",
+      immediate. = TRUE,
+      call. = FALSE
+    ),
+    option = option,
+    hint = ""
+  )
+}
+
 merge_list <- function(x, y) {
   fun <- knitr_fun("merge_list")
   fun(as.list(x), y)
