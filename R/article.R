@@ -300,16 +300,31 @@ jasa_article <- function(..., keep_tex = TRUE, latex_engine = "xelatex",
 }
 
 #' @section `lipics_article`: Format for creating submissions to
-#'   LIPIcs - Leibniz International Proceedings Informatics - articles.
-#'   Adapted from the official Instructions for Authors at
-#'   <https://submission.dagstuhl.de/documentation/authors> and the
-#'   template from the archive `authors-lipics-v2019.zip` downloaded
-#'   with version tag v2019.2. The template is provided under The LaTeX
-#'   Project Public License (LPPL), Version 1.3c.
+#'   LIPIcs - Leibniz International Proceedings in Informatics - articles.
+#'   Adapted from the official [Instructions for
+#'   Authors](https://submission.dagstuhl.de/documentation/authors) and the
+#'   tagged LIPIcs author kit v2021.1.3, which contains `lipics-v2021.cls`
+#'   v3.1.3. The kit is provided under The LaTeX Project Public License
+#'   (LPPL), Version 1.3c.
+#'
+#'   Dagstuhl's official bibliography workflow uses BibTeX, raw LaTeX
+#'   citations such as `\cite{key}`, and the fixed `plainurl` bibliography
+#'   style. The `citation_package` argument remains user-selectable: `"natbib"`
+#'   makes Pandoc translate Markdown citations to natbib commands, but this
+#'   custom template does not load the unsupported natbib package; `"default"`
+#'   uses Pandoc citeproc and is not the official BibTeX workflow. Structured
+#'   related-version and supplement `cite` fields emit raw LaTeX citations and
+#'   therefore require the BibTeX route; omit them when using citeproc. Other
+#'   rmarkdown citation settings may require user-supplied LaTeX configuration.
+#'   The template keeps `plainurl` fixed regardless of this argument.
+#'
+#'   pdfLaTeX is the default and XeLaTeX remains selectable. With the tagged
+#'   class, the `pdfa` class option works with pdfLaTeX but not XeLaTeX. Existing
+#'   drafts retain their local v2019 class and legacy thin-space metadata is
+#'   normalized when rendering with pdfLaTeX.
 #' @export
 #' @rdname article
-lipics_article <- function(..., latex_engine = "xelatex", # xelatex used for 'thin space' Unicode
-                           # character, see YAML field 'authorrunning'
+lipics_article <- function(..., latex_engine = "pdflatex",
                            keep_tex = TRUE, citation_package = "natbib",
                            md_extensions = c(
                              "-autolink_bare_uris", # disables automatic links
@@ -317,12 +332,38 @@ lipics_article <- function(..., latex_engine = "xelatex", # xelatex used for 'th
                            )) {
   # quick dev shortcut for Ubuntu: click "Install and restart" then run:
   # unlink("MyArticle/", recursive = TRUE); rmarkdown::draft("MyArticle.Rmd", template = "lipics", package = "rticles", edit = FALSE); rmarkdown::render("MyArticle/MyArticle.Rmd"); system(paste0("xdg-open ", here::here("MyArticle", "MyArticle.pdf")))
-  pdf_document_format(
+  format <- pdf_document_format(
     "lipics",
     latex_engine = latex_engine,
     citation_package = citation_package, keep_tex = keep_tex,
     md_extensions = md_extensions, ...
   )
+
+  pre_knit <- format$pre_knit
+  format$pre_knit <- function(input, metadata, ...) {
+    if (is.function(pre_knit)) pre_knit(input, metadata, ...)
+
+    input_dir <- dirname(input)
+    legacy_class <- file.path(input_dir, "lipics-v2019.cls")
+    current_class <- file.path(input_dir, "lipics-v2021.cls")
+    if (file.exists(legacy_class) && !file.exists(current_class)) {
+      warn_once(
+        "rticles.warn_lipics_v2019",
+        "Detected 'lipics-v2019.cls' next to the input file. ",
+        "This class remains supported for backward compatibility, but the ",
+        "article should be updated from the current `rticles::lipics_article()` ",
+        "template to use 'lipics-v2021.cls' and current YAML metadata."
+      )
+    } else if (file.exists(legacy_class) && file.exists(current_class)) {
+      warn_once(
+        "rticles.warn_lipics_both_classes",
+        "Detected both 'lipics-v2019.cls' and 'lipics-v2021.cls' next to the ",
+        "input file. The LIPIcs template will use 'lipics-v2021.cls'; you may ",
+        "remove the unused 'lipics-v2019.cls' file."
+      )
+    }
+  }
+  format
 }
 
 

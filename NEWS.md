@@ -48,6 +48,8 @@ supported by the `copernicus.cls`, and fix an issue where the section headers we
   - Added `\setlength{\emergencystretch}{3em}` to prevent overfull lines.
   - Updated CSL citation helper commands (`\CSLBlock`, `\CSLLeftMargin`, `\CSLRightInline`) to match current Pandoc defaults, improving bibliography spacing and baseline alignment.
 
+- Update `lipics_article()` to the tagged LIPIcs v2021.1.3 author kit and `lipics-v2021.cls` v3.1.3, including current runtime assets, subtitle and structured related-material metadata, compact-author and PDF/A options, and new theorem/proof interfaces. The default engine is now pdfLaTeX after testing both pdfLaTeX and XeLaTeX; XeLaTeX remains selectable. Citation processing remains user-selectable, with guidance for the official BibTeX/`plainurl` workflow. Existing drafts that carry `lipics-v2019.cls` continue to render through a compatibility fallback that normalizes their legacy thin-space metadata and degrades v2021-only metadata to supported v2019 forms; rendering now warns once per R session that these drafts should be updated from the current template, or suggests removing the unused legacy class when both class files are present (#608).
+
 - The `lipics_article()` skeleton now makes theorem restatement support opt-in to avoid an incompatibility between `thmtools` and LaTeX 2026. Existing documents that enable it use a temporary compatibility workaround while the upstream fix remains unreleased (#607).
 
 - Fix `oup_article(oup_version = 1)` rendering with `oup-authoring-template` v1.5 on CTAN by supplying the empty society logo default expected by OUP's sample article (#610).

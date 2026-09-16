@@ -107,7 +107,7 @@ jasa_article(
 
 lipics_article(
   ...,
-  latex_engine = "xelatex",
+  latex_engine = "pdflatex",
   keep_tex = TRUE,
   citation_package = "natbib",
   md_extensions = c("-autolink_bare_uris", "-auto_identifiers")
@@ -299,12 +299,27 @@ Journal of the Acoustical Society of America. Adapted from
 
 \section{\code{lipics_article}}{
  Format for creating submissions to
-LIPIcs - Leibniz International Proceedings Informatics - articles.
-Adapted from the official Instructions for Authors at
-\url{https://submission.dagstuhl.de/documentation/authors} and the
-template from the archive \code{authors-lipics-v2019.zip} downloaded
-with version tag v2019.2. The template is provided under The LaTeX
-Project Public License (LPPL), Version 1.3c.
+LIPIcs - Leibniz International Proceedings in Informatics - articles.
+Adapted from the official \href{https://submission.dagstuhl.de/documentation/authors}{Instructions for Authors} and the
+tagged LIPIcs author kit v2021.1.3, which contains \code{lipics-v2021.cls}
+v3.1.3. The kit is provided under The LaTeX Project Public License
+(LPPL), Version 1.3c.
+
+Dagstuhl's official bibliography workflow uses BibTeX, raw LaTeX
+citations such as \verb{\\cite\{key\}}, and the fixed \code{plainurl} bibliography
+style. The \code{citation_package} argument remains user-selectable: \code{"natbib"}
+makes Pandoc translate Markdown citations to natbib commands, but this
+custom template does not load the unsupported natbib package; \code{"default"}
+uses Pandoc citeproc and is not the official BibTeX workflow. Structured
+related-version and supplement \code{cite} fields emit raw LaTeX citations and
+therefore require the BibTeX route; omit them when using citeproc. Other
+rmarkdown citation settings may require user-supplied LaTeX configuration.
+The template keeps \code{plainurl} fixed regardless of this argument.
+
+pdfLaTeX is the default and XeLaTeX remains selectable. With the tagged
+class, the \code{pdfa} class option works with pdfLaTeX but not XeLaTeX. Existing
+drafts retain their local v2019 class and legacy thin-space metadata is
+normalized when rendering with pdfLaTeX.
 }
 
 \section{\code{lncs_article}}{

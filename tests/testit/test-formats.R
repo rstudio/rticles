@@ -2,7 +2,8 @@ test_format <- function(
   name,
   output_options = NULL,
   skip = NULL,
-  transform = NULL
+  transform = NULL,
+  validate = NULL
 ) {
   withr::local_options(lifecycle_verbosity = "quiet")
 
@@ -46,25 +47,9 @@ test_format <- function(
   assert(paste(name, "format works"), {
     file.exists(output_file)
   })
-}
-
-prepare_lipics_restatement <- function(path) {
-  rmd <- xfun::read_utf8(path)
-  option <- grepl("^thm-restate: false", rmd)
-  stopifnot(sum(option) == 1)
-  rmd[option] <- "thm-restate: true # legacy metadata"
-  xfun::write_utf8(
-    c(
-      rmd,
-      "",
-      "\\begin{restatable}{theorem}{legacytheorem}",
-      "This theorem can be restated.",
-      "\\end{restatable}",
-      "",
-      "\\legacytheorem*"
-    ),
-    path
-  )
+  if (is.function(validate)) {
+    validate(output_file, testdoc)
+  }
 }
 
 #--- NOTE to contributors ------------------------------------------------------
@@ -106,6 +91,22 @@ test_format("jss", skip = !rmarkdown::pandoc_available("2.8"))
 test_format("lncs")
 test_format("lncs", output_options = list(citation_package = "natbib"))
 test_format("lipics")
+test_format(
+  "lipics",
+  output_options = list(latex_engine = "xelatex")
+)
+test_format("lipics", transform = prepare_lipics_features)
+test_format(
+  "lipics",
+  transform = prepare_lipics_legacy,
+  validate = validate_lipics_legacy
+)
+test_format(
+  "lipics",
+  output_options = list(citation_package = "default"),
+  transform = prepare_lipics_citeproc,
+  validate = validate_lipics_citeproc
+)
 test_format("lipics", transform = prepare_lipics_restatement)
 test_format("mdpi")
 test_format("mnras")

@@ -11,16 +11,33 @@ $if(thm-restate)$
 }
 \makeatother
 $endif$
+% Existing rticles drafts carry lipics-v2019.cls in their article directory.
+\newif\iflipicsvTwentyOne
+\IfFileExists{lipics-v2021.cls}{%
+\lipicsvTwentyOnetrue
+\documentclass[$format$ ,$hyphenation$ $if(authorcolumns)$ ,authorcolumns $endif$ $if(cleveref)$,cleveref$endif$ $if(autoref)$,autoref$endif$ $if(thm-restate)$,thm-restate$endif$ $if(anonymous)$,anonymous$endif$ $if(numberwithinsect)$,numberwithinsect$endif$ $if(pdfa)$,pdfa$endif$ $if(oldauthorstyle)$,oldauthorstyle$endif$ ]{lipics-v2021}
+}{%
+\lipicsvTwentyOnefalse
 \documentclass[$format$ ,$hyphenation$ $if(authorcolumns)$ ,authorcolumns $endif$ $if(cleveref)$,cleveref$endif$ $if(autoref)$,autoref$endif$ $if(thm-restate)$,thm-restate$endif$ $if(anonymous)$,anonymous$endif$ $if(numberwithinsect)$,numberwithinsect$endif$ ]{lipics-v2019}
+}
+
+% Older skeletons used an HTML thin-space entity in authorrunning.
+\ifdefined\XeTeXrevision\else
+  \ifdefined\directlua\else
+    \DeclareUnicodeCharacter{2009}{\,}
+  \fi
+\fi
 %This is a template for producing LIPIcs articles.
-%See lipics-manual.pdf for further information.
+%See lipics-v2021-authors-guidelines.pdf for further information.
 %for A4 paper format use option "a4paper", for US-letter use option "letterpaper"
 %for british hyphenation rules use option "UKenglish", for american hyphenation rules use option "USenglish"
 %for section-numbered lemmas etc., use "numberwithinsect"
 %for enabling cleveref support, use "cleveref"
 %for enabling autoref support, use "autoref"
-%for anonymousing the authors (e.g. for double-blind review), add "anonymous"
+%for anonymizing the authors (e.g. for double-blind review), add "anonymous"
 %for enabling thm-restate support, use "thm-restate"
+%for producing a PDF according to the PDF/A standard, add "pdfa"
+%for using the pre-v2021 author presentation, add "oldauthorstyle"
 
 $if(graphicspath)$
 \graphicspath{{$graphicspath$}}
@@ -28,7 +45,14 @@ $endif$
 
 \bibliographystyle{plainurl}% the mandatory bibstyle
 
+\iflipicsvTwentyOne
 \title{$title$}
+$if(subtitle)$
+\subtitle{$subtitle$}
+$endif$
+\else
+\title{$title$$if(subtitle)$: $subtitle$$endif$}
+\fi
 
 \titlerunning{$titlerunning$}
 
@@ -52,14 +76,40 @@ $if(category)$
 $endif$
 
 %optional
+\iflipicsvTwentyOne
 $if(relatedversion)$
 \relatedversion{$relatedversion$}
 $endif$
+$for(relatedversiondetails)$
+\relatedversiondetails[$if(relatedversiondetails.linktext)$linktext={$relatedversiondetails.linktext$}$endif$$if(relatedversiondetails.cite)$$if(relatedversiondetails.linktext)$, $endif$cite={$relatedversiondetails.cite$}$endif$]{$relatedversiondetails.classification$}{$relatedversiondetails.url$}
+$endfor$
+\else
+$if(relatedversiondetails)$
+\relatedversion{$if(relatedversion)$$relatedversion$; $endif$$for(relatedversiondetails)$\textit{$relatedversiondetails.classification$}: $if(relatedversiondetails.linktext)$\href{$relatedversiondetails.url$}{$relatedversiondetails.linktext$}$else$\url{$relatedversiondetails.url$}$endif$$if(relatedversiondetails.cite)$ \cite{$relatedversiondetails.cite$}$endif$$sep$; $endfor$}
+$else$
+$if(relatedversion)$
+\relatedversion{$relatedversion$}
+$endif$
+$endif$
+\fi
 
 %optional
+\iflipicsvTwentyOne
 $if(supplement)$
 \supplement{$supplement$}
 $endif$
+$for(supplementdetails)$
+\supplementdetails[$if(supplementdetails.linktext)$linktext={$supplementdetails.linktext$}$endif$$if(supplementdetails.cite)$$if(supplementdetails.linktext)$, $endif$cite={$supplementdetails.cite$}$endif$$if(supplementdetails.subcategory)$$if(supplementdetails.linktext)$, $else$$if(supplementdetails.cite)$, $endif$$endif$subcategory={$supplementdetails.subcategory$}$endif$$if(supplementdetails.swhlinktext)$$if(supplementdetails.linktext)$, $else$$if(supplementdetails.cite)$, $else$$if(supplementdetails.subcategory)$, $endif$$endif$$endif$swhlinktext={$supplementdetails.swhlinktext$}$endif$$if(supplementdetails.swhid)$$if(supplementdetails.linktext)$, $else$$if(supplementdetails.cite)$, $else$$if(supplementdetails.subcategory)$, $else$$if(supplementdetails.swhlinktext)$, $endif$$endif$$endif$$endif$swhid={$supplementdetails.swhid$}$endif$$if(supplementdetails.swhdelimiter)$$if(supplementdetails.linktext)$, $else$$if(supplementdetails.cite)$, $else$$if(supplementdetails.subcategory)$, $else$$if(supplementdetails.swhlinktext)$, $else$$if(supplementdetails.swhid)$, $endif$$endif$$endif$$endif$$endif$swhdelimiter={$supplementdetails.swhdelimiter$}$endif$]{$supplementdetails.classification$}{$supplementdetails.url$}
+$endfor$
+\else
+$if(supplementdetails)$
+\supplement{$if(supplement)$$supplement$; $endif$$for(supplementdetails)$\textit{$supplementdetails.classification$$if(supplementdetails.subcategory)$ ($supplementdetails.subcategory$)$endif$}: $if(supplementdetails.linktext)$\href{$supplementdetails.url$}{$supplementdetails.linktext$}$else$\url{$supplementdetails.url$}$endif$$if(supplementdetails.cite)$ \cite{$supplementdetails.cite$}$endif$$if(supplementdetails.swhid)$ $if(supplementdetails.swhdelimiter)$$supplementdetails.swhdelimiter$$endif$archived at \href{https://archive.softwareheritage.org/$supplementdetails.swhid$}{\nolinkurl{$if(supplementdetails.swhlinktext)$$supplementdetails.swhlinktext$$else$$supplementdetails.swhid$$endif$}}$endif$$sep$; $endfor$}
+$else$
+$if(supplement)$
+\supplement{$supplement$}
+$endif$
+$endif$
+\fi
 
 %optional
 $if(funding)$
@@ -174,13 +224,15 @@ $else$$if(pandoc317)$
 \setlength{\csllabelwidth}{3em}
 \newlength{\cslentryspacing}
 \setlength{\cslentryspacing}{0em}
-\usepackage{enumitem}
-\newlist{CSLReferences}{itemize}{1}
-\setlist[CSLReferences]{label={},
-  leftmargin=\cslhangindent,
-  itemindent=-1\cslhangindent,
-  parsep=\parskip,
-  itemsep=\cslentryspacing}
+\newenvironment{CSLReferences}
+ {\begin{list}{}{%
+  \setlength{\labelwidth}{0pt}
+  \setlength{\labelsep}{0pt}
+  \setlength{\leftmargin}{\cslhangindent}
+  \setlength{\itemindent}{-1\cslhangindent}
+  \setlength{\parsep}{\parskip}
+  \setlength{\itemsep}{\cslentryspacing}}}
+ {\end{list}}
 $else$
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
@@ -247,7 +299,9 @@ $body$
 
 %% Please use bibtex,
 
+$if(natbib)$$if(bibliography)$
 \bibliography{$bibliography$}
+$endif$$endif$
 
 $if(appendix)$
 \appendix
