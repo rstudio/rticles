@@ -16,7 +16,7 @@
 %% -----------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{copernicus}
-    [2026/02/03 10.1.31 Copernicus papers]
+    [2026/07/27 10.1.34 Copernicus papers]
 \frenchspacing
 \clubpenalty10000
 \widowpenalty10000
@@ -128,6 +128,7 @@
                               \@noreftrue
                               \AtEndOfClass{%
                                 \def\@tempa{https://egusphere.copernicus.org}%
+                                % 11329
                                 \ifx\@journalurl\@tempa
                                 \else
                                   \edef\@journalnameabbreviation{\@journalnameabbreviation\space Discuss.}%
@@ -2180,6 +2181,16 @@
     \let\oiiintop=\oiiintslop
     \def\oiiint{\DOTSI\oiiintop\ilimits@}
     %%%%%%
+    %%% Ticket 42994,
+    \DeclareSymbolFont{stmry}{U}{stmry}{m}{n}
+    \DeclareFontFamily{U}{stmry}{}
+    \DeclareFontShape{U}{stmry}{m}{n} {
+      <5> <6> <7> <8> <9> <10> gen * stmary
+      <10.95><12><14.4><17.28><20.74><24.88>stmary10%
+    }{}
+    \DeclareMathDelimiter\llbracket{\mathopen}{stmry}{"4A}{stmry}{"71}
+    \DeclareMathDelimiter\rrbracket{\mathclose}{stmry}{"4B}{stmry}{"79}
+    %%%%%%
     \DeclareMathSymbol{\fintop}{\mathop}{largesymbolsA}{'037}%from esint.sty
     \def\fint{\fintop\nolimits}%from esint.sty
     \ifx\xmltexversion\@undefined\else{\catcode`\_=\active\global\let_\xmltexUndersc@re}\fi
@@ -2311,6 +2322,10 @@
     \ifnum\pdfoutput=\z@\RequirePackage{breakurl}\fi
     \pdfstringdefDisableCommands{\let\boldsymbol\relax\let\vec\relax}
   \fi
+  % mantis-42967: \# in section:
+  \pdfstringdefDisableCommands{%
+    \def\#{\9000\043\9000\000}%
+  }%
   \edef\@pdfcreator{%
     copernicus.cls%
     \space Version \csname ver@copernicus.cls\endcsname
