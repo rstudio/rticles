@@ -37,6 +37,7 @@ abstract: "Briefly describe the problem, data or analyses, main conclusions, sup
 plain_language_summary: "Explain the general problem, what was done, and the main result in language accessible to the science-interested public."
 output: rticles::agu_article
 bibliography: agutest.bib
+csl: american-geophysical-union.csl
 ---
 
 ```{r echo=FALSE}
@@ -75,15 +76,7 @@ Describe the materials and methods. AGU discourages bulleted lists; enumerated l
 
 ## A Descriptive Heading About Methods
 
-AGU recommends `\cite{key}` for parenthetical citations and `\citeA{key}` for textual citations. Use angle brackets for prenotes and square brackets for postnotes:
-
-```{=latex}
-As shown by \citeA{Levitus2012}, ocean observations constrain the analysis.
-Related work reaches a similar conclusion \cite{Nuncio2011,Raphael2004}.
-Earlier examples provide context \cite<e.g.,>[p. 4]{Levitus2012}.
-```
-
-With the default `citation_package: natbib`, Pandoc Markdown citations also work. Pandoc translates textual citations such as @Levitus2012 [p. 4] and parenthetical citations such as [e.g., @Nuncio2011, p. 5] to compatible natbib commands. For raw official commands, apacite uses `< >` for prenotes and `[ ]` for postnotes.
+The default citation backend uses Pandoc citeproc and the bundled American Geophysical Union CSL style. Use Markdown citations, including textual citations such as @Levitus2012 [p. 4] and parenthetical citations such as [e.g., @Nuncio2011, p. 5]. Citeproc formats both the in-text citations and reference list; raw LaTeX citation commands are not processed by this backend.
 
 # Data
 

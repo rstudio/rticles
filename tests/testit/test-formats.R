@@ -60,17 +60,7 @@ test_format("acm")
 test_format("acs")
 test_format("aea")
 test_format("agu")
-test_format(
-  "agu",
-  transform = prepare_agu_natbib,
-  validate = validate_agu_current
-)
-test_format(
-  "agu",
-  output_options = list(citation_package = "default"),
-  transform = prepare_agu_citeproc,
-  validate = validate_agu_citeproc
-)
+test_format("agu", validate = validate_agu_current)
 test_format(
   "agu",
   transform = prepare_agu_multiple_bibliographies,

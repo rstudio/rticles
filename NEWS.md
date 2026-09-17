@@ -4,6 +4,8 @@
 
 - rticles now requires rmarkdown 2.32 or later and Pandoc 2.8 or later, matching rmarkdown's updated minimum Pandoc version ([rstudio/rmarkdown#2623](https://github.com/rstudio/rmarkdown/pull/2623)).
 
+- `agu_article()` now uses Pandoc citeproc with the American Geophysical Union CSL style by default. Existing drafts containing only `agujournal2018.cls` must explicitly set `citation_package: natbib`; the format warns when the selected class and citation backend are incompatible (#606).
+
 - Update `springer_article()` template to version 3 (December 2023): 
   - BREAKING CHANGE: sn-mathphys.bst has been split into Numbered and Author year style namely `sn-mathphys-num.bst` and `sn-mathphys-ay.bst` respectively. Skeleton has been updated. 
     If you have existing article, you need to use `sn-mathphys-num` or `sn-mathphys-ay` option now, instead of `sn-mathphys`.
@@ -38,7 +40,7 @@ supported by the `copernicus.cls`, and fix an issue where the section headers we
 
 ## MINOR CHANGES
 
-- Update `agu_article()` to AGU's September 2025 distribution of `agujournal2019.cls`, current citation and manuscript guidance, and external TrackChanges setup. New drafts use the 2019 class, while existing drafts containing only `agujournal2018.cls` continue to render automatically with the unchanged output declaration; the default natbib mode supports Pandoc citations alongside AGU's `\cite` and `\citeA` commands (#606).
+- Update `agu_article()` to AGU's September 2025 distribution of `agujournal2019.cls`, current manuscript guidance, and external TrackChanges setup (#606).
 
 - Fix `agu_article()` table rendering with recent LaTeX distributions by using the text-mode table centering helper when available (#606).
 

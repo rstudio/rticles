@@ -12,35 +12,6 @@ agu_fixture <- function(...) {
   path
 }
 
-prepare_agu_natbib <- function(path) {
-  xfun::write_utf8(
-    c(
-      xfun::read_utf8(path),
-      "",
-      "```{=latex}",
-      "\\citep{Levitus2012}",
-      "\\citep[p.~3]{Levitus2012}",
-      "\\citep[see][p.~3]{Levitus2012}",
-      "\\citet{Nuncio2011}",
-      "\\citet[p.~5]{Nuncio2011}",
-      "\\citet[see][p.~5]{Nuncio2011}",
-      "```"
-    ),
-    path
-  )
-}
-
-prepare_agu_citeproc <- function(path) {
-  rmd <- xfun::read_utf8(path)
-  raw_citations <- grepl(
-    "^(As shown by|Related work|Earlier examples)",
-    rmd
-  )
-  stopifnot(sum(raw_citations) == 3)
-  rmd[raw_citations] <- "Official raw citation example omitted for citeproc."
-  xfun::write_utf8(rmd, path)
-}
-
 prepare_agu_multiple_bibliographies <- function(path) {
   rmd <- xfun::read_utf8(path)
   bibliography <- grepl("^bibliography: agutest[.]bib$", rmd)
@@ -58,9 +29,7 @@ prepare_agu_multiple_bibliographies <- function(path) {
     c(
       rmd,
       "",
-      "```{=latex}",
-      "An additional source is included \\cite{Additional2026}.",
-      "```"
+      "An additional source is included [@Additional2026]."
     ),
     path
   )
@@ -98,7 +67,9 @@ prepare_agu_legacy <- function(path) {
       "keypoints:",
       '  - "This draft retains its project-local 2018 class."',
       'abstract: "A genuine legacy-class compatibility render."',
-      "output: rticles::agu_article",
+      "output:",
+      "  rticles::agu_article:",
+      "    citation_package: natbib",
       "bibliography: agutest.bib",
       "---",
       "",
@@ -154,27 +125,17 @@ validate_agu_current <- function(output_file, path) {
   assert("current draft loads agujournal2019", {
     any(grepl("Document Class: agujournal2019", log, fixed = TRUE))
   })
-  assert("natbib zero-, one-, and two-note citations reach LaTeX", {
+  assert("citeproc renders Markdown citations without natbib commands", {
     all(c(
-      any(grepl("\\citep{Levitus2012}", tex, fixed = TRUE)),
-      any(grepl("\\citep[p.~3]{Levitus2012}", tex, fixed = TRUE)),
-      any(grepl("\\citep[see][p.~3]{Levitus2012}", tex, fixed = TRUE)),
-      any(grepl("\\citet{Nuncio2011}", tex, fixed = TRUE)),
-      any(grepl("\\citet[p.~5]{Nuncio2011}", tex, fixed = TRUE)),
-      any(grepl("\\citet[see][p.~5]{Nuncio2011}", tex, fixed = TRUE))
+      any(grepl("Levitus", tex, fixed = TRUE)),
+      any(grepl("Nuncio", tex, fixed = TRUE)),
+      !any(grepl("\\citep", tex, fixed = TRUE)),
+      !any(grepl("\\citet", tex, fixed = TRUE))
     ))
   })
-  assert("Markdown citations preserve textual and parenthetical notes", {
-    all(c(
-      any(grepl("\\citet[p. 4]{Levitus2012}", tex, fixed = TRUE)),
-      any(grepl("\\citep[e.g.,][p. 5]{Nuncio2011}", tex, fixed = TRUE))
-    ))
-  })
-  assert("official AGU citations and notes reach LaTeX", {
-    all(c(
-      any(grepl("\\citeA{Levitus2012}", tex, fixed = TRUE)),
-      any(grepl("\\cite<e.g.,>[p. 4]{Levitus2012}", tex, fixed = TRUE))
-    ))
+  assert("citeproc emits one reference list without BibTeX", {
+    sum(grepl("\\begin{CSLReferences}", tex, fixed = TRUE)) == 1 &&
+      !any(grepl("\\bibliography{", tex, fixed = TRUE))
   })
   assert("track changes compile through the 2019 setup", {
     any(grepl("\\add{an example tracked addition}", tex, fixed = TRUE))
@@ -188,32 +149,14 @@ validate_agu_current <- function(output_file, path) {
   })
 }
 
-validate_agu_citeproc <- function(output_file, path) {
-  retain_agu_latex_artifacts(output_file)
-  tex <- read_agu_artifact(output_file, ".tex")
-  log <- read_agu_artifact(output_file, ".log")
-
-  assert("citeproc uses the current class", {
-    any(grepl("Document Class: agujournal2019", log, fixed = TRUE))
-  })
-  assert("citeproc emits one reference list without BibTeX", {
-    sum(grepl("\\begin{CSLReferences}", tex, fixed = TRUE)) == 1 &&
-      !any(grepl("\\bibliography{", tex, fixed = TRUE))
-  })
-}
-
 validate_agu_multiple_bibliographies <- function(output_file, path) {
   retain_agu_latex_artifacts(output_file)
   tex <- read_agu_artifact(output_file, ".tex")
-  aux <- read_agu_artifact(output_file, ".aux")
 
-  assert("multiple bibliography files are passed to BibTeX", {
-    any(grepl(
-      "\\bibliography{agutest,aguadditional}",
-      tex,
-      fixed = TRUE
-    )) &&
-      any(grepl("\\bibdata{agutest,aguadditional}", aux, fixed = TRUE))
+  assert("citeproc includes references from multiple bibliography files", {
+    sum(grepl("\\begin{CSLReferences}", tex, fixed = TRUE)) == 1 &&
+      any(grepl("An Additional Bibliography", tex, fixed = TRUE)) &&
+      !any(grepl("\\bibliography{", tex, fixed = TRUE))
   })
 }
 
@@ -237,9 +180,9 @@ validate_agu_legacy <- function(output_file, path) {
       any(grepl("\\citep[see][p.~3]{Nuncio2011}", tex, fixed = TRUE))
     ))
   })
-  assert("legacy output declaration remains unchanged", {
+  assert("legacy draft explicitly selects natbib", {
     any(grepl(
-      "output: rticles::agu_article",
+      "citation_package: natbib",
       xfun::read_utf8(path),
       fixed = TRUE
     ))
