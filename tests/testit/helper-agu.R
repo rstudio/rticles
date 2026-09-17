@@ -145,6 +145,12 @@ validate_agu_current <- function(output_file, path) {
   aux <- read_agu_artifact(output_file, ".aux")
   log <- read_agu_artifact(output_file, ".log")
 
+  assert("current draft retains only the 2019 class branch", {
+    class_lines <- grep("^\\\\documentclass", tex, value = TRUE)
+    length(class_lines) == 1 &&
+      grepl("{agujournal2019}", class_lines, fixed = TRUE) &&
+      !grepl("{agujournal2018}", class_lines, fixed = TRUE)
+  })
   assert("current draft loads agujournal2019", {
     any(grepl("Document Class: agujournal2019", log, fixed = TRUE))
   })
@@ -216,6 +222,12 @@ validate_agu_legacy <- function(output_file, path) {
   tex <- read_agu_artifact(output_file, ".tex")
   log <- read_agu_artifact(output_file, ".log")
 
+  assert("legacy draft retains only the 2018 class branch", {
+    class_lines <- grep("^\\\\documentclass", tex, value = TRUE)
+    length(class_lines) == 1 &&
+      grepl("{agujournal2018}", class_lines, fixed = TRUE) &&
+      !grepl("{agujournal2019}", class_lines, fixed = TRUE)
+  })
   assert("legacy draft loads its local agujournal2018 class", {
     any(grepl("Document Class: agujournal2018", log, fixed = TRUE))
   })

@@ -3,39 +3,34 @@
 % agujournal2019.cls. Existing rticles drafts may retain agujournal2018.cls.
 %
 % Prefer the current class deterministically when both local classes exist.
-\newif\ifagujournalTwentyNineteen
-\IfFileExists{agujournal2019.cls}{%
-  \agujournalTwentyNineteentrue
+$if(rticles-agu-2019)$
 $if(natbib)$
-  % The class loads apacite; this option supplies Pandoc's natbib interface.
-  \PassOptionsToPackage{natbibapa}{apacite}
+% The class loads apacite; this option supplies Pandoc's natbib interface.
+\PassOptionsToPackage{natbibapa}{apacite}
 $endif$
-  \documentclass[$for(classoption)$$classoption$$sep$,$endfor$]{agujournal2019}
-}{%
-  \agujournalTwentyNineteenfalse
-  \documentclass[$for(classoption)$$classoption$$sep$,$endfor$]{agujournal2018}
-}
+\documentclass[$for(classoption)$$classoption$$sep$,$endfor$]{agujournal2019}
 
 % The 2019 class leaves revision packages to the document. The 2018 class
 % already loads trackchanges and ulem, so reloading them would clash.
-\ifagujournalTwentyNineteen
-  \usepackage[inline]{trackchanges}
-  \usepackage{soul}
+\usepackage[inline]{trackchanges}
+\usepackage{soul}
 $if(natbib)$
-  % agujournal2019 aliases the classic apacite commands after loading apacite.
-  % Restore AGU's angle-prenote interface while retaining natbib commands.
-  \makeatletter
-  \DeclareRobustCommand{\agu@cite}{\@ifnextchar<\agu@@cite{\agu@@cite<>}}
-  \def\agu@@cite<#1>{\@ifnextchar[{\agu@@@cite<#1>}{\agu@@@cite<#1>[]}}
-  \def\agu@@@cite<#1>[#2]#3{\citep[#1][#2]{#3}}
-  \DeclareRobustCommand{\agu@citeA}{\@ifnextchar<\agu@@citeA{\agu@@citeA<>}}
-  \def\agu@@citeA<#1>{\@ifnextchar[{\agu@@@citeA<#1>}{\agu@@@citeA<#1>[]}}
-  \def\agu@@@citeA<#1>[#2]#3{\citet[#1][#2]{#3}}
-  \let\cite\agu@cite
-  \let\citeA\agu@citeA
-  \makeatother
+% agujournal2019 aliases the classic apacite commands after loading apacite.
+% Restore AGU's angle-prenote interface while retaining natbib commands.
+\makeatletter
+\DeclareRobustCommand{\agu@cite}{\@ifnextchar<\agu@@cite{\agu@@cite<>}}
+\def\agu@@cite<#1>{\@ifnextchar[{\agu@@@cite<#1>}{\agu@@@cite<#1>[]}}
+\def\agu@@@cite<#1>[#2]#3{\citep[#1][#2]{#3}}
+\DeclareRobustCommand{\agu@citeA}{\@ifnextchar<\agu@@citeA{\agu@@citeA<>}}
+\def\agu@@citeA<#1>{\@ifnextchar[{\agu@@@citeA<#1>}{\agu@@@citeA<#1>[]}}
+\def\agu@@@citeA<#1>[#2]#3{\citet[#1][#2]{#3}}
+\let\cite\agu@cite
+\let\citeA\agu@citeA
+\makeatother
 $endif$
-\fi
+$else$
+\documentclass[$for(classoption)$$classoption$$sep$,$endfor$]{agujournal2018}
+$endif$
 
 
 %% Enter journal name below.

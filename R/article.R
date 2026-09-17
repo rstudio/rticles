@@ -84,14 +84,16 @@ agu_article <- function(..., keep_tex = TRUE,
     citation_package = citation_package, md_extensions = md_extensions, ...
   )
 
-  pre_knit <- format$pre_knit
-  format$pre_knit <- function(input, metadata, ...) {
-    if (is.function(pre_knit)) pre_knit(input, metadata, ...)
-
-    input_dir <- dirname(input)
+  pre_processor <- format$pre_processor
+  format$pre_processor <- function(metadata, input_file, runtime, knit_meta,
+                                   files_dir, output_dir) {
+    input_dir <- dirname(input_file)
     legacy_class <- file.path(input_dir, "agujournal2018.cls")
     current_class <- file.path(input_dir, "agujournal2019.cls")
-    if (file.exists(legacy_class) && !file.exists(current_class)) {
+    has_legacy_class <- file.exists(legacy_class)
+    has_current_class <- file.exists(current_class)
+
+    if (has_legacy_class && !has_current_class) {
       warn_once(
         "rticles.warn_agu_2018",
         "Detected 'agujournal2018.cls' next to the input file. ",
@@ -99,7 +101,7 @@ agu_article <- function(..., keep_tex = TRUE,
         "article should be updated from the current `rticles::agu_article()` ",
         "template to use 'agujournal2019.cls' and current AGU guidance."
       )
-    } else if (file.exists(legacy_class) && file.exists(current_class)) {
+    } else if (has_legacy_class && has_current_class) {
       warn_once(
         "rticles.warn_agu_both_classes",
         "Detected both 'agujournal2018.cls' and 'agujournal2019.cls' next to ",
@@ -107,6 +109,17 @@ agu_article <- function(..., keep_tex = TRUE,
         "may remove the unused 'agujournal2018.cls' file."
       )
     }
+
+    c(
+      if (is.function(pre_processor)) {
+        pre_processor(
+          metadata, input_file, runtime, knit_meta, files_dir, output_dir
+        )
+      },
+      if (!has_legacy_class || has_current_class) {
+        rmarkdown::pandoc_variable_arg("rticles-agu-2019")
+      }
+    )
   }
   format
 }
