@@ -38,6 +38,8 @@ supported by the `copernicus.cls`, and fix an issue where the section headers we
 
 ## MINOR CHANGES
 
+- Update `agu_article()` to AGU's September 2025 distribution of `agujournal2019.cls`, current citation and manuscript guidance, and external TrackChanges setup. New drafts use the 2019 class, while existing drafts containing only `agujournal2018.cls` continue to render automatically with the unchanged output declaration; the default natbib mode supports Pandoc citations alongside AGU's `\cite` and `\citeA` commands (#606).
+
 - Fix `agu_article()` table rendering with recent LaTeX distributions by using the text-mode table centering helper when available (#606).
 
 - Fix `biometrics_article()` rendering with LaTeX 2026 by preserving the LaTeX kernel's matching `\endtabular` implementation.
