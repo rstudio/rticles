@@ -1,39 +1,18 @@
-%% March 2018
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% AGUJournalTemplate.tex: this template file is for articles formatted with LaTeX
+% AGU article template adapted from the September 2025 distribution of
+% agujournal2019.cls. Existing rticles drafts may retain agujournal2018.cls.
 %
-% This file includes commands and instructions
-% given in the order necessary to produce a final output that will
-% satisfy AGU requirements, including customized APA reference formatting.
-%
-% You may copy this file and give it your
-% article name, and enter your text.
-%
-%
-% Step 1: Set the \documentclass
-%
-% There are two options for article format:
-%
-% PLEASE USE THE DRAFT OPTION TO SUBMIT YOUR PAPERS.
-% The draft option produces double spaced output.
-%
+% Prefer the current class deterministically when both local classes exist.
+$if(rticles-agu-2019)$
+\documentclass[$for(classoption)$$classoption$$sep$,$endfor$]{agujournal2019}
 
-%% To submit your paper:
+% The 2019 class leaves revision packages to the document. The 2018 class
+% already loads trackchanges and ulem, so reloading them would clash.
+\usepackage[inline]{trackchanges}
+\usepackage{soul}
+$else$
 \documentclass[$for(classoption)$$classoption$$sep$,$endfor$]{agujournal2018}
-\usepackage{apacite}
-\usepackage{url} %this package should fix any errors with URLs in refs.
-%%%%%%%
-% As of 2018 we recommend use of the TrackChanges package to mark revisions.
-% The trackchanges package adds five new LaTeX commands:
-%
-%  \note[editor]{The note}
-%  \annote[editor]{Text to annotate}{The note}
-%  \add[editor]{Text to add}
-%  \remove[editor]{Text to remove}
-%  \change[editor]{Text to remove}{Text to add}
-%
-% complete documentation is here: http://trackchanges.sourceforge.net/
-%%%%%%%
+$endif$
 
 
 %% Enter journal name below.
@@ -113,6 +92,8 @@ $endif$$endif$
 
 $if(csl-refs)$
 % Pandoc citation processing
+\providecommand{\phantomsection}{}
+\providecommand{\hypertarget}[2]{#2}
 $if(pandoc318)$
 %From Pandoc 3.1.8
 % definitions for citeproc citations
@@ -281,13 +262,13 @@ $endfor$
 
 %  List up to three key points (at least one is required)
 %  Key Points summarize the main points and conclusions of the article
-%  Each must be 100 characters or less with no special characters or punctuation
+%  Each must be 140 characters or fewer with no special characters or punctuation
 
 % Example:
 % \begin{keypoints}
 % \item	List up to three key points (at least one is required)
 % \item	Key Points summarize the main points and conclusions of the article
-% \item	Each must be 100 characters or less with no special characters or punctuation
+% \item	Each must be 140 characters or fewer with no special characters or punctuation
 % \end{keypoints}
 
 \begin{keypoints}
@@ -312,16 +293,14 @@ $endfor$
 $abstract$
 \end{abstract}
 $if(plain_language_summary)$
-\noindent{\bf Plain language summary}\vskip-\parskip
-
-\noindent{$plain_language_summary$}
-\vskip18pt
+\section*{Plain Language Summary}
+$plain_language_summary$
 $endif$
 $body$
 
-$if(bibliography)$
+$if(natbib)$$if(bibliography)$
 \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
-$endif$
+$endif$$endif$
 
 $for(include-after)$
 $include-after$

@@ -49,7 +49,7 @@ aea_article(..., keep_tex = TRUE, md_extensions = c("-autolink_bare_uris"))
 agu_article(
   ...,
   keep_tex = TRUE,
-  citation_package = "natbib",
+  citation_package = "default",
   highlight = NULL,
   md_extensions = c("-autolink_bare_uris", "-auto_identifiers")
 )
@@ -201,9 +201,20 @@ Economic Association (AER, AEJ, JEL, PP).
 }
 
 \section{\code{agu_article}}{
- Format for creating a American Geophysical Union
-(AGU) article. Adapted from
-\url{https://www.agu.org/publications}.
+ Format for creating an American Geophysical Union
+(AGU) article. Adapted from AGU's September 2025 LaTeX distribution of
+\code{agujournal2019.cls} and the official \href{https://www.agu.org/publications/authors/journals/latex-submissions}{LaTeX submission guidelines}.
+
+The default \code{citation_package = "default"} uses Pandoc citeproc with
+the American Geophysical Union CSL style, following the approach used by
+the Quarto AGU journal format. Use Markdown citation syntax in current
+drafts.
+
+New drafts include \code{agujournal2019.cls}. Existing drafts that retain only
+a project-local \code{agujournal2018.cls} remain supported but must explicitly
+set \code{citation_package = "natbib"}. The format warns when the selected
+class and citation backend are incompatible. If both classes are present,
+the current 2019 class is used.
 }
 
 \section{\code{amq_article}}{

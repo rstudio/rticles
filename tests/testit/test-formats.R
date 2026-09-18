@@ -60,6 +60,17 @@ test_format("acm")
 test_format("acs")
 test_format("aea")
 test_format("agu")
+test_format("agu", validate = validate_agu_current)
+test_format(
+  "agu",
+  transform = prepare_agu_multiple_bibliographies,
+  validate = validate_agu_multiple_bibliographies
+)
+test_format(
+  "agu",
+  transform = prepare_agu_legacy,
+  validate = validate_agu_legacy
+)
 test_format("ajs", skip = !rmarkdown::pandoc_available("2.8"))
 test_format("amq")
 test_format("ams", skip = !rmarkdown::pandoc_available("2.10"))

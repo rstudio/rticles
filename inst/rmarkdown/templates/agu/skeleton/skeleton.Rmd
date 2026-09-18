@@ -1,32 +1,21 @@
 ---
-# Choose from this list of Journals:
-# JGR: Atmospheres, JGR: Biogeosciences, JGR: Earth Surface, 
-# JGR: Oceans, JGR: Planets, JGR: Solid Earth, JGR: Space Physics, 
-# Global Biogeochemical Cycles, Geophysical Research Letters, 
-# Paleoceanography and Paleoclimatology, Radio Science, Reviews of Geophysics, 
-# Tectonics, Space Weather, Water Resources Research, Geochemistry, Geophysics, 
-# Geosystems, Journal of Advances in Modeling Earth Systems (JAMES),
-# Earth's Future, Earth and Space Science, Geohealth
+# Choose an AGU journal, for example: JGR: Atmospheres, JGR: Biogeosciences,
+# JGR: Earth Surface, JGR: Oceans, JGR: Planets, JGR: Solid Earth,
+# JGR: Space Physics, Global Biogeochemical Cycles, Geophysical Research
+# Letters, Paleoceanography and Paleoclimatology, Radio Science, Reviews of
+# Geophysics, Tectonics, Space Weather, Water Resources Research,
+# Geochemistry, Geophysics, Geosystems, Journal of Advances in Modeling Earth
+# Systems (JAMES), Earth's Future, Earth and Space Science, or GeoHealth.
 journal: "JGR: Atmospheres"
-# Use draft to submit a paper
+# Use draft and line numbers for submission.
 classoption: "draft,linenumbers"
-# A title should be specific, informative, and brief. Use
-# abbreviations only if they are defined in the abstract. Titles that
-# start with general keywords then specific terms are optimized in
-# searches
-title: "The title of my paper"
-# First name or initial followed by last name
-# Authors are individuals who have significantly contributed to the
-# research and preparation of the article. Group authors are allowed, if
-# each author in the group is separately identified in an appendix.
-# Additional author notes should be indicated with
+title: "The Title of My Paper"
 authors:
   - name: Andrew N. Other
     affil: 1
-    thanks: Andrew's thanks
+    thanks: "Current address: Another institution, Germany"
   - name: Fred T. Secondauthor
     affil: 1
-    thanks: "Current address: Some other place, Germany"
   - name: I. Ken Groupleader
     affil: "1, 2"
 affiliations:
@@ -34,201 +23,178 @@ affiliations:
     name: "The first affiliation"
   - number: 2
     name: "The second affiliation"
-# More than one corresponding author is allowed in this LaTeX file and for
-# publication; but only one corresponding author is allowed in our editorial system.
+# The peer-review system accepts one corresponding author.
 corresponding_author:
   - name: I. Ken Groupleader
     email: groupleader@fancy.university.com
-keypoints:  
-  - "List up to three key points (at least one is required)"
-  - "Key Points summarize the main points and conclusions of the article"
-  - "Each must be 100 characters or less with no special characters or punctuation"
-abstract: "A good abstract will begin with a short description of the problem being addressed, briefly describe the new data or analyses, then briefly states the main conclusion(s) and how they are supported and uncertainties."
-plain_language_summary: "Some journals require a plain language summary. See: https://publications.agu.org/author-resource-center/text-requirements/#abstract"
+# Supply one to three complete sentences, each no longer than 140 characters.
+keypoints:
+  - "Key Points summarize the main findings and conclusions of the article."
+  - "Each Key Point is a complete sentence of no more than 140 characters."
+abstract: "Briefly describe the problem, data or analyses, main conclusions, supporting evidence, and uncertainties."
+# Write for a broad audience without specialist knowledge. This summary is
+# required by some AGU journals; consult the current journal instructions.
+plain_language_summary: "Explain the general problem, what was done, and the main result in language accessible to the science-interested public."
 output: rticles::agu_article
 bibliography: agutest.bib
-header-includes: 
-      - \usepackage{soulutf8}  # For UTF8 chars in TrackChanges
-# AGU recommends using the trackchanges LaTeX package in the edition process
-# which is available from this link:
-# https://publications.agu.org/files/2019/02/January-14-2019-latex-templates.zip
+csl: american-geophysical-union.csl
 ---
 
 ```{r echo=FALSE}
-# Some recommended settings. 
 knitr::opts_chunk$set(
   echo = FALSE,
-  fig.pos = 'h',
-  out.extra = "",   # To force the use of figure enviroment
+  fig.pos = "h",
+  out.extra = "",
   fig.cap = "Please caption every figure"
 )
 ```
 
-```{r keypoints_check, echo=FALSE, results='asis', eval = TRUE}
-# This chunk adds a warning if any keypoint is longer than 100 characters. 
-# To disable it, you can remove it or set eval to FALSE.
-if (any(nchar(rmarkdown::metadata$keypoints) > 100)) {
-  cat("\\textcolor{red}{\\textbf{Warning}: keypoint(s)", 
-      knitr::combine_words(which(nchar(rmarkdown::metadata$keypoints) > 100)), 
-      "longer than 100 characters.}")
+```{r keypoints_check, echo=FALSE, results='asis'}
+# Remove this chunk or set eval = FALSE to disable the length check.
+keypoint_lengths <- nchar(rmarkdown::metadata$keypoints)
+if (any(keypoint_lengths > 140)) {
+  cat(
+    "\\textcolor{red}{\\textbf{Warning}: keypoint(s)",
+    knitr::combine_words(which(keypoint_lengths > 140)),
+    "longer than 140 characters.}"
+  )
 }
 ```
 
-Suggested section heads
-
 # Introduction
 
-The main text should start with an introduction. Except for short manuscripts (such as comments and replies), the text should be divided into sections, each with its own heading.
+Begin with an introduction. Except for short manuscripts such as comments and replies, divide the text into sections with informative headings.
 
-Headings should be sentence fragments and do not begin with a lowercase letter or number. Capitalize the first letter of each word (except for prepositions, conjunctions, and articles that are three or fewer letters).
+Headings should be sentence fragments. Capitalize the first letter of each major word, excluding short prepositions, conjunctions, and articles.
 
 # Materials and Methods
 
-Here is text on Materials and Methods.
-
-Do not use bulleted lists; enumerated lists are okay. Use #. for list for a cleaner LaTeX output.
+Describe the materials and methods. AGU discourages bulleted lists; enumerated lists are acceptable.
 
 #. First element
-
 #. Second element
 
-## A descriptive heading about methods
+## A Descriptive Heading About Methods
 
-Please use ONLY \\citet and \\citep for reference citations.
-DO NOT use other cite commands (e.g., \\cite, \\citeyear, \\nocite, \\citealp, etc.).
-Example \\citet and \\citep:
-  ...as shown by \citet{Levitus2012}, \citet{Nuncio2011} and \citet{Raphael2004}
-  ...as shown by \citep{Levitus2012}, \citep{Nuncio2011}, \citep{Raphael2004}.
-  ...has been shown \citep[e.g.,][]{Levitus2012, Nuncio2011, Raphael2004}.
+The default citation backend uses Pandoc citeproc and the bundled American Geophysical Union CSL style. Use Markdown citations, including textual citations such as @Levitus2012 [p. 4] and parenthetical citations such as [e.g., @Nuncio2011, p. 5]. Citeproc formats both the in-text citations and reference list; raw LaTeX citation commands are not processed by this backend.
 
 # Data
 
-Or section title might be a descriptive heading about data
+Describe the data used in the study. A required Open Research section near the end of the manuscript must state where the data, software, and other research objects supporting the conclusions can be obtained.
 
-As of 2018 we recommend use of the TrackChanges package to mark revisions. The trackchanges package adds five new LaTeX commands:
+AGU supports TrackChanges commands in revisions. The 2019 template configures the bundled package in inline mode; use `finalnew` instead when preparing a clean revision. Common commands include `\note[editor]{...}`, `\annote[editor]{...}{...}`, `\add[editor]{...}`, `\remove[editor]{...}`, and `\change[editor]{...}{...}`.
 
-\\note[editor]{The note}
-
-\\annote[editor]{Text to annotate}{The note}
-
-\\add[editor]{Text to add}
-
-\\remove[editor]{Text to remove}
-
-\\change[editor]{Text to remove}{Text to add}
-
-complete documentation is here: http://trackchanges.sourceforge.net/
+```{=latex}
+This sentence contains \add{an example tracked addition}.
+```
 
 # Results
 
-Or section title might be a descriptive heading about the results
+Place figures and tables near their first mention. Do not use `\psfrag` or `\subfigure`, and consolidate multipart figures into one figure file.
 
-Enter Figures and Tables near as possible to where they are first mentioned:
-DO NOT USE \\psfrag or \\subfigure commands.
-DO NOT USE \\newcommand, \\renewcommand, or \\def, etc.
-
-```{r}
+```{r pressure-figure}
 plot(pressure)
 ```
 
-Example table
-
+```{=latex}
 \begin{table}
- \caption{Time of the Transition Between Phase 1 and Phase 2$^{a}$}
- \centering
- \begin{tabular}{l c}
- \hline
-  Run  & Time (min)  \\
- \hline
-   $l1$  & 260   \\
-   $l2$  & 300   \\
-   $l3$  & 340   \\
-   $h1$  & 270   \\
-   $h2$  & 250   \\
-   $h3$  & 380   \\
-   $r1$  & 370   \\
-   $r2$  & 390   \\
- \hline
- \multicolumn{2}{l}{$^{a}$Footnote text here.}
- \end{tabular}
- \end{table}
+\caption{Time of the Transition Between Phase 1 and Phase 2$^{a}$}
+\centering
+\begin{tabular}{l c}
+\hline
+Run & Time (min) \\
+\hline
+$l1$ & 260 \\
+$l2$ & 300 \\
+$h1$ & 270 \\
+$h2$ & 250 \\
+\hline
+\multicolumn{2}{l}{$^{a}$Footnote text here.}
+\end{tabular}
+\end{table}
+```
 
-AGU prefers the use of {sidewaystable} over {landscapetable} as it causes fewer problems.
+AGU prefers `sidewaystable` to `landscapetable` for wide tables.
 
-```{r, fig.env = "sidewaysfigure"}
+```{r sideways-figure, fig.env='sidewaysfigure'}
 plot(pressure)
 ```
 
+```{=latex}
 \begin{sidewaystable}
-\caption{Caption here}
-\label{tab:signif_gap_clos}
+\caption{An Example Sideways Table}
+\label{tab:sideways}
 \begin{tabular}{ccc}
-one&two&three\\
-four&five&six
+one & two & three \\
+four & five & six
 \end{tabular}
 \end{sidewaystable}
+```
 
-If using numbered lines, please surround equations with \\begin{linenomath\*}... \\end{linenomath\*}
+When using line numbers, surround equations with `linenomath*`.
 
+```{=latex}
 \begin{linenomath*}
 \begin{equation}
-y|{f} \sim g(m, \sigma)
+y \mid f \sim g(m, \sigma)
 \end{equation}
 \end{linenomath*}
+```
 
 # Conclusions
 
+Summarize the conclusions and their limitations.
+
+```{=latex}
 \appendix
-\section{Here is a sample appendix}
+\section{Sample Appendix}
+\label{app:sample}
 
-Optional Appendix goes here
+Appendix sections, equations, figures, and tables use letter-prefixed numbering.
 
-Optional Glossary, Notation or Acronym section goes here:
+\begin{equation}
+1 + 1 = 2
+\label{eq:appendix}
+\end{equation}
 
-Glossary is only allowed in Reviews of Geophysics
+\begin{figure}
+\centering
+\rule{2cm}{1cm}
+\caption{An appendix figure.}
+\label{fig:appendix}
+\end{figure}
 
-\begin{glossary}
-\term{Term}
- Term Definition here
-\term{Term}
- Term Definition here
-\term{Term}
- Term Definition here
-\end{glossary}
+\begin{table}
+\caption{An appendix table.}
+\label{tab:appendix}
+\centering
+\begin{tabular}{lc}
+Item & Value \\
+A & 1
+\end{tabular}
+\end{table}
+```
 
+```{=latex}
+\section*{Open Research}
+```
 
-\begin{acronyms}
-\acro{Acronym}
- Definition here
-\acro{EMOS}
- Ensemble model output statistics
-\acro{ECMWF}
- Centre for Medium-Range Weather Forecasts
-\end{acronyms}
+State where the data, software, notebooks, and other research objects supporting the conclusions can be accessed. Cite archived research objects in the reference list; “available from the authors” is not sufficient.
 
-\begin{notation}
-\notation{$a+b$} Notation Definition here
-\notation{$e=mc^2$}
-Equation in German-born physicist Albert Einstein's theory of special
-relativity that showed that the increased relativistic mass ($m$) of a
-body comes from the energy of motion of the body—that is, its kinetic
-energy ($E$)—divided by the speed of light squared ($c^2$).
-\end{notation}
+```{=latex}
+\section*{Inclusion in Global Research Statement}
+```
 
+If applicable, describe ethical and scientific considerations for international or community-based collaborations, including relevant permits, agreements, local contributions, and end users. Remove this optional section when it does not apply.
 
+```{=latex}
+\section*{Conflict of Interest Disclosure}
+```
+
+The authors declare no conflicts of interest relevant to this manuscript.
+
+```{=latex}
 \acknowledgments
-The acknowledgments must list:
-A statement that indicates to the reader where the data
-supporting the conclusions can be obtained (for example, in the
-references, tables, supporting information, and other databases).
+```
 
-All funding sources related to this work from all authors
-
-Any real or perceived financial conflicts of interests for any author
-
-Other affiliations for any author that may be perceived as having a conflict of 
-interest with respect to the results of this paper.
-
-It is also the appropriate place to thank colleagues and other contributors.
-
-AGU does not normally allow dedications. 
+Acknowledge funding, colleagues, contributors, and secondary affiliations here. Place acknowledgments after the main text and disclosure sections but before the bibliography. AGU does not normally allow dedications.

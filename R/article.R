@@ -58,19 +58,100 @@ aea_article <- function(..., keep_tex = TRUE,
   )
 }
 
-#' @section `agu_article`: Format for creating a American Geophysical Union
-#'   (AGU) article. Adapted from
-#'   <https://www.agu.org/publications>.
+#' @section `agu_article`: Format for creating an American Geophysical Union
+#'   (AGU) article. Adapted from AGU's September 2025 LaTeX distribution of
+#'   `agujournal2019.cls` and the official [LaTeX submission
+#'   guidelines](https://www.agu.org/publications/authors/journals/latex-submissions).
+#'
+#'   The default `citation_package = "default"` uses Pandoc citeproc with
+#'   the American Geophysical Union CSL style, following the approach used by
+#'   the Quarto AGU journal format. Use Markdown citation syntax in current
+#'   drafts.
+#'
+#'   New drafts include `agujournal2019.cls`. Existing drafts that retain only
+#'   a project-local `agujournal2018.cls` remain supported but must explicitly
+#'   set `citation_package = "natbib"`. The format warns when the selected
+#'   class and citation backend are incompatible. If both classes are present,
+#'   the current 2019 class is used.
 #' @export
 #' @rdname article
 agu_article <- function(..., keep_tex = TRUE,
-                        citation_package = "natbib", highlight = NULL,
+                        citation_package = "default", highlight = NULL,
                         md_extensions = c("-autolink_bare_uris", "-auto_identifiers")) {
-  pdf_document_format(
+  format <- pdf_document_format(
     "agu",
     keep_tex = keep_tex, highlight = highlight,
     citation_package = citation_package, md_extensions = md_extensions, ...
   )
+
+  pre_processor <- format$pre_processor
+  format$pre_processor <- function(metadata, input_file, runtime, knit_meta,
+                                   files_dir, output_dir) {
+    input_dir <- dirname(input_file)
+    legacy_class <- file.path(input_dir, "agujournal2018.cls")
+    current_class <- file.path(input_dir, "agujournal2019.cls")
+    has_legacy_class <- file.exists(legacy_class)
+    has_current_class <- file.exists(current_class)
+    use_current_class <- !has_legacy_class || has_current_class
+
+    if (!use_current_class && citation_package != "natbib") {
+      warn_once(
+        "rticles.warn_agu_2018_citations",
+        "Detected only 'agujournal2018.cls', which expects ",
+        "`citation_package = \"natbib\"`. The selected '",
+        citation_package,
+        "' backend is unsupported for legacy raw \\citep and \\citet ",
+        "commands. Set natbib explicitly or update the draft to the 2019 class."
+      )
+    } else if (!use_current_class) {
+      warn_once(
+        "rticles.warn_agu_2018",
+        "Detected 'agujournal2018.cls' next to the input file. ",
+        "This class remains supported for backward compatibility, but the ",
+        "article should be updated from the current `rticles::agu_article()` ",
+        "template to use 'agujournal2019.cls' and current AGU guidance."
+      )
+    } else {
+      if (has_legacy_class && has_current_class) {
+        warn_once(
+          "rticles.warn_agu_both_classes",
+          "Detected both 'agujournal2018.cls' and 'agujournal2019.cls' next to ",
+          "the input file. The AGU template will use 'agujournal2019.cls'; you ",
+          "may remove the unused 'agujournal2018.cls' file."
+        )
+      }
+      if (citation_package != "default") {
+        warn_once(
+          "rticles.warn_agu_2019_citations",
+          "The selected 2019 AGU class supports `citation_package = ",
+          "\"default\"` with citeproc and the AGU CSL style. The selected '",
+          citation_package,
+          "' backend is unsupported; the 2019 class does not provide natbib ",
+          "citation commands."
+        )
+      }
+    }
+
+    c(
+      if (is.function(pre_processor)) {
+        pre_processor(
+          metadata, input_file, runtime, knit_meta, files_dir, output_dir
+        )
+      },
+      if (use_current_class) {
+        rmarkdown::pandoc_variable_arg("rticles-agu-2019")
+      },
+      if (citation_package == "default" && is.null(metadata$csl)) {
+        c(
+          "--csl",
+          rmarkdown::pandoc_path_arg(pkg_file_template(
+            "agu", "skeleton", "american-geophysical-union.csl"
+          ))
+        )
+      }
+    )
+  }
+  format
 }
 
 #' @section `amq_article`: Ce format a été adapté du format du bulletin de
