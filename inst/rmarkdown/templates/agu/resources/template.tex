@@ -93,6 +93,7 @@ $endif$$endif$
 $if(csl-refs)$
 % Pandoc citation processing
 \providecommand{\phantomsection}{}
+\providecommand{\hypertarget}[2]{#2}
 $if(pandoc318)$
 %From Pandoc 3.1.8
 % definitions for citeproc citations
@@ -261,13 +262,13 @@ $endfor$
 
 %  List up to three key points (at least one is required)
 %  Key Points summarize the main points and conclusions of the article
-%  Each must be 100 characters or less with no special characters or punctuation
+%  Each must be 140 characters or fewer with no special characters or punctuation
 
 % Example:
 % \begin{keypoints}
 % \item	List up to three key points (at least one is required)
 % \item	Key Points summarize the main points and conclusions of the article
-% \item	Each must be 100 characters or less with no special characters or punctuation
+% \item	Each must be 140 characters or fewer with no special characters or punctuation
 % \end{keypoints}
 
 \begin{keypoints}

@@ -138,6 +138,17 @@ test_that("AGU template selects classes without a natbib bridge", {
   expect_match(template, "\\$if\\(natbib\\)\\$\\$if\\(bibliography\\)\\$")
 })
 
+test_that("AGU template supports citeproc anchors and current keypoint guidance", {
+  template <- xfun::read_utf8(find_resource("agu"))
+  template <- paste(template, collapse = "\n")
+
+  expect_match(
+    template,
+    "\\providecommand{\\hypertarget}[2]{#2}",
+    fixed = TRUE
+  )
+})
+
 test_that("AGU citeproc style is bundled", {
   csl <- xfun::read_utf8(
     pkg_file_template("agu", "skeleton", "american-geophysical-union.csl")
