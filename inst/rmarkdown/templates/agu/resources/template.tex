@@ -8,7 +8,7 @@ $if(rticles-agu-2019)$
 
 % The 2019 class leaves revision packages to the document. The 2018 class
 % already loads trackchanges and ulem, so reloading them would clash.
-\usepackage[inline]{trackchanges}
+\usepackage[$if(trackchanges)$$for(trackchanges)$$trackchanges$$sep$,$endfor$$else$inline$endif$]{trackchanges}
 \usepackage{soul}
 $else$
 \documentclass[$for(classoption)$$classoption$$sep$,$endfor$]{agujournal2018}

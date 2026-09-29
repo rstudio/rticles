@@ -24,6 +24,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Christophe Dervieux \email{cderv@posit.co} (\href{https://orcid.org/0000-0003-4474-2498}{ORCID})
   \item JJ Allaire \email{jj@posit.co}
   \item Yihui Xie \email{xie@yihui.name} (\href{https://orcid.org/0000-0003-0645-5666}{ORCID})
   \item  R Foundation [copyright holder]
@@ -57,9 +58,9 @@ Authors:
   \item Alex Hayes \email{alexpghayes@gmail.com} (\href{https://orcid.org/0000-0002-4985-5160}{ORCID})
   \item Zhian N. Kamvar \email{zkamvar@gmail.com} (\href{https://orcid.org/0000-0003-1458-7108}{ORCID}) [copyright holder]
   \item Noam Ross \email{noam.ross@gmail.com} (\href{https://orcid.org/0000-0002-2136-0000}{ORCID}) [copyright holder]
-  \item Robrecht Cannoodt \email{rcannood@gmail.com} (\href{https://orcid.org/0000-0003-3641-729X}{ORCID}) (rcannood) [copyright holder]
+  \item Robrecht Cannoodt \email{rcannood@gmail.com} (\href{https://orcid.org/0000-0003-3641-729X}{ORCID}) (github: rcannood) [copyright holder]
   \item Duncan Luguern \email{duncan.luguern@gmail.com}
-  \item David M. Kaplan \email{dmkaplan2000@gmail.com} (\href{https://orcid.org/0000-0001-6087-359X}{ORCID}) (dmkaplan2000) [contributor]
+  \item David M. Kaplan \email{dmkaplan2000@gmail.com} (\href{https://orcid.org/0000-0001-6087-359X}{ORCID}) (github: dmkaplan2000) [contributor]
   \item Sebastian Kreutzer \email{sebastian.kreutzer@aber.ac.uk} (\href{https://orcid.org/0000-0002-0734-2199}{ORCID})
   \item Shixiang Wang \email{w_shixiang@163.com} (\href{https://orcid.org/0000-0001-9855-7357}{ORCID}) [contributor]
   \item Jay Hesselberth \email{jay.hesselberth@gmail.com} (\href{https://orcid.org/0000-0002-6299-179X}{ORCID}) [contributor]
@@ -70,15 +71,15 @@ Other contributors:
 \itemize{
   \item Posit Software, PBC [copyright holder, funder]
   \item Alfredo Hernández \email{aldomann.designs@gmail.com} (\href{https://orcid.org/0000-0002-2660-4545}{ORCID}) [contributor]
-  \item Stefano Coretta \email{stefano.coretta@gmail.com} (\href{https://orcid.org/0000-0001-9627-5532}{ORCID}) (stefanocoretta) [contributor]
-  \item Greg Macfarlane \email{gregmacfarlane@gmail.com} (gregmacfarlane) [contributor]
-  \item Matthias Templ \email{matthias.templ@gmail.com} (\href{https://orcid.org/0000-0002-8638-5276}{ORCID}) (matthias-da) [contributor]
-  \item Alvaro Uzaheta \email{alvaro.uzaheta@gess.ethz.ch} (auzaheta) [contributor]
+  \item Stefano Coretta \email{stefano.coretta@gmail.com} (\href{https://orcid.org/0000-0001-9627-5532}{ORCID}) (github: stefanocoretta) [contributor]
+  \item Greg Macfarlane \email{gregmacfarlane@gmail.com} (github: gregmacfarlane) [contributor]
+  \item Matthias Templ \email{matthias.templ@gmail.com} (\href{https://orcid.org/0000-0002-8638-5276}{ORCID}) (github: matthias-da) [contributor]
+  \item Alvaro Uzaheta \email{alvaro.uzaheta@gess.ethz.ch} (github: auzaheta) [contributor]
   \item JooYoung Seo \email{jseo1005@illinois.edu} (\href{https://orcid.org/0000-0002-4064-6012}{ORCID}) [contributor]
-  \item Callum Arnold \email{cal.rk.arnold@gmail.com} (arnold-c) [contributor]
-  \item Dmytro Perepolkin \email{dperepolkin@gmail.com} (\href{https://orcid.org/0000-0001-8558-6183}{ORCID}) (dmi3kno) [contributor]
-  \item Tom Palmer \email{remlapmot@hotmail.com} (\href{https://orcid.org/0000-0003-4655-4511}{ORCID}) (remlapmot) [contributor]
-  \item Rafael Laboissière \email{rafael@laboissiere.net} (\href{https://orcid.org/0000-0002-2180-9250}{ORCID}) (rlaboiss) [contributor]
+  \item Callum Arnold \email{cal.rk.arnold@gmail.com} (github: arnold-c) [contributor]
+  \item Dmytro Perepolkin \email{dperepolkin@gmail.com} (\href{https://orcid.org/0000-0001-8558-6183}{ORCID}) (github: dmi3kno) [contributor]
+  \item Tom Palmer \email{remlapmot@hotmail.com} (\href{https://orcid.org/0000-0003-4655-4511}{ORCID}) (github: remlapmot) [contributor]
+  \item Rafael Laboissière \email{rafael@laboissiere.net} (\href{https://orcid.org/0000-0002-2180-9250}{ORCID}) (github: rlaboiss) [contributor]
 }
 
 }

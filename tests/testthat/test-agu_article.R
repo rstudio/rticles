@@ -9,6 +9,16 @@ agu_pre_processor_args <- function(format, input_file, metadata = list()) {
   )
 }
 
+render_agu_template <- function(trackchanges = NULL) {
+  metadata <- list(`rticles-agu-2019` = TRUE)
+  if (!is.null(trackchanges)) {
+    metadata$trackchanges <- trackchanges
+  }
+  output <- tempfile(fileext = ".tex")
+  template_pandoc(metadata, find_resource("agu"), output)
+  paste(xfun::read_utf8(output), collapse = "\n")
+}
+
 test_that("agu_article() uses citeproc by default", {
   expect_identical(formals(agu_article)$citation_package, "default")
 })
@@ -134,8 +144,28 @@ test_that("AGU template selects classes without a natbib bridge", {
   )
   expect_no_match(template, "PassOptionsToPackage\\{natbibapa\\}\\{apacite\\}")
   expect_no_match(template, "agu@@@cite|agu@@@citeA")
-  expect_match(template, "usepackage\\[inline\\]\\{trackchanges\\}")
+  expect_match(template, "$for(trackchanges)$", fixed = TRUE)
   expect_match(template, "\\$if\\(natbib\\)\\$\\$if\\(bibliography\\)\\$")
+})
+
+test_that("AGU template renders the selected TrackChanges mode", {
+  skip_if_not_pandoc("2.8")
+
+  expect_match(
+    render_agu_template(),
+    "\\usepackage[inline]{trackchanges}",
+    fixed = TRUE
+  )
+  expect_match(
+    render_agu_template("finalnew"),
+    "\\usepackage[finalnew]{trackchanges}",
+    fixed = TRUE
+  )
+  expect_match(
+    render_agu_template(c("margins", "adjustmargins")),
+    "\\usepackage[margins,adjustmargins]{trackchanges}",
+    fixed = TRUE
+  )
 })
 
 test_that("AGU template supports citeproc anchors and current keypoint guidance", {

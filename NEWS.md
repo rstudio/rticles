@@ -40,7 +40,7 @@ supported by the `copernicus.cls`, and fix an issue where the section headers we
 
 ## MINOR CHANGES
 
-- Update `agu_article()` to AGU's September 2025 distribution of `agujournal2019.cls`, current manuscript guidance, and external TrackChanges setup (#606).
+- Update `agu_article()` to AGU's September 2025 distribution of `agujournal2019.cls`, current manuscript guidance, and external TrackChanges setup. The `trackchanges` YAML field sets the TrackChanges package options, defaulting to `inline`; use `finalnew` for clean output (#606).
 
 - Fix `agu_article()` table rendering with recent LaTeX distributions by using the text-mode table centering helper when available (#606).
 

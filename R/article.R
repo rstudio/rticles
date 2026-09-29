@@ -68,11 +68,16 @@ aea_article <- function(..., keep_tex = TRUE,
 #'   the Quarto AGU journal format. Use Markdown citation syntax in current
 #'   drafts.
 #'
-#'   New drafts include `agujournal2019.cls`. Existing drafts that retain only
-#'   a project-local `agujournal2018.cls` remain supported but must explicitly
-#'   set `citation_package = "natbib"`. The format warns when the selected
-#'   class and citation backend are incompatible. If both classes are present,
-#'   the current 2019 class is used.
+#'   New drafts include `agujournal2019.cls`. The `trackchanges` YAML field
+#'   sets the options passed to the TrackChanges package. AGU recommends
+#'   `inline` (the default) to display tracked edits and `finalnew` to accept
+#'   them in clean output; other package options, or a list of options, are
+#'   passed through as is.
+#'
+#'   Existing drafts that retain only a project-local `agujournal2018.cls`
+#'   remain supported but must explicitly set `citation_package = "natbib"`.
+#'   The format warns when the selected class and citation backend are
+#'   incompatible. If both classes are present, the current 2019 class is used.
 #' @export
 #' @rdname article
 agu_article <- function(..., keep_tex = TRUE,

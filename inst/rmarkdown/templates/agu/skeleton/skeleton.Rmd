@@ -9,6 +9,8 @@
 journal: "JGR: Atmospheres"
 # Use draft and line numbers for submission.
 classoption: "draft,linenumbers"
+# Use finalnew to accept tracked edits in clean output.
+trackchanges: inline
 title: "The Title of My Paper"
 authors:
   - name: Andrew N. Other
@@ -82,7 +84,7 @@ The default citation backend uses Pandoc citeproc and the bundled American Geoph
 
 Describe the data used in the study. A required Open Research section near the end of the manuscript must state where the data, software, and other research objects supporting the conclusions can be obtained.
 
-AGU supports TrackChanges commands in revisions. The 2019 template configures the bundled package in inline mode; use `finalnew` instead when preparing a clean revision. Common commands include `\note[editor]{...}`, `\annote[editor]{...}{...}`, `\add[editor]{...}`, `\remove[editor]{...}`, and `\change[editor]{...}{...}`.
+AGU supports TrackChanges commands in revisions. The 2019 template displays edits with `trackchanges: inline`; set `trackchanges: finalnew` in the YAML header to accept them when preparing clean output. Common commands include `\note[editor]{...}`, `\annote[editor]{...}{...}`, `\add[editor]{...}`, `\remove[editor]{...}`, and `\change[editor]{...}{...}`.
 
 ```{=latex}
 This sentence contains \add{an example tracked addition}.
